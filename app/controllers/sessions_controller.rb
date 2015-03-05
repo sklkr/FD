@@ -9,7 +9,7 @@ layout 'homepage'
   end
 
   def customer_auth
- 	binding.pry
+ 	redirect_to sessions_customer_path, :notice => 'Authentication failed' if warden.authenticate.nil?
   end
 
   private
