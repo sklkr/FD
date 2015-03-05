@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
-
+ 
+  scope :module => 'partners' do
+    get 'dashboard/summary'
+  end
+  
   get 'customerdashboard/details'
   patch 'customerdashboard/details_update'
 
@@ -22,12 +26,14 @@ Rails.application.routes.draw do
   get 'pages/terms'
 
   get 'sessions/partner'
-
+  post 'sessions/partner_auth'
+  
   get 'sessions/customer'
   post 'sessions/customer_auth', :as => 'customer_auth'
   get 'sessions/customer_logout'
 
   get 'registrations/partner'
+  post 'registrations/partner_signup', :as => 'partner_signup'
 
   get 'registrations/customer'
   post 'registrations/customer_signup', :as => 'customer_signup'

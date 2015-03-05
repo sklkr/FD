@@ -2,10 +2,11 @@ class SessionsController < ApplicationController
 skip_before_filter :authenticate!
 layout 'homepage'
   def partner
+
   end
 
   def customer
-	 binding.pry
+    
   end
 
   def customer_auth
@@ -17,8 +18,12 @@ layout 'homepage'
     warden.logout
   end
 
-  private
-  	def customer_params
+  def partner_auth
+    warden.authenticate!(:partner, scope: :partner)
+    render :text => 'partner authenticated'
+  end
 
-  	end
+  def partner_logout
+
+  end
 end

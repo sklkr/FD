@@ -3,7 +3,8 @@ require 'bcrypt'
 class User < ActiveRecord::Base
   include BCrypt
   belongs_to :customer
-  
+  belongs_to :partner
+
   before_create :generate_confirmation_token
 
   def password

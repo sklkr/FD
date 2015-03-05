@@ -5,66 +5,57 @@
 		</div>
 		
 		<div class="sqr-boxs-cat">
-			<%= form_tag customer_signup_path, :class => 'register' do %>
+			<%= form_tag partner_signup_path, :class => 'register' do %>
 			  <div class="form-sec">
 				
 				<div class="form-field">
 				  <p>First name</p>
-				  <input type="text" name="first_name" value="">
+				  <input type="text" name="user[first_name]" value="">
 				</div>
 				
 				<div class="form-field">
 				 <p>Last name</p>
-				 <input type="text" name="last_name" value="">
+				 <input type="text" name="user[last_name]" value="">
 				</div>
 				
 				<div class="form-field">
 				 <p>Email</p>
-				 <input type="email" name="email" value="">
+				 <input type="email" name="user[email]" value="">
 				</div>
 				
 				<div class="form-field">
 				 <p>Phone</p>
-				 <input type="tel" name="phone" value="">
+				 <input type="tel" name="user[phone]" value="">
 				</div>
 				
 				<div class="form-field">
 				 <p>Password</p>
-				 <input type="password" name="password" value="">
+				 <input type="password" name="user[password]" value="">
 				</div>
 				
 				<div class="form-field">
 				 <p>Re-enter Password</p>
-				 <input type="password" name="password_conf" value="">
+				 <input type="password" name="user[password_conf]" value="">
 				</div>
 				
 				<div class="form-field">
 				 <p>Business Name</p>
-				 <input type="text" name="business_name" value="">
+				 <input type="text" name="user[business_name]" value="">
 				</div>
 				
 				<div class="form-field">
 				 <p>Category</p>
-				 <select name="category">
-					<option value="Yoga">Yoga</option>
-					<option value="gym" selected>Gym</option>
-					<option value="meditation">Meditation</option>
-					<option value="spa">Spa & saloon</option>
-					<option value="swimming">Swimming</option>
-					<option value="fitness">Fitness</option>
-					<option value="consultant">Consultant</option>
-					<option value="kids">Kids zone</option>
-				</select>
+         		 <%= select_tag "user[category_id]", options_from_collection_for_select(Category.all, "id", "name") %>
 				</div>
 				
 				<div class="form-field">
 				 <p>City</p>
-				 <input type="text" name="city" value="">
+				 <input type="text" name="user[city]" value="">
 				</div>
 				
 				<div class="form-field">
 				 <p>State</p>
-				 <input type="text" name="state" value="">
+				 <input type="text" name="user[state]" value="">
 				</div>
 				
 				<div class="form-terms">

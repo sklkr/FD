@@ -7,17 +7,17 @@
 		<p class="bottom-title">New to <span>Fitness<b>Papa</b></span>? <a href="register.html">Register Your Business</a></p>
 		</div>
 		<div class="sqr-boxs-cat">
-			<form action="#" name="sign-in" class="sign">
+			<%= form_tag sessions_partner_auth_path, :class => 'sign' do %>
 			  <div class="form-sec form-sign">
 				
 				<div class="form-field">
 				 <label for="email" class="label-email"><p>Email</p></label>
-				<input id="email" type="email" value="" name="email">
+				 <input id="email" type="email" value="" name="user[email]">
 				</div>
 				
 				<div class="form-field">
 				 <label for="password" class="label-pass"><p>Password</p></label>
-				 <input id="password" type="password" name="password" value="">
+				 <input id="password" type="password" name="user[password]" value="">
 				</div>
 				
 				<div class="form-terms">
@@ -32,7 +32,7 @@
 			  
 			  </div>
 			  
-			</form>
+			<%end %>
 		</div>
 		
 	</div>

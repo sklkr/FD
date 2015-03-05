@@ -3,6 +3,7 @@ class RegistrationsController < ApplicationController
  layout 'homepage'
 
   def partner
+    
   end
 
   def customer
@@ -14,13 +15,19 @@ class RegistrationsController < ApplicationController
   	 if cdata.save && details(cdata, user_params).save
   	 	redirect_to action: 'customer'
   	 	flash[:success] = 'Customer created'
-	 else
-	 	render :text => 'something went wrong'
-	 end
+  	 else
+  	 	render :text => 'something went wrong'
+  	 end
   end
 
   def partner_signup
-
+    pdata = Partner.new(partner_params)
+    if pdata.save && details(pdata, user_params).save
+      redirect_to action: 'partner'
+      flash[:success] = 'Partner created'
+    else
+      render :text => 'something went wrong'
+    end 
   end
 
   private
@@ -37,4 +44,8 @@ class RegistrationsController < ApplicationController
   		user.member_id = base.id
   		user
   	end
+
+    def partner_params
+      params.require(:user).permit(:email, :business_name, :category_id)
+    end
 end
