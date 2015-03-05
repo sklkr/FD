@@ -1,0 +1,22 @@
+<%= form_tag centers_details_create_path do %>
+	Center Name :: <%= text_field_tag "user[centername]" %>
+	Brand Name :: <%= text_field_tag "user[brand]" %>
+	Person Name :: <%= text_field_tag "user[personname]" %>
+	Email Name :: <%= text_field_tag "user[email]" %>
+	Mobile No :: <%= text_field_tag "user[mobile]" %>
+	Landline No :: <%= text_field_tag "user[landline]"%>
+	Address :: <%= text_field_tag "user[address_1]" %> <%= text_field_tag "user[address_2]" %> <%= text_field_tag "user[landmark]" %>	<%= text_field_tag "user[city]" %>
+	 <%= text_field_tag "user[pin]"  %>
+
+
+	PAN :: <%= text_field_tag "user[ pan]" %>
+	TAN :: <%= text_field_tag "user[ tan]" %>
+	TIN :: <%= text_field_tag "user[ tin]"%>
+	Service Tax Reg No :: <%= text_field_tag "user[taxregno]" %>
+	Bank a/c no :: <%= text_field_tag "user[ acno]"%>
+	Bank name :: <%= text_field_tag "user[bank_name]" %>
+	IFSC code of Branch :: <%= text_field_tag "user[ifsc_code]" %>
+	Branch Address:: <%= text_field_tag "user[bank_address]" %>
+<%= submit_tag %>
+
+<%end  %>

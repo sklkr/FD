@@ -2,6 +2,13 @@ Rails.application.routes.draw do
  
   scope :module => 'partners' do
     get 'dashboard/summary'
+    get 'centers/account_details'
+    post 'centers/details_create'
+    get 'centers/center_details'
+    get 'centers/service_setup'
+    get 'centers/instructors'
+    get 'centers/pass'
+    get 'centers/coupon'
   end
   
   get 'customerdashboard/details'
