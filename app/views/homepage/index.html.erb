@@ -8,12 +8,7 @@
 				</div>
 				<!-- menu -->
 				<div class="nav-top">
-					<ul>
-						<li><a href="sign-up.html">Sign Up</a></li>
-						<li><a href="sign-in.html">Sign In</a></li>
-						<li class="active"><a href="register.html">Register Your Business</a></li>
-					</ul>
-								
+					<%= render :partial => 'homepage/headerbtn' %>
 				</div><!-- end menu -->
 				</div>
 				</div>
@@ -24,7 +19,7 @@
 					<h1>Join Fitness Papa</h1>
 					<span>Search and find fitness services anywhere in India</span>
 					<div class="blu-button-main">
-					<div class="blu-button"><a href="filter-list.html">SEARCH NOW</a></div>
+					<div class="blu-button"><a href="<%= filters_grid_path %>">SEARCH NOW</a></div>
 					</div>
 				</div>
 				

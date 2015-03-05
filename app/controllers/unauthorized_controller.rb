@@ -16,7 +16,7 @@ class UnauthorizedController < ActionController::Metal
       message = env['warden.options'].fetch(:message, "unauthorized.user")
       flash.alert = I18n.t(message)
     end
-
-    redirect_to new_sessions_url
+    flash[:notice] = "Please check your credentials"
+    redirect_to sessions_customer_path
   end
 end

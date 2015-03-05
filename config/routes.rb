@@ -1,5 +1,18 @@
 Rails.application.routes.draw do
 
+  get 'customerdashboard/details'
+  patch 'customerdashboard/details_update'
+
+  get 'customerdashboard/pass'
+
+  get 'customerdashboard/bookings'
+
+  get 'customerdashboard/transactions'
+
+  get 'customerdashboard/preferences'
+
+  get 'customerdashboard/referral'
+
   get 'pages/about'
 
   get 'pages/partners'
@@ -12,6 +25,7 @@ Rails.application.routes.draw do
 
   get 'sessions/customer'
   post 'sessions/customer_auth', :as => 'customer_auth'
+  get 'sessions/customer_logout'
 
   get 'registrations/partner'
 

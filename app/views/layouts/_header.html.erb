@@ -1,18 +1,12 @@
 <header class="filter">
  <div class="top-header">
   <div class="header">
-	
 	<div class="logo">
-	<a href="index.html"><img src="/assets/logo.png" alt=""></a>
+	<a href="<%= root_url %>"><img src="/assets/logo.png" alt=""></a>
 	</div>
 	<!-- menu -->
 	<div class="nav-top">
-		<ul>
-			<li><a href="sign-up.html">Sign Up</a></li>
-			<li><a href="sign-in.html">Sign In</a></li>
-			<li class="active"><a href="register.html">Register Your Business</a></li>
-		</ul>
-					
+		<%= render :partial => 'homepage/headerbtn' %>	
 	</div><!-- end menu -->
 	</div>
 </div>

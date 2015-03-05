@@ -21,6 +21,11 @@ class User < ActiveRecord::Base
     self.save!
   end
 
+  def name
+    self.first_name.capitalize + " " + self.last_name.capitalize
+  end
+
+
 private
 
   def generate_confirmation_token

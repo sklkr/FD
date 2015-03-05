@@ -15,6 +15,7 @@ class CustomerStrategy < ::Warden::Strategies::Base
   end
 
   def authenticate!
+    binding.pry
     customer = Customer.find_by_email(params["user"].fetch("email"))
     if customer.nil? || customer.user.password != params["user"].fetch("password")
       fail! :message => "strategies.password.failed"

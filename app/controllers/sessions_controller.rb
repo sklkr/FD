@@ -5,11 +5,16 @@ layout 'homepage'
   end
 
   def customer
-  	binding.pry
+	 binding.pry
   end
 
   def customer_auth
- 	redirect_to sessions_customer_path, :notice => 'Authentication failed' if warden.authenticate.nil?
+    authenticate!
+    render :text => 'authenticated'
+  end
+
+  def customer_logout
+    warden.logout
   end
 
   private

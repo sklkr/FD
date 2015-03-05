@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+	<title><%= content_for?(:title) ? yield(:title) : "Fitness papa :: Dashboard" %></title>
+
+	<%= stylesheet_link_tag    "application" %>
+	<%= javascript_include_tag "assets/vendor/modernizr" %>
+	<%= javascript_include_tag "application" 'data-turbolinks-track' => true %>
+	<%= csrf_meta_tags %>
+</head>
+<body>
+ <%= render :partial => 'layouts/header' unless @header == false %>
+
+ <div>
+	<ul>
+		<li><a href="<%=customerdashboard_details_path  %>">Account Details</a></li>
+		<li><a href="<%=customerdashboard_bookings_path  %>">My Bookings</a></li>
+		<li><a href="<%=customerdashboard_pass_path  %>">My Pass</a></li>
+		<li><a href="<%= customerdashboard_preferences_path %>">Email Preferences</a></li>
+		<li><a href="<%= customerdashboard_referral_path %>">Referral</a></li>
+	</ul>
+</div>
+ <%= yield  %>
+ <%= render :partial => 'layouts/footer' %>
+</body>
+</html>
