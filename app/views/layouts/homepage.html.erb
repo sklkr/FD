@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<%= render :partial => 'layouts/head' %>
+</head>
+<body>
+<%= render :partial => 'layouts/header' unless @header == false %>
+ <%= yield  %>
+ <%= render :partial => 'layouts/secure' %>
+ <%= render :partial => 'layouts/footer' %>
+</body>
+</html>

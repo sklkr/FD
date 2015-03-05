@@ -8,13 +8,15 @@ Rails.application.routes.draw do
 
   get 'pages/terms'
 
-  get 'sessions/supplier'
+  get 'sessions/partner'
 
   get 'sessions/customer'
+  post 'sessions/customer_auth', :as => 'customer_auth'
 
-  get 'registrations/supplier'
+  get 'registrations/partner'
 
   get 'registrations/customer'
+  post 'registrations/customer_signup', :as => 'customer_signup'
 
   get 'centers/about'
 

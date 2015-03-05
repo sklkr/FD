@@ -1,0 +1,114 @@
+<footer class="main">
+	
+			<div class="footer_main">
+				<div class="footer_box footer_about">
+					
+					<ul>
+						<li> <a href="">Company</a> </li>
+						<li> <a href="">Careers</a> </li>
+						<li> <a href="">About Us</a> </li>
+						<li> <a href="">Testimonials</a> </li>
+						<li> <a href="">Press</a> </li>
+						<li> <a href="">Awards</a> </li>
+					</ul>
+				</div>
+				<div class="footer_box footer_about">
+					
+					<ul>
+						<li> <a href="">FAQ</a> </li>
+						<li> <a href="">Contact Us / Help</a> </li>
+						<li> <a href="">Privacy Polity</a> </li>
+						<li> <a href="">Terms of Use</a> </li>
+						<li> <a href="">FP Buddy</a> </li>
+						<li> <a href="">Copyright Policy</a> </li>
+					</ul>
+				</div>
+				<div class="footer_box footer_about">
+					
+					<ul>
+						<li> <a href="register.html">Register Your Business</a> </li>
+						<li> <a href="">Fitness Center Manager</a> </li>
+						<li> <a href="">How to Use Promotion Code</a> </li>
+						<li> <a href="">FitnessPapa Community Blog</a> </li>
+					</ul>
+				</div>
+				
+				<div class="footer_box footer-signup">
+					
+					<div class="footer_cont">
+						<div class="signup-box">
+						<h6>Newsletter Sign Up</h6>
+						<input type="text" placeholder="Email Address"><input type="button" value="GO">
+						</div>
+						<div class="social">
+							<a href="#" class="fb"></a>
+							<a href="#" class="tw"></a>
+							<a href="#" class="gp"></a>
+							<a href="#" class="in"></a>
+							<a href="#" class="yt"></a>
+						</div>
+					</div>
+				</div>
+				
+			</div>
+			
+			<!-- Mobile Footer Part start -->
+			<div class="footer-mobile-main">
+				<div class="footer_box footer-mobile">
+				  <ul>
+						<li> <a href="">About Us</a> </li>
+						<li> <a href="">Contact us</a> </li>
+						<li> <a href="">Careers</a> </li>
+						<li> <a href="">Privacy Policy</a> </li>
+						<li> <a href="">Terms of Use</a> </li>
+						<li> <a href="register.html">Register Your Business</a> </li>
+						<li> <a href="">FitnessPapa Community Blog</a> </li>
+					</ul>
+					<p class="copyright" style="font-size: 12px;">&copy; 2015.  FitnessPapa.  All Rights Reserved.</p>
+				</div>
+			</div>
+				
+		<!-- end Footer -->		
+		
+</footer>
+
+<div class="footer-quick-link">
+	  <div class="quick-link">
+	  <h5>Quick Links</h5>
+	  <ul>
+		<li> <a href="#">Gym</a> </li>
+		<li> <a href="yoga.html">Yoga</a> </li>
+		<li> <a href="#">Swimming</a> </li>
+		<li> <a href="#">Meditation</a> </li>
+		<li> <a href="#">Fitness Class</a> </li>
+		<li> <a href="#">Spa</a> </li>
+		<li> <a href="#">Saloon</a> </li>
+		<li> <a href="#">Consultant</a> </li>
+		<li> <a href="#">Kids Zone</a> </li>
+	</ul>
+	<p class="copyright">&copy; 2015.  FitnessPapa.  All Rights Reserved.</p>
+	</div>
+</div>
+
+<% [:notice, :error, :success, :warning].each do |n| %>
+<%if flash[n] %>
+    <script>var n = noty({text: '<%= flash[n] %>',type: '<%=n%>', layout: 'topRight',animation: {
+    open: 'animated bounceInLeft', // Animate.css class names
+    close: 'animated bounceOutLeft', // Animate.css class names
+    easing: 'swing', // unavailable - no need
+    speed: 500
+    }});  </script>
+<%end %>
+<%end%>
+<%unless flash['model_errors'].nil? %>
+<%flash['model_errors'].each do |error| %>
+    <%error[1].each do |msg| %>
+        <script>var n = noty({text: '<%= error[0] %> <%= msg %>',type: 'error', layout: 'topRight',animation: {
+        open: 'animated bounceInRight', // Animate.css class names
+        close: 'animated bounceOutRight', // Animate.css class names
+        easing: 'swing', // unavailable - no need
+        speed: 500 // unavailable - no need
+        }});  </script>
+    <%end%>
+<%end%>
+<%end%>

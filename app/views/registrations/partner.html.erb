@@ -1,0 +1,84 @@
+<div class="container">
+	<div class="container-main">
+		<div class="sqr-box-title book-app-title">
+		<h2>Register Your Business</h2>
+		</div>
+		
+		<div class="sqr-boxs-cat">
+			<%= form_tag customer_signup_path, :class => 'register' do %>
+			  <div class="form-sec">
+				
+				<div class="form-field">
+				  <p>First name</p>
+				  <input type="text" name="first_name" value="">
+				</div>
+				
+				<div class="form-field">
+				 <p>Last name</p>
+				 <input type="text" name="last_name" value="">
+				</div>
+				
+				<div class="form-field">
+				 <p>Email</p>
+				 <input type="email" name="email" value="">
+				</div>
+				
+				<div class="form-field">
+				 <p>Phone</p>
+				 <input type="tel" name="phone" value="">
+				</div>
+				
+				<div class="form-field">
+				 <p>Password</p>
+				 <input type="password" name="password" value="">
+				</div>
+				
+				<div class="form-field">
+				 <p>Re-enter Password</p>
+				 <input type="password" name="password_conf" value="">
+				</div>
+				
+				<div class="form-field">
+				 <p>Business Name</p>
+				 <input type="text" name="business_name" value="">
+				</div>
+				
+				<div class="form-field">
+				 <p>Category</p>
+				 <select name="category">
+					<option value="Yoga">Yoga</option>
+					<option value="gym" selected>Gym</option>
+					<option value="meditation">Meditation</option>
+					<option value="spa">Spa & saloon</option>
+					<option value="swimming">Swimming</option>
+					<option value="fitness">Fitness</option>
+					<option value="consultant">Consultant</option>
+					<option value="kids">Kids zone</option>
+				</select>
+				</div>
+				
+				<div class="form-field">
+				 <p>City</p>
+				 <input type="text" name="city" value="">
+				</div>
+				
+				<div class="form-field">
+				 <p>State</p>
+				 <input type="text" name="state" value="">
+				</div>
+				
+				<div class="form-terms">
+				 <p>By regstering, you agree to our <span>Terms</span> & <span>Privacy Policy</span></p>
+				</div>
+			    
+				<div class="form-submit">
+				  <input type="submit" value="Register">
+				</div>
+			  
+			  </div>
+			<%end  %>
+		</div>
+		
+	</div>
+
+</div>

@@ -1,2 +1,52 @@
-<h1>Registrations#customer</h1>
-<p>Find me in app/views/registrations/customer.html.erb</p>
+<div class="container">
+	<div class="container-main">
+		<div class="sqr-box-title">
+		<h2>Create an Account</h2>
+		<p class="bottom-title">Already a customer? <a href="sign-in.html">Sign-In</a> <br>
+		Want to sell on <span>Fitness<b>Papa</b></span>? <a href="partner-sign-in.html">Sign-up</a> as partner</p>
+		</div>
+		<div class="sqr-boxs-cat">
+			<%= form_tag customer_signup_path, :class => 'sign' do %>
+			  <div class="form-sec form-sign">
+				
+				<div class="form-field">
+				 <label for="email" class="label-email"><p>Email</p></label>
+				 <input id="email" type="email" value="" name="user[email]">
+				</div>
+				
+				<div class="form-field">
+				 <label for="password" class="label-pass"><p>Password</p></label>
+				 <input id="password" type="password" name="user[password]" value="">
+				</div>
+				
+				<div class="form-field">
+				 <label for="first-name" class="label-email"><p>First Name</p></label>
+				 <input id="first-name" type="text" value="" name="user[first_name]">
+				</div>
+				
+				<div class="form-field">
+				 <label for="last-name" class="label-email"><p>Last Name</p></label>
+				 <input id="last-name" type="text" value="" name="user[last_name]">
+				</div>
+				
+				<div class="form-terms">
+				 <input type="checkbox" name="agree" id="agree" class="css-checkbox">
+				 <label for="agree" class="css-label check-agree"></label><label class="label-agree"><p class="agree-terms">Email me about discounts and special offers By registering, you agree to <a href="#">Terms</a> & <a href="#">Privacy Policy</a></p></label>
+				</div>
+			    
+				<div class="form-submit">
+				  <input type="submit" value="SIGN-UP" class="org-button">
+				</div>
+			  
+			  </div>
+			  
+			 <% end %>
+		</div>
+		
+	</div>
+	
+</div>
+
+
+
+
