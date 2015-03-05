@@ -1,0 +1,33 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  sun_from: 1
+  mon_from: 1
+  tue_from: 1
+  wed_from: 1
+  thu_from: 1
+  fri_from: 1
+  sat_from: 1
+  sun_to: 1
+  mon_to: 1
+  tue_to: 1
+  wed_to: 1
+  thu_to: 1
+  fri_to: 1
+  sat_to: 1
+
+two:
+  sun_from: 1
+  mon_from: 1
+  tue_from: 1
+  wed_from: 1
+  thu_from: 1
+  fri_from: 1
+  sat_from: 1
+  sun_to: 1
+  mon_to: 1
+  tue_to: 1
+  wed_to: 1
+  thu_to: 1
+  fri_to: 1
+  sat_to: 1

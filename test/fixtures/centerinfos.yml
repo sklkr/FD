@@ -1,0 +1,29 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  website: MyString
+  brand_photo_gid: 1
+  center_photo_gid: 1
+  fp_verified: false
+  center_type: MyString
+  hours_id: 1
+  slots: 1
+  brief_desc: MyText
+  detailed_desc: MyText
+  latitude: MyString
+  longitude: MyString
+
+two:
+  name: MyString
+  website: MyString
+  brand_photo_gid: 1
+  center_photo_gid: 1
+  fp_verified: false
+  center_type: MyString
+  hours_id: 1
+  slots: 1
+  brief_desc: MyText
+  detailed_desc: MyText
+  latitude: MyString
+  longitude: MyString

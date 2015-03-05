@@ -1,0 +1,45 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  brand_id: 1
+  centername: MyString
+  personname: MyString
+  email: MyString
+  mobile: MyString
+  landline: MyString
+  area: MyString
+  address_1: MyText
+  address_2: MyText
+  landmark: MyString
+  city: MyString
+  pin: 1
+  pan: MyString
+  tan: MyString
+  tin: MyString
+  taxregno: MyString
+  acno: MyString
+  bank_name: MyString
+  ifsc_code: MyString
+  bank_address: MyText
+
+two:
+  brand_id: 1
+  centername: MyString
+  personname: MyString
+  email: MyString
+  mobile: MyString
+  landline: MyString
+  area: MyString
+  address_1: MyText
+  address_2: MyText
+  landmark: MyString
+  city: MyString
+  pin: 1
+  pan: MyString
+  tan: MyString
+  tin: MyString
+  taxregno: MyString
+  acno: MyString
+  bank_name: MyString
+  ifsc_code: MyString
+  bank_address: MyText
