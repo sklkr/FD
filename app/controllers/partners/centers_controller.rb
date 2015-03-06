@@ -28,14 +28,33 @@ skip_before_filter :authenticate!
   end
 
   def service_setup
-    
-  end
-  def create_service 
 
   end
-  
-  def instructors
+
+  def create_service 
+    service = Service.new(service_params)
+    if service.save
+      binding.pry
+      flash[:notice] = 'Details updated'
+      redirect_to action: 'service_setup'
+    else
+      render :text => 'something went wrong'
+    end
   end
+
+  def instructors
+    
+  end
+  def create_instructor
+    instructor = Instructor.new(instructor_params)
+    if instructor.save
+      flash[:notice] = 'Instructor added'
+      redirect_to action: 'instructors'
+    else
+      render :text => 'something went wrong'
+    end
+  end
+
   def pass
   end
   def coupon
@@ -47,6 +66,12 @@ skip_before_filter :authenticate!
   	end
     def center_params
       params.require(:user).permit(:name, :website, :centertype_id, :slots, :brief_desc, :detailed_desc, :latitude, :longitude)
+    end
+    def service_params
+      params.require(:user).permit(:type, :category_id, :name, :validity, :time_taken, :original_price, :selling_price, :gender_id, :schedule, :service_desc, :expired_on, :start_date, :end_date, :seats)
+    end
+    def instructor_params
+      params.require(:instructor).permit(:name, :gender, :mobile, :email, :expertise, :description)
     end
 end
 end

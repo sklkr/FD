@@ -1,20 +1,20 @@
-<%= form_tag centers_create_center_path do %>
+<%= form_tag centers_create_service_path do %>
 	Type :: <%= select_tag 'user[type]', options_for_select(Service::TYPE) %>
-	Service Category :: <%= select_tag "user[category_id]", options_from_collection_for_select(Category.all, 'name', 'id') %>
+	Service Category :: <%= select_tag "user[category_id]", options_from_collection_for_select(Category.all, 'id', 'name') %>
 	Service Name :: <%= text_field_tag "user[name]" %>
-	Center Photos :: <%= file_field_tag "user[centerphoto]" %>
-	FP Verified :: <%= text_field_tag "user[a]" %>
-	Experience :: <%= text_field_tag "user[b]"%>
-	Center Type :: <%= select_tag "user[centertype_id]", options_from_collection_for_select(Centertype.all, "id", "name") %>
+	Validity :: <%= text_field_tag "user[validity]" %>
+	Time Taken :: <%= text_field_tag "user[time_taken]" %>
+	Original Price :: <%= text_field_tag "user[original_price]"%>
+	Selling Price :: <%= text_field_tag "user[selling_price]" %>
 
 
-	Working Hours :: <%= text_field_tag "user[ pan]" %>
-	Number of slots available :: <%= text_field_tag "user[slots]" %>
-	Brief Description (255 characters) :: <%= text_area_tag "user[brief_desc]"%>
-	Detailed Description :: <%= text_area_tag "user[detailed_desc]" %>
-	Location - Map coordination of your center how to find?
-	Latitude :: <%= text_field_tag "user[latitude]"%>
-	Longitude :: <%= text_field_tag "user[longitude]" %>
+	Gender :: <%= select_tag "user[gender_id]", options_from_collection_for_select(Centertype.all, 'id', 'name') %>
+	Schedule :: <%= text_field_tag "user[schedule]" %>
+	Service Description :: <%= text_area_tag "user[service_desc]"%>
+	Expired on :: <%= text_area_tag "user[expired_on]" %>
+	Start date :: <%= text_field_tag "user[start_date]"%>
+	End date :: <%= text_field_tag "user[end_date]" %>
+	Seats :: <%= text_field_tag 'user[seats]' %>
 <%= submit_tag 'Add'%>
 
 <%end  %>

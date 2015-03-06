@@ -4,10 +4,16 @@ Rails.application.routes.draw do
     get 'dashboard/summary'
     get 'centers/account_details'
     post 'centers/details_create'
+
     get 'centers/center_details'
     post 'centers/create_center'
+
     get 'centers/service_setup'
+    post 'centers/create_service'
+
     get 'centers/instructors'
+    post 'centers/create_instructor'
+
     get 'centers/pass'
     get 'centers/coupon'
   end
