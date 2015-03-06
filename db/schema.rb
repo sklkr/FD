@@ -13,6 +13,9 @@
 
 ActiveRecord::Schema.define(version: 20150306053222) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "accountinfos", force: true do |t|
     t.integer  "brand_id"
     t.string   "centername"

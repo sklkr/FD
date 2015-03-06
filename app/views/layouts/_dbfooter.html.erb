@@ -1,0 +1,28 @@
+<div class="footer-quick-link">
+  <div class="quick-link">
+	<p class="copyright">&copy; 2015.  FitnessPapa.  All Rights Reserved.</p>
+  </div>
+</div>
+
+<% [:notice, :error, :success, :warning].each do |n| %>
+<%if flash[n] %>
+    <script>var n = noty({text: '<%= flash[n] %>',type: '<%=n%>', layout: 'topRight',animation: {
+    open: 'animated bounceInLeft', // Animate.css class names
+    close: 'animated bounceOutLeft', // Animate.css class names
+    easing: 'swing', // unavailable - no need
+    speed: 500
+    }});  </script>
+<%end %>
+<%end%>
+<%unless flash['model_errors'].nil? %>
+<%flash['model_errors'].each do |error| %>
+    <%error[1].each do |msg| %>
+        <script>var n = noty({text: '<%= error[0] %> <%= msg %>',type: 'error', layout: 'topRight',animation: {
+        open: 'animated bounceInRight', // Animate.css class names
+        close: 'animated bounceOutRight', // Animate.css class names
+        easing: 'swing', // unavailable - no need
+        speed: 500 // unavailable - no need
+        }});  </script>
+    <%end%>
+<%end%>
+<%end%>

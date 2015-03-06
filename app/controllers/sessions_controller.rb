@@ -6,7 +6,6 @@ layout 'homepage'
   end
 
   def customer
-  binding.pry    
   end
 
   def customer_auth

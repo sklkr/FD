@@ -21,4 +21,8 @@ class ApplicationController < ActionController::Base
    def authenticate!
      warden.authenticate!
    end
+
+   def partner_authenticated?
+      redirect_to sessions_partner_path unless warden.authenticated?(:partner)
+   end
 end

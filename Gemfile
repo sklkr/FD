@@ -54,3 +54,5 @@ end
 
 gem 'warden'
 gem 'nprogress-rails'
+gem 'pg'
+

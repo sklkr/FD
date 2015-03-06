@@ -5099,3 +5099,8 @@ form.register {
 
 }
 
+
+.form-field input {height:22px};
+.form-field input[type='text']:focus  {border: 1px solid #3498DB;};
+
+div.clear { clear:both; display:block; overflow:hidden; visibility:hidden; height:0px;}

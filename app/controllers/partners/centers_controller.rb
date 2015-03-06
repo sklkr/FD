@@ -1,6 +1,8 @@
 module Partners
 class CentersController < ApplicationController
 skip_before_filter :authenticate!
+before_filter :partner_authenticated?
+layout 'partnerdashboard'
   def account_details
 
   end
