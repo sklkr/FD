@@ -5,6 +5,7 @@ Rails.application.routes.draw do
     get 'centers/account_details'
     post 'centers/details_create'
     get 'centers/center_details'
+    post 'centers/create_center'
     get 'centers/service_setup'
     get 'centers/instructors'
     get 'centers/pass'

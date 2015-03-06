@@ -8,3 +8,7 @@
 ['Yoga', 'Gym', 'Meditation', 'Spa & Saloon', 'Swimming', 'Fitness', 'Consultant', 'Kids zone'].each do |name|
 	Category.create(:name => name)
 end
+
+['All', 'Both Male & Female', 'Male', 'Female', 'Kids'].each do |c|
+	Centertype.create(:name => c)
+end

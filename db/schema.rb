@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150305212408) do
+ActiveRecord::Schema.define(version: 20150306053222) do
 
   create_table "accountinfos", force: true do |t|
     t.integer  "brand_id"
@@ -67,7 +67,6 @@ ActiveRecord::Schema.define(version: 20150305212408) do
     t.integer  "brand_photo_gid"
     t.integer  "center_photo_gid"
     t.boolean  "fp_verified"
-    t.string   "center_type"
     t.integer  "hours_id"
     t.integer  "slots"
     t.text     "brief_desc"
@@ -76,9 +75,16 @@ ActiveRecord::Schema.define(version: 20150305212408) do
     t.string   "longitude"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "centertype_id"
   end
 
   create_table "centers", force: true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "centertypes", force: true do |t|
+    t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

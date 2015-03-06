@@ -1,0 +1,20 @@
+<%= form_tag centers_create_center_path do %>
+	Center Name :: <%= text_field_tag "user[name]" %>
+	Website :: <%= text_field_tag "user[website]" %>
+	Brand Photo :: <%= file_field_tag "user[brandphoto]" %>
+	Center Photos :: <%= file_field_tag "user[centerphoto]" %>
+	FP Verified :: <%= text_field_tag "user[a]" %>
+	Experience :: <%= text_field_tag "user[b]"%>
+	Center Type :: <%= select_tag "user[centertype_id]", options_from_collection_for_select(Centertype.all, "id", "name") %>
+
+
+	Working Hours :: <%= text_field_tag "user[ pan]" %>
+	Number of slots available :: <%= text_field_tag "user[slots]" %>
+	Brief Description (255 characters) :: <%= text_area_tag "user[brief_desc]"%>
+	Detailed Description :: <%= text_area_tag "user[detailed_desc]" %>
+	Location - Map coordination of your center how to find?
+	Latitude :: <%= text_field_tag "user[latitude]"%>
+	Longitude :: <%= text_field_tag "user[longitude]" %>
+<%= submit_tag 'Submit for approval'%>
+
+<%end  %>
