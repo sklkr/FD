@@ -6,24 +6,94 @@
 
 	<title><%= content_for?(:title) ? yield(:title) : "Fitness papa :: Dashboard" %></title>
 
-	<%= stylesheet_link_tag "application" %>
-	<%= javascript_include_tag "application" 'data-turbolinks-track' => true %>
+	<%= stylesheet_link_tag "partner" %>
+	<%= javascript_include_tag "partner" %>
 	<%= csrf_meta_tags %>
-	<style type="text/css">.clear{clear:both; display:block; overflow:hidden; visibility:hidden; height:0px;}</style>
+	<style type="text/css">
+	
+	.clear{clear:both; display:block; overflow:hidden; visibility:hidden; height:0px;}
+	.embed-nav {margin-top:18px;}
+	.embed-nav ul{border-bottom:1px solid #e3e3e3; position: relative;}
+	.embed-nav li{display: inline-block;padding: 8px 9px 0px;}
+	.embed-nav .sub { position: absolute;left:-20px;top:59px;}
+	.embed-nav .sub a{font-size:13px;}
+	.embed-nav li a{
+	  text-decoration: none;
+	  color: rgb(149, 155, 160);
+	  display: inline-block;
+	  position: relative;
+	  padding-bottom:8px;
+	}
+	.embed-nav li.active>a{
+		color: rgb(233, 144, 73);
+		border-bottom:2px solid rgb(237, 116, 19);
+	}
+	fieldset{border: 1px solid #DDDDDD;
+  		padding: 1.11111rem;
+  		margin: 1rem 0;}
+	</style>
+	<style type="text/css">
+	.selectize-control::before {
+		-moz-transition: opacity 0.2s;
+		-webkit-transition: opacity 0.2s;
+		transition: opacity 0.2s;
+		content: ' ';
+		z-index: 2;
+		position: absolute;
+		display: block;
+		top: 12px;
+		right: 34px;
+		width: 16px;
+		height: 16px;
+		background: url(images/spinner.gif);
+		background-size: 16px 16px;
+		opacity: 0;
+	}
+	.selectize-control.loading::before {
+		opacity: 0.4;
+	}
+	</style>
 </head>
 <body>
  <%= render :partial => 'layouts/header' unless @header == false %>
 
- <div>
-	<ul>
-		<li><a href="<%= customerdashboard_details_path  %>">Account Details</a></li>
-		<li><a href="<%= customerdashboard_bookings_path  %>">My Bookings</a></li>
-		<li><a href="<%= customerdashboard_pass_path  %>">My Pass</a></li>
-		<li><a href="<%= customerdashboard_preferences_path %>">Email Preferences</a></li>
-		<li><a href="<%= customerdashboard_referral_path %>">Referral</a></li>
-	</ul>
+ <div class="container">
+	<div class="embed-nav">
+		<ul class="menu">
+			<li class=""><a href="<%=  %>">Summary</a></li>
+			<li class="active"><a href="<%=  %>">Center Configuration</a>
+				<ul class="sub dropit-submenu">
+					<li class="active"><a href="<%= centers_account_details_path %>">Account Details</a></li>
+					<li><a href="<%= centers_center_details_path %>">Center Details</a></li>
+					<li><a href="<%=%>">Service Setup</a></li>
+					<li><a href="<%= centers_instructors_path %>">Instructors</a></li>
+					<li><a href="<%= centers_account_details_path %>">Pass</a></li>
+					<li><a href="<%= centers_account_details_path %>">Coupons</a></li>
+					<li><a href="">Center Manager</a></li>
+				</ul>
+			</li>
+			<li><a href="<%=  %>">Multicenter Manager</a></li>
+			<li><a href="<%=  %>">Customer Manager</a></li>
+			<li><a href="<%=  %>">Payment Manager</a></li>
+			<li><a href="">Report Manager</a></li>
+		</ul>
+	</div>
 </div>
- <%= yield  %>
+<div class="container" style="margin-top:70px">
+	<%= yield  %>
+</div>
  <%= render :partial => 'layouts/dbfooter' %>
+ <script type="text/javascript">
+ $(document).ready(function() {
+    $('.menu').dropit();
+    Dropzone.autoDiscover = false;
+    var dropzone = new Dropzone ("#center-photos", {
+		maxFilesize: 4, // Set the maximum file size to 256 MB
+		paramName: "image[avatar]", // Rails expects the file upload to be something like model[field_name]
+		addRemoveLinks: false // Don't show remove links on dropzone itself.
+		url: '/fdsf'
+	});
+});
+ </script>
 </body>
 </html>

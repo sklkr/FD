@@ -13,3 +13,5 @@
 //= require jquery
 //= require jquery_ujs
 //= require turbolinks
+//= require drop
+//= require dropzone

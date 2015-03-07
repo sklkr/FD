@@ -9,6 +9,7 @@ layout 'partnerdashboard'
   def details_create
   	ac = Accountinfo.new(details_params)
     ac.brand_id = Brand.find_or_create_by(name: params[:user][:brand])
+    binding.pry
     if ac.save
       flash[:notice] = 'Details updated'
       redirect_to action: 'account_details'
@@ -20,6 +21,7 @@ layout 'partnerdashboard'
 
   end
   def create_center
+    binding.pry
     center = Centerinfo.new(center_params)
     if center.save
       flash[:notice] = 'Details updated'
@@ -64,10 +66,13 @@ layout 'partnerdashboard'
 
   private
   	def details_params
-  		params.require(:user).permit("centername","personname","email","mobile","landline","address_1","address_2","landmark","city","pin","pan","tan","tin","taxregno","acno","bank_name","ifsc_code","bank_address")
+  		params.require(:user).permit("centername","personname","email","mobile","landline","address_1","address_2","landmark","city","pin","pan","tan","tin","taxregno","acno","bank_name","ifsc_code","bank_address", "bank_city")
   	end
     def center_params
-      params.require(:user).permit(:name, :website, :centertype_id, :slots, :brief_desc, :detailed_desc, :latitude, :longitude)
+      params.require(:center).permit(:name, :website, :centertype_id, :slots, :brief_desc, :detailed_desc, :latitude, :longitude)
+    end
+    def tags_allow
+      params.require(:center).permit(:experience)
     end
     def service_params
       params.require(:user).permit(:type, :category_id, :name, :validity, :time_taken, :original_price, :selling_price, :gender_id, :schedule, :service_desc, :expired_on, :start_date, :end_date, :seats)

@@ -1,20 +1,89 @@
 <%= form_tag centers_create_service_path do %>
-	Type :: <%= select_tag 'user[type]', options_for_select(Service::TYPE) %>
-	Service Category :: <%= select_tag "user[category_id]", options_from_collection_for_select(Category.all, 'id', 'name') %>
-	Service Name :: <%= text_field_tag "user[name]" %>
-	Validity :: <%= text_field_tag "user[validity]" %>
-	Time Taken :: <%= text_field_tag "user[time_taken]" %>
-	Original Price :: <%= text_field_tag "user[original_price]"%>
-	Selling Price :: <%= text_field_tag "user[selling_price]" %>
+	<div class="row">
+		<div class="large-6 columns">
+			<div class="row">
+				<div class="small-4 columns"><label for="service[type]" class="inline">Type -</label></div>
+				<div class="small-8 columns"><%= select_tag 'service[type]', options_for_select(Service::TYPE) %></div>
+			</div>
+		</div>
+		<div class="large-6 columns">
+			<div class="row">
+				<div class="small-4 columns"><label for="service[category_id]" class="inline">Service Category - </label></div>
+				<div class="small-8 columns"><%= select_tag "service[category_id]", options_from_collection_for_select(Category.all, 'id', 'name') %></div>
+			</div>
+		</div>
+		<div class="large-12 columns">
+			<div class="row">
+				<div class="small-2 columns"><label for="service[name]" class="inline">Service Name</label></div>
+				<div class="small-10 columns"><%= text_field_tag 'service[name]' %></div>
+			</div>
+		</div>
+		<div class="large-6 columns">
+			<div class="row">
+				<div class="small-4 columns"><label for="service[validity]" class="inline">Validity</label></div>
+				<div class="small-8 columns"><%= text_field_tag 'service[validity]' %></div>
+			</div>
+			<div class="row">
+				<div class="small-4 columns"><label for="service[time_taken]" class="inline">Time Taken</label></div>
+				<div class="small-8 columns"><%= text_field_tag 'service[time_taken]' %></div>
+			</div>
+			<div class="row">
+				<div class="small-4 columns"><label for="service[original_price]" class="inline">Original Price</label></div>
+				<div class="small-8 columns"><%= text_field_tag 'service[original_price]' %></div>
+			</div>
+			<div class="row">
+				<div class="small-4 columns"><label for="service[selling_price]" class="inline">Selling Price</label></div>
+				<div class="small-8 columns"><%= text_field_tag 'service[selling_price]' %></div>
+			</div>
+			<div class="row">
+				<div class="small-4 columns"><label for="service[gender_id]" class="inline">Gender</label></div>
+				<div class="small-8 columns"><%= select_tag "user[gender_id]", options_from_collection_for_select(Centertype.all, 'id', 'name') %></div>
+			</div>
+			<div class="row">
+				<div class="small-4 columns"><label for="service[schedule]" class="inline">Schedule</label></div>
+				<div class="small-8 columns"><%= text_field_tag 'service[schedule]' %></div>
+			</div>
+		</div>
+		<div class="large-6 columns">
+			<div class="row">
+				<div class="small-4 columns"><label for="service[expired_on]" class="inline">Expired on</label></div>
+				<div class="small-3 columns"><%= text_field_tag 'service[expired_on]' %></div>
+				<div class="small-5 columns"><label for="" style="padding-top:5px">Days (Gym, Swim)</label></div>
+			</div>
+			<div class="row">
+				<div class="small-4 columns"><label for="service[start_date]" class="inline">Start date</label></div>
+				<div class="small-8 columns"><%= text_field_tag 'service[start_date]' %></div>
+			</div>
+			<div class="row">
+				<div class="small-4 columns"><label for="service[end_date]" class="inline">End date</label></div>
+				<div class="small-8 columns"><%= text_field_tag 'service[end_date]' %></div>
+			</div>
+			<div class="row">
+				<div class="small-4 columns"><label for="services[days]" class="inline">Days</label></div>
+				<div class="small-8 columns"><%= text_field_tag 'services[days]' %></div>
+			</div>
+			<div class="row">
+				<div class="small-4 columns"><label for="service[seats]" class="inline">Seats</label></div>
+				<div class="small-8 columns"><%= text_field_tag 'service[seats]' %></div>
+			</div>
+		</div>
 
-
-	Gender :: <%= select_tag "user[gender_id]", options_from_collection_for_select(Centertype.all, 'id', 'name') %>
-	Schedule :: <%= text_field_tag "user[schedule]" %>
-	Service Description :: <%= text_area_tag "user[service_desc]"%>
-	Expired on :: <%= text_area_tag "user[expired_on]" %>
-	Start date :: <%= text_field_tag "user[start_date]"%>
-	End date :: <%= text_field_tag "user[end_date]" %>
-	Seats :: <%= text_field_tag 'user[seats]' %>
-<%= submit_tag 'Add'%>
-
+		<div class="large-12 columns">
+			<div class="row">
+				<div class="small-2 columns"><label for="service[service_desc]" class="inline">Service Description</label></div>
+				<div class="small-10 columns"><%= text_area_tag 'service[service_desc]' %></div>
+			</div>
+		</div>
+		<hr>
+		<div class="large-12 columns">
+			<div class="right">
+				<button class="button secondary tiny">Cancel</button>
+				<%= submit_tag 'Add', :class => 'button tiny' %>
+			</div>
+		</div>
+	</div>
 <%end  %>
+
+
+
+

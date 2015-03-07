@@ -1,6 +1,13 @@
-<h1>Add Instructor</h1>
+<fieldset>
+	<legend>Add Instructor</legend>
+</fieldset>
 <%= form_tag centers_create_instructor_path do %>
-<p>Name :: <%= text_field_tag 'instructor[name]' %></p>
+
+<%end  %>
+
+
+
+v<p>Name :: <%= text_field_tag 'instructor[name]' %></p>
 <p>Category :: <%= text_field_tag 'instructor[cat]' %></p>
 <p>Photo :: <%= file_field_tag 'instructor[photo]' %></p>
 <p>Gender :: <%= text_field_tag 'instructor[gender]' %></p>
@@ -9,4 +16,3 @@
 <p>Expertise :: <%= text_field_tag 'instructor[expertise]' %></p>
 <p>Description :: <%= text_area_tag 'instructor[description]' %></p>
 <p><%= submit_tag 'Save changes' %></p>
-<%end  %>

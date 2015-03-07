@@ -5,7 +5,7 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
-['Yoga', 'Gym', 'Meditation', 'Spa & Saloon', 'Swimming', 'Fitness', 'Consultant', 'Kids zone'].each do |name|
+['Yoga', 'Gym', 'Meditation', 'Spa & Saloon', 'Swimming', 'Adventure', 'Consultant', 'Kids zone'].each do |name|
 	Category.find_or_create_by(:name => name)
 end
 

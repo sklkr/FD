@@ -55,4 +55,4 @@ end
 gem 'warden'
 gem 'nprogress-rails'
 gem 'pg'
-
+gem 'acts-as-taggable-on'

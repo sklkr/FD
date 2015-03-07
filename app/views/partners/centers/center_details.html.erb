@@ -1,20 +1,117 @@
-<%= form_tag centers_create_center_path do %>
-	Center Name :: <%= text_field_tag "user[name]" %>
-	Website :: <%= text_field_tag "user[website]" %>
-	Brand Photo :: <%= file_field_tag "user[brandphoto]" %>
-	Center Photos :: <%= file_field_tag "user[centerphoto]" %>
-	FP Verified :: <%= text_field_tag "user[a]" %>
-	Experience :: <%= text_field_tag "user[b]"%>
-	Center Type :: <%= select_tag "user[centertype_id]", options_from_collection_for_select(Centertype.all, "id", "name") %>
+<%= form_tag centers_create_center_path, multipart: true do %>
+	<div class="row">
+		<fieldset>
+			<legend>Center Details</legend>
+			<div class="large-6 columns">
+				<div class="row">
+					<div class="small-4 columns"><label for='center[name]' class="inline error">Center Name</label></div>
+					<div class="small-8 columns"><%= text_field_tag 'user[name]', '', :class => 'error' %><small class='error'>Invalid endtr</small></div>
+				</div>	
+				<div class="row">
+					<div class="small-4 columns"><label for="center[website]" class="inline">Website (optional)</label></div>
+					<div class="small-8 columns"><%= text_field_tag 'center[website]' %></div>
+				</div>
+				<div class="row">
+					<div class="small-4 columns"><label for="center[brandphoto]" class="inline">Brand Photo</label></div>
+					<div class="small-8 columns"><%= file_field_tag 'center[brandphoto]' %></div>
+				</div>
+				<div class="row">
+					<div class="small-4 columns"><label for="" class="inline">FP Verified</label></div>
+					<div class="small-8 columns"><label class="inline"><span>No</span>&nbsp;<a href="#">Verify Now</a></label></div>
+				</div>
+				<div class="row">
+					<div class="small-4 columns"><label for="" class="inline">Experience</label></div>
+					<div class="small-8 columns"><%= text_field_tag 'center[experience]','', :id => 'experience' %></div>
+				</div>
+				<div class="row">
+					<div class="small-4 columns"><label for="" class="inline">Center Type</label></div>
+					<div class="small-8 columns"><%= select_tag 'center[centertype_id]', options_from_collection_for_select(Centertype.all, 'id', 'name'), :id => 'centertype' %></div>
+				</div>
 
-
-	Working Hours :: <%= text_field_tag "user[ pan]" %>
-	Number of slots available :: <%= text_field_tag "user[slots]" %>
-	Brief Description (255 characters) :: <%= text_area_tag "user[brief_desc]"%>
-	Detailed Description :: <%= text_area_tag "user[detailed_desc]" %>
-	Location - Map coordination of your center how to find?
-	Latitude :: <%= text_field_tag "user[latitude]"%>
-	Longitude :: <%= text_field_tag "user[longitude]" %>
-<%= submit_tag 'Submit for approval'%>
-
+			</div>
+			<div class="large-6 columns">
+				<div class="row">
+					<div class="small-4 columns"><label for="user[work]" class="inline">Working Hours</label></div>
+					<div class="small-12 columns">
+						<div class="row">
+							<div class="small-3 columns"><label for="">Sun::</label></div>
+							<div class="small-4 columns"><%= time_field_tag 'user[work]' %></div>
+							<div class="small-4 columns"><%= time_field_tag 'user[work]' %></div>
+						</div>
+						<div class="row">
+							<div class="small-3 columns"><label for="">Mon::</label></div>
+							<div class="small-4 columns"><%= time_field_tag 'user[work]' %></div>
+							<div class="small-4 columns"><%= time_field_tag 'user[work]' %></div>
+						</div>
+						<div class="row">
+							<div class="small-3 columns"><label for="">Tue::</label></div>
+							<div class="small-4 columns"><%= time_field_tag 'user[work]' %></div>
+							<div class="small-4 columns"><%= time_field_tag 'user[work]' %></div>
+						</div>
+						<div class="row">
+							<div class="small-3 columns"><label for="">Wed::</label></div>
+							<div class="small-4 columns"><%= time_field_tag 'user[work]' %></div>
+							<div class="small-4 columns"><%= time_field_tag 'user[work]' %></div>
+						</div>
+						<div class="row">
+							<div class="small-3 columns"><label for="">Thurs::</label></div>
+							<div class="small-4 columns"><%= time_field_tag 'user[work]' %></div>
+							<div class="small-4 columns"><%= time_field_tag 'user[work]' %></div>
+						</div>
+						<div class="row">
+							<div class="small-3 columns"><label for="">Fri::</label></div>
+							<div class="small-4 columns"><%= time_field_tag 'user[work]' %></div>
+							<div class="small-4 columns"><%= time_field_tag 'user[work]' %></div>
+						</div>
+						<div class="row">
+							<div class="small-3 columns"><label for="">Sat::</label></div>
+							<div class="small-4 columns"><%= time_field_tag 'user[work]' %></div>
+							<div class="small-4 columns"><%= time_field_tag 'user[work]' %></div>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="small-6 columns"><label for="center[slots]" class="inline">Number of slots available</label></div>
+					<div class="small-6	 columns"><%= text_field_tag 'center[slots]' %></div>
+				</div>
+			</div>
+			<div class="large-12 columns">
+				<div class="row">
+					<label for="center[brief_desc]" class="inline">Brief Description</label>
+					<div class=""><%= text_area_tag 'center[brief_desc]', '', size: '10x5' %></div>
+				</div>
+				<div class="row">
+					<div class=""><label for="center[detailed_desc]" class="inline">Detailed Description</label></div>
+					<div class=""><%= text_area_tag 'center[detailed_desc]', '', size: '15x10' %></div>
+				</div>
+				<div class="row">
+					<div class="small-12 columns"><label for="">Map coordication of your center</label></div>
+					<div class="small-6 columns">
+						<label for="center[latitude]" class="inline">Latitude</label>
+						<%= text_field_tag 'center[latitude]' %>
+					</div>
+					<div class="small-6 columns">
+						<label for="center[longitude]" class="inline">Longitude</label>
+						<%= text_field_tag 'center[longitude]' %>
+					</div>
+				</div>
+			</div>
+			<hr>
+			<div class="large-12">
+				<div class="right">
+					<%= submit_tag 'Submit for Approval', :class => 'button tiny' %>
+				</div>
+			</div>
+		</fieldset>
+	</div>
 <%end  %>
+
+<fieldset>
+<legend>Center Photos</legend>
+	<%= form_tag root_url, id: 'center-photos', :class => 'dropzone', multipart: true do %>
+	<div class="dz-message">
+	   <label for="">Click here to upload max of 5 images <br></label> 
+	</div>
+
+	<%end  %>
+</fieldset>

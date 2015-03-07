@@ -1,4 +1,4 @@
 class Service < ActiveRecord::Base
- TYPE = ['Service', 'Upcoming Class']
+ TYPE = ['Regular Service', 'Upcoming Class']
 
 end
