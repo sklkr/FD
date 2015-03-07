@@ -1,18 +1,54 @@
 <fieldset>
-	<legend>Add Instructor</legend>
-</fieldset>
+<legend>Add Instructor</legend>
 <%= form_tag centers_create_instructor_path do %>
-
+<div class="row">
+	<div class="large-6 columns">
+		<div class="row">
+			<div class="small-4 columns"><label for="instructor[name]" class="inline">Name</label></div>
+			<div class="small-8 columns"><%= text_field_tag 'instructor[name]' %></div>
+		</div>	
+		<div class="row">
+			<div class="small-4 columns"><label for="instructor[photo]" class="inline">Photo</label></div>
+			<div class="small-8 columns"><%= file_field_tag 'instructor[photo]' %></div>
+		</div>
+		<div class="row">
+			<div class="small-4 columns"><label for="instructor[mobile]" class="inline">Mobile</label></div>
+			<div class="small-8 columns"><%= text_field_tag 'instructor[mobile]' %></div>
+		</div>
+	</div>
+	<div class="large-6 columns">
+		<div class="row">
+			<div class="small-4 columns"><label for="instructor[category_id]" class="inline">Category</label></div>
+			<div class="small-8 columns"><%= select_tag "service[category_id]", options_from_collection_for_select(Category.all, 'id', 'name') %></div>
+		</div>
+		<div class="row">
+			<div class="small-4 columns"><label for="instructor[gender]" class="inline">Gender</label></div>
+			<div class="small-8 columns"><%= text_field_tag 'instructor[gender]' %></div>
+		</div>
+		<div class="row">
+			<div class="small-4 columns"><label for="instructor[email]" class="inline">Email</label></div>
+			<div class="small-8 columns"><%= text_field_tag 'instructor[email]' %></div>
+		</div>
+	</div>
+	<div class="large-8 columns">
+		<div class="row">
+			<div class="small-3 columns"><label for="instructor[expertise]" class="inline">Expertise</label></div>
+			<div class="small-9 columns"><%= text_field_tag 'instructor[expertise]' %></div>
+		</div>
+		<div class="row">
+			<div class="small-3 columns"><label for="instructor[description]" class="inline">Description</label></div>
+			<div class="small-9 columns"><%= text_area_tag 'instructor[description]' %></div>
+		</div>
+	</div>
+	<hr>
+	<div class="large-12 columns">
+		<div class="right">
+			<button class="button small radius">Cancel</button>
+			<%= submit_tag 'Save changes', :class => 'button small radius' %>&nbsp;&nbsp;&nbsp;
+		</div>
+	</div>
+</div>
 <%end  %>
 
+</fieldset>
 
-
-v<p>Name :: <%= text_field_tag 'instructor[name]' %></p>
-<p>Category :: <%= text_field_tag 'instructor[cat]' %></p>
-<p>Photo :: <%= file_field_tag 'instructor[photo]' %></p>
-<p>Gender :: <%= text_field_tag 'instructor[gender]' %></p>
-<p>Mobile :: <%= text_field_tag 'instructor[mobile]' %></p>
-<p>Email :: <%= text_field_tag 'instructor[email]' %></p>
-<p>Expertise :: <%= text_field_tag 'instructor[expertise]' %></p>
-<p>Description :: <%= text_area_tag 'instructor[description]' %></p>
-<p><%= submit_tag 'Save changes' %></p>

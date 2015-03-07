@@ -4,32 +4,44 @@
 			<legend>Center Details</legend>
 			<div class="large-6 columns">
 				<div class="row">
-					<div class="small-4 columns"><label for='center[name]' class="inline error">Center Name</label></div>
-					<div class="small-8 columns"><%= text_field_tag 'user[name]', '', :class => 'error' %><small class='error'>Invalid endtr</small></div>
+					<div class="small-4 columns"><label for='center[name]' class="inline">Center Name</label></div>
+					<div class="small-8 columns"><%= text_field_tag 'user[name]', '', :class => '' %></div>
 				</div>	
 				<div class="row">
 					<div class="small-4 columns"><label for="center[website]" class="inline">Website (optional)</label></div>
 					<div class="small-8 columns"><%= text_field_tag 'center[website]' %></div>
 				</div>
+				<div class="row" style="margin-bottom:16px">
+					<div class="large-12 columns">
+				      <label style="padding-bottom:16px">Category</label>
+				      <input id="checkbox2" type="checkbox"><label for="checkbox2">Gym</label>
+				      <input id="checkbox2" type="checkbox"><label for="checkbox2">Swimming</label>
+				      <input id="checkbox2" type="checkbox"><label for="checkbox2">Adventure</label>
+				      <input id="checkbox2" type="checkbox"><label for="checkbox2">Meditation</label><br>
+				      <input id="checkbox1" type="checkbox"><label for="checkbox1">Yoga</label>
+				      <input id="checkbox2" type="checkbox"><label for="checkbox2">Kids Zone</label>
+				      <input id="checkbox2" type="checkbox"><label for="checkbox2">Consultant</label>
+				      <input id="checkbox2" type="checkbox"><label for="checkbox2">Spa & Saloon</label>
+				    </div>
+				</div>
 				<div class="row">
 					<div class="small-4 columns"><label for="center[brandphoto]" class="inline">Brand Photo</label></div>
-					<div class="small-8 columns"><%= file_field_tag 'center[brandphoto]' %></div>
+					<div class="small-8 columns"><%= file_field_tag 'center[brandphoto]', :style => 'padding: 0.5625rem 0' %></div>
 				</div>
 				<div class="row">
 					<div class="small-4 columns"><label for="" class="inline">FP Verified</label></div>
-					<div class="small-8 columns"><label class="inline"><span>No</span>&nbsp;<a href="#">Verify Now</a></label></div>
+					<div class="small-8 columns"><label class="inline"><span>No</span>&nbsp;<a href="#">Verify Now</a><br><span>(After registration required)</span></label></div>
 				</div>
 				<div class="row">
 					<div class="small-4 columns"><label for="" class="inline">Experience</label></div>
-					<div class="small-8 columns"><%= text_field_tag 'center[experience]','', :id => 'experience' %></div>
+					<div class="small-8 columns"><ul id="experience"><li>2-wheeler</li><li>4-wheeler</li><li>Air condition</li><li>Rest Room</li><li>Locker</li><li>Change Room</li><li>Wifi</li></ul></div>
 				</div>
+			</div>
+			<div class="large-6 columns">
 				<div class="row">
 					<div class="small-4 columns"><label for="" class="inline">Center Type</label></div>
 					<div class="small-8 columns"><%= select_tag 'center[centertype_id]', options_from_collection_for_select(Centertype.all, 'id', 'name'), :id => 'centertype' %></div>
 				</div>
-
-			</div>
-			<div class="large-6 columns">
 				<div class="row">
 					<div class="small-4 columns"><label for="user[work]" class="inline">Working Hours</label></div>
 					<div class="small-12 columns">
@@ -71,13 +83,14 @@
 					</div>
 				</div>
 				<div class="row">
-					<div class="small-6 columns"><label for="center[slots]" class="inline">Number of slots available</label></div>
-					<div class="small-6	 columns"><%= text_field_tag 'center[slots]' %></div>
+					<div class="small-12 columns"><label for="center[slots]" class="inline">Number of slots available</label></div>
+					<div class="small-4	columns"><%= text_field_tag 'center[slots]', nil, placeholder: '2' %></div>
+					<div class="small-8 columns"><label class="inline">(for Spa/Saloon)</label></div>
 				</div>
 			</div>
 			<div class="large-12 columns">
 				<div class="row">
-					<label for="center[brief_desc]" class="inline">Brief Description</label>
+					<label for="center[brief_desc]" class="inline">Brief Description (upto 255 characters only )</label>
 					<div class=""><%= text_area_tag 'center[brief_desc]', '', size: '10x5' %></div>
 				</div>
 				<div class="row">
@@ -85,7 +98,7 @@
 					<div class=""><%= text_area_tag 'center[detailed_desc]', '', size: '15x10' %></div>
 				</div>
 				<div class="row">
-					<div class="small-12 columns"><label for="">Map coordication of your center</label></div>
+					<div class="small-12 columns"><label for="">Map coordication of your center - <a href="http://www.latlong.net/" target="_blank">How to find?</a></label></div>
 					<div class="small-6 columns">
 						<label for="center[latitude]" class="inline">Latitude</label>
 						<%= text_field_tag 'center[latitude]' %>
@@ -94,24 +107,24 @@
 						<label for="center[longitude]" class="inline">Longitude</label>
 						<%= text_field_tag 'center[longitude]' %>
 					</div>
+					<div class="small-12 columns">
+						<label for="" class="inline" style="text-align:center">Leave this blank if you dont find it</label>
+					</div>
 				</div>
 			</div>
 			<hr>
 			<div class="large-12">
 				<div class="right">
-					<%= submit_tag 'Submit for Approval', :class => 'button tiny' %>
+					<%= submit_tag 'Submit for Approval', :class => 'button small radius' %>
 				</div>
 			</div>
 		</fieldset>
 	</div>
 <%end  %>
 
-<fieldset>
-<legend>Center Photos</legend>
-	<%= form_tag root_url, id: 'center-photos', :class => 'dropzone', multipart: true do %>
-	<div class="dz-message">
-	   <label for="">Click here to upload max of 5 images <br></label> 
-	</div>
 
-	<%end  %>
-</fieldset>
+<script>
+	$(document).ready(function(){
+		$('#experience').tagit();
+	});
+</script>

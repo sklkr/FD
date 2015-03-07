@@ -1,5 +1,5 @@
 module Partners
-class CentersController < ApplicationController
+class CentersController < ApplicationController 
 skip_before_filter :authenticate!
 before_filter :partner_authenticated?
 layout 'partnerdashboard'
@@ -25,7 +25,8 @@ layout 'partnerdashboard'
     center = Centerinfo.new(center_params)
     if center.save
       flash[:notice] = 'Details updated'
-      redirect_to action: 'center_details'
+      binding.pry
+      redirect_to partner_centerinfos_path
     else
       render :text => 'something went wrong'
     end

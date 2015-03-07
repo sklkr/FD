@@ -21,19 +21,23 @@
 		<div class="large-6 columns">
 			<div class="row">
 				<div class="small-4 columns"><label for="service[validity]" class="inline">Validity</label></div>
-				<div class="small-8 columns"><%= text_field_tag 'service[validity]' %></div>
+				<div class="small-2 columns"><%= text_field_tag 'service[validity]', nil, :placeholder => 'Days' %></div>
+				<div class="small-6 columns"><label for="" class="inline">(Gym, Swimming)</label></div>
 			</div>
 			<div class="row">
 				<div class="small-4 columns"><label for="service[time_taken]" class="inline">Time Taken</label></div>
-				<div class="small-8 columns"><%= text_field_tag 'service[time_taken]' %></div>
+				<div class="small-2 columns"><%= text_field_tag 'service[time_taken]', nil, placeholder: 'Min' %></div>
+				<div class="small-6 columns"><label for="" class="inline">(Spa, Saloon & Consultant)</label></div>
 			</div>
 			<div class="row">
 				<div class="small-4 columns"><label for="service[original_price]" class="inline">Original Price</label></div>
-				<div class="small-8 columns"><%= text_field_tag 'service[original_price]' %></div>
+				<div class="small-4 columns"><%= text_field_tag 'service[original_price]', nil, :placeholder => 'Rupees' %></div>
+				<div class="small-4 columns"><label for="" class="inline">(with Service Tax)</label></div>
 			</div>
 			<div class="row">
 				<div class="small-4 columns"><label for="service[selling_price]" class="inline">Selling Price</label></div>
-				<div class="small-8 columns"><%= text_field_tag 'service[selling_price]' %></div>
+				<div class="small-4 columns"><%= text_field_tag 'service[selling_price]', nil, :placeholder => 'Rupees' %></div>
+				<div class="small-4 columns"><label for="" class="inline">(with Service Tax)</label></div>
 			</div>
 			<div class="row">
 				<div class="small-4 columns"><label for="service[gender_id]" class="inline">Gender</label></div>
@@ -46,25 +50,33 @@
 		</div>
 		<div class="large-6 columns">
 			<div class="row">
-				<div class="small-4 columns"><label for="service[expired_on]" class="inline">Expired on</label></div>
-				<div class="small-3 columns"><%= text_field_tag 'service[expired_on]' %></div>
-				<div class="small-5 columns"><label for="" style="padding-top:5px">Days (Gym, Swim)</label></div>
+				<div class="small-4 columns"><label for="service[expired_on]" class="inline right">Expired on</label></div>
+				<div class="small-3 columns"><%= text_field_tag 'service[expired_on]', nil, :placeholder => 'Days' %></div>
+				<div class="small-5 columns"><label for="" style="padding-top:5px">(Gym, Swim)</label></div>
 			</div>
 			<div class="row">
-				<div class="small-4 columns"><label for="service[start_date]" class="inline">Start date</label></div>
-				<div class="small-8 columns"><%= text_field_tag 'service[start_date]' %></div>
+				<div class="small-4 columns"><label for="service[start_date]" class="inline right">Start date</label></div>
+				<div class="small-8 columns"><%= date_field_tag 'service[start_date]' %></div>
 			</div>
 			<div class="row">
-				<div class="small-4 columns"><label for="service[end_date]" class="inline">End date</label></div>
-				<div class="small-8 columns"><%= text_field_tag 'service[end_date]' %></div>
+				<div class="small-4 columns"><label for="service[end_date]" class="inline right">End date</label></div>
+				<div class="small-8 columns"><%= date_field_tag 'service[end_date]' %></div>
 			</div>
 			<div class="row">
-				<div class="small-4 columns"><label for="services[days]" class="inline">Days</label></div>
-				<div class="small-8 columns"><%= text_field_tag 'services[days]' %></div>
+				<div class="small-4 columns"><label for="services[days]" class="inline right">Days</label></div>
+				<div class="small-8 columns"><%= text_field_tag 'services[days]', nil, :placeholder => 'Number of Days' %></div>
 			</div>
 			<div class="row">
-				<div class="small-4 columns"><label for="service[seats]" class="inline">Seats</label></div>
+				<div class="small-4 columns"><label for="service[seats]" class="inline right">Seats</label></div>
 				<div class="small-8 columns"><%= text_field_tag 'service[seats]' %></div>
+			</div>
+			<div class="row">
+				<div class="small-4 columns"><label for="" class="inline right">Instructor 1</label></div>
+				<div class="small-8 columns"><%= text_field_tag '' %></div>
+			</div>	
+			<div class="row">
+				<div class="small-4 columns"><label for="" class="inline right">Instructor 2</label></div>
+				<div class="small-8 columns"><%= text_field_tag '' %></div>
 			</div>
 		</div>
 
@@ -77,8 +89,8 @@
 		<hr>
 		<div class="large-12 columns">
 			<div class="right">
-				<button class="button secondary tiny">Cancel</button>
-				<%= submit_tag 'Add', :class => 'button tiny' %>
+				<button class="button small radius" style="margin-right:10px">Cancel</button>&nbsp;&nbsp;&nbsp;
+				<%= submit_tag 'Add', :class => 'button small radius' %>
 			</div>
 		</div>
 	</div>

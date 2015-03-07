@@ -1160,12 +1160,13 @@ button, .button {
   padding-bottom: 1.0625rem;
   padding-left: 2rem;
   font-size: 1rem;
-  background-color: #008CBA;
-  border-color: #007095;
+  background-color: rgb(230, 126, 34);
+  text-transform: uppercase;
+  border-color: rgb(237, 116, 19);
   color: #FFFFFF;
   transition: background-color 300ms ease-out; }
   button:hover, button:focus, .button:hover, .button:focus {
-    background-color: #007095; }
+    background-color: rgb(245, 125, 29); }
   button:hover, button:focus, .button:hover, .button:focus {
     color: #FFFFFF; }
   button.secondary, .button.secondary {
@@ -1215,11 +1216,8 @@ button, .button {
     padding-left: 2.25rem;
     font-size: 1.25rem; }
   button.small, .button.small {
-    padding-top: 0.875rem;
-    padding-right: 1.75rem;
-    padding-bottom: 0.9375rem;
-    padding-left: 1.75rem;
-    font-size: 0.8125rem; }
+    padding:10px 14px;
+    font-size: 0.925rem; }
   button.tiny, .button.tiny {
     padding-top: 0.625rem;
     padding-right: 1.25rem;
@@ -3623,7 +3621,7 @@ td {
 
 /* Default Link Styles */
 a {
-  color: #008CBA;
+  color: rgb(237, 116, 19);
   text-decoration: none;
   line-height: inherit; }
   a:hover, a:focus {

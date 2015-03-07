@@ -12,6 +12,10 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require jquery.ui
 //= require turbolinks
+//= require nprogress
+//= require nprogress-turbolinks
 //= require drop
 //= require dropzone
+//= require jquery.tagit

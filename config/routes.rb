@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
  
+  resources :partner_centerinfos
+  
   scope :module => 'partners' do
     get 'dashboard/summary'
     get 'centers/account_details'

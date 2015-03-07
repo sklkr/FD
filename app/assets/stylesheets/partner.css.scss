@@ -15,4 +15,11 @@
  *= require foundation
  *= require dropzone
  *= require bxslider
+ *= require jquery.ui
+ *= require jquery.tagit
 */
+
+$nprogress-color: rgb(237, 116, 19);
+
+@import 'nprogress';
+@import 'nprogress-bootstrap';

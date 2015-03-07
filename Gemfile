@@ -49,6 +49,7 @@ group :development do
   gem 'pry'
   gem "pry-rails"
   gem 'quiet_assets'
+  gem 'pry-byebug'
 end
 
 
@@ -56,3 +57,4 @@ gem 'warden'
 gem 'nprogress-rails'
 gem 'pg'
 gem 'acts-as-taggable-on'
+gem 'wicked'
