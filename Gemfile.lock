@@ -63,6 +63,8 @@ GEM
     debugger-linecache (1.2.0)
     erubis (2.7.0)
     execjs (2.3.0)
+    friendly_id (5.1.0)
+      activerecord (>= 4.0.0)
     hike (1.2.3)
     i18n (0.7.0)
     jbuilder (2.2.9)
@@ -78,6 +80,8 @@ GEM
     mime-types (2.4.3)
     minitest (5.5.1)
     multi_json (1.11.0)
+    nifty-attachments (1.0.4)
+    nifty-utils (1.1.2)
     nprogress-rails (0.1.6.6)
     pg (0.18.1)
     pry (0.10.1)
@@ -160,8 +164,11 @@ DEPENDENCIES
   cancan
   coffee-rails (~> 4.0.0)
   execjs
+  friendly_id
   jbuilder (~> 2.0)
   jquery-rails
+  nifty-attachments
+  nifty-utils
   nprogress-rails
   pg
   pry

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150307100735) do
+ActiveRecord::Schema.define(version: 20150308103606) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -40,6 +40,7 @@ ActiveRecord::Schema.define(version: 20150307100735) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "bank_city"
+    t.integer  "center_id"
   end
 
   create_table "bookings", force: true do |t|
@@ -85,6 +86,8 @@ ActiveRecord::Schema.define(version: 20150307100735) do
   create_table "centers", force: true do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "name"
+    t.integer  "partner_id"
   end
 
   create_table "centertypes", force: true do |t|
@@ -127,6 +130,19 @@ ActiveRecord::Schema.define(version: 20150307100735) do
     t.string   "email"
     t.string   "expertise"
     t.text     "description"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "nifty_attachments", force: true do |t|
+    t.integer  "parent_id"
+    t.string   "parent_type"
+    t.string   "token"
+    t.string   "digest"
+    t.string   "role"
+    t.string   "file_name"
+    t.string   "file_type"
+    t.binary   "data"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

@@ -25,4 +25,9 @@ class ApplicationController < ActionController::Base
    def partner_authenticated?
       redirect_to sessions_partner_path unless warden.authenticated?(:partner)
    end
+
+   private
+    def partner_id
+      warden.user(:partner).id unless warden.user(:partner).nil?
+    end
 end

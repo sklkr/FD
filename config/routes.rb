@@ -1,23 +1,11 @@
 Rails.application.routes.draw do
  
-  resources :partner_centerinfos
-  
-  scope :module => 'partners' do
-    get 'dashboard/summary'
-    get 'centers/account_details'
-    post 'centers/details_create'
-
-    get 'centers/center_details'
-    post 'centers/create_center'
-
-    get 'centers/service_setup'
-    post 'centers/create_service'
-
-    get 'centers/instructors'
-    post 'centers/create_instructor'
-
-    get 'centers/pass'
-    get 'centers/coupon'
+  namespace :partners do
+    resources :centers do
+      scope module: 'centers' do
+        resources :details, :accounts, :instructors, :services, :photos
+      end
+    end
   end
   
   get 'customerdashboard/details'

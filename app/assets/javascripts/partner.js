@@ -12,10 +12,13 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require jquery.browser
 //= require jquery.ui
+//= require jquery.ui.slideraccess
 //= require turbolinks
 //= require nprogress
 //= require nprogress-turbolinks
 //= require drop
 //= require dropzone
 //= require jquery.tagit
+//= require jquery.timepicker

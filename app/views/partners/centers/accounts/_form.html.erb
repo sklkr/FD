@@ -1,0 +1,224 @@
+<%= form_for @account, url: getpath, method: getmethod do |f| %>
+	<div class="row">
+	<fieldset>
+	<legend>Account Details</legend>
+	<div class="large-6 columns">
+	<div class='row'>
+		<div class="small-12 columns">
+	      <div class="row">
+	        <div class="small-4 columns">
+	          <label for='account[brand]', class="inline">Brand Name</label>
+	        </div>
+	        <div class="small-8 columns">
+			  <%= f.text_field :brandname, :class => 'input-small' %>
+	        </div>
+	      </div>
+	    </div>
+	</div>
+	<div class='row'>
+		<div class='small-12 columns'>
+			<div class="row">
+				<div class="small-4 columns">
+					<label for='account[centername]' class="inline">Center Name</label>
+				</div>
+				<div class="small-8 columns">
+				<%= f.text_field :centername %>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class='row'>
+		<div class='small-12 columns'>
+			<div class="row">
+				<div class="small-4 columns">
+					<label for='account[personname]' class="inline">Person Name</label>
+				</div>
+				<div class="small-8 columns">
+				<%= f.text_field :personname %>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class='row'>
+		<div class='small-12 columns'>
+			<div class="row">
+				<div class="small-4 columns">
+					<label for='account[email]' class="inline">Email Name</label>
+				</div>
+				<div class="small-8 columns">
+				<%= f.text_field :email %>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class='row'>
+		<div class='small-12 columns'>
+			<div class="row">
+				<div class="small-4 columns">
+					<label for='account[mobile]' class="inline">Mobile No</label>
+				</div>
+				<div class="small-8 columns">
+				<%= f.text_field :mobile %>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class='row'>
+		<div class='small-12 columns'>
+			<div class="row">
+				<div class="small-4 columns">
+					<label for='account[landline]' class="inline">Landline No</label>
+				</div>
+				<div class="small-8 columns">
+				<%= f.text_field :landline%>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class='row'>
+		<div class='small-12 columns'>
+			<div class="row">
+				<div class="small-4 columns">
+					<label for='account[address_1]' class="inline">Address</label>
+				</div>
+				<div class="small-8 columns">
+				<%= f.text_field :address_1, :placeholder => 'Address Line 1' %> 
+				<%= f.text_field :address_2, :placeholder => 'Address Line 2' %> 
+				<%= f.text_field :landmark, :placeholder => 'Landmark' %>
+				<div class="row">
+					<div class="small-6 columns"><%= f.text_field :city, :placeholder => 'City' %></div>
+					<div class="small-6 columns"><%= f.text_field :pin, :placeholder => '560012'  %></div>
+				</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="large-6 columns">
+	<div class='row'>
+		<div class='small-12 columns'>
+			<div class="row">
+				<div class="small-4 columns">
+					<label for='account[pan]' class="inline">PAN</label>
+				</div>
+				<div class="small-8 columns">
+				<%= f.text_field :pan %>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class='row'>
+		<div class='small-12 columns'>
+			<div class="row">
+				<div class="small-4 columns">
+					<label for='account[tan]' class="inline">TAN</label>
+				</div>
+				<div class="small-8 columns">
+				<%= f.text_field :tan %>		
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class='row'>
+		<div class='small-12 columns'>
+			<div class="row">
+				<div class="small-4 columns">
+					<label for='account[tin]' class="inline">TIN</label>
+				</div>
+				<div class="small-8 columns">
+				<%= f.text_field :tin %>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class='row'>
+		<div class='small-12 columns'>
+			<div class="row">
+				<div class="small-4 columns">
+					<label for='account[taxregno]' class="inline">Service Tax Reg No</label>
+				</div>
+				<div class="small-8 columns">
+				<%= f.text_field :taxregno %>
+				</div>
+			</div>
+		</div>
+	</div>
+
+<div class="row">
+	<fieldset>
+		<legend>Bank Details</legend>
+			<div class='row'>
+		<div class='small-12 columns'>
+			<div class="row">
+				<div class="small-4 columns">
+					<label for='account[acno]' class="inline">Bank A/C Number</label>
+				</div>
+				<div class="small-8 columns">
+				<%= f.text_field :acno%>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class='row'>
+		<div class='small-12 columns'>
+			<div class="row">
+				<div class="small-4 columns">
+					<label for='account[bank_name]' class="inline">Bank Name</label>
+				</div>
+				<div class="small-8 columns">
+				<%= f.text_field :bank_name %>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class='row'>
+		<div class='small-12 columns'>
+			<div class="row">
+				<div class="small-4 columns">
+					<label for='account[ifsc_code]' class="inline">IFSC code of Branch</label>
+				</div>
+				<div class="small-8 columns">
+				<%= f.text_field :ifsc_code %>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class='row'>
+		<div class='small-12 columns'>
+			<div class="row">
+				<div class="small-4 columns">
+					<label for='account[bank_city]' class="inline">City</label>
+				</div>
+				<div class="small-8 columns">
+				<%= f.text_field :bank_city %>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class='row'>
+		<div class='small-12 columns'>
+			<div class="row">
+				<div class="small-4 columns">
+					<label for='account[bank_address]' class="inline">Branch Address</label>
+				</div>
+				<div class="small-8 columns">
+				<%= f.text_area :bank_address %>
+				</div>
+			</div>
+		</div>
+	</div>
+	</fieldset>
+</div>
+</div>
+
+<hr>
+<div class="row">
+	<div class="right">
+	<%= submit_tag 'Update', :class => 'button small radius'%>&nbsp;&nbsp;&nbsp;
+	<button class="button small radius">Continue</button>
+	</div>	
+</div>
+</fieldset>
+</div>
+<% end %>

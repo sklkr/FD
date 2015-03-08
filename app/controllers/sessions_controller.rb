@@ -2,7 +2,9 @@ class SessionsController < ApplicationController
 skip_before_filter :authenticate!
 layout 'homepage'
   def partner
-
+    if warden.authenticated?(:partner)
+      redirect_to partners_centers_path
+    end
   end
 
   def customer
@@ -19,7 +21,7 @@ layout 'homepage'
 
   def partner_auth
     warden.authenticate!(:partner, scope: :partner)
-    render :text => 'partner authenticated'
+    redirect_to partners_centers_path
   end
 
   def partner_logout

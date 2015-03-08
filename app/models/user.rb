@@ -3,7 +3,7 @@ require 'bcrypt'
 class User < ActiveRecord::Base
   include BCrypt
   belongs_to :customer
-  belongs_to :partner
+  belongs_to :partner, foreign_key: 'member_id'
 
   before_create :generate_confirmation_token
 

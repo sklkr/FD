@@ -53,6 +53,21 @@
 		opacity: 0.4;
 	}
 	</style>
+	<style>
+		/* css for timepicker */
+		.ui-timepicker-div .ui-widget-header { margin-bottom: 8px; }
+		.ui-timepicker-div dl { text-align: left; }
+		.ui-timepicker-div dl dt { float: left; clear:left; padding: 0 0 0 5px; }
+		.ui-timepicker-div dl dd { margin: 0 10px 10px 45%; }
+		.ui-timepicker-div td { font-size: 90%; }
+		.ui-tpicker-grid-label { background: none; border: none; margin: 0; padding: 0; }
+
+		.ui-timepicker-rtl{ direction: rtl; }
+		.ui-timepicker-rtl dl { text-align: right; padding: 0 5px 0 0; }
+		.ui-timepicker-rtl dl dt{ float: right; clear: right; }
+		.ui-timepicker-rtl dl dd { margin: 0 45% 10px 10px; }
+	</style>
+
 </head>
 <body>
  <%= render :partial => 'layouts/header' unless @header == false %>
@@ -63,12 +78,12 @@
 			<li class=""><a href="<%=  %>">Summary</a></li>
 			<li class="active"><a href="<%=  %>">Center Configuration</a>
 				<ul class="sub dropit-submenu">
-					<li class="active"><a href="<%= centers_account_details_path %>">Account Details</a></li>
-					<li><a href="<%= centers_center_details_path %>">Center Details</a></li>
+					<li class="active"><a href="<%=  %>">Account Details</a></li>
+					<li><a href="<%=  %>">Center Details</a></li>
 					<li><a href="<%=%>">Service Setup</a></li>
-					<li><a href="<%= centers_instructors_path %>">Instructors</a></li>
-					<li><a href="<%= centers_account_details_path %>">Pass</a></li>
-					<li><a href="<%= centers_account_details_path %>">Coupons</a></li>
+					<li><a href="<%=%>">Instructors</a></li>
+					<li><a href="<%=%>">Pass</a></li>
+					<li><a href="<%=%>">Coupons</a></li>
 					<li><a href="">Center Manager</a></li>
 				</ul>
 			</li>
@@ -83,18 +98,5 @@
 	<%= yield  %>
 </div>
  <%= render :partial => 'layouts/dbfooter' %>
- <script type="text/javascript">
- $(document).ready(function() {
-    $('.menu').dropit();
-    Dropzone.autoDiscover = false;
-    var dropzone = new Dropzone ("#center-photos", {
-		maxFilesize: 4, // Set the maximum file size to 256 MB
-		paramName: "image[avatar]", // Rails expects the file upload to be something like model[field_name]
-		addRemoveLinks: false // Don't show remove links on dropzone itself.
-		url: '/fdsf'
-	});
-	$('#experience').tagit();
- });
- </script>
 </body>
 </html>
