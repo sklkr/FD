@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150308103606) do
+ActiveRecord::Schema.define(version: 20150308182251) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -66,13 +66,21 @@ ActiveRecord::Schema.define(version: 20150308103606) do
     t.datetime "updated_at"
   end
 
+  create_table "categories_centers", id: false, force: true do |t|
+    t.integer "center_id"
+    t.integer "category_id"
+  end
+
+  add_index "categories_centers", ["category_id"], name: "index_categories_centers_on_category_id", using: :btree
+  add_index "categories_centers", ["center_id"], name: "index_categories_centers_on_center_id", using: :btree
+
   create_table "centerinfos", force: true do |t|
     t.string   "name"
     t.string   "website"
-    t.integer  "brand_photo_gid"
+    t.integer  "brand_photo_uid"
     t.integer  "center_photo_gid"
     t.boolean  "fp_verified"
-    t.integer  "hours_id"
+    t.integer  "hour_id"
     t.integer  "slots"
     t.text     "brief_desc"
     t.text     "detailed_desc"
@@ -81,6 +89,7 @@ ActiveRecord::Schema.define(version: 20150308103606) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "centertype_id"
+    t.integer  "center_id"
   end
 
   create_table "centers", force: true do |t|
@@ -92,6 +101,13 @@ ActiveRecord::Schema.define(version: 20150308103606) do
 
   create_table "centertypes", force: true do |t|
     t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "cphotos", force: true do |t|
+    t.string   "image_uid"
+    t.integer  "centerinfo_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

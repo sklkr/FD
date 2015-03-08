@@ -6,7 +6,12 @@ layout 'partnerdashboard'
 
   def index
     @account = center.accountinfo || Accountinfo.new
-    render :new    
+    if center.accountinfo.nil? 
+     render :new
+    else
+     params[:id] = @account.id
+     render :show
+    end    
   end
 
   def new
@@ -23,12 +28,14 @@ layout 'partnerdashboard'
   end
 
   def show
-    @account = center.accountinfo
+    # If we fetch from center method below then it'll not update the record
+    @account = Accountinfo.find(params[:id])
   end
 
   def update
     @account = Accountinfo.find(params[:id])
-    if @account.update(permit_params)
+    if @account.update_attributes(permit_params)
+      binding.pry
       flash[:notice] = 'Updated'
       render :show
     else

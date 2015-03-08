@@ -4,10 +4,12 @@ module Partners::Centers
   before_filter :partner_authenticated?
   layout 'partnerdashboard'
     def index
-
+      
     end
 
-    def 
+    def new
+
+    end
 
     def create 
       service = Service.new(service_params)

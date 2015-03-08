@@ -1,10 +1,12 @@
 <fieldset>
 <legend>Center Photos</legend>
-	<%= form_tag root_url, id: 'center-photos', :class => 'dropzone', multipart: true do %>
+	<%= form_tag partners_center_photos_path, id: 'center-photos', :class => 'dropzone', multipart: true do %>
 	<div class="dz-message">
 	   <label for="">Click here to upload max of 5 images <br></label> 
 	</div>
 	<%end%>
+	<hr>
+	<a href="<%=partners_center_services_path%>" class="button tiny right">Continue</a>
 </fieldset>
 
 
@@ -13,7 +15,7 @@
     Dropzone.autoDiscover = false;
     var dropzone = new Dropzone ("#center-photos", {
 		maxFilesize: 4, // Set the maximum file size to 256 MB
-		paramName: "image[avatar]", // Rails expects the file upload to be something like model[field_name]
+		paramName: "centerinfo[image]", // Rails expects the file upload to be something like model[field_name]
 		addRemoveLinks: false // Don't show remove links on dropzone itself.
 	});
  });
