@@ -2,6 +2,7 @@ module Partners::Centers
 class PhotosController < ApplicationController
   skip_before_filter :authenticate!
   before_filter :partner_authenticated?
+  before_filter :partner_accessable?
   layout 'partnerdashboard'
   include Wicked::Wizard
   steps :centerphotos

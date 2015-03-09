@@ -10,7 +10,7 @@
         <tr>
           <td><%= ins.name %></td>
           <td colspan="2"><%= ins.description %></td>
-          <td><a href="">Edit</a>&nbsp;<a href="">Remove</a></td>
+          <td><a href="<%= partners_center_instructor_path(params['center_id'], ins.id) %>">Edit</a>&nbsp;<a href="">Remove</a></td>
         </tr>
       <%end%>
     </table>
@@ -21,3 +21,4 @@
     </div>
   </div>
 </div>
+

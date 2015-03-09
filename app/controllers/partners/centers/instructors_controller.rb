@@ -2,10 +2,12 @@ module Partners::Centers
 class InstructorsController < ApplicationController 
 skip_before_filter :authenticate!
 before_filter :partner_authenticated?
+before_filter :partner_accessable? 
+
 layout 'partnerdashboard'
   
   def index
-      @instructors = Instructor.all
+      @instructors = Center.friendly.find(params['center_id']).instructors
   end
   def new
     @instructor = Instructor.new
@@ -14,7 +16,6 @@ layout 'partnerdashboard'
     @instructor = Instructor.new(permit_params)
     if @instructor.save
       flash[:notice] = 'Instructor added'
-      binding.pry
       params[:id] = @instructor.id
       render :show
     else

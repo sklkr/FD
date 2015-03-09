@@ -2,6 +2,7 @@ module Partners::Centers
 class DetailsController < ApplicationController 
 skip_before_filter :authenticate!
 before_filter :partner_authenticated?
+before_filter :partner_accessable?
 layout 'partnerdashboard'
   
   def index
@@ -56,9 +57,6 @@ layout 'partnerdashboard'
     end
     def hour_params
       params.require(:centerinfo).require(:hour_attributes).permit(:sun_from)
-    end
-    def center
-      Center.friendly.find(params['center_id'])
     end
 end
 end

@@ -2,6 +2,7 @@ module Partners::Centers
 class AccountsController < ApplicationController 
 skip_before_filter :authenticate!
 before_filter :partner_authenticated?
+before_filter :partner_accessable?
 layout 'partnerdashboard'
 
   def index
@@ -47,8 +48,5 @@ layout 'partnerdashboard'
   		params.require(:accountinfo).permit(:brandname,:centername,:personname,:email,:mobile,:landline,:address_1,:address_2,:landmark,:city,:pin,:pan,:tan,:tin,:taxregno,:acno,:bank_name,:ifsc_code,:bank_address, :bank_city)
   	end
 
-    def center
-      Center.friendly.find(params['center_id'])
-    end
 end
 end

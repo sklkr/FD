@@ -26,6 +26,14 @@ class ApplicationController < ActionController::Base
       redirect_to sessions_partner_path unless warden.authenticated?(:partner)
    end
 
+   def partner_accessable?
+    redirect_to root_url unless center.partner == current_user.partner
+   end
+
+   def center
+    Center.friendly.find(params['center_id'])
+   end
+
    private
     def partner_id
       warden.user(:partner).id unless warden.user(:partner).nil?
