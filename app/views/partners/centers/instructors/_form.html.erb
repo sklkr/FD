@@ -1,0 +1,51 @@
+<%=form_for @instructor, url: getpath, method: getmethod do |f| %>
+<div class="row">
+	<div class="large-6 columns">
+		<div class="row">
+			<div class="small-4 columns"><label for="instructor[name]" class="inline">Name</label></div>
+			<div class="small-8 columns"><%= f.text_field :name %></div>
+		</div>	
+		<div class="row">
+			<div class="small-4 columns"><label for="instructor[photo]" class="inline">Photo</label></div>
+			<div class="small-8 columns"><%= f.file_field :photo %></div>
+		</div>
+		<div class="row">
+			<div class="small-4 columns"><label for="instructor[mobile]" class="inline">Mobile</label></div>
+			<div class="small-8 columns"><%= f.text_field :mobile %></div>
+		</div>
+	</div>
+	<div class="large-6 columns">
+		<div class="row">
+			<div class="small-4 columns"><label for="instructor[category_id]" class="inline">Category</label></div>
+			<div class="small-8 columns"><%= select_tag :category_id, options_from_collection_for_select(Category.all, 'id', 'name') %></div>
+		</div>
+		<div class="row">
+			<div class="small-4 columns"><label for="instructor[gender]" class="inline">Gender</label></div>
+			<div class="small-8 columns"><%= f.text_field :gender %></div>
+		</div>
+		<div class="row">
+			<div class="small-4 columns"><label for="instructor[email]" class="inline">Email</label></div>
+			<div class="small-8 columns"><%= f.text_field :email %></div>
+		</div>
+	</div>
+	<div class="large-8 columns">
+		<div class="row">
+			<div class="small-3 columns"><label for="instructor[expertise]" class="inline">Expertise</label></div>
+			<div class="small-9 columns"><%= f.text_field :expertise %></div>
+		</div>
+		<div class="row">
+			<div class="small-3 columns"><label for="instructor[description]" class="inline">Description</label></div>
+			<div class="small-9 columns"><%= f.text_area :description %></div>
+		</div>
+	</div>
+	<hr>
+	<div class="large-12 columns">
+		<div class="right">
+			<button class="button small radius">Cancel</button>
+			<%= submit_tag 'Save changes', :class => 'button small radius' %>&nbsp;&nbsp;&nbsp;
+		</div>
+	</div>
+</div>
+<%end  %>
+
+

@@ -12,7 +12,6 @@ class PhotosController < ApplicationController
 
   def create
   	center = Center.friendly.find(params[:center_id])
-  	binding.pry
   	cphoto = Cphoto.new(params.require('centerinfo').permit(:image))
   	cphoto.centerinfo_id = center.id
   	if cphoto.save

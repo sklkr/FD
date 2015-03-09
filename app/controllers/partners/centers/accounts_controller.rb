@@ -35,7 +35,6 @@ layout 'partnerdashboard'
   def update
     @account = Accountinfo.find(params[:id])
     if @account.update_attributes(permit_params)
-      binding.pry
       flash[:notice] = 'Updated'
       render :show
     else

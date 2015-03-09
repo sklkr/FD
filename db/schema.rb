@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150308182251) do
+ActiveRecord::Schema.define(version: 20150309094835) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -77,7 +77,7 @@ ActiveRecord::Schema.define(version: 20150308182251) do
   create_table "centerinfos", force: true do |t|
     t.string   "name"
     t.string   "website"
-    t.integer  "brand_photo_uid"
+    t.integer  "image_uid"
     t.integer  "center_photo_gid"
     t.boolean  "fp_verified"
     t.integer  "hour_id"
@@ -119,26 +119,26 @@ ActiveRecord::Schema.define(version: 20150308182251) do
   end
 
   create_table "hours", force: true do |t|
-    t.integer  "sun_from"
-    t.integer  "mon_from"
-    t.integer  "tue_from"
-    t.integer  "wed_from"
-    t.integer  "thu_from"
-    t.integer  "fri_from"
-    t.integer  "sat_from"
-    t.integer  "sun_to"
-    t.integer  "mon_to"
-    t.integer  "tue_to"
-    t.integer  "wed_to"
-    t.integer  "thu_to"
-    t.integer  "fri_to"
-    t.integer  "sat_to"
+    t.string   "sun_from"
+    t.string   "mon_from"
+    t.string   "tue_from"
+    t.string   "wed_from"
+    t.string   "thu_from"
+    t.string   "fri_from"
+    t.string   "sat_from"
+    t.string   "sun_to"
+    t.string   "mon_to"
+    t.string   "tue_to"
+    t.string   "wed_to"
+    t.string   "thu_to"
+    t.string   "fri_to"
+    t.string   "sat_to"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   create_table "instructors", force: true do |t|
-    t.integer  "photo_gid"
+    t.integer  "photo_uid"
     t.integer  "center_id"
     t.string   "name"
     t.string   "gender"
@@ -199,6 +199,7 @@ ActiveRecord::Schema.define(version: 20150308182251) do
     t.text     "service_desc"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "days"
   end
 
   create_table "superadmins", force: true do |t|

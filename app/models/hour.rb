@@ -1,3 +1,3 @@
 class Hour < ActiveRecord::Base
-	belongs_to :centerinfo
+	has_one :centerinfo
 end

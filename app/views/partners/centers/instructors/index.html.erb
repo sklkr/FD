@@ -1,0 +1,23 @@
+<div class="row">
+  <div class="small-12 columns">
+    <table>
+      <tr>
+        <th>Name</th>
+        <th colspan="2">Description</th>
+        <th></th>
+      </tr>
+      <% @instructors.each do |ins|  %>
+        <tr>
+          <td><%= ins.name %></td>
+          <td colspan="2"><%= ins.description %></td>
+          <td><a href="">Edit</a>&nbsp;<a href="">Remove</a></td>
+        </tr>
+      <%end%>
+    </table>
+  </div>
+  <div class="small-12 columns">
+    <div class="right">
+        <a href="<%= new_partners_center_instructor_path %>" class="button small">Add Instructor</a>
+    </div>
+  </div>
+</div>

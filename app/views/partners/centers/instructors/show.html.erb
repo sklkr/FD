@@ -1,0 +1,4 @@
+<fieldset>
+<legend>Edit Instructor</legend>
+<%= render :partial => 'partners/centers/instructors/form', :locals => {:act => 'Submit', :getmethod => :put, :getpath => partners_center_instructor_path(params[:center_id], params[:id]) } %>
+</fieldset>

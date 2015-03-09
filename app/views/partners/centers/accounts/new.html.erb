@@ -1,17 +1,2 @@
-<%= form_for @account, :url => partners_center_accounts_path do %>
-	<div class="row">
-		<fieldset>
-			<legend>Account Details</legend>
-			<%= render :partial => 'partners/centers/accounts/form' %>
-		<hr>
-		<div class="row">
-			<div class="right">
-			<%= submit_tag 'Save', :class => 'button small radius'%>&nbsp;&nbsp;&nbsp;
-			<button class="button small radius">Continue</button>
-			</div>	
-		</div>
-		</fieldset>
-	
-	</div>
-<% end  %>
-
+<%= render :partial => 'partners/centers/accounts/form', :locals => {:act => 'Save', :getmethod => :post, :getpath => partners_center_accounts_path } %>
+		

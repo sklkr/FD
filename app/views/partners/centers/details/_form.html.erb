@@ -14,15 +14,15 @@
 				<div class="row" style="margin-bottom:16px">
 					<div class="large-12 columns">
 				      <label style="padding-bottom:16px">Category</label>
-				      <% Category.all.each do |c|  %>
-					      <input  type="checkbox" name="category[<%= c.id %>]"><label for="category[<%= c.id %>]"><%=c.name%></label>
+				       <% for category in Category.all  %>
+						 <%= check_box_tag 'centerinfo[category_ids][]', category.id, @details.cat_list.include?(category) %>
+					   	 <label for=""><%= category.name %></label>
 					   <%end %>
 				    </div>
 				</div>
 				<div class="row">
 					<div class="small-4 columns"><label for="center[brandphoto]" class="inline">Brand Photo</label></div>
-					<div class="small-8 columns"><%= f.file_field :brand_photo, :style => 'padding: 0.5625rem 0' %></div>
-					<div class="small-4 columns"><%= image_tag @details.brand_photo.thumb('400x200#').url if @details.brand_photo_stored? %></div>
+					<div class="small-8 columns"><%= f.file_field :image, :style => 'padding: 0.5625rem 0' %></div>
 				</div>
 				<div class="row">
 					<div class="small-4 columns"><label for="" class="inline">FP Verified</label></div>
@@ -43,41 +43,43 @@
 				<div class="row">
 					<div class="small-4 columns"><label for="user[work]" class="inline">Working Hours</label></div>
 					<div class="small-12 columns">
+					<%= f.fields_for :hour do |h|  %>
 						<div class="row">
 							<div class="small-3 columns"><label for="">Sun::</label></div>
-							<div class="small-4 columns"><%= text_field_tag 'hours[sun_from]', nil, :class => 'timer', :placeholder => 'From' %></div>
-							<div class="small-4 columns"><%= text_field_tag 'hours[sun_to]', nil, :class => 'timer', :placeholder => 'To' %></div>
+							<div class="small-4 columns"><%= h.text_field :sun_from, :class => 'timer', :placeholder => 'From' %></div>
+							<div class="small-4 columns"><%= h.text_field :sun_from, :class => 'timer', :placeholder => 'To' %></div>
 						</div>
 						<div class="row">
 							<div class="small-3 columns"><label for="">Mon::</label></div>
-							<div class="small-4 columns"><%= text_field_tag 'hours[mon_from]', nil, :class => 'timer', :placeholder => 'From' %></div>
-							<div class="small-4 columns"><%= text_field_tag 'hours[mon_to]', nil, :class => 'timer', :placeholder => 'To' %></div>
+							<div class="small-4 columns"><%= h.text_field :mon_from, :class => 'timer', :placeholder => 'From' %></div>
+							<div class="small-4 columns"><%= h.text_field :mon_to, :class => 'timer', :placeholder => 'To' %></div>
 						</div>
 						<div class="row">
 							<div class="small-3 columns"><label for="">Tue::</label></div>
-							<div class="small-4 columns"><%= text_field_tag 'hours[tue_from]', nil, :class => 'timer', :placeholder => 'From' %></div>
-							<div class="small-4 columns"><%= text_field_tag 'hours[tue_to]', nil, :class => 'timer', :placeholder => 'To' %></div>
+							<div class="small-4 columns"><%= h.text_field :tue_from, :class => 'timer', :placeholder => 'From' %></div>
+							<div class="small-4 columns"><%= h.text_field :tue_to, :class => 'timer', :placeholder => 'To' %></div>
 						</div>
 						<div class="row">
 							<div class="small-3 columns"><label for="">Wed::</label></div>
-							<div class="small-4 columns"><%= text_field_tag 'hours[wed_from]', nil, :class => 'timer', :placeholder => 'From' %></div>
-							<div class="small-4 columns"><%= text_field_tag 'hours[wed_to]', nil, :class => 'timer', :placeholder => 'To' %></div>
+							<div class="small-4 columns"><%= h.text_field :wed_from, :class => 'timer', :placeholder => 'From' %></div>
+							<div class="small-4 columns"><%= h.text_field :wed_to, :class => 'timer', :placeholder => 'To' %></div>
 						</div>
 						<div class="row">
 							<div class="small-3 columns"><label for="">Thurs::</label></div>
-							<div class="small-4 columns"><%= text_field_tag 'hours[thu_from]', nil, :class => 'timer', :placeholder => 'From' %></div>
-							<div class="small-4 columns"><%= text_field_tag 'hours[thu_to]', nil, :class => 'timer', :placeholder => 'To' %></div>
+							<div class="small-4 columns"><%= h.text_field :thu_from, :class => 'timer', :placeholder => 'From' %></div>
+							<div class="small-4 columns"><%= h.text_field :thu_to, :class => 'timer', :placeholder => 'To' %></div>
 						</div>
 						<div class="row">
 							<div class="small-3 columns"><label for="">Fri::</label></div>
-							<div class="small-4 columns"><%= text_field_tag 'hours[fri_from]', nil, :class => 'timer', :placeholder => 'From' %></div>
-							<div class="small-4 columns"><%= text_field_tag 'hours[fri_to]', nil, :class => 'timer', :placeholder => 'To' %></div>
+							<div class="small-4 columns"><%= h.text_field :fri_from, :class => 'timer', :placeholder => 'From' %></div>
+							<div class="small-4 columns"><%= h.text_field :fri_to, :class => 'timer', :placeholder => 'To' %></div>
 						</div>
 						<div class="row">
 							<div class="small-3 columns"><label for="">Sat::</label></div>
-							<div class="small-4 columns"><%= text_field_tag 'hours[sat_from]', nil, :class => 'timer', :placeholder => 'From' %></div>
-							<div class="small-4 columns"><%= text_field_tag 'hours[sat_to]', nil, :class => 'timer', :placeholder => 'To' %></div>
+							<div class="small-4 columns"><%= h.text_field :sat_from, :class => 'timer', :placeholder => 'From' %></div>
+							<div class="small-4 columns"><%= h.text_field :sat_to, :class => 'timer', :placeholder => 'To' %></div>
 						</div>
+					<%end  %>
 					</div>
 				</div>
 				<div class="row">

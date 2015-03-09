@@ -7,6 +7,7 @@ layout 'partnerdashboard'
   def index
     @details = center.centerinfo || Centerinfo.new
     if center.centerinfo.nil?
+     @details.build_hour
      render :new
     else
      params[:id] = @details.id
@@ -19,10 +20,9 @@ layout 'partnerdashboard'
 
   def create
     @centerinfo = Centerinfo.new(permit_params)
-    params['category'].keys.each do |cat_id|
-      center.categories << Category.find(cat_id)
-    end
-    @centerinfo.hour_id = Hour.create(params.permit['hours']).id
+    @centerinfo.hour_id = Hour.create(hour_params).id || nil
+    # Has and belongs to many categories managed below
+    center.category_ids = params.require(:centerinfo).permit(:category_ids => [])['category_ids']
     @centerinfo.center_id = center.id
     if @centerinfo.save
       flash[:notice] = 'Details updated'
@@ -34,17 +34,28 @@ layout 'partnerdashboard'
 
 
   def show
-
+    
   end
   def update
+    @centerinfo = Centerinfo.find(params[:id])
+    center.category_ids = params.require(:centerinfo).permit(:category_ids => [])['category_ids']
+    if @centerinfo.update_attributes(permit_params) && @centerinfo.hour.update_attributes(hour_params)
+      flash[:notice] = 'Updated'
+      render :show
+    else
+      render :text => 'something went wrong'
+    end
   end
 
   private
     def permit_params
-      params.require(:centerinfo).permit(:name, :website, :brand_photo, :centertype_id, :slots, :brief_desc, :detailed_desc, :latitude, :longitude)
+      params.require(:centerinfo).permit(:name, :website, :image, :centertype_id, :slots, :brief_desc, :detailed_desc, :latitude, :longitude)
     end
     def tags_allow
       params.require(:center).permit(:experience)
+    end
+    def hour_params
+      params.require(:centerinfo).require(:hour_attributes).permit(:sun_from)
     end
     def center
       Center.friendly.find(params['center_id'])
