@@ -1,4 +1,15 @@
 GIT
+  remote: git://github.com/activerecord-hackery/ransack.git
+  revision: 3e4b6e34abc4addc2bf258e2b51459910a03e04a
+  specs:
+    ransack (1.6.3)
+      actionpack (>= 3.0)
+      activerecord (>= 3.0)
+      activesupport (>= 3.0)
+      i18n
+      polyamorous (~> 1.1)
+
+GIT
   remote: https://github.com/plataformatec/simple_form
   revision: 749c926140ee383e8249f15d1846f5287c5a4c46
   specs:
@@ -84,6 +95,8 @@ GEM
     nifty-utils (1.1.2)
     nprogress-rails (0.1.6.6)
     pg (0.18.1)
+    polyamorous (1.1.0)
+      activerecord (>= 3.0)
     pry (0.10.1)
       coderay (~> 1.1.0)
       method_source (~> 0.8.1)
@@ -185,6 +198,7 @@ DEPENDENCIES
   pry-rails
   quiet_assets
   rails (= 4.1.8)
+  ransack!
   refile
   sass-rails (~> 4.0.3)
   sdoc (~> 0.4.0)

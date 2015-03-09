@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150309094835) do
+ActiveRecord::Schema.define(version: 20150309181429) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -66,6 +66,14 @@ ActiveRecord::Schema.define(version: 20150309094835) do
     t.datetime "updated_at"
   end
 
+  create_table "categories_centerinfos", id: false, force: true do |t|
+    t.integer "centerinfo_id"
+    t.integer "category_id"
+  end
+
+  add_index "categories_centerinfos", ["category_id"], name: "index_categories_centerinfos_on_category_id", using: :btree
+  add_index "categories_centerinfos", ["centerinfo_id"], name: "index_categories_centerinfos_on_centerinfo_id", using: :btree
+
   create_table "categories_centers", id: false, force: true do |t|
     t.integer "center_id"
     t.integer "category_id"
@@ -77,7 +85,7 @@ ActiveRecord::Schema.define(version: 20150309094835) do
   create_table "centerinfos", force: true do |t|
     t.string   "name"
     t.string   "website"
-    t.integer  "image_uid"
+    t.string   "image_id"
     t.integer  "center_photo_gid"
     t.boolean  "fp_verified"
     t.integer  "hour_id"
@@ -138,7 +146,7 @@ ActiveRecord::Schema.define(version: 20150309094835) do
   end
 
   create_table "instructors", force: true do |t|
-    t.integer  "photo_uid"
+    t.string   "photo_id"
     t.integer  "center_id"
     t.string   "name"
     t.string   "gender"

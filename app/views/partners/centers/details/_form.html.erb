@@ -22,7 +22,10 @@
 				</div>
 				<div class="row">
 					<div class="small-4 columns"><label for="center[brandphoto]" class="inline">Brand Photo</label></div>
-					<div class="small-8 columns"><%= f.file_field :image, :style => 'padding: 0.5625rem 0' %></div>
+					<div class="small-8 columns"><%= f.attachment_field :image, :style => 'padding: 0.5625rem 0' %></div>
+					<div class="small-4 columns"></div>
+					<div class="small-4 columns"><%= image_tag attachment_url(@details, :image) %></div>
+					<div class="small-4 columns"></div>
 				</div>
 				<div class="row">
 					<div class="small-4 columns"><label for="" class="inline">FP Verified</label></div>

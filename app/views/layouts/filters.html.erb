@@ -53,161 +53,19 @@
   							</div>
   						</div>
   						<div class="search-result">
-  						<div class="sidebar-filter">
-  							<div class="sidebar-heading">
-  								<h2>Filters</h2>
-  							</div>
-  							<div class="sidebar-box">
-  								<h3>Category</h3>
-  								<select name="Category">
-  									<option value="Yoga">Yoga</option>
-  									<option value="demo">Demo</option>
-  									<option value="demo">Demo</option>
-  									<option value="demo">Demo</option>
-  								</select>
-  							</div>
-  							
-  							<div class="sidebar-box">
-  							
-  								<h3>Area</h3>
+  					 	<div class="sidebar-filter">
+                <div class="sidebar-heading">
+                  <h2>Filters</h2>
+                </div>
+                <%= search_form_for @q, :url => filters_grid_path do |f| %>
 
-  								<select name="Area">
-  									<option value="Dehradun">Dehradun</option>
-  									<option value="demo">Demo</option>
-  									<option value="demo">Demo</option>
-  									<option value="demo">Demo</option>
-  								</select>
-  								
-  							</div>
-  							
-  							<div class="sidebar-box">
-  								
-  								<h3>Distance</h3>
-  								
-  								<div class="sidebar-checkbox">
-  									<input type="checkbox" name="distance" id="distance" class="css-checkbox">
-  									<label for="distance" class="css-label"><p>Any Distance</p></label>
-  								</div>
-  								<div class="sidebar-checkbox">
-  									<input type="checkbox" name="1-5" id="1-5" class="css-checkbox">
-  									<label for="1-5" class="css-label"><p>1-5 Km</p></label>
-  								</div>
-  								
-  								<div class="sidebar-checkbox">
-  									<input type="checkbox" name="5-10" id="5-10" class="css-checkbox">
-  									<label for="5-10" class="css-label"><p>5-10 Km</p></label>
-  								</div>
-  								<div class="sidebar-checkbox">
-  									<input type="checkbox" name="10-20" id="10-20" class="css-checkbox">
-  									<label for="10-20" class="css-label"><p>10-20 Km</p></label>
-  								</div>
-  								
-  							</div>
-  							
-  							<div class="sidebar-box">
-  								
-  								<h3>Price</h3>
-  								
-  								<div class="sidebar-checkbox">
-  									<input type="checkbox" name="0-100" id="0-100" class="css-checkbox">
-  									<label for="0-100" class="css-label"><p>0-100</p></label>
-  								</div>
-  								
-  								<div class="sidebar-checkbox">
-  									<input type="checkbox" name="100-500" id="100-500" class="css-checkbox">
-  									<label for="100-500" class="css-label"><p>100-500</p></label>
-  								</div>
-  								
-  								<div class="sidebar-checkbox">
-  									<input type="checkbox" name="500-1k" id="500-1k" class="css-checkbox">
-  									<label for="500-1k" class="css-label"><p>500-1k</p></label>
-  								</div>
-  								
-  								<div class="sidebar-checkbox">
-  									<input type="checkbox" name="1k-5k" id="1k-5k" class="css-checkbox">
-  									<label for="1k-5k" class="css-label"><p>1k-5k</p></label>
-  								</div>
-  								
-  							</div>
-  							
-  							<div class="sidebar-box">
-  								
-  								<h3>Gender</h3>
-  								
-  								<div class="sidebar-checkbox">
-  									<input type="checkbox" name="male" id="male" class="css-checkbox">
-  									<label for="male" class="css-label"><p>Male</p></label>
-  								</div>
-  								
-  								<div class="sidebar-checkbox">
-  									<input type="checkbox" name="female" id="female" class="css-checkbox">
-  									<label for="female" class="css-label"><p>Female</p></label>
-  								</div>
-  								
-  							</div>
-  							
-  							<div class="sidebar-box">
-  								
-  								<h3>Ratings</h3>
-  								
-  								<div class="sidebar-checkbox">
-  								<input type="checkbox" name="1Star" id="1Star" class="css-checkbox">
-  									<label for="1Star" class="css-label"><p>1 Star</p></label>
-  								</div>
-  								
-  								<div class="sidebar-checkbox">
-  									<input type="checkbox" name="2Stars" id="2Stars" class="css-checkbox">
-  									<label for="2Stars" class="css-label"><p>2 Stars</p></label>
-  								</div>
-  								
-  								<div class="sidebar-checkbox">
-  									<input type="checkbox" name="3Stars" id="3Stars" class="css-checkbox">
-  									<label for="3Stars" class="css-label"><p>3 Stars</p></label>
-  								</div>
-  								
-  								<div class="sidebar-checkbox">
-  									<input type="checkbox" name="4Stars" id="4Stars" class="css-checkbox">
-  									<label for="4Stars" class="css-label"><p>4 Stars</p></label>
-  								</div>
-  								
-  								<div class="sidebar-checkbox">
-  									<input type="checkbox" name="5star" id="5star" class="css-checkbox">
-  									<label for="5star" class="css-label"><p>5 Stars</p></label>
-  								</div>
-  								
-  							</div>
-  							
-  							<div class="sidebar-box">
-  								
-  								<h3>Experience</h3>
-  								
-  								<div class="sidebar-checkbox">
-  									<input type="checkbox" name="Facilities" id="Facilities" class="css-checkbox">
-  									<label for="Facilities" class="css-label"><p>Facilities</p></label>
-  								</div>
-  								
-  								<div class="sidebar-checkbox">
-  									<input type="checkbox" name="Amenities" id="Amenities" class="css-checkbox">
-  									<label for="Amenities" class="css-label"><p>Amenities</p></label>
-  								</div>
-  								
-  								<div class="sidebar-checkbox">
-  									<input type="checkbox" name="Space" id="Space" class="css-checkbox">
-  									<label for="Space" class="css-label"><p>Space</p></label>
-  								</div>
-  								
-  								<div class="sidebar-checkbox">
-  									<input type="checkbox" name="Services" id="Services" class="css-checkbox">
-  									<label for="Services" class="css-label"><p>Services</p></label>
-  								</div>
-  								
-  								<div class="sidebar-checkbox">
-  									<input type="checkbox" name="Other" id="Other" class="css-checkbox">
-  									<label for="Other" class="css-label"><p>Other</p></label>
-  								</div>
-  								
-  							</div>
-  						</div>
+                  <%= f.label :categories_id_eq, "Category" %>
+                  <%= f.collection_select :categories_id_eq, Category.order(:name), :id, :name %>
+                  
+                  <%= f.submit %>
+                <% end %>
+
+              </div>
   						<%= yield %>
   						<%= render :partial => 'filters/pagination' %>
   						

@@ -29,6 +29,7 @@ layout 'partnerdashboard'
   def update
     @instructor = Instructor.find(params[:id])
     if @instructor.update_attributes(permit_params)
+      binding.pry
       flash[:notice] = 'Updated'
       render :show
     else

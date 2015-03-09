@@ -61,4 +61,5 @@ gem 'wicked'
 gem 'nifty-utils'
 gem 'friendly_id'
 gem "mini_magick"
+gem 'ransack', github: 'activerecord-hackery/ransack'
 gem "refile", require: ["refile/rails", "refile/image_processing"]

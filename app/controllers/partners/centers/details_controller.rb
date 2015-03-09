@@ -6,7 +6,7 @@ before_filter :partner_accessable?
 layout 'partnerdashboard'
   
   def index
-    @details = center.centerinfo || Centerinfo.new
+    @details = center.reload.centerinfo || Centerinfo.new
     if center.centerinfo.nil?
      @details.build_hour
      render :new
@@ -21,9 +21,9 @@ layout 'partnerdashboard'
 
   def create
     @centerinfo = Centerinfo.new(permit_params)
+    @centerinfo.category_ids = params.require(:centerinfo).permit(:category_ids => [])['category_ids']
     @centerinfo.hour_id = Hour.create(hour_params).id || nil
     # Has and belongs to many categories managed below
-    center.category_ids = params.require(:centerinfo).permit(:category_ids => [])['category_ids']
     @centerinfo.center_id = center.id
     if @centerinfo.save
       flash[:notice] = 'Details updated'
@@ -35,12 +35,12 @@ layout 'partnerdashboard'
 
 
   def show
-    
+    @details = Centerinfo.find(params[:id])
   end
   def update
-    @centerinfo = Centerinfo.find(params[:id])
-    center.category_ids = params.require(:centerinfo).permit(:category_ids => [])['category_ids']
-    if @centerinfo.update_attributes(permit_params) && @centerinfo.hour.update_attributes(hour_params)
+    @details = Centerinfo.find(params[:id])
+    @details.category_ids = params.require(:centerinfo).permit(:category_ids => [])['category_ids']
+    if @details.update_attributes(permit_params) && @details.hour.update_attributes(hour_params)
       flash[:notice] = 'Updated'
       render :show
     else

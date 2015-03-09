@@ -6,6 +6,8 @@ class FiltersController < ApplicationController
   end
 
   def grid
+  	@q = Centerinfo.ransack(params[:q])
+  	@centers = @q.result
   end
 
   def map

@@ -1,161 +1,22 @@
 <div class="filter-result">
-							<div class="list-view">
-								<ul class="grid">
-									
-									<li class="comp-box barber-saloon">
-									 <div class="comp-pic">
-										<a href="#"><img src="/assets/prof-pic.jpg" alt=""></a>
-									</div>
-									<div class="comp-info">
-										<div class="comp-title">
-										  <a href="#"><h4>Paul's Barber Saloon</h4></a>
-										</div>
-									
-										<div class="comp-rate">
-										  <img src="/assets/star.jpg" alt=""><a href="#">312 Reviews</a>
-										</div>
-										
-										
-									</div>
-									
-									</li>
-									<li class="comp-box barber-saloon">
-									 <div class="comp-pic">
-										<a href="#"><img src="/assets/prof-pic2.jpg" alt=""></a>
-									</div>
-									<div class="comp-info">
-										<div class="comp-title">
-										  <a href="#"><h4>Paul's Barber Saloon</h4></a>
-										</div>
-									
-										<div class="comp-rate">
-										  <img src="/assets/star.jpg" alt=""><a href="#">312 Reviews</a>
-										</div>
-										
-										
-									</div>
-									
-									</li>
-									<li class="comp-box barber-saloon">
-									 <div class="comp-pic">
-										<a href="#"><img src="/assets/prof-pic3.jpg" alt=""></a>
-									</div>
-									<div class="comp-info">
-										<div class="comp-title">
-										  <a href="#"><h4>Paul's Barber Saloon</h4></a>
-										</div>
-									
-										<div class="comp-rate">
-										  <img src="/assets/star.jpg" alt=""><a href="#">312 Reviews</a>
-										</div>
-										
-										
-									</div>
-									
-									</li>
-									<li class="comp-box barber-saloon">
-									 <div class="comp-pic">
-										<a href="#"><img src="/assets/prof-pic4.jpg" alt=""></a>
-									</div>
-									<div class="comp-info">
-										<div class="comp-title">
-										  <a href="#"><h4>Paul's Barber Saloon</h4></a>
-										</div>
-									
-										<div class="comp-rate">
-										  <img src="/assets/star.jpg" alt=""><a href="#">312 Reviews</a>
-										</div>
-										
-										
-									</div>
-									
-									</li>
-									<li class="comp-box barber-saloon">
-									 <div class="comp-pic">
-										<a href="#"><img src="/assets/prof-pic5.jpg" alt=""></a>
-									</div>
-									<div class="comp-info">
-										<div class="comp-title">
-										  <a href="#"><h4>Paul's Barber Saloon</h4></a>
-										</div>
-									
-										<div class="comp-rate">
-										  <img src="/assets/star.jpg" alt=""><a href="#">312 Reviews</a>
-										</div>
-										
-										
-									</div>
-									
-									</li>
-									<li class="comp-box barber-saloon">
-									 <div class="comp-pic">
-										<a href="#"><img src="/assets/prof-pic6.jpg" alt=""></a>
-									</div>
-									<div class="comp-info">
-										<div class="comp-title">
-										  <a href="#"><h4>Paul's Barber Saloon</h4></a>
-										</div>
-									
-										<div class="comp-rate">
-										  <img src="/assets/star.jpg" alt=""><a href="#">312 Reviews</a>
-										</div>
-										
-										
-									</div>
-									
-									</li>
-									<li class="comp-box barber-saloon">
-									 <div class="comp-pic">
-										<a href="#"><img src="/assets/prof-pic7.jpg" alt=""></a>
-									</div>
-									<div class="comp-info">
-										<div class="comp-title">
-										  <a href="#"><h4>Paul's Barber Saloon</h4></a>
-										</div>
-									
-										<div class="comp-rate">
-										  <img src="/assets/star.jpg" alt=""><a href="#">312 Reviews</a>
-										</div>
-										
-										
-									</div>
-									
-									</li>
-									<li class="comp-box barber-saloon">
-									 <div class="comp-pic">
-										<a href="#"><img src="/assets/prof-pic8.jpg" alt=""></a>
-									</div>
-									<div class="comp-info">
-										<div class="comp-title">
-										  <a href="#"><h4>Paul's Barber Saloon</h4></a>
-										</div>
-									
-										<div class="comp-rate">
-										  <img src="/assets/star.jpg" alt=""><a href="#">312 Reviews</a>
-										</div>
-										
-										
-									</div>
-									
-									</li>
-									<li class="comp-box barber-saloon">
-									 <div class="comp-pic">
-										<a href="#"><img src="/assets/prof-pic2.jpg" alt=""></a>
-									</div>
-									<div class="comp-info">
-										<div class="comp-title">
-										  <a href="#"><h4>Paul's Barber Saloon</h4></a>
-										</div>
-									
-										<div class="comp-rate">
-										  <img src="/assets/star.jpg" alt=""><a href="#">312 Reviews</a>
-										</div>
-										
-										
-									</div>
-									
-									</li>
-									
-								</ul>
-							</div>
-						</div>
+<div class="list-view">
+	<ul class="grid" style="width:100%">
+	<%@centers.each do |s|  %>
+		<li class="comp-box barber-saloon">
+		 <div class="comp-pic">
+			<a href="#"> <%= image_tag attachment_url(s.center.centerinfo, :image) %></a>
+		 </div>
+		 <div class="comp-info">
+			<div class="comp-title">
+			  <a href="#"><h4><%= s.name %></h4></a>
+			</div>
+		
+			<div class="comp-rate">
+			  <img src="/assets/star.jpg" alt=""><a href="#">312 Reviews</a>
+			</div>
+		 </div>
+		</li>
+	<%end %>
+	</ul>
+</div>
+</div>
