@@ -59,5 +59,6 @@ gem 'pg'
 gem 'acts-as-taggable-on'
 gem 'wicked'
 gem 'nifty-utils'
-gem 'dragonfly', '~> 1.0.7'
 gem 'friendly_id'
+gem "mini_magick"
+gem "refile", require: ["refile/rails", "refile/image_processing"]
