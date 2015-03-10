@@ -37,10 +37,10 @@
   								<div class="pagination-button">
   									<div class="check-box">
   										<input type="checkbox" name="checkboxG4" id="checkboxG4" class="css-checkbox" checked="">
-  									<label for="checkboxG4" class="css-label"><img src="./images/boy-checkbox.jpg"></label>
+  									<label for="checkboxG4" class="css-label"><img src="/assets/boy-checkbox.jpg"></label>
   									
   									<input type="checkbox" name="checkboxG5" id="checkboxG5" class="css-checkbox">
-  									<label for="checkboxG5" class="css-label"><img src="./images/girl-checkbox.jpg"></label>
+  									<label for="checkboxG5" class="css-label"><img src="/assets/girl-checkbox.jpg"></label>
   									
   									</div>
   									<div class="view-box">
@@ -57,11 +57,16 @@
                 <div class="sidebar-heading">
                   <h2>Filters</h2>
                 </div>
-                <%= search_form_for @q, :url => filters_grid_path do |f| %>
 
-                  <%= f.label :categories_id_eq, "Category" %>
-                  <%= f.collection_select :categories_id_eq, Category.order(:name), :id, :name %>
+                <%= search_form_for @c, :url => filters_grid_path do |f| %>
+
+                  <%= f.label :services_selling_price_gteq %>
+                  <%= f.search_field :services_selling_price_gteq %>
                   
+                  <%= f.label :services_gender_id_eq %>
+                  <%= f.search_field :services_gender_id_eq %>
+                    
+                
                   <%= f.submit %>
                 <% end %>
 
