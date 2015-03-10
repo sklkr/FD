@@ -129,6 +129,7 @@ GEM
       rake (>= 0.8.7)
       thor (>= 0.18.1, < 2.0)
     rake (10.4.2)
+    ratyrate (1.2.2.alpha)
     rdoc (4.2.0)
       json (~> 1.4)
     refile (0.5.3)
@@ -199,6 +200,7 @@ DEPENDENCIES
   quiet_assets
   rails (= 4.1.8)
   ransack!
+  ratyrate
   refile
   sass-rails (~> 4.0.3)
   sdoc (~> 0.4.0)

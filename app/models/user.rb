@@ -4,7 +4,7 @@ class User < ActiveRecord::Base
   include BCrypt
   belongs_to :customer
   belongs_to :partner, foreign_key: 'member_id'
-
+  ratyrate_rater
   before_create :generate_confirmation_token
 
   def password

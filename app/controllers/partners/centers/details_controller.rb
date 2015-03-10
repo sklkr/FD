@@ -22,6 +22,7 @@ layout 'partnerdashboard'
   def create
     @centerinfo = Centerinfo.new(permit_params)
     @centerinfo.category_ids = params.require(:centerinfo).permit(:category_ids => [])['category_ids']
+    @details.tag_list = params.require(:centerinfo).permit('tag_list')['tag_list']
     @centerinfo.hour_id = Hour.create(hour_params).id || nil
     # Has and belongs to many categories managed below
     @centerinfo.center_id = center.id
@@ -39,7 +40,9 @@ layout 'partnerdashboard'
   end
   def update
     @details = Centerinfo.find(params[:id])
+    binding.pry
     @details.category_ids = params.require(:centerinfo).permit(:category_ids => [])['category_ids']
+    @details.tag_list = params.require(:centerinfo).permit('tag_list')['tag_list']
     if @details.update_attributes(permit_params) && @details.hour.update_attributes(hour_params)
       flash[:notice] = 'Updated'
       render :show

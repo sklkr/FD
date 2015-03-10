@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
  
+  post '/rate' => 'rater#create', :as => 'rate'
   namespace :partners do
     resources :centers do
       scope module: 'centers' do
@@ -42,21 +43,21 @@ Rails.application.routes.draw do
   get 'registrations/customer'
   post 'registrations/customer_signup', :as => 'customer_signup'
 
-  get 'centers/about'
+  get 'centers/:center_id/about' => 'centers#about'
 
-  get 'centers/services'
+  get 'centers/:center_id/services' => 'centers#services'
 
-  get 'centers/map'
+  get 'centers/:center_id/map' => 'centers#map'
 
-  get 'centers/reviews'
+  get 'centers/:center_id/reviews' => 'centers#reviews'
 
-  get 'centers/instructors'
+  get 'centers/:center_id/instructors' => 'centers#instructors'
 
-  get 'centers/experience'
+  get 'centers/:center_id/experience' => 'centers#experience'
 
-  get 'centers/hours'
+  get 'centers/:center_id/hours' => 'centers#hours'
 
-  get 'centers/upcoming'
+  get 'centers/:center_id/upcoming' => 'centers#upcoming'
 
   get 'filters/index'
 

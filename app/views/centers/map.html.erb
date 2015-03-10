@@ -1,2 +1,21 @@
-<h1>Centers#map</h1>
-<p>Find me in app/views/centers/map.html.erb</p>
+<div class="tab-data">
+	<div id="map"></div>
+</div>
+<script>
+$(document).ready(function () {
+    var map = new GMaps({
+        div: '#map',
+        lat: 51.5073346,
+        lng: -0.1276831,
+        width: '800px',
+        height: '500px',
+        zoom: 12,
+        zoomControl: true,
+        zoomControlOpt: {
+            style: 'SMALL',
+            position: 'TOP_LEFT'
+        },
+        panControl: false
+    });
+});
+</script>

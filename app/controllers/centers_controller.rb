@@ -1,4 +1,5 @@
 class CentersController < ApplicationController
+  before_filter :assign_variables
   def about
   end
 
@@ -12,9 +13,11 @@ class CentersController < ApplicationController
   end
 
   def instructors
+    @instructors = @center.instructors
   end
 
   def experience
+    @experience = @centerinfo.tag_list
   end
 
   def hours
@@ -22,4 +25,10 @@ class CentersController < ApplicationController
 
   def upcoming
   end
+
+  private
+    def assign_variables
+      @center = center.reload
+      @centerinfo = center.centerinfo 
+    end
 end

@@ -6,5 +6,5 @@ class Center < ActiveRecord::Base
 	has_many :services
 	extend FriendlyId
 	friendly_id :name
-	
+	ratyrate_rateable "speed", "engine", "price"
 end

@@ -1,2 +1,30 @@
-<h1>Centers#services</h1>
-<p>Find me in app/views/centers/services.html.erb</p>
+<div class="table-box">
+	<div class="table-title"><h2>Services</h2></div>
+	<table>
+		<thead>
+		<tr>
+			<th>Name</th>
+			<th>Start Date</th>
+			<th>Days</th>
+			<th>Schedule</th>
+			<th>Seats</th>
+			<th>Price</th>
+			<th></th>
+		</tr>
+		</thead>
+		
+		<tbody>
+		  <%@center.services.each do |service|  %>
+		  <tr>
+			<td class="dp"><p><%= service.name %></p></td>
+			<td class="dp"><p><%= service.start_date %></p></td>
+			<td class="dp"><%= service.days %></td>
+			<td class="dp"><p><%= service.schedule %></p></td>
+			<td><%= service.seats %></td>
+			<td class="dp"><p><%= service.selling_price %><br><span style='text-decoration: line-through;'><%= service.original_price %></span><br><span><%= service.percent %>%</span></p></td>
+			<td><a href="" class="button tiny">Book Now</a></td>
+		  </tr>
+		  <%end%>
+		</tbody>
+	</table>
+</div>

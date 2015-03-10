@@ -1,2 +1,18 @@
-<h1>Centers#instructors</h1>
-<p>Find me in app/views/centers/instructors.html.erb</p>
+<div id="instructors">
+	<% @instructors.each do |ins| %>
+	<div class="tab-data">
+		<div class="tab-img">
+			<%= image_tag attachment_url(ins, :photo) %>
+		</div>
+		<div class="tab-title">
+			<h3><%= ins.name  %></h3>
+			<span><%= ins.expertise %></span>
+		</div>
+		<div class="tab-content">
+		<p><%= ins.description %></p>
+		</div>
+	</div>
+	
+	<%end %>
+	
+</div>

@@ -22,3 +22,4 @@
 //= require dropzone
 //= require jquery.tagit
 //= require jquery.timepicker
+//= require jquery.wymeditor

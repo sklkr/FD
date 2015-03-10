@@ -4,8 +4,155 @@
 	<%= render :partial => 'layouts/head' %>
 </head>
 <body>
- <%= yield  %>
+ <%= render :partial => 'layouts/header' %>
+ <%= render :partial => 'layouts/search' %>
+ <div class="container">
+ 
+ 
+ 	<div class="container-main">
+ 		<div class="sqr-box-title">
+ 		<h2>Results</h2>
+ 		</div>
+ 		<div class="sqr-boxs-cat">
+ 		
+ 		<div class="slider">
+ 			<ul class="bxslider">
+ 			  <li><%= image_tag attachment_url(@centerinfo, :image) %></li>
+ 			  <li><img src="/assets/center-slider-img.jpg" /></li>
+ 			  <li><img src="/assets/center-slider-img.jpg" /></li>
+ 			</ul>
+
+ 			<div id="bx-pager">
+ 			  <a data-slide-index="0" href=""><img src="/assets/center-slider-img-small.jpg" /></a>
+ 			  <a data-slide-index="1" href=""><img src="/assets/center-slider-img-small.jpg" /></a>
+ 			  <a data-slide-index="2" href=""><img src="/assets/center-slider-img-small.jpg" /></a>
+ 			</div>	
+ 		</div>
+ 		<div class="contact-detail">
+ 			<div class="box-detail-main">
+ 				<div class="box-detail">
+ 					<h2>Contact</h2>
+ 					<p>616 Highway Fifty-two <br>Bangalore, 21215</p>
+ 				</div>
+ 				<div class="box-detail">
+ 					<h2>Phone</h2>
+ 					<p>443-413-2356</p>
+ 				</div>
+ 				<div class="box-detail">
+ 					<h2>Rating</h2>
+ 					<p><img src="/assets/star.jpg"></p>
+ 				</div>
+ 			</div>
+ 			
+ 			<div class="box-detail-main">
+ 				<div class="box-detail hour-ope">
+ 					<h2>Hours of Operation</h2>
+ 					<pre>Mon  09:00 AM - 07:00 PM</pre>
+ 					<pre>Tue      09:00 AM - 07:00 PM</pre>
+ 					<pre>Wed     09:00 AM - 07:00 PM</pre>
+ 					<pre>Thu      09:00 AM - 07:00 PM</pre>
+ 					<pre>Fri        09:00 AM - 07:00 PM</pre>
+ 					<pre>Sat       09:00 AM - 07:00 PM</pre>
+ 				</div>
+ 				<div class="box-detail">
+ 					<h2>Website</h2>
+ 					<p><%= @centerinfo.website %></p>
+ 				</div>
+ 			</div>
+ 			
+ 			<div class="button-org"><a href="#">Schedule an Appointment</a></div>
+ 			
+ 		</div>
+ 		
+ 		<div class="container-main">
+ 		<div id="container-tabs">
+ 			<ul class="tabs">
+ 				<li><a href="#about">About</a></li>
+ 				<li><a href="#services">Services</a></li>
+ 				<li><a href="#map">Map</a></li>
+ 				<li><a href="#reviews">Reviews</a></li>
+ 				<li><a href="#instructors">Instructors</a></li>
+ 				<li><a href="#Experience">Experience</a></li>
+ 				<li><a href="#working">Working Hours</a></li>
+ 				<li><a href="#upcoming">Upcoming Classes</a></li>
+ 				
+ 			</ul>
+ 			
+ 			<div id="tab_main_content">
+				<%= yield %>
+ 			</div>
+ 			
+ 		</div>
+		</div>
+ 		<!-- end content -->
+ 		
+ 	<div class="table-box">
+ 		<div class="table-title"><h2>Upcoming Classes</h2></div>
+ 		<table>
+ 			<thead>
+ 			<tr>
+ 				<th>Upcoming Classes</th>
+ 				<th>Start Date</th>
+ 				<th>Start Time</th>
+ 				<th>Instructor</th>
+ 				<th>Cost</th>
+ 			</tr>
+ 			</thead>
+ 			
+ 			<tbody>
+ 			  <tr>
+ 				<td class="dp"><p>Jogging</p></td>
+ 				<td class="dp"><p>12-Jan-2015</p></td>
+ 				<td class="dp"><img src="/assets/time-icon.jpg" alt=""><p>15 mins</p></td>
+ 				<td class="dp"><p>Johny Bravo</p></td>
+ 				<td class="dp"><p><span>&#96;</span>100</p></td>
+ 			  </tr>
+ 			  <tr>
+ 				<td class="dp"><p>Jogging</p></td>
+ 				<td class="dp"><p>12-Jan-2015</p></td>
+ 				<td class="dp"><img src="/assets/time-icon.jpg" alt=""><p>15 mins</p></td>
+ 				<td class="dp"><p>Johny Bravo</p></td>
+ 				<td class="dp"><p><span>&#96;</span>100</p></td>
+ 			  </tr>
+ 			  <tr>
+ 				<td class="dp"><p>Jogging</p></td>
+ 				<td class="dp"><p>12-Jan-2015</p></td>
+ 				<td class="dp"><img src="/assets/time-icon.jpg" alt=""><p>15 mins</p></td>
+ 				<td class="dp"><p>Johny Bravo</p></td>
+ 				<td class="dp"><p><span>&#96;</span>100</p></td>
+ 			  </tr>
+ 			  <tr>
+ 				<td class="dp"><p>Jogging</p></td>
+ 				<td class="dp"><p>12-Jan-2015</p></td>
+ 				<td class="dp"><img src="/assets/time-icon.jpg" alt=""><p>15 mins</p></td>
+ 				<td class="dp"><p>Johny Bravo</p></td>
+ 				<td class="dp"><p><span>&#96;</span>100</p></td>
+ 			  </tr>
+ 			
+ 			</tbody>
+ 		</table>
+ 	</div>
+ 
+ </div>
+ </div>
+ 
+ </div>
  <%= render :partial => 'layouts/secure' %>
  <%= render :partial => 'layouts/footer' %>
+
+ <script type="text/javascript">
+ 	$(document).ready(function(){
+	 	$('.bxslider').bxSlider({
+	 	  pagerCustom: '#bx-pager'
+	 	});
+	    $('#container-tabs').easyTabs({defaultContent:1});
+   });
+ </script>
+ <script src="./js/easytabs.js" type="text/javascript" charset="utf-8"></script>
+ <script type="text/javascript" charset="utf-8">
+ $(document).ready(function() {
+ });
+ </script>
+
 </body>
 </html>

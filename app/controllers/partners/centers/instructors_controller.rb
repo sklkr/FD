@@ -14,6 +14,7 @@ layout 'partnerdashboard'
   end
   def create
     @instructor = Instructor.new(permit_params)
+    @instructor.center_id = center.id
     if @instructor.save
       flash[:notice] = 'Instructor added'
       params[:id] = @instructor.id
@@ -29,7 +30,6 @@ layout 'partnerdashboard'
   def update
     @instructor = Instructor.find(params[:id])
     if @instructor.update_attributes(permit_params)
-      binding.pry
       flash[:notice] = 'Updated'
       render :show
     else

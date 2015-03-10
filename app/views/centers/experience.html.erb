@@ -1,2 +1,9 @@
-<h1>Centers#experience</h1>
-<p>Find me in app/views/centers/experience.html.erb</p>
+<div id="Experience">
+  <div class="tab-data">
+	<ul>
+		<% @experience.each do |ex|  %>
+			<li><h3><%= ex %></h3></li>
+		<%end%>
+	</ul>
+  </div>
+</div>

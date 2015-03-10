@@ -14,3 +14,7 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require jquery.bxslider
+//= require jquery.raty
+//= require ratyrate
+//= require maps-api
+//= require gmaps

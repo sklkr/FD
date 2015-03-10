@@ -34,7 +34,7 @@
 				<div class="row">
 					<div class="small-4 columns"><label for="" class="inline">Experience</label></div>
 					<div class="small-8 columns">
-					<%= hidden_field_tag 'experience', nil, :value => '2-wheeler,4-wheeler,Air condition,Rest Room,Locker,Change Room,Wifi' %>
+					<%= f.text_field :tag_list %>
 					</div>
 				</div>
 			</div>
@@ -118,7 +118,7 @@
 			<hr>
 			<div class="large-12">
 				<div class="right">
-					<%= submit_tag 'Continue', :class => 'button small radius' %>
+					<%= submit_tag 'Continue', :class => 'button small radius wymupdate' %>
 				</div>
 			</div>
 		</fieldset>
@@ -129,14 +129,15 @@
 <script type="text/javascript">
  $(document).ready(function() {
     $('.menu').dropit();
-	$('#experience').tagit({
+	$('#centerinfo_tag_list').tagit({
 		singleFieldDelimiter: ',',
 		placeholderText: 'List out experiences here',
 		singleField: true,
 		singleFieldNode: $('#tagsField'),
-		fieldName: 'experience',
+		fieldName: 'centerinfo[tag_list]',
 		availableTags: ["2-wheeler", "4-wheeler", "Air condition", "Rest Room", "Locker", "Change Room", "Wifi"]
 	});
 	$('.timer').timepicker();
+	$('#centerinfo_detailed_desc').wymeditor();
  });
  </script>
