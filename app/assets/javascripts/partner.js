@@ -21,5 +21,5 @@
 //= require drop
 //= require dropzone
 //= require jquery.tagit
-//= require jquery.timepicker
 //= require jquery.wymeditor
+//= require jquery.timepicker

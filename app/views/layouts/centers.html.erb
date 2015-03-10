@@ -47,12 +47,12 @@
  			<div class="box-detail-main">
  				<div class="box-detail hour-ope">
  					<h2>Hours of Operation</h2>
- 					<pre>Mon  09:00 AM - 07:00 PM</pre>
- 					<pre>Tue      09:00 AM - 07:00 PM</pre>
- 					<pre>Wed     09:00 AM - 07:00 PM</pre>
- 					<pre>Thu      09:00 AM - 07:00 PM</pre>
- 					<pre>Fri        09:00 AM - 07:00 PM</pre>
- 					<pre>Sat       09:00 AM - 07:00 PM</pre>
+ 					<pre>Mon      <%=@hours.mon_from  %> - <%= @hours.mon_to %></pre>
+ 					<pre>Tue        <%= @hours.tue_from %> - <%= @hours.tue_to %></pre>
+ 					<pre>Wed       <%= @hours.wed_from %> - <%= @hours.wed_to %></pre>
+ 					<pre>Thu         <%= @hours.thu_from %> - <%= @hours.thu_to %></pre>
+ 					<pre>Fri           <%= @hours.fri_from %> - <%= @hours.fri_to %></pre>
+ 					<pre>Sat            <%= @hours.sat_from %> - <%= @hours.sat_to %></pre>
  				</div>
  				<div class="box-detail">
  					<h2>Website</h2>
@@ -67,14 +67,14 @@
  		<div class="container-main">
  		<div id="container-tabs">
  			<ul class="tabs">
- 				<li><a href="#about">About</a></li>
- 				<li><a href="#services">Services</a></li>
- 				<li><a href="#map">Map</a></li>
- 				<li><a href="#reviews">Reviews</a></li>
- 				<li><a href="#instructors">Instructors</a></li>
- 				<li><a href="#Experience">Experience</a></li>
- 				<li><a href="#working">Working Hours</a></li>
- 				<li><a href="#upcoming">Upcoming Classes</a></li>
+ 				<li><a href="<%= center_about_path %>">About</a></li>
+ 				<li><a href="<%= center_services_path %>">Services</a></li>
+ 				<li><a href="<%= center_map_path %>">Map</a></li>
+ 				<li><a href="<%= center_reviews_path %>">Reviews</a></li>
+ 				<li><a href="<%= center_instructors_path %>">Instructors</a></li>
+ 				<li><a href="<%= center_experience_path %>">Experience</a></li>
+ 				<li><a href="<%= center_hours_path %>">Working Hours</a></li>
+ 				<li><a href="<%= center_upcoming_path %>">Upcoming Classes</a></li>
  				
  			</ul>
  			
@@ -100,35 +100,15 @@
  			</thead>
  			
  			<tbody>
+ 			<% @upcoming.each do |uc|  %>
  			  <tr>
- 				<td class="dp"><p>Jogging</p></td>
- 				<td class="dp"><p>12-Jan-2015</p></td>
- 				<td class="dp"><img src="/assets/time-icon.jpg" alt=""><p>15 mins</p></td>
- 				<td class="dp"><p>Johny Bravo</p></td>
- 				<td class="dp"><p><span>&#96;</span>100</p></td>
+ 				<td class="dp"><p><%= uc.name %></p></td>
+ 				<td class="dp"><p><%= uc.start_date %></p></td>
+ 				<td class="dp"><img src="/assets/time-icon.jpg" alt=""><p><%=  %></p></td>
+ 				<td class="dp"><p></p></td>
+ 				<td class="dp"><p><span>&#96;</span><%= uc.selling_price %></p></td>
  			  </tr>
- 			  <tr>
- 				<td class="dp"><p>Jogging</p></td>
- 				<td class="dp"><p>12-Jan-2015</p></td>
- 				<td class="dp"><img src="/assets/time-icon.jpg" alt=""><p>15 mins</p></td>
- 				<td class="dp"><p>Johny Bravo</p></td>
- 				<td class="dp"><p><span>&#96;</span>100</p></td>
- 			  </tr>
- 			  <tr>
- 				<td class="dp"><p>Jogging</p></td>
- 				<td class="dp"><p>12-Jan-2015</p></td>
- 				<td class="dp"><img src="/assets/time-icon.jpg" alt=""><p>15 mins</p></td>
- 				<td class="dp"><p>Johny Bravo</p></td>
- 				<td class="dp"><p><span>&#96;</span>100</p></td>
- 			  </tr>
- 			  <tr>
- 				<td class="dp"><p>Jogging</p></td>
- 				<td class="dp"><p>12-Jan-2015</p></td>
- 				<td class="dp"><img src="/assets/time-icon.jpg" alt=""><p>15 mins</p></td>
- 				<td class="dp"><p>Johny Bravo</p></td>
- 				<td class="dp"><p><span>&#96;</span>100</p></td>
- 			  </tr>
- 			
+ 			<%end%>
  			</tbody>
  		</table>
  	</div>
@@ -140,19 +120,6 @@
  <%= render :partial => 'layouts/secure' %>
  <%= render :partial => 'layouts/footer' %>
 
- <script type="text/javascript">
- 	$(document).ready(function(){
-	 	$('.bxslider').bxSlider({
-	 	  pagerCustom: '#bx-pager'
-	 	});
-	    $('#container-tabs').easyTabs({defaultContent:1});
-   });
- </script>
- <script src="./js/easytabs.js" type="text/javascript" charset="utf-8"></script>
- <script type="text/javascript" charset="utf-8">
- $(document).ready(function() {
- });
- </script>
-
+ 
 </body>
 </html>

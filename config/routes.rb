@@ -43,21 +43,14 @@ Rails.application.routes.draw do
   get 'registrations/customer'
   post 'registrations/customer_signup', :as => 'customer_signup'
 
-  get 'centers/:center_id/about' => 'centers#about'
-
-  get 'centers/:center_id/services' => 'centers#services'
-
-  get 'centers/:center_id/map' => 'centers#map'
-
-  get 'centers/:center_id/reviews' => 'centers#reviews'
-
-  get 'centers/:center_id/instructors' => 'centers#instructors'
-
-  get 'centers/:center_id/experience' => 'centers#experience'
-
-  get 'centers/:center_id/hours' => 'centers#hours'
-
-  get 'centers/:center_id/upcoming' => 'centers#upcoming'
+  get 'centers/:center_id/about' => 'centers#about', :as => 'center_about'
+  get 'centers/:center_id/services' => 'centers#services', :as => 'center_services'
+  get 'centers/:center_id/map' => 'centers#map', :as => 'center_map'
+  get 'centers/:center_id/reviews' => 'centers#reviews', :as => 'center_reviews'
+  get 'centers/:center_id/instructors' => 'centers#instructors', :as => 'center_instructors'
+  get 'centers/:center_id/experience' => 'centers#experience', :as => 'center_experience'
+  get 'centers/:center_id/hours' => 'centers#hours', :as => 'center_hours'
+  get 'centers/:center_id/upcoming' => 'centers#upcoming', :as => 'center_upcoming'
 
   get 'filters/index'
 

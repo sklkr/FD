@@ -28,7 +28,9 @@ class CentersController < ApplicationController
 
   private
     def assign_variables
-      @center = center.reload
+      @center = center
       @centerinfo = center.centerinfo 
+      @hours = @centerinfo.hour
+      @upcoming = @center.services.where('service_type=?','2')
     end
 end

@@ -1,22 +1,43 @@
 <table>
 	<tr>
-		<td>Mon</td>
-		<td>06:00 AM</td>
-		<td>10:00 PM</td>
+		<td>Sun</td>
+		<td><%= @hours.sun_from %> </td>
+		<td><%= @hours.sun_to %></td>
 	</tr>
 	<tr>
 		<td>Mon</td>
-		<td>06:00 AM</td>
-		<td>10:00 PM</td>
+		<td><%= @hours.mon_from %></td>
+		<td></td111>
 	</tr>
 	<tr>
-		<td>Mon</td>
-		<td>06:00 AM</td>
-		<td>10:00 PM</td>
+		<td>Tue</td>
+		<td> <%= @hours.tue_from %></td>
+		<td> <%= @hours.tue_to %></td>
 	</tr>
 	<tr>
-		<td>Mon</td>
-		<td>06:00 AM</td>
-		<td>10:00 PM</td>
+		<td>Wed</td>
+		<td> <%= @hours.wed_from %></td>
+		<td> <%= @hours.wed_to %></td>
+	</tr>
+	<tr>
+		<td>Thu</td>
+		<td> <%= @hours.thu_from %></td>
+		<td> <%= @hours.thu_to %></td>
+	</tr>
+	<tr>
+		<td>Fri</td>
+		<td> <%= @hours.fri_from %></td>
+		<td> <%= @hours.fri_to %></td>
+	</tr>
+	<tr>
+		<td>Sat</td>
+		<td> <%= @hours.sat_from %></td>
+		<td> <%= @hours.sat_to %></td>
 	</tr>
 </table>
+
+<script type="text/javascript">
+	 	$('.bxslider').bxSlider({
+	 	  pagerCustom: '#bx-pager'
+	 	});
+ </script>

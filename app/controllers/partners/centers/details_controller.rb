@@ -59,7 +59,7 @@ layout 'partnerdashboard'
       params.require(:center).permit(:experience)
     end
     def hour_params
-      params.require(:centerinfo).require(:hour_attributes).permit(:sun_from)
+      params.require(:centerinfo).require(:hour_attributes).permit(:sun_from, :sun_to, :mon_from, :mon_to, :tue_from, :tue_to, :wed_from, :wed_to, :thu_from, :thu_to, :fri_from, :fri_to, :sat_from, :sat_to)
     end
 end
 end

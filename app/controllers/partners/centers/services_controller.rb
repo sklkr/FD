@@ -42,7 +42,7 @@ module Partners::Centers
 
     private
       def service_params
-        params.require(:service).permit(:type, :category_id, :name,:days, :validity, :time_taken, :original_price, :selling_price, :gender_id, :schedule, :service_desc, :expired_on, :start_date, :end_date, :seats)
+        params.require(:service).permit(:service_type, :category_id, :name,:days, :validity, :time_taken, :original_price, :selling_price, :gender_id, :schedule, :service_desc, :expired_on, :start_date, :end_date, :seats)
       end
   end
 end
