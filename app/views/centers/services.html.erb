@@ -14,7 +14,7 @@
 		</thead>
 		
 		<tbody>
-		  <%@center.services.each do |service|  %>
+		  <%@center.services.regular.each do |service|  %>
 		  <tr>
 			<td class="dp"><p><%= service.name %></p></td>
 			<td class="dp"><p><%= service.start_date %></p></td>
@@ -22,7 +22,7 @@
 			<td class="dp"><p><%= service.schedule %></p></td>
 			<td><%= service.seats %></td>
 			<td class="dp"><p><%= service.selling_price %><br><span style='text-decoration: line-through;'><%= service.original_price %></span><br><span><%= service.percent %>%</span></p></td>
-			<td><a href="" class="button tiny">Book Now</a></td>
+			<td><a href="" class="">Book Now</a></td>
 		  </tr>
 		  <%end%>
 		</tbody>

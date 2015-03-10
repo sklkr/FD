@@ -31,6 +31,6 @@ class CentersController < ApplicationController
       @center = center
       @centerinfo = center.centerinfo 
       @hours = @centerinfo.hour
-      @upcoming = @center.services.where('service_type=?','2')
+      @upcoming = @center.services.upcoming
     end
 end
