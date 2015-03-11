@@ -10,7 +10,6 @@ class FiltersController < ApplicationController
   	#@centers = @q.result
     @c = Center.ransack(params[:q])
     @centers = @c.result(distinct: true).inject([]) { |center, p| center << p.centerinfo }
-    
   end
 
   def map

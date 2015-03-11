@@ -1,0 +1,21 @@
+<div>
+	<h3>Continue (Guest User)</h3>
+	<dl>
+	  <dt>Email</dt>
+	  <dd><%= text_field_tag :email %> <span>Booking details will be sent here</span></dd>
+	  <dt><%= check_box_tag :y %> I have a FitnessPapa account</dt>
+	  <dd>+<input type="number" value="91" style="width:30px"> <%= text_field_tag :phone %></dd>
+	</dl>
+	<button>Continue as Guest</button>
+	<%= form_tag customer_auth_path do %>
+	<dl>
+	  <%= hidden_field_tag 'url', params[:url] %>
+	  <dt>Email</dt>
+	  <dd><%= text_field_tag 'user[email]' %></dd>
+	  <dt><%= check_box_tag :y %> I have a FitnessPapa account</dt>
+	  <dd><%= password_field_tag 'user[password]' %></dd>
+	  <a href="#">Forget password ?</a>
+	</dl>
+	<%= submit_tag %>
+	<%end%>
+</div>

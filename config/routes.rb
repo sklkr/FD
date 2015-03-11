@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
  
+  get 'bookings/:center_id/:id/index' => 'bookings#index', as: 'book_now'
+  post 'bookings/create'
+  get 'bookings/:center_id/:id/add_details' => 'bookings#add_details', as: 'add_details'
+
   post '/rate' => 'rater#create', :as => 'rate'
   namespace :partners do
     resources :centers do
@@ -36,6 +40,7 @@ Rails.application.routes.draw do
   get 'sessions/customer'
   post 'sessions/customer_auth', :as => 'customer_auth'
   get 'sessions/customer_logout'
+  get 'sessions/checker'
 
   get 'registrations/partner'
   post 'registrations/partner_signup', :as => 'partner_signup'

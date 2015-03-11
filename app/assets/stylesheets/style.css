@@ -7,8 +7,7 @@ a, abbr, acronym, address, big, cite, code,
 del, dfn, em, font, ins, kbd, q, s, samp,
 small, strike, strong, sub, sup, tt, var,
 dl, dt, dd, ol, ul, li,
-fieldset, form, label, legend,
-table, caption, tbody, tfoot, thead, tr, th, td {
+fieldset, form, label, legend {
     border: 0;
     font-family: inherit;
     font-size: 100%;
@@ -29,14 +28,7 @@ body {
 ol, ul {
     list-style: none;
 }
-table {/* tables still need 'cellspacing="0"' in the markup */
-    border-collapse: separate;
-    border-spacing: 0;
-}
-caption, th, td {
-    font-weight: normal;
-    text-align: left;
-}
+
 blockquote:before, blockquote:after,
 q:before, q:after {
     content: "";
@@ -1455,63 +1447,7 @@ select,
     color: rgb(72, 72, 72);
 }
 
-/*
-Detail page table 
-*/
 
-.table-box {
-    float: left;
-    width: 100%;
-}
-.table-title {
-    width: 300px;
-    margin: 0px auto 30px;
-}
-.table-title h2 {
-    text-align: center;
-    font-family: opensans-semibold;
-    font-size: 20px;
-    color: rgb(72, 72, 72);
-}
-table { 
-  width: 100%; 
-  border-collapse: collapse; 
-}
-
-th { 
-    background: #e67e22; 
-    color: white; 
-    font-weight: bold; 
-    padding: 14px 20px;
-    font-family: opensans-semibold;
-    font-weight: normal;
-}
-td{
-    color:#484848;
-    padding: 10px 20px;
-    font-family: opensans-regular;
-}
-th:first-child, td:first-child {
-    text-align: left;
-}
-td, th { 
-  border: 1px solid #e1e8ed; 
-  text-align: center; 
-  font-size: 14px;
-  width: 21%;
-}
-
-td span {
-    margin-right: 5px;
-    font-family: rupee_foradianregular;
-}
-td img {
-    float: left;
-    margin-left: 15px;
-}
-td p {
-    margin-top: 8px;
-}
 /* Detail page End here */
 
 /* Bookapp page Start here */
@@ -5108,4 +5044,37 @@ div.clear { clear:both; display:block; overflow:hidden; visibility:hidden; heigh
 
 .tab-data p{
     margin-bottom: 10px;
+}
+
+.btn{display:inline-block;padding:6px 12px;margin-bottom:0;font-size:14px;font-weight:400;line-height:1.42857143;text-align:center;white-space:nowrap;vertical-align:middle;-ms-touch-action:manipulation;touch-action:manipulation;cursor:pointer;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;background-image:none;border:1px solid transparent;border-radius:4px}.btn.active.focus,.btn.active:focus,.btn.focus,.btn:active.focus,.btn:active:focus,.btn:focus{outline:thin dotted;outline:5px auto -webkit-focus-ring-color;outline-offset:-2px}.btn.focus,.btn:focus,.btn:hover{color:#333;text-decoration:none}.btn.active,.btn:active{background-image:none;outline:0;-webkit-box-shadow:inset 0 3px 5px rgba(0,0,0,.125);box-shadow:inset 0 3px 5px rgba(0,0,0,.125)}.btn.disabled,.btn[disabled],fieldset[disabled] .btn{pointer-events:none;cursor:not-allowed;filter:alpha(opacity=65);-webkit-box-shadow:none;box-shadow:none;opacity:.65}.btn-default{color: #FFF;background-color: #E67E22;  border-color: #E67E22;}.btn-default.active,.btn-default.focus,.btn-default:active,.btn-default:focus,.btn-default:hover,.open>.dropdown-toggle.btn-default{color: #FFF;background-color: #EC7D1A}.btn-default.active,.btn-default:active,.open>.dropdown-toggle.btn-default{background-image:none}.btn-default.disabled,.btn-default.disabled.active,.btn-default.disabled.focus,.btn-default.disabled:active,.btn-default.disabled:focus,.btn-default.disabled:hover,.btn-default[disabled],.btn-default[disabled].active,.btn-default[disabled].focus,.btn-default[disabled]:active,.btn-default[disabled]:focus,.btn-default[disabled]:hover,fieldset[disabled] .btn-default,fieldset[disabled] .btn-default.active,fieldset[disabled] .btn-default.focus,fieldset[disabled] .btn-default:active,fieldset[disabled] .btn-default:focus,fieldset[disabled] .btn-default:hover{background-color:#fff;border-color:#ccc}
+
+table.table{
+    border: 1px solid #e3e3e3;
+    table-layout: fixed;
+    width: 100%;
+    max-width: 100%;
+    background-color: transparent;
+    border-spacing: 0;
+    border-collapse: collapse;
+}
+table.table th{
+    vertical-align: bottom;
+  border-bottom: 2px solid #ddd;
+  padding: 8px;
+  line-height: 1.42857143;
+  vertical-align: top;
+  border-top: 1px solid #ddd;
+  background: #e67e22; 
+    color: white; 
+    font-weight: bold; 
+    padding: 8px 20px;
+    font-family: opensans-semibold;
+    font-weight: normal;
+}
+table.table th,table.table td {
+    border: 1px solid #e3e3e3;
+    overflow: hidden;
+    width: 20%;
+    padding: 8px 20px;
+    text-align: center;
 }

@@ -1,0 +1,48 @@
+<div id="services">
+<div class="table-box" ng-app='' ng-controller="calController" >	
+  <%=form_tag bookings_create_path, onSubmit: 'validate()' do %>
+  <%= hidden_field_tag :center_id, params[:center_id] %>
+  <%= hidden_field_tag :service_name, params[:id] %>
+  <%= hidden_field_tag :quantity, '1' %>
+	<table class="table table-striped">
+          <thead>
+          	<tr>
+      			<th style="width:32%">Service</th>
+      			<th style='width:11%'>QTY</th>
+      			<th style='width:10%'>Price</th>
+      			<th style='width:23%'>Detail</th>
+      			<th style='width:11%'>Sub Total</th>
+      		  </tr>
+          </thead>
+          <tbody>
+          <tr> 
+    			<td><p><%= @service.name %></p></td>
+    			<td><input type="number" id="qty" style="width:60%" value="1" ng-model='quantity'></input></td>
+    			<td><p><span>Rs.</span><span type='number' ng-model='price'><%= @service.selling_price %></span></p></td>
+    			<td><%= @service.schedule %></td>
+    			<td><span>Rs.</span><span ng-bind='quantity * price'></span></td>
+    		  </tr>
+		</tbody>
+    </table>
+  
+   <ul class="tabs button-tab">
+   	<li><p>Payable Amount: <span ng-bind='quantity * price'></span></p></li>
+   </ul>
+   <ul class="tabs button-tab" style="clear:both">
+	<li><div class="button-org"><%= submit_tag "Continue", :class => 'btn btn-default' %></div></li>
+   </ul>
+  <%end%>
+   
+</div> 
+
+</div> 
+
+<script>
+function calController($scope) {
+    $scope.quantity = 1,
+    $scope.price = <%= @service.selling_price  %>	
+}
+function validate(){
+	$('#quantity').val($('#qty').val());
+}
+</script>

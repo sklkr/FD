@@ -1,0 +1,20 @@
+<div style="text-align:center">
+<%= form_tag root_url do  %>
+<% (1..@booking.quantity).each do |v|  %>
+<div style="margin-bottom:12px">
+	<%= v %>.<select name="gender[<%= v %>]" id="" style='margin-left:10px;background: white;padding: 1px 4px;'>
+		<option value="1">Mr</option>
+		<option value="2">Mrs</option>
+		<option value="3">Miss</option>
+	</select>
+	<%= text_field_tag "name[#{v}]", nil,  :style =>  'padding: 4px;'%>
+	<%= check_box_tag "kid[#{v}]" %> Kid
+</div>
+<%end  %>
+	<div style="margin-bottom:18px;width:90%;margin-top:18px">
+		<div style="margin-bottom:18px;text-align:left"><div style="width:45%;float:left;text-align:right;padding-right:13px">Mobile Number</div> + <input type="number" style="width:4%" value='91'> <%= text_field_tag 'mobile', nil, :style => 'padding: 4px' %><br></div>
+	<div style="text-align:left"><div style="width:45%;float:left;text-align:right;padding-right:13px">Special Request</div> <%= text_area_tag 'request' %></div>
+	</div>
+	<%= submit_tag 'Payment', :class => 'btn btn-default'  %>
+	<%end  %>
+</div>

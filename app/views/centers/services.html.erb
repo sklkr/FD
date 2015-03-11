@@ -8,8 +8,7 @@
 			<th>Days</th>
 			<th>Schedule</th>
 			<th>Seats</th>
-			<th>Price</th>
-			<th></th>
+			<th colspan="2">Price</th>
 		</tr>
 		</thead>
 		
@@ -22,7 +21,7 @@
 			<td class="dp"><p><%= service.schedule %></p></td>
 			<td><%= service.seats %></td>
 			<td class="dp"><p><%= service.selling_price %><br><span style='text-decoration: line-through;'><%= service.original_price %></span><br><span><%= service.percent %>%</span></p></td>
-			<td><a href="" class="">Book Now</a></td>
+			<td><div class="button-org"><a href="<%= book_now_path(:id => service.friendly_id) %>" class="">Book Now</a></div></td>
 		  </tr>
 		  <%end%>
 		</tbody>

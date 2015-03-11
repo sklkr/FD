@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<%= render :partial => 'layouts/head' %>
+	<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular.min.js"></script>
+</head>
+<body>
+ <%= render :partial => 'layouts/header' %>
+ <%= render :partial => 'layouts/search' %>
+ <div class="container">
+ <!-- content -->
+	<div class="container">
+	
+	
+		<div class="container-main">
+			
+			<div class="sqr-box-title book-app-title">
+			<h2><%= @title unless @title.nil? %></h2>
+			</div>
+				
+			<div class="sqr-boxs-cat">
+				<div class="book-app">
+					<%= yield %>
+				</div>
+			</div>
+		</div>
+	</div>
+ </div>
+ <%= render :partial => 'layouts/secure' %>
+ <%= render :partial => 'layouts/footer' %>
+
+ 
+</body>
+</html>
