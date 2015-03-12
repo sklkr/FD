@@ -15,7 +15,7 @@
 	.embed-nav {margin-top:18px;}
 	.embed-nav ul{border-bottom:1px solid #e3e3e3; position: relative;}
 	.embed-nav li{display: inline-block;padding: 8px 9px 0px;}
-	.embed-nav .sub { position: absolute;left:-20px;top:59px;}
+	.embed-nav .sub { position: absolute;left:-20px;top:37px;}
 	.embed-nav .sub a{font-size:13px;}
 	.embed-nav li a{
 	  text-decoration: none;
@@ -74,16 +74,18 @@
  <div class="container">
 	<div class="embed-nav">
 		<ul class="menu">
-			<li class=""><a href="<%=  %>">Summary</a></li>
-			<li class="active"><a href="<%=  %>">Center Configuration</a>
-				<ul class="sub dropit-submenu">
-					<li class="active"><a href="<%=  %>">Account Details</a></li>
-					<li><a href="<%=  %>">Center Details</a></li>
-					<li><a href="<%=%>">Service Setup</a></li>
-					<li><a href="<%= %>">Instructors</a></li>
-					<li><a href="<%=%>">Pass</a></li>
-					<li><a href="<%=%>">Coupons</a></li>
-					<li><a href="">Center Manager</a></li>
+			<li class="<%= "active" if params[:controller].include? 'dashboard' %>"><a href="<%=partners_dashboard_path('kindle')  %>">Summary</a></li>
+			<li class="<%= "active" if params[:controller].include? 'center' %>"><a href="<%= partners_center_accounts_path('kindle') %>">Center Configuration</a>
+				<ul class="sub dropit-submenu" id="center-conf">
+				<%unless params[:controller].include? 'dashboard'  %>
+					<%= nav_link 'Account Details', partners_center_accounts_path %>
+					<%= nav_link 'Center Setup', partners_center_details_path %>
+					<%= nav_link 'Services', partners_center_services_path %>
+					<%= nav_link 'Instructors', partners_center_instructors_path %>
+					<%= nav_link 'Pass', '#' %>
+					<%= nav_link 'Coupons', '#' %>
+					<%= nav_link 'Center Manager', '#' %>
+				<%end  %>
 				</ul>
 			</li>
 			<li><a href="<%=  %>">Multicenter Manager</a></li>

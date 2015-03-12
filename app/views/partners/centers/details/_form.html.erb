@@ -31,11 +31,14 @@
 					<div class="small-4 columns"><label for="" class="inline">FP Verified</label></div>
 					<div class="small-8 columns"><label class="inline"><span>No</span>&nbsp;<a href="#">Verify Now</a><br><span>(After registration required)</span></label></div>
 				</div>
-				<div class="row">
-					<div class="small-4 columns"><label for="" class="inline">Experience</label></div>
-					<div class="small-8 columns">
-					<%= f.text_field :tag_list %>
-					</div>
+				<div class="row" style="margin-bottom:16px">
+					<div class="large-12 columns">
+				      <label style="padding-bottom:16px">Experience</label>
+				       <% for experience in Experience.all  %>
+						 <%= check_box_tag 'centerinfo[experience_ids][]', experience.id, @details.exp_list.include?(experience) %>
+					   	 <label for=""><%= experience.name %></label>
+					   <%end %>
+				    </div>
 				</div>
 			</div>
 			<div class="large-6 columns">
@@ -118,7 +121,8 @@
 			<hr>
 			<div class="large-12">
 				<div class="right">
-					<%= submit_tag 'Continue', :class => 'button small radius wymupdate' %>
+					<%= submit_tag act, :class => 'button small radius wymupdate' %>
+					<a href="<%= partners_center_photos_path(params['center_id']) %>" class="button small radius">Continue</a>
 				</div>
 			</div>
 		</fieldset>
@@ -131,7 +135,7 @@
     $('.menu').dropit();
 	$('#centerinfo_tag_list').tagit({
 		singleFieldDelimiter: ',',
-		placeholderText: 'List out experiences here',
+		placeholderText: 'Rest room, Wifi etc.,',
 		singleField: true,
 		singleFieldNode: $('#tagsField'),
 		fieldName: 'centerinfo[tag_list]',
@@ -139,5 +143,6 @@
 	});
 	$('.timer').timepicker();
 	$('#centerinfo_detailed_desc').wymeditor();
+	$('#center-conf').css('display', 'block');
  });
  </script>

@@ -22,8 +22,10 @@ class RegistrationsController < ApplicationController
 
   def partner_signup
     pdata = Partner.new(partner_params)
-    if pdata.save && details(pdata, user_params).save
-      redirect_to action: 'partner'
+    if params[:user][:password] == params[:user][:password_conf] && pdata.save && details(pdata, user_params).save
+     # Directly authenticating here , change required
+      warden.authenticate!(:partner, scope: :partner)
+      redirect_to partners_centers_path
       flash[:success] = 'Partner created'
     else
       render :text => 'something went wrong'

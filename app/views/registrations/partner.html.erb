@@ -10,37 +10,37 @@
 				
 				<div class="form-field">
 				  <p>First name</p>
-				  <input type="text" name="user[first_name]" value="">
+				  <input type="text" name="user[first_name]" value="" required>
 				</div>
 				
 				<div class="form-field">
 				 <p>Last name</p>
-				 <input type="text" name="user[last_name]" value="">
+				 <input type="text" name="user[last_name]" value="" required>
 				</div>
 				
 				<div class="form-field">
 				 <p>Email</p>
-				 <input type="email" name="user[email]" value="">
+				 <input type="email" name="user[email]" value="" required>
 				</div>
 				
 				<div class="form-field">
 				 <p>Phone</p>
-				 <input type="tel" name="user[phone]" value="">
+				 <input type="tel" name="user[phone]" value="" required>
 				</div>
 				
 				<div class="form-field">
 				 <p>Password</p>
-				 <input type="password" name="user[password]" value="">
+				 <input type="password" name="user[password]" value="" required>
 				</div>
 				
 				<div class="form-field">
 				 <p>Re-enter Password</p>
-				 <input type="password" name="user[password_conf]" value="">
+				 <input type="password" name="user[password_conf]" value="" required>
 				</div>
 				
 				<div class="form-field">
 				 <p>Business Name</p>
-				 <input type="text" name="user[business_name]" value="">
+				 <input type="text" name="user[business_name]" value="" required>
 				</div>
 				
 				<div class="form-field">
@@ -48,22 +48,22 @@
          		 <%= select_tag "user[category_id]", options_from_collection_for_select(Category.all, "id", "name") %>
 				</div>
 				
-				<div class="form-field">
+				<div class="form-field" style="clear:both">
 				 <p>City</p>
-				 <input type="text" name="user[city]" value="">
+				 <input type="text" name="user[city]" value="" required>
 				</div>
 				
 				<div class="form-field">
 				 <p>State</p>
-				 <input type="text" name="user[state]" value="">
+				 <input type="text" name="user[state]" value="" required>
 				</div>
 				
 				<div class="form-terms">
-				 <p>By regstering, you agree to our <span>Terms</span> & <span>Privacy Policy</span></p>
+				 <p>By registering, you agree to our <span>Terms</span> & <span>Privacy Policy</span></p>
 				</div>
 			    
 				<div class="form-submit">
-				  <input type="submit" value="Register">
+				  <input type="submit" value="Register" required>
 				</div>
 			  
 			  </div>

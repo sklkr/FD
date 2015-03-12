@@ -1,10 +1,10 @@
-<ul class="inline-list right">
+<ul class="inline-list right" style="margin-top:13px;margin-bottom:0px">
  <% unless signed_in?  %>
 	<li><a href="<%= registrations_customer_path %>">Sign Up</a></li>
 	<li><a href=" <%=sessions_customer_path %> ">Sign In</a></li>
 	<li class="active"><a href=" <%= registrations_partner_path  %>">Register Your Business</a></li>
  <%else  %>
- 	<li><p>Welcome <%= current_user.name %></p></li>
+ 	<li><p style="color:white">Welcome <%= current_user.name %></p></li>
  	<li><a href="<%= customerdashboard_details_path %>">My Dashboard</a></li>
  	<li><a href="<%= sessions_customer_logout_path %>">Logout</a></li>
  <%end  %>

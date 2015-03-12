@@ -12,6 +12,7 @@ Rails.application.routes.draw do
       end
     end
   end
+  get 'partners/:id/dashboard' => 'partners/dashboard#summary', :as => 'partners_dashboard'
   
   get 'customerdashboard/details'
   patch 'customerdashboard/details_update'

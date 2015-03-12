@@ -1,31 +1,82 @@
-<div class="table-box">
-	<div class="table-title"><h2>Services</h2></div>
-	<table>
+<div class="table-box marginner">
+	<% unless @ymka.blank? %>
+	<table class="table">
 		<thead>
 		<tr>
-			<th>Name</th>
-			<th>Start Date</th>
-			<th>Days</th>
-			<th>Schedule</th>
-			<th>Seats</th>
-			<th colspan="2">Price</th>
+			<th style='width:52%'>Name</th>
+			<th style='width:22%'>Start Date</th>
+			<th style='width:12%'>Days</th>
+			<th style='width:44%'>Schedule</th>
+			<th style='width:11%'>Seats</th>
+			<th colspan="2" style='width:37%'>Price</th>
 		</tr>
 		</thead>
 		
 		<tbody>
-		  <%@center.services.regular.each do |service|  %>
+		  <%@ymka.each do |service|  %>
 		  <tr>
 			<td class="dp"><p><%= service.name %></p></td>
-			<td class="dp"><p><%= service.start_date %></p></td>
+			<td class="dp"><p><%= service.start_date.strftime('%d %b %Y') %></p></td>
 			<td class="dp"><%= service.days %></td>
 			<td class="dp"><p><%= service.schedule %></p></td>
 			<td><%= service.seats %></td>
 			<td class="dp"><p><%= service.selling_price %><br><span style='text-decoration: line-through;'><%= service.original_price %></span><br><span><%= service.percent %>%</span></p></td>
-			<td><div class="button-org"><a href="<%= book_now_path(:id => service.friendly_id) %>" class="">Book Now</a></div></td>
+			<td style="margin:0px;padding:10px"><div class="button-org small"><a href="<%= book_now_path(:id => service.friendly_id) %>" class="">Book Now</a></div></td>
 		  </tr>
 		  <%end%>
 		</tbody>
 	</table>
+	<%end  %>
+
+	<% unless @gs.blank? %>
+		<table class="table" style="margin-top:20px">
+			<thead>
+			<tr>
+				<th style='width:52%'>Name</th>
+				<th style='width:22%'>Validity</th>
+				<th>Expired on</th>
+				<th colspan="2" style='width:37%'>Price</th>
+			</tr>
+			</thead>
+			
+			<tbody>
+			  <%@gs.each do |service|  %>
+			  <tr>
+				<td class="dp"><p><%= service.name %></p></td>
+				<td class="dp"><p><%= service.validity %></p></td>
+				<td><%= service.expired_on %></td>
+				<td class="dp"><p><%= service.selling_price %><br><span style='text-decoration: line-through;'><%= service.original_price %></span><br><span><%= service.percent %>%</span></p></td>
+				<td style="margin:0px;padding:10px"><div class="button-org small"><a href="<%= book_now_path(:id => service.friendly_id) %>" class="">Book Now</a></div></td>
+			  </tr>
+			  <%end%>
+			</tbody>
+		</table>
+	<%end  %>
+
+	<% unless @ssc.blank? %>
+	<table class="table">
+		<thead>
+		<tr>
+			<th style='width:52%'>Name</th>
+			<th style='width:22%'>Time</th>
+			<th colspan="2" style='width:37%'>Price</th>
+		</tr>
+		</thead>
+		
+		<tbody>
+		  <%@ssc.each do |service|  %>
+		  <tr>
+			<td class="dp"><p><%= service.name %></p></td>
+			<td class="dp"><p><%= service.time_taken %></p></td>
+			<td class="dp"><p><%= service.selling_price %><br><span style='text-decoration: line-through;'><%= service.original_price %></span><br><span><%= service.percent %>%</span></p></td>
+			<td style="margin:0px;padding:10px"><div class="button-org small"><a href="<%= book_now_path(:id => service.friendly_id) %>" class="">Book Now</a></div></td>
+		  </tr>
+		  <%end%>
+		</tbody>
+	</table>
+	<%end  %>
+
+
 </div>
 <script type="text/javascript">
 	 	$('.bxslider').bxSlider({

@@ -12,3 +12,7 @@ end
 ['All', 'Both Male & Female', 'Male', 'Female', 'Kids'].each do |c|
 	Centertype.find_or_create_by(:name => c)
 end
+
+["Two Wheeler", "Four Wheeler", "Air Conditioning", "Rest Room", "Locker", "Change Room", "Wifi", "Shower", "Swimming Pool", "Kids Play Area", "Steam & Sauna"].each do |name|
+	Experience.find_or_create_by(:name => name)
+end

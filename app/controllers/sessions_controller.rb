@@ -30,7 +30,6 @@ layout 'homepage'
   end
 
   def checker
-    binding.pry
   end
 
   def partner_logout

@@ -10,7 +10,7 @@
 	          <label for='account[brand]', class="inline">Brand Name</label>
 	        </div>
 	        <div class="small-8 columns">
-			  <%= f.text_field :brandname, :class => 'input-small' %>
+			  <%= f.text_field :brandname, :class => 'input-small' ,:required => true%>
 	        </div>
 	      </div>
 	    </div>
@@ -22,7 +22,7 @@
 					<label for='account[centername]' class="inline">Center Name</label>
 				</div>
 				<div class="small-8 columns">
-				<%= f.text_field :centername %>
+				<%= f.text_field :centername  ,:required => true%>
 				</div>
 			</div>
 		</div>
@@ -34,7 +34,7 @@
 					<label for='account[personname]' class="inline">Person Name</label>
 				</div>
 				<div class="small-8 columns">
-				<%= f.text_field :personname %>
+				<%= f.text_field :personname  ,:required => true%>
 				</div>
 			</div>
 		</div>
@@ -46,7 +46,7 @@
 					<label for='account[email]' class="inline">Email Name</label>
 				</div>
 				<div class="small-8 columns">
-				<%= f.text_field :email %>
+				<%= f.text_field :email  ,:required => true%>
 				</div>
 			</div>
 		</div>
@@ -58,7 +58,7 @@
 					<label for='account[mobile]' class="inline">Mobile No</label>
 				</div>
 				<div class="small-8 columns">
-				<%= f.text_field :mobile %>
+				<%= f.text_field :mobile  ,:required => true%>
 				</div>
 			</div>
 		</div>
@@ -70,7 +70,7 @@
 					<label for='account[landline]' class="inline">Landline No</label>
 				</div>
 				<div class="small-8 columns">
-				<%= f.text_field :landline%>
+				<%= f.text_field :landline ,:required => true%>
 				</div>
 			</div>
 		</div>
@@ -82,12 +82,12 @@
 					<label for='account[address_1]' class="inline">Address</label>
 				</div>
 				<div class="small-8 columns">
-				<%= f.text_field :address_1, :placeholder => 'Address Line 1' %> 
-				<%= f.text_field :address_2, :placeholder => 'Address Line 2' %> 
-				<%= f.text_field :landmark, :placeholder => 'Landmark' %>
+				<%= f.text_field :address_1, :placeholder => 'Address Line 1'  ,:required => true%> 
+				<%= f.text_field :address_2, :placeholder => 'Address Line 2'  ,:required => true%> 
+				<%= f.text_field :landmark, :placeholder => 'Landmark'  ,:required => true%>
 				<div class="row">
-					<div class="small-6 columns"><%= f.text_field :city, :placeholder => 'City' %></div>
-					<div class="small-6 columns"><%= f.text_field :pin, :placeholder => '560012'  %></div>
+					<div class="small-6 columns"><%= f.text_field :city, :placeholder => 'City'  ,:required => true%></div>
+					<div class="small-6 columns"><%= f.text_field :pin, :placeholder => '560012'   ,:required => true%></div>
 				</div>
 				</div>
 			</div>
@@ -103,7 +103,7 @@
 					<label for='account[pan]' class="inline">PAN</label>
 				</div>
 				<div class="small-8 columns">
-				<%= f.text_field :pan %>
+				<%= f.text_field :pan  ,:required => true%>
 				</div>
 			</div>
 		</div>
@@ -115,7 +115,7 @@
 					<label for='account[tan]' class="inline">TAN</label>
 				</div>
 				<div class="small-8 columns">
-				<%= f.text_field :tan %>		
+				<%= f.text_field :tan  ,:required => true%>		
 				</div>
 			</div>
 		</div>
@@ -127,7 +127,7 @@
 					<label for='account[tin]' class="inline">TIN</label>
 				</div>
 				<div class="small-8 columns">
-				<%= f.text_field :tin %>
+				<%= f.text_field :tin  ,:required => true%>
 				</div>
 			</div>
 		</div>
@@ -139,7 +139,7 @@
 					<label for='account[taxregno]' class="inline">Service Tax Reg No</label>
 				</div>
 				<div class="small-8 columns">
-				<%= f.text_field :taxregno %>
+				<%= f.text_field :taxregno  ,:required => true%>
 				</div>
 			</div>
 		</div>
@@ -155,7 +155,7 @@
 					<label for='account[acno]' class="inline">Bank A/C Number</label>
 				</div>
 				<div class="small-8 columns">
-				<%= f.text_field :acno%>
+				<%= f.text_field :acno ,:required => true%>
 				</div>
 			</div>
 		</div>
@@ -167,7 +167,7 @@
 					<label for='account[bank_name]' class="inline">Bank Name</label>
 				</div>
 				<div class="small-8 columns">
-				<%= f.text_field :bank_name %>
+				<%= f.text_field :bank_name  ,:required => true%>
 				</div>
 			</div>
 		</div>
@@ -179,7 +179,7 @@
 					<label for='account[ifsc_code]' class="inline">IFSC code of Branch</label>
 				</div>
 				<div class="small-8 columns">
-				<%= f.text_field :ifsc_code %>
+				<%= f.text_field :ifsc_code  ,:required => true%>
 				</div>
 			</div>
 		</div>
@@ -191,7 +191,7 @@
 					<label for='account[bank_city]' class="inline">City</label>
 				</div>
 				<div class="small-8 columns">
-				<%= f.text_field :bank_city %>
+				<%= f.text_field :bank_city  ,:required => true%>
 				</div>
 			</div>
 		</div>
@@ -203,7 +203,7 @@
 					<label for='account[bank_address]' class="inline">Branch Address</label>
 				</div>
 				<div class="small-8 columns">
-				<%= f.text_area :bank_address %>
+				<%= f.text_area :bank_address  ,:required => true%>
 				</div>
 			</div>
 		</div>
@@ -223,3 +223,9 @@
 </div>
 <% end %>
 
+<script>
+$(document).ready(function() {
+  $('.menu').dropit();
+  $('#center-conf').css('display', 'block');
+});
+</script>

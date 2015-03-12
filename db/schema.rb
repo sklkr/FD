@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150311152819) do
+ActiveRecord::Schema.define(version: 20150312101609) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -43,6 +43,9 @@ ActiveRecord::Schema.define(version: 20150311152819) do
     t.integer  "center_id"
   end
 
+  add_index "accountinfos", ["brand_id"], name: "index_accountinfos_on_brand_id", using: :btree
+  add_index "accountinfos", ["center_id"], name: "index_accountinfos_on_center_id", using: :btree
+
   create_table "average_caches", force: true do |t|
     t.integer  "rater_id"
     t.integer  "rateable_id"
@@ -51,6 +54,9 @@ ActiveRecord::Schema.define(version: 20150311152819) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "average_caches", ["rateable_id", "rateable_type"], name: "index_average_caches_on_rateable_id_and_rateable_type", using: :btree
+  add_index "average_caches", ["rater_id"], name: "index_average_caches_on_rater_id", using: :btree
 
   create_table "bookings", force: true do |t|
     t.integer  "service_id"
@@ -110,12 +116,26 @@ ActiveRecord::Schema.define(version: 20150311152819) do
     t.integer  "center_id"
   end
 
+  add_index "centerinfos", ["center_id"], name: "index_centerinfos_on_center_id", using: :btree
+  add_index "centerinfos", ["centertype_id"], name: "index_centerinfos_on_centertype_id", using: :btree
+  add_index "centerinfos", ["hour_id"], name: "index_centerinfos_on_hour_id", using: :btree
+
+  create_table "centerinfos_experiences", id: false, force: true do |t|
+    t.integer "centerinfo_id"
+    t.integer "experience_id"
+  end
+
+  add_index "centerinfos_experiences", ["centerinfo_id"], name: "index_centerinfos_experiences_on_centerinfo_id", using: :btree
+  add_index "centerinfos_experiences", ["experience_id"], name: "index_centerinfos_experiences_on_experience_id", using: :btree
+
   create_table "centers", force: true do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "name"
     t.integer  "partner_id"
   end
+
+  add_index "centers", ["partner_id"], name: "index_centers_on_partner_id", using: :btree
 
   create_table "centertypes", force: true do |t|
     t.string   "name"
@@ -132,6 +152,12 @@ ActiveRecord::Schema.define(version: 20150311152819) do
 
   create_table "customers", force: true do |t|
     t.string   "email"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "experiences", force: true do |t|
+    t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -168,6 +194,8 @@ ActiveRecord::Schema.define(version: 20150311152819) do
     t.datetime "updated_at"
   end
 
+  add_index "instructors", ["center_id"], name: "index_instructors_on_center_id", using: :btree
+
   create_table "nifty_attachments", force: true do |t|
     t.integer  "parent_id"
     t.string   "parent_type"
@@ -188,6 +216,8 @@ ActiveRecord::Schema.define(version: 20150311152819) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "overall_averages", ["rateable_id", "rateable_type"], name: "index_overall_averages_on_rateable_id_and_rateable_type", using: :btree
 
   create_table "partners", force: true do |t|
     t.string   "email"
@@ -253,6 +283,9 @@ ActiveRecord::Schema.define(version: 20150311152819) do
     t.integer  "days"
   end
 
+  add_index "services", ["category_id"], name: "index_services_on_category_id", using: :btree
+  add_index "services", ["center_id"], name: "index_services_on_center_id", using: :btree
+
   create_table "superadmins", force: true do |t|
     t.string   "email"
     t.datetime "created_at"
@@ -290,5 +323,7 @@ ActiveRecord::Schema.define(version: 20150311152819) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "users", ["member_id"], name: "index_users_on_member_id", using: :btree
 
 end

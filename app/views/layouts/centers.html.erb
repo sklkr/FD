@@ -18,25 +18,29 @@
  		<div class="slider">
  			<ul class="bxslider">
  			  <li><%= image_tag attachment_url(@centerinfo, :image) %></li>
- 			  <li><img src="/assets/center-slider-img.jpg" /></li>
- 			  <li><img src="/assets/center-slider-img.jpg" /></li>
+				<% @photos.each do |p| %>
+				 <li><%= image_tag attachment_url(p, :image) %></li>
+				<%end  %>
  			</ul>
 
  			<div id="bx-pager">
- 			  <a data-slide-index="0" href=""><img src="/assets/center-slider-img-small.jpg" /></a>
- 			  <a data-slide-index="1" href=""><img src="/assets/center-slider-img-small.jpg" /></a>
- 			  <a data-slide-index="2" href=""><img src="/assets/center-slider-img-small.jpg" /></a>
+ 			  <a data-slide-index="0" href=""><%= image_tag attachment_url(@centerinfo, :image, :fill, 132, 87) %></a>
+ 			  <% @photos.each_with_index do |p, index| %>
+ 			  	<%unless index >= 2 %>
+ 			  	<a data-slide-index="<%= index+1 %>" href=""><%= image_tag attachment_url(p, :image, :fill, 132, 87) %></a>
+ 			  	<%end  %>
+ 			  <%end  %>
  			</div>	
  		</div>
  		<div class="contact-detail">
  			<div class="box-detail-main">
  				<div class="box-detail">
  					<h2>Contact</h2>
- 					<p>616 Highway Fifty-two <br>Bangalore, 21215</p>
+ 					<p><%= @accountinfo.address_1 %>, <%= @accountinfo.address_2 %><br><%= @accountinfo.city %>, <%= @accountinfo.pin %></p>
  				</div>
  				<div class="box-detail">
  					<h2>Phone</h2>
- 					<p>443-413-2356</p>
+ 					<p><%= @accountinfo.mobile %></p>
  				</div>
  				<div class="box-detail">
  					<h2>Rating</h2>
@@ -47,6 +51,7 @@
  			<div class="box-detail-main">
  				<div class="box-detail hour-ope">
  					<h2>Hours of Operation</h2>
+ 					<pre>Sun      <%=@hours.sun_from  %> - <%= @hours.sun_to %></pre>
  					<pre>Mon      <%=@hours.mon_from  %> - <%= @hours.mon_to %></pre>
  					<pre>Tue        <%= @hours.tue_from %> - <%= @hours.tue_to %></pre>
  					<pre>Wed       <%= @hours.wed_from %> - <%= @hours.wed_to %></pre>
@@ -60,22 +65,20 @@
  				</div>
  			</div>
  			
- 			<div class="button-org"><a href="<%=  center_services_path %>">Buy Services</a></div>
+ 			<div class="button-org"><a href="<%=  center_services_path %>#container-tabs">Buy Services</a></div>
  			
  		</div>
- 		
+ 		<div id="target"></div>
  		<div class="container-main">
  		<div id="container-tabs">
  			<ul class="tabs">
- 				<li><a href="<%= center_about_path %>">About</a></li>
- 				<li><a href="<%= center_services_path %>">Services</a></li>
- 				<li><a href="<%= center_map_path %>">Map</a></li>
- 				<li><a href="<%= center_reviews_path %>">Reviews</a></li>
- 				<li><a href="<%= center_instructors_path %>">Instructors</a></li>
- 				<li><a href="<%= center_experience_path %>">Experience</a></li>
- 				<li><a href="<%= center_hours_path %>">Working Hours</a></li>
- 				<li><a href="<%= center_upcoming_path %>">Upcoming Classes</a></li>
- 				
+			    <%= nav_with_target 'About', center_about_path, '#container-tabs' %>
+ 				<%= nav_with_target 'Services', center_services_path, '#container-tabs' %>
+ 				<%= nav_with_target 'Map', center_map_path, '#container-tabs' %>
+ 				<%= nav_with_target 'Reviews', center_reviews_path, '#container-tabs' %>
+ 				<%= nav_with_target 'Instructors', center_instructors_path, '#container-tabs' %>
+ 				<%= nav_with_target 'Experience', center_experience_path, '#container-tabs' %>
+ 				<%= nav_with_target 'Upcoming Classes', center_upcoming_path, '#container-tabs' %>
  			</ul>
  			
  			<div id="tab_main_content">
@@ -86,37 +89,7 @@
 		</div>
  		<!-- end content -->
  		
- 	<div class="table-box">
- 		<div class="table-title"><h2>Upcoming Classes</h2></div>
- 		<table>
- 			<thead>
- 			<tr>
- 				<th>Name</th>
- 				<th>Start Date</th>
- 				<th>Days</th>
- 				<th>Schedule</th>
- 				<th>Instructor</th>
- 				<th>Seats</th>
- 				<th colspan="2">Price</th>
- 			</tr>
- 			</thead>
- 			
- 			<tbody>
- 			<% @upcoming.each do |uc|  %>
- 			  <tr>
- 				<td class="dp"><p><%= uc.name %></p></td>
- 				<td class="dp"><p><%= uc.start_date.strftime('%d %b %Y') unless uc.start_date.nil? %></p></td>
-				<td><p><%= uc.days %></p></td>
- 				<td class="dp"><p><%= uc.schedule %></p></td>
- 				<td class="dp"><p><%=  %></p></td>
- 				<td class="dp"><%= uc.seats %></td>
- 				<td class="dp"><p><span>&#96;</span><%= uc.selling_price %><br><span style='text-decoration: line-through;'><%= uc.original_price %></p></td>
- 				<td class="dp"><div class="button-org"><a href="<%= book_now_path(:id => uc.friendly_id) %>">Book Now</a></div></td>
- 			  </tr>
- 			<%end%>
- 			</tbody>
- 		</table>
- 	</div>
+ 	
  
  </div>
  </div>
