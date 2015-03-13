@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  pan_idd: MyString
+  tax_id: MyString
+  address_id: MyString
+  tan_id: MyString
+  center_id: 1
+
+two:
+  pan_idd: MyString
+  tax_id: MyString
+  address_id: MyString
+  tan_id: MyString
+  center_id: 1

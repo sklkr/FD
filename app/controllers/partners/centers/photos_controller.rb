@@ -7,6 +7,7 @@ class PhotosController < ApplicationController
   layout 'partnerdashboard'
   def index
     @cphotos = Cphoto.where('centerinfo_id=?',center.centerinfo.id)
+    @center = center
   end  
   def show
   	render_wizard
@@ -21,6 +22,17 @@ class PhotosController < ApplicationController
   	else
   		render :json => false
   	end
+  end
+
+  def update
+    verification = Verification.new(params.require(:verification).permit(:pan, :tan, :tax, :address))
+    verification.center_id = center.id
+    if verification.save
+      flash[:notice] = 'Verification is under progress. You will be notified after documents are verified'
+      redirect_to partners_center_photos_path(center.friendly_id) 
+    else
+      render :text => "Something went wrong"
+    end
   end
 
   def destroy

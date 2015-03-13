@@ -2,7 +2,7 @@
 <legend>Center Photos</legend>
 	<%= form_tag partners_center_photos_path, id: 'center-photos', :class => 'dropzone', multipart: true do %>
 	<div class="dz-message">
-	   <label for="">Upload images by click here<br></label> 
+	   <label for="">Upload images by click here (Max 6 images are allowed)<br></label> 
 	</div>
 	<%end%>
 		<div class="row" style="margin-top:30px">
@@ -13,8 +13,13 @@
 			</div>
 		<%end%>
 		</div>
-	<hr>
-	<a href="<%=partners_center_services_path%>" class="button tiny right">Continue</a>
+	<%if @center.verification.blank?  %>
+		<%= render :partial => 'partners/centers/photos/form' %>
+	<%else%>
+		<p>Documents is under verification</p>
+		<hr>
+		<a href="<%=partners_center_services_path%>" class="button tiny right"  style="margin-left:20px">Continue</a>
+	<%end %>
 </fieldset>
 
 

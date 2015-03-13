@@ -1,4 +1,5 @@
 class FiltersController < ApplicationController
+  before_action :assigners, :only => [:grid, :list]
   def index
   end
 
@@ -8,10 +9,14 @@ class FiltersController < ApplicationController
   def grid
   	#@q = Centerinfo.ransack(params[:q])
   	#@centers = @q.result
-    @c = Center.ransack(params[:q])
-    @centers = @c.result(distinct: true).includes(:centerinfo).inject([]) { |center, p| center << p.centerinfo }
   end
 
   def map
   end
+
+  private
+    def assigners
+      @c = Center.ransack(params[:q])
+      @centers = @c.result(distinct: true).includes(:centerinfo).inject([]) { |center, p| center << p.centerinfo }
+    end
 end

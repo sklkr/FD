@@ -1,0 +1,78 @@
+<%= search_form_for @c, :url => act do |f| %>
+  <div class="sidebar-box">
+    <h3>Category</h3>
+    <%= f.collection_select :centerinfo_categories_id_in, Category.order(:name), :id, :name, {} %>
+  </div>
+  <!-- <div class="sidebar-box">
+  
+    <h3>Area</h3>
+  
+    <select name="Area">
+      <option value="Dehradun">Dehradun</option>
+      <option value="demo">Demo</option>
+      <option value="demo">Demo</option>
+      <option value="demo">Demo</option>
+    </select>
+    
+  </div> -->
+  
+  <!-- <div class="sidebar-box">
+    <h3>Distance</h3>
+  </div> -->
+  
+  <!-- <div class="sidebar-box">
+    
+    <h3>Price</h3>
+    
+    <%= f.text_field :services_selling_price_lteq %>
+    
+  </div> -->
+  <div class="sidebar-box">
+    
+    <h3>Gender</h3>
+    
+    <div class="sidebar-checkbox">
+      <%= f.collection_select :services_gender_id_in, Centertype.order(:name), :id, :name, {} %>
+    </div>
+    
+  </div>
+  
+  <div class="sidebar-box">
+    
+    <h3>Ratings</h3>
+    
+    <div class="sidebar-checkbox">
+    <input type="checkbox" name="1Star" id="1Star" class="css-checkbox" />
+      <label for="1Star" class="css-label"><p>1 Star</p></label>
+    </div>
+    
+    <div class="sidebar-checkbox">
+      <input type="checkbox" name="2Stars" id="2Stars" class="css-checkbox" />
+      <label for="2Stars" class="css-label"><p>2 Stars</p></label>
+    </div>
+    
+    <div class="sidebar-checkbox">
+      <input type="checkbox" name="3Stars" id="3Stars" class="css-checkbox" />
+      <label for="3Stars" class="css-label"><p>3 Stars</p></label>
+    </div>
+    
+    <div class="sidebar-checkbox">
+      <input type="checkbox" name="4Stars" id="4Stars" class="css-checkbox" />
+      <label for="4Stars" class="css-label"><p>4 Stars</p></label>
+    </div>
+    
+    <div class="sidebar-checkbox">
+      <input type="checkbox" name="5star" id="5star" class="css-checkbox" />
+      <label for="5star" class="css-label"><p>5 Stars</p></label>
+    </div>
+    
+  </div>
+  
+  <div class="sidebar-box">
+    <h3>Experience</h3>
+    <%= f.collection_select :centerinfo_experiences_id_in, Experience.order(:name), :id, :name, {} %>
+  </div>
+  <div class="sidebar-box right">
+  <%= f.submit 'Search', :class => 'btn btn-default', :style => '' %>
+  </div>
+<% end %>

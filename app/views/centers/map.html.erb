@@ -9,7 +9,7 @@ $(document).ready(function () {
         lng: <%= @centerinfo.longitude %>,
         width: '800px',
         height: '500px',
-        zoom: 6,
+        zoom: 17,
         content: '<div class="overlay"><%=@centerinfo.name  %></div>',
         zoomControl: true,
         zoomControlOpt: {
@@ -18,6 +18,11 @@ $(document).ready(function () {
         },
         panControl: false
     });
+    map.addMarker({
+         lat: <%= @centerinfo.latitude %>,
+         lng: <%= @centerinfo.longitude %>,
+         title: '<%= @centerinfo.name %>',
+    })
 });
 </script>
 
