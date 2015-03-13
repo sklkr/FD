@@ -18,15 +18,10 @@ Rails.application.routes.draw do
   patch 'customerdashboard/details_update'
 
   get 'customerdashboard/pass'
-
   get 'customerdashboard/bookings'
-
   get 'customerdashboard/transactions'
-
   get 'customerdashboard/preferences'
-
   get 'customerdashboard/referral'
-
   get 'sessions/partner'
   post 'sessions/partner_auth'
   
@@ -42,21 +37,18 @@ Rails.application.routes.draw do
   get 'registrations/customer'
   post 'registrations/customer_signup', :as => 'customer_signup'
 
-  get 'centers/:center_id/about' => 'centers#about', :as => 'center_about'
-  get 'centers/:center_id/services' => 'centers#services', :as => 'center_services'
-  get 'centers/:center_id/map' => 'centers#map', :as => 'center_map'
-  get 'centers/:center_id/reviews' => 'centers#reviews', :as => 'center_reviews'
-  get 'centers/:center_id/instructors' => 'centers#instructors', :as => 'center_instructors'
-  get 'centers/:center_id/experience' => 'centers#experience', :as => 'center_experience'
-  get 'centers/:center_id/hours' => 'centers#hours', :as => 'center_hours'
-  get 'centers/:center_id/upcoming' => 'centers#upcoming', :as => 'center_upcoming'
+  get 'centers/:center_id(/:category_id)/about' => 'centers#about', :as => 'center_about'
+  get 'centers/:center_id(/:category_id)/services' => 'centers#services', :as => 'center_services'
+  get 'centers/:center_id(/:category_id)/map' => 'centers#map', :as => 'center_map'
+  get 'centers/:center_id(/:category_id)/reviews' => 'centers#reviews', :as => 'center_reviews'
+  get 'centers/:center_id(/:category_id)/instructors' => 'centers#instructors', :as => 'center_instructors'
+  get 'centers/:center_id(/:category_id)/experience' => 'centers#experience', :as => 'center_experience'
+  get 'centers/:center_id(/:category_id)/hours' => 'centers#hours', :as => 'center_hours'
+  get 'centers/:center_id(/:category_id)/upcoming' => 'centers#upcoming', :as => 'center_upcoming'
 
   get 'filters/index'
-
-  get 'filters/list'
-
-  get 'filters/grid'
-
+  get 'filters/list(/:category_id)' => 'filters#list', :as => 'filters_list'
+  get 'filters/grid(/:category_id)' => 'filters#grid', :as => 'filters_grid'
   get 'filters/map'
 
   get 'homepage/index'

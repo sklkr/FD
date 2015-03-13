@@ -44,7 +44,10 @@ class RegistrationsController < ApplicationController
 
   def verify_email
     user = User.find_by_remember_token(params['token'])
-    unless user.nil?
+    if user.active == true
+      redirect_to page_path('confirmation')  if user.save
+    end
+    unless user.nil?  
       user.active = true
       redirect_to page_path('confirmation')  if user.save
     end

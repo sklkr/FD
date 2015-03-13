@@ -35,6 +35,6 @@ class ApplicationController < ActionController::Base
 
    private
     def partner_id
-      warden.user(:partner).id unless warden.user(:partner).nil?
+      warden.user(:partner).partner.id unless warden.user(:partner).nil?
     end
 end

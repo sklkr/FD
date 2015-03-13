@@ -65,3 +65,4 @@ gem 'ransack', github: 'activerecord-hackery/ransack'
 gem "refile", require: ["refile/rails", "refile/image_processing"]
 gem 'ratyrate'
 gem "bullet", :group => "development"
+gem 'high_voltage', '~> 2.2.1'

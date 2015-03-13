@@ -4,7 +4,7 @@
 	<%@centers.each do |s|  %>
 		<li class="comp-box barber-saloon">
 		 <div class="comp-pic">
-			<a href="<%= center_about_path(s.center.friendly_id) %>"> <%= image_tag attachment_url(s.center.centerinfo, :image, :fill, 150, 130) %></a>
+			<a href="<%= params[:category_id].nil? ? center_about_path(s.center.friendly_id) : center_about_path(s.center.friendly_id, params[:category_id]) %>"> <%= image_tag attachment_url(s.center.centerinfo, :image, :fill, 150, 130) %></a>
 		 </div>
 		 <div class="comp-info">
 			<div class="comp-title">

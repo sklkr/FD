@@ -80,7 +80,8 @@
 			<li class="<%= "active" if params[:controller].include? 'dashboard' %>"><a href="<%=partners_dashboard_path('kindle')  %>">Summary</a></li>
 			<li class="<%= "active" if params[:controller].include? 'center' %>"><a href="<%= partners_center_accounts_path('kindle') %>">Center Configuration</a>
 				<ul class="sub dropit-submenu" id="center-conf">
-				<%unless params[:controller].include? 'dashboard'  %>
+				<%unless params[:controller] == 'partners/centers'  %>
+				<%unless params[:controller].include? 'dashboard' %>
 					<%= nav_link 'Account Details', partners_center_accounts_path %>
 					<%= nav_link 'Center Setup', partners_center_details_path %>
 					<%= nav_link 'Services', partners_center_services_path %>
@@ -88,6 +89,7 @@
 					<%= nav_link 'Pass', '#' %>
 					<%= nav_link 'Coupons', '#' %>
 					<%= nav_link 'Center Manager', '#' %>
+				<%end  %>
 				<%end  %>
 				</ul>
 			</li>

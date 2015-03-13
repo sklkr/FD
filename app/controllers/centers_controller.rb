@@ -4,9 +4,20 @@ class CentersController < ApplicationController
   end
 
   def services
-    @ymka = center.services.where(category_id: [1,3,6,8])
-    @ssc = center.services.where(category_id: [4,7])
-    @gs = center.services.where(category_id: [2,5])
+    unless params['category_id'].nil?
+      d = Category.friendly.find(params['category_id']).id
+      if d == 1 || d == 3 || d == 8 || d == 6
+        @ymka = center.services.where(category_id: [1,3,6,8])
+      elsif d == 4 || d == 7
+        @ssc = center.services.where(category_id: [4,7])
+      elsif d == 2 || d == 5
+       @gs = center.services.where(category_id: [2,5])
+      end    
+    else 
+       @ymka = center.services.where(category_id: [1,3,6,8])
+       @ssc = center.services.where(category_id: [4,7])
+       @gs = center.services.where(category_id: [2,5])
+    end
   end
 
   def map

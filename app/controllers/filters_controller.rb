@@ -12,11 +12,12 @@ class FiltersController < ApplicationController
   end
 
   def map
+
+  end
+    
+  def assigners
+    @c = Center.ransack(params[:q])
+    @centers = @c.result(distinct: true).includes(:centerinfo).inject([]) { |center, p| center << p.centerinfo }
   end
 
-  private
-    def assigners
-      @c = Center.ransack(params[:q])
-      @centers = @c.result(distinct: true).includes(:centerinfo).inject([]) { |center, p| center << p.centerinfo }
-    end
 end

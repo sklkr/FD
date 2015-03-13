@@ -27,8 +27,7 @@ layout 'homepage'
 
   def partner_auth
     warden.authenticate!(:partner, scope: :partner)
-    binding.pry
-    redirect_to root_url
+    redirect_to partners_centers_path
   end
 
   def checker

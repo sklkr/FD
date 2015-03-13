@@ -6,7 +6,6 @@ Warden::Manager.serialize_from_session do |id|
   User.find_by_id(id)
 end
 
-
 class CustomerStrategy < ::Warden::Strategies::Base
   def valid?
     return false if request.get?
@@ -19,7 +18,7 @@ class CustomerStrategy < ::Warden::Strategies::Base
     if customer.nil? || customer.user.password != params["user"].fetch("password") || customer.user.active == false
       fail! :message => "strategies.password.failed"
     else
-      success! customer
+      success! customer.user
     end
   end
 end
@@ -33,10 +32,10 @@ class PartnerStrategy < ::Warden::Strategies::Base
 
   def authenticate!
     partner = Partner.find_by_email(params["user"].fetch("email"))
-    if partner.nil? || partner.user.password != params["user"].fetch("password") || partner.user.password == false
+    if partner.nil? || partner.user.password != params["user"].fetch("password") || partner.user.active == false
       fail! :message => "strategies.password.failed"
     else
-      success! partner
+      success! partner.user
     end
   end
 end
