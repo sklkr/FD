@@ -3,7 +3,6 @@ class RegistrationsController < ApplicationController
  layout 'homepage'
 
   def partner
-    
   end
 
   def customer
@@ -12,24 +11,43 @@ class RegistrationsController < ApplicationController
 
   def customer_signup
   	 cdata = Customer.new(customer_params)
-  	 if cdata.save && details(cdata, user_params).save
-  	 	redirect_to action: 'customer'
-  	 	flash[:success] = 'Customer created'
-  	 else
-  	 	render :text => 'something went wrong'
-  	 end
+     if cdata.save
+      use = details(cdata, user_params)
+       if use.save
+        VerificationMailer.welcome_email(use, cdata).deliver
+        flash[:success] = 'Please verify your email'
+        redirect_to page_path('verify')
+       else
+       render :text => 'something went wrong'
+       end
+     else
+      render :text => 'something went wrong'
+     end
   end
 
   def partner_signup
     pdata = Partner.new(partner_params)
-    if params[:user][:password] == params[:user][:password_conf] && pdata.save && details(pdata, user_params).save
-     # Directly authenticating here , change required
-      warden.authenticate!(:partner, scope: :partner)
-      redirect_to partners_centers_path
-      flash[:success] = 'Partner created'
+    if params[:user][:password] == params[:user][:password_conf] && pdata.save
+    use = details(pdata, user_params)
+     if use.save
+     # Directly authenticating here , change required 
+      VerificationMailer.welcome_email(use, pdata).deliver
+      flash[:success] = 'Please verify your email'
+      redirect_to page_path('verify')
+     else
+      render :text => 'something went wrong'
+     end
     else
       render :text => 'something went wrong'
     end 
+  end
+
+  def verify_email
+    user = User.find_by_remember_token(params['token'])
+    unless user.nil?
+      user.active = true
+      redirect_to page_path('confirmation')  if user.save
+    end
   end
 
   private

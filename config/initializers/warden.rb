@@ -16,7 +16,7 @@ class CustomerStrategy < ::Warden::Strategies::Base
 
   def authenticate!
     customer = Customer.find_by_email(params["user"].fetch("email"))
-    if customer.nil? || customer.user.password != params["user"].fetch("password")
+    if customer.nil? || customer.user.password != params["user"].fetch("password") || customer.user.active == false
       fail! :message => "strategies.password.failed"
     else
       success! customer
@@ -33,7 +33,7 @@ class PartnerStrategy < ::Warden::Strategies::Base
 
   def authenticate!
     partner = Partner.find_by_email(params["user"].fetch("email"))
-    if partner.nil? || partner.user.password != params["user"].fetch("password")
+    if partner.nil? || partner.user.password != params["user"].fetch("password") || partner.user.password == false
       fail! :message => "strategies.password.failed"
     else
       success! partner

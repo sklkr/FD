@@ -11,4 +11,6 @@ ActionMailer::Base.smtp_settings = {
    :domain => "zoho.com",
    :user_name => "noreply@fitnesspapa.com",
    :password => "wisdom@123",
+   :authentication => 'plain',
+   :ssl => true,
 }

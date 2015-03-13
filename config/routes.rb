@@ -27,14 +27,6 @@ Rails.application.routes.draw do
 
   get 'customerdashboard/referral'
 
-  get 'pages/about'
-
-  get 'pages/partners'
-
-  get 'pages/license'
-
-  get 'pages/terms'
-
   get 'sessions/partner'
   post 'sessions/partner_auth'
   
@@ -46,6 +38,7 @@ Rails.application.routes.draw do
   get 'registrations/partner'
   post 'registrations/partner_signup', :as => 'partner_signup'
 
+  get 'registrations/verify_email/:token' => 'registrations#verify_email', :as => 'registrations_verify_email'
   get 'registrations/customer'
   post 'registrations/customer_signup', :as => 'customer_signup'
 
@@ -72,7 +65,7 @@ Rails.application.routes.draw do
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  root 'homepage#index'
+  root :to => 'homepage#index'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

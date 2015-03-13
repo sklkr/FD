@@ -22,11 +22,13 @@ layout 'homepage'
 
   def customer_logout
     warden.logout
+    redirect_to root_url
   end
 
   def partner_auth
     warden.authenticate!(:partner, scope: :partner)
-    redirect_to partners_centers_path
+    binding.pry
+    redirect_to root_url
   end
 
   def checker

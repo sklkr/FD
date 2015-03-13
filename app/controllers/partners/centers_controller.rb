@@ -1,9 +1,8 @@
 module Partners
 class CentersController < ApplicationController 
-skip_before_filter :authenticate!
-before_filter :partner_authenticated?
 layout 'partnerdashboard'
   def index
+    binding.pry
   	unless centers_list.blank?
   		redirect_to partners_center_accounts_path(centers_list.first.friendly_id)
   	else
