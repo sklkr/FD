@@ -1,0 +1,70 @@
+<%=form_for @details, url: getpath, method: getmethod, multipart: true do |f| %>
+	<div class="row">
+		<fieldset>
+			<legend>Account Details</legend>
+			<div class="large-6 columns">
+				<div class="row">
+					<div class="small-4 columns"><label for='center[name]' class="inline">Name</label></div>
+					<div class="small-8 columns"><%= f.text_field :first_name, :class => '' %></div>
+				</div>	
+				<div class="row">
+					<div class="small-4 columns"><label for="center[Email]" class="inline">Email</label></div>
+					<div class="small-8 columns"><%= text_field_tag 'email', nil, :value => @email %></div>
+				</div>
+				<div class="row">
+				    <div class="small-4 columns"></div>
+					<div class="small-8 columns" style="margin-bottom:12px"><a href="#" style="font-size:14px;text-decoration:underline">Change Password</a></div>
+				</div>
+				<div class="row">
+					<div class="small-4 columns"><label for="" class="inline">Gender</label></div>
+					<div class="small-8 columns"><%= f.select :centertype_id, options_from_collection_for_select(Centertype.find([3,4]), 'id', 'name'), :id => 'centertype' %></div>
+				</div>
+				<div class="row">
+					<div class="small-4 columns"><label for='center[name]' class="inline">Address</label></div>
+					<div class="small-8 columns"><%= f.text_field :address1, :class => '', :placeholder => 'Address 1' %><%= f.text_field :address2, :class =>'' , :placeholder => 'Address 2' %>
+						<div class="row">
+							<div class="small-4 columns">
+								<%= f.text_field :area, :class => '', :placeholder => 'Area' %>
+							</div>
+							<div class="small-8 columns">
+								<%= f.text_field :city, :class => '', :placeholder => 'city	' %>
+							</div>
+						</div>
+					</div>
+				</div>
+				
+			</div>
+			<div class="large-6 columns">
+				<div class="row" style="margin-bottom:12px">
+					<div class="small-3 columns"><label for="center[brandphoto]" class="inline">Account Photo</label></div>
+					<div class="small-3 columns" style="text-align:center"><%= image_tag attachment_url(@details, :image, :fill, 100, 100), :class => 'th', :style => 'margin-bottom:8px' %>
+					<a href="" style="font-size:14px;text-decoration:underline">Remove</a>
+					</div>
+					<div class="small-6 columns"><%= f.attachment_field :image, :style => 'padding: 0.5625rem 0' %></div>
+				</div>
+				<div class="row">
+					<div class="small-12 columns">&nbsp;</div>
+				</div>
+				<div class="row">
+					<div class="small-12 columns">&nbsp;</div>
+				</div>
+				<div class="row">
+					<div class="small-4 columns"><label for='center[name]' class="inline">Phone</label></div>
+					<div class="small-8 columns"><%= f.text_field :phone, :class => '', :placeholder => "Phone" %></div>
+				</div>
+				<div class="row">
+					<div class="small-4 columns"><label for='center[name]' class="inline">Emergency contact</label></div>
+					<div class="small-8 columns"><%= f.text_field :emergency_phone, :class => '', :placeholder => 'Name' %><%= f.text_field :emergency_phone, :class => '', :placeholder => 'Phone number' %></div>
+				</div>
+			</div>
+			<div class="row" style="clear:both;padding-top:20px;padding-right:23px">
+				<div class="large-12">
+				<div class="right">
+					<%= submit_tag act, :class => 'button small radius wymupdate' %>
+				</div>
+			</div>
+		</fieldset>
+		</div>
+	</div>
+<%end  %>
+

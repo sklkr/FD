@@ -3,7 +3,7 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
 
-   helper_method :warden, :signed_in?, :current_user
+   helper_method :warden, :signed_in?, :current_user, :is_partner?, :is_customer?
 
    def signed_in?
      !current_user.nil?
@@ -13,12 +13,28 @@ class ApplicationController < ActionController::Base
      warden.user || warden.user(:partner)
    end
 
+   def is_partner?
+    warden.authenticated?(:partner)
+   end
+
+   def is_customer?
+    warden.authenticated?
+   end
+
    def warden
      request.env['warden']
    end
 
    def authenticate!
      warden.authenticate!
+   end
+
+   def customer_authenticated?
+    redirect_to sessions_customer_path unless warden.authenticated?
+   end
+
+   def customer_accessable?
+    # restrictions for customers
    end
 
    def partner_authenticated?

@@ -1,4 +1,5 @@
 class CustomerdashboardController < ApplicationController
+
   def details
     @customer = current_user
   end

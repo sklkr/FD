@@ -5,9 +5,9 @@
 				<div class="small-4 columns"><label for="service[type]" class="inline">Service Type -</label></div>
 				<div class="small-8 columns">
 				<%if(@service.service_type == '2') %>
-					<%= f.select :service_type, "<option value='1'>Regular Service</option><option value='2' selected >Upcoming Class</option>".html_safe %>
+					<%= f.select :service_type, "<option value='1'>Regular Service</option><option value='2' selected >Upcoming Event</option>".html_safe %>
 				<%else  %>
-					<%= f.select :service_type, "<option value='1'>Regular Service</option><option value='2'>Upcoming Class</option>".html_safe %>
+					<%= f.select :service_type, "<option value='1'>Regular Service</option><option value='2'>Upcoming Event</option>".html_safe %>
 				<%end  %>
 
 				</div>

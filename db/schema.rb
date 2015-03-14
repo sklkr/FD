@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150313095844) do
+ActiveRecord::Schema.define(version: 20150314121732) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -154,6 +154,7 @@ ActiveRecord::Schema.define(version: 20150313095844) do
     t.string   "email"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "user_id"
   end
 
   create_table "experiences", force: true do |t|
@@ -225,6 +226,7 @@ ActiveRecord::Schema.define(version: 20150313095844) do
     t.datetime "updated_at"
     t.string   "business_name"
     t.integer  "category_id"
+    t.integer  "user_id"
   end
 
   create_table "rates", force: true do |t|
@@ -266,7 +268,6 @@ ActiveRecord::Schema.define(version: 20150313095844) do
     t.integer  "category_id"
     t.string   "service_type"
     t.string   "name"
-    t.datetime "validity"
     t.string   "time_taken"
     t.float    "original_price"
     t.float    "selling_price"
@@ -281,6 +282,7 @@ ActiveRecord::Schema.define(version: 20150313095844) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "days"
+    t.integer  "validity"
   end
 
   add_index "services", ["category_id"], name: "index_services_on_category_id", using: :btree
@@ -323,6 +325,16 @@ ActiveRecord::Schema.define(version: 20150313095844) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.boolean  "active",                    default: false
+    t.string   "phone"
+    t.string   "emergency_name"
+    t.string   "emergency_phone"
+    t.integer  "centertype_id"
+    t.string   "address1"
+    t.string   "address2"
+    t.string   "area"
+    t.string   "city"
+    t.string   "country"
+    t.string   "image_id"
   end
 
   add_index "users", ["member_id"], name: "index_users_on_member_id", using: :btree

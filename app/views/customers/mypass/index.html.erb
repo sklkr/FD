@@ -1,0 +1,24 @@
+<div style="min-height:380px">
+	<table class="table">
+	  <thead>
+	    <tr>
+	      <th style="width:40%">Service Name</th>
+	      <th style="width:14%">Order Id</th>
+	      <th style="width:29%">Details</th>
+	      <th>Status</th>
+	    </tr>
+	  </thead>
+	  <tbody>
+		<%unless @mypass.blank? || !@mypass[0] %>
+			<%@mypass.each do |booking| %>
+			  <tr>
+			    <td><%= booking.service.name %></td>
+			    <td><a href="#">OD11304904343</a></td>
+			    <td><%= booking.service.service_desc %></td>
+			    <td><%= booking.service.status %></td>
+			  </tr>
+			<%end %>
+		<%end%>
+	  </tbody>
+	</table>
+</div>

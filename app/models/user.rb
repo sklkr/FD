@@ -2,10 +2,14 @@ require 'bcrypt'
 
 class User < ActiveRecord::Base
   include BCrypt
-  belongs_to :customer
-  belongs_to :partner, foreign_key: 'member_id'
+  has_one :partner
+  has_one :customer
   ratyrate_rater
   before_create :generate_confirmation_token
+  accepts_nested_attributes_for :customer
+  attachment :image
+  belongs_to :centertype
+
 
   def password
     @password ||= Password.new(self.crypted_password)

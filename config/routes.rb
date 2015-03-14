@@ -16,12 +16,12 @@ Rails.application.routes.draw do
   
   get 'customerdashboard/details'
   patch 'customerdashboard/details_update'
+ 
+  get 'populars/index(/:category_id)' => 'populars#index', :as => 'populars_index'
 
-  get 'customerdashboard/pass'
-  get 'customerdashboard/bookings'
-  get 'customerdashboard/transactions'
-  get 'customerdashboard/preferences'
-  get 'customerdashboard/referral'
+  namespace :customers do 
+    resources :details, :bookings, :mypass
+  end
   get 'sessions/partner'
   post 'sessions/partner_auth'
   

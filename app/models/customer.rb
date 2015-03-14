@@ -1,4 +1,6 @@
 class Customer < ActiveRecord::Base
-  has_one :user, foreign_key: 'member_id'
+  extend FriendlyId
+  belongs_to :user
   validates :email, :presence => true
+  friendly_id :email
 end

@@ -662,8 +662,56 @@ header.yoga{
     line-height: 0;
     background-size: 100% auto;
     background-repeat: no-repeat;
-    background-image: url("../assets/yoga-banner.jpg");
+    background-image: url("../assets/yoga.jpg");
 }
+
+header.gym{
+    width: 100%;
+    height: 402px;
+    font-size: 0px;
+    line-height: 0;
+    background-size: 100% auto;
+    background-repeat: no-repeat;
+    background-image: url("../assets/gym.jpg");
+}
+header.swimming{
+    width: 100%;
+    height: 402px;
+    font-size: 0px;
+    line-height: 0;
+    background-size: 100% auto;
+    background-repeat: no-repeat;
+    background-image: url("../assets/swimming.jpg");
+}
+header.meditation{
+    width: 100%;
+    height: 402px;
+    font-size: 0px;
+    line-height: 0;
+    background-size: 100% auto;
+    background-repeat: no-repeat;
+    background-image: url("../assets/meditation.jpg");
+}
+header.kids{
+    width: 100%;
+    height: 402px;
+    font-size: 0px;
+    line-height: 0;
+    background-size: 100% auto;
+    background-repeat: no-repeat;
+    background-image: url("../assets/kids.jpg");
+}
+
+header.gym{
+    width: 100%;
+    height: 402px;
+    font-size: 0px;
+    line-height: 0;
+    background-size: 100% auto;
+    background-repeat: no-repeat;
+    background-image: url("../assets/gym.jpg");
+}
+
 .find-serv {
     float: left;
     width: 100%;
