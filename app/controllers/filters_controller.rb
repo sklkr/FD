@@ -17,7 +17,7 @@ class FiltersController < ApplicationController
     
   def assigners
     @c = Center.ransack(params[:q])
-    @centers = @c.result(distinct: true).includes(:centerinfo).inject([]) { |center, p| center << p.centerinfo }
+    @centers = @c.result(distinct: true).includes(:centerinfo, :services).inject([]) { |center, p| center << p.centerinfo }
   end
 
 end

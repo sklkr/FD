@@ -1,7 +1,7 @@
 <ul class="inline-list right" style="margin-top:13px;margin-bottom:0px">
  <% unless signed_in?  %>
 	<li><a href="<%= registrations_customer_path %>">Sign Up</a></li>
-	<li><a href=" <%=sessions_customer_path %> ">Sign In</a></li>
+	<li><a href="<%=sessions_customer_path %> ">Sign In</a></li>
 	<li class="active"><a href=" <%= registrations_partner_path  %>">Register Your Business</a></li>
  <%end%>
  <% if is_customer? %>

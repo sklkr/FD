@@ -66,3 +66,8 @@ gem "refile", require: ["refile/rails", "refile/image_processing"]
 gem 'ratyrate'
 gem "bullet", :group => "development"
 gem 'high_voltage', '~> 2.2.1'
+gem "rails_best_practices"
+
+group :development do
+  gem 'brakeman', :require => false
+end

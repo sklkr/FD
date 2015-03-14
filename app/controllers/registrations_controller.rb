@@ -10,10 +10,11 @@ class RegistrationsController < ApplicationController
   end
 
   def customer_signup
-  	 cdata = Customer.new(customer_params)
-     if cdata.save
-      use = details(cdata, user_params)
-       if use.save
+     user = User.new(user_params)
+     if user.save
+      cdata = Customer.new(customer_params)
+      cdata.user_id = user.id
+       if cdata.save
         VerificationMailer.welcome_email(use, cdata).deliver
         flash[:success] = 'Please verify your email'
         redirect_to page_path('verify')
@@ -26,10 +27,11 @@ class RegistrationsController < ApplicationController
   end
 
   def partner_signup
-    pdata = Partner.new(partner_params)
-    if params[:user][:password] == params[:user][:password_conf] && pdata.save
-    use = details(pdata, user_params)
-     if use.save
+    user = User.new(user_params)
+    if params[:user][:password] == params[:user][:password_conf] && user.save
+     pdata = Partner.new(partner_params)
+     pdata.user_id = user.id
+     if pdata.save
      # Directly authenticating here , change required 
       VerificationMailer.welcome_email(use, pdata).deliver
       flash[:success] = 'Please verify your email'

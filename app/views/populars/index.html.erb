@@ -4,7 +4,7 @@
 	<div class="header">
 		
 		<div class="logo">
-		<a href="index.html"><img src="/assets/logo.png" alt=""></a>
+		<a href="<%= root_url %>"><img src="/assets/logo.png" alt=""></a>
 		</div>
 		<!-- menu -->
 		<div class="nav-top">
@@ -51,7 +51,7 @@
 	
 		<div class="container-main">
 			<div class="sqr-box-title">
-			<h2>Popular In Yoga</h2>
+			<h2>Popular In <%= params[:category_id].capitalize if params[:category_id] != 'spa' %> <%= "Spa & Saloon"  if params[:category_id] == 'spa' %></h2>
 			</div>
 			<div class="sqr-boxs-cat">
 				

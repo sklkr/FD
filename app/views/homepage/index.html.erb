@@ -4,7 +4,7 @@
 			<div class="header">
 				
 				<div class="logo">
-				<a href="index.html"><img src="./assets/logo.png" alt=""></a>
+				<a href="<%= root_url %>"><img src="./assets/logo.png" alt=""></a>
 				</div>
 				<!-- menu -->
 				<div class="nav-top">
@@ -35,20 +35,11 @@
 				
 					<div class="sqr-boxs-cat">
 					<div class="sqr-box-title">
-					<h2>Lorem ipsum dolor sit amet</h2>
+					<h2>Fitness Services</h2>
 					</div>
 					<div class="sqr-boxs-list">
 						<div class="sqr-boxs-img">
-							<a href="<%= filters_grid_path('Yoga') %>"><img src="./assets/sqr_img1.jpg" alt=""></a>
-						</div>
-						<div class="sqr-boxs-txt">
-							<h4><a href="yoga.html">YOGA</a></h4>
-						</div>
-					</div>
-					
-					<div class="sqr-boxs-list">
-						<div class="sqr-boxs-img">
-							<a href="<%= filters_grid_path('Gym') %>"><img src="./assets/sqr_img2.jpg" alt=""></a>
+							<a href="<%= populars_index_path('gym') %>"><img src="./assets/gym-small.jpg" alt=""></a>
 						</div>
 						<div class="sqr-boxs-txt">
 							<h4><a href="#">gym</a></h4>
@@ -57,7 +48,26 @@
 					
 					<div class="sqr-boxs-list">
 						<div class="sqr-boxs-img">
-							<a href="<%= filters_grid_path('Meditation') %>"><img src="./assets/sqr_img3.jpg" alt=""></a>
+							<a href="<%= populars_index_path('swimming') %>"><img src="./assets/swimming-small.jpg" alt=""></a>
+						</div>
+						<div class="sqr-boxs-txt">
+							<h4><a href="#">swimming</a></h4>
+						</div>
+					</div>
+
+					<div class="sqr-boxs-list">
+						<div class="sqr-boxs-img">
+							<a href="<%= populars_index_path('yoga') %>"><img src="./assets/yoga-small.jpg" alt=""></a>
+						</div>
+						<div class="sqr-boxs-txt">
+							<h4><a href="yoga.html">YOGA</a></h4>
+						</div>
+					</div>
+					
+					
+					<div class="sqr-boxs-list">
+						<div class="sqr-boxs-img">
+							<a href="<%= populars_index_path('meditation') %>"><img src="./assets/meditation-small.jpg" alt=""></a>
 						</div>
 						<div class="sqr-boxs-txt">
 							<h4><a href="#">meditation</a></h4>
@@ -66,7 +76,16 @@
 					
 					<div class="sqr-boxs-list">
 						<div class="sqr-boxs-img">
-							<a href="<%= filters_grid_path('Spa & Saloon') %>"><img src="./assets/sqr_img4.jpg" alt=""></a>
+							<a href="<%= populars_index_path('adventure') %>"><img src="./assets/adventure-small.jpg" alt=""></a>
+						</div>
+						<div class="sqr-boxs-txt">
+							<h4><a href="#">adventure</a></h4>
+						</div>
+					</div>
+
+					<div class="sqr-boxs-list">
+						<div class="sqr-boxs-img">
+							<a href="<%= populars_index_path('spa') %>"><img src="./assets/spa-small.jpg" alt=""></a>
 						</div>
 						<div class="sqr-boxs-txt">
 							<h4><a href="#">spa & saloon</a></h4>
@@ -75,25 +94,7 @@
 					
 					<div class="sqr-boxs-list">
 						<div class="sqr-boxs-img">
-							<a href="<%= filters_grid_path('Swimming') %>"><img src="./assets/sqr_img5.jpg" alt=""></a>
-						</div>
-						<div class="sqr-boxs-txt">
-							<h4><a href="#">swimming</a></h4>
-						</div>
-					</div>
-					
-					<div class="sqr-boxs-list">
-						<div class="sqr-boxs-img">
-							<a href="<%= filters_grid_path('Adventure') %>"><img src="./assets/sqr_img6.jpg" alt=""></a>
-						</div>
-						<div class="sqr-boxs-txt">
-							<h4><a href="#">adventure</a></h4>
-						</div>
-					</div>
-					
-					<div class="sqr-boxs-list">
-						<div class="sqr-boxs-img">
-							<a href="<%= filters_grid_path('Consultant') %>"><img src="./assets/sqr_img7.jpg" alt=""></a>
+							<a href="<%= populars_index_path('consultant') %>"><img src="./assets/consultant-small.jpg" alt=""></a>
 						</div>
 						<div class="sqr-boxs-txt">
 							<h4><a href="#">consultant</a></h4>
@@ -102,7 +103,7 @@
 					
 					<div class="sqr-boxs-list">
 						<div class="sqr-boxs-img">
-							<a href="<%= filters_grid_path('Kids zone') %>"><img src="./assets/sqr_img8.jpg" alt=""></a>
+							<a href="<%= populars_index_path('kids') %>"><img src="./assets/kids-small.jpg" alt=""></a>
 						</div>
 						<div class="sqr-boxs-txt">
 							<h4><a href="#">kids zone</a></h4>
