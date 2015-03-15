@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
- 
+
+ mount Lockup::Engine, at: '/lockup'
+
   get 'bookings/:center_id/:id/index' => 'bookings#index', as: 'book_now'
   post 'bookings/create'
   get 'bookings/:center_id/:id/add_details' => 'bookings#add_details', as: 'add_details'

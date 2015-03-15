@@ -71,3 +71,6 @@ gem "rails_best_practices"
 group :development do
   gem 'brakeman', :require => false
 end
+
+
+gem 'lockup'
