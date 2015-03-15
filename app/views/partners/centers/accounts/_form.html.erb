@@ -85,8 +85,9 @@
 				<%= f.text_field :address_1, :placeholder => 'Address Line 1'  ,:required => true%> 
 				<%= f.text_field :address_2, :placeholder => 'Address Line 2'  ,:required => true%> 
 				<%= f.text_field :landmark, :placeholder => 'Landmark'  ,:required => true%>
+				<%= f.text_field :area, :placeholder => 'Area name'  ,:required => true%>
 				<div class="row">
-					<div class="small-6 columns"><%= f.text_field :city, :placeholder => 'City'  ,:required => true%></div>
+					<div class="small-6 columns"><%= text_field_tag 'accountinfo[city]', @account.try(:center).try(:city).try(:name), :placeholder => 'City'  ,:required => true%></div>
 					<div class="small-6 columns"><%= f.text_field :pin, :placeholder => '560012'   ,:required => true%></div>
 				</div>
 				</div>
@@ -227,5 +228,9 @@
 $(document).ready(function() {
   $('.menu').dropit();
   $('#center-conf').css('display', 'block');
+  window.availableTags = <%= raw @cities %>;
+  $("#accountinfo_city").autocomplete({
+    source: availableTags
+  });
 });
 </script>

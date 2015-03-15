@@ -13,7 +13,7 @@ layout 'homepage'
   def customer_auth
     authenticate!
     unless params[:url].nil?
-      redirect_to params[:url]
+      redirect_to customers_detail_path('secure')
     else
     render :text => 'authenticated'
     end

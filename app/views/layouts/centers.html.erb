@@ -2,6 +2,8 @@
 <html>
 <head>
 	<%= render :partial => 'layouts/head' %>
+	<link rel="stylesheet" href="/assets/owl.carousel.css">
+	<script src='/assets/owl.carousel.js'></script>
 </head>
 <body>
  <%= render :partial => 'layouts/header' %>
@@ -16,27 +18,26 @@
  		<div class="sqr-boxs-cat">
  		
  		<div class="slider">
- 			<ul class="bxslider">
- 			  <li><%= image_tag attachment_url(@centerinfo, :image) %></li>
-				<% @photos.each do |p| %>
-				 <li><%= image_tag attachment_url(p, :image) %></li>
-				<%end  %>
- 			</ul>
+ 			<div class="owl-carousel">
+			  <% @photos.each do |p| %>
+			  	<div><%= image_tag attachment_url(p, :image), :style => 'width:100%' %></div>
+			  <%end  %>
+ 			</div>
 
- 			<div id="bx-pager">
- 			  <a data-slide-index="0" href=""><%= image_tag attachment_url(@centerinfo, :image, :fill, 132, 87) %></a>
- 			  <% @photos.each_with_index do |p, index| %>
- 			  	<%unless index >= 2 %>
- 			  	<a data-slide-index="<%= index+1 %>" href=""><%= image_tag attachment_url(p, :image, :fill, 132, 87) %></a>
- 			  	<%end  %>
- 			  <%end  %>
- 			</div>	
+ 			<!-- <div id="bx-pager">
+ 				  <a data-slide-index="0" href=""><%= image_tag attachment_url(@centerinfo, :image, :fill, 132, 87) %></a>
+ 				  <% @photos.each_with_index do |p, index| %>
+ 				  	<%unless index >= 2 %>
+ 				  	<a data-slide-index="<%= index+1 %>" href=""><%= image_tag attachment_url(p, :image, :fill, 132, 87) %></a>
+ 				  	<%end  %>
+ 				  <%end  %>
+ 				</div> -->	
  		</div>
  		<div class="contact-detail">
  			<div class="box-detail-main">
  				<div class="box-detail">
  					<h2>Contact</h2>
- 					<p><%= @accountinfo.address_1 %>, <%= @accountinfo.address_2 %><br><%= @accountinfo.city %>, <%= @accountinfo.pin %></p>
+ 					<p><%= @accountinfo.address_1 %>, <%= @accountinfo.address_2 %><br><%= @accountinfo.center.city.name %>, <%= @accountinfo.pin %></p>
  				</div>
  				<div class="box-detail">
  					<h2>Phone</h2>
@@ -72,13 +73,13 @@
  		<div class="container-main">
  		<div id="container-tabs">
  			<ul class="tabs">
-			    <%= nav_with_target 'About', center_about_path, '#container-tabs' %>
- 				<%= nav_with_target 'Services', center_services_path, '#container-tabs' %>
- 				<%= nav_with_target 'Map', center_map_path, '#container-tabs' %>
- 				<%= nav_with_target 'Reviews', center_reviews_path, '#container-tabs' %>
- 				<%= nav_with_target 'Instructors', center_instructors_path, '#container-tabs' %>
- 				<%= nav_with_target 'Experience', center_experience_path, '#container-tabs' %>
- 				<%= nav_with_target 'Upcoming Classes', center_upcoming_path, '#container-tabs' %>
+			    <%= nav_with_target 'About', center_about_path(:category_id => params[:category_id]), '#container-tabs' %>
+ 				<%= nav_with_target 'Services', center_services_path(:category_id => params[:category_id]), '#container-tabs' %>
+ 				<%= nav_with_target 'Map', center_map_path(:category_id => params[:category_id]), '#container-tabs' %>
+ 				<%= nav_with_target 'Reviews', center_reviews_path(:category_id => params[:category_id]), '#container-tabs' %>
+ 				<%= nav_with_target 'Instructors', center_instructors_path(:category_id => params[:category_id]), '#container-tabs' %>
+ 				<%= nav_with_target 'Experience', center_experience_path(:category_id => params[:category_id]), '#container-tabs' %>
+ 				<%= nav_with_target 'Upcoming Classes', center_upcoming_path(:category_id => params[:category_id]), '#container-tabs' %>
  			</ul>
  			
  			<div id="tab_main_content">
@@ -98,6 +99,11 @@
  <%= render :partial => 'layouts/secure' %>
  <%= render :partial => 'layouts/footer' %>
 
- 
+ <script>
+ $(".owl-carousel").owlCarousel({
+ 	autoPlay: 2000, //Set AutoPlay to 3 seconds
+ 	items : 1,
+ 	});
+ </script>
 </body>
 </html>

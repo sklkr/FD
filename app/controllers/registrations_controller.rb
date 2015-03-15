@@ -3,6 +3,7 @@ class RegistrationsController < ApplicationController
  layout 'homepage'
 
   def partner
+    @cities = cities
   end
 
   def customer
@@ -15,7 +16,7 @@ class RegistrationsController < ApplicationController
       cdata = Customer.new(customer_params)
       cdata.user_id = user.id
        if cdata.save
-        VerificationMailer.welcome_email(use, cdata).deliver
+        VerificationMailer.welcome_email(user, cdata).deliver
         flash[:success] = 'Please verify your email'
         redirect_to page_path('verify')
        else
@@ -33,7 +34,7 @@ class RegistrationsController < ApplicationController
      pdata.user_id = user.id
      if pdata.save
      # Directly authenticating here , change required 
-      VerificationMailer.welcome_email(use, pdata).deliver
+      VerificationMailer.welcome_email(user, pdata).deliver
       flash[:success] = 'Please verify your email'
       redirect_to page_path('verify')
      else
@@ -61,7 +62,7 @@ class RegistrationsController < ApplicationController
   	end
 
   	def user_params
-  		params.require(:user).permit(:password, :first_name, :last_name)
+  		params.require(:user).permit(:password, :first_name, :last_name, :city)
   	end
 
   	def details(base, data)
@@ -71,6 +72,6 @@ class RegistrationsController < ApplicationController
   	end
 
     def partner_params
-      params.require(:user).permit(:email, :business_name, :category_id)
+      params.require(:user).permit(:email, :business_name, :category_id, )
     end
 end

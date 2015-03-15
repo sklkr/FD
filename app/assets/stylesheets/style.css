@@ -791,7 +791,7 @@ header.consultant{
     width: 200px;
     margin: 0px;
 }
-.search-sec-main input[type="button"] {
+.search-sec-main input[type="submit"] {
     float: left;
     width: 130px;
     border: medium none;
@@ -806,6 +806,7 @@ header.consultant{
     padding: 13px 12px;
 }
 .search-sec-main  input[type="button"],
+.search-sec-main input[type='submit'],
 .search-sec-main input[type="text"],
 .search-sec-main select 
  {
@@ -818,7 +819,7 @@ header.consultant{
     border: 1px solid #E1E8ED;
     float: left;
     padding: 25px;
-    background: url("../assets/yoga-icon.png") no-repeat scroll right bottom / 50px auto transparent;
+/*     background: url("../assets/yoga-icon.png") no-repeat scroll right bottom / 50px auto transparent; */
     margin-left: 18px;
     margin-bottom: 18px;
     border-radius: 2px;
@@ -886,6 +887,7 @@ header.consultant{
     font-size: 14px;
     line-height: 20px;
     color: #484848;
+    min-height: 75px;
 }
     
 .scroll-more{
@@ -3155,7 +3157,7 @@ header.yoga {
     background-position: left center;
 }
 
-.search-sec-main input[type="button"] {
+.search-sec-main input[type="submit"] {
     background-size:10px auto;
     background-position: 134px center ;
     padding: 8px 62px;
@@ -3781,13 +3783,13 @@ header.yoga {
     width: 118px;
     background-size: 32px auto;
 }
-.search-sec-main input[type="button"] {
+.search-sec-main input[type="submit"] {
     width: 85px;
     background-position: 87px center;
     padding: 7px 6px;
     background-size: 12px auto;
 }
-.search-sec-main input[type="button"],
+.search-sec-main input[type="submit"],
 .search-sec-main input[type="text"], 
 .search-sec-main select {
     font-size: 11px;
@@ -4280,7 +4282,7 @@ header.yoga {
     padding: 9px 38px;
     width: 150px;
 }
-.search-sec-main input[type="button"] {
+.search-sec-main input[type="submit"] {
     width: 115px;
     background-position: 90px center;
     padding: 8px 10px;
@@ -4628,7 +4630,7 @@ header.yoga {
     padding: 12px 38px;
     width: 170px;
 }
-.search-sec-main input[type="button"] {
+.search-sec-main input[type="submit"] {
     width: 120px;
     background-position:90px center;
     padding: 11px 12px;
@@ -4682,7 +4684,7 @@ header.yoga {
     padding: 12px 38px;
     width: 170px;
 }
-.search-sec-main input[type="button"] {
+.search-sec-main input[type="submit"] {
     width: 120px;
     background-position:90px center ;
     padding: 11px 12px;
@@ -4695,10 +4697,6 @@ header.yoga {
 header.home {
     height: 670px;
     }
-header.yoga {
-    height: 402px;
-    background-image: url("../assets/yoga-banner-1280.jpg");
-}
     }
 
 @media only screen and (min-width: 1920px) {
@@ -4891,7 +4889,7 @@ header.yoga {
 .search-sec-main {
     padding: 10px;
 }
-.search-sec-main input[type="button"], .search-sec-main input[type="text"], .search-sec-main select {
+.search-sec-main input[type="submit"], .search-sec-main input[type="text"], .search-sec-main select {
     font-size: 14px;
 }
 .search-sec-main select {
@@ -4903,7 +4901,7 @@ header.yoga {
     padding: 19px 45px;
     width: 288px;
 }
-.search-sec-main input[type="button"] {
+.search-sec-main input[type="submit"] {
     width: 157px;
     background: url("../assets/search-icon.png") no-repeat scroll 115px center / 18px auto rgb(230, 126, 34);
     padding: 18px 20px;

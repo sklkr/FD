@@ -18,6 +18,7 @@ Rails.application.routes.draw do
   patch 'customerdashboard/details_update'
  
   get 'populars/index(/:category_id)' => 'populars#index', :as => 'populars_index'
+  post 'populars/search'
 
   namespace :customers do 
     resources :details, :bookings, :mypass

@@ -1,7 +1,7 @@
 <%= search_form_for @c, :url => act do |f| %>
   <div class="sidebar-box">
     <h3>Category</h3>
-    <%= f.collection_select :centerinfo_categories_id_in, Category.order(:name), :id, :name, {} %>
+    <%= f.collection_select :centerinfo_categories_id_in, Category.order(:name), :id, :name, {:prompt => "-- Select Category --"} %>
   </div>
   <!-- <div class="sidebar-box">
   
@@ -28,13 +28,8 @@
     
   </div> -->
   <div class="sidebar-box">
-    
     <h3>Gender</h3>
-    
-    <div class="sidebar-checkbox">
-      <%= f.collection_select :services_gender_id_in, Centertype.order(:name), :id, :name, {} %>
-    </div>
-    
+      <%= f.collection_select :services_gender_id_in, Centertype.order(:name), :id, :name, {:prompt => "-- Select Gender --"} %>
   </div>
   
   <div class="sidebar-box">
@@ -70,7 +65,7 @@
   
   <div class="sidebar-box">
     <h3>Experience</h3>
-    <%= f.collection_select :centerinfo_experiences_id_in, Experience.order(:name), :id, :name, {} %>
+    <%= f.collection_select :centerinfo_experiences_id_in, Experience.order(:name), :id, :name, {:prompt => "-- Choose Experience --"} %>
   </div>
   <div class="sidebar-box right">
   <%= f.submit 'Search', :class => 'btn btn-default', :style => '' %>

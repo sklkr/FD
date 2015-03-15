@@ -45,18 +45,18 @@
 				
 				<div class="form-field">
 				 <p>Category</p>
-         		 <%= select_tag "user[category_id]", options_from_collection_for_select(Category.all, "id", "name") %>
+         		 <%= select_tag "user[category_id]", options_from_collection_for_select(Category.all, "id", "name"), :prompt => "Select your primary category" %>
 				</div>
 				
 				<div class="form-field" style="clear:both">
 				 <p>City</p>
-				 <input type="text" name="user[city]" value="" required>
+				 <input type="text" name="user[city]" id="city" value="" required>
 				</div>
 				
-				<div class="form-field">
+				<!-- <div class="form-field">
 				 <p>State</p>
 				 <input type="text" name="user[state]" value="" required>
-				</div>
+				</div> -->
 				
 				<div class="form-terms">
 				 <p>By registering, you agree to our <span>Terms</span> & <span>Privacy Policy</span></p>
@@ -73,3 +73,13 @@
 	</div>
 
 </div>
+
+
+<script>
+  $(function() {
+    window.availableTags = <%= raw @cities %>;
+    $("#city").autocomplete({
+      source: availableTags
+    });
+  });
+  </script>

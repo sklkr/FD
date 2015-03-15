@@ -6,6 +6,7 @@ extend FriendlyId
 	has_one :accountinfo
 	has_many :instructors
 	has_many :services
+	belongs_to :city
 	friendly_id :name
 	ratyrate_rateable "speed", "engine", "price"
 end

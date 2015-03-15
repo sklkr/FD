@@ -5,7 +5,7 @@ class CentersController < ApplicationController
 
   def services
     unless params['category_id'].nil?
-      d = Category.friendly.find(params['category_id']).id
+      d = Category.friendly.find(params['category_id']).try(:id)
       if d == 1 || d == 3 || d == 8 || d == 6
         @ymka = center.services.where(category_id: [1,3,6,8])
       elsif d == 4 || d == 7

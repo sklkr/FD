@@ -21,5 +21,5 @@ extend FriendlyId
  		"Booked"
  	end
  end
-
+ 
 end

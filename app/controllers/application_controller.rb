@@ -49,6 +49,10 @@ class ApplicationController < ActionController::Base
     Center.friendly.find(params['center_id'])
    end
 
+   def cities
+    City.all.map(&:name).compact!
+   end
+
    private
     def partner_id
       warden.user(:partner).partner.id unless warden.user(:partner).nil?
