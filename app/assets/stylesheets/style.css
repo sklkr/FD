@@ -884,6 +884,7 @@ header.consultant{
     width: 100%;
     margin-top: 25px;
 }   
+
 .scroll-more a{
     float: left;
     text-align: center;
@@ -934,7 +935,7 @@ section.search input[type="text"] {
     color: #484848;
     line-height: 22px;
 }
-section.search button {
+section.search input[type='submit'] {
     float: left;
     background: none repeat scroll 0% 0% #E67E22;
     border: medium none;
@@ -949,7 +950,8 @@ section.search button {
 
 section.search button,
 section.search input[type="text"],
-section.search select {
+section.search select,
+section.search input[type='text']{
     font-family: opensans-regular;
     font-size: 14px;
     margin: 0px;

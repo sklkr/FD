@@ -40,7 +40,15 @@
 					<a href="<%= category_populars_path(cat_id) %>"><img src="./assets/<%=cat_id%>-small.jpg" alt=""></a>
 				</div>
 				<div class="sqr-boxs-txt">
-					<h4><a href="#"><%= cat_id %></a></h4>
+					<h4><a href="#">
+					<%if cat_id == 'spa'  %>
+					<%= "Spa & Saloon" %>
+					<%elsif cat_id == 'kids' %>
+					<%= 'Kids Zone' %>
+					<%else %>
+					<%= cat_id.capitalize %>
+					<%end  %>
+					</a></h4>
 				</div>
 			</div>
 		<% end %>
