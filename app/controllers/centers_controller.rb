@@ -3,6 +3,7 @@ class CentersController < ApplicationController
   before_filter :searcher
 
   def about
+    
   end
 
   def map

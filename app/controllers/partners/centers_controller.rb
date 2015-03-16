@@ -2,11 +2,13 @@ module Partners
 class CentersController < ApplicationController 
 layout 'partnerdashboard'
 before_filter :partner_authenticated?
+
   def index
   	unless centers_list.blank?
   		redirect_to partners_center_accounts_path(centers_list.first.friendly_id)
   	else
       @center = Center.new
+      params[:id] = 1
   		render :new
   	end
   end
