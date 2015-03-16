@@ -107,18 +107,7 @@ footer, header, hgroup, menu, nav, section {
 
 }
 
-button, select, input[type="button"], input[type="submit"]{
-    -webkit-appearance:none;
-    border-radius:0px;
-    -moz-border-radius:0px;
-    -0-border-radius:0px;
-    -webkit-border-radius:0px;
-    -webkit-box-shadow:none;
-    -moz-box-shadow: none;
-    -0-box-shadow: none;
-    box-shadow: none;
-    
-    }
+
 .footer-mobile,
 .for-mobile{
     display:none;

@@ -8,7 +8,7 @@
 		<div class="search-sec">
 			<div class="search-sec-main">
 			<%=search_form_for @c, :url => filters_list_path, :class => 'services' do |f| %>
-					<%= f.collection_select :centerinfo_categories_id_in, Category.order(:name), :id, :name, {:prompt => "-- Select Category --"} %>
+					<%= f.collection_select :centerinfo_categories_id_in, Category.order(:name), :id, :name %>
 				    <input id='cities' type="text" name="q[city_name_cont]" placeholder="Type City Name Here">
 					<input type="submit" value="Search Now">
 				<%end%>
