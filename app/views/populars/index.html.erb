@@ -1,23 +1,23 @@
 <!-- header -->
-	<header class="<%= params[:category_id] %>">
-	 <%= render :partial => 'layouts/header' %>
-		
-		<div class="header">
-		<div class="find-serv">
-			<h1>Find services</h1>
-			<div class="search-sec">
-				<div class="search-sec-main">
-				 <%=form_tag populars_search_path, :class => 'services' do  %>
-					<%= select_tag "category_id", options_from_collection_for_select(@categories, "id", "name", params[:cat_id]) %>
-				    <input id='cities' type="text" name="city" placeholder="Type City Name Here">
+<header class="<%= params[:category_id] %>">
+ <%= render :partial => 'layouts/header' %>
+	
+	<div class="header">
+	<div class="find-serv">
+		<h1>Find services</h1>
+		<div class="search-sec">
+			<div class="search-sec-main">
+			<%=search_form_for @c, :url => filters_list_path, :class => 'services' do |f| %>
+					<%= f.collection_select :centerinfo_categories_id_in, Category.order(:name), :id, :name, {:prompt => "-- Select Category --"} %>
+				    <input id='cities' type="text" name="q[city_name_cont]" placeholder="Type City Name Here">
 					<input type="submit" value="Search Now">
 				<%end%>
-				</div>
 			</div>
 		</div>
-	</div><!-- end header -->
-	</header><!-- end header -->
-	<!-- end header -->
+	</div>
+</div><!-- end header -->
+</header><!-- end header -->
+<!-- end header -->
 	
 	<!-- content -->
 	<div class="container">
@@ -36,18 +36,14 @@
 						  <h4><%= center.name %></h4>
 						  <span><%= center.accountinfo.address_1 %>, <%= center.try(:city).try(:name) %></span>
 						</div>
-					
 						<div class="profile-rate">
 						  <img src="/assets/star.jpg" alt=""><a href="#">2 Reviews</a>
 						</div>
-
-						<button type="button"><a href="<%= center_services_path(center.friendly_id) %>" style="color:white;text-decoration:none">view</a></button>
+						<button type="button"><a href="<%= center_category_services_path(center.id, params[:category_id]) %>" style="color:white;text-decoration:none">view</a></button>
 					</div>
-					
 					<div class="profile-detail">
 					  <p><%= center.centerinfo.brief_desc.truncate(120) %></p>
 					</div>
-					
 				</div>
 			<%end  %>
 			</div>
@@ -61,17 +57,15 @@
 	<!-- content -->
 	<div class="container">
 		<div class="container-main box-border">
-	<p>All major Credit & Debit Cards Accepted. 100% secure payments</p>
-	<img src="/assets/payment-gateway-320.jpg" class="for-mobile" alt=""/>
-	<img src="/assets/payment-gateway.jpg" class="for-desktop" alt=""/>
-	<div class="verified">
-	<div class="verified-main">
-	
-	 <img src="/assets/verifyed.jpg" alt=""/><p>The site is certified by verisign as a secure & trusted site</p>
-	</div>
-	</div>
-	
-	</div>
+			<p>All major Credit & Debit Cards Accepted. 100% secure payments</p>
+			<img src="/assets/payment-gateway-320.jpg" class="for-mobile" alt=""/>
+			<img src="/assets/payment-gateway.jpg" class="for-desktop" alt=""/>
+			<div class="verified">
+			<div class="verified-main">
+			 <img src="/assets/verifyed.jpg" alt=""/><p>The site is certified by verisign as a secure & trusted site</p>
+			</div>
+			</div>
+		</div>
 	</div>
 	
 			

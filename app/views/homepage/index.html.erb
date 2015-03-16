@@ -1,189 +1,120 @@
-			<!-- header -->
-			<header class="home">
-			<div class="top-header bg-none">
-			<div class="header">
-				
-				<div class="logo">
-				<a href="<%= root_url %>"><img src="./assets/logo.png" alt=""></a>
-				</div>
-				<!-- menu -->
-				<div class="nav-top">
-					<%= render :partial => 'homepage/headerbtn' %>
-				</div><!-- end menu -->
-				</div>
-				</div>
-				
-				<div class="header">
-				
-				<div class="banner-text">
-					<h1>Join Fitness Papa</h1>
-					<span>Search and find fitness services anywhere in India</span>
-					<div class="blu-button-main">
-					<div class="blu-button"><a href="<%= filters_grid_path %>">SEARCH NOW</a></div>
-					</div>
-				</div>
-				
-			</div><!-- end header -->
-			</header><!-- end header -->
-			<!-- end header -->
+<!-- header -->
+<header class="home">
+<div class="top-header bg-none">
+<div class="header">
+	
+	<div class="logo">
+	<a href="<%= root_url %>"><img src="./assets/logo.png" alt=""></a>
+	</div>
+	<!-- menu -->
+	<div class="nav-top">
+		<%= render :partial => 'homepage/headerbtn' %>
+	</div><!-- end menu -->
+	</div>
+	</div>
+	
+	<div class="header">
+	
+	<div class="banner-text">
+		<h1>Join Fitness Papa</h1>
+		<span>Search and find fitness services anywhere in India</span>
+		<div class="blu-button-main">
+		<div class="blu-button"><a href="#services">SEARCH NOW</a></div>
+		</div>
+	</div>
+	
+</div><!-- end header -->
+</header><!-- end header -->
+<!-- end header -->
 			
-			<!-- content -->
-			<div class="container">
+<!-- content -->
+<div class="container" id="services">
+	<div class="container-main">
+		<div class="sqr-boxs-cat">
+		<div class="sqr-box-title">
+		<h2>Fitness Services</h2>
+		</div>
+		<% ['yoga', 'gym', 'meditation', 'spa', 'swimming', 'adventure', 'consultant', 'kids'].each do |cat_id| %>
+			<div class="sqr-boxs-list">
+				<div class="sqr-boxs-img">
+					<a href="<%= category_populars_path(cat_id) %>"><img src="./assets/<%=cat_id%>-small.jpg" alt=""></a>
+				</div>
+				<div class="sqr-boxs-txt">
+					<h4><a href="#"><%= cat_id %></a></h4>
+				</div>
+			</div>
+		<% end %>
+		</div>
+	</div>
+</div>
+<!-- end content -->
 			
-			
-				<div class="container-main">
-				
-					<div class="sqr-boxs-cat">
-					<div class="sqr-box-title">
-					<h2>Fitness Services</h2>
-					</div>
-					<div class="sqr-boxs-list">
-						<div class="sqr-boxs-img">
-							<a href="<%= populars_index_path('gym') %>"><img src="./assets/gym-small.jpg" alt=""></a>
-						</div>
-						<div class="sqr-boxs-txt">
-							<h4><a href="#">gym</a></h4>
-						</div>
-					</div>
-					
-					<div class="sqr-boxs-list">
-						<div class="sqr-boxs-img">
-							<a href="<%= populars_index_path('swimming') %>"><img src="./assets/swimming-small.jpg" alt=""></a>
-						</div>
-						<div class="sqr-boxs-txt">
-							<h4><a href="#">swimming</a></h4>
-						</div>
-					</div>
+<!-- content -->
+<div class="content-green">
+<div class="container">
+	<h2 class="wht">Here are some of our notable accomplishments</h2>
+	<ul>
+		<li><b>2million+</b><span>searches</span></li>
+		<li><b>1.7 Million</b><span>services rendered</span></li>
+		<li><b>40%</b><span>increase in partner <br>revenue</span></li>
+		<li><b>50,000 </b><span>registered businesses</span></li>
+		<li><b>20,000</b><span>active users</span></li>
+	</ul>
+</div>
+</div>
 
-					<div class="sqr-boxs-list">
-						<div class="sqr-boxs-img">
-							<a href="<%= populars_index_path('yoga') %>"><img src="./assets/yoga-small.jpg" alt=""></a>
-						</div>
-						<div class="sqr-boxs-txt">
-							<h4><a href="yoga.html">YOGA</a></h4>
-						</div>
-					</div>
-					
-					
-					<div class="sqr-boxs-list">
-						<div class="sqr-boxs-img">
-							<a href="<%= populars_index_path('meditation') %>"><img src="./assets/meditation-small.jpg" alt=""></a>
-						</div>
-						<div class="sqr-boxs-txt">
-							<h4><a href="#">meditation</a></h4>
-						</div>
-					</div>
-					
-					<div class="sqr-boxs-list">
-						<div class="sqr-boxs-img">
-							<a href="<%= populars_index_path('adventure') %>"><img src="./assets/adventure-small.jpg" alt=""></a>
-						</div>
-						<div class="sqr-boxs-txt">
-							<h4><a href="#">adventure</a></h4>
-						</div>
-					</div>
+<!-- content -->
+<div class="container">
 
-					<div class="sqr-boxs-list">
-						<div class="sqr-boxs-img">
-							<a href="<%= populars_index_path('spa') %>"><img src="./assets/spa-small.jpg" alt=""></a>
-						</div>
-						<div class="sqr-boxs-txt">
-							<h4><a href="#">spa & saloon</a></h4>
-						</div>
-					</div>
-					
-					<div class="sqr-boxs-list">
-						<div class="sqr-boxs-img">
-							<a href="<%= populars_index_path('consultant') %>"><img src="./assets/consultant-small.jpg" alt=""></a>
-						</div>
-						<div class="sqr-boxs-txt">
-							<h4><a href="#">consultant</a></h4>
-						</div>
-					</div>
-					
-					<div class="sqr-boxs-list">
-						<div class="sqr-boxs-img">
-							<a href="<%= populars_index_path('kids') %>"><img src="./assets/kids-small.jpg" alt=""></a>
-						</div>
-						<div class="sqr-boxs-txt">
-							<h4><a href="#">kids zone</a></h4>
-						</div>
-					</div>
-					
-					
-					</div>
-					
-				</div>
-				
-			</div>
-			<!-- end content -->
-			
-			<!-- content -->
-			<div class="content-green">
-			<div class="container">
-				<h2 class="wht">Here are some of our notable accomplishments</h2>
-				<ul>
-					<li><b>2million+</b><span>searches</span></li>
-					<li><b>1.7 Million</b><span>services rendered</span></li>
-					<li><b>40%</b><span>increase in partner <br>revenue</span></li>
-					<li><b>50,000 </b><span>registered businesses</span></li>
-					<li><b>20,000</b><span>active users</span></li>
-				</ul>
-			</div>
-			</div>
-			
-			<!-- content -->
-			<div class="container">
-			
-			
-				<div class="container-main">
-					<div class="sqr-box-title">
-					<h2>See what customers are saying</h2>
-					</div>
-					<ul class="bxslider">
-					
-					<li>
-					 <div class="slider-img">
-					  <img src="./assets/tem_img1.jpg" alt=""/>
-					 </div>
-					 <div class="slider-text">
-					  <p>I was diagnosed with actism when I was 7 years old and I have been bullied badly, even out in public.  So when I used FitnessPapa to search for a fitness class, I was scared of getting bullied.  But anytime I go for the fitness class I feel empowered and independent.  I love FitnessPapa</p>
-					 </div>
-					</li>
-					
-					<li>
-					 <div class="slider-img">
-					  <img src="./assets/tem_img2.jpg" alt=""/>
-					 </div>
-					 <div class="slider-text">
-					  <p>I was diagnosed with actism when I was 7 years old and I have been bullied badly, even out in public.  So when I used FitnessPapa to search for a fitness class, I was scared of getting bullied.  But anytime I go for the fitness class I feel empowered and independent.  I love FitnessPapa</p>
-					 </div>
-					</li>
-					
-					</ul>
-					</div>
-			</div>
-			
-			<!-- content -->
-			<div class="content-gray">
-			<div class="container" >
-			<div class="join-box">
-			<h2>Ready to join thousands of business selling on <b>Fitness<span>Papa</span></b>?</h2>
-				<div class="blu-button-main">
-					<div class="blu-button"><a href="#">JOIN NOW</a></div>
-					</div>
-			</div>
-			</div>
-			</div>
-			
-			<!-- content -->
-			<div id="content-app">
-			
-				<div class="container-main">
-					 <img src="./assets/app-ios.jpg" alt=""/>
-					 <img src="./assets/app-and.jpg" alt=""/>
-				</div>
-			</div>
+
+	<div class="container-main">
+		<div class="sqr-box-title">
+		<h2>See what customers are saying</h2>
+		</div>
+		<ul class="bxslider">
+		
+		<li>
+		 <div class="slider-img">
+		  <img src="./assets/tem_img1.jpg" alt=""/>
+		 </div>
+		 <div class="slider-text">
+		  <p>I was diagnosed with actism when I was 7 years old and I have been bullied badly, even out in public.  So when I used FitnessPapa to search for a fitness class, I was scared of getting bullied.  But anytime I go for the fitness class I feel empowered and independent.  I love FitnessPapa</p>
+		 </div>
+		</li>
+		
+		<li>
+		 <div class="slider-img">
+		  <img src="./assets/tem_img2.jpg" alt=""/>
+		 </div>
+		 <div class="slider-text">
+		  <p>I was diagnosed with actism when I was 7 years old and I have been bullied badly, even out in public.  So when I used FitnessPapa to search for a fitness class, I was scared of getting bullied.  But anytime I go for the fitness class I feel empowered and independent.  I love FitnessPapa</p>
+		 </div>
+		</li>
+		
+		</ul>
+		</div>
+</div>
+
+<!-- content -->
+<div class="content-gray">
+<div class="container" >
+<div class="join-box">
+<h2>Ready to join thousands of business selling on <b>Fitness<span>Papa</span></b>?</h2>
+	<div class="blu-button-main">
+		<div class="blu-button"><a href="#">JOIN NOW</a></div>
+		</div>
+</div>
+</div>
+</div>
+
+<!-- content -->
+<div id="content-app">
+
+	<div class="container-main">
+		 <img src="./assets/app-ios.jpg" alt=""/>
+		 <img src="./assets/app-and.jpg" alt=""/>
+	</div>
+</div>
 
 <script>
 	$(document).ready(function(){

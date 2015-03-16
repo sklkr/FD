@@ -1,6 +1,6 @@
 class BookingsController < ApplicationController
 before_filter :check_auth, :only => [:add_details, :create]
-
+before_filter :searcher
   def index
   	@title = "Book Now"
   	@service = Center.friendly.find(params['center_id']).services.friendly.find(params['id'])

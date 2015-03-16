@@ -5,9 +5,10 @@ module Partners::Centers
   before_filter :partner_accessable?
   layout 'partnerdashboard'
     def index
-      @ymka = center.services.where(category_id: [1,3,6,8]).includes(:category)
-      @ssc = center.services.where(category_id: [4,7]).includes(:category)
-      @gs = center.services.where(category_id: [2,5]).includes(:category)
+      regular = center.services.regular
+      @ymka = regular.where(category_id: [1,3,6,8]).includes(:category)
+      @ssc = regular.where(category_id: [4,7]).includes(:category)
+      @gs = regular.where(category_id: [2,5]).includes(:category)
     end
 
     def new
@@ -38,6 +39,10 @@ module Partners::Centers
       else
         render :text => 'something went wrong'
       end
+    end
+
+    def upcoming
+      @upcoming = center.services.where('service_type=?','2')
     end
 
     private

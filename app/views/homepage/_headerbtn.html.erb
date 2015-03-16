@@ -5,13 +5,11 @@
 	<li class="active"><a href=" <%= registrations_partner_path  %>">Register Your Business</a></li>
  <%end%>
  <% if is_customer? %>
- 	<li><p style="color:white">Welcome <%= current_user.name %></p></li>
- 	<li><a href="<%= customers_detail_path('brand') %>">My Dashboard</a></li>
- 	<li><a href="<%= sessions_customer_logout_path %>">Logout</a></li>
+ 	<li><a href="<%= customers_detail_path('brand') %>" style='color:white'>My Dashboard</a></li>
+ 	<li><a href="<%= sessions_customer_logout_path %>" style='color:white'>Logout</a></li>
  <%end%>
  <% if is_partner?  %>
- 	<li><p style="color:white">Welcome <%= current_user.name %></p></li>
- 	<li><a href="<%= partners_centers_path %>">My Dashboard</a></li>
- 	<li><a href="<%= sessions_customer_logout_path %>">Logout</a></li>
+ 	<li><a href="<%= partners_centers_path %>" style='color:white'>My Dashboard</a></li>
+ 	<li><a href="<%= sessions_customer_logout_path %>" style='color:white'>Logout</a></li>
  <%end%>
 </ul>

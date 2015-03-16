@@ -1,4 +1,5 @@
 class Service < ActiveRecord::Base
+CAT = { 1 => 'yoga', 2 => 'gym', 3 => 'meditation', 4 => 'spa', 5 => 'swimming', 6 => 'adventure',7 => 'consultant', 8 => 'kids' }
 extend FriendlyId
  belongs_to :center
  belongs_to :category
@@ -22,4 +23,15 @@ extend FriendlyId
  	end
  end
  
+ def start_date_format
+ 	self.start_date.strftime('%d %b %Y')
+ end
+
+ def find_lazy
+ 	CAT[self.category_id]
+ end
+
+ def expired
+ 	Time.zone.now + self.expired_on.day
+ end
 end

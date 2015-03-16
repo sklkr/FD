@@ -2,8 +2,6 @@
 <html>
 <head>
 	<%= render :partial => 'layouts/head' %>
-	<link rel="stylesheet" href="/assets/owl.carousel.css">
-	<script src='/assets/owl.carousel.js'></script>
 </head>
 <body>
  <%= render :partial => 'layouts/header' %>
@@ -20,7 +18,7 @@
  		<div class="slider">
  			<div class="owl-carousel">
 			  <% @photos.each do |p| %>
-			  	<div><%= image_tag attachment_url(p, :image), :style => 'width:100%' %></div>
+			  	<div><%= image_tag attachment_url(p, :image, :fit, 480, 300) %></div>
 			  <%end  %>
  			</div>
 
@@ -66,20 +64,31 @@
  				</div>
  			</div>
  			
- 			<div class="button-org"><a href="<%=  center_services_path %>#container-tabs">Buy Services</a></div>
- 			
+ 			<div class="button-org">
+ 			<%if params[:controller] == 'centers' %>
+ 			<a href="<%= center_category_services_path(:center_id => params[:id], :category_id => params[:category_id]) %>#container-tabs">Buy Services</a>
+			<%else  %>
+			<a href="<%= center_category_services_path(:id => params[:id], :category_id => params[:category_id]) %>#container-tabs">Buy Services</a>
+			<%end  %>
+ 			</div>
  		</div>
  		<div id="target"></div>
  		<div class="container-main">
  		<div id="container-tabs">
  			<ul class="tabs">
-			    <%= nav_with_target 'About', center_about_path(:category_id => params[:category_id]), '#container-tabs' %>
- 				<%= nav_with_target 'Services', center_services_path(:category_id => params[:category_id]), '#container-tabs' %>
- 				<%= nav_with_target 'Map', center_map_path(:category_id => params[:category_id]), '#container-tabs' %>
- 				<%= nav_with_target 'Reviews', center_reviews_path(:category_id => params[:category_id]), '#container-tabs' %>
- 				<%= nav_with_target 'Instructors', center_instructors_path(:category_id => params[:category_id]), '#container-tabs' %>
- 				<%= nav_with_target 'Experience', center_experience_path(:category_id => params[:category_id]), '#container-tabs' %>
- 				<%= nav_with_target 'Upcoming Classes', center_upcoming_path(:category_id => params[:category_id]), '#container-tabs' %>
+			    <%= nav_with_target 'About', about_center_path(:id => params[:id], :category_id => params[:category_id]), '#container-tabs' %>
+ 				<li class="<%= "active" if params[:controller] == 'services' %>">
+ 				  <%if params[:controller] == 'centers' %>
+		 			<a href="<%= center_category_services_path(:center_id => params[:id], :category_id => params[:category_id]) %>#container-tabs">Services</a>
+					<%else%>
+					<a href="<%= center_category_services_path(:id => params[:id], :category_id => params[:category_id]) %>#container-tabs">Services</a>
+				  <%end  %>
+ 				</li>
+ 				<%= nav_with_target 'Map', map_center_path(:id => params[:id], :category_id => params[:category_id]), '#container-tabs' %>
+ 				<%= nav_with_target 'Reviews', reviews_center_path(:id => params[:id], :category_id => params[:category_id]), '#container-tabs' %>
+ 				<%= nav_with_target 'Instructors', instructors_center_path(:id => params[:id], :category_id => params[:category_id]), '#container-tabs' %>
+ 				<%= nav_with_target 'Experience', experience_center_path(:id => params[:id], :category_id => params[:category_id]), '#container-tabs' %>
+ 				<%= nav_with_target 'Upcoming Classes', upcoming_center_path(:id => params[:id], :category_id => params[:category_id]), '#container-tabs' %>
  			</ul>
  			
  			<div id="tab_main_content">

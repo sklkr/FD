@@ -9,3 +9,4 @@ Rails.application.config.assets.version = '1.0'
 Rails.application.config.assets.precompile += %w( partner.css )
 Rails.application.config.assets.precompile += %w( vendor/modernizr.js )
 Rails.application.config.assets.precompile += %w( partner.js )
+Rails.application.config.assets.precompile += %w( bookings.js )

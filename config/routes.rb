@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+
  mount Lockup::Engine, at: '/lockup'
 
   get 'bookings/:center_id/:id/index' => 'bookings#index', as: 'book_now'
@@ -10,7 +11,12 @@ Rails.application.routes.draw do
   namespace :partners do
     resources :centers do
       scope module: 'centers' do
-        resources :details, :accounts, :instructors, :services, :photos
+        resources :details, :accounts, :instructors, :photos
+        resources :services do 
+          collection do 
+            get :upcoming
+          end
+        end
       end
     end
   end
@@ -18,9 +24,10 @@ Rails.application.routes.draw do
   
   get 'customerdashboard/details'
   patch 'customerdashboard/details_update'
- 
-  get 'populars/index(/:category_id)' => 'populars#index', :as => 'populars_index'
-  post 'populars/search'
+
+  resources :categories, :only => [] do
+    resources :populars, :only => [:index, :create]
+  end
 
   namespace :customers do 
     resources :details, :bookings, :mypass
@@ -40,14 +47,21 @@ Rails.application.routes.draw do
   get 'registrations/customer'
   post 'registrations/customer_signup', :as => 'customer_signup'
 
-  get 'centers/:center_id(/:category_id)/about' => 'centers#about', :as => 'center_about'
-  get 'centers/:center_id(/:category_id)/services' => 'centers#services', :as => 'center_services'
-  get 'centers/:center_id(/:category_id)/map' => 'centers#map', :as => 'center_map'
-  get 'centers/:center_id(/:category_id)/reviews' => 'centers#reviews', :as => 'center_reviews'
-  get 'centers/:center_id(/:category_id)/instructors' => 'centers#instructors', :as => 'center_instructors'
-  get 'centers/:center_id(/:category_id)/experience' => 'centers#experience', :as => 'center_experience'
-  get 'centers/:center_id(/:category_id)/hours' => 'centers#hours', :as => 'center_hours'
-  get 'centers/:center_id(/:category_id)/upcoming' => 'centers#upcoming', :as => 'center_upcoming'
+  
+  resources :centers, :only => [] do 
+    member do 
+      get :about
+      get :map
+      get :reviews
+      get :instructors
+      get :experience
+      get :hours
+      get :upcoming
+    end
+    resources :categories, :only => [] do
+      resources :services, :only => [:index]
+    end
+  end
 
   get 'filters/index'
   get 'filters/list(/:category_id)' => 'filters#list', :as => 'filters_list'

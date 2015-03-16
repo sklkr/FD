@@ -1,11 +1,14 @@
 class PopularsController < ApplicationController
   CATEGORY = ['','yoga', 'gym', 'meditation', 'spa', 'swimming', 'adventure', 'consultant', 'kids']
   def index
-  	@centers = Center.all.includes(:centerinfo, :accountinfo, :city)
+    @centers = Center.all.includes(:centerinfo, :accountinfo, :city)
+    # For search 
   	@categories = Category.all
     @cities = cities
+    @c = Center.ransack(params[:q])
   end
 
+=begin
   def search
     @cities = cities
     @categories = Category.all
@@ -15,4 +18,5 @@ class PopularsController < ApplicationController
     params[:category_id] = CATEGORY[params[:category_id].to_i]
     render :index
   end
+=end
 end

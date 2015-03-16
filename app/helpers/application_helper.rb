@@ -13,4 +13,11 @@ module ApplicationHelper
 	    link_to link_text, link_path + target
 	  end
 	end
+
+	def nav_link_customer(link_text, link_path)
+		class_name = link_path.include?(params['controller'].split('/')[1]) ? 'active' : ''
+		content_tag(:li, :class => class_name) do
+		  link_to link_text, link_path + "#container-tabs"
+		end
+	end
 end

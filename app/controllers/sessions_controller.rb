@@ -15,7 +15,7 @@ layout 'homepage'
     unless params[:url].nil?
       redirect_to customers_detail_path('secure')
     else
-    render :text => 'authenticated'
+      redirect_to customers_details_path
     end
         
   end

@@ -10,16 +10,8 @@
 // Read Sprockets README (https://github.com/sstephenson/sprockets#sprockets-directives) for details
 // about supported directives.
 //
-//= require jquery
-//= require jquery_ujs
-//= require jquery.ui
 //= require turbolinks
-//= require jquery.bxslider
-//= require jquery.raty
-//= require ratyrate
-//= require maps-api
 //= require gmaps
 //= require nprogress
 //= require nprogress-turbolinks
-//= require owl.carousel
-
+//= require angular

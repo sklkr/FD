@@ -46,8 +46,8 @@
   									
   									</div>
   									<div class="view-box">
-  										<a href="<%= filters_list_path %>" class="listview <%= "active"  if  params["action"] == 'list' %>"></a>
-  										<a href="<%= filters_grid_path %>" class="gridview <%= "active"  if  params["action"] == 'grid' %>"></a>
+  										<a href="<%= filters_list_path(:q => params[:q]) %>" class="listview <%= "active"  if  params["action"] == 'list' %>"></a>
+  										<a href="<%= filters_grid_path(:q => params[:q]) %>" class="gridview <%= "active"  if  params["action"] == 'grid' %>"></a>
   										<a href="filter-map.html" class="mapview"></a>
   									</div>
   								</div>

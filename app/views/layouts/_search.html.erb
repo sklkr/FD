@@ -1,19 +1,21 @@
 <section class="search">
 <div class="search-main container">
-	<form action="#" >
-		<p>Search</p>
-		<select>
-			<option value="Yoga">Yoga</option>
-			<option value="gym">Gym</option>
-			<option value="meditation">Meditation</option>
-			<option value="spa">Spa & saloon</option>
-			<option value="swimming">Swimming</option>
-			<option value="fitness">Fitness</option>
-			<option value="consultant">Consultant</option>
-			<option value="kids">Kids zone</option>
-		</select>
-		<input type="text" name="City_Name" placeholder="Center Name, City">
-		<button type="button">GO</button>
-	</form> 
+<%=search_form_for @c, :url => filters_list_path do |f| %>
+	<%= f.collection_select :centerinfo_categories_id_in, Category.order(:name), :id, :name, {:prompt => "Category"} %>
+    <input id='cities' type="text" name="q[city_name_cont]" placeholder="Type City Name Here">
+	<input type="submit" value="GO">
+<%end%>
+		
 </div>
 </section>
+
+
+
+<script>
+$(function() {
+	var availableTags = <%= raw @cities %>;
+	$("#cities").autocomplete({
+	  source: availableTags
+	});
+});
+</script>

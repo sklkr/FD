@@ -74,14 +74,16 @@
 <body>
  <%= render :partial => 'layouts/header' unless @header == false %>
 
+<% params[:id] = params[:center_id] if params[:id].nil? %>
+
  <div class="container">
 	<div class="embed-nav">
 		<ul class="menu">
-			<li class="<%= "active" if params[:controller].include? 'dashboard' %>"><a href="<%=partners_dashboard_path('kindle')  %>">Summary</a></li>
-			<li class="<%= "active" if params[:controller].include? 'center' %>"><a href="<%= partners_center_accounts_path('kindle') %>">Center Configuration</a>
+			<li class="<%= "active" if params[:controller].include? 'dashboard' %>"><a href="<%=partners_dashboard_path(:id => params[:id])  %>">Summary</a></li>
+			<li class="<%= "active" if params[:controller].include? 'center' %>"><a href="<%= partners_center_accounts_path(:center_id => params[:id]) %>">Center Configuration</a>
 				<ul class="sub dropit-submenu" id="center-conf">
-				<%unless params[:controller] == 'partners/centers'  %>
-				<%unless params[:controller].include? 'dashboard' %>
+				<% unless params[:controller] == 'partners/centers' %>
+				<% unless params[:controller].include? 'dashboard' %>
 					<%= nav_link 'Account Details', partners_center_accounts_path %>
 					<%= nav_link 'Center Setup', partners_center_details_path %>
 					<%= nav_link 'Services', partners_center_services_path %>

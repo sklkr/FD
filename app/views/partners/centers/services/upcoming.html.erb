@@ -1,0 +1,45 @@
+<div class="row">
+	<div class="small-12 columns sqr-box-title"><h2 style="font-size:24px">Upcoming Events</h2></div>
+</div>
+<div class="row">
+	<div class="small-12 columns">
+		<table role='grid'>
+		  <thead>
+		    <tr>
+		      <th>Type</th>
+		      <th>Category</th>
+		      <th>Service Name</th>
+		      <th>Start day</th>
+		      <th>Days</th>
+		      <th>Details</th>
+		      <th>Instructors</th>
+		      <th>Seats</th>
+		      <th>Price</th>
+		      <th></th>
+		    </tr>
+		  </thead>
+		  <tbody>
+			<%@upcoming.each do |p| %> 
+			    <tr>
+			      <td>Upcoming Event</td>
+			      <td><%= p.category.name %></td>
+			      <td><%= p.name %></td>
+			      <td><%= p.start_date_format %></td>
+			      <td><%= p.days %></td>
+			      <td><%= p.service_desc %></td>
+			      <td><%= "Need to change" %></td>
+			      <td><%= p.seats %></td>
+			      <td><%= p.selling_price %></td>
+			      <td><a href="<%= partners_center_service_path(params['center_id'], p.id) %>">Edit</a></td>
+			    </tr>
+		    <%end  %>
+		  </tbody>
+		</table>
+	</div>
+</div>
+<script>
+	 $(document).ready(function() {
+    $('.menu').dropit();
+    $('#center-conf').css('display', 'block');
+});
+</script>

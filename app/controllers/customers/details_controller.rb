@@ -3,17 +3,17 @@ class DetailsController < ApplicationController
 before_filter :customer_authenticated?
 layout 'customerdashboard'
 
-  def show
+  def index
     # If we fetch from center method below then it'll not update the record
     @details = current_user
     @email = @details.customer.email
   end
 
-  def update
+  def create
     @details = current_user
     if @details.update_attributes(permit_params)
       flash[:notice] = 'Updated'
-      render :show
+      render :index
     else
       render :text => "Something went wrong"
     end

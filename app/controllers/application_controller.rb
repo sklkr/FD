@@ -46,7 +46,7 @@ class ApplicationController < ActionController::Base
    end
 
    def center
-    Center.friendly.find(params['center_id'])
+    Center.friendly.find(params['center_id'])  rescue Center.find(params['id'])
    end
 
    def cities
@@ -56,5 +56,10 @@ class ApplicationController < ActionController::Base
    private
     def partner_id
       warden.user(:partner).partner.id unless warden.user(:partner).nil?
+    end
+
+    def searcher
+      @cities = cities
+      @c = Center.ransack(params[:q])
     end
 end

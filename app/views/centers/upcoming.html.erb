@@ -22,7 +22,7 @@
  				<td class="dp"><p><%=  %></p></td>
  				<td class="dp"><%= uc.seats %></td>
  				<td class="dp"><p><span>&#96;</span><%= uc.selling_price %><br><span style='text-decoration: line-through;'><%= uc.original_price %></p></td>
- 				<td class="dp"><div class="button-org"><a href="<%= book_now_path(:id => uc.friendly_id) %>">Book Now</a></div></td>
+ 				<td class="dp"><div class="button-org small"><a href="<%= book_now_path(:center_id => params[:id], :id => uc.friendly_id) %>">Book</a></div></td>
  			  </tr>
  			<%end%>
  			</tbody>

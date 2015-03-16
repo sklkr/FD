@@ -1,7 +1,7 @@
 <div class="row">
 	<div class="small-4 columns"><a href="<%=new_partners_center_service_path %>" class="button tiny">Add Services</a></div>
-	<div class="small-4 columns"><a href="<%= partners_center_services_path %>" class="button tiny">View Services</a></div>
-	<div class="small-4 columns"><a href="" class="button tiny">View Upcoming Events</a></div>
+	<div class="small-4 columns"><a href="<%= partners_center_services_path %>" class="button tiny">View Regular Services</a></div>
+	<div class="small-4 columns"><a href="<%= upcoming_partners_center_services_path %>" class="button tiny">View Upcoming Events</a></div>
 </div>
 
 <%unless @ymka.blank?  %>
@@ -31,7 +31,7 @@
 			      <td>Regular Service</td>
 			      <td><%= p.category.name %></td>
 			      <td><%= p.name %></td>
-			      <td><%= p.start_date %></td>
+			      <td><%= p.start_date_format %></td>
 			      <td><%= p.days %></td>
 			      <td><%= p.service_desc %></td>
 			      <td><%= "Need to change" %></td>
@@ -58,7 +58,7 @@
 			      <th>Category</th>
 			      <th>Service Name</th>
 			      <th>Validity</th>
-			      <th>Expired on</th>
+			      <th>Expire Limit</th>
 			      <th>Price</th>
 			      <th></th>
 			    </tr>

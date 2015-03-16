@@ -15,7 +15,7 @@
 		</div>
 		<div class="large-6 columns">
 			<div class="row">
-				<div class="small-4 columns"><label for="service[category_id]" class="inline">Service Category - </label></div>
+				<div class="small-4 columns"><label for="service[category_id]" class="inline">Service Category -<br><small>(Recommended to select primary category )</small> </label></div>
 				<div class="small-8 columns"><%= f.select :category_id, options_from_collection_for_select(Category.all, 'id', 'name') %></div>
 			</div>
 		</div>
@@ -57,9 +57,9 @@
 		</div>
 		<div class="large-6 columns">
 			<div class="row">
-				<div class="small-4 columns"><label for="service[expired_on]" class="inline right">Expired on</label></div>
+				<div class="small-4 columns"><label for="service[expired_on]" class="inline right">Expire limit</label></div>
 				<div class="small-3 columns"><%= f.text_field :expired_on, :placeholder => 'Days' , :required => true %></div>
-				<div class="small-5 columns"><label for="" style="padding-top:5px">(Gym, Swim)</label></div>
+				<div class="small-5 columns"><label for="" style="padding-top:5px">(Gym, Swim) <br><small>(from date of purchase)</small></label></div>
 			</div>
 			<div class="row">
 				<div class="small-4 columns"><label for="service[start_date]" class="inline right">Start date</label></div>
