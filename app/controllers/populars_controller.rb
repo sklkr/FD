@@ -1,7 +1,7 @@
 class PopularsController < ApplicationController
   CATEGORY = ['','yoga', 'gym', 'meditation', 'spa', 'swimming', 'adventure', 'consultant', 'kids']
   def index
-    @centers = Center.all.includes(:centerinfo, :accountinfo, :city)
+    @services = Category.find_lazy(params[:category_id]).try(:services)
     # For search 
   	@categories = Category.all
     @cities = cities

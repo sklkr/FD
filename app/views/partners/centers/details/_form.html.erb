@@ -13,7 +13,7 @@
 				</div>
 				<div class="row" style="margin-bottom:16px">
 					<div class="large-12 columns">
-				      <label style="padding-bottom:16px">Category</label>
+				      <label style="padding-bottom:16px">Category <small> ( Recommended to choose one primary category )</small></label>
 				       <% for category in Category.all  %>
 						 <%= check_box_tag 'centerinfo[category_ids][]', category.id, @details.cat_list.include?(category) %>
 					   	 <label for=""><%= category.name %></label>
@@ -123,6 +123,9 @@
 				<div class="right">
 					<%= submit_tag act, :class => 'button small radius wymupdate' %>
 					<a href="<%= partners_center_photos_path(params['center_id']) %>" class="button small radius">Continue</a>
+				</div>
+				<div>
+					<a href="#">Configuration Help</a>
 				</div>
 			</div>
 		</fieldset>

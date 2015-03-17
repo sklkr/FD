@@ -709,7 +709,7 @@ header.adventure{
     line-height: 0;
     background-size: 100% auto;
     background-repeat: no-repeat;
-    background-image: url("http://terrain-mag.com/wp-content/uploads/2014/10/shutterstock_1330842741.jpg");
+    background-image: url("../assets/adventure.jpg");
     background-position: 0px -217px;
 
 }
@@ -720,7 +720,7 @@ header.gym{
     line-height: 0;
     background-size: 100% auto;
     background-repeat: no-repeat;
-    background-image: url("http://i.huffpost.com/gen/1556521/images/o-GYM-ETIQUETTE-facebook.jpg");
+    background-image: url("../assets/gym.jpg");
 }
 
 header.consultant{
@@ -730,7 +730,7 @@ header.consultant{
     line-height: 0;
     background-size: 100% auto;
     background-repeat: no-repeat;
-    background-image: url("http://i.huffpost.com/gen/1726257/thumbs/o-HEALTH-CONSULTING-facebook.jpg");   
+    background-image: url("../assets/consultant.jpg");   
 }
 
 .find-serv {

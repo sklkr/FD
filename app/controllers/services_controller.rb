@@ -5,7 +5,7 @@ class ServicesController < CentersController
 
   def index
   	unless params['category_id'].nil?
-      @services = center.services.where('category_id=?',params[:cat_id])
+      @services = center.services.regular.where('category_id=?',params[:cat_id])
       params[:id] = params[:center_id]
   	else
       render :text => 'something went wrong'

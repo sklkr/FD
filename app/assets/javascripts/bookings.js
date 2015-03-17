@@ -10,8 +10,7 @@
 // Read Sprockets README (https://github.com/sstephenson/sprockets#sprockets-directives) for details
 // about supported directives.
 //
-//= require turbolinks
-//= require gmaps
-//= require nprogress
-//= require nprogress-turbolinks
 //= require angular
+//= require turbolinks
+//= require nprogress-turbolinks
+//= require nprogress

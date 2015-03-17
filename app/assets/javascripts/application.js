@@ -13,6 +13,7 @@
 //= require jquery
 //= require jquery_ujs
 //= require jquery.ui
+//= require owl.carousel
 //= require turbolinks
 //= require jquery.bxslider
 //= require jquery.raty
@@ -21,5 +22,4 @@
 //= require gmaps
 //= require nprogress
 //= require nprogress-turbolinks
-//= require owl.carousel
 
