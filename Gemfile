@@ -75,3 +75,4 @@ end
 
 gem 'lockup'
 gem "aws-sdk", '< 2'
+gem 'kaminari'

@@ -18,8 +18,6 @@
 //= require jquery.bxslider
 //= require jquery.raty
 //= require ratyrate
-//= require maps-api
-//= require gmaps
 //= require nprogress
 //= require nprogress-turbolinks
 

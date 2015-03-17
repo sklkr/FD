@@ -8,7 +8,7 @@
 		 </div>
 		 <div class="comp-info">
 			<div class="comp-title">
-			  <a href="#"><h4><%= s.name %></h4></a>
+			  <a href="<%= center_category_services_path(s.center.id, s.center.services.first.find_lazy) %>"><h4><%= s.name %></h4></a>
 			</div>
 		
 			<div class="comp-rate">

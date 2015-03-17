@@ -4,11 +4,11 @@
 		 <%@centers.each do |center|  %>
 			<li class="comp-box barber-saloon">
 			 <div class="comp-pic">
-				<a href="#"><%= image_tag attachment_url(center, :image) %></a>
+				<a href="<%= center_category_services_path(center.center.id, center.center.services.first.find_lazy) %>"><%= image_tag attachment_url(center, :image) %></a>
 			 </div>
 			 <div class="comp-info">
 				<div class="comp-title">
-				  <a href="#"><h4><%= center.name %></h4></a>
+				  <a href="<%= center_category_services_path(center.center.id, center.center.services.first.find_lazy) %>"><h4><%= center.name %></h4></a>
 				</div>
 				<div class="comp-rate">
 				  <img src="/assets/star.jpg" alt=""><a href="#">312 Reviews</a>

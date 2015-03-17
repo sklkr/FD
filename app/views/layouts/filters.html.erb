@@ -19,23 +19,8 @@
   						<div class="pagination-filter">
   							<div class="pagination-filter-main">
   								
-  								<div class="page-detail">
-  									<p>Page 1 of 50</p>
-  								</div>
-  								<div class="prev">
-  									<a href="#">Prev</a>
-  								</div>
-  								<div class="num">
-  									<a href="#" class="active">1</a>
-  									<a href="#">2</a>
-  									<a href="#">3</a>
-  									<a href="#">4</a>
-  									<a href="#">5</a>
-  								</div>
-  								<div class="next">
-  									<a href="#">Next</a>
-  								</div>
-  								
+                  <%= paginate @cbase %>
+
   								<div class="pagination-button">
   									<div class="check-box">
   										<input type="checkbox" name="checkboxG4" id="checkboxG4" class="css-checkbox" checked="">
@@ -48,7 +33,7 @@
   									<div class="view-box">
   										<a href="<%= filters_list_path(:q => params[:q]) %>" class="listview <%= "active"  if  params["action"] == 'list' %>"></a>
   										<a href="<%= filters_grid_path(:q => params[:q]) %>" class="gridview <%= "active"  if  params["action"] == 'grid' %>"></a>
-  										<a href="filter-map.html" class="mapview"></a>
+  										<a href="<%= page_path('coming_soon') %>" class="mapview"></a>
   									</div>
   								</div>
   								
@@ -67,7 +52,6 @@
                 <%end %>
               </div>
   						<%= yield %>
-  						<%= render :partial => 'filters/pagination' %>
   						
   						</div>
   					</div>
