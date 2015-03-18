@@ -2244,10 +2244,10 @@
  			</div>
 
  			<!-- <div id="bx-pager">
- 				  <a data-slide-index="0" href=""><%= image_tag attachment_url(@centerinfo, :image, :fill, 132, 87) %></a>
+ 				  <a data-slide-index="0" href=""><%= image_tag attachment_url(@centerinfo, :image) %></a>
  				  <% @photos.each_with_index do |p, index| %>
  				  	<%unless index >= 2 %>
- 				  	<a data-slide-index="<%= index+1 %>" href=""><%= image_tag attachment_url(p, :image, :fill, 132, 87) %></a>
+ 				  	<a data-slide-index="<%= index+1 %>" href=""><%= image_tag attachment_url(p, :image) %></a>
  				  	<%end  %>
  				  <%end  %>
  				</div> -->	

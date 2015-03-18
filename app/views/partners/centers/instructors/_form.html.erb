@@ -9,7 +9,7 @@
 			<div class="small-4 columns"><label for="instructor[photo]" class="inline">Photo</label></div>
 			<div class="small-8 columns"><%= f.attachment_field :photo, :required => true %></div>
 			<div class="small-4 columns"></div>
-			<div class="small-8 columns" style="margin-bottom:20px"><%= image_tag attachment_url(@instructor, :photo, :fill, 100, 100), :class => 'th' %></div>
+			<div class="small-8 columns" style="margin-bottom:20px"><%= image_tag attachment_url(@instructor, :photo), :class => 'th' %></div>
 		</div>
 		<div class="row">
 			<div class="small-4 columns"><label for="instructor[mobile]" class="inline">Mobile</label></div>
