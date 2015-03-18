@@ -2239,7 +2239,7 @@
  		<div class="slider">
  			<div class="owl-carousel">
 			  <% @photos.each do |p| %>
-			  	<div><%= image_tag attachment_url(p, :image, :fit, 480, 300) %></div>
+			  	<div><%= image_tag attachment_url(p, :image) , :style => 'width:480px;height:300px' %></div>
 			  <%end  %>
  			</div>
 

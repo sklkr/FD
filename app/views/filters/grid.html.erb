@@ -4,7 +4,7 @@
 	<%@centers.each do |s|  %>
 		<li class="comp-box barber-saloon">
 		 <div class="comp-pic">
-			<a href="<%= center_category_services_path(s.center.id, s.center.services.first.find_lazy) %>"> <%= image_tag attachment_url(s.center.centerinfo, :image) %></a>
+			<a href="<%= center_category_services_path(s.center.id, s.center.services.first.find_lazy) %>"> <%= image_tag attachment_url(s.center.centerinfo, :image), :style => 'width:150px;height:130px' %></a>
 		 </div>
 		 <div class="comp-info">
 			<div class="comp-title">
