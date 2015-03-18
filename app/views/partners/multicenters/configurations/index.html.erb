@@ -1,0 +1,33 @@
+<%= render :partial => 'partners/multicenters/nav' %>
+<div style="min-height:390px">
+  
+<div class="row">
+  <div class="small-12 columns">
+    <a href="<%= new_partners_configuration_path %>" class="button tiny">Add Center</a>
+    <a href="<%= partners_configurations_path %>" class="button tiny">View Centers</a>
+  </div>
+</div>
+
+<table>
+  <thead>
+    <tr>
+      <th style="width:45%">Center Name</th>
+      <th>Instructors</th>
+      <th width="150">Services</th>
+      <th width="150">City</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+  <% @centers.each do |center| %>
+    <tr>
+      <td><%= center.name.capitalize  %> <a href="<%= partners_configuration_path(center.id) %>">edit</a></td>
+      <td><%= center.instructors.count %></td>
+      <td><%= center.services.count %></td>
+      <td><%= center.try(:city).try(:name) %></td>
+      <td><a class="button tiny secondary tiny" href="<%= partners_center_accounts_path(center.friendly_id) %>">Modify</a></td>
+    </tr>
+  <%end%>
+  </tbody>
+</table>
+</div>

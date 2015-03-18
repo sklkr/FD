@@ -1,0 +1,9 @@
+<ul class="menu embed-nav" id="center-conf">
+<%unless params[:controller] == 'partners/multicenters' %>
+	<%= nav_link 'Brand Profile', partners_profiles_path %>
+	<%= nav_link 'Multicenter Configuration', partners_configurations_path %>
+	<%= nav_link 'Multicenter Customers', page_path('coming_soon') %>
+	<%= nav_link 'Multicenter Payment', page_path('coming_soon') %>
+	<%= nav_link 'Multicenter Reports', page_path('coming_soon') %>
+<%end%>
+</ul>

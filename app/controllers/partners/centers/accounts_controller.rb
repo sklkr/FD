@@ -16,9 +16,10 @@ layout 'partnerdashboard'
   end
 
   def new
+
   end
   def create
-  	@account = Accountinfo.new(permit_params)
+    @account = Accountinfo.new(permit_params)
     @account.center_id = center.id
     city = City.find_by_name(params[:accountinfo][:city])
     center.update_attributes(:city_id => city.try(:id))
@@ -50,7 +51,7 @@ layout 'partnerdashboard'
 
   private
   	def permit_params
-  		params.require(:accountinfo).permit(:brandname,:centername,:personname,:email,:mobile,:landline,:address_1,:address_2,:landmark,:pin,:pan,:tan,:tin,:taxregno,:acno,:bank_name,:ifsc_code,:bank_address, :bank_city)
+  		params.require(:accountinfo).permit(:brandname,:personname,:email,:mobile,:landline,:address_1,:address_2,:landmark,:pin,:pan,:tan,:tin,:taxregno,:acno,:bank_name,:ifsc_code,:bank_address, :bank_city)
   	end
 
 end

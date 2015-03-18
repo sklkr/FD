@@ -19,8 +19,11 @@ Rails.application.routes.draw do
         end
       end
     end
+    scope module: 'multicenters' do
+        resources :configurations, :profiles, :customers, :payments, :reports
+    end
   end
-  get 'partners/:id/dashboard' => 'partners/dashboard#summary', :as => 'partners_dashboard'
+  get 'partners(/:id)/dashboard' => 'partners/dashboard#summary', :as => 'partners_dashboard'
   
   get 'customerdashboard/details'
   patch 'customerdashboard/details_update'

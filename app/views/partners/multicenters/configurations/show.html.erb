@@ -1,0 +1,18 @@
+<%= render :partial => 'partners/multicenters/nav' %>
+
+<div style="min-height:380px">
+	<div class="row">
+	<div class="small-12 columns">
+		<a href="<%= new_partners_configuration_path %>" class="button tiny">Add Center</a>
+		<a href="<%= partners_configurations_path %>" class="button tiny">View Centers</a>
+	</div>
+</div>
+
+<fieldset>
+	<legend>Create Center</legend>
+	<%= simple_form_for @center, url: partners_configuration_path do |f| %>
+	  <%= f.input :name %>
+	  <%= f.button :submit, :class => 'button tiny' %>
+	<% end %>
+</fieldset>
+</div>
