@@ -1,12 +1,17 @@
 class Service < ActiveRecord::Base
 CAT = { 1 => 'yoga', 2 => 'gym', 3 => 'meditation', 4 => 'spa', 5 => 'swimming', 6 => 'adventure',7 => 'consultant', 8 => 'kids' }
 extend FriendlyId
+
+#associations 
  belongs_to :center
  belongs_to :category
+ has_many :bookings
+ has_and_belongs_to_many :instructors, :join_table => 'services_instructors'
+ 
+ #scopes
  scope :regular, -> { where(service_type: '1') }
  scope :upcoming, -> { where(service_type: '2') }
  friendly_id :name
- has_many :bookings
 
 
  def percent

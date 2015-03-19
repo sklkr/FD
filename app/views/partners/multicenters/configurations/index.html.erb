@@ -15,6 +15,7 @@
       <th>Instructors</th>
       <th width="150">Services</th>
       <th width="150">City</th>
+      <th>Area</th>
       <th></th>
     </tr>
   </thead>
@@ -25,6 +26,7 @@
       <td><%= center.instructors.count %></td>
       <td><%= center.services.count %></td>
       <td><%= center.try(:city).try(:name) %></td>
+      <td><%= center.try(:area).try(:name) %></td>
       <td><a class="button tiny secondary tiny" href="<%= partners_center_accounts_path(center.friendly_id) %>">Modify</a></td>
     </tr>
   <%end%>

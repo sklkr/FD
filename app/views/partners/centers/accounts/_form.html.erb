@@ -73,11 +73,13 @@
 				<%= f.text_field :address_1, :placeholder => 'Address Line 1'  ,:required => true%> 
 				<%= f.text_field :address_2, :placeholder => 'Address Line 2'  ,:required => true%> 
 				<%= f.text_field :landmark, :placeholder => 'Landmark'  ,:required => true%>
-				<%= f.text_field :area, :placeholder => 'Area name'  ,:required => true%>
 				<div class="row">
-					<div class="small-6 columns"><%= text_field_tag 'accountinfo[city]', @account.try(:center).try(:city).try(:name), :placeholder => 'City'  ,:required => true%></div>
+					<div class="small-6 columns">
+						<%= select_tag :city_id, options_from_collection_for_select(@cities, 'id', 'name', @account.center.city_id.to_i), :prompt => "select your city" %>		
+					</div>
 					<div class="small-6 columns"><%= f.text_field :pin, :placeholder => '560012'   ,:required => true%></div>
 				</div>
+				<%= select_tag :area_id, options_from_collection_for_select([], 'id', 'name'), 'data-option-dependent' => true, 'data-option-observed' => 'city_id', 'data-option-url' => '/cities/:city_id:/areas.json', 'data-option-key-method' => :id, 'data-option-value-method' => :name, 'data-option-value-selected' =>  @account.center.area_id.to_i %>
 				</div>
 			</div>
 		</div>
@@ -116,7 +118,7 @@
 					<label for='account[tin]' class="inline">TIN</label>
 				</div>
 				<div class="small-8 columns">
-				<!-- <%= f.text_field :tin  ,:required => true%> -->
+				<%= f.text_field :tin, :required => true, :disabled => 'true' %>
 				</div>
 			</div>
 		</div>
@@ -212,14 +214,50 @@
 </fieldset>
 </div>
 <% end %>
-
 <script>
 $(document).ready(function() {
   $('.menu').dropit();
   $('#center-conf').css('display', 'block');
-  window.availableTags = <%= raw @cities %>;
-  $("#accountinfo_city").autocomplete({
-    source: availableTags
-  });
+  $('select[data-option-dependent=true]').each(function (i) {
+	      var observer_dom_id = $(this).attr('id');
+	      var observed_dom_id = $(this).data('option-observed');
+	      var url_mask = $(this).data('option-url');
+	      var key_method = $(this).data('option-key-method');
+	      var value_method = $(this).data('option-value-method');
+	      var selected_tag = $(this).data('option-value-selected');
+	      var prompt = $(this).has('option[value=true]').size() ? $(this).find('option[value]') : $('<option value=\"\">').text('Select a area');
+	      var regexp = /:[0-9a-zA-Z_]+:/g;
+	      var observer = $('select#' + observer_dom_id);
+	      var observed = $('#' + observed_dom_id);
+
+	      if (!observer.val() && observed.size() > 1) {
+	          observer.attr('disabled', true);
+	      };
+	      observed.on('change', function () {
+	          observer.empty().append(prompt);
+	          if (observed.val()) {
+	              url = url_mask.replace(regexp, observed.val());
+	              $.getJSON(url, function (data) {
+	                  $.each(data, function (i, object) {
+	                      observer.append($('<option>').attr('value', object[key_method]).text(object[value_method]));
+	                      observer.attr('disabled', false);
+	                  });
+	              });
+	          }
+	      });
+	      observer.empty().append(prompt);
+	      if (observed.val()) {
+	          url = url_mask.replace(regexp, observed.val());
+	          $.getJSON(url, function (data) {
+	              $.each(data, function (i, object) {
+	                  observer.append($('<option>').attr('value', object[key_method]).text(object[value_method]));
+	                  if(object[key_method] == selected_tag){
+	                  	observer.append($('<option>').attr('selected', 'selected').attr('value', object[key_method]).text(object[value_method]));
+	                  }
+	                  observer.attr('disabled', false);
+	              });
+	          });
+	      }
+	  });
 });
 </script>

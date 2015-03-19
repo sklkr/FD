@@ -16,7 +16,7 @@
 		<div class="large-6 columns">
 			<div class="row">
 				<div class="small-4 columns"><label for="service[category_id]" class="inline">Service Category -<br><small>(Recommended to select primary category )</small> </label></div>
-				<div class="small-8 columns"><%= f.select :category_id, options_from_collection_for_select(Category.all, 'id', 'name') %></div>
+				<div class="small-8 columns"><%= f.select :category_id, options_from_collection_for_select(Category.all, 'id', 'name', @service.category_id) %></div>
 			</div>
 		</div>
 		<div class="large-12 columns">
@@ -71,19 +71,15 @@
 			</div>
 			<div class="row">
 				<div class="small-4 columns"><label for="services[days]" class="inline right">Days</label></div>
-				<div class="small-8 columns"><%= f.text_field :days, :placeholder => 'Number of Days' , :required => true %></div>
+				<div class="small-8 columns"><%= f.number_field :days, :placeholder => 'Number of Days' , :required => true %></div>
 			</div>
 			<div class="row">
 				<div class="small-4 columns"><label for="service[seats]" class="inline right">Seats</label></div>
-				<div class="small-8 columns"><%= f.text_field :seats , :required => true %></div>
+				<div class="small-8 columns"><%= f.number_field :seats , :required => true %></div>
 			</div>
 			<div class="row">
-				<div class="small-4 columns"><label for="" class="inline right">Instructor 1</label></div>
-				<div class="small-8 columns"><%= text_field_tag :ins1 ,nil,  :required => true %></div>
-			</div>	
-			<div class="row">
-				<div class="small-4 columns"><label for="" class="inline right">Instructor 2</label></div>
-				<div class="small-8 columns"><%= text_field_tag :ins2 ,nil, :required => true %></div>
+				<div class="small-4 columns"><label for="" class="inline right">Instructors</label><small>(Hold CTRL to choose multiple)</small></div>
+				<div class="small-8 columns"><%= collection_select :service, :instructor_ids, @instructors, :id, :name, {}, :multiple => true, :name => 'service[instructor_ids][]' %></div>
 			</div>
 		</div>
 
@@ -108,16 +104,71 @@
 
 <script>
 $(document).ready(function() {
-	$('#service_validity').prop('disabled', true);
-	$('#service_time_taken').prop('disabled', true);
-	$('#service_schedule').prop('disabled', false);
-	$('#service_expired_on').prop('disabled', true);
-	$('#service_start_date').prop('disabled', false);
-	$('#service_end_date').prop('disabled', false);
-	$('#service_days').prop('disabled', false);
-	$('#service_seats').prop('disabled', false);
-	$('#ins1').prop('disabled', false);
-	$('#ins2').prop('disabled', false);
+
+	if($('#service_service_type').val() == '2'){
+		$('#service_name').prop('disabled',false);
+		$('#service_validity').prop('disabled',true);
+		$('#service_time_taken').prop('disabled',true);
+		$('#service_original_price').prop('disabled',false);
+		$('#serrvice_selling_price').prop('disabled',false);
+		$('#service_gender_id').prop('disabled',false);
+		$('#service_schedule').prop('disabled',false);
+		$('#service_service_desc').prop('disabled',false);
+		$('#service_expired_on').prop('disabled',true);
+		$('#service_start_date').prop('disabled',false);
+		$('#service_end_date').prop('disabled',false);
+		$('#service_days').prop('disabled',false);
+		$('#service_seats').prop('disabled',false);
+		$('#ins1').prop('disabled',false);
+		$('#ins2').prop('disabled',false);
+	}
+
+
+
+
+	if($('#service_service_type').val() != '2'){
+		if($('#service_category_id').val() == '1' || $('#service_category_id').val() == '3' || $('#service_category_id').val() == '6' || $('#service_category_id').val() == '8'){
+			$('#service_validity').prop('disabled', true);
+			$('#service_time_taken').prop('disabled', true);
+			$('#service_schedule').prop('disabled', false);
+			$('#service_expired_on').prop('disabled', true);
+			$('#service_start_date').prop('disabled', false);
+			$('#service_end_date').prop('disabled', false);
+			$('#service_days').prop('disabled', false);
+			$('#service_seats').prop('disabled', false);
+			$('#ins1').prop('disabled', false);
+			$('#ins2').prop('disabled', false);
+		};
+		if($('#service_category_id').val() == '2' || $('#service_category_id').val() == '5'){
+			$('#service_validity').prop('disabled', false);
+			$('#service_time_taken').prop('disabled', true);
+			$('#service_schedule').prop('disabled', false);
+			$('#service_expired_on').prop('disabled', false);
+			$('#service_start_date').prop('disabled', true);
+			$('#service_end_date').prop('disabled', true);
+			$('#service_days').prop('disabled', true);
+			$('#service_seats').prop('disabled', true);
+			$('#ins1').prop('disabled', true);
+			$('#ins2').prop('disabled', true);
+		};
+		if($('#service_category_id').val() == '4' || $('#service_category_id').val() == '7'){
+			$('#service_validity').prop('disabled', true);
+			$('#service_time_taken').prop('disabled', false);
+			$('#service_schedule').prop('disabled', true);
+			$('#service_expired_on').prop('disabled', true);
+			$('#service_start_date').prop('disabled', true);
+			$('#service_end_date').prop('disabled', true);
+			$('#service_days').prop('disabled', true);
+			$('#service_seats').prop('disabled', true);
+			$('#ins1').prop('disabled', true);
+			$('#ins2').prop('disabled', true);
+		};
+	};
+
+
+
+
+	/*sdf*/
     	
     $('#service_service_type').change(function(){
         	if($(this).val() == '2'){

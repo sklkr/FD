@@ -7,6 +7,7 @@ extend FriendlyId
 	has_many :instructors
 	has_many :services
 	belongs_to :city
+	belongs_to :area
 	friendly_id :name
 	ratyrate_rateable "speed", "engine", "price"
 end

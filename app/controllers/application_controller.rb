@@ -5,6 +5,13 @@ class ApplicationController < ActionController::Base
   before_action :check_for_lockup
   helper_method :warden, :signed_in?, :current_user, :is_partner?, :is_customer?
 
+   def areas
+     city = City.find(params[:city_id])
+     respond_to do |format|
+       format.json { render :json => city.areas }
+     end
+   end
+
    def signed_in?
      !current_user.nil?
    end
@@ -50,7 +57,7 @@ class ApplicationController < ActionController::Base
    end
 
    def cities
-    City.all.map(&:name).compact!
+    City.all
    end
 
    private

@@ -22,7 +22,8 @@ layout 'partnerdashboard'
     @account = Accountinfo.new(permit_params)
     @account.center_id = center.id
     city = City.find_by_name(params[:accountinfo][:city])
-    center.update_attributes(:city_id => city.try(:id))
+    area = Area.find_by_name(params[:accountinfo][:area])
+    center.update_attributes(:city_id => city.try(:id), :area_id => area.try(:id))
     if @account.save
       flash[:notice] = 'Details updated'
       redirect_to partners_center_account_path(center.friendly_id, @account.id)
@@ -39,8 +40,10 @@ layout 'partnerdashboard'
 
   def update
     @account = Accountinfo.find(params[:id])
-    city = City.find_by_name(params[:accountinfo][:city])
-    center.update_attributes(:city_id => city.try(:id))
+    city = City.find(params[:city_id]) if params[:city_id] != ''
+    area = Area.find(params[:area_id]) if params[:area_id] != ''
+    center.update_attributes(:city_id => city.try(:id), :area_id => area.try(:id))
+    @cities = cities
     if @account.update_attributes(permit_params)
       flash[:notice] = 'Updated'
       render :show

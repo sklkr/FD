@@ -1,14 +1,14 @@
 module Partners::Multicenters
-  class ProfilesController < MulticentersController 
-  layout 'partnerdashboard'
-  before_filter :partner_authenticated?
+class ProfilesController < ApplicationController 
+layout 'partnerdashboard'
+before_filter :partner_authenticated?
 
-    def index
-    end
-
-    def new
-      
-    end
+  def index
+  	
+  end
+  
+  def show
 
   end
+end
 end

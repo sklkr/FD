@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150316105730) do
+ActiveRecord::Schema.define(version: 20150319105235) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -44,6 +44,13 @@ ActiveRecord::Schema.define(version: 20150316105730) do
 
   add_index "accountinfos", ["brand_id"], name: "index_accountinfos_on_brand_id", using: :btree
   add_index "accountinfos", ["center_id"], name: "index_accountinfos_on_center_id", using: :btree
+
+  create_table "areas", force: true do |t|
+    t.integer  "city_id"
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "average_caches", force: true do |t|
     t.integer  "rater_id"
@@ -133,6 +140,7 @@ ActiveRecord::Schema.define(version: 20150316105730) do
     t.string   "name"
     t.integer  "partner_id"
     t.integer  "city_id"
+    t.integer  "area_id"
   end
 
   add_index "centers", ["partner_id"], name: "index_centers_on_partner_id", using: :btree
@@ -296,6 +304,14 @@ ActiveRecord::Schema.define(version: 20150316105730) do
 
   add_index "services", ["category_id"], name: "index_services_on_category_id", using: :btree
   add_index "services", ["center_id"], name: "index_services_on_center_id", using: :btree
+
+  create_table "services_instructors", id: false, force: true do |t|
+    t.integer "service_id"
+    t.integer "instructor_id"
+  end
+
+  add_index "services_instructors", ["instructor_id"], name: "index_services_instructors_on_instructor_id", using: :btree
+  add_index "services_instructors", ["service_id"], name: "index_services_instructors_on_service_id", using: :btree
 
   create_table "superadmins", force: true do |t|
     t.string   "email"
