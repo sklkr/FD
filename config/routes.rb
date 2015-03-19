@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
 
 
+  ActiveAdmin.routes(self)
  mount Lockup::Engine, at: '/lockup'
 
   get 'bookings/:center_id/:id/index' => 'bookings#index', as: 'book_now'
@@ -20,7 +21,7 @@ Rails.application.routes.draw do
       end
     end
     scope module: 'multicenters' do
-        resources :configurations, :profiles, :customers, :payments, :reports
+      resources :configurations, :profiles, :customers, :payments, :reports
     end
   end
   get 'partners(/:id)/dashboard' => 'partners/dashboard#summary', :as => 'partners_dashboard'
@@ -43,8 +44,13 @@ Rails.application.routes.draw do
   get 'sessions/customer_logout'
   get 'sessions/checker'
 
+  # Admin routes
+  get 'sessions/admin'
+  post 'sessions/admin_auth'
+
   get 'registrations/partner'
   post 'registrations/partner_signup', :as => 'partner_signup'
+
 
   get 'registrations/verify_email/:token' => 'registrations#verify_email', :as => 'registrations_verify_email'
   get 'registrations/customer'

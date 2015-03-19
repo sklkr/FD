@@ -6,6 +6,7 @@ layout 'partnerdashboard'
 
   def index
     @account = center.accountinfo || Accountinfo.new
+    binding.pry
     @cities = cities
     if center.accountinfo.nil? 
      render :new

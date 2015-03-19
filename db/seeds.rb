@@ -16,3 +16,10 @@ end
 ["Two Wheeler", "Four Wheeler", "Air Conditioning", "Rest Room", "Locker", "Change Room", "Wifi", "Shower", "Swimming Pool", "Kids Play Area", "Steam & Sauna"].each do |name|
 	Experience.find_or_create_by(:name => name)
 end
+
+
+Superadmin.create(:email => 'sid@mail.com',:user_id => User.create(:password => 'password').id )
+
+['Ahmedabad','Bangalore','Chandigarh','Chennai','Coimbatore','Delhi','Kochi','Kolkata','Lucknow','Noida', 'Goa', 'Gurgaon','Hyderabad','Jaipur','Mumbai','Pune','Trivandrum'].each do |cname|
+	City.create(:name => cname)
+end

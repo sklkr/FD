@@ -20,6 +20,10 @@ layout 'homepage'
         
   end
 
+  def admin
+    
+  end
+
   def customer_logout
     warden.logout
     redirect_to root_url
@@ -28,6 +32,10 @@ layout 'homepage'
   def partner_auth
     warden.authenticate!(:partner, scope: :partner)
     redirect_to partners_centers_path
+  end
+
+  def admin_auth
+    redirect_to admin_root_path if warden.authenticate!(:superadmin, scope: :superadmin)
   end
 
   def checker

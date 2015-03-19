@@ -36,6 +36,16 @@ class ApplicationController < ActionController::Base
      warden.authenticate!
    end
 
+   # Admin auth checkers
+   def authenticate_admin_user!
+    redirect_to root_url unless warden.authenticated?(:superadmin)
+   end
+
+   def current_admin_user
+      redirect_to root_url unless warden.authenticated?(:superadmin)
+   end
+
+
    def customer_authenticated?
     redirect_to sessions_customer_path unless warden.authenticated?
    end

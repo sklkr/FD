@@ -28,6 +28,14 @@ GIT
       polyamorous (~> 1.1)
 
 GIT
+  remote: git://github.com/stefanpenner/country_select.git
+  revision: 87d7a25682565d06ce0978805a19c3b0814d3236
+  specs:
+    country_select (2.2.0)
+      countries (~> 0.11.0)
+      sort_alphabetical (~> 1.0)
+
+GIT
   remote: https://github.com/plataformatec/simple_form
   revision: 749c926140ee383e8249f15d1846f5287c5a4c46
   specs:
@@ -112,6 +120,10 @@ GEM
     coffee-script-source (1.9.1)
     colored (1.2)
     columnize (0.9.0)
+    countries (0.11.2)
+      currencies (~> 0.4.2)
+      i18n_data (~> 0.6.0)
+    currencies (0.4.2)
     debugger-linecache (1.2.0)
     erubis (2.7.0)
     execjs (2.3.0)
@@ -130,6 +142,7 @@ GEM
     highline (1.6.21)
     hike (1.2.3)
     i18n (0.7.0)
+    i18n_data (0.6.2)
     inherited_resources (1.6.0)
       actionpack (>= 3.2, < 5)
       has_scope (~> 0.6.0.rc)
@@ -165,6 +178,7 @@ GEM
     pg (0.18.1)
     polyamorous (1.1.0)
       activerecord (>= 3.0)
+    profile_it (0.2.9)
     pry (0.10.1)
       coderay (~> 1.1.0)
       method_source (~> 0.8.1)
@@ -237,6 +251,8 @@ GEM
       rack-protection (~> 1.4)
       tilt (~> 1.3, >= 1.3.4)
     slop (3.6.0)
+    sort_alphabetical (1.0.1)
+      unicode_utils (>= 1.2.2)
     spring (1.3.3)
     sprockets (2.12.3)
       hike (~> 1.2)
@@ -259,6 +275,7 @@ GEM
     uglifier (2.7.1)
       execjs (>= 0.3.0)
       json (>= 1.8.0)
+    unicode_utils (1.4.0)
     unicorn (4.8.3)
       kgio (~> 2.6)
       rack
@@ -284,6 +301,7 @@ DEPENDENCIES
   bullet
   cancan
   coffee-rails (~> 4.0.0)
+  country_select!
   execjs
   friendly_id
   high_voltage (~> 2.2.1)
@@ -295,6 +313,7 @@ DEPENDENCIES
   nifty-utils
   nprogress-rails
   pg
+  profile_it (~> 0.2.9)
   pry
   pry-byebug
   pry-rails

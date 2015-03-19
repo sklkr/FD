@@ -50,7 +50,7 @@
 				
 				<div class="form-field" style="clear:both">
 				 <p>City</p>
-				 <input type="text" name="user[city]" id="city" value="" required>
+				 <%= collection_select :user, :city, City.all, :id, :name, {} %>
 				</div>
 				
 				<!-- <div class="form-field">

@@ -6,6 +6,14 @@ Warden::Manager.serialize_from_session do |id|
   User.find_by_id(id)
 end
 
+Warden::Manager.serialize_into_session(:superadmin) do |superadmin|
+  superadmin.id
+end
+
+Warden::Manager.serialize_from_session(:superadmin) do |id|
+  Superadmin.find_by_id(id)
+end
+
 class CustomerStrategy < ::Warden::Strategies::Base
   def valid?
     return false if request.get?
@@ -40,5 +48,25 @@ class PartnerStrategy < ::Warden::Strategies::Base
   end
 end
 
+
+class SuperadminStrategy < ::Warden::Strategies::Base
+  def valid?
+    return false if request.get?
+    user_data = params.fetch("user")
+    !(user_data["email"].blank? || user_data["password"].blank?)
+  end
+
+  def authenticate!
+    superadmin = Superadmin.find_by_email(params["user"].fetch("email"))
+    if superadmin.nil? || superadmin.user.password != params["user"].fetch("password")
+      fail!("could not logged in")
+    else
+      success! superadmin
+    end
+  end
+end
+
+
 Warden::Strategies.add(:customer, CustomerStrategy)
 Warden::Strategies.add(:partner, PartnerStrategy)
+Warden::Strategies.add(:superadmin, SuperadminStrategy)
