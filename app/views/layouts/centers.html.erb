@@ -2256,7 +2256,7 @@
  			<div class="box-detail-main">
  				<div class="box-detail">
  					<h2>Contact</h2>
- 					<p><%= @accountinfo.address_1 %>, <%= @accountinfo.address_2 %><br><%= @accountinfo.center.city.name %>, <%= @accountinfo.pin %></p>
+ 					<p><%= @accountinfo.address_1 %>, <%= @accountinfo.address_2 %><br><%= @accountinfo.center.try(:city).try(:name) %>, <%= @accountinfo.pin %></p>
  				</div>
  				<div class="box-detail">
  					<h2>Phone</h2>
