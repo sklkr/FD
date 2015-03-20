@@ -77,7 +77,7 @@
 
 <script>
   $(function() {
-    window.availableTags = <%= raw @cities %>;
+    window.availableTags = <%= raw @city_names %>;
     $("#city").autocomplete({
       source: availableTags
     });

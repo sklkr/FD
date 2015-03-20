@@ -48,7 +48,6 @@ class PartnerStrategy < ::Warden::Strategies::Base
   end
 end
 
-
 class SuperadminStrategy < ::Warden::Strategies::Base
   def valid?
     return false if request.get?
@@ -65,6 +64,15 @@ class SuperadminStrategy < ::Warden::Strategies::Base
     end
   end
 end
+
+
+
+
+
+
+
+# Facebok Strategy :: ___________________________________________________________________
+
 
 
 Warden::Strategies.add(:customer, CustomerStrategy)

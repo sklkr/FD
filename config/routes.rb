@@ -48,6 +48,9 @@ Rails.application.routes.draw do
   get 'sessions/admin'
   post 'sessions/admin_auth'
 
+  # Oauth Routes
+  get 'auth/facebook/callback' => 'sessions#facebook'
+
   get 'registrations/partner'
   post 'registrations/partner_signup', :as => 'partner_signup'
 

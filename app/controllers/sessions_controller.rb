@@ -1,3 +1,4 @@
+
 class SessionsController < ApplicationController
 skip_before_filter :authenticate!
 layout 'homepage'
@@ -44,4 +45,20 @@ layout 'homepage'
   def partner_logout
 
   end
+
+
+
+  # Oauth authentications
+  def facebook
+    user = User.find_or_create_by(:uid => auth_hash['uid'])
+    customer = Customer.find_or_create_by(:email => auth_hash['info']['email'], :user_id => user.id)
+    warden.set_user(user)
+    redirect_to customers_details_path
+  end
+
+  protected
+
+    def auth_hash
+      request.env['omniauth.auth']
+    end
 end

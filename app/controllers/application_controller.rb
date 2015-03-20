@@ -70,13 +70,18 @@ class ApplicationController < ActionController::Base
     City.all
    end
 
+   def city_names
+    cities.map(&:name).compact
+   end
+
+   def searcher
+      @city_names = city_names
+      @c = Center.ransack(params[:q])
+   end
+   
    private
     def partner_id
       warden.user(:partner).partner.id unless warden.user(:partner).nil?
     end
 
-    def searcher
-      @cities = cities
-      @c = Center.ransack(params[:q])
-    end
 end

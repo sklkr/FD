@@ -80,3 +80,5 @@ gem 'kaminari'
 gem 'activeadmin', github: 'activeadmin'
 gem 'country_select', github: 'stefanpenner/country_select'
 gem 'profile_it', '~> 0.2.9'
+
+gem 'omniauth-facebook'

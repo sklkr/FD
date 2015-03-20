@@ -5,7 +5,7 @@
 	<li class="active"><a href=" <%= registrations_partner_path  %>">Register Your Business</a></li>
  <%end%>
  <% if is_customer? %>
- 	<li><a href="<%= customers_detail_path('brand') %>" style='color:white'>My Dashboard</a></li>
+ 	<li><a href="<%= customers_details_path %>" style='color:white'>My Dashboard</a></li>
  	<li><a href="<%= sessions_customer_logout_path %>" style='color:white'>Logout</a></li>
  <%end%>
  <% if is_partner?  %>

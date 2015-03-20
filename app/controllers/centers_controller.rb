@@ -24,11 +24,12 @@ class CentersController < ApplicationController
   end
 
   def upcoming
+
   end
 
   private
     def assign_variables
-      @center = center.reload
+      @center = center
       @centerinfo = center.centerinfo 
       @hours = @centerinfo.hour
       @accountinfo = center.accountinfo

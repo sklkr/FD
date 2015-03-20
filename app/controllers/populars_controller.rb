@@ -9,6 +9,7 @@ class PopularsController < ApplicationController
     # For search 
   	@categories = Category.all
     @cities = cities
+    @city_names = city_names
     @c = Center.ransack(params[:q])
   end
 
