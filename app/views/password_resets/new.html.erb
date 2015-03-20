@@ -1,0 +1,27 @@
+<%= render :partial => 'layouts/header'%>
+
+<div class="container-main">
+	<div class="sqr-box-title" style="margin:0px auto">
+	<h2>Forget Password</h2>
+	</div>
+	<div class="sqr-boxs-cat" style="width:40%;margin-left: 532px;margin-top: 50px;">
+		<%= form_tag password_resets_path, :method => :post do %>
+		 <%if params[:partner]  %>	
+			<%= hidden_field_tag :partner, true  %>
+		 <%end  %>
+		  <div class="form-sec form-sign">
+			<div class="">
+				<%= label_tag :email %>
+				<%= text_field_tag :email, params[:email], :style => 'margin-bottom:25px' %>
+			</div>
+			<div class="form-submit">
+			 <%= submit_tag "Reset Password" %>
+			</div>
+		  </div>
+		<%end%>
+	</div>
+</div>
+
+<div style="margin-top:100px;">
+<%= render :partial => 'layouts/footer' %>
+</div>

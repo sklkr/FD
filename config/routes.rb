@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
 
 
+  
+
   ActiveAdmin.routes(self)
  mount Lockup::Engine, at: '/lockup'
 
@@ -50,6 +52,9 @@ Rails.application.routes.draw do
 
   # Oauth Routes
   get 'auth/facebook/callback' => 'sessions#facebook'
+
+  #password Resets 
+  resources :password_resets
 
   get 'registrations/partner'
   post 'registrations/partner_signup', :as => 'partner_signup'
