@@ -1,11 +1,5 @@
 Rails.application.routes.draw do
 
-
-  
-
-  ActiveAdmin.routes(self)
- mount Lockup::Engine, at: '/lockup'
-
   get 'bookings/:center_id/:id/index' => 'bookings#index', as: 'book_now'
   post 'bookings/create'
   get 'bookings/:center_id/:id/add_details' => 'bookings#add_details', as: 'add_details'
@@ -26,6 +20,12 @@ Rails.application.routes.draw do
       resources :configurations, :profiles, :customers, :payments, :reports
     end
   end
+
+  namespace :admins do
+    resources :customers, :partners
+  end
+
+
   get 'partners(/:id)/dashboard' => 'partners/dashboard#summary', :as => 'partners_dashboard'
   
   get 'customerdashboard/details'

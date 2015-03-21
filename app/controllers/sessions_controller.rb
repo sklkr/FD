@@ -1,4 +1,3 @@
-
 class SessionsController < ApplicationController
 skip_before_filter :authenticate!
 layout 'homepage'
@@ -36,7 +35,7 @@ layout 'homepage'
   end
 
   def admin_auth
-    redirect_to admin_root_path if warden.authenticate!(:superadmin, scope: :superadmin)
+    redirect_to superadmins_customers_path if warden.authenticate!(:superadmin, scope: :superadmin)
   end
 
   def checker

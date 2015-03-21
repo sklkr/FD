@@ -2232,7 +2232,11 @@
  
  	<div class="container-main">
  		<div class="sqr-box-title">
- 		<h2><%= @center.name.capitalize %></h2>
+ 		<h2>
+		 <%if @center.centerinfo.fp_verified  %>
+		 	<img src="/assets/verify-fp.jpg" alt="" style="float:left;position:absolute;top:132px;left:191px">
+		 <%end  %>
+ 		 <%= @center.name.upcase %></h2>
  		</div>
  		<div class="sqr-boxs-cat">
  		

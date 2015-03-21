@@ -8,6 +8,10 @@ extend FriendlyId
 	has_many :services
 	belongs_to :city
 	belongs_to :area
-	friendly_id :name
+	friendly_id :name, use: :slugged
 	ratyrate_rateable "speed", "engine", "price"
+
+	def should_generate_new_friendly_id?
+	  new_record? || slug.blank?
+	end
 end

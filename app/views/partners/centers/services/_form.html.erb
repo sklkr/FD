@@ -187,7 +187,45 @@ $(document).ready(function() {
         		$('#service_seats').prop('disabled',false);
         		$('#ins1').prop('disabled',false);
         		$('#ins2').prop('disabled',false);
-        	}
+        	};
+        	if($(this).val() == '1'){
+        		if($('#service_category_id').val() == '1' || $('#service_category_id').val() == '3' || $('#service_category_id').val() == '6' || $('#service_category_id').val() == '8'){
+        			$('#service_validity').prop('disabled', true);
+        			$('#service_time_taken').prop('disabled', true);
+        			$('#service_schedule').prop('disabled', false);
+        			$('#service_expired_on').prop('disabled', true);
+        			$('#service_start_date').prop('disabled', false);
+        			$('#service_end_date').prop('disabled', false);
+        			$('#service_days').prop('disabled', false);
+        			$('#service_seats').prop('disabled', false);
+        			$('#ins1').prop('disabled', false);
+        			$('#ins2').prop('disabled', false);
+        		};
+        		if($('#service_category_id').val() == '2' || $('#service_category_id').val() == '5'){
+        			$('#service_validity').prop('disabled', false);
+        			$('#service_time_taken').prop('disabled', true);
+        			$('#service_schedule').prop('disabled', false);
+        			$('#service_expired_on').prop('disabled', false);
+        			$('#service_start_date').prop('disabled', true);
+        			$('#service_end_date').prop('disabled', true);
+        			$('#service_days').prop('disabled', true);
+        			$('#service_seats').prop('disabled', true);
+        			$('#ins1').prop('disabled', true);
+        			$('#ins2').prop('disabled', true);
+        		};
+        		if($('#service_category_id').val() == '4' || $('#service_category_id').val() == '7'){
+        			$('#service_validity').prop('disabled', true);
+        			$('#service_time_taken').prop('disabled', false);
+        			$('#service_schedule').prop('disabled', true);
+        			$('#service_expired_on').prop('disabled', true);
+        			$('#service_start_date').prop('disabled', true);
+        			$('#service_end_date').prop('disabled', true);
+        			$('#service_days').prop('disabled', true);
+        			$('#service_seats').prop('disabled', true);
+        			$('#ins1').prop('disabled', true);
+        			$('#ins2').prop('disabled', true);
+        		};
+        	};
         });
         $('#service_category_id').change(function(){
         	if($('#service_service_type').val() != '2'){

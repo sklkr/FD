@@ -1,0 +1,59 @@
+<div class="container">
+    <div class="row">
+        <div class="panel panel-primary filterable">
+            <div class="panel-heading">
+                <h3 class="panel-title">Customers</h3>
+            </div>
+            <table class="table">
+                <thead>
+                    <tr class="filters">
+                        <th></th>
+                        <th><input type="text" class="form-control" placeholder="Name"></th>
+                        <th><input type="text" class="form-control" placeholder="Email Id"></th>
+                        <th><input type="text" class="form-control" placeholder="Customer Id"></th>
+                    </tr>
+                </thead>
+            </table>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th></th>
+                        <th>Name</th>
+                        <th>Total service purchase</th>
+                        <th>Total Purchase</th>
+                        <th>Last date Booking</th>
+                        <th>Customer Id</th>
+                        <th>Manage</th>
+                    </tr>
+                </thead>
+                <tbody>
+                <%@customers.each do |customer| %>
+                    <tr>
+                        <td><%= check_box_tag :t1 %></td>
+                        <td><%= customer.user.first_name %></td>
+                        <td><%= rand(1..30) %> (Static)</td>
+                        <th>Rs:: <%= rand(1..50000) %>/- (Static)</th>
+                        <td><%= Time.now + rand(1..10).days %></td>
+                        <td><a href="<%= admins_customer_path(customer.id) %>"><%= rand(1..12000000) %> </a></td>
+                        <td><a href="#">Edit</a>&nbsp;<a href="#">Remove</a></td>
+                    </tr>
+                   <%end%>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-2">
+            <a href="" class="btn btn-primary">History</a>
+        </div>
+        <div class="col-xs-2">
+            
+        </div>
+        <div class="col-xs-7 pull-right">
+            <a href="" class="btn btn-primary">Add Coupon</a>
+            <a href="" class="btn btn-primary">Redeem Pass</a>
+            <a href="" class="btn btn-primary">Message</a>
+            <a href="" class="btn btn-primary">Sms</a>
+        </div>
+    </div>
+</div>

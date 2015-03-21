@@ -23,4 +23,12 @@ class Centerinfo < ActiveRecord::Base
         end
     end
 
+    def fp_verified?
+        unless self.fp_verified.nil?
+            true
+        else
+            false
+        end
+    end
+
 end
