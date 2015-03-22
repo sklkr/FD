@@ -57,7 +57,7 @@ class ApplicationController < ActionController::Base
       redirect_to sessions_partner_path unless warden.authenticated?(:partner)
    end
 
-   def superadmin_authenticated?
+   def admin_authenticated?
       redirect_to sessions_admin_path unless warden.authenticated?(:superadmin)
    end
 

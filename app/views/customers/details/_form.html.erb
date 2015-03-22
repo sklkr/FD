@@ -23,11 +23,11 @@
 					<div class="small-4 columns"><label for='center[name]' class="inline">Address</label></div>
 					<div class="small-8 columns"><%= f.text_field :address1, :class => '', :placeholder => 'Address 1' %><%= f.text_field :address2, :class =>'' , :placeholder => 'Address 2' %>
 						<div class="row">
-							<div class="small-4 columns">
-								<%= f.text_field :area, :class => '', :placeholder => 'Area' %>
+							<div class="small-12 columns">
+								<%= select_tag 'user[city_id]', options_from_collection_for_select(@cities, 'id', 'name', @details.city_id), :prompt => "select your city" %>
 							</div>
-							<div class="small-8 columns">
-								<%= f.text_field :city, :class => '', :placeholder => 'city	' %>
+							<div class="small-12 columns">
+								<%= select_tag 'user[area_id]', options_from_collection_for_select([], 'id', 'name'), 'data-option-dependent' => true, 'data-option-observed' => 'user_city_id', 'data-option-url' => '/cities/:city_id:/areas.json', 'data-option-key-method' => :id, 'data-option-value-method' => :name, 'data-option-value-selected' =>  @details.try(:area_id).to_i %>
 							</div>
 						</div>
 					</div>
@@ -68,3 +68,49 @@
 	</div>
 <%end  %>
 
+
+<script>
+$(document).ready(function() {
+  $('select[data-option-dependent=true]').each(function (i) {
+	      var observer_dom_id = $(this).attr('id');
+	      var observed_dom_id = $(this).data('option-observed');
+	      var url_mask = $(this).data('option-url');
+	      var key_method = $(this).data('option-key-method');
+	      var value_method = $(this).data('option-value-method');
+	      var selected_tag = $(this).data('option-value-selected');
+	      var prompt = $(this).has('option[value=true]').size() ? $(this).find('option[value]') : $('<option value=\"\">').text('Select a area');
+	      var regexp = /:[0-9a-zA-Z_]+:/g;
+	      var observer = $('select#' + observer_dom_id);
+	      var observed = $('#' + observed_dom_id);
+
+	      if (!observer.val() && observed.size() > 1) {
+	          observer.attr('disabled', true);
+	      };
+	      observed.on('change', function () {
+	          observer.empty().append(prompt);
+	          if (observed.val()) {
+	              url = url_mask.replace(regexp, observed.val());
+	              $.getJSON(url, function (data) {
+	                  $.each(data, function (i, object) {
+	                      observer.append($('<option>').attr('value', object[key_method]).text(object[value_method]));
+	                      observer.attr('disabled', false);
+	                  });
+	              });
+	          }
+	      });
+	      observer.empty().append(prompt);
+	      if (observed.val()) {
+	          url = url_mask.replace(regexp, observed.val());
+	          $.getJSON(url, function (data) {
+	              $.each(data, function (i, object) {
+	                  observer.append($('<option>').attr('value', object[key_method]).text(object[value_method]));
+	                  if(object[key_method] == selected_tag){
+	                  	observer.append($('<option>').attr('selected', 'selected').attr('value', object[key_method]).text(object[value_method]));
+	                  }
+	                  observer.attr('disabled', false);
+	              });
+	          });
+	      }
+	  });
+});
+</script>

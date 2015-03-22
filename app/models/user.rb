@@ -8,6 +8,8 @@ class User < ActiveRecord::Base
   has_one :customer
   has_one :superadmin
   belongs_to :centertype
+  belongs_to :city
+  belongs_to :area
   
   ratyrate_rater
   before_create :generate_confirmation_token

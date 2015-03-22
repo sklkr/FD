@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150321115856) do
+ActiveRecord::Schema.define(version: 20150322043913) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -374,13 +374,13 @@ ActiveRecord::Schema.define(version: 20150321115856) do
     t.integer  "centertype_id"
     t.string   "address1"
     t.string   "address2"
-    t.string   "area"
-    t.string   "city"
     t.string   "country"
     t.string   "image_id"
     t.string   "uid"
     t.string   "password_reset_token"
     t.datetime "password_reset_sent_at"
+    t.integer  "city_id"
+    t.integer  "area_id"
   end
 
   add_index "users", ["member_id"], name: "index_users_on_member_id", using: :btree

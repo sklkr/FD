@@ -35,7 +35,7 @@ layout 'homepage'
   end
 
   def admin_auth
-    redirect_to superadmins_customers_path if warden.authenticate!(:superadmin, scope: :superadmin)
+    redirect_to admins_customers_path if warden.authenticate!(:superadmin, scope: :superadmin)
   end
 
   def checker

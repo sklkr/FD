@@ -57,7 +57,7 @@ class SuperadminStrategy < ::Warden::Strategies::Base
 
   def authenticate!
     superadmin = Superadmin.find_by_email(params["user"].fetch("email"))
-    if superadmin.nil? || superadmin.user.password != params["user"].fetch("password")
+    if superadmin.try(:user).nil? || superadmin.user.password != params["user"].fetch("password")
       fail!("could not logged in")
     else
       success! superadmin
