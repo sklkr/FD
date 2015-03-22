@@ -1,6 +1,7 @@
 class Accountinfo < ActiveRecord::Base
 	belongs_to :center
 	belongs_to :brand
+	
 
 	def brandname
 		unless self.brand.nil?

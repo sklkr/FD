@@ -28,6 +28,7 @@ class RegistrationsController < ApplicationController
   end
 
   def partner_signup
+    binding.pry
     user = User.new(user_params)
     if params[:user][:password] == params[:user][:password_conf] && user.save
      pdata = Partner.new(partner_params)

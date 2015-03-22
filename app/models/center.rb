@@ -1,5 +1,6 @@
 class Center < ActiveRecord::Base
 extend FriendlyId
+	# Associations
 	belongs_to :partner
 	has_one :centerinfo
 	has_one :verification
@@ -8,6 +9,10 @@ extend FriendlyId
 	has_many :services
 	belongs_to :city
 	belongs_to :area
+
+	# Validations
+	validates :name, :presence => true
+
 	friendly_id :name, use: :slugged
 	ratyrate_rateable "speed", "engine", "price"
 

@@ -8,7 +8,7 @@ before_filter :searcher
   def list
     @c = Center.ransack(params[:q])
     @cbase = @c.result(distinct: true).page(params[:page]).per(3)
-    @centers = @cbase.includes(:centerinfo, :services).inject([]) { |center, p| center << p.centerinfo }
+    @data = @cbase.group_by {|c| [c.services, c.centerinfo]}.sort_by {|k,v| v[0].name}
   end
 
 
@@ -17,7 +17,7 @@ before_filter :searcher
   	#@centers = @q.result
     @c = Center.ransack(params[:q])
     @cbase = @c.result(distinct: true).page(params[:page]).per(9)
-    @centers = @cbase.includes(:centerinfo).inject([]) { |center, p| center << p.centerinfo }
+    @data = @cbase.group_by(&:centerinfo).sort_by{|ci, center| center[0].name}
   end
 
   def map

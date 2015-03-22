@@ -1,14 +1,14 @@
 <div class="filter-result">
 <div class="list-view">
 	<ul class="grid" style="width:100%">
-	<%@centers.each do |s|  %>
+	<%@data.each do |centerinfo, center|  %>
 		<li class="comp-box barber-saloon">
 		 <div class="comp-pic">
-			<a href="<%= center_category_services_path(s.center.id, s.center.services.first.find_lazy) %>"> <%= image_tag attachment_url(s.center.centerinfo, :image), :style => 'width:150px;height:130px' %></a>
+			<a href="<%= center_category_services_path(center[0].friendly_id, center[0].services.first.category.friendly_id) %>"> <%= image_tag attachment_url(centerinfo, :image), :style => 'width:150px;height:130px' %></a>
 		 </div>
 		 <div class="comp-info">
 			<div class="comp-title">
-			  <a href="<%= center_category_services_path(s.center.id, s.center.services.first.find_lazy) %>"><h4><%= s.name %></h4></a>
+			  <a href="<%= center_category_services_path(center[0].friendly_id, center[0].services.first.category.friendly_id) %>"><h4><%= center[0].name %></h4></a>
 			</div>
 		
 			<div class="comp-rate">

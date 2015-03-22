@@ -2,7 +2,7 @@ class ApplicationController < ActionController::Base
   # Prevent CSRF attacks by raising an exception.
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
-  helper_method :warden, :signed_in?, :current_user, :is_partner?, :is_customer?
+  helper_method :warden, :signed_in?, :current_user, :is_partner?, :is_customer?, :center
 
    def areas
      city = City.find(params[:city_id])

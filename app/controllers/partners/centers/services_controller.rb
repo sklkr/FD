@@ -3,13 +3,14 @@ module Partners::Centers
   skip_before_filter :authenticate!
   before_filter :partner_authenticated?
   before_filter :partner_accessable?
+  before_filter { params[:id] && @service = Service.find(params[:id])}
 
   layout 'partnerdashboard'
     def index
-      regular = center.services.regular
-      @ymka = regular.where(category_id: [1,3,6,8]).includes(:category)
-      @ssc = regular.where(category_id: [4,7]).includes(:category)
-      @gs = regular.where(category_id: [2,5]).includes(:category)
+      regular = center.services.regular.includes(:category)
+      @ymka = regular.where(category_id: [1,3,6,8])
+      @ssc = regular.where(category_id: [4,7])
+      @gs = regular.where(category_id: [2,5])
     end
 
     def new
@@ -31,12 +32,10 @@ module Partners::Centers
     end
 
     def show
-      @service = Service.find(params[:id])
       @instructors = center.instructors
     end
 
     def update
-      @service = Service.find(params[:id])
       @service.instructor_ids = params.require(:service).permit(:instructor_ids => [])['instructor_ids'].reject(&:blank?)
       if @service.update_attributes(service_params)
         flash[:notice] = 'Details updated'

@@ -1,9 +1,11 @@
 module Partners::Centers
 class DetailsController < ApplicationController 
-skip_before_filter :authenticate!
-before_filter :partner_authenticated?
-before_filter :partner_accessable?
-layout 'partnerdashboard'
+  skip_before_filter :authenticate!
+  before_filter :partner_authenticated?
+  before_filter :partner_accessable?
+  before_filter { params[:id] && @details = Centerinfo.find(params[:id])}
+
+  layout 'partnerdashboard'
   
   def index
     @details = center.reload.centerinfo || Centerinfo.new
@@ -36,10 +38,9 @@ layout 'partnerdashboard'
 
 
   def show
-    @details = Centerinfo.find(params[:id])
+    
   end
   def update
-    @details = Centerinfo.find(params[:id])
     @details.category_ids = params.require(:centerinfo).permit(:category_ids => [])['category_ids']
     @details.experience_ids = params.require(:centerinfo).permit(:experience_ids => [])['experience_ids']
     if @details.update_attributes(permit_params) && @details.hour.update_attributes(hour_params)

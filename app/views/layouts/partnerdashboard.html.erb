@@ -70,8 +70,25 @@
 		.ui-timepicker-rtl dl dt{ float: right; clear: right; }
 		.ui-timepicker-rtl dl dd { margin: 0 45% 10px 10px; }
 	</style>
+	<style>
+		fieldset{
+			border: 1px solid #dce2eb;
+		    background: #fff;
+		    padding-top: 15px;
+		    padding-bottom: 25px;
+		    margin-bottom: 15px;
+		}
+		fieldset legend{
+	      color: #5B6270;
+		  margin: 0 25px;
+		  font-weight: 300;
+		  background: transparent;
+		  border: 1px solid #E2E3E6;
+		  
+		}
+	</style>
 </head>
-<body>
+<body style="background:#f7f9fc">
  <%= render :partial => 'layouts/header' unless @header == false %>
 <% params[:id] = params[:center_id] if params[:id].nil? %>
  <div class="container">
@@ -86,7 +103,7 @@
 			<li><a href="">Report Manager</a></li>
 		</ul>
 	</div>
-</div>
+ </div>
 <div class="container">
 	<%= yield  %>
 </div>

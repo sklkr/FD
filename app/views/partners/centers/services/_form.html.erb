@@ -78,7 +78,7 @@
 				<div class="small-8 columns"><%= f.number_field :seats , :required => true %></div>
 			</div>
 			<div class="row">
-				<div class="small-4 columns"><label for="" class="inline right">Instructors</label><small>(Hold CTRL to choose multiple)</small></div>
+				<div class="small-4 columns"><label for="" class="inline right">Instructors</label></div>
 				<div class="small-8 columns"><%= collection_select :service, :instructor_ids, @instructors, :id, :name, {}, :multiple => true, :name => 'service[instructor_ids][]' %></div>
 			</div>
 		</div>
@@ -104,7 +104,7 @@
 
 <script>
 $(document).ready(function() {
-
+	$('#service_instructor_ids').chosen();
 	if($('#service_service_type').val() == '2'){
 		$('#service_name').prop('disabled',false);
 		$('#service_validity').prop('disabled',true);

@@ -23,3 +23,4 @@
 //= require jquery.tagit
 //= require jquery.wymeditor
 //= require jquery.timepicker
+//= require chosen.jquery

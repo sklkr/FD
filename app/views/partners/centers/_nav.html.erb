@@ -1,4 +1,3 @@
-<div class="right"><span class='warning label button'><%= params[:center_id].capitalize %></span></div>
 <ul class="menu embed-nav" id="center-conf">
 <%unless params[:controller] == 'partners/centers' %>
 	<%unless params[:controller].include? 'dashboard' %>
@@ -12,4 +11,6 @@
 	<%end%>
 <%end%>
 </ul>
-				
+<div class="right"><span class='warning label button'><%= center.name.capitalize %></span></div>
+<div class="clear"></div>
+<br><br>

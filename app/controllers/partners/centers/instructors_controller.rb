@@ -3,6 +3,7 @@ class InstructorsController < ApplicationController
 skip_before_filter :authenticate!
 before_filter :partner_authenticated?
 before_filter :partner_accessable? 
+before_filter { params[:id] && @instructor = Instructor.find(params[:id])}
 
 layout 'partnerdashboard'
   
@@ -25,10 +26,9 @@ layout 'partnerdashboard'
   end
 
   def show
-    @instructor = Instructor.find(params[:id])
+
   end
   def update
-    @instructor = Instructor.find(params[:id])
     if @instructor.update_attributes(permit_params)
       flash[:notice] = 'Updated'
       render :show

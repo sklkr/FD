@@ -11,9 +11,12 @@ extend FriendlyId
  #scopes
  scope :regular, -> { where(service_type: '1') }
  scope :upcoming, -> { where(service_type: '2') }
+
  friendly_id :name
 
-
+ # validations
+ 
+ 
  def percent
  	((1-(self.selling_price/self.original_price))*100).to_i
  end
