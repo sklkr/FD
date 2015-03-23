@@ -3,7 +3,8 @@
 <head>
 	<meta charset="UTF-8" />
 	<meta name="viewport" content="initial-scale = 1.0" />
-	<title><%= @title.nil? ? "Fitnesspapa" : @title %> </title>
+	<link rel="shortcut icon" href="/assets/favicon.ico" />
+    <%= metamagic %>
 	<script src="//ajax.googleapis.com/ajax/libs/webfont/1.5.10/webfont.js"></script>
 	<script>
 	  WebFont.load({
@@ -2225,6 +2226,7 @@
 	</script>
 </head>
 <body>
+
  <%= render :partial => 'layouts/header' %>
  <%= render :partial => 'layouts/search' %>
  <div class="container">
@@ -2339,7 +2341,7 @@
  	});
 
  $(function() {
-   $(document).pjax('a:not([data-remote]):not([data-behavior]):not([data-skip-pjax])', '[data-pjax-container]')
+   $(document).pjax('#pjax-tabs a:not([data-remote]):not([data-behavior]):not([data-skip-pjax])', '[data-pjax-container]')
  });
  </script>
 </body>

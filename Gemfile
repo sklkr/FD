@@ -84,7 +84,7 @@ gem 'omniauth-facebook'
 
 # Seo
 gem "dynamic_sitemaps"
-gem 'meta-tags'
+gem 'metamagic'
 
 
 

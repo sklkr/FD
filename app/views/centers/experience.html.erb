@@ -1,7 +1,14 @@
+<%
+meta title: "#{@center.name} | FitnessPapa.com",
+     description: "#{@centerinfo.brief_desc}",
+     keywords: %w(services dailypass weeklypass)
+%>
+
+
 <div id="Experience marginner">
   	<ul style="margin-right:20px;width:48%;margin:45px auto;text-align:left">
 		<% @experience.each do |ex|  %>
-			<li style="margin-bottom:14px;width:49%;float:left"> <img src="/assets/tick.png" alt="">	<%= ex.name %></li>
+			<li style="margin-bottom:14px;width:49%;float:left"> <img src="/assets/tick.png" alt=""><%= ex.name %></li>
 		<%end%>
 	</ul>
 </div>

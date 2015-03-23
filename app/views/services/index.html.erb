@@ -1,3 +1,10 @@
+<%
+meta title: "#{@center.name} | FitnessPapa.com",
+     description: "#{@centerinfo.brief_desc}",
+     keywords: %w(services dailypass weeklypass)
+%>
+
+
 <div class="table-box marginner">
 	<% if [1,3,6,8].include?(params[:cat_id]) %>
 		<%= render :partial => 'services/cat1', :locals => { :services => @services } %>
