@@ -16,6 +16,7 @@ gem 'coffee-rails', '~> 4.0.0'
 gem 'unicorn'
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
+gem 'pjax_rails'
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
 gem 'turbolinks'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
@@ -76,7 +77,14 @@ gem "aws-sdk", '< 2'
 gem 'kaminari'
 
 gem 'country_select', github: 'stefanpenner/country_select'
-gem 'profile_it', '~> 0.2.9'
+gem 'newrelic_rpm'
+
 
 gem 'omniauth-facebook'
+
+# Seo
+gem "dynamic_sitemaps"
+gem 'meta-tags'
+
+
 

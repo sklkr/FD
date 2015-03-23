@@ -22,7 +22,14 @@ $(document).ready(function () {
          lat: <%= @centerinfo.latitude %>,
          lng: <%= @centerinfo.longitude %>,
          title: '<%= @centerinfo.name %>',
+    });
+
+    
+    $('#pjax-tabs').children('li').each(function(){
+        $(this).removeClass('active');
     })
+    $('#maptab').addClass('active');
+
 });
 </script>
 

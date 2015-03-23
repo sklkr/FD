@@ -2300,24 +2300,23 @@
  		<div id="target"></div>
  		<div class="container-main">
  		<div id="container-tabs">
- 			<ul class="tabs">
-			    <%= nav_with_target 'About', about_center_path(:id => params[:id], :category_id => params[:category_id]), '#container-tabs' %>
- 				<li class="<%= "active" if params[:controller] == 'services' %>">
+ 			<ul class="tabs" id="pjax-tabs">
+			    <%= nav_with_target 'About', about_center_path(:id => params[:id], :category_id => params[:category_id]), '#container-tabs', 'aboutus' %>
+ 				<li class="<%= "active" if params[:controller] == 'services' %>" id='services'>
  				  <%if params[:controller] == 'centers' %>
 		 			<a href="<%= center_category_services_path(:center_id => params[:id], :category_id => params[:category_id]) %>#container-tabs">Services</a>
 					<%else%>
-					<a href="<%= center_category_services_path(:id => params[:id], :category_id => params[:category_id]) %>#container-tabs">Services</a>
+					<a href="<%= center_category_services_path(:id => params[:id], :category_id => params[:category_id]) %>#container-tabs" >Services</a>
 				  <%end  %>
  				</li>
- 				<%= nav_with_target 'Map', map_center_path(:id => params[:id], :category_id => params[:category_id]), '#container-tabs' %>
- 				<%= nav_with_target 'Reviews', reviews_center_path(:id => params[:id], :category_id => params[:category_id]), '#container-tabs' %>
- 				<%= nav_with_target 'Instructors', instructors_center_path(:id => params[:id], :category_id => params[:category_id]), '#container-tabs' %>
- 				<%= nav_with_target 'Experience', experience_center_path(:id => params[:id], :category_id => params[:category_id]), '#container-tabs' %>
- 				<%= nav_with_target 'Upcoming Events', upcoming_center_path(:id => params[:id], :category_id => params[:category_id]), '#container-tabs' %>
+ 				<%= nav_with_target 'Map', map_center_path(:id => params[:id], :category_id => params[:category_id]), '#container-tabs', 'maptab' %>
+ 				<%= nav_with_target 'Reviews', reviews_center_path(:id => params[:id], :category_id => params[:category_id]), '#container-tabs', 'reviews' %>
+ 				<%= nav_with_target 'Instructors', instructors_center_path(:id => params[:id], :category_id => params[:category_id]), '#container-tabs', 'instructors' %>
+ 				<%= nav_with_target 'Experience', experience_center_path(:id => params[:id], :category_id => params[:category_id]), '#container-tabs', 'experience' %>
+ 				<%= nav_with_target 'Upcoming Events', upcoming_center_path(:id => params[:id], :category_id => params[:category_id]), '#container-tabs', 'events' %>
  			</ul>
- 			
- 			<div id="tab_main_content">
-				<%= yield %>
+ 			<div id="tab_main_content" data-pjax-container >
+ 				<%= yield %>
  			</div>
  			
  		</div>
@@ -2338,6 +2337,10 @@
  	autoPlay: 2000, //Set AutoPlay to 3 seconds
  	items : 1,
  	});
+
+ $(function() {
+   $(document).pjax('a:not([data-remote]):not([data-behavior]):not([data-skip-pjax])', '[data-pjax-container]')
+ });
  </script>
 </body>
 </html>

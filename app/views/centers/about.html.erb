@@ -9,4 +9,10 @@
 	 	$('.bxslider').bxSlider({
 	 	  pagerCustom: '#bx-pager'
 	 	});
+	 	$(document).ready(function(){
+	 		$('#pjax-tabs').children('li').each(function(){
+	 			$(this).removeClass('active');
+	 		})
+	 		$('#aboutus').addClass('active');
+	 	})
  </script>

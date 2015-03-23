@@ -40,7 +40,7 @@
 						<div class="profile-rate">
 						  <img src="/assets/star.jpg" alt=""><a href="#">2 Reviews</a>
 						</div>
-						<button type="button"><a href="<%= center_category_services_path(center.id, params[:category_id]) %>" style="color:white;text-decoration:none">view</a></button>
+						<button type="button"><a href="<%= center_category_services_path(center.friendly_id, params[:category_id]) %>" style="color:white;text-decoration:none">view</a></button>
 					</div>
 					<div class="profile-detail">
 					  <p><%= center.centerinfo.brief_desc.truncate(120) %></p>
