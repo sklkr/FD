@@ -55,6 +55,8 @@ Rails.application.routes.draw do
 
   #password Resets 
   resources :password_resets
+  get 'customer/change_password' => 'password_resets#change_password'
+  patch 'customer/update_password' => 'password_resets#update_password'
 
   get 'registrations/partner'
   post 'registrations/partner_signup', :as => 'partner_signup'

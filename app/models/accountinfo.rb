@@ -2,6 +2,10 @@ class Accountinfo < ActiveRecord::Base
 	belongs_to :center
 	belongs_to :brand
 	
+	# Validations
+	validates :personname, presence: true
+	validates :address_1, presence: true
+	validates :center_id, presence: true
 
 	def brandname
 		unless self.brand.nil?

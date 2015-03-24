@@ -26,4 +26,21 @@ class PasswordResetsController < ApplicationController
       render :edit
     end
   end
+
+  def show
+  end
+
+  def change_password
+    @user = current_user
+  end
+
+  def update_password
+    if current_user.password == params['current_password'] && params['password'] == params['password_confirmation']
+      current_user.password= params['password']
+      redirect_to customers_details_path if current_user.save
+    else
+      flash["notice"] = "Please check your password provided"
+      redirect_to customer_change_password_path
+    end
+  end
 end

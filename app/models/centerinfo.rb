@@ -8,6 +8,11 @@ class Centerinfo < ActiveRecord::Base
     accepts_nested_attributes_for :center
     accepts_nested_attributes_for :hour
 
+    # Validations
+    validates :brief_desc, presence: true
+    validates :detailed_desc, presence: true
+
+
     def cat_list
     	unless center.nil?
     		categories
