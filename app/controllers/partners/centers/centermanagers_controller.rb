@@ -34,7 +34,6 @@ class CentermanagersController < ApplicationController
 
   def edit
     @user = Centerman.find(params['id']).user
-    binding.pry
   end
 
   def update

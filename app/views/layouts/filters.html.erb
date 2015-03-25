@@ -25,12 +25,10 @@
   								<div class="pagination-button">
   									<div class="check-box">
   										<input type="checkbox" name="checkboxG4" id="checkboxG4" class="css-checkbox" checked="">
-  									<label for="checkboxG4" class="css-label"><img src="/assets/boy-checkbox.jpg"></label>
-  									
-  									<input type="checkbox" name="checkboxG5" id="checkboxG5" class="css-checkbox">
-  									<label for="checkboxG5" class="css-label"><img src="/assets/girl-checkbox.jpg"></label>
-  									
-  									</div>
+    									<label for="checkboxG4" class="css-label"><img src="/assets/boy-checkbox.jpg"></label>
+    									<input type="checkbox" name="checkboxG5" id="checkboxG5" class="css-checkbox">
+    									<label for="checkboxG5" class="css-label"><img src="/assets/girl-checkbox.jpg"></label>
+    								</div>
   									<div class="view-box">
   										<a href="<%= filters_list_path(:q => params[:q]) %>" class="listview <%= "active"  if  params["action"] == 'list' %>"></a>
   										<a href="<%= filters_grid_path(:q => params[:q]) %>" class="gridview <%= "active"  if  params["action"] == 'grid' %>"></a>

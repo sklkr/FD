@@ -1,20 +1,13 @@
 <%= search_form_for @c, :url => act do |f| %>
+<%=  f.hidden_field :city_name_cont, :value => params[:q][:city_name_cont] %>
   <div class="sidebar-box">
     <h3>Category</h3>
     <%= f.collection_select :centerinfo_categories_id_in, Category.order(:name), :id, :name, {:prompt => "-- Select Category --"} %>
   </div>
-  <!-- <div class="sidebar-box">
-  
+  <div class="sidebar-box">
     <h3>Area</h3>
-  
-    <select name="Area">
-      <option value="Dehradun">Dehradun</option>
-      <option value="demo">Demo</option>
-      <option value="demo">Demo</option>
-      <option value="demo">Demo</option>
-    </select>
-    
-  </div> -->
+      <%= f.collection_select :area_id_in, City.find_by_name(params[:q][:city_name_cont]).areas.order(:name) , :id, :name, {:prompt => "-- Select Area --"} %>
+  </div>
   
   <!-- <div class="sidebar-box">
     <h3>Distance</h3>
@@ -27,6 +20,7 @@
     <%= f.text_field :services_selling_price_lteq %>
     
   </div> -->
+  
   <div class="sidebar-box">
     <h3>Gender</h3>
       <%= f.collection_select :services_gender_id_in, Centertype.order(:name), :id, :name, {:prompt => "-- Select Gender --"} %>
