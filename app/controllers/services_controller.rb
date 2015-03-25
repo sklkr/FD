@@ -14,6 +14,6 @@ class ServicesController < CentersController
 
   private
     def parse_category
-      params[:cat_id] = Category.find_lazy(params[:category_id]).try(:id)
+      params[:cat_id] = Category.friendly.find(params[:category_id]).try(:id)
     end
 end
