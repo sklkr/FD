@@ -10,7 +10,8 @@ class User < ActiveRecord::Base
   belongs_to :centertype
   belongs_to :city
   belongs_to :area
-  
+  has_one :centerman
+
   ratyrate_rater
   before_create :generate_confirmation_token
   accepts_nested_attributes_for :customer

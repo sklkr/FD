@@ -1,0 +1,56 @@
+<%=form_for @user, url: getpath, method: getmethod do |f| %>
+<div class="row">
+	<div class="large-6 columns">
+		<div class="row">
+			<div class="small-4 columns"><label for="user[name]" class="inline">Name</label></div>
+			<div class="small-8 columns"><%= f.text_field :first_name, :required => true %></div>
+		</div>	
+		<div class="row">
+			<div class="small-4 columns"><label for="user[phone]" class="inline">Mobile</label></div>
+			<div class="small-8 columns"><%= f.text_field :phone, :required => true %></div>
+		</div>
+	</div>
+	<div class="large-6 columns">
+		
+		<div class="row">
+			<div class="small-4 columns"><label for="user[email]" class="inline">Email</label></div>
+			<div class="small-8 columns">
+				<%= f.fields_for :centerman do |cm|  %>
+				 <%= cm.text_field :email, :required => true %>
+				<%end  %>
+			</div>
+		</div>
+		<div class="row">
+			<div class="small-4 columns"><label for="user[phone]" class="inline">Address 1</label></div>
+			<div class="small-8 columns"><%= f.text_field :address1, :required => true %></div>
+		</div>
+		<div class="row">
+			<div class="small-4 columns"><label for="user[phone]" class="inline">Address 2</label></div>
+			<div class="small-8 columns"><%= f.text_field :address2, :required => true %></div>
+		</div>
+		<div class="row">
+			<div class="small-4 columns"><label for="user[phone]" class="inline">Password</label></div>
+			<div class="small-8 columns"><%= password_field_tag 'user[password]' %></div>
+		</div>
+		<div class="row">
+			<div class="small-4 columns"><label for="user[phone]" class="inline">Password Confirm</label></div>
+			<div class="small-8 columns"><%= password_field_tag 'user[password_conf]' %></div>
+		</div>
+		
+	</div>
+	<hr>
+	<div class="large-12 columns">
+		<div class="right">
+			<a class="button small radius" href='<%= partners_center_centermanagers_path %>'>Cancel</a>
+			<%= submit_tag 'Save changes', :class => 'button small radius' %>&nbsp;&nbsp;&nbsp;
+		</div>
+	</div>
+</div>
+<%end  %>
+
+
+<script>
+$(document).ready(function(){
+    $('#center-conf').css('display', 'block');
+});
+</script>

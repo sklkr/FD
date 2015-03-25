@@ -1,6 +1,5 @@
 module Partners::Centers
 class DetailsController < ApplicationController 
-  skip_before_filter :authenticate!
   before_filter :partner_authenticated?
   before_filter :partner_accessable?
   before_filter { params[:id] && @details = Centerinfo.find(params[:id])}

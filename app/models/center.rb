@@ -7,6 +7,7 @@ extend FriendlyId
 	has_one :accountinfo, :dependent => :destroy
 	has_many :instructors, :dependent => :destroy
 	has_many :services, :dependent => :destroy
+	has_many :centermen, :dependent => :destroy
 	belongs_to :city
 	belongs_to :area
 

@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   namespace :partners do
     resources :centers do
       scope module: 'centers' do
-        resources :details, :accounts, :instructors, :photos
+        resources :details, :accounts, :instructors, :photos, :centermanagers
         resources :services do 
           collection do 
             get :upcoming
