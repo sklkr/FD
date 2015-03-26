@@ -1,0 +1,50 @@
+<%= form_tag 'https://test.payu.in/_payment', :id => 'myform', :style => 'visibility:hidden' do  %>
+  <%= text_field_tag :udf1, params[:authenticity_token] %>
+  <div class="field">
+    <%= label_tag :key %><br>
+    <%= text_field_tag :key, 'JBZaLc' %>
+  </div>
+  <div class="field">
+    <%= label_tag :txnid %><br>
+    <%= text_field_tag :txnid, @txnid %>
+  </div>
+  <div class="field">
+    <%= label_tag :amount %><br>
+    <%= number_field_tag :amount, @amount %>
+  </div>
+  <div class="field">
+    <%= label_tag :email %><br>
+    <%= text_field_tag :email, @email %>
+  </div>
+  <div class="field">
+    <%= label_tag :phone %><br>
+    <%= text_field_tag :phone, @phone %>
+  </div>
+  <div class="field">
+    <%= label_tag :productinfo %><br>
+    <%= text_field_tag :productinfo, @productinfo %>
+  </div>
+  <div class="field">
+    <%= label_tag :firstname %><br>
+    <%= text_field_tag :firstname, @firstname %>
+  </div>
+  <div class="field">
+    <%= label_tag :surl %><br>
+    <%= text_field_tag :surl, @surl %>
+  </div>
+  <div class="field">
+    <%= label_tag :furl %><br>
+    <%= text_field_tag :furl, @furl %>
+  </div>
+  <div class="field">
+    <%= label_tag :hash %><br>
+    <%= text_field_tag :hash, @hash %>
+  </div>
+  <div class="field">
+    <%= label_tag :service_provider %><br>
+    <%= text_field_tag :service_provider, 'payu_paisa' %>
+  </div>
+  <div class="actions">
+    <%= submit_tag %>
+  </div>
+<% end %>

@@ -1,6 +1,8 @@
 class BookingsController < ApplicationController
 before_filter :check_auth, :only => [:add_details, :create]
 before_filter :searcher
+require 'digest/sha1'
+
   def index
   	@title = "Book Now"
   	@service = Center.friendly.find(params['center_id']).services.friendly.find(params['id'])
@@ -20,10 +22,12 @@ before_filter :searcher
   		render :text => "Something went wrong"
   	end
   end
+  
   def add_details
   	@title = 'User Details'
   	@booking = Booking.find_by_token(params[:token])
   end
+
 
   private
   	def check_auth

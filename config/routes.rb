@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
 
+  post 'payments/index'
+  post 'payments/success'
+  post 'payments/failure'
+
   get 'bookings/:center_id/:id/index' => 'bookings#index', as: 'book_now'
   post 'bookings/create'
   get 'bookings/:center_id/:id/add_details' => 'bookings#add_details', as: 'add_details'
