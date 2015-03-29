@@ -9,11 +9,14 @@ require 'digest/sha1'
   end
 
   def create
+    binding.pry
   	@booking = Booking.new(params.permit(:quantity))
   	service = Service.friendly.find(params[:service_name])
   	@booking.service_id = service.id
+    @booking.partner_id = service.center.partner.id
+    @booking.center_id = service.center.id
   	unless current_user.nil?
-  		@booking.customer_id = current_user.id 
+  		@booking.customer_id = current_user.customer.id 
   	end
   	@booking.price = service.selling_price * @booking.quantity
   	if @booking.save

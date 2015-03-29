@@ -98,7 +98,7 @@
 			<li class="<%= "active" if params[:controller].include? '/centers' %>"><a href="<%= partners_centers_path %>">Center Configuration</a>
 			</li>
 			<li  class="<%= "active" if params[:controller].include? 'multicenters' %>"><a href="<%= partners_configurations_path %>">Multicenter Manager</a></li>
-			<li><a href="<%=  %>">Customer Manager</a></li>
+			<li class="<%= "active" if params[:controller] == 'partners/customermanagers' %>"><a href="<%= partners_customermanagers_path %>">Customer Manager</a></li>
 			<li><a href="<%=  %>">Payment Manager</a></li>
 			<li><a href="">Report Manager</a></li>
 		</ul>

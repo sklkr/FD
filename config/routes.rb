@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+mount Lockup::Engine, at: '/lockup'
+
 
   post 'payments/index'
   post 'payments/success'
@@ -23,6 +25,7 @@ Rails.application.routes.draw do
     scope module: 'multicenters' do
       resources :configurations, :profiles, :customers, :payments, :reports
     end
+    resources :customermanagers
   end
 
   namespace :admins do

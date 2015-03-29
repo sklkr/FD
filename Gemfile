@@ -88,3 +88,5 @@ gem 'omniauth-facebook'
 gem "dynamic_sitemaps"
 gem 'metamagic'
 gem 'rack-tracker'
+gem 'lockup'
+

@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  gender: MyString
+  name: MyString
+  kid: false
+  mobile: MyString
+  request: MyText
+  booking_id: 1
+
+two:
+  gender: MyString
+  name: MyString
+  kid: false
+  mobile: MyString
+  request: MyText
+  booking_id: 1

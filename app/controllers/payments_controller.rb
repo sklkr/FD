@@ -3,6 +3,11 @@ class PaymentsController < ApplicationController
 
   def index
     @booking = Booking.find_by_token(params[:token])
+
+    (1..params['gender'].count).each do |n|
+      Detail.create(:name => params['name'].values[n-1], :gender => params['gender'].values[n-1], :mobile => params['mobile'], :request => params['request'], :booking_id => @booking.id)
+    end
+
   	@key = 'JBZaLc'
   	@amount = @booking.price
   	@surl = payments_success_url
@@ -19,6 +24,8 @@ class PaymentsController < ApplicationController
 
   def success
     @booking = Booking.find_by_token(params[:txnid])
+    @booking.status = params["status"]
+    @booking.save
     @service = @booking.service
     @center = @service.center
   end

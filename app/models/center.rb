@@ -8,6 +8,7 @@ extend FriendlyId
 	has_many :instructors, :dependent => :destroy
 	has_many :services, :dependent => :destroy
 	has_many :centermen, :dependent => :destroy
+	has_many :bookings
 	belongs_to :city
 	belongs_to :area
 

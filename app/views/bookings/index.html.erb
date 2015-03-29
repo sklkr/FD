@@ -17,7 +17,7 @@
           <tbody>
           <tr> 
     			<td><p><%= @service.name %></p></td>
-    			<td><input type="number" id="qty" style="width:60%" value="1" ng-model='quantity' min='1'></input></td>
+    			<td><input type="number" id="qty" style="width:60%" name='quantity' value="1" ng-model='quantity' min='1'></input></td>
     			<td><p><span>Rs.</span><span type='number' ng-model='price'><%= @service.selling_price %></span></p></td>
     			<td><%= @service.schedule %></td>
     			<td><span>Rs.</span><span ng-bind='quantity * price'></span></td>
