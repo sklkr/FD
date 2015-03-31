@@ -26,6 +26,14 @@ mount Lockup::Engine, at: '/lockup'
       resources :configurations, :profiles, :customers, :payments, :reports
     end
     resources :customermanagers
+    resources :paymentmanagers do 
+      collection do
+        get 'summary'
+        get 'commission'
+        get 'transactions'
+        get 'partner_payment'
+      end
+    end
   end
 
   namespace :admins do

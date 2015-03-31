@@ -7,4 +7,9 @@ class Customer < ActiveRecord::Base
   # Validations
   validates :email, :presence => true
   validates_format_of :email, :with => /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z]+)*\.[a-z]+\z/i, :message => "Email not valid"
+
+  def customer_id
+  	"FP" + sprintf('%04d', self.id)
+  end
+
 end

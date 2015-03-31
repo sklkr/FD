@@ -15,7 +15,7 @@
   <tr>
     <td><%= booking.created_at.strftime('%d - %m - %y') %></td>
     <td><a href="<%= edit_partners_customermanager_path(booking.customer.id) %>"><%= booking.customer.user.first_name %></a></td>
-    <td><a href="<%= partners_customermanager_path(booking.token) %>"><%= booking.token %></a></td>
+    <td><a href="<%= partners_customermanager_path(booking.token) %>"><%= booking.order_id %></a></td>
     <td><a href=""><%= booking.service.name %></a></td>
     <td>INR <%= booking.price %></td>
   </tr>

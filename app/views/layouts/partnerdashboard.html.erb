@@ -65,7 +65,7 @@
 		.ui-timepicker-div td { font-size: 90%; }
 		.ui-tpicker-grid-label { background: none; border: none; margin: 0; padding: 0; }
 
-		.ui-timepicker-rtl{ direction: rtl; }
+		.ui-timepicker-rtl { direction: rtl; }
 		.ui-timepicker-rtl dl { text-align: right; padding: 0 5px 0 0; }
 		.ui-timepicker-rtl dl dt{ float: right; clear: right; }
 		.ui-timepicker-rtl dl dd { margin: 0 45% 10px 10px; }
@@ -99,7 +99,7 @@
 			</li>
 			<li  class="<%= "active" if params[:controller].include? 'multicenters' %>"><a href="<%= partners_configurations_path %>">Multicenter Manager</a></li>
 			<li class="<%= "active" if params[:controller] == 'partners/customermanagers' %>"><a href="<%= partners_customermanagers_path %>">Customer Manager</a></li>
-			<li><a href="<%=  %>">Payment Manager</a></li>
+			<li class="<%= "active" if params[:controller] == 'partners/paymentmanagers' %>"><a href="<%= summary_partners_paymentmanagers_path %>">Payment Manager</a></li>
 			<li><a href="">Report Manager</a></li>
 		</ul>
 	</div>

@@ -34,7 +34,7 @@
                         <td><%= rand(1..30) %> (Static)</td>
                         <th>Rs:: <%= rand(1..50000) %>/- (Static)</th>
                         <td><%= Time.now + rand(1..10).days %></td>
-                        <td><a href="<%= admins_customer_path(customer.id) %>"><%= rand(1..12000000) %> </a></td>
+                        <td><a href="<%= admins_customer_path(customer.id) %>"><%= customer.customer_id %> </a></td>
                         <td><a href="#">Edit</a>&nbsp;<a href="#">Remove</a></td>
                     </tr>
                    <%end%>

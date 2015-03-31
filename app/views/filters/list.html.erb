@@ -2,6 +2,7 @@
 	<div class="list-view">
 		<ul class="list">	
 		 <%@data.each do |mc,center|  %>
+			<%unless mc[0][0].blank? %>
 			<li class="comp-box barber-saloon">
 			 <div class="comp-pic">
 				<a href="<%= center_category_services_path(center[0].friendly_id, mc[0][0].category.friendly_id) %>"><%= image_tag attachment_url(mc[1], :image) %></a>
@@ -18,7 +19,7 @@
 				</div>
 			 </div>
 			 <div class="comp-price">
-			 	<% mc[0].each  do |service| %>
+			 	<% mc[0].take(2).each  do |service| %>
 			 	<ul>
 					<li><p><%= service.name %> </p></li>
 					<li><p><span>`</span><%= service.selling_price %></p></li>
@@ -31,6 +32,7 @@
 				<a href="<%= center_category_services_path(center[0].friendly_id, mc[0][0].category.friendly_id) %>">See Full Services</a>
 			 </div>
 			</li>
+			<%end%>
 		 <%end %>
 		</ul>
 	</div>

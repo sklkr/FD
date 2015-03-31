@@ -2,6 +2,7 @@
 <div class="list-view">
 	<ul class="grid" style="width:100%">
 	<%@data.each do |centerinfo, center|  %>
+	<%unless center[0].services.blank? %>
 		<li class="comp-box barber-saloon">
 		 <div class="comp-pic">
 			<a href="<%= center_category_services_path(center[0].friendly_id, center[0].services.first.category.friendly_id) %>"> <%= image_tag attachment_url(centerinfo, :image), :style => 'width:150px;height:130px' %></a>
@@ -16,6 +17,7 @@
 			</div>
 		 </div>
 		</li>
+	<%end %>
 	<%end %>
 	</ul>
 </div>

@@ -1325,8 +1325,8 @@ select,
 .map .comp-title h4,
 .list .comp-title h4 { 
     text-align: center;
-    white-space: nowrap;
-    overflow: hidden;
+/*     white-space: nowrap;
+     */    overflow: hidden;
     text-overflow: ellipsis;
     width:170px;
     color:#484848;

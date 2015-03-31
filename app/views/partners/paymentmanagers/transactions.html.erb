@@ -1,0 +1,46 @@
+<div class="row">
+	<div class="small-12 column">
+		<%= render :partial => 'partners/paymentmanagers/nav' %>
+	</div>
+</div>
+
+<div class="row">
+	<div class="column small-12">
+		<table>
+		<thead>
+		  <tr>
+		    <th>Order id</th>
+		    <th>Status</th>
+		    <th>Price</th>
+		    <th width="150">Price (without ST)</th>
+		    <th>FP (5%)</th>
+		    <th>Service tax to FP</th>
+		    <th>Partner Money</th>
+		    <th>Partner Received</th>
+		  </tr>
+		</thead>
+		<tbody>
+		<% @bookings.each do |booking| %>
+		  <tr>
+		    <td><a href="<%= partners_customermanager_path(booking.token) %>"><%= booking.order_id %></a></td>
+		    <td><%=  %></td>
+		    <td><%= booking.price %>/-</td>
+		    <td><%= booking.woprice %>/-</td>
+		    <td><%= booking.fp %></td>
+		    <td><%= booking.fp %> * 14% = <%= booking.partner_stax %></td>
+		    <td><%= booking.partner_money.to_i %>/-</td>
+		    <td>Not yet</td>
+		  </tr>
+		<% end %>
+		</tbody>
+		</table>		
+	</div>
+</div>
+<div class="row">
+	<div class="small-8 columns"></div>
+	<div class="small-4 columns right">
+			<p>Used status credit - ....... /- (static) </p>
+			<p>Planned status credit - ....... /- (static) </p>
+			<a href="#" class="button tiny right">Raise payment request</a>
+	</div>
+</div>

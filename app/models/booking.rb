@@ -6,6 +6,28 @@ class Booking < ActiveRecord::Base
 	belongs_to :customer
 	has_many :details
 
+	def order_id
+		"OD" + sprintf('%07d', self.id)
+	end
+
+	def woprice
+		self.price * 0.86
+	end
+
+	def partner_stax
+		fp * (1 - 0.14)
+	end
+
+	def fp
+		woprice * 0.05
+	end
+
+	def partner_money
+		self.price - fp - partner_stax 
+	end
+
+
+
 	private
 	def generate_token
 	 self.token = SecureRandom.urlsafe_base64

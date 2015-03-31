@@ -1,14 +1,18 @@
+
 <div class="panel callout radius" style="min-height:380px">
 	<div class="row">
 	<div class="small-3 columns">
 		<p><%= image_tag attachment_url(@data, :image), :class => 'th', :style => 'margin-bottom:8px;width:100px;height:100px' %></p>
 		<p><%= @data.first_name.capitalize %> <%= @data.last_name.capitalize %></p>
 	</div>
-	<div class="small-9 columns">
+	<div class="small-8 columns">
 		<p>Mobile no :: <%= @data.phone %></p>
 		<p>Email :: <%= @customer.email %></p>
 		<p>Emergency :: <%= @data.emergency_phone %></p>
 
+	</div>
+	<div class="small-1 columns">
+		<a href="<%= partners_customermanagers_path %>">Back</a>
 	</div>
 </div>
 <div class="row" style="margin-top:60px">

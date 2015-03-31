@@ -9,6 +9,7 @@ before_filter :searcher
     @c = Center.ransack(params[:q])
     @cbase = @c.result(distinct: true).page(params[:page]).per(3)
     @data = @cbase.group_by {|c| [c.services, c.centerinfo]}.sort_by {|k,v| v[0].name}
+    binding.pry
   end
 
 

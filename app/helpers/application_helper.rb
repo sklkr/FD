@@ -1,6 +1,10 @@
 module ApplicationHelper
 	def nav_link(link_text, link_path)
+	if params['controller'].split('/')[2].nil?
+	  class_name = link_path.include?(params['action']) ? 'active' : ''
+	else
 	  class_name = link_path.include?(params['controller'].split('/')[2]) ? 'active' : ''
+	end
 	  content_tag(:li, :class => class_name) do
 	    link_to link_text, link_path + "#container-tabs"
 	  end

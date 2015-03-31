@@ -9,7 +9,6 @@ require 'digest/sha1'
   end
 
   def create
-    binding.pry
   	@booking = Booking.new(params.permit(:quantity))
   	service = Service.friendly.find(params[:service_name])
   	@booking.service_id = service.id
