@@ -6,6 +6,7 @@
 	      <th style="width:14%">Order Id</th>
 	      <th style="width:29%">Details</th>
 	      <th>Status</th>
+	      <th>Payment status</th>
 	    </tr>
 	  </thead>
 	  <tbody>
@@ -16,6 +17,7 @@
 			    <td><a href="#">OD11304904343</a></td>
 			    <td><%= booking.service.service_desc %></td>
 			    <td><%= booking.service.status %></td>
+			    <td><%= booking.status %></td>
 			  </tr>
 			<%end %>
 		<%end%>

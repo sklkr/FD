@@ -1,32 +1,45 @@
 <div style="text-align:center;width:40%;margin:120px auto;">
-  <%= form_tag customer_auth_path do %>
+  <%= form_tag sessions_guest_creator_path, :id => 'guest' do %>
 	<%= hidden_field_tag 'url', params[:url] %>
 	<dl class="dl-horizontal">
 	  <dt>Email</dt>
-	  <dd><%= text_field_tag :email, nil, :style => 'padding:4px', :placeholder => 'Enter your email id' %></dd>
-	  <dt>	<input type="checkbox" id="toggler"></dt><dd> I have a FitnessPapa account</dd>
-	  <dt id='guest_password_code'>+<input type="number" value="91" style="width:30px"> </dt><dd id='guest_password'><%= text_field_tag :phone, nil, :style => 'padding:4px', :placeholder => 'Phone number', :autocomplete => 'off' %></dd>
-	  <dt id='ds-password-label' style='display:none'>Password</dt><dd id='ds-password'><%= password_field_tag 'user[password]', nil, :style => 'padding:4px;display:none', :placeholder => 'Password', :autocomplete => 'off' %></dd>
-	  <dd><%= submit_tag "Continue as Guest", :class => 'btn btn-default', id: 'guest_submit', :style => 'border-radius:3px' %></dd>
-	  <dd style='display:none' id='user_forget'><a href="#">Forget password</a></dd>
-	  <dd><%= submit_tag "Continue as User", :class => 'btn btn-default', :id => 'user_submit', :style => 'border-radius:3px;display:none' %>
-</dd>  
+	  <dd><%= text_field_tag 'user[email]', nil, :style => 'padding:4px', :placeholder => 'Enter your email id' %></dd>
+	  <dt>	<input type="checkbox" class="toggler"></dt><dd> I have a FitnessPapa account</dd>
+	  <dt>+<input type="number" value="91" style="width:30px"> </dt><dd><%= text_field_tag 'user[phone]', nil, :style => 'padding:4px', :placeholder => 'Phone number', :autocomplete => 'off' %></dd>
+	  <dd><%= submit_tag "Continue as Guest", :class => 'btn btn-default', :id => 'user_submit', :style => 'border-radius:3px' %>
+	  </dd>  
 	</dl>
-	
- <%end%>
+  <%end%>
+  
+  <%=form_tag customer_auth_path, :id => 'signer', :style => 'display:none' do %>
+	<%= hidden_field_tag 'url', params[:url] %>
+	<dl class="dl-horizontal">
+	  <dt>Email</dt>
+	  <dd><%= text_field_tag 'user[email]', nil, :style => 'padding:4px', :placeholder => 'Enter your email id' %></dd>
+	  <dt><input type="checkbox" class="toggler" checked></dt><dd> I have a FitnessPapa account</dd>
+	  <dt>Password</dt><dd id='ds-password'><%= password_field_tag 'user[password]', nil, :style => 'padding:4px', :placeholder => 'Password', :autocomplete => 'off' %></dd>
+	  <dd><a href="#">Forget password</a></dd>
+	  <dd><%= submit_tag "Continue as User", :class => 'btn btn-default', :id => 'user_submit', :style => 'border-radius:3px' %>
+	  </dd>  
+	</dl>
+  <%end%>
+
 </div>
 
 
 <script>
 	$(document).ready(function(){
-		$("#toggler").click(function(){
-			$("#user_password").toggle();
-			$("#user_submit").toggle();
-			$("#guest_password").toggle();
-			$("#ds-password-label").toggle();
-			$("#guest_password_code").toggle();
-			$("#user_forget").toggle();
-			$("#guest_submit").toggle();
+		window.togglercheck = '1';
+		$(".toggler").click(function(){
+			$('#guest').toggle();
+			$('#signer').toggle();
+			if(window.togglercheck == "1"){
+			  $('.toggler')[1].checked = true;
+			  window.togglercheck = '0';
+			}else{
+		      $('.toggler').removeAttr('checked');
+		      window.togglercheck = '1';
+			}
 		})
 	})
 </script>

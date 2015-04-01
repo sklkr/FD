@@ -10,7 +10,7 @@
 	          <label for='account[brand]', class="inline">Brand Name</label>
 	        </div>
 	        <div class="small-8 columns">
-			  <%= f.text_field :brandname, :class => 'input-small' ,:required => true%>
+	       		<%= f.text_field :brandname, :class => 'input-small' ,:required => true%>
 	        </div>
 	      </div>
 	    </div>
@@ -80,6 +80,11 @@
 					<div class="small-6 columns"><%= f.text_field :pin, :placeholder => '560012'   ,:required => true%></div>
 				</div>
 				<%= select_tag :area_id, options_from_collection_for_select([], 'id', 'name'), 'data-option-dependent' => true, 'data-option-observed' => 'city_id', 'data-option-url' => '/cities/:city_id:/areas.json', 'data-option-key-method' => :id, 'data-option-value-method' => :name, 'data-option-value-selected' =>  @account.center.try(:area_id).to_i %>
+				<div class="row">
+					<div class="small-12 column">
+						<a href="" class="cd-popup-trigger">Change password</a>
+					</div>
+				</div>
 				</div>
 			</div>
 		</div>
@@ -215,6 +220,28 @@
 </fieldset>
 </div>
 <% end %>
+
+<div class="cd-popup" role="alert">
+	<div class="cd-popup-container">
+		<div class="row">
+			<div class="small-12 column" style="margin-top:35px">
+			<h4>Change password</h4>
+				<%= form_tag edit_partners_center_account_path(:id => '1'), :method => 'get' do %>
+					<input type="text" placeholder='Old password' name="current_password">
+					<input type="password" placeholder='New password' name="password">
+					<input type="password" placeholder='New password' name="password_confirmation">
+					<input type="submit" class="button tiny">
+				<%end %>
+			</div>
+		</div>
+		<!-- <ul class="cd-buttons">
+			<li><a href="#0">submit</a></li>
+			<li><a href="#0">No</a></li>
+		</ul> -->
+		<a href="#0" class="cd-popup-close img-replace">Close</a>
+	</div> <!-- cd-popup-container -->
+</div>
+
 <script>
 $(document).ready(function() {
   $('.menu').dropit();

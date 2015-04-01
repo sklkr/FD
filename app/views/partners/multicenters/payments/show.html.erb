@@ -1,10 +1,22 @@
+
+<%= render :partial => 'partners/multicenters/nav' %>
+
 <div class="row">
-	<div class="small-12 column">
-		<%= render :partial => 'partners/paymentmanagers/nav' %>
-	</div>
+  <div class="column small-4 text-right ">
+     Select a center 
+  </div>
+  <div class="column small-4">
+    <select name="" onChange="window.document.location.href=this.options[this.selectedIndex].value;">
+      <option value="">Select</option>
+      <% @centers.each do |center| %>
+      <option value="<%= center.id %>" <%= "selected" if center.id == params[:id].to_i %>><%= center.name %></option>
+      <%end%>
+    </select>
+  </div>
+  <div class="small-4 column">&nbsp;</div>
 </div>
 
-<div class="row" style="min-height:320px">
+<div class="row">
 	<div class="column small-12">
 		<table>
 		<thead>

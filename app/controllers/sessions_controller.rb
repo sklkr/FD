@@ -13,7 +13,11 @@ layout 'homepage'
   def customer_auth
     authenticate!
     unless params[:url].nil?
-      redirect_to customers_detail_path('secure')
+      @booking = Booking.find_by_token(params[:url])
+      @booking.customer_id = current_user.customer.id 
+      if @booking.save
+        redirect_to add_details_path('center', 'service', :token => @booking.token)
+      end
     else
       redirect_to customers_details_path
     end
@@ -45,6 +49,28 @@ layout 'homepage'
 
   end
 
+  def guest_creator
+    user = User.new(user_params)
+    user.password = params['user']['phone']
+    user.first_name = 'guest'
+    user.last_name = 'guest'
+    user.active = true
+     if user.save
+      cdata = Customer.new(customer_params)
+      cdata.user_id = user.id
+       if cdata.save
+        @booking = Booking.find_by_token(params[:url])
+        @booking.customer_id = cdata.id
+        @booking.save
+        env['warden'].set_user(user)
+        redirect_to add_details_path('center', 'service', :token => @booking.token)
+       else
+        render :text => 'something went wrong'
+       end
+     else
+      render :text => 'something went wrong'
+     end
+  end
 
 
   # Oauth authentications
@@ -59,5 +85,12 @@ layout 'homepage'
 
     def auth_hash
       request.env['omniauth.auth']
+    end
+
+    def user_params
+      params.require(:user).permit(:phone)
+    end
+    def customer_params
+      params.require(:user).permit(:email)
     end
 end

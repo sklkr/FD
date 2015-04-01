@@ -1,0 +1,42 @@
+<%= render :partial => 'partners/multicenters/nav' %>
+
+<div class="row">
+  <div class="column small-4 text-right ">
+     Select a center 
+  </div>
+  <div class="column small-4">
+    <select name="" onChange="window.document.location.href=this.options[this.selectedIndex].value;">
+      <option value="">Select</option>
+      <% @centers.each do |center| %>
+      <option value="<%= center.id %>" <%= "selected" if center.id == params[:id].to_i %>><%= center.name %></option>
+      <%end%>
+    </select>
+  </div>
+  <div class="small-4 column">&nbsp;</div>
+</div>
+<div style="min-height:420px">
+<table>
+<thead>
+  <tr>
+    <th style="">Date</th>
+    <th>Customer name</th>
+    <th width="150">Order Id</th>
+    <th width="150">Service Name</th>
+    <th>Price</th>
+    <th></th>
+  </tr>
+</thead>
+<tbody>
+<% @bookings.each do |booking| %>
+  <tr>
+    <td><%= booking.created_at.strftime('%d - %m - %y') %></td>
+    <td><a href="<%= edit_partners_customermanager_path(booking.customer.id) %>"><%= booking.customer.user.first_name %></a></td>
+    <td><a href="<%= partners_customermanager_path(booking.token) %>"><%= booking.order_id %></a></td>
+    <td><a href=""><%= booking.service.name %></a></td>
+    <td>INR <%= booking.price %></td>
+  </tr>
+<% end %>
+</tbody>
+</table>
+</div>
+

@@ -1,5 +1,5 @@
 class BookingsController < ApplicationController
-before_filter :check_auth, :only => [:add_details, :create]
+before_filter :check_auth, :only => [:add_details]
 before_filter :searcher
 require 'digest/sha1'
 
@@ -33,6 +33,6 @@ require 'digest/sha1'
 
   private
   	def check_auth
-      redirect_to sessions_checker_path(:url => book_now_path(:center_id => params['center_id'],:id => params['service_name'])) unless warden.authenticated? 
+      redirect_to sessions_checker_path(:url => params[:token]) unless warden.authenticated? 
     end
 end

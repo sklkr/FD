@@ -24,3 +24,5 @@
 //= require jquery.wymeditor
 //= require jquery.timepicker
 //= require chosen.jquery
+//= require modernizr
+//= require popup

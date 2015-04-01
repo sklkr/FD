@@ -61,6 +61,9 @@ mount Lockup::Engine, at: '/lockup'
   get 'sessions/customer_logout'
   get 'sessions/checker'
 
+  # Guest creator
+  post 'sessions/guest_creator'
+
   # Admin routes
   get 'sessions/admin'
   post 'sessions/admin_auth'

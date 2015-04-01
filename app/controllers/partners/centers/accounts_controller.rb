@@ -21,8 +21,10 @@ class AccountsController < ApplicationController
 
   end
   def create
+    brand = Brand.find_or_create_by(:name => params[:accountinfo][:brandname])
     @account = Accountinfo.new(permit_params)
     @account.center_id = center.id
+    @account.brand_id = brand.id
     city = City.find(params[:city_id])
     area = Area.find(params[:area_id])
     center.update_attributes(:city_id => city.try(:id), :area_id => area.try(:id))
@@ -34,16 +36,32 @@ class AccountsController < ApplicationController
     end
   end
 
+  def edit
+    if current_user.password == params['current_password'] && params['password'] == params['password_confirmation']
+      current_user.password= params['password']
+      flash['notice'] = 'Password changed successfully'
+      redirect_to partners_center_accounts_path if current_user.save
+    else
+      flash["notice"] = "Please check your password provided"
+      redirect_to partners_center_accounts_path
+    end
+  end
+
   def show
     # If we fetch from center method below then it'll not update the record
     @cities = cities
   end
 
   def update
+    brand = Brand.find_or_create_by(:name => params[:accountinfo][:brandname])
     city = City.find(params[:city_id]) if params[:city_id] != ''
     area = Area.find(params[:area_id]) if params[:area_id] != ''
     center.update_attributes(:city_id => city.try(:id), :area_id => area.try(:id))
     @cities = cities
+    unless @account.brand_id == brand.id
+      @account.brand_id = brand.id
+      @account.save
+    end
     if @account.update_attributes(permit_params)
       flash[:notice] = 'Updated'
       render :show

@@ -1,5 +1,5 @@
 module Partners::Multicenters
-class CustomersController < ApplicationController 
+class PaymentsController < ApplicationController 
 layout 'partnerdashboard'
 before_filter :partner_authenticated?
 
