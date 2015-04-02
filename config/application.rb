@@ -23,6 +23,10 @@ module Fitnesspapa
         manager.default_strategies :customer
     end
 
+    config.generators do |g|
+        g.test_framework false
+    end
+
     config.middleware.use(Rack::Tracker) do
       handler :google_analytics, { tracker: 'UA-61123601-1' }
     end

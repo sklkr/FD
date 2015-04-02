@@ -15,15 +15,15 @@ class Booking < ActiveRecord::Base
 	end
 
 	def partner_stax
-		fp * (0.14)
+		(fp * (0.14)).round(2)
 	end
 
 	def fp
-		woprice * 0.05
+		(woprice * 0.05).round(2)
 	end
 
 	def partner_money
-		self.price - fp - partner_stax 
+		(self.price - fp - partner_stax).round(2)
 	end
 
 

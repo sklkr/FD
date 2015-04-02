@@ -1,5 +1,5 @@
 class AckMailer < ActionMailer::Base
-  default from: "noreply@fitnesspapa.com"
+  default from: "FitnessPapa <noreply@fitnesspapa.com>"
 
   def customer(token)
   	@booking = Booking.find_by_token(token)
