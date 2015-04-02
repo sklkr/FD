@@ -15,7 +15,7 @@ class Booking < ActiveRecord::Base
 	end
 
 	def partner_stax
-		fp * (1 - 0.14)
+		fp * (0.14)
 	end
 
 	def fp

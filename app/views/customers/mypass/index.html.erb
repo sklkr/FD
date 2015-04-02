@@ -14,9 +14,9 @@
 			<%@mypass.each do |booking| %>
 			  <tr>
 			    <td><%= booking.service.name %></td>
-			    <td><a href="#">OD11304904343</a></td>
+			    <td><a href="#"><%= booking.order_id %></a></td>
 			    <td><%= booking.service.service_desc %></td>
-			    <td><%= booking.service.status %></td>
+			    <td></td>
 			    <td><%= booking.status %></td>
 			  </tr>
 			<%end %>

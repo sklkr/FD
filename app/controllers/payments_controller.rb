@@ -26,6 +26,8 @@ class PaymentsController < ApplicationController
     @booking = Booking.find_by_token(params[:txnid])
     @booking.status = params["status"]
     @booking.save
+    AckMailer.customer(@booking.token).deliver
+    AckMailer.partner(@booking.token).deliver
     @service = @booking.service
     @center = @service.center
   end

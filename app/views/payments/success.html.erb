@@ -17,7 +17,7 @@
               <h4>Order details</h4>
             </div>
             <div class="panel-body">
-              <p>Confirmation Number :: <%= params[:txnid] %></p>
+              <p>Confirmation Number :: <%= @booking.order_id %></p>
               <p>Service Name : <%= @service.name %></p>
               <p>Center Name : <%= @center.name %></p>
               <p>Service Date : <%= '' %></p>
