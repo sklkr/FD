@@ -16,7 +16,16 @@ extend FriendlyId
 
  # validations
  
- 
+ #askers 
+ def is_pass?
+ 	if [2,5].include?(self.category_id) && self.service_type == '1'
+ 		return true
+ 	else
+ 		return false
+ 	end
+ end
+
+
  def percent
  	((1-(self.selling_price/self.original_price))*100).to_i
  end

@@ -20,6 +20,7 @@
         <p>Center name:: <%= @booking.center.name %></p>
         <p>Service name:: <%= @service.name %></p>
         <p>Quantity:: <%= @booking.quantity %></p>
+        <p>Customer Name(s):</p>
         <%@details.each do |detail| %>
           <p><%= detail.name %></p>
         <%end%>

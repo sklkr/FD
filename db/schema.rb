@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150402151735) do
+ActiveRecord::Schema.define(version: 20150402160421) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -90,6 +90,7 @@ ActiveRecord::Schema.define(version: 20150402151735) do
     t.string   "token"
     t.integer  "center_id"
     t.integer  "partner_id"
+    t.integer  "service_type", default: 1
   end
 
   create_table "brands", force: true do |t|

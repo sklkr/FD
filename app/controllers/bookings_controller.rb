@@ -14,6 +14,7 @@ require 'digest/sha1'
   	@booking.service_id = service.id
     @booking.partner_id = service.center.partner.id
     @booking.center_id = service.center.id
+    @booking.service_type = 2 if service.is_pass?
   	unless current_user.nil?
   		@booking.customer_id = current_user.customer.id 
   	end
@@ -29,6 +30,7 @@ require 'digest/sha1'
   	@title = 'User Details'
   	@booking = Booking.find_by_token(params[:token])
   end
+
 
 
   private
