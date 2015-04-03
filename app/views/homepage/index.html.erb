@@ -22,6 +22,16 @@ meta title: "Home page | FitnessPapa",
   <div class="header" id="banner">
 	 <div class="item">
 	 	<img src="/assets/bg-1.jpg" alt="Owl Image">
+	 	 <div class="carousel-caption">
+		    <div class="banner-text">
+		    		<h1>Join Fitness Papa</h1>
+		    		<span>Search and find fitness services anywhere in India</span>
+		    		<div class="blu-button-main">
+		    		<div class="blu-button"><a href="#services">SEARCH NOW</a>
+		    		</div>
+		    		</div>
+		    	</div>
+		 </div>
 	 </div>
 	 <div class="item">
 	 	<img src="/assets/bg-3.jpg" alt="Owl Image">
@@ -135,6 +145,7 @@ $("#banner").owlCarousel({
 
   autoPlay: 3000, //Set AutoPlay to 3 seconds
   navigation: false,
+  animateOut: 'fadeOut',
   pagination: false,
   items : 1,
   itemsDesktop : [1199,3],

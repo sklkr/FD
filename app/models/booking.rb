@@ -6,6 +6,7 @@ class Booking < ActiveRecord::Base
 	belongs_to :customer
 	has_many :details
 
+
 	def order_id
 		"OD" + sprintf('%07d', self.id)
 	end

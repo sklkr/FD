@@ -26,3 +26,4 @@
 //= require chosen.jquery
 //= require modernizr
 //= require popup
+//= require jquery.noty

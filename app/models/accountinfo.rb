@@ -6,6 +6,7 @@ class Accountinfo < ActiveRecord::Base
 	validates :personname, presence: true
 	validates :address_1, presence: true
 	validates :center_id, presence: true
+	validates :mobile, :numericality => true, length: { in: 10..11 }
 
 	def brandname
 		unless self.brand.nil?
@@ -14,6 +15,7 @@ class Accountinfo < ActiveRecord::Base
 			nil
 		end
 	end
+
 	def brandname=(name)
 		self.brand_id = (Brand.find_by_name(name) || Brand.create(:name => name)).id
 	end

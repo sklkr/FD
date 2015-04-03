@@ -29,7 +29,7 @@ class AccountsController < ApplicationController
     area = Area.find(params[:area_id])
     center.update_attributes(:city_id => city.try(:id), :area_id => area.try(:id))
     if @account.save
-      flash[:notice] = 'Details updated'
+      flash[:success] = 'Account details saved'
       redirect_to partners_center_account_path(center.friendly_id, @account.id)
     else
       render :new
@@ -39,10 +39,10 @@ class AccountsController < ApplicationController
   def edit
     if current_user.password == params['current_password'] && params['password'] == params['password_confirmation']
       current_user.password= params['password']
-      flash['notice'] = 'Password changed successfully'
+      flash['success'] = 'Password changed successfully'
       redirect_to partners_center_accounts_path if current_user.save
     else
-      flash["notice"] = "Please check your password provided"
+      flash["error"] = "Please check your password provided"
       redirect_to partners_center_accounts_path
     end
   end
@@ -53,7 +53,7 @@ class AccountsController < ApplicationController
   end
 
   def update
-    brand = Brand.find_or_create_by(:name => params[:accountinfo][:brandname])
+    brand = Brand.find_or_create_by(:name => params.require(:accountinfo).permit(:brandname)['brandname'])
     city = City.find(params[:city_id]) if params[:city_id] != ''
     area = Area.find(params[:area_id]) if params[:area_id] != ''
     center.update_attributes(:city_id => city.try(:id), :area_id => area.try(:id))
@@ -63,10 +63,13 @@ class AccountsController < ApplicationController
       @account.save
     end
     if @account.update_attributes(permit_params)
-      flash[:notice] = 'Updated'
+      flash[:success] = 'Account details updated'
+      flash['model_errors'] = []
       render :show
     else
-      render :text => "Something went wrong"
+      flash[:notice] = nil
+      flash['model_errors'] = @account.errors.messages
+      render :show
     end
   end
 

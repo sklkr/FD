@@ -1,5 +1,5 @@
 <div style="text-align:center">
-<%= form_tag payments_index_path do  %>
+<%= form_tag payments_index_path, onclick: 'validate()' do  %>
 <%= hidden_field_tag 'token', params[:token] %>
 <% (1..@booking.quantity).each do |v|  %>
 	<div style="margin-bottom:12px">

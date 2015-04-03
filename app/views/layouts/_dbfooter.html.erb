@@ -6,10 +6,11 @@
 
 <% [:notice, :error, :success, :warning].each do |n| %>
 <%if flash[n] %>
-    <script>var n = noty({text: '<%= flash[n] %>',type: '<%=n%>', layout: 'topRight',animation: {
-    open: 'animated bounceInLeft', // Animate.css class names
-    close: 'animated bounceOutLeft', // Animate.css class names
-    easing: 'swing', // unavailable - no need
+    <script>var n = noty({text: '<%= flash[n] %>',type: '<%= n %>', layout: 'bottom',animation: {
+    open: 'animated flipInX', // Animate.css class names
+    close: 'animated flipOutX', // Animate.css class names
+    theme: 'relax',
+    dismissQueue: true,
     speed: 500
     }});  </script>
 <%end %>
@@ -17,9 +18,9 @@
 <%unless flash['model_errors'].nil? %>
 <%flash['model_errors'].each do |error| %>
     <%error[1].each do |msg| %>
-        <script>var n = noty({text: '<%= error[0] %> <%= msg %>',type: 'error', layout: 'topRight',animation: {
-        open: 'animated bounceInRight', // Animate.css class names
-        close: 'animated bounceOutRight', // Animate.css class names
+        <script>var n = noty({text: '<%= error[0] %> <%= msg %>',type: 'error', theme: 'relax',dismissQueue: true, layout: 'bottom',animation: {
+        open: 'animated flipInX', // Animate.css class names
+        close: 'animated flipOutX', // Animate.css class names
         easing: 'swing', // unavailable - no need
         speed: 500 // unavailable - no need
         }});  </script>

@@ -22,7 +22,8 @@ require 'digest/sha1'
   	if @booking.save
   		redirect_to add_details_path(params["center_id"], params["service_name"], :token => @booking.token)
   	else
-  		render :text => "Something went wrong"
+      flash['model_errors'] = @booking.errors.messages
+  		render :index
   	end
   end
   
