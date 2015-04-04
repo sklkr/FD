@@ -16,7 +16,7 @@ require 'digest/sha1'
     @booking.center_id = service.center.id
     @booking.service_type = 2 if service.is_pass?
   	unless current_user.nil?
-  		@booking.customer_id = current_user.customer.id 
+     	@booking.customer_id = current_user.customer.id 
   	end
   	@booking.price = service.selling_price * @booking.quantity
   	if @booking.save
