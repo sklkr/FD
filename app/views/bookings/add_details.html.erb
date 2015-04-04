@@ -1,5 +1,5 @@
 <div style="text-align:center">
-<%= form_tag payments_index_path, :id => 'details' do  %>
+<%= form_tag payments_index_path, :id => 'details', :onSubmit => 'return validate();' do  %>
 <%= hidden_field_tag 'token', params[:token] %>
 <% (1..@booking.quantity).each do |v|  %>
 	<div style="margin-bottom:12px">
@@ -22,10 +22,12 @@
 
 
 <script>
-	$(document).ready(function(){
-	$('#details').submit(function(e){
-		alert('df');
-		return false;
-	})
-	})
+	function validate(){
+		if(/^\d{10}$/.test(document.getElementById('mobile').value)){  
+    	  return true;  
+        }else{  
+        alert("Mobile number should be valid");  
+          return false;  
+        }  
+	}
 </script>
