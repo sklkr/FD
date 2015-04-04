@@ -9,7 +9,34 @@ meta title: "#{@center.name} | FitnessPapa.com",
 	<div id="map"></div>
 </div>
 <script>
-$(document).ready(function () {
+var map = new GMaps({
+    div: '#map',
+    lat: <%= @centerinfo.latitude %>,
+    lng: <%= @centerinfo.longitude %>,
+    width: '800px',
+    height: '500px',
+    zoom: 17,
+    content: '<div class="overlay"><%=@centerinfo.name  %></div>',
+    zoomControl: true,
+    zoomControlOpt: {
+        style: 'SMALL',
+        position: 'TOP_LEFT'
+    },
+    panControl: false
+});
+map.addMarker({
+     lat: <%= @centerinfo.latitude %>,
+     lng: <%= @centerinfo.longitude %>,
+     title: '<%= @centerinfo.name %>',
+});
+
+
+$('#pjax-tabs').children('li').each(function(){
+    $(this).removeClass('active');
+})
+$('#maptab').addClass('active');
+
+$(document).ready(function(){
     var map = new GMaps({
         div: '#map',
         lat: <%= @centerinfo.latitude %>,
