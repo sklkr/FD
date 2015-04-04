@@ -13,6 +13,7 @@
  *= require bootstrap
  *= require jquery.ui
  *= require owl.carousel
+ *= require popup
 */
 
 
@@ -20,3 +21,7 @@ $nprogress-color: rgb(237, 116, 19);
 
 @import 'nprogress';
 @import 'nprogress-bootstrap';
+
+.margin-35{
+	margin-bottom:35px;
+}

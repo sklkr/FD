@@ -18,4 +18,10 @@ class AckMailer < ActionMailer::Base
   	@details = @booking.details
     mail(to: @user.email , subject: 'Customer booking service request')
   end
+
+  def atop(message, email)
+    # from admin to partners
+    @message = message
+    mail(to: email , subject: 'Admin alert')
+  end
 end

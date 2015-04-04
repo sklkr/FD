@@ -19,4 +19,6 @@
 //= require jquery.raty
 //= require nprogress
 //= require nprogress-turbolinks
+//= require modernizr
+//= require popup
 

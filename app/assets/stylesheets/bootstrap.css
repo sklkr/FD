@@ -810,19 +810,19 @@ pre code {
 
 @media (min-width: 768px) {
   .container {
-    width: 750px;
+    width: 96%;
   }
 }
 
 @media (min-width: 992px) {
   .container {
-    width: 970px;
+    width: 92%;
   }
 }
 
 @media (min-width: 1200px) {
   .container {
-    width: 1080px;
+    width: 92%;
   }
 }
 
@@ -2350,7 +2350,7 @@ fieldset[disabled] .btn-default.active {
 .btn-primary {
   color: #ffffff;
   background-color: rgb(230, 126, 34);
-  border-color: #357ebd;
+  border-color: #ffffff;
 }
 
 .btn-primary:hover,
@@ -2385,7 +2385,7 @@ fieldset[disabled] .btn-primary:active,
 .btn-primary[disabled].active,
 fieldset[disabled] .btn-primary.active {
   background-color: rgb(230, 126, 34);
-  border-color: #357ebd;
+  border-color: #ffffff;
 }
 
 .btn-primary .badge {

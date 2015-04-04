@@ -2,7 +2,7 @@ module Admins
 class PartnersController < ApplicationController
 	layout 'admin'
 	def index
-		@centers = Centerinfo.all.includes(:center)
+		@centers = Center.all.includes(:centerinfo, :city, :commission)
 	end
 
 	def show
@@ -10,13 +10,36 @@ class PartnersController < ApplicationController
 	end
 
 	def create
+		# For FP Verification
+		centers =  Center.find(params['t1'].keys)
 		unless params['fp'].nil?
-			centers = Centerinfo.find(params['t1'].keys)
 			centers.each do |c|
-				c.update_attributes(:fp_verified => true)
+				unless c.centerinfo.nil?
+					c.centerinfo.update_attributes(:fp_verified => true)
+				end
 			end
-			redirect_to admins_partners_path
 		end
+
+		# For commission
+		unless params['commission'].nil?
+			centers.each do |c|
+				commission = Commission.find_or_create_by(:center_id => c.id)
+				commission.val = params['commission_percent']
+				commission.save
+			end
+		end
+
+		unless params['send_email'].nil?
+			centers.each do |c|
+				AckMailer.atop(params['email_message'], c.partner.email).deliver
+			end
+		end
+
+		unless params['send_sms'].nil?
+			return render :text => 'sms api needs to be integrated'
+		end
+		
+		redirect_to admins_partners_path
 	end
 end
 end

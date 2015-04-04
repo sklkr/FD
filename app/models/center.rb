@@ -5,6 +5,7 @@ extend FriendlyId
 	has_one :centerinfo, :dependent => :destroy
 	has_one :verification, :dependent => :destroy
 	has_one :accountinfo, :dependent => :destroy
+	has_one :commission, :dependent => :destroy
 	has_many :instructors, :dependent => :destroy
 	has_many :services, :dependent => :destroy
 	has_many :centermen, :dependent => :destroy

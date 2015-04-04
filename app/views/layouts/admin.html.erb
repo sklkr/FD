@@ -9,7 +9,7 @@
 
     <%= stylesheet_link_tag "admin" %>
     <%= javascript_include_tag "vendor/modernizr" %>
-    <%= javascript_include_tag "admin" 'data-turbolinks-track' => true %>
+    <%= javascript_include_tag "admin", 'data-turbolinks-track' => true %>
     <%= csrf_meta_tags %>
   </head>
 
@@ -17,8 +17,14 @@
     <div class="container">
       <div class="row">
         <ul class="nav nav-tabs">
-          <li role="presentation" class="active"><a href="<%= admins_customers_path %>">Customer</a></li>
-          <li role="presentation"><a href="<%= admins_partners_path %>">Partner</a></li>
+          <li><a href="">Summary</a></li>
+          <li role="presentation" class="active"><a href="<%= admins_customers_path %>">Customers</a></li>
+          <li role="presentation"><a href="<%= admins_partners_path %>">Partners</a></li>
+          <li><a href="">Approvals</a></li>
+          <li><a href="">Transactions</a></li>
+          <li><a href="">Coupons</a></li>
+          <li><a href="">Payments</a></li>
+          <li><a href="">Reports</a></li>
         </ul>
       </div>
     </div>

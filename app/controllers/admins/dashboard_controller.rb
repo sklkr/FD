@@ -1,7 +1,7 @@
 module Superadmins
 class DashboardController < ApplicationController 
 layout 'admindashboard'
-before_filter :superadmin_authenticated?
+before_filter :admin_authenticated?
 
   def index
   	
