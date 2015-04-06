@@ -3,8 +3,10 @@ class PopularsController < ApplicationController
     @services = Category.friendly.find(params['category_id']).try(:services)
     unless @services.nil?
       @centers = @services.select(:center_id).uniq.inject([]) {|arr,service| arr << service.center }
+      @centers.compact!
     end
     # For search 
+
   	@categories = Category.all
     @cities = cities
     @city_names = city_names
