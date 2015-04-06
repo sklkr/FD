@@ -4,6 +4,13 @@ host "www.fitnesspapa.com"
 
 sitemap :site do
   url root_url, last_mod: Time.now, change_freq: "daily", priority: 1.0
+  url filters_index_path
+  url filters_list_path
+  url filters_grid_path
+  url registrations_partner_path
+  url registrations_customer_path
+  url sessions_partner_path
+  url sessions_customer_path
 end
 
 # You can have multiple sitemaps like the above – just make sure their names are different.
@@ -37,4 +44,4 @@ end
 
 # Ping search engines after sitemap generation:
 #down
-#   ping_with "http://#{host}/sitemap.xml"
+ ping_with "http://#{host}/sitemap.xml"
