@@ -8,7 +8,7 @@ before_filter { params[:id] && @instructor = Instructor.find(params[:id])}
 layout 'partnerdashboard'
   
   def index
-      @instructors = Center.friendly.find(params['center_id']).instructors
+      @instructors = Center.unscoped.friendly.find(params['center_id']).instructors
   end
   def new
     @instructor = Instructor.new

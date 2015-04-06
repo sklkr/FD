@@ -2,8 +2,8 @@
 <%unless params[:controller] == 'partners/multicenters' %>
 	<%= nav_link 'Brand Profile', partners_profiles_path %>
 	<%= nav_link 'Multicenter Configuration', partners_configurations_path %>
-	<%= nav_link 'Multicenter Customers', partners_customer_path(current_user.partner.centers.first.id) %>
-	<%= nav_link 'Multicenter Payment', partners_payment_path(current_user.partner.centers.first.id) %>
+	<%= nav_link 'Multicenter Customers', partners_customer_path(current_user.partner.centers.unscoped.first.id) %>
+	<%= nav_link 'Multicenter Payment', partners_payment_path(current_user.partner.centers.unscoped.first.id) %>
 	<%= nav_link 'Multicenter Reports', page_path('coming_soon') %>
 <%end%>
 </ul>

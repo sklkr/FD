@@ -1,3 +1,7 @@
+<%= render :partial => 'admins/customers/nav' %>
+
+<%= form_tag admins_customers_path do %>
+
 <div class="container">
     <div class="row">
         <div class="panel panel-primary filterable">
@@ -29,7 +33,7 @@
                 <tbody>
                 <%@customers.each do |customer| %>
                     <tr>
-                        <td><%= check_box_tag :t1 %></td>
+                        <td><%= check_box_tag "t1[#{customer.id}]" %></td>
                         <td><%= customer.user.first_name %></td>
                         <td><%= rand(1..30) %> (Static)</td>
                         <th>Rs:: <%= rand(1..50000) %>/- (Static)</th>
@@ -52,8 +56,64 @@
         <div class="col-xs-7 pull-right">
             <a href="" class="btn btn-primary">Add Coupon</a>
             <a href="" class="btn btn-primary">Redeem Pass</a>
-            <a href="" class="btn btn-primary">Message</a>
-            <a href="" class="btn btn-primary">Sms</a>
+            <a href="" class="two-popup-trigger btn btn-primary">Message</a>
+            <a href="" class="three-popup-trigger btn btn-primary">SMS</a>
         </div>
     </div>
 </div>
+
+<div class="two-popup" role="alert">
+    <div class="cd-popup-container">
+        <div class="container">
+            <div class="row">
+                <div class="small-12 column" style="margin-top:35px">
+                    <fieldset>
+                    <legend>Message</legend>
+                        <span class='help-block'>Email will send automatically to selected customers registered email id's</span>
+                        <div class="col-xs-12" style="margin-bottom:10px">
+                            <textarea name="email_message" class="form-control" placeholder='Share your message here'></textarea>
+                        </div>
+                        <div class="col-xs-12">
+                            <input type="submit" name="send_email" class="btn btn-primary small form-control">
+                        </div>
+                    </fieldset>
+                </div>
+            </div>
+            <div class="margin-35"></div>
+        </div>
+        <!-- <ul class="cd-buttons">
+            <li><a href="#0">submit</a></li>
+            <li><a href="#0">No</a></li>
+        </ul> -->
+        <a href="#0" class="cd-popup-close img-replace">Close</a>
+    </div> <!-- cd-popup-container -->
+</div>
+
+<div class="three-popup" role="alert">
+    <div class="cd-popup-container">
+        <div class="container">
+            <div class="row">
+                <div class="small-12 column" style="margin-top:35px">
+                    <fieldset>
+                        <legend>SMS</legend>
+                        <div style="margin-bottom:10px">Sms will send automatically to selected customers mobile numbers</div>
+                        <div class="col-xs-12" style="margin-bottom:10px">
+                            <textarea name="sms_message" class="form-control" placeholder='Share your message here'></textarea>
+                        </div>
+                        <div class="col-xs-12">
+                            <input type="submit" name="send_sms" class="btn btn-primary small form-control">
+                        </div>
+                    </fieldset>    
+                </div>
+            </div>
+            <div class="margin-35"></div>
+        </div>
+        <!-- <ul class="cd-buttons">
+            <li><a href="#0">submit</a></li>
+            <li><a href="#0">No</a></li>
+        </ul> -->
+        <a href="#0" class="cd-popup-close img-replace">Close</a>
+    </div> <!-- cd-popup-container -->
+</div>
+
+<% end %>

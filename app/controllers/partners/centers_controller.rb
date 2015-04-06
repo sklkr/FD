@@ -29,7 +29,7 @@ before_filter :partner_authenticated?
 
   private
   	def centers_list
-  		current_user.partner.centers
+  		current_user.partner.centers.unscoped
   	end
     def permit_params
       params.require(:center).permit(:name)

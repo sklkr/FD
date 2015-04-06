@@ -7,8 +7,8 @@ before_filter :partner_authenticated?
   end
 
   def show
-  	@bookings = Center.find(params[:id]).bookings.includes(:service, :customer).where.not(status: nil)	
-  	@centers = current_user.partner.centers
+  	@bookings = Center.unscoped.find(params[:id]).bookings.includes(:service, :customer).where.not(status: nil)	
+  	@centers = current_user.partner.centers.unscoped
   end
   
 end

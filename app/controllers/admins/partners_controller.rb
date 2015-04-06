@@ -1,21 +1,35 @@
 module Admins
 class PartnersController < ApplicationController
 	layout 'admin'
+	before_filter :admin_authenticated?
+
 	def index
-		@centers = Center.all.includes(:centerinfo, :city, :commission)
+		@centers = Center.unscoped.all.includes(:centerinfo, :city, :commission)
 	end
 
 	def show
-
+		@bookings = Center.unscoped.find(params[:id]).bookings.includes(:customer)
 	end
 
 	def create
 		# For FP Verification
-		centers =  Center.find(params['t1'].keys)
+		centers =  Center.unscoped.find(params['t1'].keys)
 		unless params['fp'].nil?
 			centers.each do |c|
 				unless c.centerinfo.nil?
 					c.centerinfo.update_attributes(:fp_verified => true)
+				end
+			end
+		end
+
+		unless params['history'].nil?
+			return redirect_to admins_partner_path(centers.first.id)
+		end
+
+		unless params['approve'].nil?
+			centers.each do |c|
+				unless c.update_attributes(:status => 'active')
+					return render :text => "Something went wrong"
 				end
 			end
 		end
@@ -41,5 +55,7 @@ class PartnersController < ApplicationController
 		
 		redirect_to admins_partners_path
 	end
+
+
 end
 end

@@ -66,7 +66,7 @@ class ApplicationController < ActionController::Base
    end
 
    def center
-      Center.friendly.find(params['center_id'])  rescue Center.friendly.find(params['id'])
+      Center.unscoped.friendly.find(params['center_id'])  rescue Center.unscoped.friendly.find(params['id'])
    end
 
    def cities

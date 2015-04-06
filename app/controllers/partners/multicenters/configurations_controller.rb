@@ -4,7 +4,7 @@ layout 'partnerdashboard'
 before_filter :partner_authenticated?
 before_filter :is_permitted?, :only => [:update, :show]
   def index
-  	@centers = current_user.partner.centers.includes(:city, :area)
+  	@centers = current_user.partner.centers.unscoped.includes(:city, :area)
   end
   
   def new
@@ -27,7 +27,7 @@ before_filter :is_permitted?, :only => [:update, :show]
   		params.require(:center).permit(:name)
   	end
     def is_permitted?
-      @center = Center.find(params[:id])
+      @center = Center.unscoped.find(params[:id])
       redirect_to root_url unless current_user.partner.id == @center.partner_id
     end
 end
