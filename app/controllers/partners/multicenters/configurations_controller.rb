@@ -4,7 +4,7 @@ layout 'partnerdashboard'
 before_filter :partner_authenticated?
 before_filter :is_permitted?, :only => [:update, :show]
   def index
-  	@centers = current_user.partner.centers.unscoped.includes(:city, :area)
+  	@centers = Center.unscoped.where('partner_id=?', current_user.partner.id).includes(:city, :area)
   end
   
   def new
