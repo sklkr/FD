@@ -86,7 +86,7 @@
 		<div class="large-12 columns">
 			<div class="row">
 				<div class="small-2 columns"><label for="service[service_desc]" class="inline">Service Description</label></div>
-				<div class="small-10 columns"><%= text_area_tag 'service[service_desc]',nil, :required => true %></div>
+				<div class="small-10 columns"><%= text_area_tag 'service[service_desc]', @service.service_desc, :required => true %></div>
 			</div>
 		</div>
 		<hr>
