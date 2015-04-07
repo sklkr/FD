@@ -107,6 +107,8 @@ mount Lockup::Engine, at: '/lockup'
 
   get 'homepage/index'
 
+  get '', to: 'blogs#index', constraints: { subdomain: 'blog' }
+
 
 
   get "cities/:city_id/areas" => "application#areas", :as => "areas", :format => :json
