@@ -27,7 +27,7 @@ extend FriendlyId
 
 
  def percent
- 	unless self.selling_price != 0 && self.original_price != 0
+ 	if self.selling_price != 0 || self.original_price != 0
  		return ((1-(self.selling_price/self.original_price))*100).to_i
  	end
  	0
