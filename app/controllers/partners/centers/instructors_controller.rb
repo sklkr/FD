@@ -37,6 +37,16 @@ layout 'partnerdashboard'
     end
   end
 
+  def destroy
+    ins = Instructor.find(params[:id])
+    if ins && ins.center == center
+      ins.delete
+      redirect_to partners_center_instructors_path, :success => 'Instructor removed successfully'
+    else
+      rener :text => "something went wrong"
+    end
+  end
+
   private
   	def permit_params
       params.require(:instructor).permit(:name, :gender, :photo, :mobile, :email, :expertise, :description)

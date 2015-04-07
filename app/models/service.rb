@@ -27,7 +27,10 @@ extend FriendlyId
 
 
  def percent
- 	((1-(self.selling_price/self.original_price))*100).to_i
+ 	unless self.selling_price != 0 && self.original_price != 0
+ 		return ((1-(self.selling_price/self.original_price))*100).to_i
+ 	end
+ 	0
  end
  def duration
  	self.end_date
