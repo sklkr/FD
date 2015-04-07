@@ -63,6 +63,7 @@ layout 'homepage'
         @booking.customer_id = cdata.id
         @booking.save
         env['warden'].set_user(user)
+        VerificationMailer.guest_email(cdata).deliver
         redirect_to add_details_path('center', 'service', :token => @booking.token)
        else
         render :text => 'something went wrong'

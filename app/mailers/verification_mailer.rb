@@ -6,5 +6,10 @@ class VerificationMailer < ActionMailer::Base
   	  @email = role.email
   	  @name = role.user.first_name
   	  mail(to: role.email, subject: 'Welcome to FitnessPapa')
-   end
+  end
+
+  def guest_email(role)
+  	  @email = role.email
+  	  mail(to: role.email, subject: 'Welcome to FitnessPapa')
+  end
 end

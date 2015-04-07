@@ -7,7 +7,7 @@ class AckMailer < ActionMailer::Base
     @service = @booking.service
     @details = @booking.details
     e = @user.email
-  	mail(to: e , subject: 'Booking confirmation with FitnessPapa.com')
+  	mail(to: e, subject: 'Booking confirmation with FitnessPapa.com')
   end
 
   def partner(token)

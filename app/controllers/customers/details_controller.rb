@@ -13,7 +13,7 @@ before_filter { @details = current_user }
   def create
     if @details.update_attributes(permit_params)
       flash[:notice] = 'Updated'
-      render :index
+      redirect_to customers_details_path
     else
       render :text => "Something went wrong"
     end
