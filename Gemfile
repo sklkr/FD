@@ -89,3 +89,5 @@ gem 'metamagic'
 gem 'rack-tracker'
 gem 'lockup'
 
+gem 'figaro'
+

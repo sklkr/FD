@@ -8,7 +8,7 @@ class PaymentsController < ApplicationController
       Detail.create(:name => params['name'].values[n-1], :gender => params['gender'].values[n-1], :mobile => params['mobile'], :request => params['request'], :booking_id => @booking.id)
     end
 
-  	@key = ENV['fitness_payment_key']
+  	@key = Figaro.env.payu_key
   	@amount = @booking.price
   	@surl = payments_success_url
   	@furl = payments_failure_url
@@ -39,7 +39,7 @@ class PaymentsController < ApplicationController
   private
   	def generate_hash(*fields)
   	  fields = fields.join('|')
-  	  fields << "||||||||||#{ENV['fitness_payment_salt']}"
+  	  fields << "||||||||||#{Figaro.env.payu_secret}"
       
   	  Digest::SHA2.new(512).hexdigest fields
   	end

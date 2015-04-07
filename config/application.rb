@@ -30,5 +30,7 @@ module Fitnesspapa
     config.middleware.use(Rack::Tracker) do
       handler :google_analytics, { tracker: 'UA-61123601-1' }
     end
+
   end
 end
+
