@@ -6,6 +6,7 @@ class Booking < ActiveRecord::Base
 	belongs_to :customer
 	has_many :details
 
+	scope :purchased, -> { where('status=?', 'success')}
 
 	def order_id
 		"OD" + sprintf('%07d', self.id)
@@ -26,7 +27,6 @@ class Booking < ActiveRecord::Base
 	def partner_money
 		(self.price - fp - partner_stax).round(2)
 	end
-
 
 
 	private

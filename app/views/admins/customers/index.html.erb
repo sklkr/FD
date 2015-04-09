@@ -34,12 +34,12 @@
                 <%@customers.each do |customer| %>
                     <tr>
                         <td><%= check_box_tag "t1[#{customer.id}]" %></td>
-                        <td><%= customer.user.first_name %></td>
-                        <td><%= rand(1..30) %> (Static)</td>
-                        <th>Rs:: <%= rand(1..50000) %>/- (Static)</th>
+                        <td><%=link_to customer.user.first_name, admins_customer_path(customer.id) %></td>
+                        <td style="padding-left:30px"><%= customer.bookings.purchased.count %></td>
+                        <th><%= customer.bookings.purchased.inject(0) {|sum,k| sum += k.price.to_f; sum } %></th>
                         <td><%= Time.now + rand(1..10).days %></td>
                         <td><a href="<%= admins_customer_path(customer.id) %>"><%= customer.customer_id %> </a></td>
-                        <td><a href="#">Edit</a>&nbsp;<a href="#">Remove</a></td>
+                        <td><a href="#" class="btn disabled">Edit</a>&nbsp;<%= link_to 'Remove', admins_customer_path(customer.id), method: :delete, data: { comfirm: 'Are you sure?', disable_with: 'Removing...'} %></td>
                     </tr>
                    <%end%>
                 </tbody>

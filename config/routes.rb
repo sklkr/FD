@@ -37,7 +37,7 @@ mount Lockup::Engine, at: '/lockup'
   end
 
   namespace :admins do
-    resources :customers, :partners
+    resources :customers, :partners, :approvals
   end
 
 

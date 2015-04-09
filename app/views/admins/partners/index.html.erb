@@ -44,9 +44,9 @@
                         <td style="text-align:center"><span class="label label-default <%= "label-success" if center.status == 'active' %>"><%= center.status %></span></td>
                         <td  style="text-align:center"><span class="label label-default <%= "label-success" if center.try(:centerinfo).try(:fp_verified?) %>"><%= center.try(:centerinfo).try(:fp_verified?) %></span></td>
                         <td><%= center.commission.try(:val) %><%= '%' unless center.commission.nil? %></td>
-                        <td><%= rand(1..12000) %></td>
-                        <td>40</td>
-                        <td><%= center.try(:centerinfo).try(:updated_at) %></td>
+                        <td><%=  %></td>
+                        <td class="text-center"><%= center.bookings.purchased.count %></td>
+                        <td><%= center.try(:centerinfo).try(:updated_at).try(:getlocal) %></td>
                     </tr>
                    <%end%>
                 </tbody>

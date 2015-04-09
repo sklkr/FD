@@ -1,7 +1,7 @@
 class Center < ActiveRecord::Base
 extend FriendlyId
   default_scope { where(status: 'active') }
-
+  scope :pending, -> { unscoped.where('status!=?', 'active')}
 	# Associations
 	belongs_to :partner
 	has_one :centerinfo, :dependent => :destroy

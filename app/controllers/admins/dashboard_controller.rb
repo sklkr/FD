@@ -4,7 +4,7 @@ layout 'admindashboard'
 before_filter :admin_authenticated?
 
   def index
-  	
+	  	
   end
 
   def new

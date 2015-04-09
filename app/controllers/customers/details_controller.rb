@@ -21,7 +21,7 @@ before_filter { @details = current_user }
 
   private
   	def permit_params
-  		params.require(:user).permit("first_name","centertype_id","address1","address2","area_id","city_id","image","phone","emergency_phone")
+  		params.require(:user).permit("first_name","centertype_id","address1","address2","area_id","city_id","image","phone","emergency_phone", "emergency_name")
   	end
 end
 end

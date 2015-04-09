@@ -6,7 +6,8 @@ class CustomersController < ApplicationController
 		@customers = Customer.all.includes(:user)
 	end
 	def show
-		
+		@customer = Customer.find(params[:id])
+		@data = @customer.user
 	end
 
 	def create
@@ -24,6 +25,15 @@ class CustomersController < ApplicationController
 		end
 		
 		redirect_to admins_customers_path
+	end
+
+	def destroy
+		customer = Customer.find(params[:id])
+		if customer.user.delete && customer.delete
+			redirect_to admins_customers_path, :notice => "Customer successfully deleted"
+		else
+			render :text => 'something went wrong'
+		end
 	end
 end
 end

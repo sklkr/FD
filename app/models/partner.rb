@@ -1,5 +1,5 @@
 class Partner < ActiveRecord::Base
-  belongs_to :user
+  belongs_to :user, :dependent => :destroy
   has_many :centers, :dependent => :destroy
   has_many :bookings
   
