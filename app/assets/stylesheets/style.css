@@ -806,6 +806,9 @@ header.consultant{
     margin-left: 18px;
     margin-bottom: 18px;
     border-radius: 2px;
+    overflow: hidden;
+    min-height: 209px;
+    max-height: 209px;
 }
 .profile-pic {
     float: left;

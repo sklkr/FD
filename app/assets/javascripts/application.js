@@ -20,4 +20,5 @@
 //= require ratyrate
 //= require nprogress
 //= require nprogress-turbolinks
+//= require jquery.noty
 
