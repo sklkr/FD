@@ -37,7 +37,7 @@ mount Lockup::Engine, at: '/lockup'
   end
 
   namespace :admins do
-    resources :customers, :partners, :approvals
+    resources :customers, :partners, :approvals, :populars
   end
 
 
@@ -107,8 +107,15 @@ mount Lockup::Engine, at: '/lockup'
 
   get 'homepage/index'
 
+  
+  # Subdomains
   get '', to: 'blogs#index', constraints: { subdomain: 'blog' }
 
+  namespace :api, defaults: { format: :json }, constraints: { subdomain: 'api' }, path: '/'  do
+      scope module: :v1 do
+         # We are going to list our resources here
+      end
+  end
 
 
   get "cities/:city_id/areas" => "application#areas", :as => "areas", :format => :json

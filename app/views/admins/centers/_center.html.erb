@@ -1,0 +1,12 @@
+<tr>
+    <td><%= check_box_tag "t1[#{center.id}]" %></td>
+    <td></td>
+    <td><%= center.name %></td>
+    <td><%= center.try(:city).try(:name) %></td>
+    <td style="text-align:center"><span class="label label-default <%= "label-success" if center.status == 'active' %>"><%= center.status %></span></td>
+    <td  style="text-align:center"><span class="label label-default <%= "label-success" if center.try(:centerinfo).try(:fp_verified?) %>"><%= center.try(:centerinfo).try(:fp_verified?) %></span></td>
+    <td><%= center.commission.try(:val) %><%= '%' unless center.commission.nil? %></td>
+    <td><%=  %></td>
+    <td class="text-center"><%= center.bookings.purchased.count %></td>
+    <td><%= center.try(:centerinfo).try(:updated_at).try(:getlocal) %></td>
+</tr>

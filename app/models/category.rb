@@ -5,6 +5,7 @@ extend FriendlyId
 	has_and_belongs_to_many :centerinfos
 	has_many :instructors
 	has_many :services
+	has_many :populars, dependent: :destroy
 
 	# Scopes 
 	friendly_id :name, use: :slugged

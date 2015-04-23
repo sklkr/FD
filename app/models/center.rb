@@ -14,6 +14,7 @@ extend FriendlyId
 	has_many :bookings, :dependent => :destroy
 	belongs_to :city
 	belongs_to :area
+	has_one :popular, :dependent => :destroy
 
 	# Validations
 	validates :name, :presence => true
