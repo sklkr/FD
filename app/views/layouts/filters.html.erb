@@ -8,56 +8,8 @@
 </head>
 <body>
  <%= render :partial => 'layouts/header' %>
-  <%= render :partial => 'layouts/search' %>
-  <div class="container">
-  			
-  			
-  				<div class="container-main">
-  					<div class="sqr-box-title">
-  					<h2>Results</h2>
-  					</div>
-  					<div class="sqr-boxs-cat">
-  						<div class="pagination-filter">
-  							<div class="pagination-filter-main">
-  								
-                  <%= paginate @cbase %>
-
-  								<div class="pagination-button">
-  									<div class="check-box">
-  										<input type="checkbox" name="checkboxG4" id="checkboxG4" class="css-checkbox" checked="">
-    									<label for="checkboxG4" class="css-label"><img src="/assets/boy-checkbox.jpg"></label>
-    									<input type="checkbox" name="checkboxG5" id="checkboxG5" class="css-checkbox">
-    									<label for="checkboxG5" class="css-label"><img src="/assets/girl-checkbox.jpg"></label>
-    								</div>
-  									<div class="view-box">
-  										<a href="<%= filters_list_path(:q => params[:q]) %>" class="listview <%= "active"  if  params["action"] == 'list' %>"></a>
-  										<a href="<%= filters_grid_path(:q => params[:q]) %>" class="gridview <%= "active"  if  params["action"] == 'grid' %>"></a>
-  										<a href="<%= page_path('coming_soon') %>" class="mapview"></a>
-  									</div>
-  								</div>
-  								
-  							</div>
-  						</div>
-  						<div class="search-result">
-  					 	<div class="sidebar-filter">
-                <div class="sidebar-heading">
-                  <h2>Filters</h2>
-                </div>
-                <%if params['action'] == 'grid' %>
-                  <%= render :partial => 'filters/form', :locals => {:act => filters_grid_path } %>              
-                <%end%>
-                <%if params['action'] == 'list'  %>
-                 <%= render :partial => 'filters/form', :locals => {:act => filters_list_path } %>              
-                <%end %>
-              </div>
-  						<%= yield %>
-  						
-  						</div>
-  					</div>
-  					
-  				</div>
-  				
-  			</div>
+ <%= render :partial => 'layouts/search' %>
+ <%= yield %>
  <%= render :partial => 'layouts/secure' %>
  <%= render :partial => 'layouts/footer' %>
  <%= render :partial => 'layouts/analytics' %>

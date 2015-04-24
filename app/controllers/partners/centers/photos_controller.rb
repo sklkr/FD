@@ -17,6 +17,7 @@ class PhotosController < ApplicationController
     center = Center.friendly.find(params[:center_id])
     cphoto = Cphoto.new(params.require('centerinfo').permit(:image))
     cphoto.centerinfo_id = center.centerinfo.id
+    cphoto.center_id = center.id
     if cphoto.save
   		render :json => true
   	else

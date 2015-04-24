@@ -28,6 +28,8 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'spring', group: :development
 gem 'activemerchant', '~> 1.8'
 
+gem 'font-awesome-sass'
+
 
 
 # Use ActiveModel has_secure_password

@@ -5,80 +5,66 @@ meta title: "Popular | FitnessPapa.com",
 %>
 
 
+<%= render :partial => 'layouts/header' %>
 
-<!-- header -->
-<header class="<%= params[:category_id] %>">
- <%= render :partial => 'layouts/header' %>
-	
-	<div class="header">
-	<div class="find-serv">
-		<h1>Find services</h1>
-		<div class="search-sec">
-			<div class="search-sec-main">
-			<%=search_form_for @c, :url => filters_list_path, :class => 'services', :html => {:onSubmit => 'return search_validator();'} do |f| %>
-					<%= f.collection_select :centerinfo_categories_id_in, Category.order(:name), :id, :name %>
-				    <input id='cities' type="text" name="q[city_name_cont]" placeholder="Type City Name Here">
-					<input type="submit" value="Search Now">
-				<%end%>
-			</div>
-		</div>
-	</div>
-</div><!-- end header -->
-</header><!-- end header -->
-<!-- end header -->
-	
-	<!-- content -->
-	<div class="container">
-		<div class="container-main">
-			<div class="sqr-box-title">
-			<h2>Popular In <%= params[:category_id].capitalize if params[:category_id] != 'spa' %> <%= "Spa & Saloon"  if params[:category_id] == 'spa' %></h2>
-			</div>
-			<div class="sqr-boxs-cat">
-			<%unless @centers.nil?  %>
-			<%@centers.each do |center| %>	
-				<div class="profile-box">
-					<div class="profile-pic">
-						<%= image_tag attachment_url(center.centerinfo, :image), :style => 'width:133px;height:110px' %>
-					</div>
-					<div class="profile-info">
-						<div class="profile-title">
-						  <h4><%= center.name %></h4>
-						  <span><%= center.accountinfo.address_1 %>, <%= center.try(:city).try(:name) %></span>
+<div class="row banner">
+ <div class="col-xs-12">
+ 	 <div class="item">
+ 	 	<img src="/assets/bg-5.jpg" alt="image" class="img-responsive">
+ 		 <div class="search-panel text-center">
+         	<div class="row">
+         		<div class="col-sm-12 col-md-6 col-md-offset-3">
+		         	<div class="search-sec-main">
+						<form accept-charset="UTF-8" action="/filters/list" class="services" id="center_search" method="get" onsubmit="return search_validator();">
+						<div class="row">
+							<div class="col-xs-3">
+								<select id="q_centerinfo_categories_id_in" name="q[centerinfo_categories_id_in]" class="form-control"><option value="2">Gym</option>
+									<option value="5">Swimming</option>
+									<option value="1">Yoga</option>
+								</select>
+							</div>
+							<div class="col-xs-7">
+								<input id="cities" type="text" name="q[city_name_cont]" placeholder="Type Locality or Landmark" class="ui-autocomplete-input form-control" autocomplete="off">		
+							</div>
+							<div class="col-xs-2">
+								<input type="submit" value="Search" class="form-control btn btn-primary">
+							</div>
 						</div>
-						<div class="profile-rate">
-						  <img src="/assets/star.jpg" alt=""><a href="#">2 Reviews</a>
-						</div>
-						<button type="button"><a href="<%= center_category_services_path(center.friendly_id, params[:category_id]) %>" style="color:white;text-decoration:none">view</a></button>
-					</div>
-					<div class="profile-detail">
-					  <p><%= center.centerinfo.brief_desc.truncate(120) %></p>
-					</div>
-				</div>
-			<%end  %>
-			<%end %>
-			</div>
-			
-		</div>
-		
-	</div>
-	<!-- end content -->
-	
-	
-	<!-- content -->
-	<div class="container">
-		<div class="container-main box-border">
-			<p>
-			<img src="/assets/payment-gateway-320.jpg" class="for-mobile" alt=""/>
-			<img src="/assets/payment-gateway.jpg" class="for-desktop" alt=""/>
-			<div class="verified">
-			<div class="verified-main">
-			 <img src="/assets/verifyed.jpg" alt=""/><p>The site is certified by verisign as a secure & trusted site</p>
-			</div>
-			</div>
+					</form>			
+		         	</div>
+         		</div>
+         	</div>
+         </div>
+ 	 </div>
+ </div>	
+</div>
+
+
+<div class="container">
+	<div class="row">
+		<div class="col-xs-12">
+			<h2 class="text-center">Offers Zone</h2>
 		</div>
 	</div>
+	<div class="row">
+	<% unless @centers.nil? %>
+	<% @centers.each do |center| %>
+		<div class="col-xs-6">
+			<div class="offers-box">
+				<h2><a href="<%= center_category_services_path(center.friendly_id, params[:category_id]) %>"><%= center.name.camelize %></a></h2>
+				<a href="<%= center_category_services_path(center.friendly_id, params[:category_id]) %>">
+				<% unless center.try(:centerinfo).try(:image).nil? %>
+				<%= image_tag attachment_url(center.centerinfo, :image, :fill, 503, 287), :class => 'img-responsive img-thumbnail' %>
+				<%end %>
+				</a>
+				<p class="text-center"><img src="/assets/star.jpg" alt=""></p>
+			</div>
+		</div>
+ 	<%end%>
+	<%end%>
+	</div>
+</div>
 	
-			
 <%= render :partial => 'layouts/footer' %>
 
 <script>

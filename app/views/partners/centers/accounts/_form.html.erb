@@ -1,4 +1,4 @@
-<%= form_for @account, url: getpath, method: getmethod do |f| %>
+<%= form_for @account, url: getpath, method: getmethod, :html => { :onsubmit => 'return validator()' } do |f| %>
 	<div class="row">
 	<fieldset>
 	<legend>Account Details</legend>
@@ -72,14 +72,16 @@
 				<div class="small-8 columns">
 				<%= f.text_field :address_1, :placeholder => 'Address Line 1'  ,:required => true%> 
 				<%= f.text_field :address_2, :placeholder => 'Address Line 2'  ,:required => true%> 
-				<%= f.text_field :landmark, :placeholder => 'Landmark'  ,:required => true%>
 				<div class="row">
 					<div class="small-6 columns">
-						<%= select_tag :city_id, options_from_collection_for_select(@cities, 'id', 'name', @account.center.try(:city_id).to_i), :prompt => "select your city" %>		
+						<%= f.text_field :landmark, :placeholder => 'Landmark'  ,:required => true%>
 					</div>
 					<div class="small-6 columns"><%= f.text_field :pin, :placeholder => '560012'   ,:required => true%></div>
 				</div>
-				<%= select_tag :area_id, options_from_collection_for_select([], 'id', 'name'), 'data-option-dependent' => true, 'data-option-observed' => 'city_id', 'data-option-url' => '/cities/:city_id:/areas.json', 'data-option-key-method' => :id, 'data-option-value-method' => :name, 'data-option-value-selected' =>  @account.center.try(:area_id).to_i %>
+				<%= f.fields_for :center do |center_place| %>
+				  <%= center_place.text_field :place_name %>
+				  <%= center_place.hidden_field :place_id %>
+				<%end%>
 				<div class="row">
 					<div class="small-12 column">
 						<a href="" class="cd-popup-trigger">Change password</a>
@@ -244,6 +246,8 @@
 
 <script>
 $(document).ready(function() {
+  var ip1 = document.getElementById('accountinfo_center_attributes_place_name');
+  window.center_city = new google.maps.places.Autocomplete(ip1);
   $('.menu').dropit();
   $('#center-conf').css('display', 'block');
   $('select[data-option-dependent=true]').each(function (i) {
@@ -288,4 +292,8 @@ $(document).ready(function() {
 	      }
 	  });
 });
+
+function validator(){
+	$('#accountinfo_center_attributes_place_id').val(center_city.getPlace().id);
+}
 </script>

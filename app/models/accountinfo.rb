@@ -7,6 +7,8 @@ class Accountinfo < ActiveRecord::Base
 	validates :address_1, presence: true
 	validates :center_id, presence: true
 	validates :mobile, :numericality => true, length: { in: 10..11 }
+	accepts_nested_attributes_for :center
+
 
 	def brandname
 		unless self.brand.nil?

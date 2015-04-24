@@ -25,5 +25,6 @@
 //= require jquery.timepicker
 //= require chosen.jquery
 //= require modernizr
+//= require google.places
 //= require popup
 //= require jquery.noty

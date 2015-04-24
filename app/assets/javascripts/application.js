@@ -13,12 +13,11 @@
 //= require jquery
 //= require jquery_ujs
 //= require jquery.ui
+//= require bootstrap
 //= require owl.carousel
 //= require turbolinks
+//= require google.places
 //= require jquery.bxslider
-//= require jquery.raty
-//= require ratyrate
 //= require nprogress
 //= require nprogress-turbolinks
-//= require jquery.noty
 

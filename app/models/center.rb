@@ -12,6 +12,7 @@ extend FriendlyId
 	has_many :services, :dependent => :destroy
 	has_many :centermen, :dependent => :destroy
 	has_many :bookings, :dependent => :destroy
+	has_many :cphotos, :dependent => :destroy
 	belongs_to :city
 	belongs_to :area
 	has_one :popular, :dependent => :destroy

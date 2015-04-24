@@ -10,7 +10,9 @@
  * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
  * file per style scope.
  *
- *= require animate
+ *= require normalize
+ *= require bootstrap
+ *= require animate 
  *= require style
  *= require bxslider
  *= require jquery.ui
@@ -22,3 +24,5 @@ $nprogress-color: rgb(237, 116, 19);
 
 @import 'nprogress';
 @import 'nprogress-bootstrap';
+@import "font-awesome-sprockets";
+@import "font-awesome";

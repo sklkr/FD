@@ -25,9 +25,7 @@ class AccountsController < ApplicationController
     @account = Accountinfo.new(permit_params)
     @account.center_id = center.id
     @account.brand_id = brand.id
-    city = City.find(params[:city_id])
-    area = Area.find(params[:area_id])
-    center.update_attributes(:city_id => city.try(:id), :area_id => area.try(:id))
+    center.update_attributes(:place_id => params[:accountinfo][:center_attributes][:place_id], :place_name => params[:accountinfo][:center_attributes][:place_name])
     if @account.save
       flash[:success] = 'Account details saved'
       redirect_to partners_center_account_path(center.friendly_id, @account.id)
@@ -54,9 +52,7 @@ class AccountsController < ApplicationController
 
   def update
     brand = Brand.find_or_create_by(:name => params.require(:accountinfo).permit(:brandname)['brandname'])
-    city = City.find(params[:city_id]) if params[:city_id] != ''
-    area = Area.find(params[:area_id]) if params[:area_id] != ''
-    center.update_attributes(:city_id => city.try(:id), :area_id => area.try(:id))
+    center.update_attributes(:place_id => params[:accountinfo][:center_attributes][:place_id], :place_name => params[:accountinfo][:center_attributes][:place_name])
     @cities = cities
     unless @account.brand_id == brand.id
       @account.brand_id = brand.id
