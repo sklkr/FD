@@ -12,12 +12,17 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require jquery.ui
-//= require bootstrap
-//= require owl.carousel
+//= require jquery/jquery.ui
+//= require plugins/bootstrap
+//= require plugins/owl.carousel
 //= require turbolinks
-//= require google.places
-//= require jquery.bxslider
+//= require plugins/google.places
+//= require jquery/jquery.bxslider
 //= require nprogress
 //= require nprogress-turbolinks
-
+//= require plugins/modernizr
+//= require plugins/simpleCart
+//= require plugins/drop
+//= require plugins/magicsuggest
+//= require signup
+//= require cart

@@ -1,0 +1,423 @@
+<div id="details-content" style="background-color: rgb(252, 252, 252)">
+
+<% cache('cache_key_for_main_background') do %>
+<div id="background" style="background-image: url(<%= attachment_url(@cphotos.first, :image) %>);z-index:0" >
+<%= image_tag attachment_url(@cphotos.first, :image), :class => 'visible-xs img-responsive' %>
+</div>
+<% end %>
+<div class="space20"></div>
+<div class="container">
+        <div class="row">
+        <div class="col-md-7 col-xs-12">
+            <% cache('cache_key_for_details_banner') do %>
+                <div class="panel panel-default info-panel">
+                <div class="padding35">
+                    <div class="panel-heading"><h2 class="osLight no-padding"><%= @center.name.upcase %></h2></div>
+                    <div class="panel-body blue-gray">
+                        <p><%= @center.place_name %> (0 Reviews)</p>
+                        <div id="carousel-example-generic" class="carousel slide hidden-xs" data-ride="carousel">
+                          <!-- Indicators -->
+                          <ol class="carousel-indicators">
+                            <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+                            <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+                            <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+                          </ol>
+
+                          <!-- Wrapper for slides -->
+                          <div class="carousel-inner" role="listbox">
+                            <% number = 1 %>
+                            <% @cphotos.each do |photo| %>
+
+                            <div class="item <%= 'active' if number == 1 %>">
+                              <%= image_tag attachment_url(photo, :image, :fill, 540, 250), :class => 'img-thumbnail' %>
+                            </div>
+                            <%number += 1 %>
+                            <%end%>
+                          </div>
+                        </div>
+                    </div>
+                </div>
+                </div>
+            <% end %>
+            <div class="space80"></div>
+            <!-- Tab should come here -->      
+            <% cache('cache_key_for_details_tab') do %>
+                <div role="tabpanel">
+
+              <!-- Nav tabs -->
+              <ul class="nav nav-tabs" role="tablist">
+                <li role="presentation" class="active"><a href="#description" aria-controls="description" role="tab" data-toggle="tab">DESCRIPTION</a></li>
+                <li role="presentation"><a href="#amenities" aria-controls="amenities" role="tab" data-toggle="tab">AMENITIES</a></li>
+                <li role="presentation"><a href="#openinghours" aria-controls="openinghours" role="tab" data-toggle="tab">OPENING HOURS</a></li>
+              </ul>
+
+              <!-- Tab panes -->
+              <div class="tab-content tab-box">
+                <div role="tabpanel" class="tab-pane active" id="description">
+                    <%= raw @details.detailed_desc %>
+                </div>
+                <div role="tabpanel" class="tab-pane" id="amenities">
+                    <div class="row">
+                    <%@details.experiences.each do |amenity| %>
+                        <div class="col-xs-4">
+                            <p><i class="<%= icon_fetcher(amenity.name) %>">&nbsp;</i>
+                            <%= amenity.name %></p>
+                        </div>
+                    <%end%>
+                    </div>
+                </div>
+                <div role="tabpanel" class="tab-pane" id="openinghours">
+                    <table class="table">
+                        <tbody>
+                           <tr>
+                                <td class="w-30p uppercase body-color">Monday</td>
+                                <td><%= @hours.mon_from %> &nbsp; to &nbsp; <%= @hours.mon_to %></td>
+                            </tr>
+                            <tr>
+                                <td class="w-30p uppercase body-color">Tuesday</td>
+                                <td><%= @hours.tue_from %> &nbsp; to &nbsp; <%= @hours.tue_to %></td>
+                            </tr>
+                            <tr>
+                                <td class="w-30p uppercase body-color">Wednesday</td>
+                                <td><%= @hours.wed_from %> &nbsp; to &nbsp; <%= @hours.wed_to %></td>
+                            </tr>
+                            <tr>
+                                <td class="w-30p uppercase body-color">Thursday</td>
+                                <td><%= @hours.thu_from %> &nbsp; to &nbsp; <%= @hours.thu_to %></td>
+                            </tr>
+                            <tr>
+                                <td class="w-30p uppercase body-color">Friday</td>
+                                <td><%= @hours.fri_from %> &nbsp; to &nbsp; <%= @hours.fri_to %></td>
+                            </tr>
+                            <tr>
+                                <td class="w-30p uppercase body-color">Saturday</td>
+                                <td><%= @hours.sat_from %> &nbsp; to &nbsp; <%= @hours.sat_to %></td>
+                            </tr>
+                            <tr>
+                                <td class="w-30p uppercase body-color">Sunday</td>
+                                <td><%= @hours.sun_from %> &nbsp; to &nbsp; <%= @hours.sun_to %></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+              </div>
+
+            </div>
+            <% end %>
+            
+            <div class="space80"></div>
+            <h4 style="margin-bottom:34px">Reviews</h4>
+            <div class="row">
+                <div class="col-xs-2">
+                <div class="thumbnail">
+                    <img class="img-responsive user-photo" src="https://ssl.gstatic.com/accounts/ui/avatar_2x.png">
+                </div><!-- /thumbnail -->
+                </div><!-- /col-xs-2 -->
+
+                <div class="col-xs-10">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <strong>myusername</strong> <span class="text-muted">commented 5 days ago</span>
+                        </div>
+                        <div class="panel-body">
+                            <p>Panel content</p>
+                        </div><!-- /panel-body -->
+                    </div><!-- /panel panel-default -->
+                </div><!-- /col-xs-10 -->
+            </div><!-- /row -->
+            <h4>Reply</h4>
+            <div class="row" style="margin-bottom:20px">
+            <div class="col-md-12">
+                <div class="widget-area no-padding blank">
+                    <div class="status-upload">
+                        <form>
+                            <textarea placeholder="Share your experience here...!"></textarea>
+                            <ul>
+                                <li><a title="" data-toggle="tooltip" data-placement="bottom" data-original-title="Audio"><i class=""></i></a></li>
+                            </ul>
+                            <button type="submit" class="btn btn-success green"><i class="fa fa-share"></i> Share</button>
+                        </form>
+                    </div><!-- Status Upload  -->
+                </div><!-- Widget Area -->
+            </div>
+            </div>
+        </div>
+
+        <div class="col-md-5 col-xs-12">
+            <div class="panel panel-default passes-panel">
+                <div class="panel-heading service-box"><h3 class="text-center">LIST OF SERVICES</h3></div>
+                <% @services.each do |service| %>
+                <div class="panel-body text-center simpleCart_shelfItem">
+                    <h3 class="text-center service-box-name item_name"><%= service.name %></h3>
+                    <input type="hidden" value="1" class="item_Quantity"><br>
+                    <p class="blue-gray"><%= service.service_desc %></p>
+                    <p style="border-bottom: 1px dashed #eeeef4;"></p>
+                    <div class="row">
+                        <div class="col-xs-8 text-left money">
+                            <span class='older'><i class='fa fa-rupee'>&nbsp;</i><%= service.original_price %></span><br>
+                            <span class='newer'> <i class='fa fa-rupee'>&nbsp;</i> <span class='item_price'><%= service.selling_price %></span></span>
+                            <span style='color:rgb(164, 91, 11)'>(<%= service.percent %>% off)</span>
+                        </div>
+                        
+                        <div class="col-xs-4" style="margin-top:7px"><a class="item_add btn pull-right btn-primary" href="javascript:;"> Add to Cart</a></div>
+                    </div>
+                </div>
+                <div class="border-bottom"></div>
+                <% end %>
+                <div class="row">
+                    <div class="col-xs-12">
+                        <section id="cd-google-map">
+                            <!-- #google-container will contain the map  -->
+                            <div id="google-container"></div>
+                            <!-- #cd-zoom-in and #zoom-out will be used to create our custom buttons for zooming-in/out -->
+                            <div id="cd-zoom-in"></div>
+                            <div id="cd-zoom-out"></div>
+                            <address><%= @accountinfo.address_1 %>, <%= @accountinfo.address_2 %></address> 
+                        </section>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>   <!-- Row -->
+</div> <!-- container -->
+</div> <!-- Details content -->
+
+
+
+<script>
+    jQuery(document).ready(function($){
+        //set your google maps parameters
+        var latitude = <%= @details.latitude %>,
+            longitude = <%= @details.longitude %>,
+            map_zoom = 14;
+
+        //google map custom marker icon - .png fallback for IE11
+        var is_internetExplorer11= navigator.userAgent.toLowerCase().indexOf('trident') > -1;
+        var marker_url = ( is_internetExplorer11 ) ? '/assets/cd-icon-location.png' : '/assets/cd-icon-location.svg';
+            
+        //define the basic color of your map, plus a value for saturation and brightness
+        var main_color = '#2d313f',
+            saturation_value= -20,
+            brightness_value= 5;
+
+        //we define here the style of the map
+        var style= [ 
+            {
+                //set saturation for the labels on the map
+                elementType: "labels",
+                stylers: [
+                    {saturation: saturation_value}
+                ]
+            },  
+            {   //poi stands for point of interest - don't show these lables on the map 
+                featureType: "poi",
+                elementType: "labels",
+                stylers: [
+                    {visibility: "off"}
+                ]
+            },
+            {
+                //don't show highways lables on the map
+                featureType: 'road.highway',
+                elementType: 'labels',
+                stylers: [
+                    {visibility: "off"}
+                ]
+            }, 
+            {   
+                //don't show local road lables on the map
+                featureType: "road.local", 
+                elementType: "labels.icon", 
+                stylers: [
+                    {visibility: "off"} 
+                ] 
+            },
+            { 
+                //don't show arterial road lables on the map
+                featureType: "road.arterial", 
+                elementType: "labels.icon", 
+                stylers: [
+                    {visibility: "off"}
+                ] 
+            },
+            {
+                //don't show road lables on the map
+                featureType: "road",
+                elementType: "geometry.stroke",
+                stylers: [
+                    {visibility: "off"}
+                ]
+            }, 
+            //style different elements on the map
+            { 
+                featureType: "transit", 
+                elementType: "geometry.fill", 
+                stylers: [
+                    { hue: main_color },
+                    { visibility: "on" }, 
+                    { lightness: brightness_value }, 
+                    { saturation: saturation_value }
+                ]
+            }, 
+            {
+                featureType: "poi",
+                elementType: "geometry.fill",
+                stylers: [
+                    { hue: main_color },
+                    { visibility: "on" }, 
+                    { lightness: brightness_value }, 
+                    { saturation: saturation_value }
+                ]
+            },
+            {
+                featureType: "poi.government",
+                elementType: "geometry.fill",
+                stylers: [
+                    { hue: main_color },
+                    { visibility: "on" }, 
+                    { lightness: brightness_value }, 
+                    { saturation: saturation_value }
+                ]
+            },
+            {
+                featureType: "poi.sport_complex",
+                elementType: "geometry.fill",
+                stylers: [
+                    { hue: main_color },
+                    { visibility: "on" }, 
+                    { lightness: brightness_value }, 
+                    { saturation: saturation_value }
+                ]
+            },
+            {
+                featureType: "poi.attraction",
+                elementType: "geometry.fill",
+                stylers: [
+                    { hue: main_color },
+                    { visibility: "on" }, 
+                    { lightness: brightness_value }, 
+                    { saturation: saturation_value }
+                ]
+            },
+            {
+                featureType: "poi.business",
+                elementType: "geometry.fill",
+                stylers: [
+                    { hue: main_color },
+                    { visibility: "on" }, 
+                    { lightness: brightness_value }, 
+                    { saturation: saturation_value }
+                ]
+            },
+            {
+                featureType: "transit",
+                elementType: "geometry.fill",
+                stylers: [
+                    { hue: main_color },
+                    { visibility: "on" }, 
+                    { lightness: brightness_value }, 
+                    { saturation: saturation_value }
+                ]
+            },
+            {
+                featureType: "transit.station",
+                elementType: "geometry.fill",
+                stylers: [
+                    { hue: main_color },
+                    { visibility: "on" }, 
+                    { lightness: brightness_value }, 
+                    { saturation: saturation_value }
+                ]
+            },
+            {
+                featureType: "landscape",
+                stylers: [
+                    { hue: main_color },
+                    { visibility: "on" }, 
+                    { lightness: brightness_value }, 
+                    { saturation: saturation_value }
+                ]
+                
+            },
+            {
+                featureType: "road",
+                elementType: "geometry.fill",
+                stylers: [
+                    { hue: main_color },
+                    { visibility: "on" }, 
+                    { lightness: brightness_value }, 
+                    { saturation: saturation_value }
+                ]
+            },
+            {
+                featureType: "road.highway",
+                elementType: "geometry.fill",
+                stylers: [
+                    { hue: main_color },
+                    { visibility: "on" }, 
+                    { lightness: brightness_value }, 
+                    { saturation: saturation_value }
+                ]
+            }, 
+            {
+                featureType: "water",
+                elementType: "geometry",
+                stylers: [
+                    { hue: main_color },
+                    { visibility: "on" }, 
+                    { lightness: brightness_value }, 
+                    { saturation: saturation_value }
+                ]
+            }
+        ];
+            
+        //set google map options
+        var map_options = {
+            center: new google.maps.LatLng(latitude, longitude),
+            zoom: map_zoom,
+            panControl: false,
+            zoomControl: false,
+            mapTypeControl: false,
+            streetViewControl: false,
+            mapTypeId: google.maps.MapTypeId.ROADMAP,
+            scrollwheel: false,
+            styles: style,
+        }
+        //inizialize the map
+        var map = new google.maps.Map(document.getElementById('google-container'), map_options);
+        //add a custom marker to the map                
+        var marker = new google.maps.Marker({
+            position: new google.maps.LatLng(latitude, longitude),
+            map: map,
+            visible: true,
+            icon: marker_url,
+        });
+
+        //add custom buttons for the zoom-in/zoom-out on the map
+        function CustomZoomControl(controlDiv, map) {
+            //grap the zoom elements from the DOM and insert them in the map 
+            var controlUIzoomIn= document.getElementById('cd-zoom-in'),
+                controlUIzoomOut= document.getElementById('cd-zoom-out');
+            controlDiv.appendChild(controlUIzoomIn);
+            controlDiv.appendChild(controlUIzoomOut);
+
+            // Setup the click event listeners and zoom-in or out according to the clicked element
+            google.maps.event.addDomListener(controlUIzoomIn, 'click', function() {
+                map.setZoom(map.getZoom()+1)
+            });
+            google.maps.event.addDomListener(controlUIzoomOut, 'click', function() {
+                map.setZoom(map.getZoom()-1)
+            });
+        }
+
+        var zoomControlDiv = document.createElement('div');
+        var zoomControl = new CustomZoomControl(zoomControlDiv, map);
+
+        //insert the zoom div on the top left of the map
+        map.controls[google.maps.ControlPosition.LEFT_TOP].push(zoomControlDiv);
+    });
+
+      
+
+</script>

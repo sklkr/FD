@@ -1,16 +1,58 @@
 <ul class="nav navbar-nav navbar-right">
-	   <li><a href=""><i class="fa fa-cart-plus fa-lg"></i> 0 items</a></li>
-	 <% unless signed_in?  %>
-		<li><a href="<%= registrations_customer_path %>">Sign Up</a></li>
-		<li class="dropdown">
-         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Sign In<span class="caret"></span></a>
-	         <ul class="dropdown-menu" role="menu">
-	           <li><a href="<%=sessions_customer_path %>">Customer</a></li>
-	           <li><a href="#">Partner</a></li>
-	         </ul>
+	   <li class="drop-element keep-open">
+          <a class="drop-target"><i class='fa fa-cart-plus fa-lg'>&nbsp;</i> (<span class='cart_value'>0</span> items)</a>
+          <div class="simpleCart_parent cart-target">
+          		<div>
+          		    <div class="p-top10 p-bottom10 border-bottom-light padding-sides-20">YOUR BASKET ITEMS</div>
+          		    <div id="basket-message" class="error"></div>
+          		    <ul class="p-top10 padding-sides-20 clearfix list-unstyled">
+          		    	<div class="simpleCart_items"></div>
+          		    	<!-- <li id="basket-element-pass-14753" class="container-fluid">
+          		    	                            <div class="row">
+          		    	                                <div class="col-xs-3">
+          		    	                                    
+          		    	                                </div>
+          		    	                                <div class="col-xs-7">
+          		    	                                   <span>FitFix 5 @ </span><span class="font10 light-gray blue-gray">Central YMCA Club</span>
+          		    	                                </div>
+          		    	                                <div class="col-xs-2">
+          		    	                                	<a href="#" class="delete-from-basket" data-id="14753" data-type="pass"><span class="icon-trash font16 gray blue-gray"></span></a>
+          		    	                                </div>
+          		    	          		           	</div>
+          		    	                            <div class="row">
+          		    	                             	<div class="col-xs-offset-8 col-xs-3 bold text-right">£42.50</div>
+          		    	                            </div>
+          		    	          		        </li> -->
+          		        <li class="container-fluid">
+	  		                <div class="row">
+	  		                    <div class="col-xs-8 bold">Sub-total</div>
+	  		                    <div class="col-xs-3 bold text-right simpleCart_total"></div>
+	  		                </div>
+							<div class="m-top8 row">
+	  		                        <div class="col-xs-8 bold"><span class="normal-discount bg-pink">Discount</span></div>
+	  		                        <div class="col-xs-3 bold m-top5 text-right">- <span></span></div>
+	  		                </div>
+          		        </li>
+						<li class="container-fluid">
+      		                <div class="row">
+      		                    <div class="col-xs-8 bold pink text-right font12">PAYABLE AMOUNT</div>
+      		                    <div class="col-xs-3 font14 bold text-right simpleCart_grandTotal"></div>
+      		                </div>
+      		            </li>
+      		            <li class="text-right last">
+      		                <a href="javascript:;" class="btn btn-primary btn-sm pull-right m-top10 simpleCart_checkout">Check out</a>
+      		            </li>
+          		    </ul>
+          		</div>
+          	<!-- ========================================================== -->
+          		
+          	<!-- ================================================================= -->
+          </div>
         </li>
-		<li><a href=" <%= registrations_partner_path  %>">Register Your Business</a></li>
-	 <%end%>
+	 <% unless signed_in?  %>
+		<li class="main-nav"><a class="cd-signin" href="#0">Sign in</a></li>
+		<li class="main-nav"><a class="cd-signup" href="#0">Sign up</a></li>
+	<%end%>
 	 <% if is_customer? %>
 	 	<li><a href="<%= customers_details_path %>" style='color:white'>My Dashboard</a></li>
 	 	<li><a href="<%= sessions_customer_logout_path %>" style='color:white'>Logout</a></li>
@@ -20,3 +62,7 @@
 	 	<li><a href="<%= sessions_customer_logout_path %>" style='color:white'>Logout</a></li>
 	 <%end%>
 </ul>
+	
+<div class="cd-user-modal"> <!-- this is the entire modal form, including the background -->
+	<%= render :partial => 'layouts/customer_auth' %>
+</div>

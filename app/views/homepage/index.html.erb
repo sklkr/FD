@@ -25,7 +25,7 @@ meta title: "Home page | FitnessPapa",
 								<%= f.collection_select :centerinfo_categories_id_in, Category.order(:name), :id, :name, {}, {:class => 'form-control'} %>
 							</div>
 							<div class="col-xs-9 col-sm-7">
-								<input id="cities" type="text" name="q[city_name_cont]" placeholder="Type Locality or Landmark" class="ui-autocomplete-input form-control" autocomplete="off">		
+								<input id="cities" type="text" name="q[place_id_cont]" placeholder="Type Locality or Landmark" class="ui-autocomplete-input form-control" autocomplete="off">		
 							</div>
 							<div class="col-xs-3 col-sm-2">
 								<input type="submit" value="Search" class="form-control btn btn-primary">

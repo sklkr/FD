@@ -10,10 +10,10 @@
  * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
  * file per style scope.
  *
- *= require bootstrap
- *= require jquery.ui
- *= require owl.carousel
- *= require popup
+ *= require plugins/bootstrap
+ *= require plugins/jquery.ui
+ *= require plugins/owl.carousel
+ *= require plugins/popup
 */
 
 

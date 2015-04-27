@@ -10,18 +10,18 @@
  * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
  * file per style scope.
  *
- *= require animate
- *= require drop
+ *= require plugins/animate
+ *= require plugins/drop
  *= require stylepartner
- *= require foundation
- *= require dropzone
- *= require bxslider
- *= require jquery.ui
- *= require jquery.tagit
- *= require wymeditor
- *= require jquery.timepicker
- *= require chosen
- *= require popup
+ *= require plugins/foundation
+ *= require plugins/dropzone
+ *= require plugins/bxslider
+ *= require plugins/jquery.ui
+ *= require plugins/jquery.tagit
+ *= require plugins/wymeditor
+ *= require plugins/jquery.timepicker
+ *= require plugins/chosen
+ *= require plugins/popup
 */
 
 $nprogress-color: rgb(237, 116, 19);

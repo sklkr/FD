@@ -1,6 +1,13 @@
 Rails.application.routes.draw do
+
+
 mount Lockup::Engine, at: '/lockup'
 
+  get 'checkout' => 'checkout#step1', :as => 'checkout'
+  get 'checkout/step2'
+
+  # Fresh routes for details page
+  get 'details/:location/:center' => 'details#index', as: 'details_page'
 
   post 'payments/index'
   post 'payments/success'
@@ -108,8 +115,6 @@ mount Lockup::Engine, at: '/lockup'
   get 'homepage/index'
 
   
-  # Subdomains
-  get '', to: 'blogs#index', constraints: { subdomain: 'blog' }
 
   namespace :api, defaults: { format: :json }, constraints: { subdomain: 'api' }, path: '/'  do
       scope module: :v1 do

@@ -39,22 +39,57 @@
 
 <div class="row" style="background:#eeeef4">
     <div class="cd-main-content"> <!-- Filters  -->
-        <div class="cd-tab-filter-wrapper"><a href="#0" class="cd-filter-trigger"><i class='fa fa-filter'>&nbsp;</i>Filters</a></div>
+        <div class="cd-tab-filter-wrapper visible-xs"><a href="#0" class="cd-filter-trigger"><i class='fa fa-filter'>&nbsp;</i>Filters</a></div>
         <div class="cd-gallery">
             <div class="container">
-                <%@data.each do |mc,center|  %>
-                 <%unless mc[0][0].blank? %>
+
+              <fieldset style='margin-bottom:40px'>
+                <legend>SEARCH FOR SERVICES</legend>
+                <%= search_form_for @c, :url => filters_list_path, :html => {:onSubmit => 'return search_validator();'} do |f| %>
+                  <div class="row">
+                      <div class="col-md-3 col-xs-12 m-bottom20">
+                          <label for="location">LOCATION</label>
+                          <div>
+                            <input id="cities" type="text" name="q[place_id_cont]" placeholder="Type Locality or Landmark" class="ui-autocomplete-input form-control" autocomplete="off">
+                          </div>
+                      </div>
+                      
+                      <div class="col-md-3 col-xs-12 m-bottom20">
+                        <label for="facilities">GENDER</label>
+                        <div>
+                          <%= f.collection_select :services_gender_id_in, Centertype.order(:name), :id, :name, {}, { :class => 'magicsuggest' } %>
+                        </div>
+                      </div>
+                      <div class="col-md-3 col-xs-12 m-bottom20">
+                        <label for="amenities">AMENITIES</label>
+                        <div>
+                          <%= f.collection_select :centerinfo_experiences_id_in, Experience.order(:name), :id, :name, {}, {multiple: true, :class => 'magicsuggest'} %>
+                        </div>
+                      </div>
+                      <div class="col-md-3 col-xs-12">
+                        <label for="">&nbsp;</label>
+                        <div>
+                          <%= f.submit 'Search', :class => 'btn btn-primary', :style => '' %>
+                        </div>
+                      </div>
+                  </div>
+                <% end %>
+              </fieldset> 
+            </div>
+            <div class="container">
+                <%@data.each do |center|  %>
                  <div class="row list-item">
                      <div class="col-xs-12 col-sm-4 img-box">
-                        <a href="<%= center_category_services_path(center[0].friendly_id, mc[0][0].category.friendly_id) %>"><%= image_tag attachment_url(mc[1], :image, :fill, 400, 200), :class => 'group list-group-image' %></a>
+                       <% unless center.try(:cphotos).blank? %>
+                        <a href="<%= details_page_path(center.place_id, center.friendly_id) %>"><%= image_tag attachment_url(center.cphotos.first, :image, :fill, 400, 200), :class => 'group list-group-image' %></a>
+                       <%end%>
                      </div>
                      <div class="col-xs-12 col-sm-8 cnt-box">
-                         <a href="<%= center_category_services_path(center[0].friendly_id, mc[0][0].category.friendly_id) %>"><h4 class="group inner list-group-item-heading"><%= center[0].name.capitalize %></h4></a>
-                         <p><small class='m-right20'><i class='fa fa-map-marker'>&nbsp;</i>City name</small> <img src="/assets/star.jpg" alt="" class="review m-right20"><a href="#">312 Reviews</a></p>
-                         <p class="group inner list-group-item-text"><%= mc[1].brief_desc.truncate(120) %></p>
+                         <a href="<%= details_page_path(center.place_id, center.friendly_id) %>"><h4 class="group inner list-group-item-heading"><%= center.name.capitalize %></h4></a>
+                         <p><small class='m-right20'><i class='fa fa-map-marker'>&nbsp;</i><%= center.place_name %></small> <img src="/assets/star.jpg" alt="" class="review m-right20"><a href="#">312 Reviews</a></p>
+                         <p class="group inner list-group-item-text"><%= center.centerinfo.brief_desc.truncate(120) %></p>
                      </div>
                  </div>
-                <%end%>
                 <%end%>
             </div>
         </div>
@@ -80,7 +115,7 @@
               
               <div class="cd-filter-block">
                 <h5>AMENITIES</h5>
-                <%= f.collection_select :centerinfo_experiences_id_in, Experience.order(:name), :id, :name, {:prompt => "-- Choose Experience --"}, {multiple: true} %>
+                <%= f.collection_select :centerinfo_experiences_id_in, Experience.order(:name), :id, :name, {:prompt => "-- Choose Experience --"}, {multiple: true, :class => 'magicsuggest'} %>
               </div>
               <div class="cd-filter-block right">
               <%= f.submit 'Search', :class => 'btn btn-default', :style => '' %>
@@ -161,14 +196,6 @@
 </div>
 
 
-
-<script>
-    $(document).ready(function() {
-        $('#list').click(function(event){event.preventDefault();$('#products .item').addClass('list-group-item');});
-        $('#grid').click(function(event){event.preventDefault();$('#products .item').removeClass('list-group-item');$('#products .item').addClass('grid-group-item');});
-    });
-</script>
-
 <script>
     /**!
      * MixItUp v2.1.7
@@ -188,6 +215,13 @@
 
 <script>
     jQuery(document).ready(function($){
+   
+      $('.magicsuggest').magicSuggest([]);
+
+      window.search_input = document.getElementById('cities');
+      window.city_name = new google.maps.places.Autocomplete(window.search_input);
+
+
     //open/close lateral filter
     $('.cd-filter-trigger').on('click', function(){
         triggerFilter(true);
@@ -195,6 +229,7 @@
     $('.cd-filter .cd-close').on('click', function(){
         triggerFilter(false);
     });
+
 
     function triggerFilter($bool) {
         var elementsToTrigger = $([$('.cd-filter-trigger'), $('.cd-filter'), $('.cd-tab-filter'), $('.cd-gallery')]);
@@ -395,4 +430,10 @@ var buttonFilter = {
         }
     }
 };
+
+
+function search_validator(){
+  /*to send places_id instead of places_name*/
+  window.search_input.value = window.city_name.getPlace().id;
+}
 </script>

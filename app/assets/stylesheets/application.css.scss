@@ -10,13 +10,16 @@
  * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
  * file per style scope.
  *
- *= require normalize
- *= require bootstrap
- *= require animate 
+ *= require plugins/normalize
+ *= require plugins/bootstrap
+ *= require plugins/animate 
+ *= require plugins/bxslider
+ *= require plugins/jquery.ui
+ *= require plugins/owl.carousel
+ *= require plugins/drop
+ *= require plugins/magicsuggest
  *= require style
- *= require bxslider
- *= require jquery.ui
- *= require owl.carousel
+ *= require signup
 */
 
 

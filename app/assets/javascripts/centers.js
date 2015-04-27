@@ -12,13 +12,12 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require jquery.pjax
-//= require jquery.ui
-//= require owl.carousel
+//= require jquery/jquery.ui
+//= require plugins/owl.carousel
 //= require turbolinks
-//= require jquery.bxslider
-//= require jquery.raty
-//= require ratyrate
+//= require jquery/jquery.bxslider
+//= require jquery/jquery.raty
+//= require plugins/ratyrate
 //= require nprogress
 //= require nprogress-turbolinks
 
