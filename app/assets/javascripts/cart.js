@@ -10,6 +10,7 @@ simpleCart({
 	cartColumns: [
 		{ attr: "name", label: false},
 		{ view: "decrement", text: "<i class='fa fa-minus-circle'></i>", label: false},
+		{ attr: "fid" , label: false },
         { attr: "quantity", label: false},
         { view: "increment", text: "<i class='fa fa-plus-circle'></i>", label: false},
 		{ view: "remove", text: "<i class='fa fa-trash-o'></i>", label: false},
@@ -25,9 +26,7 @@ simpleCart({
 	checkout: { 
 		type: "SendForm" , 
 		url: 'http://localhost:3000/checkout',
-		method: 'GET',
-		success: "success.html",
-		cancel: 'Cancel.html',
+		method: "POST",
 		extra_data: {
          storename: "FitnessPapa Store",
          cartid: "12321321"
@@ -40,7 +39,10 @@ simpleCart({
 
 	// collection of arbitrary data you may want to store 
 	// with the cart, such as customer info
-	data: {},
+	data: {
+		company: 'FitnessPapa',
+		email: 'info@fitnesspapa.com'
+	},
 
 	// set the cart langauge 
 	// (may be used for checkout)

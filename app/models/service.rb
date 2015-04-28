@@ -7,7 +7,7 @@ extend FriendlyId
  belongs_to :category
  has_many :bookings
  has_and_belongs_to_many :instructors, :join_table => 'services_instructors'
- 
+ has_many :order_items
  #scopes
  scope :regular, -> { where(service_type: '1') }
  scope :upcoming, -> { where(service_type: '2') }

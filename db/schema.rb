@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150424132952) do
+ActiveRecord::Schema.define(version: 20150428115850) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -279,6 +279,30 @@ ActiveRecord::Schema.define(version: 20150424132952) do
     t.string   "file_name"
     t.string   "file_type"
     t.binary   "data"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "order_items", force: true do |t|
+    t.integer  "order_id"
+    t.integer  "quantity"
+    t.decimal  "unit_price", precision: 8, scale: 2
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "service_id"
+    t.integer  "center_id"
+  end
+
+  create_table "orders", force: true do |t|
+    t.string   "token"
+    t.string   "email_address"
+    t.string   "phone_number"
+    t.string   "status"
+    t.string   "ip_address"
+    t.decimal  "amount_paid",    precision: 8, scale: 2
+    t.string   "invoice_number"
+    t.integer  "service_id"
+    t.integer  "center_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

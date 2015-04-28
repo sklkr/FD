@@ -81,6 +81,10 @@ class ApplicationController < ActionController::Base
       @city_names = city_names
       @c = Center.ransack(params[:q])
    end
+
+   def should_authenticate
+    redirect_to root_url, :notice => "Authentication Required" unless current_user
+   end
    
    private
     def partner_id

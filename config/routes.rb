@@ -4,12 +4,13 @@ Rails.application.routes.draw do
 mount Lockup::Engine, at: '/lockup'
 
   get 'checkout' => 'checkout#step1', :as => 'checkout'
+  post 'checkout' => 'checkout#create'
   get 'checkout/step2'
-
+  get 'checkout/success'
   # Fresh routes for details page
   get 'details/:location/:center' => 'details#index', as: 'details_page'
 
-  post 'payments/index'
+  get 'payments/index'
   post 'payments/success'
   post 'payments/failure'
 
