@@ -148,7 +148,7 @@ xsigin/signup popup
 .cd-form input.full-width {
   width: 100%;
 }
-.cd-form input.has-padding {
+.cd-form input.has-padding, .cd-form a.has-padding {
   padding: 12px 20px 12px 50px;
 }
 .cd-form input.has-border {

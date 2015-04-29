@@ -76,22 +76,42 @@ layout 'homepage'
 
   # Oauth authentications
   def facebook
-    user = User.find_or_create_by(:uid => auth_hash['uid'])
-    customer = Customer.find_or_create_by(:email => auth_hash['info']['email'], :user_id => user.id)
-    warden.set_user(user)
-    redirect_to customers_details_path
+    customer = Customer.find_by_email(auth_hash.info.email)
+    if customer.nil?
+      customer = Customer.new(params_builder)  
+      if customer.save
+        warden.set_user(customer.user)
+        redirect_to customers_details_path    
+      else
+        render :text => 'something went wrong'
+      end
+    else
+      if customer.identity.nil?
+        # User already exists with normal signup
+        flash[:notice] = 'Email already member with normal signup'
+        redirect_to root_url
+      else
+        # signin
+        warden.set_user(customer.user)
+        redirect_to customers_details_path    
+      end
+    end
   end
 
-  protected
-
-    def auth_hash
-      request.env['omniauth.auth']
-    end
-
+  private
     def user_params
       params.require(:user).permit(:phone)
     end
     def customer_params
       params.require(:user).permit(:email)
+    end
+
+    # For omniauth facebook auth new
+    def params_builder
+      list = {:email => auth_hash.info.email}
+      user_attributes = {:first_name => auth_hash.info.first_name, :last_name => auth_hash.info.last_name}
+      identity_attributes = {:provider => auth_hash.provider, :uid => auth_hash.uid}
+      list.merge!({:user_attributes => user_attributes})
+      list.merge!({:identity_attributes => identity_attributes})
     end
 end

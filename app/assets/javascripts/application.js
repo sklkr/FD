@@ -11,11 +11,11 @@
 // about supported directives.
 //
 //= require jquery
+//= require jquery.turbolinks
 //= require jquery_ujs
 //= require jquery/jquery.ui
 //= require plugins/bootstrap
 //= require plugins/owl.carousel
-//= require turbolinks
 //= require plugins/google.places
 //= require jquery/jquery.bxslider
 //= require nprogress
@@ -24,5 +24,7 @@
 //= require plugins/simpleCart
 //= require plugins/drop
 //= require plugins/magicsuggest
+//= require plugins/parsley
 //= require signup
 //= require cart
+//= require turbolinks

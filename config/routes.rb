@@ -1,6 +1,10 @@
 Rails.application.routes.draw do
 
 
+# Frontend Resources 
+
+resources :customers, only: [:new, :create]
+
 mount Lockup::Engine, at: '/lockup'
 
   get 'checkout' => 'checkout#step1', :as => 'checkout'

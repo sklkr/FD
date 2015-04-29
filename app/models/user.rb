@@ -17,6 +17,13 @@ class User < ActiveRecord::Base
   accepts_nested_attributes_for :customer
   attachment :image
 
+  def full_name
+    self.first_name
+  end
+
+  def full_name=(full_name)
+    self.first_name, self.last_name = full_name.split(' ')
+  end
 
   def password
     @password ||= Password.new(self.crypted_password)
@@ -50,6 +57,7 @@ class User < ActiveRecord::Base
       self[column] = SecureRandom.urlsafe_base64
     end while User.exists?(column => self[column])
   end
+
 
 
 private

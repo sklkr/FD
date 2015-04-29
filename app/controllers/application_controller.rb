@@ -3,6 +3,7 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
   helper_method :warden, :signed_in?, :current_user, :is_partner?, :is_customer?, :center
+  before_filter { @customer ||= Customer.new; @customer.build_user }
 
    def areas
      city = City.find(params[:city_id])
@@ -84,6 +85,11 @@ class ApplicationController < ActionController::Base
 
    def should_authenticate
     redirect_to root_url, :notice => "Authentication Required" unless current_user
+   end
+
+   # for omniauth
+   def auth_hash
+     request.env['omniauth.auth']
    end
    
    private
