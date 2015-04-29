@@ -52,6 +52,7 @@ class User < ActiveRecord::Base
     UserMailer.password_reset(self, role).deliver
   end
 
+  # used for password resets 
   def generate_token(column)
     begin
       self[column] = SecureRandom.urlsafe_base64

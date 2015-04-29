@@ -1,0 +1,19 @@
+<div class="container">
+	<div class="row hasMtop">
+		<div class="col-xs-12 col-sm-6 col-sm-offset-3">
+			<div>
+				<h2 class="osLight text-center" style="padding:2em">SIGN IN</h2>
+				<div class="box">
+					<%= render :partial => 'sessions/form' %>
+					<div class="cd-form" style="padding-top:0px">
+						<h2 class="osLight">NEW TO FITNESSPAPA?</h2>
+						<p class="help-block">Proceed to checkout and register FREE all in one step!</p>
+						<form action="<%= new_customer_path %>?<%= 'redirect_url=checkout' %>">
+						<input type='submit' class='button full-width has-padding' value="REGISTER AND CONTINUE TO CHECKOUT">
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

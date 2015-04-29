@@ -1,27 +1,9 @@
-<%= render :partial => 'layouts/header'%>
-
-<div class="container-main">
-	<div class="sqr-box-title" style="margin:0px auto">
-	<h2 style="margin-bottom:12px;">Forgot password ?</h2>
-	<h2 style="font-size:11px;color:black">Enter your Email Address here to receive a link to change password.</h2>
-	</div>
-	<div class="sqr-boxs-cat" style="width:40%;margin-left: 532px;margin-top: 50px;">
-		<%= form_tag password_resets_path, :method => :post do %>
-		 <%if params[:partner]  %>	
-			<%= hidden_field_tag :partner, true  %>
-		 <%end  %>
-		  <div class="form-sec form-sign">
-			<div class="">
-				<%= text_field_tag :email, params[:email], :style => 'margin-bottom: 25px;padding: 1px 0px;width: 94%;padding: 5px;height: 32px;padding-left: 20px;', :placeholder => 'Email' %>
+<div class="container">
+	<div class="row">
+		<div class="col-xs-12 col-sm-6 col-sm-offset-3">
+			<div class="box" style='margin-top:35px'>
+				<%= render :partial => 'password_resets/form' %>
 			</div>
-			<div class="form-submit">
-			 <%= submit_tag "Reset Password", :style=> 'width:108%' %>
-			</div>
-		  </div>
-		<%end%>
+		</div>
 	</div>
-</div>
-
-<div style="margin-top:100px;">
-<%= render :partial => 'layouts/footer' %>
 </div>

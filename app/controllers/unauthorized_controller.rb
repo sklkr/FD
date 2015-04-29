@@ -17,6 +17,6 @@ class UnauthorizedController < ActionController::Metal
       flash.alert = I18n.t(message)
     end
     flash[:notice] = "Please check your credentials"
-    redirect_to sessions_customer_path
+    redirect_to new_session_path
   end
 end

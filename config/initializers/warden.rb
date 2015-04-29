@@ -17,13 +17,13 @@ end
 class CustomerStrategy < ::Warden::Strategies::Base
   def valid?
     return false if request.get?
-    user_data = params.fetch("user")
-    !(user_data["email"].blank? || user_data["password"].blank?)
+    user_data = params.fetch("customer")
+    !(user_data["email"].blank? || user_data["user_attributes"]["password"].blank?)
   end
 
   def authenticate!
-    customer = Customer.find_by_email(params["user"].fetch("email"))
-    if customer.nil? || customer.user.password != params["user"].fetch("password") || customer.user.active == false
+    customer = Customer.find_by_email(params["customer"].fetch("email"))
+    if customer.nil? || customer.user.crypted_password.nil? || customer.user.password != params["customer"]["user_attributes"].fetch("password") || customer.user.active == false
       fail! :message => "strategies.password.failed"
     else
       success! customer.user

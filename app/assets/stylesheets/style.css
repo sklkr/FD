@@ -13,6 +13,11 @@ h6,
   font-family: "Open Sans", sans-serif;
  }
 
+select{
+    -moz-appearance: none;
+  -webkit-appearance: none;
+  appearance: none;
+}
 /* Flaticons downby sid  */
 @font-face {
 	font-family: "Flaticon";
@@ -162,6 +167,8 @@ h6,
   margin-top: 2px;
 }
 
+
+
 .catbox .each{
 	background-color: #fff;
 	box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.13);
@@ -178,6 +185,17 @@ h6,
   padding: 0 0 30px 0;
   font-size: 22px;
   line-height: 22px;
+}
+
+.box{
+  border:1px solid #e3e3e3;margin-bottom:45px;
+  background-color: white;
+}
+.box.pad{
+  padding:20px;
+}
+.full{
+  width: 100%;
 }
 
 .circle {

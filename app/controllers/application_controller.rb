@@ -84,7 +84,7 @@ class ApplicationController < ActionController::Base
    end
 
    def should_authenticate
-    redirect_to root_url, :notice => "Authentication Required" unless current_user
+    redirect_to new_session_path(:url => '/checkout'), :notice => "Authentication Required" unless current_user
    end
 
    # for omniauth

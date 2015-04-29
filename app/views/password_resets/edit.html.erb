@@ -1,39 +1,18 @@
-<%= render :partial => 'layouts/header'%>
-
-<div class="container-main">
-  <div class="sqr-box-title" style="margin:0px auto">
-  <h2>Reset Password</h2>
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 col-sm-6 col-sm-offset-3" style="margin-top:35px">
+      <h2 class="osLight">Reset Password</h2>
+      <div class="box">
+        <%= simple_form_for @user, :url => password_reset_path(params[:id]), :html => {:class => 'cd-form', 'data-parsley-validate' => true} do |f| %>
+          <%= f.input :password, label_html: { class: 'image-replace cd-password'}, input_html: { class: 'full-width has-padding has-border', 'data-parsley-required' => 'true', :placeholder => 'Password'  }, wrapper_html: { class: 'fieldset' } %>
+          <%= f.input :password_confirmation, label_html: { class: 'image-replace cd-password'}, input_html: { class: 'full-width has-padding has-border', 'data-parsley-required' => 'true', :placeholder => 'Password Confirmation'  }, wrapper_html: { class: 'fieldset' } %>
+          <div class="row">
+            <div class="col-xs-12">
+              <%= f.button :submit, "Update-Password", class: 'full-width has-padding', wrapper_html: { class: 'fieldset' } %>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
   </div>
-  <div class="sqr-boxs-cat" style="width:40%;margin-left: 532px;margin-top: 50px;">
-    <%= form_for @user, :url => password_reset_path(params[:id]) do |f| %>
-      <% if @user.errors.any? %>
-        <div class="error_messages">
-          <h2>Form is invalid</h2>
-          <ul>
-            <% for message in @user.errors.full_messages %>
-              <li><%= message %></li>
-            <% end %>
-          </ul>
-        </div>
-      <% end %>
-
-      <div class="form-sec form-sign">
-      <div class="" style="margin-bottom:20px">
-        <%= f.label :password %>
-        <%= f.password_field :password, :style => 'margin-left:85px' %>
-      </div>
-      <div style="margin-bottom:20px">
-        <%= f.label :password_confirmation %>
-        <%= f.password_field :password_confirmation %>
-      </div>
-      <div class="form-submit">
-       <%= f.submit "Update Password" %>
-      </div>
-      </div>
-    <%end%>
-  </div>
-</div>
-
-<div style="margin-top:100px;">
-<%= render :partial => 'layouts/footer' %>
 </div>

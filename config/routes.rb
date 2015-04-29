@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
 
 
+
+resources :partners, only: [:index, :new, :create]
+
 # Frontend Resources 
 
 resources :customers, only: [:new, :create]
@@ -65,21 +68,8 @@ mount Lockup::Engine, at: '/lockup'
   namespace :customers do 
     resources :details, :bookings, :mypass
   end
-  get 'sessions/partner'
-  post 'sessions/partner_auth'
   
-  get 'sessions/customer'
-  post 'sessions/customer_auth', :as => 'customer_auth'
-  get 'sessions/customer_logout'
-  get 'sessions/checker'
-
-  # Guest creator
-  post 'sessions/guest_creator'
-
-  # Admin routes
-  get 'sessions/admin'
-  post 'sessions/admin_auth'
-
+  resources :sessions, :only => [:new, :create, :destroy]
   # Oauth Routes
   get 'auth/facebook/callback' => 'sessions#facebook'
 

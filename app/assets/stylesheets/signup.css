@@ -280,7 +280,6 @@ xsigin/signup popup
 }
 
 .cd-form-bottom-message {
-  position: absolute;
   width: 100%;
   left: 0;
   bottom: -30px;
@@ -288,10 +287,7 @@ xsigin/signup popup
   font-size: 14px;
   font-size: 0.875rem;
 }
-.cd-form-bottom-message a {
-  color: #FFF;
-  text-decoration: underline;
-}
+
 
 .cd-close-form {
   /* form X button on top right */

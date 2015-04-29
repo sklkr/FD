@@ -24,22 +24,22 @@
           		    	          		        </li> -->
           		        <li class="container-fluid">
 	  		                <div class="row">
-	  		                    <div class="col-xs-8 bold">Sub-total</div>
-	  		                    <div class="col-xs-3 bold text-right simpleCart_total"></div>
+  		                    <div class="col-xs-8 bold">Sub-total</div>
+  		                    <div class="col-xs-3 bold text-right simpleCart_total"></div>
 	  		                </div>
-							<div class="m-top8 row">
-	  		                        <div class="col-xs-8 bold"><span class="normal-discount bg-pink">Discount</span></div>
-	  		                        <div class="col-xs-3 bold m-top5 text-right">- <span></span></div>
+							          <div class="m-top8 row">
+	                        <div class="col-xs-8 bold"><span class="normal-discount bg-pink">Discount</span></div>
+	                        <div class="col-xs-3 bold m-top5 text-right">- <span></span></div>
 	  		                </div>
           		        </li>
-						<li class="container-fluid">
-      		                <div class="row">
-      		                    <div class="col-xs-8 bold pink text-right font12">PAYABLE AMOUNT</div>
-      		                    <div class="col-xs-3 font14 bold text-right simpleCart_grandTotal"></div>
-      		                </div>
+						          <li class="container-fluid">
+    		                <div class="row">
+    		                    <div class="col-xs-8 bold pink text-right font12">PAYABLE AMOUNT</div>
+    		                    <div class="col-xs-3 font14 bold text-right simpleCart_grandTotal"></div>
+    		                </div>
       		            </li>
       		            <li class="text-right last">
-      		                <a href="/checkout" class="btn btn-primary btn-sm pull-right">Check out</a>
+      		              <a href="/checkout" class="btn btn-primary btn-sm pull-right">Check out</a>
       		            </li>
           		    </ul>
           		</div>
@@ -54,11 +54,16 @@
 	<%end%>
 	 <% if is_customer? %>
 	 	<li><a href="<%= customers_details_path %>" style='color:white'>My Dashboard</a></li>
-	 	<li><a href="<%= sessions_customer_logout_path %>" style='color:white'>Logout</a></li>
+	 	<li>
+     <%= link_to "Logout",session_path('1'), method: :delete, data: {confirm: "Log out of FitnessPapa?"}, :style => 'color:white' %>
+    </li>
+
 	 <%end%>
 	 <% if is_partner?  %>
 	 	<li><a href="<%= partners_centers_path %>" style='color:white'>My Dashboard</a></li>
-	 	<li><a href="<%= sessions_customer_logout_path %>" style='color:white'>Logout</a></li>
+	 	<li>
+     <%= link_to "Logout", session_path('1'), method: :delete, data: {confirm: "Log out of FitnessPapa?"}, :style => 'color:white' %> 
+    </li>
 	 <%end%>
 </ul>
 	
