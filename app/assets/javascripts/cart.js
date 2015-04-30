@@ -108,7 +108,7 @@ $('document').ready(function(){
 	  classes: 'drop-theme-arrows-bounce-dark',
 	  openOn: null
 	});
-
+	simpleCart.update();
 	$('.drop-target').on('click', function(){
 		cart_drop.toggle();
 	})

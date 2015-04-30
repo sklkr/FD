@@ -1,7 +1,13 @@
 class Center < ActiveRecord::Base
 extend FriendlyId
+  CENTERTYPES = ["Gym", "Yoga", "Dance", "Swim", "Aerobics", "Zumba", "Pillatees", "Martial Art", "Boxing", "Strength training", "Spa & Saloon"]
+  
+  TRAINERTYPES = ["Aerobics", "Choreographer", "Martial Arts", "Dietician", "Physical Trainer", "Phsiotherapist", "Yoga", "Zumba", ]
+
   default_scope { where(status: 'active') }
   scope :pending, -> { unscoped.where('status!=?', 'active')}
+
+
 	# Associations
 	belongs_to :partner
 	has_one :centerinfo, :dependent => :destroy
@@ -19,7 +25,6 @@ extend FriendlyId
 
 	# Validations
 	validates :name, :presence => true
-	validates :partner_id, :presence => true
 
 	friendly_id :name, use: :slugged
 	ratyrate_rateable "speed", "engine", "price"

@@ -1,0 +1,20 @@
+{
+  "name": "Fitness",
+  "version": "0.0.0",
+  "homepage": "https://github.com/stunapp/Fitness",
+  "authors": [
+    "sidongithub <koolspy.siddhu@gmail.com>"
+  ],
+  "moduleType": [
+    "globals"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "vendor/assets/components",
+    "test",
+    "tests"
+  ]
+}

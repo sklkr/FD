@@ -17,6 +17,11 @@
 //= require plugins/bootstrap
 //= require plugins/owl.carousel
 //= require plugins/google.places
+//= require plugins/dependsOn
+//= require formstone/dist/js/core
+//= require formstone/dist/js/touch
+//= require formstone/dist/js/checkbox
+//= require formstone/dist/js/dropdown
 //= require jquery/jquery.bxslider
 //= require nprogress
 //= require nprogress-turbolinks

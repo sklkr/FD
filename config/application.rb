@@ -31,6 +31,8 @@ module Fitnesspapa
       handler :google_analytics, { tracker: 'UA-61123601-1' }
     end
 
+    config.assets.paths << Rails.root.join('vendor', 'assets', 'components')
+
   end
 end
 

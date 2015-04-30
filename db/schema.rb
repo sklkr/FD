@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150429065831) do
+ActiveRecord::Schema.define(version: 20150430043557) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -172,9 +172,10 @@ ActiveRecord::Schema.define(version: 20150429065831) do
     t.integer  "city_id"
     t.integer  "area_id"
     t.string   "slug"
-    t.string   "status",     default: "inactive"
+    t.string   "status",      default: "inactive"
     t.string   "place_id"
     t.string   "place_name"
+    t.string   "center_type"
   end
 
   add_index "centers", ["partner_id"], name: "index_centers_on_partner_id", using: :btree
@@ -334,6 +335,7 @@ ActiveRecord::Schema.define(version: 20150429065831) do
     t.string   "business_name"
     t.integer  "category_id"
     t.integer  "user_id"
+    t.string   "partner_type"
   end
 
   create_table "percents", force: true do |t|

@@ -1,28 +1,33 @@
 <div class="row" style="background:#eeeef4">
 	<div class="container">
 		<div class="col-xs-12" style="margin-top:35px">
-			<h2 class="osLight">Fitness Partner Registration</h2>
-			<p class="help-block">Please fill out the form below and our Partnerships Team will contact you</p>
+			
 		</div>
 		<div class="col-xs-12 col-sm-6 col-sm-offset-3">
 			<div class="box pad">
+				<h2 class="osLight text-center">READY TO JOIN FITNESSPAPA NETWORK?</h2>
+				<p class="help-block">Please fill out the form below and our Partnerships Team will contact you</p>
 				<%= simple_form_for @partner, :html => {:class => 'cd-form form-horizontal', 'data-parsley-validate' => true} do |f| %>
 				  <%= f.input :email, :label => 'E-mail', label_html: { class: 'image-replace cd-email'}, input_html: { class: 'full-width has-padding has-border', :placeholder => 'E-mail (eg: abc@xxx.com)'  }, wrapper_html: { class: 'fieldset' } %>
 				  <%= f.simple_fields_for :user do |p| %>
 				    <%= p.input :full_name, label_html: { class: 'image-replace cd-username'}, input_html: { class: 'full-width has-padding has-border', 'data-parsley-pattern' => '\w+\s+[a-zA-Z-]+', 'data-parsley-required' => 'true', :placeholder => 'Full Name (eg: John Snow)' }, wrapper_html: { class: 'fieldset' } %>
 				    <%= p.input :phone, label_html: { class: 'image-replace cd-username'}, input_html: { class: 'full-width has-padding has-border', "data-parsley-type" => 'integer', 'data-parsley-pattern' => '^([0]|\+91)?\d{10}', 'data-parsley-required' => 'true', :placeholder => 'Mobile number (eg: 9123456789)'  }, wrapper_html: { class: 'fieldset' } %>
-				    <%= p.input :password, label_html: { class: 'image-replace cd-password'}, input_html: { class: 'full-width has-padding has-border', 'data-parsley-required' => 'true', :placeholder => 'Password'  }, wrapper_html: { class: 'fieldset' } %>
 				  <% end %>
-				  <p class="fieldset">
-				  	<label for="accept-terms">By clicking one of these buttons, you agree with the FitnessPapa <a href="<%= page_path('terms') %>">Terms & Conditions</a> and <a href="<%= page_path('privacy-policy') %>">Privacy & Cookie Policy</a>.</label>
-				  </p>
 				  <div class="row">
-				    <div class="col-xs-12 col-sm-6">
-				      <%= f.button :submit, "SIGN UP", class: 'full-width has-padding', wrapper_html: { class: 'fieldset' } %>
+					  <div class="col-xs-6"><label for="partner_partner_type_true"><input id="c_listener" name="partner[partner_type]" type="radio" value="1">Center</label></div>
+					  <div class="col-xs-6"><label for="partner_partner_type_false"><input id="pro_listener" name="partner[partner_type]" type="radio" value="2">Trainer</label></div>
+				  </div>	
+					
+				  <%= f.simple_fields_for :centers do |p| %>
+				  	<%= p.input :name, label_html: { class: 'image-replace cd-username'}, input_html: { class: 'full-width has-padding has-border', 'data-parsley-required' => 'true', :placeholder => 'Center Name' }, wrapper_html: { class: 'fieldset center_wrapper' } %>
+				  	<%= p.input :center_type, :collection => Center::CENTERTYPES, :selected => "2", label_html: { class: 'image-replace cd-username'}, input_html: { class: 'full-width has-padding has-border', 'data-parsley-required' => 'false', :placeholder => 'Center Type' }, wrapper_html: { class: 'fieldset center_wrapper' } %>
+				  	<%= p.input :center_type, :collection => Center::TRAINERTYPES,:selected => "2", label_html: { class: 'image-replace cd-username'}, input_html: { class: 'full-width has-padding has-border', 'data-parsley-required' => 'false', :placeholder => 'Trainer Type' }, wrapper_html: { class: 'fieldset professional_wrapper'} %>
+				  <% end %>
+				  <div class="row">
+				    <div class="col-xs-12">
+				      <%= f.button :submit, "SUBMIT DETAILS", class: 'full-width has-padding', wrapper_html: { class: 'fieldset' } %>
 				    </div>
-				    <div class="col-xs-12 col-sm-6">
-				      <a class="btn btn-block btn-social btn-facebook has-padding" href="/auth/facebook"><i class="fa fa-facebook"></i> Sign in with Facebook</a>    
-				    </div>
+				    
 				  </div>
 				  <hr>
 				<% end %>
@@ -31,3 +36,32 @@
 		
 	</div>
 </div>
+
+<script>
+	$(document).ready(function(){
+		$("input[type=checkbox], input[type=radio]").checkbox();
+		$("select").dropdown();
+		$('#partner_email').dependsOn({
+		    // The selector for the depenency
+		    '#pro_listener': {
+		        checked: true
+		    }
+		}, {
+			onEnable: function() {
+		        $('.professional_wrapper').show('slow');
+		        $('.center_wrapper').hide();
+			}
+		});
+		$('#partner_user_attributes_phone').dependsOn({
+		    // The selector for the depenency
+		    '#c_listener': {
+		        checked: true
+		    }
+		}, {
+			onEnable: function() {
+		        $('.center_wrapper').show('slow');
+		        $('.professional_wrapper').hide();
+			}
+		});
+	})
+</script>
