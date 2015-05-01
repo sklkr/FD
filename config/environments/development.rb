@@ -20,8 +20,7 @@ Rails.application.configure do
   config.active_support.deprecation = :log
   config.action_mailer.default_url_options = { :host => "http://localhost:3000" }
 
-  # Rails uses tld length 1 by default and leads to no subdomains
-  config.action_dispatch.tld_length = 0
+  
   
   # Raise an error on page load if there are pending migrations.
   config.active_record.migration_error = :page_load

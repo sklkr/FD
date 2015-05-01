@@ -126,6 +126,8 @@ resources :partners, only: [:index, :new, :create]
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
+  match '/' => 'filters#index', via: [:get], :constraints => { :subdomain => 'partners' }
+
   root :to => 'homepage#index'
 
   # Example of regular route:
