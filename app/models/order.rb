@@ -1,8 +1,18 @@
 class Order < ActiveRecord::Base
+   
+   # Used as global to generate random number with perfix overwrite with generate nubmer method below
+   include NumberGenerator
+  
+   def generate_number(options = {})
+     options[:prefix] ||= 'O'
+     super(options)
+   end
+
    before_validation { self.token = SecureRandom.uuid  if self.token.blank? }
 
    has_many :order_items, :dependent => :destroy
    accepts_nested_attributes_for :order_items
+
 
    # Order Number
    def number
