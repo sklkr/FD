@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150501041827) do
+ActiveRecord::Schema.define(version: 20150501064923) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -205,6 +205,23 @@ ActiveRecord::Schema.define(version: 20150501041827) do
     t.datetime "updated_at"
   end
 
+  create_table "coupons", force: true do |t|
+    t.string   "type",                                                  null: false
+    t.string   "code",                                                  null: false
+    t.decimal  "amount",        precision: 8, scale: 2, default: 0.0
+    t.decimal  "minimul_value", precision: 8, scale: 2
+    t.integer  "percent",                               default: 0
+    t.text     "description",                                           null: false
+    t.boolean  "combine",                               default: false
+    t.datetime "starts_at"
+    t.datetime "expires_at"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "coupons", ["code"], name: "index_coupons_on_code", using: :btree
+  add_index "coupons", ["expires_at"], name: "index_coupons_on_expires_at", using: :btree
+
   create_table "cphotos", force: true do |t|
     t.string   "image_id"
     t.integer  "centerinfo_id"
@@ -280,6 +297,19 @@ ActiveRecord::Schema.define(version: 20150501041827) do
   end
 
   add_index "instructors", ["center_id"], name: "index_instructors_on_center_id", using: :btree
+
+  create_table "invoices", force: true do |t|
+    t.integer  "order_id",                                                  null: false
+    t.decimal  "amount",       precision: 8, scale: 2,                      null: false
+    t.string   "invoice_type",                         default: "Purchase", null: false
+    t.string   "state",                                                     null: false
+    t.boolean  "active",                               default: true,       null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "number"
+  end
+
+  add_index "invoices", ["order_id"], name: "index_invoices_on_order_id", using: :btree
 
   create_table "nifty_attachments", force: true do |t|
     t.integer  "parent_id"

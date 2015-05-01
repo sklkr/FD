@@ -27,26 +27,28 @@ resources :partners, only: [:index, :new, :create]
 
   post '/rate' => 'rater#create', :as => 'rate'
   namespace :partners do
-    resources :centers do
-      scope module: 'centers' do
-        resources :details, :accounts, :instructors, :photos, :centermanagers
-        resources :services do 
-          collection do 
-            get :upcoming
+    constraints subdomain: 'partners' do
+      resources :centers do
+        scope module: 'centers' do
+          resources :details, :accounts, :instructors, :photos, :centermanagers
+          resources :services do 
+            collection do 
+              get :upcoming
+            end
           end
         end
       end
-    end
-    scope module: 'multicenters' do
-      resources :configurations, :profiles, :customers, :payments, :reports
-    end
-    resources :customermanagers
-    resources :paymentmanagers do 
-      collection do
-        get 'summary'
-        get 'commission'
-        get 'transactions'
-        get 'partner_payment'
+      scope module: 'multicenters' do
+        resources :configurations, :profiles, :customers, :payments, :reports
+      end
+      resources :customermanagers
+      resources :paymentmanagers do 
+        collection do
+          get 'summary'
+          get 'commission'
+          get 'transactions'
+          get 'partner_payment'
+        end
       end
     end
   end

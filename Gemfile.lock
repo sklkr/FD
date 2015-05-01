@@ -28,6 +28,7 @@ GIT
 GEM
   remote: https://rubygems.org/
   specs:
+    aasm (4.0.3)
     actionmailer (4.1.8)
       actionpack (= 4.1.8)
       actionview (= 4.1.8)
@@ -299,6 +300,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  aasm
   activemerchant (~> 1.8)
   acts-as-taggable-on
   analytics-ruby
