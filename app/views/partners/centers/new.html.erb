@@ -1,8 +1,80 @@
-<fieldset>
-	<legend>Create Center</legend>
-	<%= simple_form_for @center, url: partners_centers_path do |f| %>
-	  <%= f.input :name %>
-	  <%= f.button :submit, :class => 'button tiny' %>
-	<% end %>
-</fieldset>
+<div class="main-header clearfix">
+    <div class="page-title">
+        <h3 class="no-margin">New Center</h3>
+        <span></span>
+    </div><!-- /page-title -->
+    
+    <ul class="page-stats">
+      <%= link_to "BACK TO CENTERS LIST", partners_centers_path, :class => 'btn btn-primary' %>
+        
+    </ul><!-- /page-stats -->
+</div>
 
+<div class="padding-md">
+	<div class="row">
+	<%=simple_form_for @center, url: partners_centers_path do |f| %>
+		<div class="col-xs-12">
+			<div class="panel panel-default">
+				<div class="panel-heading">Center Information</div>
+				<div class="panel-body">
+					<%= f.input :name, input_html: { class: 'form-control input-sm' }, wrapper_html: { class: 'form-group' } %>
+					<%= f.input :place_name, :label => 'Location', input_html: { class: 'form-control input-sm' }, wrapper_html: { class: 'form-group' } %>
+					<select class="form-control chzn-select">
+						<option>Alabama</option>
+						<option>Alaska</option>
+						<option>Arizona</option>
+						<option>Arkansas</option>
+						<option>California</option>
+						<option>Colorado</option>
+						<option>Connecticut</option>
+						<option>Delaware</option>
+						<option>District Of Columbia</option>
+						<option>Florida</option>
+						<option>Georgia</option>
+						<option>Hawaii</option>
+						<option>Idaho</option>
+						<option>Illinois</option>
+						<option>Indiana</option>
+						<option>Iowa</option>
+						<option>Kansas</option>
+						<option>Kentucky</option>
+						<option>Louisiana</option>
+						<option>Maine</option>
+						<option>Maryland</option>
+						<option>Massachusetts</option>
+						<option>Michigan</option>
+						<option>Minnesota</option>
+						<option>Mississippi</option>
+						<option>Missouri</option>
+						<option>Montana</option>
+						<option>Nebraska</option>
+						<option>Nevada</option>
+						<option>New Hampshire</option>
+						<option>New Jersey</option>
+						<option>New Mexico</option>
+						<option>New York</option>
+						<option>North Carolina</option>
+						<option>North Dakota</option>
+						<option>Ohio</option>
+						<option>Oklahoma</option>
+						<option>Oregon</option>
+						<option>Pennsylvania</option>
+						<option>Rhode Island</option>
+						<option>South Carolina</option>
+						<option>South Dakota</option>
+						<option>Tennessee</option>
+						<option>Texas</option>
+						<option>Utah</option>
+						<option>Vermont</option>
+						<option>Virginia</option>
+						<option>Washington</option>
+						<option>West Virginia</option>
+						<option>Wisconsin</option>
+						<option>Wyoming</option>
+					</select>
+				</div>
+			</div>
+		</div>
+	<%end%>
+	</div>
+</div>

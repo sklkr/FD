@@ -1,0 +1,8 @@
+<fieldset>
+	<legend>Create Center</legend>
+	<%= simple_form_for @center, url: partners_centers_path do |f| %>
+	  <%= f.input :name %>
+	  <%= f.button :submit, :class => 'button tiny' %>
+	<% end %>
+</fieldset>
+

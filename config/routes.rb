@@ -1,6 +1,43 @@
 Rails.application.routes.draw do
 
-
+  constraints :subdomain => "partners" do
+    scope :module => 'partners', :as => 'partners' do
+      # constraints(Subdomain) do
+        # resources :centers do
+         # scope module: 'centers' do
+          #  resources :details, :accounts, :instructors, :photos, :centermanagers
+           # resources :services do 
+            #  collection do 
+             #   get :upcoming
+             # end
+            #end
+          #end
+        #end
+        # scope module: 'multicenters' do
+         # resources :configurations, :profiles, :customers, :payments, :reports
+        # end
+        # resources :customermanagers
+        # resources :paymentmanagers do 
+          # collection do
+           # get 'summary'
+           # get 'commission'
+           # get 'transactions'
+           # get 'partner_payment'
+          # end
+        #end
+        resources :centers do
+          
+        end
+        resources :orders, :only => [:index, :show]
+        
+        post 'login' => 'sessions#create'
+        # match 'login/reset' => 'sessions#reset', :via => [:get, :post]
+        delete 'logout' => 'sessions#destroy'
+        # match '/' => 'dashboard#index', via: [:get]
+        match '/' => 'sessions#new', via: [:get]
+      #   end
+    end
+  end
 
 
 # Frontend Resources 
@@ -26,32 +63,6 @@ resources :partners, only: [:index, :new, :create]
   get 'bookings/:center_id/:id/add_details' => 'bookings#add_details', as: 'add_details'
 
   post '/rate' => 'rater#create', :as => 'rate'
-  namespace :partners do
-    constraints subdomain: 'partners' do
-      resources :centers do
-        scope module: 'centers' do
-          resources :details, :accounts, :instructors, :photos, :centermanagers
-          resources :services do 
-            collection do 
-              get :upcoming
-            end
-          end
-        end
-      end
-      scope module: 'multicenters' do
-        resources :configurations, :profiles, :customers, :payments, :reports
-      end
-      resources :customermanagers
-      resources :paymentmanagers do 
-        collection do
-          get 'summary'
-          get 'commission'
-          get 'transactions'
-          get 'partner_payment'
-        end
-      end
-    end
-  end
 
   namespace :admins do
     resources :customers, :partners, :approvals, :populars
@@ -126,7 +137,7 @@ resources :partners, only: [:index, :new, :create]
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  match '/' => 'filters#index', via: [:get], :constraints => { :subdomain => 'partners' }
+  
 
   root :to => 'homepage#index'
 

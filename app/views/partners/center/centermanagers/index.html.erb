@@ -1,0 +1,36 @@
+<%= render :partial => 'partners/centers/nav' %>
+
+<div style="min-height:390px">
+  
+<div class="row">
+  <div class="small-12 columns">
+    <a href="<%= new_partners_center_centermanager_path %>" class="button tiny">Add Manager</a>
+    <a href="<%= partners_center_centermanagers_path %>" class="button tiny">View Managers</a>
+  </div>
+</div>
+
+<table>
+  <thead>
+    <tr>
+      <th style="width:45%">Name</th>
+      <th>Mobile</th>
+      <th width="150">Email</th>
+      <th width="150"></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+  <% @centermanagers.each do |man| %>
+    <tr>
+      <td><%= man.user.first_name %></td>
+      <td><%= man.user.phone %></td>
+      <td><%= man.email %></td>
+      <td></td>
+      <td><a href="<%= edit_partners_center_centermanager_path(:id => man.id) %>">Edit</a></td>
+      <td><a href="" >Remove</a></td>
+    </tr>
+  <%end%>
+  </tbody>
+</table>
+</div>

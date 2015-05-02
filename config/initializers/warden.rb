@@ -34,13 +34,13 @@ end
 class PartnerStrategy < ::Warden::Strategies::Base
   def valid?
     return false if request.get?
-    user_data = params.fetch("user")
-    !(user_data["email"].blank? || user_data["password"].blank?)
+    user_data = params.fetch("partner")
+    !(user_data["email"].blank? || user_data["user_attributes"]["password"].blank?)
   end
 
   def authenticate!
-    partner = Partner.find_by_email(params["user"].fetch("email"))
-    if partner.nil? || partner.user.password != params["user"].fetch("password") || partner.user.active == false
+    partner = Partner.find_by_email(params["partner"].fetch("email"))
+    if partner.nil? || partner.user.password != params["partner"]["user_attributes"].fetch("password") || partner.user.active == false
       fail! :message => "strategies.password.failed"
     else
       success! partner.user

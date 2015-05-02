@@ -1,3 +1,52 @@
-// Place all the styles related to the partners controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any styles
+ * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
+ * file per style scope.
+ *
+ *= require plugins/bootstrap
+ *= require_tree ./backend
+*/
+
+@import "font-awesome-sprockets";
+@import "font-awesome";
+
+
+.backend_form fieldset {
+  border: 1px solid #dce2eb;
+  background: #fff;
+  padding-top: 15px;
+  padding-bottom: 25px;
+  margin-bottom: 15px;
+}
+
+.backend_form fieldset legend {
+  color: #5B6270;
+  margin: 0 25px;
+  font-weight: 300;
+  font-size: 1.5em;
+}
+
+.backend_form fieldset.padded {
+  padding: 15px 25px 25px 25px;
+}
+
+.backend_form fieldset.padded legend {
+  margin: 0;
+}
+
+.backend_form form fieldset .splitContainer {
+  margin: 0 25px;
+  margin-bottom: 15px;
+  height: 50px;
+}
+
+.backend_form form fieldset .splitContainer:last-child {
+  margin-bottom: 0;
+}

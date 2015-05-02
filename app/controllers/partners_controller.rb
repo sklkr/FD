@@ -11,7 +11,6 @@ layout 'homepage'
 
   def create
   	@partner = Partner.new(permit_params)
-  	binding.pry
   	if @partner.save
   		AcknowledgeMailer.partner_reg(@partner).deliver
   		redirect_to root_url, :notice => "Thank you for showing interest as a FitnessPapa parter. We'll get back to you soon"

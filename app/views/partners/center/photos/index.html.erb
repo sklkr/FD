@@ -1,0 +1,44 @@
+<%= render :partial => 'partners/centers/nav' %>
+
+<fieldset>
+<legend>Center Photos</legend>
+	<%= form_tag partners_center_photos_path, id: 'center-photos', :class => 'dropzone', multipart: true do %>
+	<div class="dz-message">
+	   <label for="">Click here to upload images (Max 6 images are allowed)<br></label> 
+	</div>
+	<%end%>
+		<div class="row" style="margin-top:30px">
+	    <% @cphotos.each do |photo| %>
+			<div class="small-4 columns">
+			<%= image_tag attachment_url(photo, :image), :class => 'th', :style => 'width:100px;height:100px' %>
+			<a data-method="delete" href="<%= partners_center_photo_path(:id => photo.id) %>" rel="nofollow">Remove</a>
+			</div>
+		<%end%>
+		</div>
+	<%if @center.verification.blank?  %>
+		<%= render :partial => 'partners/centers/photos/form' %>
+	<%else%>
+		<p>Documents is under verification</p>
+		<hr>
+		<a href="<%=partners_center_services_path%>" class="button tiny right"  style="margin-left:20px">Continue</a>
+	<%end %>
+</fieldset>
+
+
+ <script type="text/javascript">
+ $(document).ready(function() {
+    Dropzone.autoDiscover = false;
+    $('#center-conf').css('display', 'block');
+    var dropzone = new Dropzone ("#center-photos", {
+    	maxFiles: <%= 6 - @cphotos.count %>,
+		maxFilesize: 4, // Set the maximum file size to 256 MB
+		paramName: "centerinfo[image]", // Rails expects the file upload to be something like model[field_name]
+		addRemoveLinks: false,
+		init: function() {
+		    this.on("maxfilesexceeded", function(file){
+		        alert("No more files please!");
+		    });
+		}
+	});
+ });
+ </script>

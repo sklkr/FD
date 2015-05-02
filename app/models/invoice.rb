@@ -1,4 +1,5 @@
 class Invoice < ActiveRecord::Base
+  # To track payments (otherwise we've called it as Payment )
   include AASM
   include NumberGenerator # Used as global to generate random number with perfix overwrite with generate nubmer method below
 

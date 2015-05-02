@@ -1,20 +1,15 @@
 module Partners
 class CentersController < ApplicationController 
-layout 'partnerdashboard'
-before_filter :partner_authenticated?
+layout 'partners'
 
   def index
-  	unless centers_list.blank?
-  		redirect_to partners_center_accounts_path(centers_list.first.friendly_id)
-  	else
-      @center = Center.new
-      params[:id] = 1
-  		render :new
-  	end
+	 @centers = current_partner.partner.centers
   end
 
   def new
-    @center = Center.new
+    @center = ::Center.new
+    @center.build_accountinfo
+    @center.build_centerinfo
   end
 
   def create

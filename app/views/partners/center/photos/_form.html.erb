@@ -1,0 +1,58 @@
+<%= form_tag partners_center_photo_path(:id => 'max'), :method => 'put', :multipart => true do  %>
+	<div class="row" style="margin-top:18px">
+			<div class="small-12 columns">
+				<h3 class="subheader site-center">Upload Documents <small>(*.pdf,*.jpg/jpeg)</small></h3>
+						<div class="row">
+						    <div class="small-8">
+						      <div class="row">
+						        <div class="small-4 columns">
+						          <label for="right-label" class="right">PAN Proof</label>
+						        </div>
+						        <div class="small-8 columns">
+						          <input type="file" id="right-label" name="verification[pan]">
+						        </div>
+						      </div>
+						    </div>
+						</div>
+						<div class="row">
+						    <div class="small-8">
+						      <div class="row">
+						        <div class="small-4 columns">
+						          <label for="right-label" class="right">Service Tax Registration Proof</label>
+						        </div>
+						        <div class="small-8 columns">
+						          <input type="file" id="right-label" placeholder="Inline Text Input" name="verification[tax]">
+						        </div>
+						      </div>
+						    </div>
+						</div>
+						<div class="row">
+						    <div class="small-8">
+						      <div class="row">
+						        <div class="small-4 columns">
+						          <label for="right-label" class="right">Address ID Proof</label>
+						        </div>
+						        <div class="small-8 columns">
+						          <input type="file" id="right-label" placeholder="Inline Text Input" name="verification[address]">
+						        </div>
+						      </div>
+						    </div>
+						</div>
+						<div class="row">
+						    <div class="small-8">
+						      <div class="row">
+						        <div class="small-4 columns">
+						          <label for="right-label" class="right">TAN Proof</label>
+						        </div>
+						        <div class="small-8 columns">
+						          <input type="file" id="right-label" placeholder="Inline Text Input" name="verification[tan]">
+						        </div>
+						      </div>
+						    </div>
+						</div>
+			</div>
+		</div>	
+	<hr>
+	<a href="<%=partners_center_services_path%>" class="button tiny right"  style="margin-left:20px">Continue</a>
+    <input type="submit" class="button tiny right" value="Submit">
+	<%end%>

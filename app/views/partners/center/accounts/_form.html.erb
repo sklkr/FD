@@ -1,0 +1,299 @@
+<%= form_for @account, url: getpath, method: getmethod, :html => { :onsubmit => 'return validator()' } do |f| %>
+	<div class="row">
+	<fieldset>
+	<legend>Account Details</legend>
+	<div class="large-6 columns">
+	<div class='row'>
+		<div class="small-12 columns">
+	      <div class="row">
+	        <div class="small-4 columns">
+	          <label for='account[brand]', class="inline">Brand Name</label>
+	        </div>
+	        <div class="small-8 columns">
+	       		<%= f.text_field :brandname, :class => 'input-small' ,:required => true%>
+	        </div>
+	      </div>
+	    </div>
+	</div>
+	<div class='row'>
+		<div class='small-12 columns'>
+			<div class="row">
+				<div class="small-4 columns">
+					<label for='account[personname]' class="inline">Person Name</label>
+				</div>
+				<div class="small-8 columns">
+				<%= f.text_field :personname  ,:required => true%>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class='row'>
+		<div class='small-12 columns'>
+			<div class="row">
+				<div class="small-4 columns">
+					<label for='account[email]' class="inline">Email Name</label>
+				</div>
+				<div class="small-8 columns">
+				<%= f.text_field :email  ,:required => true%>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class='row'>
+		<div class='small-12 columns'>
+			<div class="row">
+				<div class="small-4 columns">
+					<label for='account[mobile]' class="inline">Mobile No</label>
+				</div>
+				<div class="small-8 columns">
+				<%= f.text_field :mobile  ,:required => true%>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class='row'>
+		<div class='small-12 columns'>
+			<div class="row">
+				<div class="small-4 columns">
+					<label for='account[landline]' class="inline">Landline No</label>
+				</div>
+				<div class="small-8 columns">
+				<%= f.text_field :landline ,:required => true%>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class='row'>
+		<div class='small-12 columns'>
+			<div class="row">
+				<div class="small-4 columns">
+					<label for='account[address_1]' class="inline">Address</label>
+				</div>
+				<div class="small-8 columns">
+				<%= f.text_field :address_1, :placeholder => 'Address Line 1'  ,:required => true%> 
+				<%= f.text_field :address_2, :placeholder => 'Address Line 2'  ,:required => true%> 
+				<div class="row">
+					<div class="small-6 columns">
+						<%= f.text_field :landmark, :placeholder => 'Landmark'  ,:required => true%>
+					</div>
+					<div class="small-6 columns"><%= f.text_field :pin, :placeholder => '560012'   ,:required => true%></div>
+				</div>
+				<%= f.fields_for :center do |center_place| %>
+				  <%= center_place.text_field :place_name %>
+				  <%= center_place.hidden_field :place_id %>
+				<%end%>
+				<div class="row">
+					<div class="small-12 column">
+						<a href="" class="cd-popup-trigger">Change password</a>
+					</div>
+				</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="large-6 columns">
+	<div class='row'>
+		<div class='small-12 columns'>
+			<div class="row">
+				<div class="small-4 columns">
+					<label for='account[pan]' class="inline">PAN</label>
+				</div>
+				<div class="small-8 columns">
+				<%= f.text_field :pan %>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class='row'>
+		<div class='small-12 columns'>
+			<div class="row">
+				<div class="small-4 columns">
+					<label for='account[tan]' class="inline">TAN</label>
+				</div>
+				<div class="small-8 columns">
+				<%= f.text_field :tan %>		
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class='row'>
+		<div class='small-12 columns'>
+			<div class="row">
+				<div class="small-4 columns">
+					<label for='account[tin]' class="inline">TIN</label>
+				</div>
+				<div class="small-8 columns">
+				<%= f.text_field :tin, :disabled => 'true' %>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class='row'>
+		<div class='small-12 columns'>
+			<div class="row">
+				<div class="small-4 columns">
+					<label for='account[taxregno]' class="inline">Service Tax Reg No</label>
+				</div>
+				<div class="small-8 columns">
+				<%= f.text_field :taxregno  %>
+				</div>
+			</div>
+		</div>
+	</div>
+
+<div class="row">
+	<fieldset>
+		<legend>Bank Details</legend>
+			<div class='row'>
+		<div class='small-12 columns'>
+			<div class="row">
+				<div class="small-4 columns">
+					<label for='account[acno]' class="inline">Bank A/C Number</label>
+				</div>
+				<div class="small-8 columns">
+				<%= f.text_field :acno %>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class='row'>
+		<div class='small-12 columns'>
+			<div class="row">
+				<div class="small-4 columns">
+					<label for='account[bank_name]' class="inline">Bank Name</label>
+				</div>
+				<div class="small-8 columns">
+				<%= f.text_field :bank_name %>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class='row'>
+		<div class='small-12 columns'>
+			<div class="row">
+				<div class="small-4 columns">
+					<label for='account[ifsc_code]' class="inline">IFSC code of Branch</label>
+				</div>
+				<div class="small-8 columns">
+				<%= f.text_field :ifsc_code  %>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class='row'>
+		<div class='small-12 columns'>
+			<div class="row">
+				<div class="small-4 columns">
+					<label for='account[bank_city]' class="inline">City</label>
+				</div>
+				<div class="small-8 columns">
+				<%= f.text_field :bank_city  %>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class='row'>
+		<div class='small-12 columns'>
+			<div class="row">
+				<div class="small-4 columns">
+					<label for='account[bank_address]' class="inline">Branch Address</label>
+				</div>
+				<div class="small-8 columns">
+				<%= f.text_area :bank_address %>
+				</div>
+			</div>
+		</div>
+	</div>
+	</fieldset>
+</div>
+</div>
+
+<hr>
+<div class="row">
+	<div class="right">
+	<small>(makesure click on save/update before continue)</small>
+	<%= submit_tag act, :class => 'button small radius'%>&nbsp;&nbsp;&nbsp;
+	<a href="<%=partners_center_details_path%>" class='button small radius'>Continue</a>
+	</div>	
+	<div class="left"><a href="#">Configuration Help</a></div>
+</div>
+</fieldset>
+</div>
+<% end %>
+
+<div class="cd-popup" role="alert">
+	<div class="cd-popup-container">
+		<div class="row">
+			<div class="small-12 column" style="margin-top:35px">
+			<h4>Change password</h4>
+				<%= form_tag edit_partners_center_account_path(:id => '1'), :method => 'get' do %>
+					<input type="text" placeholder='Old password' name="current_password">
+					<input type="password" placeholder='New password' name="password">
+					<input type="password" placeholder='New password' name="password_confirmation">
+					<input type="submit" class="button tiny">
+				<%end %>
+			</div>
+		</div>
+		<!-- <ul class="cd-buttons">
+			<li><a href="#0">submit</a></li>
+			<li><a href="#0">No</a></li>
+		</ul> -->
+		<a href="#0" class="cd-popup-close img-replace">Close</a>
+	</div> <!-- cd-popup-container -->
+</div>
+
+<script>
+$(document).ready(function() {
+  var ip1 = document.getElementById('accountinfo_center_attributes_place_name');
+  window.center_city = new google.maps.places.Autocomplete(ip1);
+  $('.menu').dropit();
+  $('#center-conf').css('display', 'block');
+  $('select[data-option-dependent=true]').each(function (i) {
+	      var observer_dom_id = $(this).attr('id');
+	      var observed_dom_id = $(this).data('option-observed');
+	      var url_mask = $(this).data('option-url');
+	      var key_method = $(this).data('option-key-method');
+	      var value_method = $(this).data('option-value-method');
+	      var selected_tag = $(this).data('option-value-selected');
+	      var prompt = $(this).has('option[value=true]').size() ? $(this).find('option[value]') : $('<option value=\"\">').text('Select a area');
+	      var regexp = /:[0-9a-zA-Z_]+:/g;
+	      var observer = $('select#' + observer_dom_id);
+	      var observed = $('#' + observed_dom_id);
+
+	      if (!observer.val() && observed.size() > 1) {
+	          observer.attr('disabled', true);
+	      };
+	      observed.on('change', function () {
+	          observer.empty().append(prompt);
+	          if (observed.val()) {
+	              url = url_mask.replace(regexp, observed.val());
+	              $.getJSON(url, function (data) {
+	                  $.each(data, function (i, object) {
+	                      observer.append($('<option>').attr('value', object[key_method]).text(object[value_method]));
+	                      observer.attr('disabled', false);
+	                  });
+	              });
+	          }
+	      });
+	      observer.empty().append(prompt);
+	      if (observed.val()) {
+	          url = url_mask.replace(regexp, observed.val());
+	          $.getJSON(url, function (data) {
+	              $.each(data, function (i, object) {
+	                  observer.append($('<option>').attr('value', object[key_method]).text(object[value_method]));
+	                  if(object[key_method] == selected_tag){
+	                  	observer.append($('<option>').attr('selected', 'selected').attr('value', object[key_method]).text(object[value_method]));
+	                  }
+	                  observer.attr('disabled', false);
+	              });
+	          });
+	      }
+	  });
+});
+
+function validator(){
+	$('#accountinfo_center_attributes_place_id').val(center_city.getPlace().id);
+}
+</script>

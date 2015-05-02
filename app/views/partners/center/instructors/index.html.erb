@@ -1,0 +1,33 @@
+<%= render :partial => 'partners/centers/nav' %>
+
+<div class="row" style="min-height:390px">
+  <div class="small-12 columns">
+    <table>
+      <tr>
+        <th>Name</th>
+        <th colspan="2">Description</th>
+        <th></th>
+      </tr>
+      <% @instructors.each do |ins|  %>
+        <tr>
+          <td><%= ins.name %></td>
+          <td colspan="2"><%= ins.description %></td>
+          <td style="text-align:center"><a href="<%= partners_center_instructor_path(params['center_id'], ins.id) %>">Edit</a>&nbsp;
+          <%= link_to 'Remove', partners_center_instructor_path(:id => ins.id ), method: :delete, data: { confirm: 'Are you sure you want to delete instructor' }, :style => 'padding-left:18px' %></td>
+        </tr>
+      <%end%>
+    </table>
+  </div>
+  <div class="small-12 columns">
+    <div class="right">
+        <a href="<%= new_partners_center_instructor_path %>" class="button small">Add Instructor</a>
+    </div>
+  </div>
+</div>
+
+<script>
+   $(document).ready(function() {
+    $('.menu').dropit();
+    $('#center-conf').css('display', 'block');
+});
+</script>

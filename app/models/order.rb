@@ -24,7 +24,7 @@ class Order < ActiveRecord::Base
    belongs_to :coupon
         
 
-   validates :email_address, presence: true, format: { with: CustomValidators::Emails.email_validator }
+   # validates :email_address, presence: true, format: { with: CustomValidators::Emails.email_validator }
 
    accepts_nested_attributes_for :order_items
 

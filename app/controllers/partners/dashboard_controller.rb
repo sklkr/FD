@@ -1,10 +1,7 @@
 module Partners
-class DashboardController < ApplicationController
-skip_before_filter :authenticate!
-before_filter :partner_authenticated?
-layout 'partnerdashboard'
-  def summary
-  	
-  end
-end
+	class DashboardController < ApplicationController 
+	  def index
+	  	redirect_to partners_login_path
+	  end
+	end
 end

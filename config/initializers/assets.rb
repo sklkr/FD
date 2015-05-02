@@ -6,10 +6,10 @@ Rails.application.config.assets.version = '1.0'
 # Precompile additional assets.
 # application.js, application.css, and all non-JS/CSS in app/assets folder are already added.
 # Rails.application.config.assets.precompile += %w( search.js )
-Rails.application.config.assets.precompile += %w( partner.css )
+Rails.application.config.assets.precompile += %w( partners.css )
 Rails.application.config.assets.precompile += %w( admin.css )
 Rails.application.config.assets.precompile += %w( vendor/modernizr.js )
-Rails.application.config.assets.precompile += %w( partner.js )
+Rails.application.config.assets.precompile += %w( partners.js )
 Rails.application.config.assets.precompile += %w( bookings.js )
 Rails.application.config.assets.precompile += %w( centers.js )
 Rails.application.config.assets.precompile += %w( admin.js )
