@@ -4,10 +4,8 @@ class Accountinfo < ActiveRecord::Base
 	
 	# Validations
 	validates :personname, presence: true
-	validates :address_1, presence: true
-	validates :center_id, presence: true
-	validates :mobile, :numericality => true, length: { in: 10..11 }
-	accepts_nested_attributes_for :center
+	# validates :mobile, :numericality => true, length: { in: 10..11 }
+	
 
 
 	def brandname

@@ -10,71 +10,118 @@
     </ul><!-- /page-stats -->
 </div>
 
-<div class="padding-md">
+<div class="padding-md" style="background:rgb(238, 247, 255)">
 	<div class="row">
-	<%=simple_form_for @center, url: partners_centers_path do |f| %>
-		<div class="col-xs-12">
-			<div class="panel panel-default">
-				<div class="panel-heading">Center Information</div>
-				<div class="panel-body">
-					<%= f.input :name, input_html: { class: 'form-control input-sm' }, wrapper_html: { class: 'form-group' } %>
-					<%= f.input :place_name, :label => 'Location', input_html: { class: 'form-control input-sm' }, wrapper_html: { class: 'form-group' } %>
-					<select class="form-control chzn-select">
-						<option>Alabama</option>
-						<option>Alaska</option>
-						<option>Arizona</option>
-						<option>Arkansas</option>
-						<option>California</option>
-						<option>Colorado</option>
-						<option>Connecticut</option>
-						<option>Delaware</option>
-						<option>District Of Columbia</option>
-						<option>Florida</option>
-						<option>Georgia</option>
-						<option>Hawaii</option>
-						<option>Idaho</option>
-						<option>Illinois</option>
-						<option>Indiana</option>
-						<option>Iowa</option>
-						<option>Kansas</option>
-						<option>Kentucky</option>
-						<option>Louisiana</option>
-						<option>Maine</option>
-						<option>Maryland</option>
-						<option>Massachusetts</option>
-						<option>Michigan</option>
-						<option>Minnesota</option>
-						<option>Mississippi</option>
-						<option>Missouri</option>
-						<option>Montana</option>
-						<option>Nebraska</option>
-						<option>Nevada</option>
-						<option>New Hampshire</option>
-						<option>New Jersey</option>
-						<option>New Mexico</option>
-						<option>New York</option>
-						<option>North Carolina</option>
-						<option>North Dakota</option>
-						<option>Ohio</option>
-						<option>Oklahoma</option>
-						<option>Oregon</option>
-						<option>Pennsylvania</option>
-						<option>Rhode Island</option>
-						<option>South Carolina</option>
-						<option>South Dakota</option>
-						<option>Tennessee</option>
-						<option>Texas</option>
-						<option>Utah</option>
-						<option>Vermont</option>
-						<option>Virginia</option>
-						<option>Washington</option>
-						<option>West Virginia</option>
-						<option>Wisconsin</option>
-						<option>Wyoming</option>
-					</select>
-				</div>
+		<div class="col-sm-12 col-md-10 col-md-offset-1">
+			<div class="row">
+				<%=simple_form_for @center, url: partners_centers_path do |f| %>
+					<div class="col-xs-12">
+						<div class="panel panel-default">
+							<div class="panel-heading">Center Information</div>
+							<div class="panel-body">
+								<%= f.input :center_type, collection: Center::CENTERTYPES, :label => "Center Type", input_html: { class: 'form-control input-sm chzn-select' }, wrapper_html: { class: 'form-group'} %>
+								<div class="row">
+									<div class="col-xs-6">
+										<%= f.input :name, input_html: { class: 'form-control input-sm' }, wrapper_html: { class: 'form-group' } %>
+									</div>
+									<div class="col-xs-6">
+										<%= f.input :place_name, :label => 'Location', input_html: { class: 'form-control input-sm' }, wrapper_html: { class: 'form-group' } %>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<!-- Account Details -->
+					<div class="col-xs-12">
+						<div class="panel panel-default">
+							<div class="panel-heading">Contact Details</div>
+							<div class="panel-body">
+								<%= f.fields_for :accountinfo do |a| %>
+									<div class="row">
+										<div class="col-xs-6">
+											<%= a.input :personname, :label => 'Person Name', input_html: { class: 'form-control input-sm' }, wrapper_html: { class: 'form-group' } %>
+										</div>
+										<div class="col-xs-6">
+											<%= a.input :email, input_html: { class: 'form-control input-sm' }, wrapper_html: { class: 'form-group' } %>	
+										</div>
+										<div class="col-xs-6">
+											<%= a.input :mobile, input_html: { class: 'form-control input-sm phone' }, wrapper_html: { class: 'form-group' } %>
+										</div>
+										<div class="col-xs-6">
+											<%= a.input :landline, input_html: { class: 'form-control input-sm' }, wrapper_html: { class: 'form-group' } %>
+										</div>
+									</div>
+								<%end%>
+							</div>
+						</div>
+					</div>
+
+					<div class="col-xs-12">
+						<div class="panel panel-default">
+							<div class="panel-heading">Center Details</div>
+							<div class="panel-body">
+							<%= f.association :facilities, input_html: { class: 'form-control input-sm chzn-select' }, wrapper_html: { class: 'form-group' } %>
+								<%= f.association :experiences, label: 'Amenities', input_html: { class: 'form-control input-sm chzn-select' }, wrapper_html: { class: 'form-group' } %>
+								<%= f.fields_for :centerinfo do |c| %>
+									<%= c.input :website, input_html: { class: 'form-control input-sm' }, wrapper_html: { class: 'form-group' } %>
+									<div class="row">
+										<div class="col-xs-12" style="margin-bottom:20px">
+											<!-- <div id="toolbar">
+											  <a data-wysihtml5-command="bold">bold</a>
+											  <a data-wysihtml5-command="italic">italic</a>
+											  <a data-wysihtml5-command="formatBlock" data-wysihtml5-command-value="h1">H1</a>
+											  <a data-wysihtml5-command="formatBlock" data-wysihtml5-command-value="p">P</a>
+											</div> -->
+											<!-- element to edit -->
+											<%= c.input :detailed_desc, label: 'Description', input_html: { class: 'form-control input-sm' }, wrapper_html: { class: 'form-group' } %>
+										</div>
+									</div>
+									<div class="row">
+										<div class="col-xs-6">
+											<%= c.input :latitude, input_html: { class: 'form-control input-sm' }, wrapper_html: { class: 'form-group' } %>
+										</div>
+										<div class="col-xs-6">
+											<%= c.input :longitude, input_html: { class: 'form-control input-sm' }, wrapper_html: { class: 'form-group' } %>
+										</div>
+									</div>
+								<%end%>
+							</div>
+						</div>
+					</div>
+					
+					<!-- Brand and center photos -->
+					<div class="col-xs-12">
+						<div class="panel panel-default">
+							<div class="panel-heading">Uploads</div>
+							<div class="panel-body">
+								<div class="form-group">
+									<div class="col-xs-12">
+										<div class="upload-file">
+											<%= f.attachment_field :image, class: 'upload-demo', id: 'upload-demo' %>
+											<label data-title="Select file" for="upload-demo">
+												<span data-title="No file selected..."></span>
+											</label>
+										</div>
+									</div><!-- /.col -->
+									<div class="col-xs-12">
+										<%= image_tag attachment_url(@center, :image) %>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+
+					<div class="col-xs-12">
+						<div class="panel panel-default">
+							<div class="panel-body">
+								<%= f.submit 'Submit', :class => 'btn btn-success pull-right' %>
+							</div>
+						</div>
+					</div>
+				<%end%>
 			</div>
 		</div>
-	<%end%>
 	</div>
 </div>

@@ -23,3 +23,7 @@ Superadmin.create(:email => 'sid@mail.com',:user_id => User.create(:password => 
 ['Ahmedabad','Bangalore','Chandigarh','Chennai','Coimbatore','Delhi','Kochi','Kolkata','Lucknow','Noida', 'Goa', 'Gurgaon','Hyderabad','Jaipur','Mumbai','Pune','Trivandrum'].each do |cname|
 	City.create(:name => cname)
 end
+
+["Zumba", "MMA", "Dance", "Yoga", "Kick Boxing", "Swim", "Outdoor", "Bootcamp", "Pilates", "Aerobics", "Barre", "Cross Fit", "Boxing", "Spa", "Saloon", "Cardio", "Weight Loss", "Classical", "Hattha Yoga", "Power Yoga", "Cycling", "Body Pump", "Personal Training", "Karate", "Muay Thai", "Bollywood", "DBM", "Floor Workout", "Hip-Hop", "Speciality", "Others"].each do |name|
+	Facility.find_or_create_by(:name => name)
+end

@@ -1,0 +1,53 @@
+<div class="main-header clearfix">
+    <div class="page-title">
+        <h3 class="no-margin">New Instructor</h3>
+        <span></span>
+    </div><!-- /page-title -->
+    
+    <ul class="page-stats">
+        <%= link_to "BACK TO INSTRUCTORS", partners_instructors_path, :class => 'btn btn-primary' %>
+    </ul><!-- /page-stats -->
+</div>
+
+
+<div class="padding-md" style="background:rgb(238, 247, 255)">
+    <div class="row">
+        <div class="col-sm-12 col-md-10 col-md-offset-1">
+            <div class="row">
+                <%=simple_form_for @instructor, url: partners_instructors_path do |f| %>
+                    <div class="col-xs-12">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">Details</div>
+                            <div class="panel-body">
+        <%= f.input :name, input_html: { class: 'form-control input-sm' }, wrapper_html: { class: 'form-group' } %>
+        <%= f.input :email, input_html: { class: 'form-control input-sm' }, wrapper_html: { class: 'form-group' } %>
+        <%= f.input :mobile, input_html: { class: 'form-control input-sm' }, wrapper_html: { class: 'form-group' } %>
+                                <div class="form-group">
+                                    <div class="col-xs-12">
+                                        <div class="upload-file">
+                                            <%= f.attachment_field :photo, class: 'upload-demo', id: 'upload-demo' %>
+                                            <label data-title="Select file" for="upload-demo">
+                                                <span data-title="No file selected..."></span>
+                                            </label>
+                                        </div>
+                                    </div><!-- /.col -->
+                                    <div class="col-xs-12">
+                                        <%= image_tag attachment_url(@instructor, :photo) %>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-xs-12">
+                        <div class="panel panel-default">
+                            <div class="panel-body">
+                                <%= f.submit 'Submit', :class => 'btn btn-success pull-right' %>
+                            </div>
+                        </div>
+                    </div>
+                <%end%>
+            </div>
+        </div>
+    </div>
+</div>

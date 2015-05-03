@@ -25,8 +25,9 @@ Rails.application.routes.draw do
            # get 'partner_payment'
           # end
         #end
+        resources :instructors
         resources :centers do
-          
+          resources :services
         end
         resources :orders, :only => [:index, :show]
         

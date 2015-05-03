@@ -16,6 +16,7 @@ before_filter :partner_authenticated?
   end
 
   def partner_payment
+	  	
   end
   
 

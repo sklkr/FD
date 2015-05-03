@@ -12,6 +12,7 @@
  *
  *= require plugins/bootstrap
  *= require_tree ./backend
+ *= require chosen/chosen.min
 */
 
 @import "font-awesome-sprockets";
@@ -49,4 +50,10 @@
 
 .backend_form form fieldset .splitContainer:last-child {
   margin-bottom: 0;
+}
+
+.instructor-box{
+  &:target .panel-body{
+    background-color: rgb(248, 238, 199);
+  }
 }

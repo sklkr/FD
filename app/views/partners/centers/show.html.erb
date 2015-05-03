@@ -1,0 +1,48 @@
+<div class="main-header clearfix">
+    <div class="page-title">
+        <h3 class="no-margin"><%= @center.name.capitalize %></h3>
+        <span></span>
+    </div><!-- /page-title -->
+    
+    <ul class="page-stats">
+      <%= link_to "BACK TO CENTERS LIST", partners_centers_path, :class => 'btn btn-primary' %>
+    </ul><!-- /page-stats -->
+</div>
+
+<div class="padding-md">
+	<div class="row">
+		<div class="col-xs-12 col-sm-12">
+			<div class="panel panel-default bg-success">
+				<div class="panel-body">
+					<a href="#" class="pull-left avatar"> 
+						<%= image_tag attachment_url(@center, :image), class: 'img-rounded' %>
+					</a>
+					<div class="pull-left" style="margin-left:15px;">
+						<strong class="font-16"><%= @center.name.capitalize %></strong><br/>
+						<span class="grey"><%= @center.place_name %></span>
+					</div>
+				</div>
+				
+				<div class="list-group">
+					<%= link_to partners_center_services_path(params[:id]), :class => 'list-group-item' do %>
+						<i class="fa fa-exclamation fa-lg grey"></i>
+						<span class="m-left-xs">Services</span>
+						<span class="badge badge-warning">0</span>
+					<%end%>
+					<a class="list-group-item" href="<%= root_url %>">
+						<i class="fa fa-users fa-lg grey"></i>
+						<span class="m-left-xs">Instructors</span>
+						<span class="badge badge-danger">0</span>
+					</a>
+					<a class="list-group-item" href="">
+						<i class="fa fa-picture-o fa-lg"></i>
+						<span class="m-left-xs">Gallery</span>
+					</a>
+				</div><!-- /list-group -->
+			</div>
+		</div>
+		<div class="col-xs-12 col-sm-8">
+			
+		</div>
+	</div>
+</div>

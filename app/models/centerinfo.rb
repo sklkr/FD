@@ -2,14 +2,10 @@ class Centerinfo < ActiveRecord::Base
 	belongs_to :centertype
 	belongs_to :center
 	belongs_to :hour
-	attachment :image
-    has_and_belongs_to_many :categories
-    has_and_belongs_to_many :experiences
-    accepts_nested_attributes_for :center
+	has_and_belongs_to_many :categories
     accepts_nested_attributes_for :hour
 
     # Validations
-    validates :brief_desc, presence: true
     validates :detailed_desc, presence: true
 
 

@@ -1,0 +1,31 @@
+<div class="main-header clearfix">
+    <div class="page-title">
+        <h3 class="no-margin">Instructors</h3>
+        <span></span>
+    </div><!-- /page-title -->
+    
+    <ul class="page-stats">
+        <%= link_to "NEW INSTRUCTOR", new_partners_instructor_path, :class => 'btn btn-primary' %>
+    </ul><!-- /page-stats -->
+</div>
+
+
+<div class="padding-md">
+    <% @instructors.each do |instructor| %>
+        <%= div_for(instructor, :class => 'col-xs-6 instructor-box') do %>
+            <div class="panel">
+                <div class="panel-body">
+                    <a href="#" class="pull-left avatar"> 
+                        <%= image_tag attachment_url(instructor, :photo), :class => 'img-circle' %>
+                    </a>
+                    <div class="pull-left m-left-sm">
+                        <strong class="font-14 block"><%= instructor.name.capitalize %></strong>
+                        <small class="text-muted"><%= instructor.email %></small>
+                        <small class="text-muted"><%= instructor.mobile %></small>
+                        <div class="seperator"></div>
+                    </div>
+                </div>
+            </div>
+        <%end%>
+    <%end%>
+</div>

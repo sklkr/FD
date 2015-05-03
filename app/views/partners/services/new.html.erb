@@ -1,0 +1,45 @@
+<div class="main-header clearfix">
+    <div class="page-title">
+        <h3 class="no-margin">New Service</h3>
+        <span></span>
+    </div><!-- /page-title -->
+    
+    <ul class="page-stats">
+        <%= link_to "BACK TO SERVICES", partners_center_services_path(params[:center_id]), :class => 'btn btn-primary' %>
+    </ul><!-- /page-stats -->
+</div>
+
+
+<div class="padding-md" style="background:rgb(238, 247, 255)">
+    <div class="row">
+        <div class="col-sm-12 col-md-10 col-md-offset-1">
+            <div class="row">
+                <%=simple_form_for @service, url: partners_center_services_path do |f| %>
+                    <%= hidden_field 'center_id', params[:center_id] %>
+                    <div class="col-xs-12">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">Details</div>
+                            <div class="panel-body">
+        <%= f.input :name, input_html: { class: 'form-control input-sm', :placeholder => "Eg:: 1 DAY PASS" }, wrapper_html: { class: 'form-group' } %>
+        <%= f.input :original_price, input_html: { class: 'form-control input-sm' }, wrapper_html: { class: 'form-group' } %>
+        <%= f.input :selling_price, input_html: { class: 'form-control input-sm' }, wrapper_html: { class: 'form-group' } %>
+        <%= f.input :service_desc, input_html: { class: 'form-control input-sm' }    %>
+        <%= f.input :schedule, input_html: { class: 'form-control input-sm' }, wrapper_html: { class: 'form-group' } %>
+        <%= f.input :gender_id, :collection => Centertype.all, :label_method => :name, :value_method => :id, input_html: { class: 'form-control input-sm chzn-select' }, wrapper_html: { class: 'form-group' } %>
+        <%= f.input :end_date, as: :date, html5: true, input_html: { class: 'form-control input-sm' }, wrapper_html: { class: 'form-group' } %>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-xs-12">
+                        <div class="panel panel-default">
+                            <div class="panel-body">
+                                <%= f.submit 'Submit', :class => 'btn btn-success pull-right' %>
+                            </div>
+                        </div>
+                    </div>
+                <%end%>
+            </div>
+        </div>
+    </div>
+</div>

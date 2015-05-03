@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150501064923) do
+ActiveRecord::Schema.define(version: 20150503132922) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -176,10 +176,27 @@ ActiveRecord::Schema.define(version: 20150501064923) do
     t.string   "place_id"
     t.string   "place_name"
     t.string   "center_type"
+    t.string   "image_id"
   end
 
   add_index "centers", ["partner_id"], name: "index_centers_on_partner_id", using: :btree
   add_index "centers", ["slug"], name: "index_centers_on_slug", unique: true, using: :btree
+
+  create_table "centers_experiences", id: false, force: true do |t|
+    t.integer "center_id"
+    t.integer "experience_id"
+  end
+
+  add_index "centers_experiences", ["center_id"], name: "index_centers_experiences_on_center_id", using: :btree
+  add_index "centers_experiences", ["experience_id"], name: "index_centers_experiences_on_experience_id", using: :btree
+
+  create_table "centers_facilities", id: false, force: true do |t|
+    t.integer "center_id"
+    t.integer "facility_id"
+  end
+
+  add_index "centers_facilities", ["center_id"], name: "index_centers_facilities_on_center_id", using: :btree
+  add_index "centers_facilities", ["facility_id"], name: "index_centers_facilities_on_facility_id", using: :btree
 
   create_table "centertypes", force: true do |t|
     t.string   "name"
@@ -254,6 +271,12 @@ ActiveRecord::Schema.define(version: 20150501064923) do
     t.datetime "updated_at"
   end
 
+  create_table "facilities", force: true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "hours", force: true do |t|
     t.string   "sun_from"
     t.string   "mon_from"
@@ -294,6 +317,7 @@ ActiveRecord::Schema.define(version: 20150501064923) do
     t.text     "description"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "partner_id"
   end
 
   add_index "instructors", ["center_id"], name: "index_instructors_on_center_id", using: :btree

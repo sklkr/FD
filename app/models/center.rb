@@ -7,7 +7,8 @@ extend FriendlyId
   default_scope { where(status: 'active') }
   scope :pending, -> { unscoped.where('status!=?', 'active')}
 
-
+	attachment :image
+	
 	# Associations
 	belongs_to :partner
 	has_one :centerinfo, :dependent => :destroy
@@ -22,7 +23,12 @@ extend FriendlyId
 	belongs_to :city
 	belongs_to :area
 	has_one :popular, :dependent => :destroy
-
+	
+	accepts_nested_attributes_for :centerinfo
+	accepts_nested_attributes_for :accountinfo
+    
+	has_and_belongs_to_many :experiences
+	has_and_belongs_to_many :facilities
 	# Validations
 	validates :name, :presence => true
 
