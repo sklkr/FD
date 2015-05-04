@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150503132922) do
+ActiveRecord::Schema.define(version: 20150504121252) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -198,6 +198,14 @@ ActiveRecord::Schema.define(version: 20150503132922) do
   add_index "centers_facilities", ["center_id"], name: "index_centers_facilities_on_center_id", using: :btree
   add_index "centers_facilities", ["facility_id"], name: "index_centers_facilities_on_facility_id", using: :btree
 
+  create_table "centers_fpclasses", force: true do |t|
+    t.integer "center_id"
+    t.integer "fpclass_id"
+  end
+
+  add_index "centers_fpclasses", ["center_id"], name: "index_centers_fpclasses_on_center_id", using: :btree
+  add_index "centers_fpclasses", ["fpclass_id"], name: "index_centers_fpclasses_on_fpclass_id", using: :btree
+
   create_table "centertypes", force: true do |t|
     t.string   "name"
     t.datetime "created_at"
@@ -276,6 +284,25 @@ ActiveRecord::Schema.define(version: 20150503132922) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "fpclasses", force: true do |t|
+    t.string   "name"
+    t.datetime "date"
+    t.string   "start_time"
+    t.string   "duration"
+    t.integer  "seats"
+    t.integer  "instructor_id"
+    t.string   "type_of"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "partner_id"
+    t.boolean  "recurring",     default: false
+    t.integer  "interval"
+    t.string   "rule_type"
+    t.integer  "week_start"
+  end
+
+  add_index "fpclasses", ["instructor_id"], name: "index_fpclasses_on_instructor_id", using: :btree
 
   create_table "hours", force: true do |t|
     t.string   "sun_from"

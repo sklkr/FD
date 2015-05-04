@@ -29,6 +29,8 @@ extend FriendlyId
     
 	has_and_belongs_to_many :experiences
 	has_and_belongs_to_many :facilities
+	has_and_belongs_to_many :fpclasses, :dependent => :destroy
+
 	# Validations
 	validates :name, :presence => true
 

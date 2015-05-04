@@ -5,6 +5,7 @@ class Instructor < ActiveRecord::Base
 	belongs_to :center
 	belongs_to :partner
     has_and_belongs_to_many :services, :join_table => 'services_instructors'
+    has_many :fpclasses
 
 	attachment :photo
 end

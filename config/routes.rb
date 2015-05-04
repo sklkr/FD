@@ -26,8 +26,9 @@ Rails.application.routes.draw do
           # end
         #end
         resources :instructors
+        resources :classes
         resources :centers do
-          resources :services
+          resources :services, :galleries
         end
         resources :orders, :only => [:index, :show]
         
@@ -116,10 +117,11 @@ resources :partners, only: [:index, :new, :create]
     end
   end
 
-  get 'filters/index'
-  get 'filters/list(/:category_id)' => 'filters#list', :as => 'filters_list'
-  get 'filters/grid(/:category_id)' => 'filters#grid', :as => 'filters_grid'
-  get 'filters/map'
+  # get 'filters/index'
+  # get 'filters/list(/:category_id)' => 'filters#list', :as => 'filters_list'
+  # get 'filters/grid(/:category_id)' => 'filters#grid', :as => 'filters_grid'
+  # get 'filters/map'
+  get 'search' => 'filters#search'
 
   get 'homepage/index'
 

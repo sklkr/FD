@@ -1,0 +1,41 @@
+<div class="main-header clearfix">
+    <div class="page-title">
+        <h3 class="no-margin">Classes</h3>
+        <span></span>
+    </div><!-- /page-title -->
+    
+    <ul class="page-stats">
+      <%= link_to "NEW CLASS", new_partners_class_path, :class => 'btn btn-primary' %>
+    </ul><!-- /page-stats -->
+</div>
+
+
+<div class="padding-md">
+    <div class="panel panel-default table-responsive">
+        <table class="table table-striped table-responsive" id="responsiveTable">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Date</th>
+                    <th>Start Time</th>
+                    <th>Duration</th>
+                    <th>Seats</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% @fpclasses.each do |c| %>
+                    <tr>
+                        <td><a href=""><%= c.name.capitalize %></a></td>
+                        <td><%= local_time(c.date) unless c.date.blank? %></td>
+                        <td><%= c.start_time %></td>
+                        <td><%= c.duration %></td>
+                        <td><span class='label label-info'><%= c.seats %></span></td>
+                    </tr>
+                <%end%>
+            </tbody>
+        </table>
+        <div class="panel-footer clearfix">
+            
+        </div>
+    </div>
+</div>

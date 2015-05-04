@@ -1,13 +1,13 @@
 class FiltersController < ApplicationController
 before_filter :searcher
 
-  def index
-
+  def search
+    @c = Center.ransack(params[:q])
+    @data = @c.result(distinct: true).includes(:centerinfo, :cphotos).page(params[:page]).per(5)
   end
 
   def list
-    @c = Center.ransack(params[:q])
-    @data = @c.result(distinct: true).includes(:centerinfo, :cphotos).page(params[:page]).per(5)
+    
   end
 
 

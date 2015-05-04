@@ -19,7 +19,7 @@ meta title: "Home page | FitnessPapa",
          	<div class="row">
          		<div class="col-sm-12 col-md-6 col-md-offset-3">
 		         	<div class="search-sec-main">
-						<%=search_form_for @c, :url => filters_list_path, :class => 'services', :html => {:onSubmit => 'return search_validator();'} do |f| %>
+						<%= search_form_for @c, :url => search_path, :class => 'services', :html => {:onSubmit => 'return search_validator();'} do |f| %>
 						<div class="row">
 							<div class="col-sm-3 hidden-xs">
 								<%= f.collection_select :centerinfo_categories_id_in, Category.order(:name), :id, :name, {}, {:class => 'form-control'} %>

@@ -19,6 +19,8 @@
 //= require chosen/chosen.jquery.min
 //= require wysihtml/dist/wysihtml5x-toolbar.min
 //= require wysihtml/parser_rules/advanced_and_extended
+//= require refile
+//= require local_time
 //= require turbolinks
 
 
