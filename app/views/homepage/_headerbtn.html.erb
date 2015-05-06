@@ -57,14 +57,7 @@
 	 	<li>
      <%= link_to "Logout",session_path('1'), method: :delete, data: {confirm: "Log out of FitnessPapa?"}, :style => 'color:white' %>
     </li>
-
-	 <%end%>
-	 <% if is_partner?  %>
-	 	<li><a href="<%= partners_centers_path %>" style='color:white'>My Dashboard</a></li>
-	 	<li>
-     <%= link_to "Logout", session_path('1'), method: :delete, data: {confirm: "Log out of FitnessPapa?"}, :style => 'color:white' %> 
-    </li>
-	 <%end%>
+  <%end%>
 </ul>
 	
 <div class="cd-user-modal"> <!-- this is the entire modal form, including the background -->

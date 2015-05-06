@@ -1,9 +1,9 @@
 module Partners
-class ClassesController < ApplicationController 
+class ClassesController < BaseController 
 layout 'partners'
 
   def index
-	 @fpclasses = current_partner.partner.fpclasses
+	 @fpclasses = current_partner.fpclasses
    respond_to do |format|
     format.html
     format.xml { render xml: @classes.to_xml }
@@ -24,7 +24,7 @@ layout 'partners'
 
   def create
    @fpclass = Fpclass.new(permit_params)
-   @fpclass.partner = current_partner.partner
+   @fpclass.partner = current_partner
    if @fpclass.save
     redirect_to partners_classes_path
    else

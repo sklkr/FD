@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150504121252) do
+ActiveRecord::Schema.define(version: 20150506054729) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -287,7 +287,7 @@ ActiveRecord::Schema.define(version: 20150504121252) do
 
   create_table "fpclasses", force: true do |t|
     t.string   "name"
-    t.datetime "date"
+    t.date     "date"
     t.string   "start_time"
     t.string   "duration"
     t.integer  "seats"

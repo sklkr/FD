@@ -1,0 +1,3 @@
+<%= calendar number_of_days: 7 do |date| %>
+	<div class="caldays img-circle"><%= link_to date.strftime("%b %d"), classes_search_path(:q => {:date_eq => date}), remote: true %></div>
+<% end %>

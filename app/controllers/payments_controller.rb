@@ -12,7 +12,7 @@ class PaymentsController < ApplicationController
   	@txnid = params[:token]
   	@email = current_user.customer.email
   	@phone = current_user.phone
-  	@productinfo =  "FitnessPapa Services"
+  	@productinfo = "FitnessPapa Services"
   	@firstname = current_user.first_name
     @authenticity_token = "d43kl34hln2hk"
   	@hash = generate_hash(@key, @txnid, @amount, @productinfo, @firstname, @email, @authenticity_token)

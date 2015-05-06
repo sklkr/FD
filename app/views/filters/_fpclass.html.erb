@@ -1,0 +1,30 @@
+<div class="panel class-item">
+	<div class="panel-body">
+			<div class="row">
+			<div class="col-xs-12 col-sm-2 text-center">
+				<span style='font-size:26px;font-weight:300'><%= fpclass.start_time %></span><br>
+				<span><%= fpclass.duration %> <span>Minutes</span></span>
+			</div>
+			<div class="col-xs-12 col-sm-5">
+			  <div><h2 class="osLight" style="margin-top:0px;padding-bottom:12px"><%= fpclass.name.capitalize %></h2></div>	
+			  <div><span class='text text-warning'> <i class='fa fa-place'></i> <%= fpclass.try(:centers).try(:first).try(:place_name) %></span></div>
+			  
+			</div>
+			<div class="col-xs-6 col-sm-3">
+				<div class="row">
+					<div class="col-xs-6 col-sm-3" style="padding-right:18px;margin-top:10px">
+						<img src="/assets/avatar.png" alt="" class="img-circle" style="height:40px;width:43px">
+					</div>
+					<div class="col-xs-6 col-sm-9">
+						<h5><%= fpclass.try(:instructor).try(:name).try(:capitalize) %></h5>
+						<p class="help-block">Instructor</p>
+					</div>
+				</div>
+			</div>
+			<div class="col-xs-12 col-sm-2 text-right">
+				<%= link_to 'Reserve', '', :class => 'btn btn-primary' %><br>
+				<%= pluralize(fpclass.seats, 'seats') %> <span>left</span>
+			</div>
+		</div>
+	</div>
+</div>

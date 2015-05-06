@@ -1,0 +1,9 @@
+$("#classes-link").removeClass('active');
+$("#fp-link").addClass('active');
+$('#centers-section').show();
+$('#classes-section').hide();
+<%unless @centers.blank? %>
+	$('#centers-section').html("<%= j render @centers %>")
+<%else%>
+	$('#centers-section').html("<div class='row list-item' style='min-height:250px;padding:40px'><div class='container'><p class='text-info'>No centers found with your search criteria!</p></div></div>")
+<%end%>

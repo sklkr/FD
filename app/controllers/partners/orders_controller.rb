@@ -1,5 +1,5 @@
 module Partners
-  class OrdersController < ApplicationController
+  class OrdersController < BaseController
     layout 'partners'
     # Should be restricted and has current_partner
 

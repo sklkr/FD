@@ -1,5 +1,5 @@
 module Partners
-class ServicesController < ApplicationController 
+class ServicesController < BaseController 
 layout 'partners'
 before_filter { @center = ::Center.friendly.find(params[:center_id]) }
   def index
@@ -20,7 +20,7 @@ before_filter { @center = ::Center.friendly.find(params[:center_id]) }
 
   def create
    @service = Service.new(permit_params)
-   @service.center = @center if( @center.partner == current_partner.partner ) # to check if this center belongs to current partner
+   @service.center = @center if( @center.partner == current_partner ) # to check if this center belongs to current partner
    if @service.save
     redirect_to partners_center_services_path
    else

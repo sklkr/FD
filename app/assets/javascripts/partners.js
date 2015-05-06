@@ -17,12 +17,13 @@
 //= require plugins/bootstrap
 //= require_tree ./backend
 //= require chosen/chosen.jquery.min
-//= require wysihtml/dist/wysihtml5x-toolbar.min
-//= require wysihtml/parser_rules/advanced_and_extended
 //= require refile
 //= require local_time
+//= require plugins/google.places
 //= require turbolinks
 
+/*require wysihtml/dist/wysihtml5x-toolbar.min*/
+/*require wysihtml/parser_rules/advanced_and_extended*/
 
 /* # Endless_form*/
 $(function()	{
@@ -30,10 +31,10 @@ $(function()	{
 	$(".chzn-select").chosen();
 	
 	// Datepicker
-	$('.datepicker').datepicker();
+	// $('.datepicker').datepicker();
 
 	// Timepicker
-	$('.timepicker').timepicker();
+	// $('.timepicker').timepicker();
 			
 	// Slider		
 	$('#sl1').slider();
@@ -56,10 +57,10 @@ $(function()	{
 	$(".product-key").mask("a*-999-a999");
 
 	// Wysihtml5
-	 var editor = new wysihtml5.Editor('editor', {
-	     toolbar: 'toolbar',
-	     parserRules:  wysihtml5ParserRules
-	   });
+	// var editor = new wysihtml5.Editor('editor', {
+	//     toolbar: 'toolbar',
+	  //   parserRules:  wysihtml5ParserRules
+	 //  });
 
 	// Toggle border of control group
 	$('#toggleLine').click(function()	{			

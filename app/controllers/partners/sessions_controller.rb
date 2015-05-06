@@ -1,5 +1,5 @@
 module Partners
-  class SessionsController < ApplicationController
+  class SessionsController < BaseController
   
     def new
       @partner ||= Partner.new

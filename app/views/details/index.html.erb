@@ -1,10 +1,8 @@
 <div id="details-content" style="background-color: rgb(252, 252, 252)">
 
-<% cache('cache_key_for_main_background') do %>
 <div id="background" style="background-image: url(<%= attachment_url(@cphotos.first, :image) %>);z-index:0" >
 <%= image_tag attachment_url(@cphotos.first, :image), :class => 'visible-xs img-responsive' %>
 </div>
-<% end %>
 <div class="space20"></div>
 <div class="container">
         <div class="row">
@@ -58,7 +56,7 @@
                 </div>
                 <div role="tabpanel" class="tab-pane" id="amenities">
                     <div class="row">
-                    <%@details.experiences.each do |amenity| %>
+                    <%@center.experiences.each do |amenity| %>
                         <div class="col-xs-4">
                             <p><i class="<%= icon_fetcher(amenity.name) %>">&nbsp;</i>
                             <%= amenity.name %></p>
@@ -67,38 +65,38 @@
                     </div>
                 </div>
                 <div role="tabpanel" class="tab-pane" id="openinghours">
-                    <table class="table">
+                    <!-- <table class="table">
                         <tbody>
                            <tr>
                                 <td class="w-30p uppercase body-color">Monday</td>
-                                <td><%= @hours.mon_from %> &nbsp; to &nbsp; <%= @hours.mon_to %></td>
+                                <td> @hours.mon_from &nbsp; to &nbsp;  @hours.mon_to</td>
                             </tr>
                             <tr>
                                 <td class="w-30p uppercase body-color">Tuesday</td>
-                                <td><%= @hours.tue_from %> &nbsp; to &nbsp; <%= @hours.tue_to %></td>
+                                <td> @hours.tue_from &nbsp; to &nbsp;  @hours.tue_to</td>
                             </tr>
                             <tr>
                                 <td class="w-30p uppercase body-color">Wednesday</td>
-                                <td><%= @hours.wed_from %> &nbsp; to &nbsp; <%= @hours.wed_to %></td>
+                                <td> @hours.wed_from &nbsp; to &nbsp;  @hours.wed_to</td>
                             </tr>
                             <tr>
                                 <td class="w-30p uppercase body-color">Thursday</td>
-                                <td><%= @hours.thu_from %> &nbsp; to &nbsp; <%= @hours.thu_to %></td>
+                                <td> @hours.thu_from &nbsp; to &nbsp;  @hours.thu_to</td>
                             </tr>
                             <tr>
                                 <td class="w-30p uppercase body-color">Friday</td>
-                                <td><%= @hours.fri_from %> &nbsp; to &nbsp; <%= @hours.fri_to %></td>
+                                <td> @hours.fri_from &nbsp; to &nbsp;  @hours.fri_to</td>
                             </tr>
                             <tr>
                                 <td class="w-30p uppercase body-color">Saturday</td>
-                                <td><%= @hours.sat_from %> &nbsp; to &nbsp; <%= @hours.sat_to %></td>
+                                <td> @hours.sat_from &nbsp; to &nbsp;  @hours.sat_to</td>
                             </tr>
                             <tr>
                                 <td class="w-30p uppercase body-color">Sunday</td>
-                                <td><%= @hours.sun_from %> &nbsp; to &nbsp; <%= @hours.sun_to %></td>
+                                <td> @hours.sun_from &nbsp; to &nbsp;  @hours.sun_to</td>
                             </tr>
                         </tbody>
-                    </table>
+                    </table> -->
                 </div>
               </div>
 

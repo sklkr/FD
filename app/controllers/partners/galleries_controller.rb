@@ -1,5 +1,5 @@
 module Partners
-class GalleriesController < ApplicationController
+class GalleriesController < BaseController
   before_filter :is_more, :only => [:create]
 
   layout 'partners'
@@ -28,7 +28,6 @@ class GalleriesController < ApplicationController
 
   private
     def is_more
-      redirect_to partners_center_photos_path(center.friendly_id) if Cphoto.where('centerinfo_id=?',center.centerinfo.id).count > 6
     end
 end
 end

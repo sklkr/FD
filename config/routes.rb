@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+
   constraints :subdomain => "partners" do
     scope :module => 'partners', :as => 'partners' do
       # constraints(Subdomain) do
@@ -48,6 +49,8 @@ resources :partners, only: [:index, :new, :create]
   
   
   mount Lockup::Engine, at: '/lockup'
+  
+  get 'mypackage' => 'mypackage#index'
 
   get 'checkout' => 'checkout#step1', :as => 'checkout'
   post 'checkout' => 'checkout#create'
@@ -122,6 +125,7 @@ resources :partners, only: [:index, :new, :create]
   # get 'filters/grid(/:category_id)' => 'filters#grid', :as => 'filters_grid'
   # get 'filters/map'
   get 'search' => 'filters#search'
+  get 'classes/search' => 'filters#classes'
 
   get 'homepage/index'
 

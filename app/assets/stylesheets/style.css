@@ -1,16 +1,14 @@
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-.h1,
-.h2,
-.h3,
-.h4,
-.h5,
-.h6 {
-  font-family: "Open Sans", sans-serif;
+@font-face {
+    font-family: din;
+    src: url(fonts/din-regular-webfont.woff);
+}
+
+body {
+  font-family: "din", "Open Sans", sans-serif;
+ }
+
+ p, span, a{
+   font-family: "Open Sans", sans-serif;
  }
 
 select{
@@ -32,93 +30,113 @@ select{
 [class^="flaticon-"]:before, [class*=" flaticon-"]:before,
 [class^="flaticon-"]:after, [class*=" flaticon-"]:after {   
   font-family: Flaticon;
+  font-size: normal;
   font-style: normal;
-}.flaticon-bell83:before {
+}
+.flaticon-bell83:before {
   content: "\e000";
 }
 .flaticon-calendar68:before {
   content: "\e001";
 }
-.flaticon-cash5:before {
+.flaticon-cancel19:before {
   content: "\e002";
 }
-.flaticon-coin:before {
+.flaticon-cash5:before {
   content: "\e003";
 }
-.flaticon-deadlines:before {
+.flaticon-coin:before {
   content: "\e004";
 }
-.flaticon-dollar-bill1:before {
+.flaticon-deadlines:before {
   content: "\e005";
 }
-.flaticon-email37:before {
+.flaticon-dollar-bill1:before {
   content: "\e006";
 }
-.flaticon-gym20:before {
+.flaticon-drink13:before {
   content: "\e007";
 }
-.flaticon-gym7:before {
+.flaticon-email37:before {
   content: "\e008";
 }
-.flaticon-hand132:before {
+.flaticon-forever:before {
   content: "\e009";
 }
-.flaticon-healthy5:before {
+.flaticon-gym7:before {
   content: "\e00a";
 }
-.flaticon-king1:before {
+.flaticon-hand132:before {
   content: "\e00b";
 }
-.flaticon-man20:before {
+.flaticon-healthy5:before {
   content: "\e00c";
 }
-.flaticon-man271:before {
+.flaticon-identity6:before {
   content: "\e00d";
 }
-.flaticon-massage2:before {
+.flaticon-king1:before {
   content: "\e00e";
 }
-.flaticon-monarchy2:before {
+.flaticon-man20:before {
   content: "\e00f";
 }
-.flaticon-money192:before {
+.flaticon-man271:before {
   content: "\e010";
 }
-.flaticon-multiple25:before {
+.flaticon-marketingbuzz:before {
   content: "\e011";
 }
-.flaticon-purse12:before {
+.flaticon-massage2:before {
   content: "\e012";
 }
-.flaticon-rupee2:before {
+.flaticon-monarchy2:before {
   content: "\e013";
 }
-.flaticon-saving4:before {
+.flaticon-money192:before {
   content: "\e014";
 }
-.flaticon-savings1:before {
+.flaticon-multiple25:before {
   content: "\e015";
 }
-.flaticon-smartphone54:before {
+.flaticon-purse12:before {
   content: "\e016";
 }
-.flaticon-smartphone70:before {
+.flaticon-saving4:before {
   content: "\e017";
 }
-.flaticon-sms3:before {
+.flaticon-savings1:before {
   content: "\e018";
 }
-.flaticon-swimming20:before {
+.flaticon-smartphone54:before {
   content: "\e019";
 }
-.flaticon-wallet4:before {
+.flaticon-smartphone70:before {
   content: "\e01a";
 }
-.flaticon-wellness:before {
+.flaticon-smiling36:before {
   content: "\e01b";
 }
-.flaticon-windows10:before {
+.flaticon-sms3:before {
   content: "\e01c";
+}
+.flaticon-stocks1:before {
+  content: "\e01d";
+}
+.flaticon-stop36:before {
+  content: "\e01e";
+}
+.flaticon-swimming20:before {
+  content: "\e01f";
+}
+.flaticon-trophy36:before {
+  content: "\e020";
+}
+.flaticon-wallet4:before {
+  content: "\e021";
+}
+.flaticon-windows10:before {
+  content: "\e022";
 }
 
 
@@ -288,6 +306,7 @@ font-size: 1em;
 .list-item{
   background: white;
   margin-bottom:20px;
+  border: 1px solid #e3e3e3
 }
 .list-item .img-box{
   padding-left:0px;
@@ -1338,3 +1357,118 @@ textarea.parsley-error {
 .btn-facebook:active,.btn-facebook.active,.open>.dropdown-toggle.btn-facebook{background-image:none}
 .btn-facebook.disabled,.btn-facebook[disabled],fieldset[disabled] .btn-facebook,.btn-facebook.disabled:hover,.btn-facebook[disabled]:hover,fieldset[disabled] .btn-facebook:hover,.btn-facebook.disabled:focus,.btn-facebook[disabled]:focus,fieldset[disabled] .btn-facebook:focus,.btn-facebook.disabled:active,.btn-facebook[disabled]:active,fieldset[disabled] .btn-facebook:active,.btn-facebook.disabled.active,.btn-facebook[disabled].active,fieldset[disabled] .btn-facebook.active{background-color:#3b5998;border-color:rgba(0,0,0,0.2)}
 .btn-facebook .badge{color:#3b5998;background-color:#fff}
+
+
+.search-container{
+  margin-bottom: 40px;
+}
+
+.row.list-item:hover {
+  background: rgb(255, 252, 249);
+}
+.class-item:hover{
+  background: rgb(255, 252, 249);
+}
+
+
+/* Tabbed pane */
+.tabbable-panel {
+  border:1px solid #eee;
+  padding: 10px;
+}
+
+/* Default mode */
+.tabbable-line > .nav-tabs {
+  border: none;
+  margin: 0px;
+}
+.tabbable-line > .nav-tabs > li {
+  margin-right: 2px;
+}
+.tabbable-line > .nav-tabs > li > a {
+  border: 0;
+  margin-right: 0;
+  color: #737373;
+}
+.tabbable-line > .nav-tabs > li > a > i {
+  color: #a6a6a6;
+}
+.tabbable-line > .nav-tabs > li.open, .tabbable-line > .nav-tabs > li:hover {
+  border-bottom: 4px solid #fbcdcf;
+}
+.tabbable-line > .nav-tabs > li.open > a, .tabbable-line > .nav-tabs > li:hover > a {
+  border: 0;
+  background: none !important;
+  color: #333333;
+}
+.tabbable-line > .nav-tabs > li.open > a > i, .tabbable-line > .nav-tabs > li:hover > a > i {
+  color: #a6a6a6;
+}
+.tabbable-line > .nav-tabs > li.open .dropdown-menu, .tabbable-line > .nav-tabs > li:hover .dropdown-menu {
+  margin-top: 0px;
+}
+.tabbable-line > .nav-tabs > li.active {
+  border-bottom: 4px solid #f3565d;
+  position: relative;
+}
+.tabbable-line > .nav-tabs > li.active > a {
+  border: 0;
+  color: #333333;
+}
+.tabbable-line > .nav-tabs > li.active > a > i {
+  color: #404040;
+}
+.tabbable-line > .tab-content {
+  margin-top: -3px;
+  background-color: #fff;
+  border: 0;
+  border-top: 1px solid #eee;
+  padding: 15px 0;
+}
+.portlet .tabbable-line > .tab-content {
+  padding-bottom: 0;
+}
+
+/* Below tabs mode */
+
+.tabbable-line.tabs-below > .nav-tabs > li {
+  border-top: 4px solid transparent;
+}
+.tabbable-line.tabs-below > .nav-tabs > li > a {
+  margin-top: 0;
+}
+.tabbable-line.tabs-below > .nav-tabs > li:hover {
+  border-bottom: 0;
+  border-top: 4px solid #fbcdcf;
+}
+.tabbable-line.tabs-below > .nav-tabs > li.active {
+  margin-bottom: -2px;
+  border-bottom: 0;
+  border-top: 4px solid #f3565d;
+}
+.tabbable-line.tabs-below > .tab-content {
+  margin-top: -10px;
+  border-top: 0;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 15px;
+}
+
+.caldays{
+  background: white;
+  border: 2px solid rgb(228, 217, 217);
+  margin-left: 18px;
+  padding: 15px 3px;
+  color: chocolate;
+  cursor: pointer;
+}
+
+.caldays.active{
+  color: #FFF;background: chocolate;
+}
+.calendar-header{
+  display: none;
+}
+
+#center_search thead{
+  display: none;
+}

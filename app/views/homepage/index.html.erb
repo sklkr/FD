@@ -19,13 +19,13 @@ meta title: "Home page | FitnessPapa",
          	<div class="row">
          		<div class="col-sm-12 col-md-6 col-md-offset-3">
 		         	<div class="search-sec-main">
-						<%= search_form_for @c, :url => search_path, :class => 'services', :html => {:onSubmit => 'return search_validator();'} do |f| %>
+						<%= search_form_for @c, :url => search_path, :class => 'services' do |f| %>
 						<div class="row">
 							<div class="col-sm-3 hidden-xs">
-								<%= f.collection_select :centerinfo_categories_id_in, Category.order(:name), :id, :name, {}, {:class => 'form-control'} %>
+								<%= f.collection_select :center_type_cont, Center::CENTERTYPES, :to_s, :to_s, { :include_blank => false }, {:class => 'form-control'} %>
 							</div>
 							<div class="col-xs-9 col-sm-7">
-								<input id="cities" type="text" name="q[place_id_cont]" placeholder="Type Locality or Landmark" class="ui-autocomplete-input form-control" autocomplete="off">		
+								<input id="cities" type="text" name="q[place_name_cont_any]" placeholder="Type Locality or Landmark" class="ui-autocomplete-input form-control" autocomplete="off">		
 							</div>
 							<div class="col-xs-3 col-sm-2">
 								<input type="submit" value="Search" class="form-control btn btn-primary">
@@ -70,7 +70,7 @@ meta title: "Home page | FitnessPapa",
 		</div>
 	</div>
 </div> -->
-<div class="">
+<!-- <div class="">
 	<div class="row catbox">
 		<div class="col-xs-6 col-sm-4 col-md-2 each text-center">
 			<i class="flaticon-gym7"></i> 
@@ -97,10 +97,58 @@ meta title: "Home page | FitnessPapa",
 			<p>Class</p>
 		</div>
 	</div>
-</div>
+</div> -->
 <!-- end content -->
 			
 <!-- content -->
+
+<div class="container">
+    <div class="row big-padding">
+        <h2 class="osLight text-center">YOUR PASSPORT TO FITNESS FREEDOM</h2>
+        <hr>
+    	<div class="col-xs-4 text-center">
+    		<h4>FitnessPapa Passport</h4><br>
+			<i class='flaticon-identity6' style='font-size:45px'></i><br><br>
+			<button type="button" class="btn btn-default" data-toggle="modal" data-target="#package">
+			  Book Now
+			</button>
+			<span class='label label-info'>1500 Rs</span>
+		</div><!--/.col-->	
+		<div class="col-xs-8">
+			<ul class="list-unstyled" style="font-size:18px;margin-top:57px"> 
+				<li style="margin-bottom:10px"><i class='fa fa-hand-o-right'>&nbsp;</i>Join Fitnesspapa Family by paying 1500 rupees(Including Tax) a month</li>
+				<li style="margin-bottom:10px"><i class='fa fa-hand-o-right'>&nbsp;</i>Access to unlimited fitness classes per month from 40 different types of workout</li>
+				<li style="margin-bottom:10px"><i class='fa fa-hand-o-right'>&nbsp;</i>Three classes a month at a same studio</li>
+				<li style="margin-bottom:10px"><i class='fa fa-hand-o-right'>&nbsp;</i>Try a different fitness studio everyday</li>
+				<li style="margin-bottom:10px"><i class='fa fa-hand-o-right'>&nbsp;</i>Make Variety a routine</li>
+				<li style="margin-bottom:10px"><i class='fa fa-hand-o-right'>&nbsp;</i>Reserve your class using Mobile/web</li>
+			</ul>
+			
+		</div>
+	</div><!--/.row-->
+</div>
+
+
+
+
+<div class="row color-two big-padding">
+	<div class="container">
+		<div class="col-xs-12 col-sm-4">
+			<p class="circlers"><i class="flaticon-windows10"></i></p>
+			<p class="circlers-para">1) Search and buy discounted passes & Fitness class near to you using mobile/web</p>
+		</div>
+		<div class="col-xs-12 col-sm-4">
+			  <p class="circlers"><i class="flaticon-smartphone70"></i></p>
+			  <p class="circlers-para">2) Visit the center, show the SMS/Email having order details</p>
+		</div>
+		<div class="col-xs-12 col-sm-4">
+			  <p class="circlers"><i class="flaticon-healthy5"></i></p>
+			  <p class="circlers-para">3) Use the Service</p>
+		</div>
+	</div>
+</div>
+
+
 <div class="row big-padding" style='background:rgb(207,119,23); color:white'>
 		<div class="container" style="margin-top:32px">
 		<div class="col-xs-12">
@@ -139,26 +187,6 @@ meta title: "Home page | FitnessPapa",
 		</div>
 	</div>
 </div>
-
-
-<div class="row color-two big-padding">
-	<div class="container">
-		<div class="col-xs-12 col-sm-4">
-			<p class="circlers"><i class="flaticon-windows10"></i></p>
-			<p class="circlers-para">1) Search and buy discounted passes & Fitness class near to you using mobile/web</p>
-		</div>
-		<div class="col-xs-12 col-sm-4">
-			  <p class="circlers"><i class="flaticon-smartphone70"></i></p>
-			  <p class="circlers-para">2) Visit the center, show the SMS/Email having order details</p>
-		</div>
-		<div class="col-xs-12 col-sm-4">
-			  <p class="circlers"><i class="flaticon-healthy5"></i></p>
-			  <p class="circlers-para">3) Use the Service</p>
-		</div>
-	</div>
-</div>
-
-
 <div class="container">
     <div class="row big-padding">
         <h2 class="osLight text-center">See what customers are saying</h2>
@@ -198,8 +226,36 @@ $(document).ready(function() {
 */
 });
 
-function search_validator(){
-	/*to send places_id instead of places_name*/
-	window.search_input.value = window.city_name.getPlace().id;
-}
 </script>
+
+<div class="modal fade " id="package" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">FitnessPapa Passport</h4>
+      </div>
+      <div class="modal-body">
+        <div class="row">
+        	<div class="col-xs-4">
+        	
+        	</div>
+        	<div class="col-xs-8">
+        		<ul class="list-unstyled">
+        			<li><i class='flaticon-forever'></i>&nbsp;Unlimited classes</li>
+        			<li><i class='flaticon-trophy36'></i>&nbsp;Top rated Studios & Trainers</li>
+        			<li><i class='flaticon-drink13'></i>&nbsp;No Upfront or Hidden Fees</li>
+        			<li><i class='flaticon-cancel19'></i>&nbsp;Cancel Any Time</li>
+        			<li><i class='flaticon-smiling36'></i>&nbsp;Guaranteed Satisfaction</li>
+        			<li><i class='flaticon-stop36'></i>&nbsp;Can keep your passport on hold</li>
+				</ul>		
+        	</div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <%= link_to "Book Now", mypackage_path, :class => 'btn btn-default'  %>
+      </div>
+    </div>
+  </div>
+</div>

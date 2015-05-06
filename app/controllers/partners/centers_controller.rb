@@ -1,14 +1,9 @@
 module Partners
-class CentersController < ApplicationController 
+class CentersController < BaseController 
 layout 'partners'
 
   def index
-	 @centers = current_partner.partner.centers
-   respond_to do |format|
-    format.html
-    format.xml { render xml: @centers.to_xml }
-    format.json { render json: @centers.to_json }
-   end
+	 @centers = current_partner.centers
   end
 
   def new
@@ -27,7 +22,7 @@ layout 'partners'
 
   def create
    @center = ::Center.new(permit_params)
-   @center.partner_id = current_partner.partner.id
+   @center.partner_id = current_partner.id
    if @center.save
     redirect_to partners_centers_path
    else

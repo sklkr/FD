@@ -2,7 +2,7 @@ class Order < ActiveRecord::Base
    
    
    include NumberGenerator # Used as global to generate random number with perfix overwrite with generate nubmer method below
-   include AASM # For state maintaining
+   # include AASM # For state maintaining
    extend FriendlyId
    friendly_id :number
 

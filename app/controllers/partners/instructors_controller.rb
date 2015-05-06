@@ -1,9 +1,9 @@
 module Partners
-class InstructorsController < ApplicationController 
+class InstructorsController < BaseController 
 layout 'partners'
 
   def index
-	 @instructors = current_partner.partner.instructors
+	 @instructors = current_partner.instructors
   end
 
   def new
@@ -20,7 +20,7 @@ layout 'partners'
 
   def create
    @instructor = Instructor.new(permit_params)
-   @instructor.partner = current_partner.partner
+   @instructor.partner = current_partner
    if @instructor.save
     redirect_to partners_instructors_path(anchor: "instructor_#{@instructor.id}")
    else
