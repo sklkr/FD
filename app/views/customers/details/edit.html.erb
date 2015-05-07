@@ -1,0 +1,139 @@
+<%=form_for @details, url: getpath, method: getmethod, multipart: true do |f| %>
+	<div class="row">
+		<fieldset>
+			<legend>Account Details</legend>
+			<div class="large-6 columns">
+				<div class="row">
+					<div class="small-4 columns"><label for='center[name]' class="inline">Name</label></div>
+					<div class="small-8 columns"><%= f.text_field :first_name, :class => '' %></div>
+				</div>	
+				<div class="row">
+					<div class="small-4 columns"><label for="center[Email]" class="inline">Email</label></div>
+					<div class="small-8 columns"><%= text_field_tag 'email', nil, :value => @email %></div>
+				</div>
+				<div class="row">
+				    <div class="small-4 columns"></div>
+					<div class="small-8 columns" style="margin-bottom:12px"><a href="<%=customer_change_password_path %>" style="font-size:14px;text-decoration:underline">Change Password</a></div>
+				</div>
+				<div class="row">
+					<div class="small-4 columns"><label for="" class="inline">Gender</label></div>
+					<div class="small-8 columns"><%= f.select :centertype_id, options_from_collection_for_select(Centertype.find([3,4]), 'id', 'name'), :id => 'centertype' %></div>
+				</div>
+				<div class="row">
+					<div class="small-4 columns"><label for='center[name]' class="inline">Address</label></div>
+					<div class="small-8 columns"><%= f.text_field :address1, :class => '', :placeholder => 'Address 1' %><%= f.text_field :address2, :class =>'' , :placeholder => 'Address 2' %>
+						<div class="row">
+							<div class="small-12 columns">
+								
+							</div>
+							<div class="small-12 columns">
+								<%= select_tag 'user[area_id]', options_from_collection_for_select([], 'id', 'name'), 'data-option-dependent' => true, 'data-option-observed' => 'user_city_id', 'data-option-url' => '/cities/:city_id:/areas.json', 'data-option-key-method' => :id, 'data-option-value-method' => :name, 'data-option-value-selected' =>  @details.try(:area_id).to_i %>
+							</div>
+						</div>
+					</div>
+				</div>
+				
+			</div>
+			<div class="large-6 columns">
+				<div class="row" style="margin-bottom:12px">
+					<div class="small-3 columns"><label for="center[brandphoto]" class="inline">Account Photo</label></div>
+					<div class="small-3 columns" style="text-align:center"><%= image_tag attachment_url(@details, :image), :class => 'th', :style => 'margin-bottom:8px;width:100px;height:100px' %>
+					<a href="" style="font-size:14px;text-decoration:underline">Remove</a>
+					</div>
+					<div class="small-6 columns"><%= f.attachment_field :image, :style => 'padding: 0.5625rem 0' %></div>
+				</div>
+				<div class="row">
+					<div class="small-12 columns">&nbsp;</div>
+				</div>
+				<div class="row">
+					<div class="small-12 columns">&nbsp;</div>
+				</div>
+				<div class="row">
+					<div class="small-4 columns"><label for='center[name]' class="inline">Phone</label></div>
+					<div class="small-8 columns"><%= f.text_field :phone, :class => '', :placeholder => "Phone" %></div>
+				</div>
+				<div class="row">
+					<div class="small-4 columns"><label for='center[name]' class="inline">Emergency contact</label></div>
+					<div class="small-8 columns"><%= f.text_field :emergency_name, :class => '', :placeholder => 'Name' %><%= f.text_field :emergency_phone, :class => '', :placeholder => 'Phone number' %></div>
+				</div>
+			</div>
+			<div class="row" style="clear:both;padding-top:20px;padding-right:23px">
+				<div class="large-12">
+				<div class="right">
+					<%= submit_tag act, :class => 'button small radius wymupdate' %>
+				</div>
+			</div>
+		</fieldset>
+		</div>
+	</div>
+<%end  %>
+
+<%=simple_form_for @customer, url: partners_classes_path do |f| %>
+	<div class="col-xs-12">
+		<div class="panel panel-default">
+			<div class="panel-body">
+				<%= f.association :centers, input_html: { class: 'form-control input-sm chzn-select' }, wrapper_html: { class: 'form-group' } %>
+				<%= f.input :name, input_html: { class: 'form-control input-sm' }, wrapper_html: { class: 'form-group' } %>
+				<%= f.input :date, as: :date, html5: true, input_html: { class: 'form-control input-sm' }, wrapper_html: { class: 'form-group' } %>
+				<%= f.input :start_time, as: 'time', html5: true, input_html: { class: 'form-control input-sm' }, wrapper_html: { class: 'form-group' } %>
+				<%= f.input :duration, input_html: { class: 'form-control input-sm', :placeholder => 'Eg:: ( 30 Minutes )'}, wrapper_html: { class: 'form-group' } %>
+				<%= f.input :seats, input_html: { class: 'form-control input-sm' }, wrapper_html: { class: 'form-group' } %>
+				<%= f.input :instructor_id, :collection => Instructor.all, :label_method => 'name', :value_method => 'id', input_html: { class: 'form-control input-sm chzn-select' }, wrapper_html: { class: 'form-group'} %>
+			</div>
+		</div>
+	</div>
+
+	<div class="col-xs-12">
+		<div class="panel panel-default">
+			<div class="panel-body">
+				<%= f.submit 'Submit', :class => 'btn btn-success pull-right' %>
+			</div>
+		</div>
+	</div>
+<%end%>
+
+<!-- <script>
+$(document).ready(function() {
+  $('select[data-option-dependent=true]').each(function (i) {
+	      var observer_dom_id = $(this).attr('id');
+	      var observed_dom_id = $(this).data('option-observed');
+	      var url_mask = $(this).data('option-url');
+	      var key_method = $(this).data('option-key-method');
+	      var value_method = $(this).data('option-value-method');
+	      var selected_tag = $(this).data('option-value-selected');
+	      var prompt = $(this).has('option[value=true]').size() ? $(this).find('option[value]') : $('<option value=\"\">').text('Select a area');
+	      var regexp = /:[0-9a-zA-Z_]+:/g;
+	      var observer = $('select#' + observer_dom_id);
+	      var observed = $('#' + observed_dom_id);
+
+	      if (!observer.val() && observed.size() > 1) {
+	          observer.attr('disabled', true);
+	      };
+	      observed.on('change', function () {
+	          observer.empty().append(prompt);
+	          if (observed.val()) {
+	              url = url_mask.replace(regexp, observed.val());
+	              $.getJSON(url, function (data) {
+	                  $.each(data, function (i, object) {
+	                      observer.append($('<option>').attr('value', object[key_method]).text(object[value_method]));
+	                      observer.attr('disabled', false);
+	                  });
+	              });
+	          }
+	      });
+	      observer.empty().append(prompt);
+	      if (observed.val()) {
+	          url = url_mask.replace(regexp, observed.val());
+	          $.getJSON(url, function (data) {
+	              $.each(data, function (i, object) {
+	                  observer.append($('<option>').attr('value', object[key_method]).text(object[value_method]));
+	                  if(object[key_method] == selected_tag){
+	                  	observer.append($('<option>').attr('selected', 'selected').attr('value', object[key_method]).text(object[value_method]));
+	                  }
+	                  observer.attr('disabled', false);
+	              });
+	          });
+	      }
+	  });
+});
+</script> -->

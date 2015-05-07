@@ -1,0 +1,51 @@
+<div class="row">
+	<div class="col-xs-12">
+		<h3 class="text-center">EDIT PROFILE</h3>
+	</div>
+</div>
+<div class="row">
+	<div class="col-xs-12 col-sm-8 col-sm-offset-2">
+		<%=simple_form_for @c, url: customers_profile_path('v1') do |f| %>
+			<div class="col-xs-12">
+				<div class="panel panel-default">
+					<div class="panel-body">
+						<%= f.input :full_name, input_html: { class: 'form-control input-sm' }, wrapper_html: { class: 'form-group' } %>
+						<%= f.input :centertype_id, collection: Centertype.find([3,4]), label_method: 'name', value_method: 'id', input_html: { class: 'form-control input-sm chzn-select' }, wrapper_html: { class: 'form-group' } %>
+						<%= f.input :address1, input_html: { class: 'form-control input-sm', :placeholder => 'Eg:: ( 30 Minutes )'}, wrapper_html: { class: 'form-group' } %>
+						<%= f.input :phone, input_html: { class: 'form-control input-sm' }, wrapper_html: { class: 'form-group' } %>
+						<%= f.input :emergency_name, input_html: { class: 'form-control input-sm' }, wrapper_html: { class: 'form-group' } %>
+					</div>
+				</div>
+			</div>
+			
+			<div class="col-xs-12">
+				<div class="panel panel-default">
+					<div class="panel-body">
+						<div class="form-group">
+							<div class="col-xs-12">
+								<div class="upload-file">
+									<%= f.attachment_field :image, class: 'upload-demo', id: 'upload-demo' %>
+									<label data-title="Select file" for="upload-demo">
+										<span data-title="No file selected..."></span>
+									</label>
+								</div>
+							</div><!-- /.col -->
+							<div class="col-xs-12">
+								<%= image_tag attachment_url(@c, :image) %>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+
+			<div class="col-xs-12">
+				<div class="panel panel-default">
+					<div class="panel-body">
+						<%= f.submit 'Submit', :class => 'btn btn-success pull-right' %>
+					</div>
+				</div>
+			</div>
+		<%end%>
+	</div>
+</div>

@@ -2,7 +2,7 @@ class AckMailer < ActionMailer::Base
   default from: "FitnessPapa <noreply@fitnesspapa.com>"
 
   def customer(token)
-  	@booking = Booking.find_by_token(token)
+  	@booking = Booking.find_by_token(token) || Booking.find_by_number(token)
   	@user = @booking.customer
     @service = @booking.service
     @details = @booking.details

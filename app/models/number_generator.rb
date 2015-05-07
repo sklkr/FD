@@ -6,7 +6,7 @@ module NumberGenerator
   NUMBER_PREFIX  = 'N'
 
   included do
-    before_validation :generate_number
+    after_initialize :generate_number
     validates :number, uniqueness: true
   end
 

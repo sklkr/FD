@@ -52,11 +52,29 @@
 		<li class="main-nav"><a class="cd-signin" href="#0">Sign in</a></li>
 		<li class="main-nav"><a class="cd-signup" href="#0">Sign up</a></li>
 	<%end%>
-	 <% if is_customer? %>
-	 	<li><a href="<%= customers_details_path %>" style='color:white'>My Dashboard</a></li>
-	 	<li>
-     <%= link_to "Logout",session_path('1'), method: :delete, data: {confirm: "Log out of FitnessPapa?"}, :style => 'color:white' %>
-    </li>
+	 <% if signed_in? %>
+	 	<li class="profile dropdown">
+        <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+          <strong><%= current_user.first_name %></strong>
+          <span><i class="fa fa-chevron-down"></i></span>
+        </a>
+        <ul class="dropdown-menu">
+          <li>
+            <a class="clearfix" href="#">
+              <img src="/assets/avatar.png" alt="User Avatar">
+              <div class="detail">
+                <strong><%= current_user.first_name %></strong>
+                <p class="grey"><%= current_user.customer.email %></p> 
+              </div>
+            </a>
+          </li>
+          <li><a tabindex="-1" href="<%=  %>" class="main-link"><i class="fa fa-edit fa-lg"></i> Edit profile</a></li>
+          <li><a tabindex="-1" href="<%=  %>" class="main-link"><i class="fa fa-picture-o fa-lg"></i> Classes</a></li>
+          <li><a tabindex="-1" href="#" class="theme-setting"><i class="fa fa-cog fa-lg"></i> Settings</a></li>
+          <li class="divider"></li>
+          <li><%= link_to "Logout",session_path('1'), method: :delete, data: {confirm: "Log out of FitnessPapa?"} %></li>
+        </ul>
+      </li>
   <%end%>
 </ul>
 	

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150506054729) do
+ActiveRecord::Schema.define(version: 20150507085704) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -383,6 +383,7 @@ ActiveRecord::Schema.define(version: 20150506054729) do
     t.datetime "updated_at"
     t.integer  "service_id"
     t.integer  "center_id"
+    t.string   "order_type",                         default: "Service"
   end
 
   create_table "orders", force: true do |t|
@@ -391,14 +392,25 @@ ActiveRecord::Schema.define(version: 20150506054729) do
     t.string   "phone_number"
     t.string   "status"
     t.string   "ip_address"
-    t.decimal  "amount_paid",    precision: 8, scale: 2
+    t.decimal  "amount_paid",      precision: 8, scale: 2
     t.string   "invoice_number"
     t.integer  "service_id"
     t.integer  "center_id"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "number"
+    t.string   "bank_ref_num"
+    t.string   "bankcode"
+    t.string   "name_on_card"
+    t.string   "cardnum"
+    t.string   "amount_split"
+    t.string   "payuMoneyId"
+    t.string   "discount"
+    t.string   "net_amount_debit"
+    t.integer  "customer_id"
   end
+
+  add_index "orders", ["customer_id"], name: "index_orders_on_customer_id", using: :btree
 
   create_table "overall_averages", force: true do |t|
     t.integer  "rateable_id"
@@ -409,6 +421,16 @@ ActiveRecord::Schema.define(version: 20150506054729) do
   end
 
   add_index "overall_averages", ["rateable_id", "rateable_type"], name: "index_overall_averages_on_rateable_id_and_rateable_type", using: :btree
+
+  create_table "packages", force: true do |t|
+    t.integer  "customer_id"
+    t.string   "status"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "token"
+  end
+
+  add_index "packages", ["customer_id"], name: "index_packages_on_customer_id", using: :btree
 
   create_table "partners", force: true do |t|
     t.string   "email"

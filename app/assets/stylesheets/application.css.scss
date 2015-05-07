@@ -12,6 +12,7 @@
  *
  *= require plugins/normalize
  *= require plugins/bootstrap
+ *= require_tree ./backend
  *= require plugins/animate 
  *= require plugins/bxslider
  *= require plugins/jquery.ui

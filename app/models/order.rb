@@ -20,7 +20,8 @@ class Order < ActiveRecord::Base
    has_many :authorized_invoices,  -> { where(state: 'authorized') }, class_name: 'Invoice'
    has_many :paid_invoices,  -> { where(state: 'paid') }, class_name: 'Invoice'
    has_many :canceled_invoices, ->  { where(state: 'canceled') }, class_name: 'Invoice'
-   
+   belongs_to :customer
+
    belongs_to :coupon
         
 
@@ -29,11 +30,7 @@ class Order < ActiveRecord::Base
    accepts_nested_attributes_for :order_items
 
 
-   # Order Number
-   def number
-     id ? id.to_s.rjust(6, '0') : nil
-   end
-
+   
    def status
      return 'not processed' if invoices.empty?
      invoices.last.state

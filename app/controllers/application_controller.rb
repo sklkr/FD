@@ -2,7 +2,7 @@ class ApplicationController < ActionController::Base
   # Prevent CSRF attacks by raising an exception.
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
-  helper_method :warden, :signed_in?, :current_user, :is_partner?, :is_customer?, :center
+  helper_method :warden, :signed_in?, :current_user, :is_partner?, :is_customer?, :center, :current_order
   before_filter { @customer ||= Customer.new; @customer.build_user }
 
    def areas
@@ -17,11 +17,7 @@ class ApplicationController < ActionController::Base
    end
 
    def current_user
-     warden.user || warden.user(:partner)
-   end
-
-   def is_customer?
-    warden.authenticated?
+     warden.user
    end
 
    def warden
@@ -42,7 +38,7 @@ class ApplicationController < ActionController::Base
    end
 
 
-   def customer_authenticated?
+   def authenticated?
     redirect_to sessions_customer_path unless warden.authenticated?
    end
 
@@ -66,5 +62,9 @@ class ApplicationController < ActionController::Base
    # for omniauth
    def auth_hash
      request.env['omniauth.auth']
+   end
+
+   def current_order
+    Order.find(session[:order_id])  unless session[:order_id].nil?
    end
 end

@@ -15,6 +15,7 @@
 //= require jquery_ujs
 //= require jquery/jquery.ui
 //= require plugins/bootstrap
+//= require_tree ./backend
 //= require plugins/owl.carousel
 //= require plugins/google.places
 //= require plugins/dependsOn

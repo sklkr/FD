@@ -51,6 +51,8 @@ resources :partners, only: [:index, :new, :create]
   mount Lockup::Engine, at: '/lockup'
   
   get 'mypackage' => 'mypackage#index'
+  post 'mypackage/success'
+  post 'mypackage/failure'
 
   get 'checkout' => 'checkout#step1', :as => 'checkout'
   post 'checkout' => 'checkout#create'
@@ -85,6 +87,7 @@ resources :partners, only: [:index, :new, :create]
 
   namespace :customers do 
     resources :details, :bookings, :mypass
+    resources :profiles, only: [:edit, :update]
   end
   
   resources :sessions, :only => [:new, :create, :destroy]

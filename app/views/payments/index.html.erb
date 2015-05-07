@@ -1,4 +1,4 @@
-<%= form_tag 'https://secure.payu.in/_payment', :id => 'myform', :style => 'visibility:hidden' do  %>
+<%= form_tag 'https://test.payu.in/_payment', :id => 'myform', :style => 'visibility:hidden' do  %>
   <%= text_field_tag :udf1, params[:authenticity_token] %>
   <div class="field">
     <%= label_tag :key %><br>
@@ -48,3 +48,4 @@
     <%= submit_tag %>
   </div>
 <% end %>
+

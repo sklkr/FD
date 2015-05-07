@@ -5,7 +5,7 @@ class Customer < ActiveRecord::Base
   friendly_id :email
   has_many :bookings, dependent: :destroy
   has_one :identity, dependent: :destroy
-
+  has_many :orders
 
   accepts_nested_attributes_for :user, :identity
   # Validations
