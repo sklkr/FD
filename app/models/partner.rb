@@ -8,6 +8,8 @@ class Partner < ActiveRecord::Base
   has_many :populars, :dependent => :destroy
   has_many :instructors
   has_many :fpclasses, :dependent => :destroy
+  has_one :info, :dependent => :destroy
+  
   # Set partner type to center if we dont have partner type
   after_initialize do 
     if self.partner_type == '2'

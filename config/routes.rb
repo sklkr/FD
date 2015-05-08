@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+ 
+ constraints :subdomain => 'blog' do
+  mount Monologue::Engine, at: '/' 
+ end
 
 
   constraints :subdomain => "partners" do
@@ -32,6 +36,7 @@ Rails.application.routes.draw do
           resources :services, :galleries
         end
         resources :orders, :only => [:index, :show]
+        resources :settings
         
         post 'login' => 'sessions#create'
         # match 'login/reset' => 'sessions#reset', :via => [:get, :post]
@@ -86,9 +91,11 @@ resources :partners, only: [:index, :new, :create]
   end
 
   namespace :customers do 
-    resources :details, :bookings, :mypass
+    resources :details, :bookings, :mypass, :classes
     resources :profiles, only: [:edit, :update]
+
   end
+  resources :reserves
   
   resources :sessions, :only => [:new, :create, :destroy]
   # Oauth Routes

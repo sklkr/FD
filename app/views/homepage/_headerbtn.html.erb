@@ -53,7 +53,7 @@
 		<li class="main-nav"><a class="cd-signup" href="#0">Sign up</a></li>
 	<%end%>
 	 <% if signed_in? %>
-	 	<li class="profile dropdown">
+    <li class="profile dropdown">
         <a class="dropdown-toggle" data-toggle="dropdown" href="#">
           <strong><%= current_user.first_name %></strong>
           <span><i class="fa fa-chevron-down"></i></span>
@@ -68,13 +68,16 @@
               </div>
             </a>
           </li>
-          <li><a tabindex="-1" href="<%=  %>" class="main-link"><i class="fa fa-edit fa-lg"></i> Edit profile</a></li>
-          <li><a tabindex="-1" href="<%=  %>" class="main-link"><i class="fa fa-picture-o fa-lg"></i> Classes</a></li>
-          <li><a tabindex="-1" href="#" class="theme-setting"><i class="fa fa-cog fa-lg"></i> Settings</a></li>
+          <li><a tabindex="-1" href="<%= customers_mypass_index_path %>" class="main-link"><i class="fa fa-ticket"></i> My Pass</a></li>
+          <li><a tabindex="-1" href="<%= customers_classes_path %>" class="main-link"><i class="flaticon-identity6"></i> Classes</a></li>
+          <li><a tabindex="-1" href="<%= edit_customers_profile_path('v1') %>" class="main-link"><i class="fa fa-cog fa-lg"></i> Settings</a></li>
+          
           <li class="divider"></li>
           <li><%= link_to "Logout",session_path('1'), method: :delete, data: {confirm: "Log out of FitnessPapa?"} %></li>
         </ul>
       </li>
+	 	<li><a href=""><i class='fa fa-sign-out'>&nbsp;</i>Logout</a></li>
+
   <%end%>
 </ul>
 	

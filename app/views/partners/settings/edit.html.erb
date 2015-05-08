@@ -1,0 +1,55 @@
+    <div class="main-header clearfix">
+    <div class="page-title">
+        <h3 class="no-margin">Settings</h3>
+        <span></span>
+    </div><!-- /page-title -->
+    
+    <ul class="page-stats">
+        
+    </ul><!-- /page-stats -->
+</div>
+
+
+<div class="padding-md" style="background:rgb(238, 247, 255)">
+    <div class="row">
+        <div class="col-sm-12 col-md-10 col-md-offset-1">
+            <div class="row">
+                <%= simple_form_for @info, url: partners_setting_path do |f| %>
+                    <div class="col-xs-12">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">Bank Info</div>
+                            <div class="panel-body">
+        <%= f.input :ac_no, input_html: { class: 'form-control input-sm' }, wrapper_html: { class: 'form-group' } %>
+        <%= f.input :bank_name, input_html: { class: 'form-control input-sm' }, wrapper_html: { class: 'form-group' } %>
+        <%= f.input :ifsc, input_html: { class: 'form-control input-sm' }, wrapper_html: { class: 'form-group' } %>
+        <%= f.input :bank_address, input_html: { class: 'form-control input-sm' }, wrapper_html: { class: 'form-group' } %>
+        <%= f.input :bank_location, input_html: { class: 'form-control input-sm' }, wrapper_html: { class: 'form-group' } %>
+                            </div>
+                        </div>
+                        <div class="panel panel-default">
+                            <div class="panel-heading">Business Info</div>
+                            <div class="panel-body">
+        <%= f.input :pan, input_html: { class: 'form-control input-sm' }, wrapper_html: { class: 'form-group' } %>
+        <%= f.input :service_tax, input_html: { class: 'form-control input-sm' }, wrapper_html: { class: 'form-group' } %>
+        <div class="form-group">
+            <%= f.attachment_field :panproof, input_html: { class: 'form-control input-sm' }, wrapper_html: { class: 'form-group' } %>
+        </div>
+        <div class="form-group">
+            <%= f.attachment_field :idproof, input_html: { class: 'form-control input-sm' }, wrapper_html: { class: 'form-group' } %>
+        </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-xs-12">
+                        <div class="panel panel-default">
+                            <div class="panel-body">
+                                <%= f.submit 'Submit', :class => 'btn btn-success pull-right' %>
+                            </div>
+                        </div>
+                    </div>
+                <%end%>
+            </div>
+        </div>
+    </div>
+</div>

@@ -2,7 +2,8 @@ module Customers
 class MypassController < ApplicationController 
 layout 'customerdashboard'
   def index
-  	@mypass = Booking.where('customer_id=?', current_user.customer.id).where('service_type=?', 2).includes(:service)
+  	mypasses = []
+  	@mypasses = current_user.customer.orders.includes(:order_items).each {|order| mypasses << order.order_items}.flatten
   end
 end
 end

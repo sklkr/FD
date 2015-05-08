@@ -1,33 +1,31 @@
 <div class="row">
 	<div class="col-xs-12">
-		<h3>My Passes</h3>
+		<h3>Classes</h3>
 	</div>
 </div>
 
 <div class="row">
 	<div class="col-xs-9">
 		<div class="panel panel-default">
-			<div class="panel-heading">Active Passes</div>
+			<div class="panel-heading">Reserved Classes</div>
 			<table class="table table-bordered table-condensed table-hover table-striped">
 				<thead>
 					<tr>
 						<th>ID</th>
 						<th>Name</th>
-						<th>Price</th>
+						<th>Center name</th>
 						<th>Date</th>
-						<th>Expired on</th>
 						<th>Status</th>
 					</tr>
 				</thead>
 				<tbody>
-					<%@mypasses.each do |pass| %>
+					<%@bookings.each do |pass| %>
 						<tr>
 							<td></td>
-							<td><%= pass.try(:service).try(:name) %></td>
-							<td><%= pass.try(:unit_price).try(:to_f) %></td>
-							<td><%= local_time(pass.created_at) %></td>
-							<td><%= pass.try(:expired_on) %></td>
-							<td><span class="label label-info">Used</span></td>
+							<td><%= pass.fpclass.name.capitalize %></td>
+							<td><%= pass.fpclass.try(:centers).try(:first).try(:name) %></td>
+							<td><%= local_time(pass.fpclass.date) %></td>
+							<td><span class="label label-info"><%= pass.status %></span></td>
 						</tr>
 					<%end%>
 				</tbody>
@@ -35,12 +33,7 @@
 		</div>
 
 		<div class="panel panel-default">
-			<div class="panel-heading">Used Passes</div>
-			<div class="panel-body">
-				<span>Total Passes</span><span class="badge m-left-xs"><%= @mypasses.count %></span>
-				<span>Used</span><span class="badge badge-success m-left-xs">0</span>
-				<span>Expired</span><span class="badge badge-warning m-left-xs">0</span>
-			</div>
+			<div class="panel-heading">Used Classes</div>
 			<table class="table table-bordered table-condensed table-hover table-striped">
 				<thead>
 					<tr>
@@ -53,7 +46,7 @@
 					</tr>
 				</thead>
 				<tbody>
-					<tr>No Expired Passes</tr>
+					<tr>No Expired Classes</tr>
 				</tbody>
 			</table>
 		</div>	

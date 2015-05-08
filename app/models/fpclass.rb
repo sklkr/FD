@@ -4,6 +4,17 @@ class Fpclass < ActiveRecord::Base
   belongs_to :instructor
   has_and_belongs_to_many :centers
   belongs_to :partner
+  has_many :clasbkings
+
+  def total_clasbkings
+  	clasbkings.count
+  end
+
+  def remaining_seats
+  	return 0 if self.seats.nil?
+  	self.seats - total_clasbkings 
+  end
+
 
  private
  	

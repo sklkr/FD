@@ -1,6 +1,6 @@
-<div class="panel class-item">
+<%= div_for fpclass, :class => 'panel class-item' do %>
 	<div class="panel-body">
-			<div class="row">
+		<div class="row">
 			<div class="col-xs-12 col-sm-2 text-center">
 				<span style='font-size:26px;font-weight:300'><%= fpclass.start_time %></span><br>
 				<span><%= fpclass.duration %> <span>Minutes</span></span>
@@ -8,7 +8,6 @@
 			<div class="col-xs-12 col-sm-5">
 			  <div><h2 class="osLight" style="margin-top:0px;padding-bottom:12px"><%= fpclass.name.capitalize %></h2></div>	
 			  <div><span class='text text-warning'> <i class='fa fa-place'></i> <%= fpclass.try(:centers).try(:first).try(:place_name) %></span></div>
-			  
 			</div>
 			<div class="col-xs-6 col-sm-3">
 				<div class="row">
@@ -22,9 +21,9 @@
 				</div>
 			</div>
 			<div class="col-xs-12 col-sm-2 text-right">
-				<%= link_to 'Reserve', '', :class => 'btn btn-primary' %><br>
-				<%= pluralize(fpclass.seats, 'seats') %> <span>left</span>
+				<%= link_to 'Reserve', reserves_path(:class_id => fpclass.id), :class => 'btn btn-primary reserve-btn', method: :post, remote: :true %><br>
+				<span class='fp-count'><%= pluralize(fpclass.remaining_seats, 'seats') %></span> <span>left</span>
 			</div>
 		</div>
 	</div>
-</div>
+<% end %>

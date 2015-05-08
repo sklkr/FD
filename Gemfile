@@ -99,3 +99,6 @@ gem 'local_time'
 # gem 'ice_cube'
 # gem 'recurring_select'
 gem "simple_calendar", "~> 1.1.0"
+
+
+gem 'monologue'

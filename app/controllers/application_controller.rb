@@ -16,6 +16,10 @@ class ApplicationController < ActionController::Base
      !current_user.nil?
    end
 
+   def passport
+    current_user.customer.passport
+   end
+
    def current_user
      warden.user
    end

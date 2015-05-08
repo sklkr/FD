@@ -6,6 +6,8 @@ class Customer < ActiveRecord::Base
   has_many :bookings, dependent: :destroy
   has_one :identity, dependent: :destroy
   has_many :orders
+  has_one :passport
+  has_many :clasbkings
 
   accepts_nested_attributes_for :user, :identity
   # Validations

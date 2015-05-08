@@ -18,10 +18,11 @@ class MypackageController < ApplicationController
     @order = current_order || Order.find_by_number(params[:txnid])
     @order.update_attributes(params.permit(:status, :bank_ref_num, :bankcode, :name_on_card, :cardnum, :amount_split, :discount, :net_amount_debit))
     
-      #sms 
+    Passport.create(:order_item => @order.order_items.first, :customer => current_user.customer, tickets: 30, active: 0)
+
+    #sms 
     @c = @order.customer
     @customer_data = @c.user
-    
     SmsService.new(@customer_data.phone, "Hi, you\'ve bought a FitnessPapa Passport from Fitnesspapa worth Rs.#{@order.total_amount}. Your order ID is #{@order.number}.").send_sms
   end
 

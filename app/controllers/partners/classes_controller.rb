@@ -16,6 +16,8 @@ layout 'partners'
   end
 
   def show
+    @fpclass = Fpclass.find(params[:id])
+    @bookings = @fpclass.clasbkings.includes(:customer)
   end
 
   def edit

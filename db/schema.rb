@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150507085704) do
+ActiveRecord::Schema.define(version: 20150508130966) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -221,6 +221,19 @@ ActiveRecord::Schema.define(version: 20150507085704) do
     t.datetime "updated_at"
   end
 
+  create_table "clasbkings", force: true do |t|
+    t.integer  "customer_id"
+    t.integer  "fpclass_id"
+    t.integer  "passport_id"
+    t.string   "status"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "clasbkings", ["customer_id"], name: "index_clasbkings_on_customer_id", using: :btree
+  add_index "clasbkings", ["fpclass_id"], name: "index_clasbkings_on_fpclass_id", using: :btree
+  add_index "clasbkings", ["passport_id"], name: "index_clasbkings_on_passport_id", using: :btree
+
   create_table "commissions", force: true do |t|
     t.float    "val"
     t.integer  "center_id"
@@ -333,6 +346,24 @@ ActiveRecord::Schema.define(version: 20150507085704) do
 
   add_index "identities", ["customer_id"], name: "index_identities_on_customer_id", using: :btree
 
+  create_table "infos", force: true do |t|
+    t.string   "ac_no"
+    t.string   "bank_name"
+    t.string   "ifsc"
+    t.string   "bank_address"
+    t.string   "bank_location"
+    t.string   "pan"
+    t.string   "service_tax"
+    t.string   "panproof"
+    t.string   "idproof"
+    t.string   "taxproof"
+    t.integer  "partner_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "infos", ["partner_id"], name: "index_infos_on_partner_id", using: :btree
+
   create_table "instructors", force: true do |t|
     t.string   "photo_id"
     t.integer  "center_id"
@@ -361,6 +392,41 @@ ActiveRecord::Schema.define(version: 20150507085704) do
   end
 
   add_index "invoices", ["order_id"], name: "index_invoices_on_order_id", using: :btree
+
+  create_table "monologue_posts", force: true do |t|
+    t.boolean  "published"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "user_id"
+    t.string   "title"
+    t.text     "content"
+    t.string   "url"
+    t.datetime "published_at"
+  end
+
+  add_index "monologue_posts", ["url"], name: "index_monologue_posts_on_url", unique: true, using: :btree
+
+  create_table "monologue_taggings", force: true do |t|
+    t.integer "post_id"
+    t.integer "tag_id"
+  end
+
+  add_index "monologue_taggings", ["post_id"], name: "index_monologue_taggings_on_post_id", using: :btree
+  add_index "monologue_taggings", ["tag_id"], name: "index_monologue_taggings_on_tag_id", using: :btree
+
+  create_table "monologue_tags", force: true do |t|
+    t.string "name"
+  end
+
+  add_index "monologue_tags", ["name"], name: "index_monologue_tags_on_name", using: :btree
+
+  create_table "monologue_users", force: true do |t|
+    t.string   "name"
+    t.string   "email"
+    t.string   "password_digest"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "nifty_attachments", force: true do |t|
     t.integer  "parent_id"
@@ -441,6 +507,20 @@ ActiveRecord::Schema.define(version: 20150507085704) do
     t.integer  "user_id"
     t.string   "partner_type"
   end
+
+  create_table "passports", force: true do |t|
+    t.date     "start_date"
+    t.date     "end_date"
+    t.integer  "order_item_id"
+    t.integer  "customer_id"
+    t.integer  "tickets"
+    t.integer  "active"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "passports", ["customer_id"], name: "index_passports_on_customer_id", using: :btree
+  add_index "passports", ["order_item_id"], name: "index_passports_on_order_item_id", using: :btree
 
   create_table "percents", force: true do |t|
     t.float    "val"
@@ -584,6 +664,7 @@ ActiveRecord::Schema.define(version: 20150507085704) do
     t.datetime "password_reset_sent_at"
     t.integer  "city_id"
     t.integer  "area_id"
+    t.string   "location"
   end
 
   add_index "users", ["member_id"], name: "index_users_on_member_id", using: :btree

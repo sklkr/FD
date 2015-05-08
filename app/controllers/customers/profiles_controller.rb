@@ -8,18 +8,18 @@ before_filter { @c = current_user }
   end
 
   def update
-    binding.pry
-    if @customer.update_attributes(permit_params)
-      flash[:notice] = 'Updated'
-      redirect_to customers_details_path
+    if @c.update_attributes(permit_params)
+      flash[:notice] = 'Details Updated'
+      redirect_to edit_customers_profile_path('v1')
     else
-      render :text => "Something went wrong"
+      flash[:notice] = "Something went wrong"
+      render 'edit'
     end
   end
   
   private
   	def permit_params
-  		params.require(:user).permit("first_name","centertype_id","address1","address2","area_id","city_id","image","phone","emergency_phone", "emergency_name")
+      params.require(:user).permit(:phone, :location, :address1, :address2, :emergency_name, :emergency_phone, :image)
   	end
 end
 end

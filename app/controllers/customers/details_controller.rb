@@ -10,7 +10,7 @@ before_filter { @details = current_user }
   end
 
   def update
-
+    
   end
   
   def create

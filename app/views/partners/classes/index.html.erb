@@ -25,7 +25,7 @@
             <tbody>
                 <% @fpclasses.each do |c| %>
                     <tr>
-                        <td><a href=""><%= c.name.capitalize %></a></td>
+                        <td><a href="<%= partners_class_path(c.id) %>"><%= c.name.capitalize %></a></td>
                         <td><%= local_time(c.date) unless c.date.blank? %></td>
                         <td><%= c.start_time %></td>
                         <td><%= c.duration %></td>
