@@ -1,6 +1,8 @@
 module Partners
   class SessionsController < BaseController
-  
+    skip_before_filter :authenticate!  
+    before_filter :authenticated, only: [:new]
+
     def new
       @partner ||= Partner.new
       @partner.build_user
@@ -16,8 +18,7 @@ module Partners
     #end
 
     def destroy
-      binding.pry
-      warden.logout
+      warden.logout(:partner)
       redirect_to partners_path
     end
 

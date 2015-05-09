@@ -1,0 +1,133 @@
+<%= render :partial => 'admins/partners/nav' %>
+
+<%= form_tag admins_partners_path do %>
+
+<div class="container">
+    <div class="row">
+        <div class="panel panel-primary filterable">
+            <div class="panel-heading">
+                <h3 class="panel-title">Partners</h3>
+            </div>
+            <table class="table">
+                <thead>
+                    <tr class="filters">
+                        <th></th>
+                        <th><input type="text" class="form-control" placeholder="Brand Name"></th>
+                        <th><input type="text" class="form-control" placeholder="Center Name"></th>
+                        <th><input type="text" class="form-control" placeholder="Area Name"></th>
+                        <th><input type="text" class="form-control" placeholder="City"></th>
+                    </tr>
+                </thead>
+            </table>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th></th>
+                        <th>Full Name</th>
+                        <th>Email</th>
+                        <th>Active</th>
+                        <th>Mobile number</th>
+                        <th>Location</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <%= render @partners %>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-2">
+            <input type="submit" name="fp" value="FP Verify" class="btn btn-primary">
+        </div>
+        <div class="col-xs-2">
+            
+        </div>
+        <div class="col-xs-7 pull-right">
+            <input type="submit" name="approve" value="Approve" class="btn btn-primary">
+            <input type="submit" name="history" value="Order History" class="btn btn-primary">
+            <a href="" class="cd-popup-trigger btn btn-primary">Commission</a>
+            <a href="" class="two-popup-trigger btn btn-primary">Message</a>
+            <a href="" class="three-popup-trigger btn btn-primary">SMS</a>
+        </div>
+    </div>
+
+    <div class="cd-popup" role="alert">
+        <div class="cd-popup-container">
+            <div class="container">
+                <div class="row">
+                    <div class="small-12 column" style="margin-top:35px">
+                    <fieldset>
+                        <legend>Commission</legend>
+                        <div style="margin-bottom:10px"><span>% commission agreed between selected centers & FitnessPapa </span></div>
+                        <div class="col-xs-6"><input type="text" name="commission_percent" class="form-control" placeholder='Between 0 to 100'></div>
+                        <div class="col-xs-6"> <input type="submit" class="btn btn-primary small form-control" name="commission"></div>
+                    </fieldset>
+                    </div>
+                </div>
+                <div class="margin-35"></div>
+            </div>
+            <!-- <ul class="cd-buttons">
+                <li><a href="#0">submit</a></li>
+                <li><a href="#0">No</a></li>
+            </ul> -->
+            <a href="#0" class="cd-popup-close img-replace">Close</a>
+        </div> <!-- cd-popup-container -->
+    </div>
+    <div class="two-popup" role="alert">
+        <div class="cd-popup-container">
+            <div class="container">
+                <div class="row">
+                    <div class="small-12 column" style="margin-top:35px">
+                        <fieldset>
+                        <legend>Message</legend>
+                            <span class='help-block'>Email will send automatically to selected centers registered email id's</span>
+                            <div class="col-xs-12" style="margin-bottom:10px">
+                                <textarea name="email_message" class="form-control" placeholder='Share your message here'></textarea>
+                            </div>
+                            <div class="col-xs-12">
+                                <input type="submit" name="send_email" class="btn btn-primary small form-control">
+                            </div>
+                        </fieldset>
+                    </div>
+                </div>
+                <div class="margin-35"></div>
+            </div>
+            <!-- <ul class="cd-buttons">
+                <li><a href="#0">submit</a></li>
+                <li><a href="#0">No</a></li>
+            </ul> -->
+            <a href="#0" class="cd-popup-close img-replace">Close</a>
+        </div> <!-- cd-popup-container -->
+    </div>
+
+    <div class="three-popup" role="alert">
+        <div class="cd-popup-container">
+            <div class="container">
+                <div class="row">
+                    <div class="small-12 column" style="margin-top:35px">
+                        <fieldset>
+                            <legend>SMS</legend>
+                            <div style="margin-bottom:10px">Sms will send automatically to selected centers partners mobile numbers</div>
+                            <div class="col-xs-12" style="margin-bottom:10px">
+                                <textarea name="sms_message" class="form-control" placeholder='Share your message here'></textarea>
+                            </div>
+                            <div class="col-xs-12">
+                                <input type="submit" name="send_sms" class="btn btn-primary small form-control">
+                            </div>
+                        </fieldset>    
+                    </div>
+                </div>
+                <div class="margin-35"></div>
+            </div>
+            <!-- <ul class="cd-buttons">
+                <li><a href="#0">submit</a></li>
+                <li><a href="#0">No</a></li>
+            </ul> -->
+            <a href="#0" class="cd-popup-close img-replace">Close</a>
+        </div> <!-- cd-popup-container -->
+    </div>
+
+</div>
+<%end%>
+

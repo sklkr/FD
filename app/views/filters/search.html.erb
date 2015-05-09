@@ -15,7 +15,7 @@
     <div class="cd-main-content"> <!-- Filters  -->
         <div class="cd-gallery">
             <div class="container">
-              <fieldset class='search-container'>
+              <fieldset class='search-container' id='center-search-container'>
                 <legend>SEARCH FOR SERVICES</legend>
                 <%= search_form_for @c, :url => search_path, :remote => true do |f| %>
                   <div class="row">
@@ -47,6 +47,12 @@
                       </div>
                   </div>
                 <% end %>
+              </fieldset>
+              <fieldset class='search-container' id='classes-search-container' style='display:none'>
+                <legend>SEARCH FOR CLASSES</legend>
+                <div id="classes-search">
+                  
+                </div>
               </fieldset> 
             </div>
             <div class="container" id="centers-section">

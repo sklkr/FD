@@ -1,6 +1,9 @@
 class PasswordResetsController < ApplicationController
 layout 'homepage'
+before_action :authenticated?, only: [:change_password, :update_password]
+
   def new
+
   end
 
   def create
@@ -10,7 +13,8 @@ layout 'homepage'
       role = Customer.find_by_email(params[:email])
     end
     role.user.send_password_reset(role) if role
-    redirect_to root_url, :notice => "Email sent with password reset instructions."
+    flash[:notice] = "Reset instructions sent to mail if email exists with FitnessPapa..!"
+    render :new
   end
 
   def edit
@@ -36,12 +40,14 @@ layout 'homepage'
   end
 
   def update_password
-    if current_user.password == params['current_password'] && params['password'] == params['password_confirmation']
-      current_user.password= params['password']
-      redirect_to customers_details_path if current_user.save
+    if current_user.crypted_password && current_user.password == params['user']['current_password'] && params['user']['password'] == params['user']['password_confirmation']
+      current_user.password= params['user']['password']
+      flash[:notice] = "Password changed successfully"
+      redirect_to root_url if current_user.save
     else
-      flash["notice"] = "Please check your password provided"
-      redirect_to customer_change_password_path
+      flash["alert"] = "Please check your credentails once"
+      @user = current_user
+      render 'change_password'
     end
   end
 end

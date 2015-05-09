@@ -3,4 +3,6 @@ $("#fp-link").removeClass('active');
 $('#centers-section').hide();
 $('#classes-section').show();
 $('#classes-content').html("<%= j render partial: 'fpclass', collection: @fpclasses %>");
-$("#center_search").html("<%= j render partial: 'search' %>");
+$("#classes-search").html("<%= j render partial: 'search' %>");
+$('#classes-search-container').show();
+$('#center-search-container').hide();

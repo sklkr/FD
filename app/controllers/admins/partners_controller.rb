@@ -3,6 +3,19 @@ class PartnersController < ApplicationController
 	layout 'admin'
 	before_filter :admin_authenticated?
 
+	def list
+		@partners = Partner.all.includes(:user)
+	end
+
+	def setpassword
+		@partner = Partner.find(params[:id])
+		@partner.user.update(:password => "fpadjko7542")
+		respond_to do |format|
+			format.js
+		end
+	end
+
+
 	def index
 		@centers = Center.unscoped.all.includes(:centerinfo, :city, :commission)
 	end

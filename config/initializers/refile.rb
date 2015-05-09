@@ -1,6 +1,6 @@
 require "refile/backend/s3"
 
-# Refile.host = "//d2lbj1zsjfvmxp.cloudfront.net"
+# Refile.host = "//d2yvb3j5b4tgn0.cloudfront.net"
 
 # aws = {
  # access_key_id: "AKIAJLFLP6QXQ5WP5CZQ",

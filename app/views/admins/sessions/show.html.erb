@@ -1,0 +1,34 @@
+<div class="container">
+
+
+	<div class="container-main">
+		<div class="sqr-box-title">
+		<h2>Admin Sign-In</h2>
+		</div>
+		<div class="sqr-boxs-cat">
+			<%= form_tag admins_sessions_path, :class => 'sign' do %>
+			  <div class="form-sec form-sign" style="width: 258px;margin-left: 49px;">
+				<div class="" style="margin-top:20px">
+				 <input id="email" type="email" value="" name="user[email]" placeholder = 'Email' style="padding:12px;margin-bottom:18px;width:87%">
+				</div>
+				
+				<div class="">
+				 <input id="password" type="password" name="user[password]" value="" style="padding:12px;width:87%" placeholder = 'Password'>
+				</div>
+				
+				<div class="form-terms" style="text-align:center">
+					&nbsp;
+				</div>
+			    
+				<div class="form-submit">
+				  <input type="submit" value="SIGN-IN" style="">
+				</div>
+			  
+			  </div>
+			  
+			<%end %>
+		</div>
+		
+	</div>
+	
+</div>

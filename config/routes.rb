@@ -36,7 +36,8 @@ Rails.application.routes.draw do
           resources :services, :galleries
         end
         resources :orders, :only => [:index, :show]
-        resources :settings
+        resource :reservations
+        resource :settings
         
         post 'login' => 'sessions#create'
         # match 'login/reset' => 'sessions#reset', :via => [:get, :post]
@@ -78,6 +79,9 @@ resources :partners, only: [:index, :new, :create]
 
   namespace :admins do
     resources :customers, :partners, :approvals, :populars
+    resource :sessions
+    get 'partners/list/index' => 'partners#list'
+    post 'partners/list/:id' => 'partners#setpassword'
   end
 
 

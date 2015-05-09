@@ -43,7 +43,7 @@ class ApplicationController < ActionController::Base
 
 
    def authenticated?
-    redirect_to sessions_customer_path unless warden.authenticated?
+    redirect_to new_session_path unless warden.authenticated?
    end
 
    def customer_accessable?
@@ -51,7 +51,7 @@ class ApplicationController < ActionController::Base
    end
 
    def admin_authenticated?
-      redirect_to sessions_admin_path unless warden.authenticated?(:superadmin)
+      redirect_to '/admins/sessions' unless warden.authenticated?(:superadmin)
    end
 
    

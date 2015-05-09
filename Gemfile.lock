@@ -134,6 +134,7 @@ GEM
       multi_xml (>= 0.5.2)
     i18n (0.7.0)
     i18n_data (0.6.2)
+    ice_cube (0.12.1)
     jbuilder (2.2.9)
       activesupport (>= 3.0.0, < 5)
       multi_json (~> 1.2)
@@ -251,6 +252,12 @@ GEM
     ratyrate (1.2.2.alpha)
     rdoc (4.2.0)
       json (~> 1.4)
+    recurring_select (1.3.1)
+      coffee-rails (>= 3.1)
+      ice_cube (>= 0.11)
+      jquery-rails (>= 3.0)
+      rails (>= 3.2)
+      sass-rails (>= 3.1)
     ref (1.0.5)
     refile (0.5.3)
       mime-types
@@ -342,6 +349,7 @@ DEPENDENCIES
   friendly_id
   google_places
   high_voltage (~> 2.2.1)
+  ice_cube
   jbuilder (~> 2.0)
   jquery-rails
   jquery-turbolinks
@@ -365,6 +373,7 @@ DEPENDENCIES
   rails_best_practices
   ransack!
   ratyrate
+  recurring_select
   refile
   sass-rails (~> 4.0.3)
   sdoc (~> 0.4.0)

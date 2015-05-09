@@ -11,7 +11,6 @@
 // about supported directives.
 //
 //= require jquery
-//= require jquery.turbolinks
 //= require jquery_ujs
 //= require jquery/jquery.ui
 //= require plugins/bootstrap
@@ -33,4 +32,3 @@
 //= require plugins/parsley
 //= require signup
 //= require cart
-//= require turbolinks
