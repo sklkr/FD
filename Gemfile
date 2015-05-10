@@ -91,7 +91,7 @@ gem "dynamic_sitemaps"
 gem 'google_places'
 gem 'metamagic'
 gem 'rack-tracker'
-gem 'lockup'
+# gem 'lockup'
 
 gem 'figaro'
 

@@ -62,7 +62,7 @@ resources :customers, only: [:new, :create]
 resources :partners, only: [:index, :new, :create]
   
   
-  mount Lockup::Engine, at: '/lockup'
+  # mount Lockup::Engine, at: '/lockup'
   
   get 'mypackage' => 'mypackage#index'
   post 'mypackage/success'
