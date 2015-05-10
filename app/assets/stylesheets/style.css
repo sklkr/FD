@@ -11,6 +11,9 @@ body {
    font-family: "Open Sans", sans-serif;
  }
 
+.font-15{
+  font-size: 15px;
+}
 select{
     -moz-appearance: none;
   -webkit-appearance: none;
