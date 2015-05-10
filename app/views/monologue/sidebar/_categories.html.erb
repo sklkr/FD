@@ -1,0 +1,9 @@
+<%= sidebar_section_for(t(".title")) %>
+   <ul class="category">
+     <% @tags.each do |tag| %>
+       <li><%=link_to tag_url(tag) do %>
+		<i class="fa fa-chevron-right"></i>&nbsp;<%= "#{tag.name.capitalize} (#{tag.frequency})" %>
+		<%end%>
+       </li>
+     <% end %>
+   </ul>

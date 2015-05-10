@@ -2,6 +2,7 @@ module Partners
   class SessionsController < BaseController
     skip_before_filter :authenticate!  
     before_filter :authenticated, only: [:new]
+    layout 'application'
 
     def new
       @partner ||= Partner.new
@@ -19,6 +20,7 @@ module Partners
 
     def destroy
       warden.logout(:partner)
+      flash[:notice] = "You have logged out successfully"
       redirect_to partners_path
     end
 

@@ -1,0 +1,6 @@
+<%= sidebar_section_for(t(".title")) %>
+  <div class="tag-wrapper">
+  	<% @tags.each do |tag| %>
+  	  <%=link_to tag.name, tag_url(tag), class: 'blog-tag' %>
+  	<% end %>
+  </div>

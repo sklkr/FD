@@ -33,6 +33,9 @@ module Fitnesspapa
 
     config.assets.paths << Rails.root.join('vendor', 'assets', 'components')
 
+    # for 404, 500 pages
+    config.exceptions_app = self.routes
+
   end
 end
 

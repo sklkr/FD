@@ -1,0 +1,6 @@
+<%= sidebar_section_for(t(".title")) %>
+  <ul class="list-unstyled">
+    <% @recent_posts.each do |post| %>
+      <li style="margin-bottom:10px"><%= link_to post.title, post.full_url %></li>
+    <% end %>
+  </ul>

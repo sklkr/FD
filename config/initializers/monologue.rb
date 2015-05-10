@@ -9,7 +9,7 @@ Monologue.config do |config|
   config.admin_force_ssl = false
   config.posts_per_page = 10
 
-  config.disqus_shortname = "disqus_gNDFJde0bC"
+  config.disqus_shortname = "blogfitnesspapacom"
 
   # LOCALE
   config.twitter_locale = "en" # "fr"

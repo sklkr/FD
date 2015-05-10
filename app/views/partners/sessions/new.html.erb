@@ -2,10 +2,18 @@
 	<div class="row hasMtop">
 		<div class="col-xs-12 col-sm-6 col-sm-offset-3">
 			<div>
+				<% unless params[:reset] %>
 				<h2 class="osLight text-center" style="padding:2em">PARTNER SIGN-IN</h2>
-				<div class="box">
-					<%= render :partial => 'partners/sessions/form' %>
-				</div>
+					<div class="box">
+						<%= render :partial => 'partners/sessions/form' %>
+					</div>
+				<%end %>
+				<% if params[:reset] %>
+				<h2 class="osLight text-center" style="padding:2em">Reset Password</h2>
+					<div class="box">
+						<%= render :partial => 'password_resets/form' %>
+					</div>
+				<%end %>
 			</div>
 		</div>
 	</div>

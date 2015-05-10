@@ -7,7 +7,7 @@ class UnauthorizedController < ActionController::Metal
   delegate :flash, :to => :request
 
   def self.call(env)
-    @respond ||= action(:respond)
+    @respond ||= action(env['warden.options'][:action])
     @respond.call(env)
   end
 
@@ -16,7 +16,16 @@ class UnauthorizedController < ActionController::Metal
       message = env['warden.options'].fetch(:message, "unauthorized.user")
       flash.alert = I18n.t(message)
     end
-    flash[:notice] = "Please check your credentials"
+    flash[:alert] = "Please check your credentials"
     redirect_to new_session_path
+  end
+
+  def partner
+    unless request.get?
+      message = env['warden.options'].fetch(:message, "unauthorized.user")
+      flash.alert = I18n.t(message)
+    end
+    flash[:alert] = "Please check your credentials"
+    redirect_to partners_path
   end
 end

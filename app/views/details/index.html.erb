@@ -7,13 +7,12 @@
 <div class="container">
         <div class="row">
         <div class="col-md-7 col-xs-12">
-            <% cache('cache_key_for_details_banner') do %>
                 <div class="panel panel-default info-panel">
                 <div class="padding35">
                     <div class="panel-heading"><h2 class="osLight no-padding"><%= @center.name.upcase %></h2></div>
                     <div class="panel-body blue-gray">
                         <p><%= @center.place_name %> (0 Reviews)</p>
-                        <div id="carousel-example-generic" class="carousel slide hidden-xs" data-ride="carousel">
+                        <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
                           <!-- Indicators -->
                           <ol class="carousel-indicators">
                             <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
@@ -36,11 +35,10 @@
                     </div>
                 </div>
                 </div>
-            <% end %>
             <div class="space80"></div>
             <!-- Tab should come here -->      
-            <% cache('cache_key_for_details_tab') do %>
-                <div role="tabpanel">
+            
+            <div role="tabpanel" class="hidden-xs">
 
               <!-- Nav tabs -->
               <ul class="nav nav-tabs" role="tablist">
@@ -101,49 +99,50 @@
               </div>
 
             </div>
-            <% end %>
-            
-            <div class="space80"></div>
-            <h4 style="margin-bottom:34px">Reviews</h4>
-            <div class="row">
-                <div class="col-xs-2">
-                <div class="thumbnail">
-                    <img class="img-responsive user-photo" src="https://ssl.gstatic.com/accounts/ui/avatar_2x.png">
-                </div><!-- /thumbnail -->
-                </div><!-- /col-xs-2 -->
 
-                <div class="col-xs-10">
-                    <div class="panel panel-default">
-                        <div class="panel-heading">
-                            <strong>myusername</strong> <span class="text-muted">commented 5 days ago</span>
-                        </div>
-                        <div class="panel-body">
-                            <p>Panel content</p>
-                        </div><!-- /panel-body -->
-                    </div><!-- /panel panel-default -->
-                </div><!-- /col-xs-10 -->
-            </div><!-- /row -->
-            <h4>Reply</h4>
-            <div class="row" style="margin-bottom:20px">
-            <div class="col-md-12">
-                <div class="widget-area no-padding blank">
-                    <div class="status-upload">
-                        <form>
-                            <textarea placeholder="Share your experience here...!"></textarea>
-                            <ul>
-                                <li><a title="" data-toggle="tooltip" data-placement="bottom" data-original-title="Audio"><i class=""></i></a></li>
-                            </ul>
-                            <button type="submit" class="btn btn-success green"><i class="fa fa-share"></i> Share</button>
-                        </form>
-                    </div><!-- Status Upload  -->
-                </div><!-- Widget Area -->
-            </div>
+            <div class="space80"></div>
+            <div class="hidden-xs">
+                <h4 style="margin-bottom:34px">Reviews</h4>
+                <div class="row">
+                    <div class="col-xs-2">
+                    <div class="thumbnail">
+                        <img class="img-responsive user-photo" src="https://ssl.gstatic.com/accounts/ui/avatar_2x.png">
+                    </div><!-- /thumbnail -->
+                    </div><!-- /col-xs-2 -->
+
+                    <div class="col-xs-10">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <strong>myusername</strong> <span class="text-muted">commented 5 days ago</span>
+                            </div>
+                            <div class="panel-body">
+                                <p>Panel content</p>
+                            </div><!-- /panel-body -->
+                        </div><!-- /panel panel-default -->
+                    </div><!-- /col-xs-10 -->
+                </div><!-- /row -->
+                <h4>Reply</h4>
+                <div class="row" style="margin-bottom:20px">
+                <div class="col-md-12">
+                    <div class="widget-area no-padding blank">
+                        <div class="status-upload">
+                            <form>
+                                <textarea placeholder="Share your experience here...!"></textarea>
+                                <ul>
+                                    <li><a title="" data-toggle="tooltip" data-placement="bottom" data-original-title="Audio"><i class=""></i></a></li>
+                                </ul>
+                                <button type="submit" class="btn btn-success green"><i class="fa fa-share"></i> Share</button>
+                            </form>
+                        </div><!-- Status Upload  -->
+                    </div><!-- Widget Area -->
+                </div>
+                </div>
             </div>
         </div>
 
         <div class="col-md-5 col-xs-12">
             <div class="panel panel-default passes-panel">
-                <div class="panel-heading service-box"><h3 class="text-center">LIST OF SERVICES</h3></div>
+                <div class="panel-heading service-box"><h4 class="text-center">LIST OF SERVICES</h4></div>
                 <% @services.each do |service| %>
                 <div class="panel-body text-center simpleCart_shelfItem">
                     <h3 class="text-center service-box-name item_name"><%= service.name %></h3>
@@ -164,6 +163,7 @@
                 <div class="border-bottom"></div>
                 <% end %>
                 <div class="row">
+                    <div class="col-xs-12 "><h4 class="text-center">LOCATION</h4></div>
                     <div class="col-xs-12">
                         <section id="cd-google-map">
                             <!-- #google-container will contain the map  -->
@@ -179,6 +179,64 @@
         </div>
 
     </div>   <!-- Row -->
+    <div class="row visible-xs">
+        <div class="col-xs-12">
+        <h3 class="text-center">Description</h3>
+          <div id="description" class="text-center">
+            <%= raw @details.detailed_desc %>  
+          </div>
+        <h3 class="text-center">Amenities</h3>
+          <div id="amenities">
+              <div class="row text-center">
+              <%@center.experiences.each do |amenity| %>
+                  <div class="col-xs-12 text-center">
+                      <p><i class="<%= icon_fetcher(amenity.name) %>">&nbsp;</i>
+                      <%= amenity.name %></p>
+                  </div>
+              <%end%>
+              </div>
+          </div>
+        </div>
+        <div class="col-xs-12">
+            <div>
+                <h4 style="margin-bottom:34px">Reviews</h4>
+                <div class="row">
+                    <div class="col-xs-2">
+                    <div class="thumbnail">
+                        <img class="img-responsive user-photo" src="https://ssl.gstatic.com/accounts/ui/avatar_2x.png">
+                    </div><!-- /thumbnail -->
+                    </div><!-- /col-xs-2 -->
+
+                    <div class="col-xs-10">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <strong>myusername</strong> <span class="text-muted">commented 5 days ago</span>
+                            </div>
+                            <div class="panel-body">
+                                <p>Panel content</p>
+                            </div><!-- /panel-body -->
+                        </div><!-- /panel panel-default -->
+                    </div><!-- /col-xs-10 -->
+                </div><!-- /row -->
+                <h4>Reply</h4>
+                <div class="row" style="margin-bottom:20px">
+                <div class="col-md-12">
+                    <div class="widget-area no-padding blank">
+                        <div class="status-upload">
+                            <form>
+                                <textarea placeholder="Share your experience here...!"></textarea>
+                                <ul>
+                                    <li><a title="" data-toggle="tooltip" data-placement="bottom" data-original-title="Audio"><i class=""></i></a></li>
+                                </ul>
+                                <button type="submit" class="btn btn-success green"><i class="fa fa-share"></i> Share</button>
+                            </form>
+                        </div><!-- Status Upload  -->
+                    </div><!-- Widget Area -->
+                </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div> <!-- container -->
 </div> <!-- Details content -->
 

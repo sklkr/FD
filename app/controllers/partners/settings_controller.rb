@@ -8,7 +8,15 @@ layout 'partners'
   end
   
   def create
-   
+   if current_user.crypted_password && current_user.password == params['user']['current_password'] && params['user']['password'] == params['user']['password_confirmation']
+     current_user.password= params['user']['password']
+     flash[:notice] = "Password changed successfully"
+     redirect_to change_password_partners_settings_path if current_user.save
+   else
+     flash["alert"] = "Please check your credentails once"
+     @user = current_user
+     render 'change_password'
+   end
   end
 
   def update
@@ -22,6 +30,10 @@ layout 'partners'
 
   def delete
 
+  end
+
+  def change_password
+    @user = current_user
   end
 
   private

@@ -1,4 +1,5 @@
 <%= simple_form_for @partner, :url => partners_login_path, :html => {:class => 'cd-form', 'data-parsley-validate' => true} do |f| %>
+  <%= render 'layouts/notices' %>
   <%= f.input :email, :label => 'E-mail', label_html: { class: 'image-replace cd-email'}, input_html: { class: 'full-width has-padding has-border', :placeholder => 'E-mail (eg: abc@xxx.com)'  }, wrapper_html: { class: 'fieldset' } %>
   <%= f.simple_fields_for :user do |p| %>
     <%= p.input :password, label_html: { class: 'image-replace cd-password'}, input_html: { class: 'full-width has-padding has-border', 'data-parsley-required' => 'true', :placeholder => 'Password'  }, wrapper_html: { class: 'fieldset' } %>
@@ -8,7 +9,7 @@
       <%= f.button :submit, "SIGN-IN", class: 'full-width has-padding', wrapper_html: { class: 'fieldset' } %>
     </div>
     <div class="col-xs-12" style="margin-top:20px">
-      <p class="cd-form-bottom-message"><a href="#0" class="btn full-width has-padding">Forgot your Password?</a></p>
+      <p class="cd-form-bottom-message"><a href="?reset=true&partner=true" class="btn full-width has-padding">Forgot your Password?</a></p>
     </div>
   </div>
   <hr>

@@ -1,0 +1,24 @@
+<% content_for :title do %>
+  <%= @post.title %>
+<% end %>
+
+<% content_for :meta_description do %>
+  <%= truncate(strip_tags(@post.content), length: 155) %>
+<% end %>
+
+<div class="panel blog-container">
+  <div class="panel-body">
+    <%= render partial: 'monologue/posts/post_header', locals: {post: @post }%>
+    <div class="seperator"></div>
+    <div class="seperator"></div>
+    
+    <div class="m-top-sm m-bottom-sm" data-monologue='content'>
+      <%= raw @post.content %>
+    </div>
+  </div>
+</div>
+
+<%= render "monologue/posts/social_sharing" %>
+<div id="disqus_thread"></div>
+<%= render 'layouts/monologue/application/disqus_embed' %>
+<noscript>Please enable JavaScript to view the comments.</noscript>

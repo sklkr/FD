@@ -1,5 +1,11 @@
 Rails.application.routes.draw do
  
+  get 'errors/file_not_found'
+
+  get 'errors/unprocessable'
+
+  get 'errors/internal_server_error'
+
  constraints :subdomain => 'blog' do
   mount Monologue::Engine, at: '/' 
  end
@@ -37,7 +43,9 @@ Rails.application.routes.draw do
         end
         resources :orders, :only => [:index, :show]
         resource :reservations
-        resource :settings
+        resource :settings do 
+          get 'change_password' => 'settings#change_password'
+        end
         
         post 'login' => 'sessions#create'
         # match 'login/reset' => 'sessions#reset', :via => [:get, :post]
@@ -161,6 +169,12 @@ resources :partners, only: [:index, :new, :create]
   
 
   root :to => 'homepage#index'
+
+  if Rails.env.production?
+    match '/404', to: 'errors#file_not_found', via: :all
+    match '/422', to: 'errors#unprocessable', via: :all
+    match '/500', to: 'errors#internal_server_error', via: :all
+  end
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

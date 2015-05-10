@@ -3,6 +3,9 @@
 	<%= render 'layouts/notices' %>
 	<p class="fieldset">
 		<label class="image-replace cd-email" for="reset-email">E-mail</label>
+		<%if params[:partner] %>
+			<%= hidden_field_tag :partner, 'true' %>
+		<% end %>
 		<input class="full-width has-padding has-border" id="reset-email" type="email" name="email" placeholder="E-mail" data-parsley-required=true>
 		<span class="cd-error-message">Error message here!</span>
 	</p>
