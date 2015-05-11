@@ -1,6 +1,6 @@
 require "refile/backend/s3"
 
-Refile.host = "//d1djl7kr085bc1.cloudfront.net"
+# Refile.host = "//d1djl7kr085bc1.cloudfront.net"
 
 aws = {
  access_key_id: "AKIAJLFLP6QXQ5WP5CZQ",
@@ -8,5 +8,4 @@ aws = {
  bucket: "fitnesspapav3",
 }
 
-Refile.cache = Refile::Backend::S3.new(max_size: 6.megabytes, prefix: "cache", **aws)
 Refile.store = Refile::Backend::S3.new(prefix: "store", **aws)

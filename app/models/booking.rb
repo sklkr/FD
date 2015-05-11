@@ -1,4 +1,5 @@
 class Booking < ActiveRecord::Base
+	STATUS = ["Reserved", "Not Attended", "Cancelled", 'Used']
 	before_create :generate_token
 	belongs_to :service
 	belongs_to :partner

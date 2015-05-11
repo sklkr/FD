@@ -11,36 +11,39 @@
 
 
 <div class="padding-md">
-    <% unless @photos.count >= 3  %>
-    <%= simple_form_for @photo, url: partners_center_galleries_path do |f| %>
-      <%= f.attachment_field :image, class: 'upload-demo', id: 'upload-demo', direct: true %>
-      <%= f.submit %>
-    <% end %>
-    <% end %>
+
+    <div class="panel">
+        <div class="panel-heading">
+            <label for="">Center Photo</label>
+        </div>
+        <div class="panel-body">
+            <% unless @photos.count >= 3  %>
+            <%= simple_form_for @photo, url: partners_center_galleries_path do |f| %>
+              <div class="form-group clearfix">
+                <div class="col-xs-12 col-sm-6 col-md-4">
+                    <div class="upload-file clearfix">
+                        <%= f.attachment_field :image, class: 'upload-demo', id: 'upload-demo', direct: true %>
+                        <label data-title="Select file" for="upload-demo">
+                            <span data-title="No file selected..."></span>
+                        </label>
+                    </div>
+                </div><!-- /.col -->
+              </div><br>
+              <div class="clearfix">
+                <div class="col-xs-12"> 
+                 <%= f.submit "Upload Center Image", :class => 'btn btn-primary btn-small' %>
+                </div>
+              </div>
+            <% end %>
+            <% end %>
+        </div>
+    </div>
     <div class="row" style="margin-top:30px">
     <% @photos.each do |photo| %>
-        <div class="small-4 columns">
-        <%= image_tag attachment_url(photo, :image), :class => 'th', :style => 'width:100px;height:100px' %>
+        <div class="col-xs-4">
+        <%= image_tag attachment_url(photo, :image), :class => 'img img-thumbnail', :style => 'width:100px;height:100px' %>
         <a data-method="delete" href="<%= partners_center_gallery_path(:id => photo.id) %>" rel="nofollow">Remove</a>
         </div>
     <%end%>
     </div>
 </div>
-
-<script type="text/javascript">
- $(document).ready(function() {
-    Dropzone.autoDiscover = false;
-    $('#center-conf').css('display', 'block');
-    var dropzone = new Dropzone ("#center-photos", {
-        maxFiles: <%= 3 - @photos.count %>,
-        maxFilesize: 2, // Set the maximum file size to 256 MB
-        paramName: "centerinfo[image]", // Rails expects the file upload to be something like model[field_name]
-        addRemoveLinks: false,
-        init: function(){
-            this.on("maxfilesexceeded", function(file){
-                alert("No more files please!");
-            });
-        }
-    });
- });
- </script>

@@ -23,7 +23,9 @@
                 <tr>
                     <th>Id</th>
                     <th>Customer Name</th>
+                    <th>Class Name</th>
                     <th>Booked on</th>
+                    <th>Month Visit</th>
                     <th>Status</th>
                 </tr>
             </thead>
@@ -32,11 +34,11 @@
                <% @clasbkings.each do |booking| %>
                 <tr>
                     <td><a href=""></a></td>
-                    <td><%= booking.try(:customer).try(:user).try(:full_name) %><br>
-                    <span><%= booking.fpclass.name.capitalize %></span>
-                    </td>
-                    <td><%= local_time(booking.created_at) %></td>
-                    <td><span class="label label-success">Paid</span></td>
+                    <td><%= booking.try(:customer).try(:user).try(:full_name) %></td>
+                    <td><span><%= booking.fpclass.name.capitalize %></span></td>
+                    <td><%= local_time(booking.created_at, '%B %d') %></td>
+                    <td></td>
+                    <td><span class="label label-success">Reserved</span></td>
                 </tr>
                 <% end %>
              <% end %>
