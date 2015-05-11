@@ -32,7 +32,6 @@ gem 'font-awesome-sass'
 # For state maintaining
 gem 'aasm'
 
-gem 'font_assets'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
@@ -56,7 +55,6 @@ gem "uuidtools"
 group :development do
   gem 'pry'
   gem "pry-rails"
-  gem 'quiet_assets'
   gem 'pry-byebug'
 end
 
@@ -88,7 +86,7 @@ gem 'country_select', github: 'stefanpenner/country_select'
 gem 'omniauth-facebook'
 
 # Seo
-gem "dynamic_sitemaps"
+
 gem 'google_places'
 gem 'metamagic'
 gem 'rack-tracker'

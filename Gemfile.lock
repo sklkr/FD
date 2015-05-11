@@ -119,8 +119,6 @@ GEM
       thor (~> 0.14)
     font-awesome-sass (4.3.2.1)
       sass (~> 3.2)
-    font_assets (0.1.11)
-      rack
     friendly_id (5.1.0)
       activerecord (>= 4.0.0)
     google_places (0.30.0)
@@ -212,8 +210,6 @@ GEM
       pry (~> 0.10)
     pry-rails (0.3.3)
       pry (>= 0.9.10)
-    quiet_assets (1.1.0)
-      railties (>= 3.1, < 5.0)
     rack (1.5.2)
     rack-protection (1.5.3)
       rack
@@ -346,7 +342,6 @@ DEPENDENCIES
   execjs
   figaro
   font-awesome-sass
-  font_assets
   friendly_id
   google_places
   high_voltage (~> 2.2.1)
@@ -367,7 +362,6 @@ DEPENDENCIES
   pry
   pry-byebug
   pry-rails
-  quiet_assets
   rack-tracker
   rails (= 4.1.8)
   rails_best_practices
