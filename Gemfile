@@ -32,6 +32,7 @@ gem 'font-awesome-sass'
 # For state maintaining
 gem 'aasm'
 
+gem 'font_assets'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'

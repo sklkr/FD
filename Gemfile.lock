@@ -119,6 +119,8 @@ GEM
       thor (~> 0.14)
     font-awesome-sass (4.3.2.1)
       sass (~> 3.2)
+    font_assets (0.1.11)
+      rack
     friendly_id (5.1.0)
       activerecord (>= 4.0.0)
     google_places (0.30.0)
@@ -344,6 +346,7 @@ DEPENDENCIES
   execjs
   figaro
   font-awesome-sass
+  font_assets
   friendly_id
   google_places
   high_voltage (~> 2.2.1)

@@ -55,6 +55,8 @@ Rails.application.configure do
 
   # Enable serving of images, stylesheets, and JavaScripts from an asset server.
   config.action_controller.asset_host = "d2yvb3j5b4tgn0.cloudfront.net"
+  config.font_assets.origin = 'http://fitnesspapa.com'
+
 
   # Ignore bad email addresses and do not raise email delivery errors.
   # Set this to true and configure the email server for immediate delivery to raise delivery errors.
