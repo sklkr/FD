@@ -7,6 +7,6 @@ aws = {
  secret_access_key: "ajp2R3cgBxBZqtmdq4PqIJ8/sNCkqxZYR9vADfY1",
  bucket: "fitnesspapav3",
 }
-Refile.cache = Refile::Backend::S3.new(prefix: "cache", **aws)
-Refile.store = Refile::Backend::S3.new(prefix: "store", **aws)
 
+Refile.cache = Refile::Backend::S3.new(max_size: 6.megabytes, prefix: "cache", **aws)
+Refile.store = Refile::Backend::S3.new(prefix: "store", **aws)

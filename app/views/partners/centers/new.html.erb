@@ -84,6 +84,9 @@
 										<div class="col-xs-6">
 											<%= c.input :longitude, input_html: { class: 'form-control input-sm' }, wrapper_html: { class: 'form-group' } %>
 										</div>
+										<div class="col-xs-12">
+											<a href="http://www.latlong.net/" class="label label-info" target="_blank">Click here</a>&nbsp;<span>to find Latitude and longitude</span>
+										</div>
 									</div>
 								<%end%>
 							</div>
@@ -97,6 +100,7 @@
 							<div class="panel-body">
 								<div class="form-group">
 									<div class="col-xs-12">
+											<label for="">Brand Photo</label>
 										<div class="upload-file">
 											<%= f.attachment_field :image, class: 'upload-demo', id: 'upload-demo' %>
 											<label data-title="Select file" for="upload-demo">

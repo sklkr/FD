@@ -109,7 +109,6 @@ GEM
       i18n_data (~> 0.6.0)
     currencies (0.4.2)
     debugger-linecache (1.2.0)
-    dynamic_sitemaps (2.0.0)
     erubis (2.7.0)
     execjs (2.3.0)
     faraday (0.9.1)
@@ -338,7 +337,6 @@ DEPENDENCIES
   cancan
   coffee-rails (~> 4.0.0)
   country_select!
-  dynamic_sitemaps
   execjs
   figaro
   font-awesome-sass
