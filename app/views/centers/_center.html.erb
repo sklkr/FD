@@ -1,4 +1,4 @@
-<div class="row list-item">
+<div class="list-item clearfix">
   <div class="col-xs-12 col-sm-4 img-box">
     <% unless center.try(:cphotos).blank? %>
      <a href="<%= details_page_path(center.place_name, center.friendly_id) %>"><%= image_tag attachment_url(center.cphotos.first, :image, :fill, 400, 200), :class => 'group list-group-image' %></a>
@@ -6,8 +6,7 @@
   </div>
   <div class="col-xs-12 col-sm-8 cnt-box">
       <a href="<%= details_page_path(center.place_name, center.friendly_id) %>"><h4 class="group inner list-group-item-heading"><%= center.name.capitalize %></h4></a>
-      <p><small class='m-right20'><i class='fa fa-map-marker'>&nbsp;</i><%= center.place_name %></small> <img src="/assets/star.jpg" alt="" class="review m-right20"><a href="#">312 Reviews</a></p>
-      <p class="group inner list-group-item-text"><%= center.centerinfo.brief_desc %></p>
+      <p><small class='m-right20'><i class='fa fa-map-marker'>&nbsp;</i><%= center.place_name %></small></p>
+      <p class="group inner list-group-item-text"><%= center.centerinfo.detailed_desc %></p>
   </div>
 </div>
-

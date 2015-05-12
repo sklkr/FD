@@ -21,13 +21,10 @@ meta title: "Home page | FitnessPapa",
 		         	<div class="search-sec-main">
 						<%= search_form_for @c, :url => search_path, :class => 'services' do |f| %>
 						<div class="row">
-							<div class="col-sm-3 hidden-xs">
-								<%= f.collection_select :center_type_cont, Center::CENTERTYPES, :to_s, :to_s, { :include_blank => false }, {:class => 'form-control'} %>
-							</div>
-							<div class="col-xs-9 col-sm-7">
+							<div class="col-xs-9">
 								<input id="cities" type="text" name="q[place_name_cont_any]" placeholder="Type Locality or Landmark" class="ui-autocomplete-input form-control" autocomplete="off">		
 							</div>
-							<div class="col-xs-3 col-sm-2">
+							<div class="col-xs-3">
 								<input type="submit" value="Search" class="form-control btn btn-primary">
 							</div>
 						</div>

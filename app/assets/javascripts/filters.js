@@ -16,12 +16,10 @@
 //= require plugins/bootstrap
 //= require plugins/modernizr
 //= require_tree ./backend
-//= require plugins/owl.carousel
 //= require plugins/google.places
 //= require plugins/dependsOn
 //= require formstone/dist/js/core
 //= require formstone/dist/js/touch
-//= require formstone/dist/js/checkbox
 //= require formstone/dist/js/dropdown
 //= require plugins/simpleCart
 //= require plugins/drop
@@ -29,3 +27,11 @@
 //= require plugins/parsley
 //= require signup
 //= require cart
+
+$("#monthly").on('change', function(){
+	 $("#studio-linker").trigger("click");
+});
+
+$("#yearly").on('change', function(){
+	 $("#class-linker").trigger("click");
+});

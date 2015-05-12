@@ -16,6 +16,7 @@ before_filter { @c = Center.ransack(params[:q]) }
   def classes
     @c = Fpclass.ransack(params[:q])
     @fpclasses = @c.result(distinct: true).page(params[:page]).per(5)
+    @fpclasses = Fpclass.all
     respond_to do |format|
       format.js
     end

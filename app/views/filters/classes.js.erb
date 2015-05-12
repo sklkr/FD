@@ -1,8 +1,6 @@
-$("#classes-link").addClass('active');
-$("#fp-link").removeClass('active');
 $('#centers-section').hide();
-$('#classes-section').show();
+$('#classes-section').fadeIn(1000);
 $('#classes-content').html("<%= j render partial: 'fpclass', collection: @fpclasses %>");
 $("#classes-search").html("<%= j render partial: 'search' %>");
-$('#classes-search-container').show();
+$('#classes-search-container').fadeIn(1000);
 $('#center-search-container').hide();

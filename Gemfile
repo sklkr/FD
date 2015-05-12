@@ -19,6 +19,8 @@ gem 'jquery-rails'
 
 gem 'pjax_rails'
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
+gem "non-stupid-digest-assets"
+
 gem 'turbolinks'
 gem 'jquery-turbolinks'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder

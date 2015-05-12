@@ -1,7 +1,7 @@
 /* For Popup */
 /* Dependency :: Modernizr, Jquery */
 
-jQuery(document).ready(function($){
+
 	var $form_modal = $('.cd-user-modal'),
 		$form_login = $form_modal.find('#cd-login'),
 		$form_signup = $form_modal.find('#cd-signup'),
@@ -128,9 +128,6 @@ jQuery(document).ready(function($){
 		  	})
 		});
 	}
-
-});
-
 
 //credits http://css-tricks.com/snippets/jquery/move-cursor-to-end-of-textarea-or-input/
 jQuery.fn.putCursorAtEnd = function() {

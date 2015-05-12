@@ -43,7 +43,7 @@ layout 'partners'
       Center.unscoped.where('partner_id=?', current_user.partner.id)
   	end
     def permit_params
-      params.require(:center).permit(:center_type, :name, :place_name, :image, :facility_ids=>[], :experience_ids => [], :accountinfo_attributes => [:personname, :email, :mobile, :landline], :centerinfo_attributes => [:website, :detailed_desc, :latitude, :longitude])
+      params.require(:center).permit(:center_type, :name, :place_name, :image, :facility_ids=>[], :experience_ids => [], :accountinfo_attributes => [:personname, :email, :mobile, :landline], :centerinfo_attributes => [:website, :detailed_desc, :latitude, :longitude, :address])
     end
 end
 end
