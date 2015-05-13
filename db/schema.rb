@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150512032722) do
+ActiveRecord::Schema.define(version: 20150513130509) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -229,6 +229,7 @@ ActiveRecord::Schema.define(version: 20150512032722) do
     t.string   "status"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.date     "expired_at"
   end
 
   add_index "clasbkings", ["customer_id"], name: "index_clasbkings_on_customer_id", using: :btree
@@ -314,6 +315,8 @@ ActiveRecord::Schema.define(version: 20150512032722) do
     t.integer  "interval"
     t.string   "rule_type"
     t.integer  "week_start"
+    t.text     "description"
+    t.string   "level"
   end
 
   add_index "fpclasses", ["instructor_id"], name: "index_fpclasses_on_instructor_id", using: :btree

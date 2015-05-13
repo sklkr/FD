@@ -15,30 +15,24 @@ meta title: "Home page | FitnessPapa",
  	 	  	    	</div>
  	 	  		 </div> -->
  		 <!-- Search panel -->
- 		 <div class="search-panel text-center">
-         	<div class="row">
-         		<div class="col-sm-12 col-md-6 col-md-offset-3">
-		         	<div class="search-sec-main">
-						<%= search_form_for @c, :url => search_path, :class => 'services' do |f| %>
-						<div class="row">
-							<div class="col-xs-9">
-								<input id="cities" type="text" name="q[place_name_cont_any]" placeholder="Type Locality or Landmark" class="ui-autocomplete-input form-control" autocomplete="off">		
-							</div>
-							<div class="col-xs-3">
-								<input type="submit" value="Search" class="form-control btn btn-primary">
-							</div>
-						</div>
-					  <%end%>
-		         	<script>
-		         		$('document').ready(function(){
-		         			window.search_input = document.getElementById('cities');
-							window.city_name = new google.maps.places.Autocomplete(window.search_input);
-		         		})
-		         	</script>			
-		         	</div>
-         		</div>
-         	</div>
-         </div>
+ 		 <!-- <div class="search-panel text-center">
+ 		          	<div class="row">
+ 		          		<div class="col-sm-12 col-md-6 col-md-offset-3">
+ 		 		         	<div class="search-sec-main">
+ 		 						<%= search_form_for @c, :url => search_path, :class => 'services' do |f| %>
+ 		 						<div class="row">
+ 		 							<div class="col-xs-9">
+ 		 								<input id="cities" type="text" name="q[place_name_cont_any]" placeholder="Type Locality or Landmark" class="ui-autocomplete-input form-control" autocomplete="off">		
+ 		 							</div>
+ 		 							<div class="col-xs-3">
+ 		 								<input type="submit" value="Search" class="form-control btn btn-primary">
+ 		 							</div>
+ 		 						</div>
+ 		 					  <%end%>
+ 		 		         	</div>
+ 		          		</div>
+ 		          	</div>
+ 		          </div> -->
  	 </div>
  </div>	
 </div>
@@ -74,7 +68,7 @@ meta title: "Home page | FitnessPapa",
 			<p>Gym</p>
 		</div>
 		<div class="col-xs-6 col-sm-4 col-md-2 each text-center">
-			<i class="flaticon-swimming20"></i> 
+			<i classearchs="flaticon-swimming20"></i> 
 			<p>Swimming</p>
 		</div>
 		<div class="col-xs-6 col-sm-4 col-md-2 each text-center">
@@ -99,7 +93,7 @@ meta title: "Home page | FitnessPapa",
 			
 <!-- content -->
 
-<div class="container">
+<div class="container" id='passport'>
     <div class="row big-padding">
         <h2 class="osLight text-center">YOUR PASSPORT TO FITNESS FREEDOM</h2>
         <hr>
@@ -326,34 +320,6 @@ $(document).ready(function() {
 
 </script>
 
-<div class="modal fade " id="package" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-lg">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel">FitnessPapa Passport</h4>
-      </div>
-      <div class="modal-body">
-        <div class="row">
-        	<div class="col-xs-4">
-        	
-        	</div>
-        	<div class="col-xs-8">
-        		<ul class="list-unstyled">
-        			<li><i class='flaticon-forever'></i>&nbsp;Unlimited classes</li>
-        			<li><i class='flaticon-trophy36'></i>&nbsp;Top rated Studios & Trainers</li>
-        			<li><i class='flaticon-drink13'></i>&nbsp;No Upfront or Hidden Fees</li>
-        			<li><i class='flaticon-cancel19'></i>&nbsp;Cancel Any Time</li>
-        			<li><i class='flaticon-smiling36'></i>&nbsp;Guaranteed Satisfaction</li>
-        			<li><i class='flaticon-stop36'></i>&nbsp;Can keep your passport on hold</li>
-				</ul>		
-        	</div>
-        </div>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <%= link_to "Book Now", mypackage_path, :class => 'btn btn-default'  %>
-      </div>
-    </div>
-  </div>
-</div>
+<%= render 'homepage/passport' %>
+
+

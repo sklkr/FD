@@ -2268,3 +2268,7 @@ xkeyframes
   width: 100%;
 }
 }
+
+#cd-zoom-in, #cd-zoom-out{
+  display: none;
+}

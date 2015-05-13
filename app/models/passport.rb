@@ -3,6 +3,7 @@ class Passport < ActiveRecord::Base
   belongs_to :customer
   has_many :clasbkings
 
+
   def total_clasbkings
   	clasbkings.count
   end

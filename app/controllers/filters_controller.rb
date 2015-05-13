@@ -5,7 +5,7 @@ before_filter { @c = Center.ransack(params[:q]) }
     # partial merging
     params[:q].merge!(:place_name_cont_any => params[:q][:place_name_cont_any].split(',').first) unless (params[:q].blank? || params[:q][:place_name_cont_any].blank?) 
     @c = Center.ransack(params[:q])
-    @centers = @c.result(distinct: true).includes(:centerinfo, :cphotos).page(params[:page]).per(5)
+    @centers = @c.result(distinct: true).includes(:centerinfo, :cphotos)
 
     respond_to do |format|
       format.html
@@ -15,7 +15,8 @@ before_filter { @c = Center.ransack(params[:q]) }
 
   def classes
     @c = Fpclass.ransack(params[:q])
-    @fpclasses = @c.result(distinct: true).page(params[:page]).per(5)
+    @c = Fpclass.ransack(:date_eq => Date.today.strftime('%Y-%m-%d')) if params['q'].nil?
+    @fpclasses = @c.result(distinct: true)
     @fpclasses = Fpclass.all
     respond_to do |format|
       format.js

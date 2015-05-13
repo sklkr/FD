@@ -33,6 +33,8 @@ module Fitnesspapa
 
     config.assets.paths << Rails.root.join('vendor', 'assets', 'components')
 
+    config.time_zone = 'Chennai'
+
     # for 404, 500 pages
     config.exceptions_app = self.routes
 

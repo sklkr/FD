@@ -9,27 +9,26 @@
         <div class="col-md-7 col-xs-12">
                 <div class="panel panel-default info-panel">
                 <div class="padding35">
-                    <div class="panel-heading"><h2 class="osLight no-padding"><%= @center.name.upcase %></h2></div>
+                    <div class="panel-heading" style="background:white"><h2 class="osLight no-padding"><%= @center.name.upcase %></h2></div>
                     <div class="panel-body blue-gray">
-                        <p><%= @center.place_name %> (0 Reviews)</p>
+                        <p><%= @details.address %> Ph no:: <%= @accountinfo.mobile %></p>
                         <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
                           <!-- Indicators -->
-                          <ol class="carousel-indicators">
+                          <!-- <ol class="carousel-indicators">
                             <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
                             <li data-target="#carousel-example-generic" data-slide-to="1"></li>
                             <li data-target="#carousel-example-generic" data-slide-to="2"></li>
-                          </ol>
+                          </ol> -->
 
                           <!-- Wrapper for slides -->
                           <div class="carousel-inner" role="listbox">
-                            <% number = 1 %>
-                            <% @cphotos.each do |photo| %>
+                            <!--  number = 1  -->
+                            <!--  @cphotos.each do |photo|  -->
 
-                            <div class="item <%= 'active' if number == 1 %>">
-                              <%= image_tag attachment_url(photo, :image, :fill, 540, 250), :class => 'img-thumbnail' %>
+                            <div class="item active">
+                              <%= image_tag attachment_url(@cphotos.first, :image, :fill, 540, 250), :class => 'img-thumbnail' %>
                             </div>
-                            <%number += 1 %>
-                            <%end%>
+                            <!-- number += 1  -->
                           </div>
                         </div>
                     </div>
@@ -157,7 +156,7 @@
                             <span style='color:rgb(164, 91, 11)'>(<%= service.percent %>% off)</span>
                         </div>
                         
-                        <div class="col-xs-4" style="margin-top:7px"><a class="item_add btn pull-right btn-primary" href="javascript:;"> Add to Cart</a></div>
+                        <div class="col-xs-4" style="margin-top:7px"><a class="item_add btn pull-right btn-primary disabled" href="javascript:;"> Add to Cart</a></div>
                     </div>
                 </div>
                 <div class="border-bottom"></div>
@@ -181,11 +180,11 @@
     </div>   <!-- Row -->
     <div class="row visible-xs">
         <div class="col-xs-12">
-        <h3 class="text-center">Description</h3>
+        <h3 class="text-center">DESCRIPTION</h3>
           <div id="description" class="text-center">
             <%= raw @details.detailed_desc %>  
           </div>
-        <h3 class="text-center">Amenities</h3>
+        <h3 class="text-center">AMENITIES</h3>
           <div id="amenities">
               <div class="row text-center">
               <%@center.experiences.each do |amenity| %>
@@ -199,7 +198,7 @@
         </div>
         <div class="col-xs-12">
             <div>
-                <h4 style="margin-bottom:34px">Reviews</h4>
+                <h4 style="margin-bottom:34px">REVIEWS</h4>
                 <div class="row">
                     <div class="col-xs-2">
                     <div class="thumbnail">

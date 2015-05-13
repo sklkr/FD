@@ -22,9 +22,9 @@
           <div class="cd-pricing-switcher">
             <p class="fieldset">
               <input type="radio" name="duration" value="monthly" id="monthly" checked>
-              <label for="monthly">Studio</label>
+              <label for="monthly">STUDIO</label>
               <input type="radio" name="duration" value="yearly" id="yearly">
-              <label for="yearly">Classes</label>
+              <label for="yearly">CLASSES</label>
               <span class="cd-switch"></span>
             </p>
           </div><!-- .cd-pricing-switcher -->
@@ -42,9 +42,9 @@
                     </div>
                     
                     <div class="col-md-3 col-xs-12 m-bottom20">
-                      <label for="facilities">GENDER</label>
+                      <label for="facilities">ACTIVITIES</label>
                       <div>
-                        <%= f.collection_select :services_gender_id_in, Centertype.order(:name), :id, :name, {}, { :class => 'magicsuggest' } %>
+                        <%= f.collection_select :center_type_in, Center::CENTERTYPES, :to_s, :to_s, {}, { :class => 'magicsuggest' } %>
                       </div>
                     </div>
                     <div class="col-md-3 col-xs-12 m-bottom20">
@@ -80,7 +80,7 @@
                   <th>Center</th>
                   <th>Class</th>
                   <th>Time</th>
-                  <th>Area</th>
+                  <th>Instructor</th>
                   <th></th>
                 </tr>
               </thead>
@@ -91,3 +91,8 @@
       </div>
     </div>
 </div>
+
+
+<%= render 'homepage/passport' %>
+<!-- Reserve modal is parent for model opens after reserve click -->
+<div id="reserve-modal"></div>

@@ -1,0 +1,7 @@
+<%unless @fpclass.blank? %>
+  $('#reserve-modal').html("<%= j render partial: 'reserve' %>");
+<%else%>
+  $('#reserve-modal').html("<div class='row list-item' style='min-height:250px;padding:40px'><div class='container'><p class='text-info'>No class found!</p></div></div>")
+<%end%>
+
+$('#reserve').modal('show')

@@ -1,4 +1,6 @@
 class Fpclass < ActiveRecord::Base
+  LEVELS = ["Beginner", "Advanced", "All"]
+
   before_create :build_ice_cube_params
 
   belongs_to :instructor

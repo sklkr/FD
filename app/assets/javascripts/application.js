@@ -29,3 +29,5 @@
 //= require plugins/parsley
 //= require signup
 //= require cart
+
+$('form').parsley();

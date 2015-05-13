@@ -11,7 +11,7 @@ layout 'homepage'
     unless params[:url].nil?
       redirect_to params[:url]
     else
-      redirect_to root_url
+      redirect_to search_path
     end
   end
 

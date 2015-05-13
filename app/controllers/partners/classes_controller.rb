@@ -40,7 +40,7 @@ layout 'partners'
   private
   	
     def permit_params
-      params.require(:fpclass).permit(:name, :date, :start_time , :duration, :seats, :instructor_id, :type_of, :center_ids => [])
+      params.require(:fpclass).permit(:name, :date, :description, :level, :start_time , :duration, :seats, :instructor_id, :type_of, :center_ids => [])
     end
 
 end
