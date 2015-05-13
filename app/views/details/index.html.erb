@@ -141,7 +141,7 @@
 
         <div class="col-md-5 col-xs-12">
             <div class="panel panel-default passes-panel">
-                <div class="panel-heading service-box"><h4 class="text-center">LIST OF SERVICES</h4></div>
+                <!-- <div class="panel-heading service-box"><h4 class="text-center">LIST OF SERVICES</h4></div> -->
                 <% @services.each do |service| %>
                 <div class="panel-body text-center simpleCart_shelfItem">
                     <h3 class="text-center service-box-name item_name"><%= service.name %></h3>
@@ -184,7 +184,7 @@
           <div id="description" class="text-center">
             <%= raw @details.detailed_desc %>  
           </div>
-        <h3 class="text-center">AMENITIES</h3>
+        <h3 class="text-center" style="margin-top:68px">AMENITIES</h3>
           <div id="amenities">
               <div class="row text-center">
               <%@center.experiences.each do |amenity| %>
@@ -198,7 +198,7 @@
         </div>
         <div class="col-xs-12">
             <div>
-                <h4 style="margin-bottom:34px">REVIEWS</h4>
+                <h3 style="margin-bottom:34px;margin-top:68px" class="text-center">REVIEWS</h3>
                 <div class="row">
                     <div class="col-xs-2">
                     <div class="thumbnail">
