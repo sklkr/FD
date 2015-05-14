@@ -27,7 +27,7 @@ layout 'homepage'
       customer = Customer.new(params_builder)  
       if customer.save
         warden.set_user(customer.user)
-        redirect_to customers_details_path    
+        redirect_to search_path    
       else
         render :text => 'something went wrong'
       end
@@ -39,7 +39,7 @@ layout 'homepage'
       else
         # signin
         warden.set_user(customer.user)
-        redirect_to root_url    
+        redirect_to search_path    
       end
     end
   end
