@@ -1,0 +1,119 @@
+<div class="row">
+	<%= simple_form_for @center, url: locals[:path] do |f| %>
+		<div class="col-xs-12">
+			<div class="panel panel-default">
+				<div class="panel-heading">Center Information</div>
+				<div class="panel-body">
+					<%= f.input :center_type, collection: Center::CENTERTYPES, :label => "Center Type", input_html: { class: 'form-control input-sm chzn-select' }, wrapper_html: { class: 'form-group'} %>
+					<div class="row">
+						<div class="col-xs-6">
+							<%= f.input :name, input_html: { class: 'form-control input-sm' }, wrapper_html: { class: 'form-group' } %>
+						</div>
+						<div class="col-xs-6">
+							<%= f.input :place_name, :label => 'Location', input_html: { id: 'inc-map', class: 'form-control input-sm' }, wrapper_html: { class: 'form-group' } %>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- Account Details -->
+		<div class="col-xs-12">
+			<div class="panel panel-default">
+				<div class="panel-heading">Contact Details</div>
+				<div class="panel-body">
+					<%= f.fields_for :accountinfo do |a| %>
+						<div class="row">
+							<div class="col-xs-6">
+								<%= a.input :personname, :label => 'Person Name', input_html: { class: 'form-control input-sm' }, wrapper_html: { class: 'form-group' } %>
+							</div>
+							<div class="col-xs-6">
+								<%= a.input :email, input_html: { class: 'form-control input-sm' }, wrapper_html: { class: 'form-group' } %>	
+							</div>
+							<div class="col-xs-6">
+								<%= a.input :mobile, input_html: { class: 'form-control input-sm phone' }, wrapper_html: { class: 'form-group' } %>
+							</div>
+							<div class="col-xs-6">
+								<%= a.input :landline, input_html: { class: 'form-control input-sm' }, wrapper_html: { class: 'form-group' } %>
+							</div>
+						</div>
+					<%end%>
+				</div>
+			</div>
+		</div>
+
+		<div class="col-xs-12">
+			<div class="panel panel-default">
+				<div class="panel-heading">Center Details</div>
+				<div class="panel-body">
+				<%= f.association :facilities, input_html: { class: 'form-control input-sm chzn-select' }, wrapper_html: { class: 'form-group' } %>
+					<%= f.association :experiences, label: 'Amenities', input_html: { class: 'form-control input-sm chzn-select' }, wrapper_html: { class: 'form-group' } %>
+					<%= f.fields_for :centerinfo do |c| %>
+						<%= c.input :website, input_html: { class: 'form-control input-sm' }, wrapper_html: { class: 'form-group' } %>
+						<div class="row">
+							<div class="col-xs-12" style="margin-bottom:20px">
+								<!-- <div id="toolbar">
+								  <a data-wysihtml5-command="bold">bold</a>
+								  <a data-wysihtml5-command="italic">italic</a>
+								  <a data-wysihtml5-command="formatBlock" data-wysihtml5-command-value="h1">H1</a>
+								  <a data-wysihtml5-command="formatBlock" data-wysihtml5-command-value="p">P</a>
+								</div> -->
+								<!-- element to edit -->
+								<%= c.input :detailed_desc, label: 'Description', input_html: { class: 'form-control input-sm' }, wrapper_html: { class: 'form-group' } %>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-xs-12">
+								<%= c.input :address, input_html: { class: 'form-control input-sm' }, wrapper_html: { class: 'form-group' } %>
+							</div>
+							
+						</div>
+						<div class="row">
+							<div class="col-xs-6">
+								<%= c.input :latitude, input_html: { class: 'form-control input-sm' }, wrapper_html: { class: 'form-group' } %>
+							</div>
+							<div class="col-xs-6">
+								<%= c.input :longitude, input_html: { class: 'form-control input-sm' }, wrapper_html: { class: 'form-group' } %>
+							</div>
+							<div class="col-xs-12">
+								<a href="http://www.latlong.net/" class="label label-info" target="_blank">Click here</a>&nbsp;<span>to find Latitude and longitude</span>
+							</div>
+						</div>
+					<%end%>
+				</div>
+			</div>
+		</div>
+		
+		<!-- Brand and center photos -->
+		<div class="col-xs-12">
+			<div class="panel panel-default">
+				<div class="panel-heading">Uploads</div>
+				<div class="panel-body">
+					<div class="form-group">
+						<div class="col-xs-12 clearfix" style="margin-bottom:25px">
+								<label for="">Brand Photo</label>
+							<div class="upload-file">
+								<%= f.attachment_field :image, class: 'upload-demo', id: 'upload-demo' %>
+								<label data-title="Select file" for="upload-demo">
+									<span data-title="No file selected..."></span>
+								</label>
+							</div>
+						</div><!-- /.col -->
+						<div class="col-xs-12">
+							<%= image_tag attachment_url(@center, :image), :class => 'img-thumbnail' %>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+
+		<div class="col-xs-12">
+			<div class="panel panel-default">
+				<div class="panel-body">
+					<%= f.submit 'Submit', :class => 'btn btn-success pull-right' %>
+				</div>
+			</div>
+		</div>
+	<%end%>
+</div>

@@ -16,7 +16,7 @@ layout 'partners'
   end
   
   def edit
-
+    @fpclass = Fpclass.friendly.find(params[:id])
   end
 
   def create
@@ -30,7 +30,12 @@ layout 'partners'
   end
 
   def update
-
+    @fpclass = Fpclass.friendly.find(params[:id])
+    if @fpclass.update(permit_params)
+     redirect_to partners_classes_path
+    else
+     render :edit
+    end
   end
 
   def delete

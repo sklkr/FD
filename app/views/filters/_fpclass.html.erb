@@ -1,8 +1,9 @@
 <tr id="fpclass_<%= fpclass.id %>">
-	<td><h5><%= fpclass.try(:centers).try(:first).try(:name).try(:capitalize) %></h5></td>
-	<td><h5><%= fpclass.name.capitalize %></h5><%= fpclass.try(:centers).try(:first).try(:place_name) %></td>
+	<td><h5><a href="<%= details_page_path(fpclass.try(:centers).try(:first).place_name, fpclass.try(:centers).try(:first).friendly_id) unless fpclass.try(:centers).try(:first).nil? %>"><%= fpclass.try(:centers).try(:first).try(:name).try(:capitalize) %></a></h5></td>
+	<td><h5>
+		<%= link_to fpclass.name.capitalize, reserf_path(:id => fpclass.id), method: :get, remote: :true %></h5></td>
 	<td><%= fpclass.start_time %> | <span><%= fpclass.duration %> <span>Minutes</span></span></td>
-	<td><%= fpclass.try(:instructor).try(:name).try(:capitalize) %></td>
+	<td><%= fpclass.try(:centers).try(:first).try(:place_name).split(',')[0] unless fpclass.try(:centers).try(:first).try(:place_name).nil? %></td>
 	<td class="text-center"><%= link_to 'Reserve', reserf_path(:id => fpclass.id), :class => 'btn btn-primary reserve-btn', method: :get, remote: :true %><br><span class='fp-count'><%= pluralize(fpclass.remaining_seats, 'seats') %></span> <span>left</span></td>
 </tr>
 

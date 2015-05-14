@@ -12,33 +12,7 @@
 <div class="padding-md" style="background:rgb(238, 247, 255)">
 	<div class="row">
 		<div class="col-sm-12 col-md-10 col-md-offset-1">
-			<div class="row">
-				<%=simple_form_for @fpclass, url: partners_classes_path do |f| %>
-					<div class="col-xs-12">
-						<div class="panel panel-default">
-							<div class="panel-body">
-								<%= f.association :centers, input_html: { class: 'form-control input-sm chzn-select' }, wrapper_html: { class: 'form-group' } %>
-								<%= f.input :name, input_html: { class: 'form-control input-sm' }, wrapper_html: { class: 'form-group' } %>
-								<%= f.input :date, as: :date, html5: true, input_html: { class: 'form-control input-sm' }, wrapper_html: { class: 'form-group' } %>
-								<%= f.input :start_time, as: 'time', html5: true, ampm: true, input_html: { class: 'form-control input-sm' }, wrapper_html: { class: 'form-group' } %>
-								<%= f.input :duration, input_html: { class: 'form-control input-sm', :placeholder => 'Eg:: ( 30 Minutes )'}, wrapper_html: { class: 'form-group' } %>
-								<%= f.input :seats, input_html: { class: 'form-control input-sm' }, wrapper_html: { class: 'form-group' } %>
-								<%= f.input :description, input_html: { class: 'form-control input-sm', :placeholder => "Upto 5 sentences" }, wrapper_html: { class: 'form-group' } %>
-								<%= f.input :level, collection: Fpclass::LEVELS, :label => "Level", input_html: { class: 'form-control input-sm chzn-select' }, wrapper_html: { class: 'form-group'} %>
-								<%= f.input :instructor_id, :collection => Instructor.all, :label_method => 'name', :value_method => 'id', input_html: { class: 'form-control input-sm chzn-select' }, wrapper_html: { class: 'form-group'} %>
-							</div>
-						</div>
-					</div>
-
-					<div class="col-xs-12">
-						<div class="panel panel-default">
-							<div class="panel-body">
-								<%= f.submit 'Submit', :class => 'btn btn-success pull-right' %>
-							</div>
-						</div>
-					</div>
-				<%end%>
-			</div>
+			<%= render 'form', locals: { path: partners_classes_path } %>
 		</div>
 	</div>
 </div>

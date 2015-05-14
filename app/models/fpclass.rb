@@ -1,4 +1,6 @@
 class Fpclass < ActiveRecord::Base
+extend FriendlyId
+
   LEVELS = ["Beginner", "Advanced", "All"]
 
   before_create :build_ice_cube_params
@@ -16,7 +18,13 @@ class Fpclass < ActiveRecord::Base
   	return 0 if self.seats.nil?
   	self.seats - total_clasbkings 
   end
-
+ 
+  friendly_id :name, use: :slugged
+    # Checker for slugs and geneartion of slugs for older columns
+    # Methodname.each(&:save)
+  def should_generate_new_friendly_id?
+    new_record? || slug.blank?
+  end
 
  private
  	

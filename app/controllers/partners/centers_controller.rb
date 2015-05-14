@@ -17,7 +17,7 @@ layout 'partners'
   end
 
   def edit
-
+    @center = ::Center.friendly.find(params[:id])
   end
 
   def create
@@ -31,7 +31,12 @@ layout 'partners'
   end
 
   def update
-
+    @center = ::Center.friendly.find(params[:id])
+    if @center.update(permit_params)
+     redirect_to partners_centers_path
+    else
+     render :edit
+    end
   end
 
   def delete

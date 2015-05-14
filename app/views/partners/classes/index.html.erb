@@ -20,6 +20,7 @@
                     <th>Start Time</th>
                     <th>Duration</th>
                     <th>Seats</th>
+                    <th></th>
                 </tr>
             </thead>
             <tbody>
@@ -30,6 +31,11 @@
                         <td><%= c.start_time %></td>
                         <td><%= c.duration %></td>
                         <td><span class='label label-info'><%= c.seats %></span></td>
+                        <td>
+                            <span class="pull-right">
+                            <a href="<%= edit_partners_class_path(c.friendly_id) %>"><i class="fa fa-edit fa-lg text-info"></i></a>&nbsp;
+                        </span>
+                        </td>
                     </tr>
                 <%end%>
             </tbody>

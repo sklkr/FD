@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150513130509) do
+ActiveRecord::Schema.define(version: 20150514053851) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -317,9 +317,11 @@ ActiveRecord::Schema.define(version: 20150513130509) do
     t.integer  "week_start"
     t.text     "description"
     t.string   "level"
+    t.string   "slug"
   end
 
   add_index "fpclasses", ["instructor_id"], name: "index_fpclasses_on_instructor_id", using: :btree
+  add_index "fpclasses", ["slug"], name: "index_fpclasses_on_slug", unique: true, using: :btree
 
   create_table "hours", force: true do |t|
     t.string   "sun_from"
