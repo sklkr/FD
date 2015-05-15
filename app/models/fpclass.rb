@@ -19,11 +19,25 @@ extend FriendlyId
   	self.seats - total_clasbkings 
   end
  
+  def search_date
+    if self.recurring
+      FpCube.new(self).between_dates
+    else
+      return [self.date] if self.date == asked_date
+      []
+    end
+  end 
+
   friendly_id :name, use: :slugged
     # Checker for slugs and geneartion of slugs for older columns
     # Methodname.each(&:save)
   def should_generate_new_friendly_id?
     new_record? || slug.blank?
+  end
+
+  # Ransack attributes whitelisting
+  def self.ransackable_attributes(auth_object = nil)
+    super + ['search_date'] 
   end
 
  private

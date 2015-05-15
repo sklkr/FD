@@ -88,6 +88,7 @@ GEM
       columnize (~> 0.8)
       debugger-linecache (~> 1.2)
       slop (~> 3.6)
+    callsite (0.0.11)
     cancan (1.6.10)
     ckeditor (4.0.11)
       mime-types
@@ -154,6 +155,10 @@ GEM
       coffee-rails
     mail (2.6.3)
       mime-types (>= 1.16, < 3)
+    meta_request (0.3.4)
+      callsite (~> 0.0, >= 0.0.11)
+      rack-contrib (~> 1.1)
+      railties (>= 3.0.0, < 5.0.0)
     metamagic (3.1.6)
       rails (>= 3.0.0)
     method_source (0.8.2)
@@ -210,7 +215,11 @@ GEM
       pry (~> 0.10)
     pry-rails (0.3.3)
       pry (>= 0.9.10)
+    quiet_assets (1.1.0)
+      railties (>= 3.1, < 5.0)
     rack (1.5.2)
+    rack-contrib (1.1.0)
+      rack (>= 0.9.1)
     rack-protection (1.5.3)
       rack
     rack-test (0.6.3)
@@ -248,12 +257,6 @@ GEM
     ratyrate (1.2.2.alpha)
     rdoc (4.2.0)
       json (~> 1.4)
-    recurring_select (1.3.1)
-      coffee-rails (>= 3.1)
-      ice_cube (>= 0.11)
-      jquery-rails (>= 3.0)
-      rails (>= 3.2)
-      sass-rails (>= 3.1)
     ref (1.0.5)
     refile (0.5.3)
       mime-types
@@ -350,6 +353,7 @@ DEPENDENCIES
   jquery-turbolinks
   kaminari
   local_time
+  meta_request
   metamagic
   mini_magick
   monologue
@@ -362,12 +366,12 @@ DEPENDENCIES
   pry
   pry-byebug
   pry-rails
+  quiet_assets
   rack-tracker
   rails (= 4.1.8)
   rails_best_practices
   ransack!
   ratyrate
-  recurring_select
   refile
   sass-rails (~> 4.0.3)
   sdoc (~> 0.4.0)

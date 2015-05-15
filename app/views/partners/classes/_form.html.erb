@@ -6,8 +6,29 @@
 					<%= f.association :centers, input_html: { class: 'form-control input-sm chzn-select' }, wrapper_html: { class: 'form-group' } %>
 					<%= f.input :name, input_html: { class: 'form-control input-sm' }, wrapper_html: { class: 'form-group' } %>
 					<%= f.input :date, as: :date, html5: true, input_html: { class: 'form-control input-sm' }, wrapper_html: { class: 'form-group' } %>
-					<%= f.input :start_time, as: 'time', html5: true, ampm: true, input_html: { class: 'form-control input-sm' }, wrapper_html: { class: 'form-group' } %>
-					<%= f.input :duration, input_html: { class: 'form-control input-sm', :placeholder => 'Eg:: ( 30 Minutes )'}, wrapper_html: { class: 'form-group' } %>
+					<div class="row">
+						<div class="col-xs-6">
+							<%= f.input :start_time, as: 'time', html5: true, ampm: true, input_html: { class: 'form-control input-sm' }, wrapper_html: { class: 'form-group' } %>		
+						</div>
+						<div class="col-xs-6">
+							<%= f.input :duration, input_html: { class: 'form-control input-sm', :placeholder => 'Eg:: ( 30 Minutes )'}, wrapper_html: { class: 'form-group' } %>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-xs-6">
+							<div class="form-group" style="margin-top:16px">
+								<label class="label-checkbox">
+									<input name="fpclass[recurring]" type="checkbox" value="1">
+									<span class="custom-checkbox"></span>
+									Weekly Recurring <span class='label label-info'><%= @fpclass.recurring %></span>
+								</label>
+								<span class="hint-block">Weekly recurring shows your class weekly</span>
+							</div>
+						</div>
+						<div class="col-xs-6">
+							<%= f.input :expiry, as: :date, html5: true, input_html: { class: 'form-control input-sm' }, wrapper_html: { class: 'form-group' } %>
+						</div>
+					</div>
 					<%= f.input :seats, input_html: { class: 'form-control input-sm' }, wrapper_html: { class: 'form-group' } %>
 					<%= f.input :description, input_html: { class: 'form-control input-sm', :placeholder => "Upto 5 sentences" }, wrapper_html: { class: 'form-group' } %>
 					<%= f.input :level, collection: Fpclass::LEVELS, :label => "Level", input_html: { class: 'form-control input-sm chzn-select' }, wrapper_html: { class: 'form-group'} %>

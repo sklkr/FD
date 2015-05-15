@@ -46,6 +46,10 @@ gem 'aasm'
 
 # Use debugger
 # gem 'debugger', group: [:development, :test]
+group :development do
+  gem 'meta_request'
+  gem 'quiet_assets'
+end
 
 
 gem "analytics-ruby"
@@ -97,8 +101,7 @@ gem 'rack-tracker'
 gem 'figaro'
 
 gem 'local_time'
- gem 'ice_cube'
- gem 'recurring_select'
+gem 'ice_cube'
 gem "simple_calendar", "~> 1.1.0"
 
 

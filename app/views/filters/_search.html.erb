@@ -1,5 +1,5 @@
 <div class="week1">
-	<%= calendar number_of_days: 14 do |date| %>
+	<%= calendar number_of_days: 7 do |date| %>
 		<% if params['q'].blank?  %>
 		  <% case date.strftime("%Y-%m-%d")
 		     when Date.today.strftime("%Y-%m-%d") %><%= link_to date.strftime('%b %d'), classes_search_path(:q => {:date_eq => date}), remote: true, class: 'label label-success' %>

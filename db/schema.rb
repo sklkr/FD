@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150514053851) do
+ActiveRecord::Schema.define(version: 20150515094814) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -318,6 +318,7 @@ ActiveRecord::Schema.define(version: 20150514053851) do
     t.text     "description"
     t.string   "level"
     t.string   "slug"
+    t.date     "expiry"
   end
 
   add_index "fpclasses", ["instructor_id"], name: "index_fpclasses_on_instructor_id", using: :btree

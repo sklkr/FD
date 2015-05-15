@@ -14,6 +14,8 @@
 //= require jquery_ujs
 //= require jquery/jquery.ui
 //= require plugins/bootstrap
+//= require plugins/modernizr
+//= require plugins/modernizr-special
 //= require_tree ./backend
 //= require chosen/chosen.jquery.min
 //= require refile
