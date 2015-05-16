@@ -27,6 +27,7 @@
 //= require plugins/parsley
 //= require signup
 //= require cart
+//= require plugins/modernizr-special
 
 $("#monthly").on('change', function(){
 	 $("#studio-linker").trigger("click");

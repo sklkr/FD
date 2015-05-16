@@ -3,11 +3,12 @@ extend FriendlyId
 
   LEVELS = ["Beginner", "Advanced", "All"]
 
-  before_create :build_ice_cube_params
+  after_create :build_ice_cube_params
 
   belongs_to :instructor
   has_and_belongs_to_many :centers
   belongs_to :partner
+  has_many :recursivedates
   has_many :clasbkings
 
   def total_clasbkings
@@ -19,12 +20,11 @@ extend FriendlyId
   	self.seats - total_clasbkings 
   end
  
-  def search_date
+  def search_dates
     if self.recurring
       FpCube.new(self).between_dates
     else
-      return [self.date] if self.date == asked_date
-      []
+      [date]
     end
   end 
 
@@ -43,10 +43,9 @@ extend FriendlyId
  private
  	
  	def build_ice_cube_params
- 		return if self.type_of.blank?
- 		data = ActiveSupport::JSON.decode(self.type_of)
- 		self.interval = data["interval"]
- 		self.rule_type = data["rule_type"]
- 		self.week_start = data["week_start"]
+    binding.pry
+ 		 search_dates.each do |date|
+      recursivedates << Recursivedate.create(:ondate => date)
+     end
  	end
 end

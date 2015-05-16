@@ -49,8 +49,8 @@
                </div>
              </li> -->
 	 <% unless signed_in?  %>
-		<li class="main-nav"><a class="cd-signin" href="#0">Sign in</a></li>
-		<li class="main-nav"><a class="cd-signup" href="#0">Sign up</a></li>
+		<li class="main-nav"><a class="cd-signin" href="#0">Sign In</a></li>
+		<li class="main-nav"><a class="cd-signup" href="#0">Sign Up</a></li>
 	<%end%>
 	 <% if signed_in? %>
     <li class="profile dropdown">
@@ -68,11 +68,11 @@
               </div>
             </a>
           </li>
-          <li><a tabindex="-1" href="<%= customers_mypass_index_path %>" class="main-link"><i class="fa fa-ticket"></i> My Pass</a></li>
-          <li><a tabindex="-1" href="<%= customers_classes_path %>" class="main-link"><i class="flaticon-identity6"></i> Classes</a></li>
+          <!-- <li><a tabindex="-1" href="<%= customers_mypass_index_path %>" class="main-link"><i class="fa fa-ticket"></i> My Pass</a></li> -->
+          <li><a tabindex="-1" href="<%= customers_classes_path %>" class="main-link"><i class="flaticon-identity6"></i> My Class</a></li>
           <li class="divider"></li>
           <li><a tabindex="-1" href="<%= edit_customers_profile_path('v1') %>" class="main-link"><i class="fa fa-cog fa-lg"></i> Settings</a></li>
-          <li><a tabindex="-1" href="<%= customer_change_password_path %>" class="main-link"><i class="fa fa-cog fa-lg"></i> Change password</a></li>
+          <li><a tabindex="-1" href="<%= customer_change_password_path %>" class="main-link"><i class="fa fa-cog fa-lg"></i> Change Password</a></li>
         </ul>
       </li>
 	 	<li><%= link_to "Logout", session_path("1"), method: :delete, data: {confirm: "Log out of FitnessPapa?"} %></li>

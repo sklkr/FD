@@ -15,6 +15,7 @@
 //= require jquery/jquery.ui
 //= require plugins/bootstrap
 //= require plugins/modernizr
+//= require plugins/modernizr-special
 //= require_tree ./backend
 //= require plugins/owl.carousel
 //= require plugins/google.places

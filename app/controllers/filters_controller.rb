@@ -15,9 +15,8 @@ before_filter { @c = Center.ransack(params[:q]) }
 
   def classes
     @c = Fpclass.ransack(params[:q])
-    @c = Fpclass.ransack(:date_eq => Date.today.strftime('%Y-%m-%d')) if params['q'].nil?
+    @c = Fpclass.ransack(:recursivedates_ondate_eq => Date.today.strftime('%Y-%m-%d')) if params['q'].nil?
     @fpclasses = @c.result(distinct: true)
-    @fpclasses = Fpclass.all
     respond_to do |format|
       format.js
     end
