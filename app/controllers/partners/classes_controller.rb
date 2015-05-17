@@ -4,6 +4,7 @@ layout 'partners'
 
   def index
 	 @fpclasses = current_partner.fpclasses
+   @expired = current_partner.fpclasses.expired
    respond_to do |format|
     format.html
     format.xml { render xml: @classes.to_xml }
