@@ -1,0 +1,10 @@
+<div id="myElement">Loading the player...</div>
+
+<%= content_for :rtmp do %>
+	<script type="text/javascript">
+	    jwplayer("myElement").setup({
+	        file: "https://s3-ap-southeast-1.amazonaws.com/fitnesspapav3/nghia.mp4",
+	        image: "/uploads/myPoster.jpg"
+	    });
+	</script>
+<% end %>
