@@ -1,5 +1,7 @@
 class Center < ActiveRecord::Base
 extend FriendlyId
+acts_as_commontable
+
   CENTERTYPES = ["Gym", "Yoga", "Dance", "Swim", "Aerobics", "Zumba", "Pillatees", "Martial Art", "Boxing", "Strength training", "Spa & Saloon"]
   
   TRAINERTYPES = ["Aerobics", "Choreographer", "Martial Arts", "Dietician", "Physical Trainer", "Phsiotherapist", "Yoga", "Zumba", ]

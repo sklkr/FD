@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+
+  mount Commontator::Engine => '/commontator'
  
   get 'errors/file_not_found'
 

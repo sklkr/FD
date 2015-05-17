@@ -1,5 +1,6 @@
 class Customer < ActiveRecord::Base
   extend FriendlyId
+  acts_as_commontator
   
   belongs_to :user, dependent: :destroy
   friendly_id :email

@@ -1,6 +1,8 @@
 source 'https://rubygems.org'
 
 gem 'aws_cf_signer'
+gem 'commontator', '~> 4.10.0'
+
 gem 'execjs'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.1.8'

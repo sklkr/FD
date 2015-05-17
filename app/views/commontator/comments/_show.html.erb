@@ -1,0 +1,33 @@
+<% # Clients of this partial must supply the following variables:
+   # comment
+   # user
+%>
+
+<% creator = comment.creator
+   name = Commontator.commontator_name(creator) || ''
+   link = Commontator.commontator_link(creator, main_app) || ''
+   avatar = Commontator.commontator_avatar(creator, self) || ''
+%>
+
+
+<div class="row">
+    <div class="col-xs-2">
+    <div class="thumbnail">
+        <%= avatar %>
+    </div><!-- /thumbnail -->
+    </div><!-- /col-xs-2 -->
+
+    <div class="col-xs-10">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <strong><%= link.blank? ? name : link_to(name, link) %></strong> <span class="text-muted">commented <% if comment.is_modified? %>
+      <%= comment.updated_timestamp %>
+    <% end %></span>
+            </div>
+            <div class="panel-body">
+                <%= render :partial => 'commontator/comments/body',
+                 :locals => { :comment => comment } %>
+            </div><!-- /panel-body -->
+        </div><!-- /panel panel-default -->
+    </div><!-- /col-xs-10 -->
+</div>
