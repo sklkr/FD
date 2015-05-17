@@ -37,31 +37,32 @@
 	</div>
 </div>
 
-<script>
-	$(document).ready(function(){
-		$("input[type=checkbox], input[type=radio]").checkbox();
-		$("select").dropdown();
-		$('#partner_email').dependsOn({
-		    // The selector for the depenency
-		    '#pro_listener': {
-		        checked: true
-		    }
-		}, {
-			onEnable: function() {
-		        $('.professional_wrapper').show('slow');
-		        $('.center_wrapper').hide();
-			}
-		});
-		$('#partner_user_attributes_phone').dependsOn({
-		    // The selector for the depenency
-		    '#c_listener': {
-		        checked: true
-		    }
-		}, {
-			onEnable: function() {
-		        $('.center_wrapper').show('slow');
-		        $('.professional_wrapper').hide();
-			}
-		});
-	})
-</script>
+
+<%= content_for :linescript do %>
+	<script>
+	$("input[type=checkbox], input[type=radio]").checkbox();
+	$("select").dropdown();
+	$('#partner_email').dependsOn({
+	    // The selector for the depenency
+	    '#pro_listener': {
+	        checked: true
+	    }
+	}, {
+		onEnable: function() {
+	        $('.professional_wrapper').show('slow');
+	        $('.center_wrapper').hide();
+		}
+	});
+	$('#partner_user_attributes_phone').dependsOn({
+	    // The selector for the depenency
+	    '#c_listener': {
+	        checked: true
+	    }
+	}, {
+		onEnable: function() {
+	        $('.center_wrapper').show('slow');
+	        $('.professional_wrapper').hide();
+		}
+	});	
+	</script>
+<% end %>
