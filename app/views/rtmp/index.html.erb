@@ -2,48 +2,18 @@
 
 <%= content_for :rtmp do %>
 	<script type="text/javascript">
-	    jwplayer("myElement").setup({
-	        file: "https://s3-ap-southeast-1.amazonaws.com/fitnesspapav3/nghia.mp4",
+	  /*  jwplayer("myElement").setup({
+	        file: <%= sanitize(@video_path.inspect) %>,
 	        image: "/uploads/myPoster.jpg"
-	    });
+	    });*/
+		jwplayer('myElement').setup({
+			primary: "html5",
+			sources: [ 
+				{file: <%= sanitize(@flash_path.inspect) %>},
+				{file: <%= sanitize(@video_path.inspect) %>}
+			],
+			
+			flashplayer: <%= sanitize(asset_path('jwplayer/jwplayer.flash.swf').inspect) %>,
+			});
 	</script>
 <% end %>
-
-<!-- Domain Name:: s27rhsdms3kllr.cloudfront.net
-     origin :: fitnesspapav2.s3.amazonaws.com
-	 player.swf
- -->
-
- <script type="text/javascript">
-	  jwplayer('myElement').setup(
-	  {
-	      'id': 'myElement',
-	      'wmode': 'transparent',
-	      'icons': 'true',
-	      'allowscriptaccess': 'always',
-	      'allownetworking': 'all',
-	      'file': 'nghia.mp4',
-	      'width': '500', 'height': '307',
-	      'controlbar': 'bottom',
-	      'dock': 'false',
-	      'provider':'rtmp',
-	      'streamer':'rtmp://s27rhsdms3kllr.cloudfront.net/cfx/st',
-	      'modes': [
-	          {type: 'flash', src: '/assets/jwplayer/jwplayer.flash.swf'},
-	          {
-	            type: 'html5',
-	            config: {
-	             'file': "<%= sanitize('https://s3-ap-southeast-1.amazonaws.com/fitnesspapav2/nghia.mp4') %>",
-	             'provider': 'video'
-	            }
-	          },
-	          {
-	            type: 'download',
-	            config: {
-	             'file': 'https://s3-ap-southeast-1.amazonaws.com/fitnesspapav2/nghia.mp4',
-	             'provider': 'video'
-	            }
-	          }
-	      ]
-	  });
-	</script>
