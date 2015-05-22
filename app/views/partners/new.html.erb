@@ -7,7 +7,7 @@
 			<div class="box pad">
 				<h2 class="osLight text-center">READY TO JOIN FITNESSPAPA NETWORK?</h2>
 				<p class="help-block">Please fill out the form below and our Partnerships Team will contact you</p>
-				<%= simple_form_for @partner, :html => {:class => 'cd-form form-horizontal', 'data-parsley-validate' => true} do |f| %>
+				<%= simple_form_for @partner, url: '/partners', :html => {:class => 'cd-form form-horizontal', 'data-parsley-validate' => true} do |f| %>
 				  <%= f.input :email, :label => 'E-mail', label_html: { class: 'image-replace cd-email'}, input_html: { class: 'full-width has-padding has-border', :placeholder => 'E-mail (eg: abc@xxx.com)'  }, wrapper_html: { class: 'fieldset' } %>
 				  <%= f.simple_fields_for :user do |p| %>
 				    <%= p.input :full_name, label_html: { class: 'image-replace cd-username'}, input_html: { class: 'full-width has-padding has-border', 'data-parsley-pattern' => '\w+\s+[a-zA-Z-]+', 'data-parsley-required' => 'true', :placeholder => 'Full Name (eg: John Snow)' }, wrapper_html: { class: 'fieldset' } %>
