@@ -4,7 +4,7 @@ layout 'partners'
 
   def index
 	 @centers = current_partner.centers
-   @pending_centers = Center.unscoped.where('partner_id=?',current_partner.id)
+   @pending_centers = Center.unscoped.pending.where('partner_id=?',current_partner.id)
   end
 
   def new
