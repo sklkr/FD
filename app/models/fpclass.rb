@@ -45,7 +45,6 @@ extend FriendlyId
  private
  	
  	def build_ice_cube_params
-    binding.pry
  		 search_dates.each do |date|
       recursivedates << Recursivedate.create(:ondate => date)
      end
