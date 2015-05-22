@@ -32,7 +32,6 @@ layout 'partners'
 
   def update
     @center = ::Center.friendly.find(params[:id])
-    binding.pry
     if @center.update(permit_params)
      redirect_to partners_centers_path
     else
