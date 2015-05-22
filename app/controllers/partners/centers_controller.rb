@@ -4,6 +4,7 @@ layout 'partners'
 
   def index
 	 @centers = current_partner.centers
+   @pending_centers = Center.unscoped.where('partner_id=?',current_partner.id)
   end
 
   def new
@@ -17,7 +18,9 @@ layout 'partners'
   end
 
   def edit
-    @center = ::Center.friendly.find(params[:id])
+    @center = ::Center.unscoped.friendly.find(params[:id])
+    @center.build_accountinfo if @center.accountinfo.blank?
+    @center.build_centerinfo if @center.centerinfo.blank?
   end
 
   def create

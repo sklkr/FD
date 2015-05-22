@@ -53,18 +53,17 @@
         </div>
         <div class="panel-body no-padding collapse in" id="toDoListWidget">
             <ul class="list-group task-list no-margin collapse in">
-                <!-- <li class="list-group-item">
-                    <span>First Center</span><br> <small class="text-muted">Koramangala, 5th Block, Bangalore</small>
-                    <span class="pull-right">
-                        <a href="#" class="task-del"><i class="fa fa-trash-o fa-lg text-danger"></i></a>
-                    </span>
-                </li>
-                <li class="list-group-item">
-                    <span>Second Center</span><br> <small class="text-muted">Rajaji Nagar, 3rd Lane, Bangalore</small>
-                    <span class="pull-right">
-                        <a href="#" class="task-del"><i class="fa fa-trash-o fa-lg text-danger"></i></a>
-                    </span>
-                </li> -->
+               <% @pending_centers.each do |center| %>
+                   <li class="list-group-item clearfix">
+                       <span class="pull-right">
+                           <a href="<%= partners_center_path(center.friendly_id) %>"><i class="fa fa-eye fa-lg text-success"></i></a>&nbsp;
+                           <a href="<%= edit_partners_center_path(center.friendly_id) %>"><i class="fa fa-edit fa-lg text-info"></i></a>&nbsp;
+                           <!-- <a href="#" class="task-del"><i class="fa fa-trash-o fa-lg text-danger"></i></a>&nbsp;
+                            -->
+                       </span>
+                       <span><a href="<%= partners_center_path(center.friendly_id) %>"><%= center.name %></a></span><br> <small class="text-muted"><%= center.place_name %></small>
+                   </li>
+               <%end%>
             </ul><!-- /list-group -->
         </div>
         <div class="loading-overlay">

@@ -1,7 +1,7 @@
 class PartnersController < ApplicationController
 layout 'homepage'
   def index
-    
+
   end
 
   def new
@@ -12,6 +12,7 @@ layout 'homepage'
 
   def create
   	@partner = Partner.new(permit_params)
+    @partner.centers.first.status = 'inactive'
   	if @partner.save
   		AcknowledgeMailer.partner_reg(@partner).deliver
   		redirect_to new_partner_path, :notice => "Thank you for showing interest as a FitnessPapa parter. We'll get back to you soon"

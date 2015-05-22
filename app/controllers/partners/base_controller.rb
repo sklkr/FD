@@ -23,7 +23,7 @@ class BaseController < ActionController::Base
   end
 
   def authenticated
-    redirect_to partners_orders_path if warden.authenticated?(:partner)
+    redirect_to partners_classes_path if warden.authenticated?(:partner)
   end
 end
 end

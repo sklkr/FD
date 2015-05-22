@@ -9,7 +9,7 @@ acts_as_commontable
   default_scope { where(status: 'active') }
   scope :pending, -> { unscoped.where('status!=?', 'active')}
   before_save { self.place_name && self.place_id = GPlaces.new(self.place_name).get_id }   # To get place id from place name
-
+  
 	attachment :image
 	
 	# Associations
