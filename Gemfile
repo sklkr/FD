@@ -88,7 +88,7 @@ group :development do
   gem 'brakeman', :require => false
 end
 
-gem "aws-sdk", '< 2'
+gem 'aws-sdk', '~> 2'
 gem 'kaminari'
 
 gem 'country_select', github: 'stefanpenner/country_select'
