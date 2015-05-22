@@ -1880,6 +1880,19 @@ window.ParsleyConfig.i18n.en = $.extend(window.ParsleyConfig.i18n.en || {}, {
   check:          "You must select between %s and %s choices.",
   equalto:        "This value should be the same."
 });
+
+$.extend(window.ParsleyConfig, {excluded:
+        // Defaults
+       'input[type=button],' +
+       'input[type=submit],' +
+       'input[type=reset],'  +
+       'input[type=hidden],' +
+       '[disabled],'         +
+       ':hidden,'            +
+        // -- Additional attributes to look --
+       '[data-parsley-disabled],' +  // Exclude specific input/select/radio/checkbox/etc
+       '[data-parsley-disabled] *'   // Exclude all nesting inputs/selects/radios/checkboxes/etc
+});
 // If file is loaded after Parsley main file, auto-load locale
 if ('undefined' !== typeof window.ParsleyValidator)
   window.ParsleyValidator.addCatalog('en', window.ParsleyConfig.i18n.en, true);

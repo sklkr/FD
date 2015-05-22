@@ -1,5 +1,6 @@
 class PartnersController < ApplicationController
 layout 'homepage'
+
   def index
 
   end

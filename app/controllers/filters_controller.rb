@@ -14,6 +14,7 @@ before_filter { @c = Center.ransack(params[:q]) }
   end
 
   def classes
+    params[:q].merge!(:centers_place_name_cont_any => params[:q][:centers_place_name_cont_any].split(',').first) unless (params[:q].blank? || params[:q][:centers_place_name_cont_any].blank?) 
     @c = Fpclass.ransack(params[:q])
     @c = Fpclass.ransack(:recursivedates_ondate_eq => Date.today.strftime('%Y-%m-%d')) if params['q'].nil?
     @fpclasses = @c.result(distinct: true)

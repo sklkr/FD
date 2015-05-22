@@ -8,7 +8,7 @@
 				<%= render 'layouts/notices' %>
 				<h2 class="osLight text-center">READY TO JOIN FITNESSPAPA NETWORK?</h2>
 				<p class="help-block">Please fill out the form below and our Partnerships Team will contact you</p>
-				<%= simple_form_for @partner, url: '/partners', :html => {:class => 'cd-form form-horizontal', 'data-parsley-validate' => true} do |f| %>
+				<%= simple_form_for @partner, url: '/partners', :html => {:class => 'cd-form form-horizontal'} do |f| %>
 				  <%= f.input :email, :label => 'E-mail', label_html: { class: 'image-replace cd-email'}, input_html: { class: 'full-width has-padding has-border', :placeholder => 'E-mail (eg: abc@xxx.com)'  }, wrapper_html: { class: 'fieldset' } %>
 				  <%= f.simple_fields_for :user do |p| %>
 				    <%= p.input :full_name, label_html: { class: 'image-replace cd-username'}, input_html: { class: 'full-width has-padding has-border', 'data-parsley-pattern' => '\w+\s+[a-zA-Z-]+', 'data-parsley-required' => 'true', :placeholder => 'Full Name (eg: John Snow)' }, wrapper_html: { class: 'fieldset' } %>
@@ -20,7 +20,7 @@
 				  </div>	
 					
 				  <%= f.simple_fields_for :centers do |p| %>
-				  	<%= p.input :name, label_html: { class: 'image-replace cd-username'}, input_html: { class: 'full-width has-padding has-border', 'data-parsley-required' => 'true', :placeholder => 'Center Name' }, wrapper_html: { class: 'fieldset center_wrapper' } %>
+				  	<%= p.input :name, label_html: { class: 'image-replace cd-username'}, input_html: { class: 'full-width has-padding has-border', 'data-parsley-disabled' => 'true', :placeholder => 'Center Name' }, wrapper_html: { class: 'fieldset center_wrapper' } %>
 				  	<%= p.input :center_type, :collection => Center::CENTERTYPES, :selected => "2", label_html: { class: 'image-replace cd-username'}, input_html: { class: 'full-width has-padding has-border', 'data-parsley-required' => 'false', :placeholder => 'Center Type' }, wrapper_html: { class: 'fieldset center_wrapper' } %>
 				  	<%= p.input :center_type, :collection => Center::TRAINERTYPES,:selected => "2", label_html: { class: 'image-replace cd-username'}, input_html: { class: 'full-width has-padding has-border', 'data-parsley-required' => 'false', :placeholder => 'Trainer Type' }, wrapper_html: { class: 'fieldset professional_wrapper'} %>
 				  <% end %>
