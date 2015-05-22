@@ -1,7 +1,7 @@
 <div class="list-item clearfix">
   <div class="col-xs-12 col-sm-4 img-box">
     <% unless center.try(:cphotos).blank? %>
-     <a href="<%= details_page_path(center.place_name, center.friendly_id) %>"><%= image_tag attachment_url(center.cphotos.first, :image, :fill, 400, 200), :class => 'group list-group-image' %></a>
+     <a href="<%= details_page_path(center.place_name, center.friendly_id) %>"><%= image_tag attachment_url(center, :image, :fill, 400, 200), :class => 'group list-group-image' %></a>
     <%end%>
   </div>
   <div class="col-xs-12 col-sm-8 cnt-box">

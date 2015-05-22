@@ -1,6 +1,8 @@
 <div id="details-content" style="background-color: rgb(252, 252, 252)">
 
-<div id="background" style="background-image: url(<%= attachment_url(@cphotos.first, :image)  unless @cphotos.blank? %>);z-index:0" >
+<div id="background" style="background-image: url(<%= attachment_url(@cphotos.first, :image)  unless @cphoto<div id="background" style="background-image: url(<%= attachment_url(@cphotos.first, :image)  unless @cphotos.blank? %>);z-index:0" >
+<%= attachment_image_tag(@cphotos.try(:first), :image, :class => 'visible-xs img-responsive', fallback: "default.png") unless @cphotos.blank? %>
+</div>s.blank? %>);z-index:0" >
 <%= attachment_image_tag(@cphotos.try(:first), :image, :class => 'visible-xs img-responsive', fallback: "default.png") unless @cphotos.blank? %>
 </div>
 <div class="space20"></div>
