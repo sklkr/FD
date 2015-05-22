@@ -5,6 +5,7 @@
 		</div>
 		<div class="col-xs-12 col-sm-6 col-sm-offset-3">
 			<div class="box pad">
+				<%= render 'layouts/notices' %>
 				<h2 class="osLight text-center">READY TO JOIN FITNESSPAPA NETWORK?</h2>
 				<p class="help-block">Please fill out the form below and our Partnerships Team will contact you</p>
 				<%= simple_form_for @partner, url: '/partners', :html => {:class => 'cd-form form-horizontal', 'data-parsley-validate' => true} do |f| %>
