@@ -1,6 +1,6 @@
 <div class="list-item clearfix">
   <div class="col-xs-12 col-sm-4 img-box">
-     <a href="<%= details_page_path(center.place_name, center.friendly_id) %>"><%= image_tag attachment_url(center, :image), :class => 'group list-group-image', :style => 'width:400px;height:200px' %></a>
+     <a href="<%= details_page_path(center.place_name, center.friendly_id) %>"><%= image_tag attachment_url(center, :image), :class => 'group list-group-image img-responsive' %></a>
   </div>
   <div class="col-xs-12 col-sm-8 cnt-box">
       <a href="<%= details_page_path(center.place_name, center.friendly_id) %>"><h4 class="group inner list-group-item-heading"><%= center.name.capitalize %></h4></a>
