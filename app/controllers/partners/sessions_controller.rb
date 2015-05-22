@@ -11,7 +11,7 @@ module Partners
 
     def create
       warden.authenticate!(:partner, scope: :partner)
-      redirect_to partners_orders_path, notice: "Welcome to FitnessPapa" 
+      redirect_to partners_classes_path, notice: "Welcome to FitnessPapa" 
     end
 
     #def admin

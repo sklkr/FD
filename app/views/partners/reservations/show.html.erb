@@ -4,8 +4,7 @@
         <span></span>
     </div><!-- /page-title -->
     <ul class="page-stats">
-        
-        
+        <%= link_to "History", '?past=true', :class => 'btn btn-primary' %>
     </ul><!-- /page-stats -->
 </div>
 
@@ -53,6 +52,7 @@
     </div>
 </div>
 
+<% unless params[:past].nil? %>
 <div class="padding-md">
     <div class="panel panel-default table-responsive">
         <div class="panel-heading">
@@ -95,3 +95,5 @@
         </div>
     </div>
 </div>
+
+<% end %>
