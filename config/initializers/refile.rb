@@ -1,6 +1,7 @@
-require "refile/s3"
+require "refile/backend/s3"
 
- Refile.host = "http://d1djl7kr085bc1.cloudfront.net/"
+
+ Refile.host = "d1djl7kr085bc1.cloudfront.net"
 
 aws = {
  access_key_id: "AKIAJLFLP6QXQ5WP5CZQ",
@@ -9,5 +10,5 @@ aws = {
  bucket: "fitnesspapav3",
 }
 
-Refile.cache = Refile::S3.new(prefix: "cache", **aws)
-Refile.store = Refile::S3.new(prefix: "store", **aws)
+Refile.cache = Refile::Backend::S3.new(prefix: "cache", **aws)
+Refile.store = Refile::Backend::S3.new(prefix: "store", **aws)

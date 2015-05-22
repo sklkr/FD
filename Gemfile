@@ -78,7 +78,6 @@ gem 'friendly_id'
 gem "mini_magick"
 gem 'ransack', github: 'activerecord-hackery/ransack'
 gem "refile", require: ["refile/rails", "refile/image_processing"]
-gem "refile-s3", :git => 'https://github.com/refile/refile-s3.git'
 gem 'ratyrate'
 gem "bullet", :group => "development"
 gem 'high_voltage', '~> 2.2.1'
@@ -88,7 +87,8 @@ group :development do
   gem 'brakeman', :require => false
 end
 
-gem 'aws-sdk', '~> 2'
+gem "aws-sdk", '< 1.9.0'
+
 gem 'kaminari'
 
 gem 'country_select', github: 'stefanpenner/country_select'
