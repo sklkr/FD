@@ -30,7 +30,7 @@ before_action :is_available_seats
 
 	private
 		def is_passport
-			redirect_to root_url if passport.blank?
+			render :js => "$('#package').modal('show')" if passport.blank?
 		end
 
 		def is_available_tickets
