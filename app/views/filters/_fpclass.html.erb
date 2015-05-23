@@ -1,5 +1,6 @@
 <tr id="fpclass_<%= fpclass.id %>">
-	<td><h5><a href="<%= details_page_path(fpclass.try(:centers).try(:first).place_name, fpclass.try(:centers).try(:first).friendly_id) unless fpclass.try(:centers).try(:first).nil? %>"><%= fpclass.try(:centers).try(:first).try(:name).try(:capitalize) %></a></h5></td>
+	<td><h5><a href="<%= details_page_path(fpclass.try(:centers).try(:first).friendly_id) unless fpclass.try(:centers).try(:first).nil? %>"><%= fpclass.try(:centers).try(:first).try(:name).try(:capitalize) %></a></h5>
+	</td>
 	<td><h5>
 		<%= link_to fpclass.name.capitalize, reserf_path(:id => fpclass.id), method: :get, remote: :true %></h5></td>
 	<td><%= fpclass.start_time %> | <span><%= fpclass.duration %> <span>Minutes</span></span></td>

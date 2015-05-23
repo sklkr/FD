@@ -2,5 +2,11 @@ $('#centers-section').hide();
 $('#classes-section').fadeIn(1000);
 $('#classes-content').html("<%= j render partial: 'fpclass', collection: @fpclasses %>");
 $("#classes-search").html("<%= j render partial: 'search' %>");
+$("#classes-main-search").html("<%= j render partial: 'main_search' %>");
 $('#classes-search-container').fadeIn(1000);
 $('#center-search-container').hide();
+
+
+$('.magicsuggest').magicSuggest([]);
+window.search_input2 = document.getElementById('cities_two');
+window.city_name2 = new google.maps.places.Autocomplete(window.search_input2);

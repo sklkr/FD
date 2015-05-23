@@ -75,7 +75,7 @@ resources :partners, only: [:index, :new, :create]
   get 'checkout/step2'
   get 'checkout/success'
   # Fresh routes for details page
-  get 'details/:location/:center' => 'details#index', as: 'details_page'
+  get 'details/:center' => 'details#index', as: 'details_page'
 
   get 'payments/index'
   post 'payments/success'

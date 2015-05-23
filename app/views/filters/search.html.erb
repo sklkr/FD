@@ -64,35 +64,12 @@
               <% end %>
             </fieldset>
 
-            <fieldset class='search-container' id='classes-search-container' style='display:none'>
+            <fieldset class='search-container hidden-xs' id='classes-search-container' style='display:none'>
               <div id="classes-search">
                 
               </div>
-              <div style="margin-top:20px">
-                <%= search_form_for @c, :url => classes_search_path, :remote => true do |f| %>
-                  <div class="row">
-                      <div class="col-md-3 col-xs-12 m-bottom20">
-                          <label for="location">LOCATION</label>
-                          <div>
-                            <input id="cities_two" type="text" name="q[centers_place_name_cont_any]" placeholder="Type Locality or Landmark" class="ui-autocomplete-input form-control form-square" autocomplete="off" style="margin-bottom:20px">
-                          </div>
-                      </div>
-                      
-                      <div class="col-md-3 col-xs-12 m-bottom20">
-                        <label for="facilities">ACTIVITIES</label>
-                        <div>
-                          <%= f.collection_select :center_type_in, Center::CENTERTYPES, :to_s, :to_s, {}, { :class => 'magicsuggest', :style => "margin-bottom:20px" } %>
-                        </div>
-                      </div>
-                      <div class="col-md-3 col-xs-12">
-                        <label for="">&nbsp;</label>
-                        <div>
-                          <%= f.submit '  Search  ', :class => 'btn btn-default', :style => 'margin-right:20px' %>
-                          <a href="<%= search_path %>" class="btn btn-default">Reset</a>
-                        </div>
-                      </div>
-                  </div>
-                <% end %>
+              <div style="margin-top:20px" id="classes-main-search">
+                
               </div>
             </fieldset> 
           </div>
@@ -103,7 +80,7 @@
         <div class="clearfix" id="classes-section" style="display:none">
           <table class="table table-hover table-striped">
               <thead>
-                <tr>
+                <tr style="color:white;background-color:rgb(107, 105, 105);">
                   <th>Center</th>
                   <th>Class</th>
                   <th>Time</th>
@@ -126,10 +103,18 @@
 
 <script>
   function togglefilter(){
-    if($('#center-search-container').hasClass("hidden-xs")){
-      $('#center-search-container').removeClass("hidden-xs" , "slow");
+    if($("#monthly").is(':checked')){
+        if($('#center-search-container').hasClass("hidden-xs")){
+          $('#center-search-container').removeClass("hidden-xs" , "slow");
+        }else{
+          $('#center-search-container').toggle('slow'); 
+        }
     }else{
-      $('#center-search-container').toggle('slow'); 
+      if($("#classes-search-container").hasClass("hidden-xs")){
+        $("#classes-search-container").removeClass("hidden-xs" , "slow");
+      }else{
+        $("#classes-search-container").toggle('slow'); 
+      }
     }
   }
 </script>

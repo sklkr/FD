@@ -1435,7 +1435,7 @@ a.list-group-item {
 }
 @media (max-width: 480px) {
   .main-header .page-stats {
-    display: none;
+    display: block;
   }
 }
 .main-header .page-stats li {

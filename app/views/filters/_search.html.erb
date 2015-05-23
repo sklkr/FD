@@ -1,16 +1,9 @@
 <div class="week1">
 	<%= calendar number_of_days: 7 do |date| %>
-		<% if params['q'].blank?  %>
-		  <% case date.strftime("%Y-%m-%d")
-		     when Date.today.strftime("%Y-%m-%d") %><%= link_to date.strftime('%b %d'), classes_search_path(:q => {:recursivedates_ondate_eq => date}), remote: true, class: 'label label-success' %>
-		  <% else %><%= link_to date.strftime('%b %d'), classes_search_path(:q => {:recursivedates_ondate_eq => date}), remote: true %>
-		  <% end %>
-		<% end %>
-
 		<% if !params['q'].blank?  %>
 		  <% case date.strftime("%Y-%m-%d")
-		     when params['q']['recursivedates_ondate_eq'] %><%= link_to date.strftime('%b %d'), classes_search_path(:q => {:recursivedates_ondate_eq => date}), remote: true, class: 'label label-success' %>
-		  <% else %><%= link_to date.strftime('%b %d'), classes_search_path(:q => {:recursivedates_ondate_eq => date}), remote: true %>
+		     when params['q']['recursivedates_ondate_eq'] %><%= link_to date.strftime('%b %d'), classes_search_path(:q => {:recursivedates_ondate_eq => date, :centers_place_name_cont_any => params[:q][:centers_place_name_cont_any], :centers_center_type_in => params[:q][:centers_center_type_in]}), remote: true, class: 'label label-success' %>
+		  <% else %><%= link_to date.strftime('%b %d'), classes_search_path(:q => {:recursivedates_ondate_eq => date, :centers_place_name_cont_any => params[:q][:centers_place_name_cont_any], :centers_center_type_in => params[:q][:centers_center_type_in]}), remote: true %>
 		  <% end %>
 		<% end %>
 	<%end%>
