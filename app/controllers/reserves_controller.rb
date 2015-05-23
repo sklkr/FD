@@ -5,7 +5,8 @@ before_action :is_available_tickets
 before_action :is_available_seats
 	
 	def show
-		@fpclass = Fpclass.find(params[:id])
+		binding.pry
+		@fpclass = Fpclass.friendly.find(params[:id])
 		@center = @fpclass.centers.first
 		respond_to do |format|
 			format.js
@@ -13,18 +14,19 @@ before_action :is_available_seats
 	end
 
 	def create
-		@fpclass = Fpclass.find(params[:id])
-		if !(passport.clasbkings.where('fpclass_id=?', @fpclass.id).count < 3 ) || !(passport.clasbkings.count < 7)
-			@booking = Clasbking.new(:customer => current_user.customer, :fpclass => @fpclass, :passport => passport, :status => 'open', :expired_at => @fpclass.date)
+		@fpclass = Fpclass.friendly.find(params[:id])
+		@conditioner = FpConditioner.new(@fpclass, passport)
+		if @conditioner.is_he_eligible
+			@booking = Clasbking.new(:customer => current_user.customer, :fpclass => @fpclass, :passport => passport, :status => 'open', :expired_at => params[:date])
 			if @booking.save
 				respond_to do |format|
 					format.js
 				end
 			else
-				render :json => "something went wrong"
+				render :js => "alert('something went wrong');"
 			end
 		else
-			render js: "alert('one can book 7 active passes with only 3 repetive classes');"
+			render :js => "alert('you are not eligible to reserve on this class');"
 		end
 	end
 
@@ -34,7 +36,7 @@ before_action :is_available_seats
 		end
 
 		def is_available_tickets
-			redirect_to(root_url, :notice => "Tickets full") if (passport.remaining_tickets <= 0)
+			render :js => "alert('Passport tickets are full. You can buy new passport to get more tickets')" if (passport.remaining_tickets <= 0)
 		end
 
 		def is_available_seats

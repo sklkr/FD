@@ -2,7 +2,7 @@
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header" style="padding:0px">
-        <%= image_tag attachment_url(@center, :image), :style => 'width:100%;height:200px' %>
+      <%= image_tag "//d1djl7kr085bc1.cloudfront.net/store/#{@center.image_id}", :class => 'group list-group-image img-responsive', :style => 'width:100%;height:200px' %>
       </div>
       <div class="modal-body">
         <h4 class="text-center"><%= @fpclass.name.upcase %><br><span class='help-block'><%= @center.name.capitalize %></span></h4>
@@ -12,12 +12,12 @@
             <p>Level :: <%= @fpclass.level %></p>
             <p>Instructor :: <%= @fpclass.instructor.name.try(:capitalize) %></p>
             <p><%= @fpclass.description %></p>
-            <p><i class='fa fa-clock-o'></i> <%= local_time(@fpclass.start_time, '%B %d, %Y %a') %><br><%= @fpclass.start_time %> ( <%= @fpclass.duration %> ) </p>
+            <p><i class='fa fa-clock-o'></i><%= local_time(@fpclass.start_time, '%B %d, %Y %a') %><br><%= @fpclass.start_time %> ( <%= @fpclass.duration %> )</p>
           </div>
         </div>
       </div>
       <div class="modal-footer text-center">
-        <%= link_to 'RESERVE CLASS', reserves_path(:id => @fpclass.id), :class => 'btn btn-primary reserve-btn', method: :post, remote: :true, :style => 'display:block' %>
+        <%= link_to 'RESERVE CLASS', reserves_path(:id => @fpclass.friendly_id, :date => params[:date]), :class => 'btn btn-primary reserve-btn', method: :post, remote: :true, :style => 'display:block' %>
       </div>
     </div>
   </div>
