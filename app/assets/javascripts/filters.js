@@ -12,7 +12,6 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require jquery/jquery.ui
 //= require plugins/bootstrap
 //= require plugins/modernizr
 //= require_tree ./backend

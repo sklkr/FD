@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150517061818) do
+ActiveRecord::Schema.define(version: 20150524121412) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -230,8 +230,10 @@ ActiveRecord::Schema.define(version: 20150517061818) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.date     "expired_at"
+    t.integer  "center_id"
   end
 
+  add_index "clasbkings", ["center_id"], name: "index_clasbkings_on_center_id", using: :btree
   add_index "clasbkings", ["customer_id"], name: "index_clasbkings_on_customer_id", using: :btree
   add_index "clasbkings", ["fpclass_id"], name: "index_clasbkings_on_fpclass_id", using: :btree
   add_index "clasbkings", ["passport_id"], name: "index_clasbkings_on_passport_id", using: :btree
@@ -345,7 +347,6 @@ ActiveRecord::Schema.define(version: 20150517061818) do
   create_table "fpclasses", force: true do |t|
     t.string   "name"
     t.date     "date"
-    t.string   "start_time"
     t.string   "duration"
     t.integer  "seats"
     t.integer  "instructor_id"
@@ -361,6 +362,7 @@ ActiveRecord::Schema.define(version: 20150517061818) do
     t.string   "level"
     t.string   "slug"
     t.date     "expiry"
+    t.time     "start_time"
   end
 
   add_index "fpclasses", ["instructor_id"], name: "index_fpclasses_on_instructor_id", using: :btree

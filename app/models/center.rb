@@ -23,6 +23,7 @@ acts_as_commontable
 	has_many :centermen, :dependent => :destroy
 	has_many :bookings, :dependent => :destroy
 	has_many :cphotos, :dependent => :destroy
+	has_many :clasbkings
 	belongs_to :city
 	belongs_to :area
 	has_one :popular, :dependent => :destroy

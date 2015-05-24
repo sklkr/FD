@@ -5,7 +5,6 @@ before_action :is_available_tickets
 before_action :is_available_seats
 	
 	def show
-		binding.pry
 		@fpclass = Fpclass.friendly.find(params[:id])
 		@center = @fpclass.centers.first
 		respond_to do |format|
@@ -17,7 +16,7 @@ before_action :is_available_seats
 		@fpclass = Fpclass.friendly.find(params[:id])
 		@conditioner = FpConditioner.new(@fpclass, passport)
 		if @conditioner.is_he_eligible
-			@booking = Clasbking.new(:customer => current_user.customer, :fpclass => @fpclass, :passport => passport, :status => 'open', :expired_at => params[:date])
+			@booking = Clasbking.new(:customer => current_user.customer, :fpclass => @fpclass, :passport => passport, :status => 'open', :expired_at => params[:date], :center => @fpclass.centers.first)
 			if @booking.save
 				respond_to do |format|
 					format.js
@@ -27,6 +26,13 @@ before_action :is_available_seats
 			end
 		else
 			render :js => "alert('you are not eligible to reserve on this class');"
+		end
+	end
+
+	def destroy
+		booking = Clasbking.find(params[:id])
+		if booking.customer == current_user.customer
+			redirect_to customers_classes_path if booking.delete
 		end
 	end
 

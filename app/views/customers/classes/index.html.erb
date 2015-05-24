@@ -4,54 +4,64 @@
 	</div>
 </div>
 
-<div class="row">
-	<div class="col-xs-9">
-		<div class="panel panel-default">
-			<div class="panel-heading">Reserved Classes</div>
-			<table class="table table-bordered table-condensed table-hover table-striped">
-				<thead>
-					<tr>
-						<th>ID</th>
-						<th>Name</th>
-						<th>Center name</th>
-						<th>Date</th>
-						<th>Status</th>
-					</tr>
-				</thead>
-				<tbody>
-				<% unless @bookings.nil? %>
-					<%@bookings.each do |pass| %>
+<div class="row" style="margin-bottom:300px">
+	<div class="col-xs-12 col-sm-9">
+		<% if params[:history].blank? %>
+			<div class="panel panel-info">
+				<div class="panel-heading">Reserved Classes</div>
+				<table class="table table-bordered table-condensed table-hover table-striped">
+					<thead>
 						<tr>
-							<td></td>
-							<td><%= pass.fpclass.name.capitalize %></td>
-							<td><%= pass.fpclass.try(:centers).try(:first).try(:name) %></td>
-							<td><%= local_time(pass.fpclass.date) %></td>
-							<td><span class="label label-info"><%= pass.status %></span></td>
+							<th>Name</th>
+							<th>Center name</th>
+							<th>Date</th>
+							<th></th>
 						</tr>
-					<%end%>
-				<% end %>
-				</tbody>
-			</table>
-		</div>
+					</thead>
+					<tbody>
+					<% unless @bookings.nil? %>
+						<%@bookings.each do |pass| %>
+							<tr>
+								<td><a href=""><%= pass.fpclass.name.capitalize %></a></td>
+								<td><%= pass.fpclass.try(:centers).try(:first).try(:name) %></td>
+								<td><%= local_time(pass.fpclass.date, "%B %d") + " " + pass.fpclass.start_time %></td>
+								<td><%= link_to reserf_path(pass.id), :method => :delete, :class => 'label label-danger', style: 'margin-left:20px', :data => { confirm: "Are you sure you want to cancel reservation"} do %>
+										<i class='fa fa-trash-o'></i> Cancel <% end %>
+								</td>
+							</tr>
+						<%end%>
+					<% end %>
+					</tbody>
+				</table>
+			</div>
+		<% end %>
 
-		<div class="panel panel-default">
-			<div class="panel-heading">Used Classes</div>
-			<table class="table table-bordered table-condensed table-hover table-striped">
-				<thead>
-					<tr>
-						<th>ID</th>
-						<th>Name</th>
-						<th>Price</th>
-						<th>Date</th>
-						<th>Expired on</th>
-						<th>Status</th>
-					</tr>
-				</thead>
-				<tbody>
-					<tr>No Expired Classes</tr>
-				</tbody>
-			</table>
-		</div>	
+		<% unless params[:history].blank? %>	
+			<div class="panel panel-danger">
+				<div class="panel-heading">History</div>
+				<table class="table table-bordered table-condensed table-hover table-striped">
+					<thead>
+						<tr>
+							<th>Name</th>
+							<th>Center name</th>
+							<th>Date</th>
+							<th>Status</th>
+						</tr>
+					</thead>
+					<tbody>
+					<% unless @history.nil? %>
+						<%@history.each do |pass| %>
+							<tr>
+								<td><a href=""><%= pass.fpclass.name.capitalize %></a></td>
+								<td><%= pass.fpclass.try(:centers).try(:first).try(:name) %></td>
+								<td><%= local_time(pass.fpclass.date, "%B %d") + " " + pass.fpclass.date %></td>
+								<td><span class='label label-info'>Used</span></td>
+							</tr>
+						<%end%>
+					<% end %>
+					</tbody>
+				</table>
+			</div>
+		<% end %>
 	</div>
-
 </div>
