@@ -3,7 +3,7 @@
 	</td>
 	<td><h5>
 		<%= link_to fpclass.name.capitalize, reserf_path(:id => fpclass.id), method: :get, remote: :true %></h5></td>
-	<td><%= fpclass.start_time %> | <span><%= fpclass.duration %> <span>Minutes</span></span></td>
+	<td><%= fpclass.start_time.strftime('%H : %M') %> | <span><%= fpclass.duration %> <span>Minutes</span></span></td>
 	<td><%= fpclass.try(:centers).try(:first).try(:place_name).split(',')[0] unless fpclass.try(:centers).try(:first).try(:place_name).nil? %></td>
 	<td class="text-center"><%= link_to 'Reserve', reserf_path(:id => fpclass.friendly_id, :date => params[:q][:recursivedates_ondate_eq]), :class => 'btn btn-primary reserve-btn', method: :get, remote: :true %><br><span class='fp-count'><%= pluralize(fpclass.remaining_seats, 'seats') %></span> <span>left</span></td>
 </tr>
