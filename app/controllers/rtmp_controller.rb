@@ -7,7 +7,7 @@ class RtmpController < ApplicationController
   end
 
   def signed_flash
-   rtmp_url = "rtmp://s2kj5stk8cuu5x.cloudfront.net"
+   rtmp_url = "rtmp://s3kd161skzoao5.cloudfront.net/cfx/st"
    rtmp_path = sign("/nghia.mp4")
    full_url = "#{rtmp_url}#{rtmp_path}"
   end  

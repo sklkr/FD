@@ -6,14 +6,10 @@
 	        file: <%= sanitize(@video_path.inspect) %>,
 	        image: "/uploads/myPoster.jpg"
 	    });*/
+
 		jwplayer('myElement').setup({
-			primary: "html5",
-			sources: [ 
-				{file: <%= sanitize(@flash_path.inspect) %>},
-				{file: <%= sanitize(@video_path.inspect) %>}
-			],
-			
-			flashplayer: <%= sanitize(asset_path('jwplayer/jwplayer.flash.swf').inspect) %>,
-			});
+		      file: <%= sanitize(@flash_path.inspect) %>,
+		      flashplayer: <%= sanitize(asset_path('jwplayer/jwplayer.flash.swf').inspect) %>,
+		   });
 	</script>
 <% end %>
