@@ -5,7 +5,7 @@ extend FriendlyId
 
   after_create :build_ice_cube_params
   default_scope { where('date>=?', Time.now) }
-  scope :expired, -> { unscoped.where('date<?', Time.now) }
+  scope :expired, -> { unscoped.where('expiry<?', Time.now) }
 
   belongs_to :instructor
   has_and_belongs_to_many :centers
