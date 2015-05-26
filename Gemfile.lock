@@ -10,6 +10,14 @@ GIT
       polyamorous (~> 1.2)
 
 GIT
+  remote: git://github.com/amro/gibbon.git
+  revision: 1d8ee00f576d354d5cc1f5bd1ec166d8565db1ca
+  specs:
+    gibbon (1.1.5)
+      httparty
+      multi_json (>= 1.9.0)
+
+GIT
   remote: git://github.com/stefanpenner/country_select.git
   revision: 335b2287cc0a160caa49fdf4696f4e55fc8560bf
   specs:
@@ -357,6 +365,7 @@ DEPENDENCIES
   figaro
   font-awesome-sass
   friendly_id
+  gibbon!
   google_places
   high_voltage (~> 2.2.1)
   ice_cube

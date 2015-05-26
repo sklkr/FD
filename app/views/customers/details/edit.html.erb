@@ -37,7 +37,8 @@
 			<div class="large-6 columns">
 				<div class="row" style="margin-bottom:12px">
 					<div class="small-3 columns"><label for="center[brandphoto]" class="inline">Account Photo</label></div>
-					<div class="small-3 columns" style="text-align:center"><%= image_tag attachment_url(@details, :image), :class => 'th', :style => 'margin-bottom:8px;width:100px;height:100px' %>
+					<div class="small-3 columns" style="text-align:center">
+						<%= image_tag "//d1djl7kr085bc1.cloudfront.net/store/#{@details.image_id}", :class => 'th', :style => 'margin-bottom:8px;width:100px;height:100px' %>
 					<a href="" style="font-size:14px;text-decoration:underline">Remove</a>
 					</div>
 					<div class="small-6 columns"><%= f.attachment_field :image, :style => 'padding: 0.5625rem 0' %></div>

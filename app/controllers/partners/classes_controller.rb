@@ -4,7 +4,7 @@ layout 'partners'
 
   def index
 	 @fpclasses = current_partner.fpclasses
-   @expired = Fpclass.where('partner_d=?',current_partner.id).expired
+   @expired = Fpclass.unscoped.where('partner_id=?', 50).where("expiry<?", Time.now)
    respond_to do |format|
     format.html
     format.xml { render xml: @classes.to_xml }

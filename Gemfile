@@ -36,6 +36,8 @@ gem 'font-awesome-sass'
 
 # For state maintaining
 gem 'aasm'
+gem 'gibbon', github: "amro/gibbon"
+
 
 
 # Use ActiveModel has_secure_password

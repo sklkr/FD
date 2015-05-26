@@ -152,6 +152,7 @@ resources :partners, only: [:index, :new, :create]
   get 'classes/search' => 'filters#classes'
 
   get 'homepage/index'
+  get 'centers/list' => 'homepage#centers_list'
 
   
 
