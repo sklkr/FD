@@ -4,10 +4,11 @@ class HomepageController < ApplicationController
   def index
   	@categories = Category.all
   	@c = Center.ransack(params[:q])
+    @centers = ["Tarun Swimming Center","O2 Health Studio","Phoenix Fitness ","Sastha Pools","Global Swim Center","MNC Sports Academy","Fitness One","Pink Fitness","The Answer is Fitness","Zero Lap Fitness","Fit Life Gym","STEPPERZ","136.1 Yoga Studio","August Yoga","Fitness Cube","FunkyTown","Apple Fitness","GENESIS","Contours Inda", "Friends Yoga", "Independent Shoot Fighter", "Coles Sports World", "Inchant Yoga", "Aayana Yoga Academy", "Spedels", "Sweat 2B Fit", "Fit N Fine", "Raghavendra Yoga", "D'Cruze Dance Studio", "Ramana Boxing", "Sam Gym Boxing Studio", "Abimanyu Kick Boxing Academy"]
   end
 
   def centers_list
-  	centers = {'Bengaluru' => ["Tarun Swimming Center","O2 Health Studio","Phoenix Fitness ","Sastha Pools","Global Swim Center","MNC Sports Academy","Fitness One ","Fitness One","Pink Fitness","The Answer is Fitness","Zero Lap Fitness","Fit Life Gym","STEPPERZ","136.1 Yoga Studio","August Yoga","Fitness Cube","FunkyTown","Apple Fitness","GENESIS","Contours Inda", "Friends Yoga", "Independent Shoot Fighter", "Coles Sports World", "Inchant Yoga", "Aayana Yoga Academy", "Spedels", "Sweat 2B Fit", "Fit N Fine", "Raghavendra Yoga", "D'Cruze Dance Studio", "Ramana Boxing", "Sam Gym Boxing Studio", "Abimanyu Kick Boxing Academy"],
+  	centers = {'Bengaluru' => ["Tarun Swimming Center","O2 Health Studio","Phoenix Fitness ","Sastha Pools","Global Swim Center","MNC Sports Academy","Fitness One","Pink Fitness","The Answer is Fitness","Zero Lap Fitness","Fit Life Gym","STEPPERZ","136.1 Yoga Studio","August Yoga","Fitness Cube","FunkyTown","Apple Fitness","GENESIS","Contours Inda", "Friends Yoga", "Independent Shoot Fighter", "Coles Sports World", "Inchant Yoga", "Aayana Yoga Academy", "Spedels", "Sweat 2B Fit", "Fit N Fine", "Raghavendra Yoga", "D'Cruze Dance Studio", "Ramana Boxing", "Sam Gym Boxing Studio", "Abimanyu Kick Boxing Academy"],
   	'chennai' => ['O2 Health Studio', "Fitness One", "Pink Fitness", "Contours India", "136.1 Yoga"], 'hyderabad' => ['Pink Fitness', 'Fitness One']}
   	@centers = centers[params['city']] 
     params[:q] = {}
