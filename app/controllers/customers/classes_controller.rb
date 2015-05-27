@@ -7,5 +7,9 @@ layout 'customerdashboard'
   	@bookings = @passport.clasbkings.includes(:fpclass) unless @passport.nil?
   	@history = Clasbking.unscoped.where('customer_id=?', current_user.customer.id)
   end
+
+  def show
+  	@passport = passport
+  end
 end
 end

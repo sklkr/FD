@@ -61,7 +61,7 @@
         <ul class="dropdown-menu">
           <li>
             <a class="clearfix" href="#">
-              <img src="/assets/avatar.png" alt="User Avatar">
+              <%= image_tag "//d1djl7kr085bc1.cloudfront.net/store/#{current_user.image_id}", :class => 'img img-thumbnail' %>
               <div class="detail">
                 <strong><%= current_user.first_name %></strong>
                 <p class="grey"><%= current_user.customer.email %></p> 
@@ -71,6 +71,7 @@
           <!-- <li><a tabindex="-1" href="<%= customers_mypass_index_path %>" class="main-link"><i class="fa fa-ticket"></i> My Pass</a></li> -->
           <li><a tabindex="-1" href="<%= customers_classes_path %>" class="main-link"><i class="flaticon-identity6"></i> My Class</a></li>
           <li><a tabindex="-1" href="<%= customers_classes_path(:history => true) %>" class="main-link"><i class="flaticon-identity6"></i> My History</a></li>
+          <li><a tabindex="-1" href="<%= customers_class_path('passport') %>" class="main-link"><i class="flaticon-identity6"></i> My Orders</a></li>
           <li class="divider"></li>
           <li><a tabindex="-1" href="<%= edit_customers_profile_path('v1') %>" class="main-link"><i class="fa fa-cog fa-lg"></i> Settings</a></li>
           <li><a tabindex="-1" href="<%= customer_change_password_path %>" class="main-link"><i class="fa fa-cog fa-lg"></i> Change Password</a></li>

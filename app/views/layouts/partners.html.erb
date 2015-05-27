@@ -40,7 +40,7 @@
 					<ul class="dropdown-menu">
 						<li>
 							<a class="clearfix" href="#">
-								<%= image_tag 'avatar.png' %>
+								<%= image_tag "//d1djl7kr085bc1.cloudfront.net/store/#{current_user.image_id}"%>
 								<div class="detail">
 									<strong><%= current_user.name %></strong>
 									<p class="grey"><%= current_partner.email %></p> 
@@ -67,7 +67,7 @@
 					</a>
 				</div><!-- /size-toggle -->	
 				<div class="user-block clearfix">
-					<%= image_tag 'avatar.png' %>
+					<%= image_tag "//d1djl7kr085bc1.cloudfront.net/store/#{current_user.image_id}"%>
 					<div class="detail">
 						<strong><%= current_user.name %></strong>
 						<ul class="list-unstyled">
