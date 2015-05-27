@@ -4,7 +4,7 @@ extend FriendlyId
   LEVELS = ["Beginner", "Advanced", "All"]
 
   after_create :build_ice_cube_params
-  default_scope { where('date>=?', Time.now) }
+  default_scope { where('expiry<=?', Time.now) }
   scope :expired, -> { unscoped.where('expiry<?', Time.now) }
 
   belongs_to :instructor
