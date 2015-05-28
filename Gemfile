@@ -38,7 +38,7 @@ gem 'font-awesome-sass'
 gem 'aasm'
 gem 'gibbon', github: "amro/gibbon"
 
-
+gem 'mandrill_mailer'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
@@ -84,6 +84,8 @@ gem 'ratyrate'
 gem "bullet", :group => "development"
 gem 'high_voltage', '~> 2.2.1'
 gem "rails_best_practices"
+gem 'delayed_job'
+gem 'delayed_job_active_record'
 
 group :development do
   gem 'brakeman', :require => false

@@ -22,7 +22,7 @@ layout 'partners'
   def update
     @info = current_partner.info
     if @info.update(permit_params)
-      redirect_to edit_partners_setting_path(@info.id)
+      redirect_to edit_partners_settings_path(@info.id)
     else
       render :edit
     end

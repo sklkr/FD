@@ -45,10 +45,8 @@ Rails.application.routes.draw do
         end
         resources :orders, :only => [:index, :show]
         resource :reservations
-        resource :settings do 
-          get 'change_password' => 'settings#change_password'
-        end
-        
+        resource :settings
+
         post 'login' => 'sessions#create'
         # match 'login/reset' => 'sessions#reset', :via => [:get, :post]
         delete 'logout' => 'sessions#destroy'
@@ -58,6 +56,7 @@ Rails.application.routes.draw do
     end
   end
 
+        get 'settings/change_password' => 'partners/settings#change_password', :as => 'change_password_partners_settings', :subdomain => 'partners'
 
 # Frontend Resources 
 resources :customers, only: [:new, :create]

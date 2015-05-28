@@ -19,7 +19,7 @@ before_filter { @c = current_user }
   
   private
   	def permit_params
-      params.require(:user).permit(:phone, :location, :address1, :address2, :emergency_name, :emergency_phone, :image)
+      params.require(:user).permit(:phone, :dob, :location, :address1, :address2, :emergency_name, :emergency_phone, :image)
   	end
 end
 end

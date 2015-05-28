@@ -1,15 +1,30 @@
 class Clasbking < ActiveRecord::Base
-    default_scope  { where('expired_at >= ?', Time.now) }
-    after_create :tell_partner
+  default_scope  { where('expired_at >= ?', Time.now) }
+  after_create :sms_notify
+  after_create :tell_admin
 
 	belongs_to :customer
 	belongs_to :fpclass
 	belongs_to :passport
 	belongs_to :center
 
-	def tell_partner
-		SmsService.new(phone_number, "One customer registered just now for class #{self.fpclass.name} on #{self.expired_at} ").send_sms
+  def sms_notify
+    tell_customer
+    tell_partner
+  end
+
+  def tell_partner
+    SmsService.new(phone_number, "#{self.customer.user.full_name} has registered #{self.fpclass.name} on #{self.expired_at}.   Thank you").delay.send_sms
 	end
+
+  def tell_customer
+    SmsService.new(customer.user.phone, "Registration for #{self.fpclass.name} at #{self.center.name} on date #{self.expired_at} confirmed successfully.   Thank you").delay.send_sms
+  end
+
+
+  def tell_admin
+    RegistrationMailer.admin_notify(self).delay.deliver
+  end
 
 	def phone_number
 		fpclass.partner.user.phone || "0000000000"

@@ -13,7 +13,8 @@
 						<%= f.input :phone, label: 'Mobile', input_html: { class: 'form-control input-sm' }, wrapper_html: { class: 'form-group' } %>
 						<%= f.input :address1, label: 'Address', input_html: { class: 'form-control input-sm', :placeholder => 'Address Line 1'}, wrapper_html: { class: 'form-group' } %>
 						<%= f.input :address2, label: false, input_html: { class: 'form-control input-sm', :placeholder => 'Address Line 2'}, wrapper_html: { class: 'form-group' } %>
-						<%= f.input :location, input_html: { class: 'form-control input-sm' }, wrapper_html: { class: 'form-group' } %>
+            <%= f.input :location, input_html: { class: 'form-control input-sm' }, wrapper_html: { class: 'form-group' } %>
+            <%= f.input :dob, as: :date, html5: true, label: 'Date of birth', input_html: { class: 'form-control input-sm' }, wrapper_html: { class: 'form-group' } %>
 					</div>
 				</div>
 			</div>
