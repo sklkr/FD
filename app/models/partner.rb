@@ -10,6 +10,7 @@ class Partner < ActiveRecord::Base
   has_many :fpclasses, :dependent => :destroy
   has_one :info, :dependent => :destroy
   
+  after_save :notify_admin
   # Set partner type to center if we dont have partner type
   after_initialize do 
     if self.partner_type == '2'
@@ -23,5 +24,8 @@ class Partner < ActiveRecord::Base
   # Validations
   validates :email, :presence => true, :uniqueness => true
   validates_format_of :email, :with => /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z]+)*\.[a-z]+\z/i, :message => "Email not valid"
-  
+
+  def notify_admin
+    AcknowledgeMailer.partner_reg(self).delay.deliver
+  end
 end

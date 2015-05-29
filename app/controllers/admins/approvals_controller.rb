@@ -9,7 +9,6 @@ class ApprovalsController < ApplicationController
 
 	def create
 		centers =  Center.unscoped.find(params['t1'].keys)
-	
 		unless params['approve'].nil?
 			centers.each do |c|
 				unless c.update_attributes(:status => 'active')

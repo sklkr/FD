@@ -1,11 +1,21 @@
-class VerificationMailer < ActionMailer::Base
-  default from: "FitnessPapa <noreply@fitnesspapa.com>"
+class VerificationMailer < MandrillMailer::TemplateMailer
+  default from: "noreply@fitnesspapa.com"
 
   def welcome_email(user, role)
   	  @link = url_for( :controller => 'registrations', :action => 'verify_email', :token => user.remember_token )
-  	  @email = role.email
-  	  @name = role.user.first_name
-  	  mail(to: role.email, subject: 'Welcome to FitnessPapa')
+      @role = role
+      mandrill_mail(
+       template: 'verification',
+       subject: "Email Verification",
+       to: @role.email,
+        # to: invitation.email,
+        # to: { email: invitation.email, name: 'Honored Guest' },
+       vars: {
+        'VERIFY_URL' => @link,
+       },
+       important: true,
+       inline_css: true,
+      )
   end
 
   def guest_email(role)

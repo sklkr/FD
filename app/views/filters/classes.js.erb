@@ -10,3 +10,19 @@ $('#center-search-container').hide();
 $('.magicsuggest').magicSuggest([]);
 window.search_input2 = document.getElementById('cities_two');
 window.city_name2 = new google.maps.places.Autocomplete(window.search_input2);
+
+
+var owl = $("#sd-calendar");
+owl.owlCarousel({
+      items : 7, //10 items above 1000px browser width
+      pagination: false,
+      rewindNav: false,
+      navigation: true,
+      navigationText: [
+       "<i class='icon-chevron-left icon-white'><</i>",
+       "<i class='icon-chevron-right icon-white'>></i>"
+      ],
+  });
+
+var owldata = $("#sd-calendar").data('owlCarousel');
+owldata.jumpTo(<%= @difference.to_i %>)

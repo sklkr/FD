@@ -5,12 +5,12 @@
                 <ul class="nav nav-tabs" role='tablist'>
                     <li role="presentation" class="active" id="fp-link"><%= link_to 'FITNESS STUDIO', search_path, remote: true %></li>
                     <li role="presentation" id="classes-link"><%= link_to 'CLASSES', classes_search_path, :remote => true %></li>
-                    
                 </ul>
             </div>
         </div>
     </div>
 </div> -->
+
 <%= link_to 'STUDIO', search_path, id: 'studio-linker', style: 'display:none', remote: true %>
 <%= link_to 'CLASSES', classes_search_path, id: 'class-linker', style: 'display:none', remote: true %>
 

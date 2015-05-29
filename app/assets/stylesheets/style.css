@@ -2646,3 +2646,24 @@ xkeyframes
     display: block;
   }
 }
+
+#cd-google-map #cd-zoom-in, #cd-google-map #cd-zoom-out{
+  display: block !important;
+}
+.week1 .owl-item{
+  text-align: center;
+}
+
+.owl-theme .owl-controls .owl-buttons div {
+  position: absolute;
+}
+ 
+.owl-theme .owl-controls .owl-buttons .owl-prev{
+  top: -7px; 
+  left: -1px;
+}
+ 
+.owl-theme .owl-controls .owl-buttons .owl-next{
+  right: -1px;
+  top: -9px;
+}

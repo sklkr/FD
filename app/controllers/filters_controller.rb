@@ -17,6 +17,7 @@ before_filter { @c = Center.ransack(params[:q]) }
     params[:q] = {:recursivedates_ondate_eq => Date.today.strftime('%Y-%m-%d')} if params['q'].nil?
     @c = Fpclass.ransack(params[:q])
     @fpclasses = @c.result(distinct: true)
+    @difference = params['q']['recursivedates_ondate_eq'].to_date - Date.today
     respond_to do |format|
       format.js
     end

@@ -1,5 +1,5 @@
 module Partners::Centers
-  class ServicesController < ApplicationController 
+ class ServicesController < ApplicationController 
   skip_before_filter :authenticate!
   before_filter :partner_authenticated?
   before_filter :partner_accessable?
