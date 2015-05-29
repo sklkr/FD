@@ -2339,7 +2339,6 @@ xkeyframes
   }
   .cd-faq-categories a {
     font-size: 13px;
-    font-size: 0.8125rem;
     font-weight: 600;
     padding-left: 24px;
     padding: 0 24px;
@@ -2630,7 +2629,6 @@ xkeyframes
 
 .cd-faq-content p {
   font-size: 14px;
-  font-size: 0.875rem;
   line-height: 1.4;
   color: #6c7d8e;
 }
