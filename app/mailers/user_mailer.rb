@@ -1,13 +1,18 @@
-class UserMailer < ActionMailer::Base
-  default from: "FitnessPapa <noreply@fitnesspapa.com>"
+class UserMailer < MandrillMailer::TemplateMailer
+  default from: "noreply@fitnesspapa.com"
 
-  # Subject can be set in your I18n file at config/locales/en.yml
-  # with the following lookup:
-  #
-  #   en.user_mailer.password_reset.subject
-  #
   def password_reset(user, role)
-    @user = user
-    mail :to => role.email, :subject => "Password Reset"
+    mandrill_mail(
+      template: 'password_reset',
+      subject: "Password Reset",
+      to: role.email,
+        # to: invitation.email,
+        # to: { email: invitation.email, name: 'Honored Guest' },
+      vars: {
+        'URL' => edit_password_reset_url(user.password_reset_token),
+      },
+      important: true,
+      inline_css: true,
+    )
   end
 end
