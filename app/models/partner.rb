@@ -26,6 +26,6 @@ class Partner < ActiveRecord::Base
   validates_format_of :email, :with => /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z]+)*\.[a-z]+\z/i, :message => "Email not valid"
 
   def notify_admin
-    AcknowledgeMailer.partner_reg(self).delay.deliver
+    AcknowledgeMailer.partner_reg(self).delay.deliver unless user.active
   end
 end
