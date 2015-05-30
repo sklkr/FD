@@ -61,7 +61,8 @@
         <ul class="dropdown-menu">
           <li>
             <a class="clearfix" href="#">
-              <%= image_tag "//d1djl7kr085bc1.cloudfront.net/store/#{current_user.image_id}", :class => 'img img-thumbnail' %>
+               <!-- image_tag "//d1djl7kr085bc1.cloudfront.net/store/#{current_user.image_id}", :class => 'img img-thumbnail'  -->
+              <img src="/assets/avatar.png" alt="User Avatar">    
               <div class="detail">
                 <strong><%= current_user.first_name %></strong>
                 <p class="grey"><%= current_user.customer.email %></p> 

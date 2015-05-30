@@ -3,7 +3,7 @@
      <a href="<%= details_page_path(center.friendly_id) %>"><%= image_tag "//d1djl7kr085bc1.cloudfront.net/store/#{center.image_id}", :class => 'group list-group-image img-responsive' %></a>
   </div>
   <div class="col-xs-12 col-sm-8 cnt-box">
-      <a href="<%= details_page_path(center.friendly_id) %>"><h4 class="group inner list-group-item-heading"><%= center.name.capitalize %></h4></a>
+      <a href="<%= details_page_path(center.friendly_id) %>"><h4 class="group inner list-group-item-heading"><%= center.name.titleize %></h4></a>
       <p><small class='m-right20'><i class='fa fa-map-marker'>&nbsp;</i><%= center.place_name %></small></p>
       <p class="group inner list-group-item-text"><%= truncate(center.centerinfo.detailed_desc, length: 250, separator: '...') %></p>
   </div>
