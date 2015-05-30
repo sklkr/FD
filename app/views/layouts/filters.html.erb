@@ -24,5 +24,10 @@
 	    window.city_name = new google.maps.places.Autocomplete(window.search_input);
     })()
  </script>
+ <script>
+    <% unless current_user.customer.passport %>
+      $('#package').modal();
+    <% end %>
+ </script>
 </body>
 </html>

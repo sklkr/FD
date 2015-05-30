@@ -7,7 +7,7 @@ class AcknowledgeMailer < MandrillMailer::TemplateMailer
     mandrill_mail(
       template: 'partner_registration',
       subject: "Registration Notification",
-      to: 'support@fitnesspapa.com',
+      to: 'partners@fitnesspapa.com',
         # to: invitation.email,
         # to: { email: invitation.email, name: 'Honored Guest' },
       vars: {

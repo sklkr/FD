@@ -11,4 +11,8 @@ class Passport < ActiveRecord::Base
   def remaining_tickets
   	self.tickets - total_clasbkings 
   end
+
+  def order_id
+  	"P00#{(self.id + 426).to_s.rjust(3,'0')}"
+  end
 end
