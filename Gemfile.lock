@@ -118,6 +118,7 @@ GEM
       currencies (~> 0.4.2)
       i18n_data (~> 0.7.0)
     currencies (0.4.2)
+    daemons (1.2.2)
     delayed_job (4.0.6)
       activesupport (>= 3.0, < 5.0)
     delayed_job_active_record (4.0.3)
@@ -374,6 +375,7 @@ DEPENDENCIES
   coffee-rails (~> 4.0.0)
   commontator (~> 4.10.0)
   country_select!
+  daemons
   delayed_job
   delayed_job_active_record
   execjs
