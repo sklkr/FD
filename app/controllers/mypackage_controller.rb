@@ -18,13 +18,13 @@ class MypackageController < ApplicationController
     @order = current_order || Order.find_by_number(params[:txnid])
     @order.update_attributes(params.permit(:status, :bank_ref_num, :bankcode, :name_on_card, :cardnum, :amount_split, :discount, :net_amount_debit))
     
-    p = Passport.create(:order_item => @order.order_items.first, :customer => current_user.customer, tickets: 30, active: 0)
+    @p = Passport.create(:order_item => @order.order_items.first, :customer => current_user.customer, tickets: 20, active: 0, :start_date => Date.today, :end_date => Date.today + 30.days)
     #sms 
     @c = @order.customer
     @customer_data = @c.user
     SmsService.new(@customer_data.phone, "Hi, you\'ve bought a FitnessPapa Passport worth Rs.#{@order.total_amount} on #{p.start_date}. Your order ID is #{p.order_id}.   Thank You!").delay.send_sms
-    AcknowledgeOrder.customer(p, current_user).delay.deliver
-    AcknowledgeOrder.admin(p, current_user).delay.deliver
+    AcknowledgeOrder.customer(@p, current_user).delay.deliver
+    AcknowledgeOrder.admin(@p, current_user).delay.deliver
   end
 
   def failure

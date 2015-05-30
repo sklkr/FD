@@ -29,7 +29,7 @@ class AcknowledgeOrder < MandrillMailer::TemplateMailer
       vars: {
         'NAME' => user.full_name,
         'DATE' => passport.start_date,
-        'EMAIL' => passport.order_id,
+        'EMAIL' => user.customer.email,
         'MOBILE' => user.phone,
       },
       important: true,

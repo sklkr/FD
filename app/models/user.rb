@@ -18,7 +18,7 @@ class User < ActiveRecord::Base
   attachment :image
 
   def full_name
-    self.first_name
+    "#{self.try(:first_name)}  #{self.try(:last_name)}".blank? ? "Anonymous" : "#{self.try(:first_name)}  #{self.try(:last_name)}"
   end
 
   def full_name=(full_name)
