@@ -10,9 +10,9 @@
           <div class="col-xs-12">
             <h5></h5>
             <p>Level :: <%= @fpclass.level %></p>
-            <p>Instructor :: <%= @fpclass.instructor.name.try(:capitalize) %></p>
+            <p>Instructor :: <%= @fpclass.instructor.try(:name).try(:capitalize) %></p>
             <p><%= @fpclass.description %></p>
-            <p><i class='fa fa-clock-o'></i><%= local_time(@fpclass.start_time, '%B %d, %Y %a') %><br><%= @fpclass.start_time %> ( <%= @fpclass.duration %> )</p>
+            <p><i class='fa fa-clock-o'></i>&nbsp;&nbsp;<%= local_time("#{params['date']} #{@fpclass.start_time.strftime('%H:%M')}", '%B %d, %a') %> ( <%= @fpclass.duration %> Minutes)</p>
           </div>
         </div>
       </div>

@@ -28,6 +28,7 @@
 //= require plugins/drop
 //= require plugins/magicsuggest
 //= require plugins/parsley
+//= require local_time
 //= require signup
 //= require cart
 
