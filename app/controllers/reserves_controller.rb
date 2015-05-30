@@ -31,8 +31,10 @@ before_action :is_available_seats
 
 	def destroy
 		booking = Clasbking.find(params[:id])
-		if booking.customer == current_user.customer
+		if booking.customer == current_user.customer && (booking.expired_at - Date.today).to_i > 1
 			redirect_to customers_classes_path if booking.delete
+		else
+			redirect_to customers_classes_path, :notice => "You cannot cancel before one day of class scheduled date."
 		end
 	end
 
