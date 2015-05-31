@@ -4,7 +4,7 @@ before_filter { redirect_to root_url unless current_user }
 
   def search
     # partial merging
-    params[:q].merge!(:place_name_cont_any => params[:q][:place_name_cont_any].split(',').first) unless (params[:q].blank? || params[:q][:place_name_cont_any].blank?) 
+    merger
     @c = Center.ransack(params[:q])
     @centers = @c.result(distinct: true).includes(:centerinfo, :cphotos)
     respond_to do |format|
@@ -14,7 +14,7 @@ before_filter { redirect_to root_url unless current_user }
   end
 
   def classes
-    params[:q].merge!(:centers_place_name_cont_any => params[:q][:centers_place_name_cont_any].split(',').first) unless (params[:q].blank? || params[:q][:centers_place_name_cont_any].blank?) 
+    merger
     params[:q] = {:recursivedates_ondate_eq => Date.today.strftime('%Y-%m-%d')} if params['q'].nil?
     @c = Fpclass.ransack(params[:q])
     @fpclasses = @c.result(distinct: true)
@@ -24,4 +24,10 @@ before_filter { redirect_to root_url unless current_user }
     end
   end
     
+  def merger
+    params['q']['centers_place_name_cont_any'].sub!("Bangalore", "Bengaluru") unless (params[:q].blank? || params[:q][:centers_place_name_cont_any].blank?)
+    params[:q].merge!(:centers_place_name_cont_any => params[:q][:centers_place_name_cont_any].split(',').first) unless (params[:q].blank? || params[:q][:centers_place_name_cont_any].blank?) 
+    params['q']['place_name_cont_any'].sub!("Bangalore", "Bengaluru") unless (params[:q].blank? || params[:q][:place_name_cont_any].blank?)
+    params[:q].merge!(:place_name_cont_any => params[:q][:place_name_cont_any].split(',').first) unless (params[:q].blank? || params[:q][:place_name_cont_any].blank?) 
+  end  
 end
