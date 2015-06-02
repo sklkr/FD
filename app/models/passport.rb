@@ -5,7 +5,7 @@ class Passport < ActiveRecord::Base
 
 
   def total_clasbkings
-  	unscoped.clasbkings.count
+  	clasbkings.unscoped.count
   end
 
   def remaining_tickets
