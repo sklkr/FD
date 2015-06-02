@@ -6,7 +6,7 @@ layout 'customerdashboard'
   	@total = passport.try(:remaining_tickets) || 0 
     @active = passport.try(:total_clasbkings) || 0
   	@bookings = @passport.clasbkings.includes(:fpclass) unless @passport.nil?
-  	@history = Clasbking.unscoped.where('customer_id=?', current_user.customer.id).expired
+  	@history = Clasbking.unscoped.expired.where('customer_id=?', current_user.customer.id)
   end
 
   def show
