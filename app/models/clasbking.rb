@@ -29,4 +29,8 @@ class Clasbking < ActiveRecord::Base
 	def phone_number
 		fpclass.partner.user.phone || "0000000000"
 	end
+
+  def expired
+    where('expired_at < ?', Time.now)
+  end
 end
