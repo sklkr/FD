@@ -4,6 +4,8 @@
   <%= metamagic %>
   <%= render :partial => 'layouts/head' %>
   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAs4tO9vd5JNhXOX8h492hEwfstspyTQAw&libraries=places"></script>
+  <%= render :partial => 'shared/zopim' %>
+
 </head>
 <body>
  <%= render :partial => 'layouts/tagmanager' %>
@@ -13,6 +15,7 @@
  <%= render :partial => 'layouts/footer' %>
  <%= render :partial => 'layouts/analytics' %>
  <%= javascript_include_tag 'application' %>
+ <script src="//unslider.com/unslider.min.js"></script>
  <script>
    $(document).on('page:change', function() {
     if (window._gaq != null) {
@@ -29,6 +32,7 @@
 	    window.city_name = new google.maps.places.Autocomplete(window.search_input);
     })()
   </script>
+
   <%= yield :linescript %>
 </body>
 </html>

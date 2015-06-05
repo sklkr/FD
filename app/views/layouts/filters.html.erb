@@ -6,6 +6,7 @@
   <link rel="dns-prefetch" href="http://d1djl7kr085bc1.cloudfront.net">
   <%= render :partial => 'layouts/head' %>
   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAs4tO9vd5JNhXOX8h492hEwfstspyTQAw&libraries=places"></script>
+  <%= render :partial => 'shared/zopim' %>
 </head>
 <body>
  <%= render :partial => 'layouts/tagmanager' %>
@@ -25,7 +26,7 @@
     })()
  </script>
  <script>
-    <% unless current_user.customer.passport %>
+    <% unless current_user && current_user.customer.passport %>
       $('#package').modal();
     <% end %>
  </script>

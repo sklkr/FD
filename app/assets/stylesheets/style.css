@@ -155,12 +155,12 @@ select{
 	min-height: 35px;
 }
 .banner .item{
-	height: 412px;
+	height: 502px;
 	overflow: hidden;
 }
 @media screen and (max-width: 640px) {
   .banner .item{
-  height: 160px;
+  height: 220px;
 }
 }
 
@@ -170,7 +170,7 @@ select{
     margin-right: auto;
     left: 0%;
     right: 0;
-    bottom: 44%;
+    bottom: 26%;
     padding: 20px 20px 0 20px;
 }
 
@@ -2664,4 +2664,9 @@ xkeyframes
 .owl-theme .owl-controls .owl-buttons .owl-next{
   right: -1px;
   top: -9px;
+}
+
+
+div.input input.has-border{
+  font-size:14px !important;
 }
