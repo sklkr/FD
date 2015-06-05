@@ -7,7 +7,7 @@ layout 'partners'
     @fpclasses.each {|fpclass| clasbkings << fpclass.clasbkings }
     @clasbkings = clasbkings.flatten
     past = []
-    @pastfpclasses = Fpclass.unscoped.where('partner_id=?',26).pluck(:id)
+    @pastfpclasses = Fpclass.unscoped.where('partner_id=?',current_partner.id).pluck(:id)
     @past = Clasbking.unscoped.where('expired_at < ?', Time.now).where(:fpclass_id=>@pastfpclasses)
   end
 end
