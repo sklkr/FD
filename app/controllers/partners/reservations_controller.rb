@@ -6,10 +6,7 @@ layout 'partners'
     @fpclasses = current_partner.fpclasses.includes(:clasbkings)
     @fpclasses.each {|fpclass| clasbkings << fpclass.clasbkings }
     @clasbkings = clasbkings.flatten
-    past = []
-    @pastfpclasses = current_partner.fpclasses.expired.includes(:clasbkings)
-    @pastfpclasses.each {|fpclass| past << fpclass.clasbkings }
-    @past = past.flatten
+    @past = current_partner.clasbkings.unscoped.where('expired_at < ?', Time.now)
   end
 end
 end
