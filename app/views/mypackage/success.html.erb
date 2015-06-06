@@ -1,4 +1,4 @@
-<%= render :partial => 'layouts/header' %>
+ render :partial => 'layouts/header' 
 
 <div class="container">
   <div class="row">
@@ -16,7 +16,7 @@
           <h4>Order details</h4>
         </div>
         <div class="panel-body">
-          <p>Order Id :: <%= @p.order_id %></p>
+          <p>Order Id :: <%= @passport.order_id %></p>
           <p>Total Price : <%= @order.total_amount %></p>
           <p></p>
         </div>

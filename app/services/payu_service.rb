@@ -8,7 +8,7 @@ attr_reader :key, :txnid, :amount, :productinfo, :firstname, :email, :phone, :su
     @productinfo = "FitnessPapa"
     @firstname = current_user.first_name || "Anonymous"
 
-    @email = current_user.customer.email
+    @email = current_user.email
     @phone = current_user.phone || "000"
     @surl = success_url
     @furl = failure_url
@@ -20,7 +20,7 @@ attr_reader :key, :txnid, :amount, :productinfo, :firstname, :email, :phone, :su
   
   private
     def generate_hash
-      fields = "#{@key}|#{@txnid}|#{@amount}|#{@productinfo}|#{@firstname}|#{@email}|||||||||||#{Figaro.env.payu_secret}"
+      fields = "#{@key}|#{@txnid}|#{@amount}|#{@productinfo}|#{@firstname}|#{@email}|#{@udf1}||||||||||#{Figaro.env.payu_secret}"
       Digest::SHA2.new(512).hexdigest fields
     end
 

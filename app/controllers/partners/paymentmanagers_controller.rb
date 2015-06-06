@@ -12,7 +12,7 @@ before_filter :partner_authenticated?
   end
 
   def transactions
-  	@bookings = current_user.partner.bookings
+  	@bookings = current_user.bookings
   end
 
   def partner_payment

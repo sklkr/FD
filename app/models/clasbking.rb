@@ -14,7 +14,7 @@ class Clasbking < ActiveRecord::Base
   end
 
   def tell_partner
-    SmsService.new(phone_number, "#{self.customer.user.full_name} has registered #{self.fpclass.name} on #{self.expired_at} at #{self.fpclass.start_time.strftime('%H:%M')}.").delay.send_sms
+    SmsService.new(phone_number, "#{self.customer.user.full_name} has registered #{self.fpclass.name} on #{self.expired_at} at #{self.fpclass.start_time.strftime('%H:%M')}. @FitnessPapa").delay.send_sms
 	end
 
   def tell_customer

@@ -8,7 +8,7 @@ before_filter :partner_authenticated?
 
   def show
   	@bookings = Center.unscoped.find(params[:id]).bookings
-  	@centers = Center.unscoped.where('partner_id=?', current_user.partner.id)
+  	@centers = Center.unscoped.where('partner_id=?', current_user.id)
   end
   
 end

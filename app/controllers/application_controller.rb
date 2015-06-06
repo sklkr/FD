@@ -17,11 +17,11 @@ class ApplicationController < ActionController::Base
    end
 
    def passport
-    current_user.customer.passport
+    current_user.passport
    end
 
    def current_user
-     warden.user
+    warden.user.customer if warden.user
    end
 
    def warden
@@ -54,7 +54,6 @@ class ApplicationController < ActionController::Base
       redirect_to '/admins/sessions' unless warden.authenticated?(:superadmin)
    end
 
-   
    def center
       Center.unscoped.friendly.find(params['center_id'])  rescue Center.unscoped.friendly.find(params['id'])
    end

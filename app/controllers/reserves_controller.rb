@@ -16,7 +16,7 @@ before_action :is_available_seats
 		@fpclass = Fpclass.friendly.find(params[:id])
 		@conditioner = FpConditioner.new(@fpclass, passport)
 		if @conditioner.is_he_eligible
-			@booking = Clasbking.new(:customer => current_user.customer, :fpclass => @fpclass, :passport => passport, :status => 'open', :expired_at => params[:date], :center => @fpclass.centers.first)
+			@booking = Clasbking.new(:customer => current_user, :fpclass => @fpclass, :passport => passport, :status => 'open', :expired_at => params[:date], :center => @fpclass.centers.first)
 			if @booking.save
 				respond_to do |format|
 					format.js
@@ -31,8 +31,8 @@ before_action :is_available_seats
 
 	def destroy
 		booking = Clasbking.find(params[:id])
-		if booking.customer == current_user.customer && (booking.expired_at - Date.today).to_i > 1
-			SmsService.new(booking.phone_number, "Dear Partner, #{booking.customer.user.full_name} has cancelled #{booking.fpclass.name} on #{booking.expired_at} at #{booking.fpclass.start_time.strftime('%H:%M')}.").delay.send_sms
+		if booking.customer == current_user && (booking.expired_at - Date.today).to_i > 1
+			SmsService.new(booking.phone_number, "Dear Partner, #{booking.customer.user.full_name} has cancelled #{booking.fpclass.name} on #{booking.expired_at} at #{booking.fpclass.start_time.strftime('%H:%M')}. @FitnessPapa").delay.send_sms
 			redirect_to customers_classes_path if booking.delete
 		else
 			redirect_to customers_classes_path, :notice => "You cannot cancel before one day of class scheduled date."

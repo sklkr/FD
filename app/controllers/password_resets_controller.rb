@@ -12,7 +12,7 @@ before_action :authenticated?, only: [:change_password, :update_password]
     else
       role = Customer.find_by_email(params[:email])
     end
-    role.user.send_password_reset(role) if role
+    role.send_password_reset(role) if role
     flash[:notice] = "Reset instructions sent to mail if email exists with FitnessPapa..!"
     render :new
   end

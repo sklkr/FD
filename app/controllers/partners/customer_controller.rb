@@ -4,7 +4,7 @@ layout 'partnerdashboard'
 before_filter :partner_authenticated?
 
   def index
-    @bookings = current_user.partner.bookings
+    @bookings = current_user.bookings
   end
 
   def show

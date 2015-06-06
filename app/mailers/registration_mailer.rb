@@ -2,7 +2,7 @@ class RegistrationMailer < MandrillMailer::TemplateMailer
   default from: 'info@fitnesspapa.com'
 
   def admin_notify(cb)
-    user    = cb.customer.user
+    user    = cb.customer
     fpclass = cb.fpclass
     center  = cb.center
 

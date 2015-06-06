@@ -2,6 +2,8 @@ class Partner < ActiveRecord::Base
   # An array of partner type
   PARTNERTYPES = ['center','professional']
 
+  delegate :first_name, :last_name, :phone, :password, :crypted_password, :image_id, :active, :full_name, :password_reset_token, :send_password_reset, to: :user
+  
   belongs_to :user, :dependent => :destroy
   has_many :centers, :dependent => :destroy
   has_many :bookings

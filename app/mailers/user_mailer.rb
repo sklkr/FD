@@ -1,11 +1,11 @@
 class UserMailer < MandrillMailer::TemplateMailer
   default from: "noreply@fitnesspapa.com"
 
-  def password_reset(user, role)
+  def password_reset(user)
     mandrill_mail(
       template: 'password_reset',
       subject: "Password Reset",
-      to: role.email,
+      to: user.email,
         # to: invitation.email,
         # to: { email: invitation.email, name: 'Honored Guest' },
       vars: {

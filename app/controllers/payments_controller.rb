@@ -10,7 +10,7 @@ class PaymentsController < ApplicationController
   	@furl = payments_failure_url
   	@service_provider = 'payu_paisa'
   	@txnid = params[:token]
-  	@email = current_user.customer.email
+  	@email = current_user.email
   	@phone = current_user.phone
   	@productinfo = "FitnessPapa Services"
   	@firstname = current_user.first_name

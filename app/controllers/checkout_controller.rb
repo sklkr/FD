@@ -30,7 +30,7 @@ class CheckoutController < ApplicationController
 
   private
     def params_builder
-      list = {:email_address => current_user.try(:customer).try(:email)}
+      list = {:email_address => current_user.try(:email)}
       items = (1..params["itemCount"].to_i).collect { |no| {no => {:order_id => 1, :quantity => params["item_quantity_#{no}"], :unit_price => params["item_price_#{no}"], :service_id => Service.friendly.find(params["item_options_#{no}"].split(": ")[1]).try(:id)}}}
       order_items_attributes = {}
       items.each  {|item| order_items_attributes.merge!(item) }

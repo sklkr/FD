@@ -3,8 +3,8 @@ class SettingsController < BaseController
 layout 'partners'
   
   def edit
-    @info = current_partner.info || current_partner.build_info.save
-    @info = current_partner.info
+    @info = current_user.info || current_user.build_info.save
+    @info = current_user.info
   end
   
   def create
@@ -14,13 +14,14 @@ layout 'partners'
      redirect_to change_password_partners_settings_path if current_user.save
    else
      flash["alert"] = "Please check your credentails once"
-     @user = current_user
+     binding.pry
+     @partner = current_user
      render 'change_password'
    end
   end
 
   def update
-    @info = current_partner.info
+    @info = current_user.info
     if @info.update(permit_params)
       redirect_to edit_partners_settings_path(@info.id)
     else
@@ -33,6 +34,7 @@ layout 'partners'
   end
 
   def change_password
+    binding.pry
     @user = current_user
   end
 

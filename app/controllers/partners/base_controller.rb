@@ -7,11 +7,7 @@ class BaseController < ActionController::Base
   before_filter :authenticate!
 
   def current_user
-   warden.user(:partner)
-  end
-
-  def current_partner
-    current_user && current_user.partner
+   warden.user(:partner).partner if warden.user(:partner)
   end
 
   def warden
