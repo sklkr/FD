@@ -155,12 +155,11 @@ select{
 	min-height: 35px;
 }
 .banner .item{
-	height: 502px;
 	overflow: hidden;
 }
 @media screen and (max-width: 640px) {
   .banner .item{
-  height: 220px;
+ 
 }
 }
 
