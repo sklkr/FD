@@ -3,8 +3,8 @@ class CentersController < BaseController
 layout 'partners'
 
   def index
-	 @centers = current_partner.centers
-   @pending_centers = Center.unscoped.pending.where('partner_id=?',current_partner.id)
+	 @centers = current_user.centers
+   @pending_centers = Center.unscoped.pending.where('partner_id=?',current_user.id)
   end
 
   def new
@@ -25,7 +25,7 @@ layout 'partners'
 
   def create
    @center = ::Center.new(permit_params)
-   @center.partner_id = current_partner.id
+   @center.partner_id = current_user.id
    if @center.save
     redirect_to partners_centers_path
    else

@@ -3,7 +3,7 @@ class InstructorsController < BaseController
 layout 'partners'
 
   def index
-	 @instructors = current_partner.instructors
+	 @instructors = current_user.instructors
   end
 
   def new
@@ -20,7 +20,7 @@ layout 'partners'
 
   def create
    @instructor = Instructor.new(permit_params)
-   @instructor.partner = current_partner
+   @instructor.partner = current_user
    if @instructor.save
     redirect_to partners_instructors_path(anchor: "instructor_#{@instructor.id}")
    else

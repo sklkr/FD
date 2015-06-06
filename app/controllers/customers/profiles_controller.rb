@@ -2,7 +2,7 @@ module Customers
 class ProfilesController < ApplicationController 
 before_filter :authenticated?
 layout 'customerdashboard'
-before_filter { @c = current_user }
+before_filter { @c = current_user.user }
 
   def edit
   end

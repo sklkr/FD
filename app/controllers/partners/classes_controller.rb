@@ -3,7 +3,7 @@ class ClassesController < BaseController
 layout 'partners'
 
   def index
-	 @fpclasses = current_partner.fpclasses
+	 @fpclasses = current_user.fpclasses
    @expired = Fpclass.unscoped.where('partner_id=?', 50).where("expiry<?", Time.now)
    respond_to do |format|
     format.html
@@ -22,7 +22,7 @@ layout 'partners'
 
   def create
    @fpclass = Fpclass.new(permit_params)
-   @fpclass.partner = current_partner
+   @fpclass.partner = current_user
    if @fpclass.save
     redirect_to partners_classes_path
    else

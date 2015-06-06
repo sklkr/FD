@@ -6279,7 +6279,7 @@ button.close {
   left: 15%;
   right: 15%;
   bottom: 20px;
-  z-index: 10;
+  z-index: 2;
   padding-top: 20px;
   padding-bottom: 253px;
   color: #ffffff;

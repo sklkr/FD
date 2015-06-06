@@ -3,7 +3,7 @@
 		<div class="col-xs-12">
 			<div class="panel panel-default">
 				<div class="panel-body">
-					<%= f.association :centers, collection: current_partner.centers, input_html: { class: 'form-control input-sm chzn-select' }, wrapper_html: { class: 'form-group' } %>
+					<%= f.association :centers, collection: current_user.centers, input_html: { class: 'form-control input-sm chzn-select' }, wrapper_html: { class: 'form-group' } %>
 					<%= f.input :name, input_html: { class: 'form-control input-sm' }, wrapper_html: { class: 'form-group' } %>
 					<%= f.input :date, as: :date, html5: true, :label => "Start Date", input_html: { class: 'form-control input-sm' }, wrapper_html: { class: 'form-group' } %>
 					<div class="row">
@@ -32,7 +32,7 @@
 					<%= f.input :seats, input_html: { class: 'form-control input-sm' }, wrapper_html: { class: 'form-group' } %>
 					<%= f.input :description, input_html: { class: 'form-control input-sm', :placeholder => "Upto 5 sentences" }, wrapper_html: { class: 'form-group' } %>
 					<%= f.input :level, collection: Fpclass::LEVELS, :label => "Level", input_html: { class: 'form-control input-sm chzn-select' }, wrapper_html: { class: 'form-group'} %>
-					<%= f.input :instructor_id, :collection => current_partner.instructors, :label_method => 'name', :value_method => 'id', input_html: { class: 'form-control input-sm chzn-select' }, wrapper_html: { class: 'form-group'} %>
+					<%= f.input :instructor_id, :collection => current_user.instructors, :label_method => 'name', :value_method => 'id', input_html: { class: 'form-control input-sm chzn-select' }, wrapper_html: { class: 'form-group'} %>
 				</div>
 			</div>
 		</div>
