@@ -6,7 +6,7 @@ class MypackageController < ApplicationController
 
   def index
     @order = current_order || Order.new(:email_address => current_user.email, customer: current_user)
-    @order.order_items.new(Passport::TYPE[Passport::ACTIVE].except!(:tickets, :end_date))
+    @order.order_items.new(Passport::TYPE[Passport::ACTIVE].except(:tickets, :end_date))
     
     if @order.save
       @payu = PayuService.new(@order, current_user, mypackage_success_url, mypackage_failure_url)
@@ -21,10 +21,6 @@ class MypackageController < ApplicationController
     @order = current_order || Order.find_by_number(params[:txnid])
     @order.update_attributes(params.permit(:status, :bank_ref_num, :bankcode, :name_on_card, :cardnum, :amount_split, :discount, :net_amount_debit))
     
-    Passport::TYPE = {
-    'passport_alpha' => {'quantity' => '1', 'unit_price' => '1500', :tickets => '20', :order_type => 'Package', :end_date => Date.today + 30.days},
-    'passport_beta' => {'quantity' => '1', 'unit_price' => '249', :tickets => '10', :order_type => 'Package', :end_date => Date.today + 15.days}
-    }
     data = Passport::TYPE[Passport::ACTIVE]
     
     @passport = Passport.new(:tickets => data[:tickets], :order_item => @order.order_items.first, :customer => current_user, active: 0, :start_date => Date.today, :end_date => data[:end_date])
