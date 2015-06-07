@@ -29,7 +29,7 @@
             <tbody>
                 <% @fpclasses.each do |c| %>
                     <tr>
-                        <td><a href=""><%= c.name.capitalize %></a></td>
+                        <td><a href=""><%= c.name.capitalize %> <%= c.centers.first.name.capitalize %></a></td>
                         <td><%= local_time(c.date, '%B %d, %Y') unless c.date.blank? %></td>
                         <td><%= c.start_time.strftime('%H : %M') unless c.start_time.nil? %></td>
                         <td><%= c.duration %></td>
