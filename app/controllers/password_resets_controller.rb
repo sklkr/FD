@@ -40,8 +40,8 @@ before_action :authenticated?, only: [:change_password, :update_password]
   end
 
   def update_password
-    if current_user.crypted_password && current_user.password == params['user']['current_password'] && params['user']['password'] == params['user']['password_confirmation']
-      current_user.password= params['user']['password']
+    if current_user.crypted_password && current_user.password == params[current_user.class.name.downcase]['current_password'] && params[current_user.class.name.downcase]['password'] == params[current_user.class.name.downcase]['password_confirmation']
+      current_user.password= params[current_user.class.name.downcase]['password']
       flash[:notice] = "Password changed successfully"
       redirect_to root_url if current_user.save
     else

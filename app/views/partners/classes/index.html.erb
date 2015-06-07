@@ -37,7 +37,7 @@
                         <td>
                             <span class="pull-right">
                             <a href="<%= edit_partners_class_path(c.friendly_id) %>"><i class="fa fa-edit fa-lg text-info"></i></a>&nbsp;
-                            <%= link_to partners_class_path(c.friendly_id), method: :delete do %>
+                            <%= link_to partners_class_path(c.friendly_id), method: :delete, data: {confirm: 'Are you sure you want to delete this class?'} do %>
                               <i class='fa fa-trash-o fa-lg text-info'></i>&nbsp;
                             <% end %>
                         </span>
