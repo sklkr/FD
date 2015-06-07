@@ -14,7 +14,6 @@ layout 'partners'
      redirect_to change_password_partners_settings_path if current_user.save
    else
      flash["alert"] = "Please check your credentails once"
-     binding.pry
      @partner = current_user
      render 'change_password'
    end
@@ -34,7 +33,6 @@ layout 'partners'
   end
 
   def change_password
-    binding.pry
     @user = current_user
   end
 

@@ -17,25 +17,25 @@ class MypackageController < ApplicationController
   end
 
   def success
-    binding.pry
+    
     @order = current_order || Order.find_by_number(params[:txnid])
     @order.update_attributes(params.permit(:status, :bank_ref_num, :bankcode, :name_on_card, :cardnum, :amount_split, :discount, :net_amount_debit))
     data = Passport::TYPE[Passport::ACTIVE]
-    binding.pry
+    
     @passport = Passport.new(:tickets => data[:tickets], :order_item => @order.order_items.first, :customer => current_user, active: 0, :start_date => Date.today, :end_date => data[:end_date])
     @customer = @order.customer
-    binding.pry
+    
     unless @passport.save && (current_user.passport.try(:order_item_id) != @order.order_items.first.id)
       redirect_to root_url, :notice => 'something went wrong'
-      binding.pry
+      
     end
     #sms 
-    binding.pry
+    
     SmsService.new(@customer.phone, "Hi, you\'ve bought a FitnessPapa Passport worth Rs.#{@order.total_amount} on #{@passport.start_date}. Your order ID is #{@passport.order_id}.   Thank You!").delay.send_sms
     AcknowledgeOrder.customer(@passport, current_user).delay.deliver
-    binding.pry
+    
     AcknowledgeOrder.admin(@passport, current_user).delay.deliver
-    binding.pry
+    
   end
 
   def failure
