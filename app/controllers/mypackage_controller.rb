@@ -2,7 +2,7 @@ class MypackageController < ApplicationController
   protect_from_forgery :except => [:success, :failure]
   before_action :authenticated?
   before_action :check_hash, :only => [:success]
-  
+  before_action { Date.today == "11th june" } 
   layout 'payments'
 
   def index
