@@ -1,9 +1,10 @@
 class Passport < ActiveRecord::Base
   TYPE = {
     'passport_alpha' => {'quantity' => '1', 'unit_price' => '1500', :tickets => '20', :order_type => 'Package', :end_date => Date.today + 30.days},
-    'passport_beta' => {'quantity' => '1', 'unit_price' => '99', :tickets => '5', :order_type => 'Package', :end_date => Date.today + 10.days}
+    'passport_beta' => {'quantity' => '1', 'unit_price' => '249', :tickets => '10', :order_type => 'Package', :end_date => Date.today + 15.days}
   }
-  ACTIVE = 'passport_alpha'
+
+  ACTIVE = 'passport_beta'
 
   belongs_to :order_item
   belongs_to :customer

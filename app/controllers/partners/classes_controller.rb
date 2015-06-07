@@ -15,7 +15,7 @@ layout 'partners'
   def new
     @fpclass = Fpclass.new
   end
-  
+
   def edit
     @fpclass = Fpclass.friendly.find(params[:id])
   end
@@ -39,14 +39,18 @@ layout 'partners'
     end
   end
 
-  def delete
-
+  def destroy
+    @fp = Fpclass.friendly.find(params[:id])
+    if @fp.destroy
+      redirect_to partners_classes_path
+    else
+      render :text => "something went wrong"
+    end
   end
 
   private
   	def permit_params
       params.require(:fpclass).permit(:name, :date, :recurring, :expiry, :description, :level, :start_time , :duration, :seats, :instructor_id, :type_of, :center_ids => [])
     end
-
 end
 end

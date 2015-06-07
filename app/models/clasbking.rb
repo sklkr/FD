@@ -2,6 +2,7 @@ class Clasbking < ActiveRecord::Base
   default_scope  { where('expired_at >= ?', Time.now) }
   after_create :sms_notify
   after_create :tell_admin
+  before_destroy :tell_admin_cancelled
 
 	belongs_to :customer
 	belongs_to :fpclass
@@ -24,6 +25,10 @@ class Clasbking < ActiveRecord::Base
 
   def tell_admin
     RegistrationMailer.admin_notify(self).delay.deliver
+  end
+
+  def tell_admin_cancelled
+    RegistrationMailer.admin_notify_cancellation(self).delay.deliver
   end
 
 	def phone_number

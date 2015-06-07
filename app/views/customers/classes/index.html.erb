@@ -59,9 +59,9 @@
 					<% unless @bookings.nil? %>
 						<%@bookings.each do |pass| %>
 							<tr>
-								<td><a href=""><%= pass.fpclass.name.capitalize %></a></td>
+								<td><a href=""><%= pass.fpclass.try(:name).try(:capitalize) %></a></td>
 								<td><%= pass.fpclass.try(:centers).try(:first).try(:name) %></td>
-								<td><%= local_time("#{pass.fpclass.date} #{pass.fpclass.start_time.strftime("%H:%M")}", "%B %d - %H:%M") %></td>
+								<td><%= local_time("#{pass.fpclass.try(:date)} #{pass.fpclass.start_time.strftime("%H:%M") unless pass.fpclass.nil?}", "%B %d - %H:%M") unless pass.fpclass.nil? %></td>
 								<td><%= link_to reserf_path(pass.id), :method => :delete, :class => 'label label-danger', style: 'margin-left:20px', :data => { confirm: "Are you sure you want to cancel reservation"} do %>
 										<i class='fa fa-trash-o'></i> Cancel <% end %>
 								</td>
@@ -89,9 +89,9 @@
 					<% unless @history.nil? %>
 						<%@history.each do |pass| %>
 							<tr>
-								<td><a href=""><%= pass.fpclass.name.capitalize %></a></td>
+								<td><a href=""><%= pass.fpclass.try(:name).try(:capitalize) %></a></td>
 								<td><%= pass.fpclass.try(:centers).try(:first).try(:name) %></td>
-								<td><%= local_time(pass.fpclass.date, "%B %d") + " " + pass.fpclass.date %></td>
+								<td><%= local_time(pass.fpclass.try(:date), "%B %d") + " " + pass.fpclass.try(:date) %></td>
 								<td><span class='label label-info'>Used</span></td>
 							</tr>
 						<%end%>

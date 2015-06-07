@@ -33,7 +33,7 @@ before_action :is_available_seats
 		booking = Clasbking.find(params[:id])
 		if booking.customer == current_user && (booking.expired_at - Date.today).to_i > 1
 			SmsService.new(booking.phone_number, "Dear Partner, #{booking.customer.user.full_name} has cancelled #{booking.fpclass.name} on #{booking.expired_at} at #{booking.fpclass.start_time.strftime('%H:%M')}. @FitnessPapa").delay.send_sms
-			redirect_to customers_classes_path if booking.delete
+			redirect_to customers_classes_path if booking.destroy
 		else
 			redirect_to customers_classes_path, :notice => "You cannot cancel before one day of class scheduled date."
 		end
