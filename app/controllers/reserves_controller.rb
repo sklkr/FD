@@ -15,7 +15,7 @@ before_action :is_available_seats
 	def create
 		@fpclass = Fpclass.friendly.find(params[:id])
 		@conditioner = FpConditioner.new(@fpclass, passport)
-		if @conditioner.is_he_eligible
+		if params[:date].to_date <= passport.end_date && @conditioner.is_he_eligible
 			@booking = Clasbking.new(:customer => current_user, :fpclass => @fpclass, :passport => passport, :status => 'open', :expired_at => params[:date], :center => @fpclass.centers.first)
 			if @booking.save
 				respond_to do |format|
@@ -25,7 +25,7 @@ before_action :is_available_seats
 				render :js => "alert('something went wrong');"
 			end
 		else
-			render :js => "alert('you are not eligible to reserve on this class');"
+			render :js => "alert('You can have maximum 8 active reservations at a time. Check if your membership got expired or you have used maximum allowed classes at this center or total classes got exhausted');"
 		end
 	end
 
