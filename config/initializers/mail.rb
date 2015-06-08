@@ -7,7 +7,6 @@ ActionMailer::Base.smtp_settings = {
    :ssl => true,
 }
 
-
 ActionMailer::Base.delivery_method = :smtp
 
 MandrillMailer.configure do |config|

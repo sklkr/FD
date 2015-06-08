@@ -1,4 +1,4 @@
-class VerificationMailer < MandrillMailer::TemplateMailer
+class VerificationMailer < MandrillMailer::MessageMailer
   default from: "noreply@fitnesspapa.com"
 
   def welcome_email(user, role)

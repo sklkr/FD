@@ -10,7 +10,7 @@ extend FriendlyId
   belongs_to :instructor
   has_and_belongs_to_many :centers
   belongs_to :partner
-  has_many :recursivedates
+  has_many :recursivedates, dependent: :destroy
   has_many :clasbkings
 
   def total_clasbkings
