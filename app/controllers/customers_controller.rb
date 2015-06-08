@@ -12,7 +12,7 @@ layout 'homepage'
   def create
   	@customer = Customer.new(permit_params)
   	if @customer.save
-  		VerificationMailer.welcome_email(@customer.user, @customer).delay.deliver
+  		VerificationMailer.welcome_email(@customer.user, @customer).deliver
   		flash[:success] = 'Email verification needed'
   		redirect_to page_path('verify')
   	else

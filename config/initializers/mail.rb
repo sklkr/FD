@@ -3,8 +3,7 @@ ActionMailer::Base.smtp_settings = {
    :port => 587,
    :user_name => "support@fitnesspapa.com",
    :password => "uGj2DNHKtPtojEYeoLoyVA",
-   :authentication => 'plain',
-   :ssl => true,
+   :authentication => 'plain'
 }
 
 ActionMailer::Base.delivery_method = :smtp
