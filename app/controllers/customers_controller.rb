@@ -28,7 +28,8 @@ layout 'homepage'
     @user = User.find_by_remember_token(params[:token])
     @customer = @user.customer
     if @customer.update_attributes(update_params)
-      redirect_to new_session_path, :notice => "Registration completed."
+      warden.set_user(@user)
+      redirect_to search_path, :notice => "Registration completed."
     else
       render :text => "something went wrong"
     end
