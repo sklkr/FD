@@ -36,7 +36,7 @@ meta title: "FitnessPapa",
               <%= simple_form_for @customer, :html => {:class => 'form-inline', 'data-parsley-validate' => true}, remote: true do |f| %>
                 <%= f.input :email, :label => false, input_html: { class: 'form-control', :placeholder => 'E-mail Address', :style => 'width:100%'  }, wrapper_html: { class: 'form-group', :style => 'width:35%' } %>
                 <%= f.simple_fields_for :user do |p| %>
-                  <%= p.input :location, :label => false, input_html: { class: 'form-control', id: 'cities', :placeholder => 'Location' }, wrapper_html: { class: 'form-group'} %>
+                  <%= p.input :location, :label => false, input_html: { class: 'form-control', id: 'cities', :placeholder => 'Location', :style => 'width:100%' }, wrapper_html: { class: 'form-group', :style => 'width:25%' } %>
                 <% end %>
                 <%= f.button :submit, "JOIN US", class: 'btn btn-primary', data: {disable_with: 'Submitting data...'} %>
               <% end %>
