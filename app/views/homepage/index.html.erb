@@ -16,7 +16,7 @@ meta title: "FitnessPapa",
  	 						<%= search_form_for @c, :url => search_path, :class => 'services' do |f| %>
  	 						<div class="row">
  	 							<div class="col-xs-9">
- 	 								<input id="cities" type="text" name="q[place_name_cont_any]" placeholder="Type Locality or Landmark" class="ui-autocomplete-input form-control" autocomplete="off">		
+ 	 								<input id="cities" type="text" name="q[place_name_cont_any]" placeholder="Type Locality or Landmark" class="ui-autocomplete-input form-control" autocomplete="off">
  	 							</div>
  	 							<div class="col-xs-3">
  	 								<input type="submit" value="Search" class="form-control btn btn-primary">
@@ -29,20 +29,38 @@ meta title: "FitnessPapa",
  	     </div> -->
  	     <div class="carousel-caption hidden-xs">
   		    <div class="banner-text">
-  	    		<h1>ONE PASS. ANY FITNESS STUDIO ANY CLASS.</h1>
+  	    		<h1>ONE PASS. ANY STUDIO ANY CLASS.</h1>
   	    		<h3>Try New Workout Everyday. Never Get Bored.</h3>
   	    	</div>
+          <div id="invitation">
+              <%= simple_form_for @customer, :html => {:class => 'form-inline', 'data-parsley-validate' => true}, remote: true do |f| %>
+                <%= f.input :email, :label => false, input_html: { class: 'form-control', :placeholder => 'E-mail Address', :style => 'width:100%'  }, wrapper_html: { class: 'form-group', :style => 'width:35%' } %>
+                <%= f.simple_fields_for :user do |p| %>
+                  <%= p.input :location, :label => false, input_html: { class: 'form-control', id: 'cities', :placeholder => 'Location' }, wrapper_html: { class: 'form-group'} %>
+                <% end %>
+                <%= f.button :submit, "JOIN US", class: 'btn btn-primary', data: {disable_with: 'Submitting data...'} %>
+              <% end %>
+          </div>
   		 </div>
  	     <div class="carousel-caption visible-xs">
   		    <div class="banner-text">
-  	    		<h1 style="font-size:29px">ONE PASS. <br> ANY FITNESS STUDIO <br>ANY CLASS.</h1>
+  	    		<h1 style="font-size:29px">ONE PASS. ANY STUDIO ANY CLASS.</h1>
   	    		<h3 style="font-size:18px">Try New Workout Everyday. <br>Never Get Bored</h3>
   	    	</div>
+          <div id="invitation">
+              <%= simple_form_for @customer, :html => {:class => 'form-inline', 'data-parsley-validate' => true}, remote: true do |f| %>
+                <%= f.input :email, :label => false, input_html: { class: 'form-control', :placeholder => 'E-mail Address', :style => 'width:100%'  }, wrapper_html: { class: 'form-group', :style => 'width:100%' } %>
+                <%= f.simple_fields_for :user do |p| %>
+                  <%= p.input :location, :label => false, input_html: { class: 'form-control', id: 'cities', :placeholder => 'Location' }, wrapper_html: { class: 'form-group', :style => 'width: 100%'} %>
+                <% end %>
+                <%= f.button :submit, "JOIN", class: 'btn btn-primary', data: {disable_with: 'Submitting data...'} %>
+              <% end %>
+          </div>
   		 </div>
-  	</div> 
- </div>	
+  	</div>
+ </div>
 </div>
-			
+
 <!-- content
 <div class="container" id="services">
 	<div class="container-main">
@@ -70,42 +88,42 @@ meta title: "FitnessPapa",
 <!-- <div class="">
 	<div class="row catbox">
 		<div class="col-xs-6 col-sm-4 col-md-2 each text-center">
-			<i class="flaticon-gym7"></i> 
+			<i class="flaticon-gym7"></i>
 			<p>Gym</p>
 		</div>
 		<div class="col-xs-6 col-sm-4 col-md-2 each text-center">
-			<i classearchs="flaticon-swimming20"></i> 
+			<i classearchs="flaticon-swimming20"></i>
 			<p>Swimming</p>
 		</div>
 		<div class="col-xs-6 col-sm-4 col-md-2 each text-center">
-			<i class="flaticon-man271"></i> 
+			<i class="flaticon-man271"></i>
 			<p>Yoga</p>
 		</div>
 		<div class="col-xs-6 col-sm-4 col-md-2 each text-center">
-			<i class="flaticon-man20"></i> 
+			<i class="flaticon-man20"></i>
 			<p>Fitness Studio</p>
 		</div>
 		<div class="col-xs-6 col-sm-4 col-md-2 each text-center">
-			<i class="flaticon-massage2"></i> 
+			<i class="flaticon-massage2"></i>
 			<p>Spa & Saloon</p>
 		</div>
 		<div class="col-xs-6 col-sm-4 col-md-2 each text-center">
-			<i class="flaticon-multiple25"></i> 
+			<i class="flaticon-multiple25"></i>
 			<p>Class</p>
 		</div>
 	</div>
 </div> -->
 <!-- end content -->
-			
+
 <!-- content -->
 
 <div class="container" id='passport'>
     <div class="row big-padding">
         <h2 class="osLight text-center">YOUR PASSPORT TO FITNESS FREEDOM</h2>
         <p style="margin-bottom:65px" class="text-center font-15"> <span class='label' style='white-space:pre-line'>
-        	Access the Fastest Growing Network of Fitness Studios. 
+        	Access the Fastest Growing Network of Fitness Studios.
 Membership Lets You Create Workout Routines That Work For You.
-Hundreds Of Group Fitness Classes, All Day, Every Day, 
+Hundreds Of Group Fitness Classes, All Day, Every Day,
 You Can Try Zumba, Dance, Yoga, Pilates, Cycling, Gym, Strength Training And Many More. <br> No Commitment Required.
         </span>
 </p>
@@ -126,9 +144,9 @@ You Can Try Zumba, Dance, Yoga, Pilates, Cycling, Gym, Strength Training And Man
 					<p>Start Booking on 10th June at 11:00 AM</p>
 				</li>
 			</ul>
-		</div><!--/.col-->	
+		</div><!--/.col-->
 		<div class="col-xs-12 col-sm-8">
-			<ul class="list-unstyled" style="font-size:14px;margin-top:15px"> 
+			<ul class="list-unstyled" style="font-size:14px;margin-top:15px">
 				<li style="margin-bottom:10px"><i class='fa fa-hand-o-right'>&nbsp;</i>Passport worth 2500 rupees, Just at 249/-</li>
 				<li style="margin-bottom:10px"><i class='fa fa-hand-o-right'>&nbsp;</i>Access to 10 Classes</li>
 				<li style="margin-bottom:10px"><i class='fa fa-hand-o-right'>&nbsp;</i>Valid For 15 Days</li>
@@ -288,7 +306,7 @@ You Can Try Zumba, Dance, Yoga, Pilates, Cycling, Gym, Strength Training And Man
 				    <!-- #cd-zoom-in and #zoom-out will be used to create our custom buttons for zooming-in/out -->
 				    <div id="cd-zoom-inner"></div>
 				    <div id="cd-zoom-outer"></div>
-				    <address>Bangalore</address> 
+				    <address>Bangalore</address>
 				</section>
 			</div>
 		</div>
@@ -317,7 +335,7 @@ You Can Try Zumba, Dance, Yoga, Pilates, Cycling, Gym, Strength Training And Man
 				<div class="col-sm-4">
 						<p class="clients-words">FitnessPapa Passport was a key factor for me to hit the fitness centers again as it provides immense flexibility & variety</p>
 						<span class="clients-name text-primary">— Ruhi</span>
-						<%= image_tag 'test_3.jpg', class: 'img-circle img-thumbnail', style: 'width:60px;height:60px' %>	
+						<%= image_tag 'test_3.jpg', class: 'img-circle img-thumbnail', style: 'width:60px;height:60px' %>
 				</div>
 				<div class="col-sm-4">
 						<p  class="clients-words">It is the medicine for Fitness Boredom & motivation for continued workout.</p>
@@ -330,9 +348,11 @@ You Can Try Zumba, Dance, Yoga, Pilates, Cycling, Gym, Strength Training And Man
 						<%= image_tag 'test_1.jpg', class: 'img-circle img-thumbnail', style: 'width:60px;height:60px' %>
 				</div>
 			</div><!--/.row-->
-		</div><!--/.col-->	
+		</div><!--/.col-->
 	</div><!--/.row-->
 </div>
+
+<%= render :partial => 'homepage/alerter' %>
 <script>
 $(document).ready(function() {
 /*$("#banner").owlCarousel({
@@ -359,22 +379,22 @@ $(document).ready(function() {
 		  //google map custom marker icon - .png fallback for IE11
 		  var is_internetExplorer11= navigator.userAgent.toLowerCase().indexOf('trident') > -1;
 		  var marker_url = ( is_internetExplorer11 ) ? '/assets/cd-icon-location.png' : '/assets/cd-icon-location.svg';
-		      
+
 		  //define the basic color of your map, plus a value for saturation and brightness
 		  var main_color = '#2d313f',
 		      saturation_value= -20,
 		      brightness_value= 5;
 
 		  //we define here the style of the map
-		  var style= [ 
+		  var style= [
 		      {
 		          //set saturation for the labels on the map
 		          elementType: "labels",
 		          stylers: [
 		              {saturation: saturation_value}
 		          ]
-		      },  
-		      {   //poi stands for point of interest - don't show these lables on the map 
+		      },
+		      {   //poi stands for point of interest - don't show these lables on the map
 		          featureType: "poi",
 		          elementType: "labels",
 		          stylers: [
@@ -388,22 +408,22 @@ $(document).ready(function() {
 		          stylers: [
 		              {visibility: "off"}
 		          ]
-		      }, 
-		      {   
-		          //don't show local road lables on the map
-		          featureType: "road.local", 
-		          elementType: "labels.icon", 
-		          stylers: [
-		              {visibility: "off"} 
-		          ] 
 		      },
-		      { 
-		          //don't show arterial road lables on the map
-		          featureType: "road.arterial", 
-		          elementType: "labels.icon", 
+		      {
+		          //don't show local road lables on the map
+		          featureType: "road.local",
+		          elementType: "labels.icon",
 		          stylers: [
 		              {visibility: "off"}
-		          ] 
+		          ]
+		      },
+		      {
+		          //don't show arterial road lables on the map
+		          featureType: "road.arterial",
+		          elementType: "labels.icon",
+		          stylers: [
+		              {visibility: "off"}
+		          ]
 		      },
 		      {
 		          //don't show road lables on the map
@@ -412,25 +432,25 @@ $(document).ready(function() {
 		          stylers: [
 		              {visibility: "off"}
 		          ]
-		      }, 
+		      },
 		      //style different elements on the map
-		      { 
-		          featureType: "transit", 
-		          elementType: "geometry.fill", 
+		      {
+		          featureType: "transit",
+		          elementType: "geometry.fill",
 		          stylers: [
 		              { hue: main_color },
-		              { visibility: "on" }, 
-		              { lightness: brightness_value }, 
+		              { visibility: "on" },
+		              { lightness: brightness_value },
 		              { saturation: saturation_value }
 		          ]
-		      }, 
+		      },
 		      {
 		          featureType: "poi",
 		          elementType: "geometry.fill",
 		          stylers: [
 		              { hue: main_color },
-		              { visibility: "on" }, 
-		              { lightness: brightness_value }, 
+		              { visibility: "on" },
+		              { lightness: brightness_value },
 		              { saturation: saturation_value }
 		          ]
 		      },
@@ -439,8 +459,8 @@ $(document).ready(function() {
 		          elementType: "geometry.fill",
 		          stylers: [
 		              { hue: main_color },
-		              { visibility: "on" }, 
-		              { lightness: brightness_value }, 
+		              { visibility: "on" },
+		              { lightness: brightness_value },
 		              { saturation: saturation_value }
 		          ]
 		      },
@@ -449,8 +469,8 @@ $(document).ready(function() {
 		          elementType: "geometry.fill",
 		          stylers: [
 		              { hue: main_color },
-		              { visibility: "on" }, 
-		              { lightness: brightness_value }, 
+		              { visibility: "on" },
+		              { lightness: brightness_value },
 		              { saturation: saturation_value }
 		          ]
 		      },
@@ -459,8 +479,8 @@ $(document).ready(function() {
 		          elementType: "geometry.fill",
 		          stylers: [
 		              { hue: main_color },
-		              { visibility: "on" }, 
-		              { lightness: brightness_value }, 
+		              { visibility: "on" },
+		              { lightness: brightness_value },
 		              { saturation: saturation_value }
 		          ]
 		      },
@@ -469,8 +489,8 @@ $(document).ready(function() {
 		          elementType: "geometry.fill",
 		          stylers: [
 		              { hue: main_color },
-		              { visibility: "on" }, 
-		              { lightness: brightness_value }, 
+		              { visibility: "on" },
+		              { lightness: brightness_value },
 		              { saturation: saturation_value }
 		          ]
 		      },
@@ -479,8 +499,8 @@ $(document).ready(function() {
 		          elementType: "geometry.fill",
 		          stylers: [
 		              { hue: main_color },
-		              { visibility: "on" }, 
-		              { lightness: brightness_value }, 
+		              { visibility: "on" },
+		              { lightness: brightness_value },
 		              { saturation: saturation_value }
 		          ]
 		      },
@@ -489,8 +509,8 @@ $(document).ready(function() {
 		          elementType: "geometry.fill",
 		          stylers: [
 		              { hue: main_color },
-		              { visibility: "on" }, 
-		              { lightness: brightness_value }, 
+		              { visibility: "on" },
+		              { lightness: brightness_value },
 		              { saturation: saturation_value }
 		          ]
 		      },
@@ -498,19 +518,19 @@ $(document).ready(function() {
 		          featureType: "landscape",
 		          stylers: [
 		              { hue: main_color },
-		              { visibility: "on" }, 
-		              { lightness: brightness_value }, 
+		              { visibility: "on" },
+		              { lightness: brightness_value },
 		              { saturation: saturation_value }
 		          ]
-		          
+
 		      },
 		      {
 		          featureType: "road",
 		          elementType: "geometry.fill",
 		          stylers: [
 		              { hue: main_color },
-		              { visibility: "on" }, 
-		              { lightness: brightness_value }, 
+		              { visibility: "on" },
+		              { lightness: brightness_value },
 		              { saturation: saturation_value }
 		          ]
 		      },
@@ -519,23 +539,23 @@ $(document).ready(function() {
 		          elementType: "geometry.fill",
 		          stylers: [
 		              { hue: main_color },
-		              { visibility: "on" }, 
-		              { lightness: brightness_value }, 
+		              { visibility: "on" },
+		              { lightness: brightness_value },
 		              { saturation: saturation_value }
 		          ]
-		      }, 
+		      },
 		      {
 		          featureType: "water",
 		          elementType: "geometry",
 		          stylers: [
 		              { hue: main_color },
-		              { visibility: "on" }, 
-		              { lightness: brightness_value }, 
+		              { visibility: "on" },
+		              { lightness: brightness_value },
 		              { saturation: saturation_value }
 		          ]
 		      }
 		  ];
-		      
+
 		  //set google map options
 		  var map_options = {
 		      center: new google.maps.LatLng(locations[16][0], locations[16][1]),
@@ -550,7 +570,7 @@ $(document).ready(function() {
 		  };
 		  //inizialize the map
 		  var map = new google.maps.Map(document.getElementById('google-container'), map_options);
-		  //add a custom marker to the map                
+		  //add a custom marker to the map
 		  for (var x = 0; x < locations.length; x++) {
 			var marker = new google.maps.Marker({
 			    position: new google.maps.LatLng(locations[x][0], locations[x][1]),
@@ -559,10 +579,10 @@ $(document).ready(function() {
 			    icon: marker_url,
 			});
 		  }
-		  
+
 		  //add custom buttons for the zoom-in/zoom-out on the map
 		  function CustomZoomControl(controlDiv, map) {
-		      //grap the zoom elements from the DOM and insert them in the map 
+		      //grap the zoom elements from the DOM and insert them in the map
 		      var controlUIzoomIn= document.getElementById('cd-zoom-inner'),
 		          controlUIzoomOut= document.getElementById('cd-zoom-outer');
 		      controlDiv.appendChild(controlUIzoomIn);

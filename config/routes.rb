@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
 
   mount Commontator::Engine => '/commontator'
- 
+
   get 'errors/file_not_found'
 
   get 'errors/unprocessable'
@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   get 'errors/internal_server_error'
 
  constraints :subdomain => 'blog' do
-  mount Monologue::Engine, at: '/' 
+  mount Monologue::Engine, at: '/'
  end
 
 
@@ -19,8 +19,8 @@ Rails.application.routes.draw do
         # resources :centers do
          # scope module: 'centers' do
           #  resources :details, :accounts, :instructors, :photos, :centermanagers
-           # resources :services do 
-            #  collection do 
+           # resources :services do
+            #  collection do
              #   get :upcoming
              # end
             #end
@@ -30,7 +30,7 @@ Rails.application.routes.draw do
          # resources :configurations, :profiles, :customers, :payments, :reports
         # end
         # resources :customermanagers
-        # resources :paymentmanagers do 
+        # resources :paymentmanagers do
           # collection do
            # get 'summary'
            # get 'commission'
@@ -58,13 +58,13 @@ Rails.application.routes.draw do
 
         get 'settings/change_password' => 'partners/settings#change_password', :as => 'change_password_partners_settings', :subdomain => 'partners'
 
-# Frontend Resources 
-resources :customers, only: [:new, :create]
+# Frontend Resources
+resources :customers, only: [:edit, :create, :update]
 resources :partners, only: [:index, :new, :create]
-  
-  
+
+
   # mount Lockup::Engine, at: '/lockup'
-  
+
   get 'mypackage' => 'mypackage#index'
   post 'mypackage/success'
   post 'mypackage/failure'
@@ -95,7 +95,7 @@ resources :partners, only: [:index, :new, :create]
 
 
   get 'partners(/:id)/dashboard' => 'partners/dashboard#summary', :as => 'partners_dashboard'
-  
+
   get 'customerdashboard/details'
   patch 'customerdashboard/details_update'
 
@@ -103,18 +103,18 @@ resources :partners, only: [:index, :new, :create]
     resources :populars, :only => [:index, :create]
   end
 
-  namespace :customers do 
+  namespace :customers do
     resources :details, :bookings, :mypass, :classes
     resources :profiles, only: [:edit, :update]
 
   end
   resources :reserves
-  
+
   resources :sessions, :only => [:new, :create, :destroy]
   # Oauth Routes
   get 'auth/facebook/callback' => 'sessions#facebook'
 
-  #password Resets 
+  #password Resets
   resources :password_resets
   get 'customer/change_password' => 'password_resets#change_password'
   patch 'customer/update_password' => 'password_resets#update_password'
@@ -127,9 +127,9 @@ resources :partners, only: [:index, :new, :create]
   get 'registrations/customer'
   post 'registrations/customer_signup', :as => 'customer_signup'
 
-  
-  resources :centers, :only => [] do 
-    member do 
+
+  resources :centers, :only => [] do
+    member do
       get :about
       get :map
       get :reviews
@@ -153,7 +153,7 @@ resources :partners, only: [:index, :new, :create]
   get 'homepage/index'
   get 'centers/list' => 'homepage#centers_list'
 
-  
+
 
   namespace :api, defaults: { format: :json }, constraints: { subdomain: 'api' }, path: '/'  do
       scope module: :v1 do
@@ -168,7 +168,7 @@ resources :partners, only: [:index, :new, :create]
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  
+
 
   root :to => 'homepage#index'
 

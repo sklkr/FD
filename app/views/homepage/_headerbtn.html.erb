@@ -9,7 +9,7 @@
                          <li id="basket-element-pass-14753" class="container-fluid">
                                                      <div class="row">
                                                          <div class="col-xs-3">
-                                                             
+
                                                          </div>
                                                          <div class="col-xs-7">
                                                             <span>FitFix 5 @ </span><span class="font10 light-gray blue-gray">Central YMCA Club</span>
@@ -44,13 +44,12 @@
                        </ul>
                    </div>
                  ==========================================================
-                   
+
                  =================================================================
                </div>
              </li> -->
 	 <% unless signed_in?  %>
 		<li class="main-nav"><a class="cd-signin" href="#0">Sign In</a></li>
-		<li class="main-nav"><a class="cd-signup" href="#0">Sign Up</a></li>
 	<%end%>
 	 <% if signed_in? %>
     <li class="profile dropdown">
@@ -62,10 +61,10 @@
           <li>
             <a class="clearfix" href="#">
                <!-- image_tag "//d1djl7kr085bc1.cloudfront.net/store/#{current_user.image_id}", :class => 'img img-thumbnail'  -->
-              <img src="/assets/avatar.png" alt="User Avatar">    
+              <img src="/assets/avatar.png" alt="User Avatar">
               <div class="detail">
                 <strong><%= current_user.first_name %></strong>
-                <p class="grey"><%= current_user.email %></p> 
+                <p class="grey"><%= current_user.email %></p>
               </div>
             </a>
           </li>
@@ -82,7 +81,7 @@
 
   <%end%>
 </ul>
-	
+
 <div class="cd-user-modal"> <!-- this is the entire modal form, including the background -->
 	<%= render :partial => 'layouts/customer_auth' %>
 </div>

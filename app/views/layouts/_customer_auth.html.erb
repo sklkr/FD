@@ -1,18 +1,10 @@
 <div class="cd-user-modal-container"> <!-- this is the container wrapper -->
-	<ul class="cd-switcher list-inline">
-		<li><a href="#0">Sign in</a></li>
-		<li><a href="#0">New account</a></li>
-	</ul>
 
 	<div id="cd-login"> <!-- log in form -->
 		<%= render :partial => 'sessions/form' %>
 		<!-- <a href="#0" class="cd-close-form">Close</a> -->
 	</div> <!-- cd-login -->
 
-	<div id="cd-signup"> <!-- sign up form -->
-		<%= render :partial => 'customers/form' %>
-		<!-- <a href="#0" class="cd-close-form">Close</a> -->
-	</div> <!-- cd-signup -->
 
 	<div id="cd-reset-password"> <!-- reset password form -->
 		<%= render :partial => 'password_resets/form' %>

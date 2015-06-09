@@ -7,7 +7,7 @@ class RegistrationsController < ApplicationController
   end
 
   def customer
-  	
+
   end
 
   def customer_signup
@@ -16,7 +16,7 @@ class RegistrationsController < ApplicationController
       cdata = Customer.new(customer_params)
       cdata.user_id = user.id
        if cdata.save
-        VerificationMailer.welcome_email(user, cdata).deliver
+        # VerificationMailer.welcome_email(user, cdata).deliver
         flash[:success] = 'Please verify your email'
         redirect_to page_path('verify')
        else
@@ -33,7 +33,7 @@ class RegistrationsController < ApplicationController
      pdata = Partner.new(partner_params)
      pdata.user_id = user.id
      if pdata.save
-     # Directly authenticating here , change required 
+     # Directly authenticating here , change required
       VerificationMailer.welcome_email(user, pdata).deliver
       flash[:success] = 'Please verify your email'
       redirect_to page_path('verify')
@@ -42,7 +42,7 @@ class RegistrationsController < ApplicationController
      end
     else
       render :text => 'something went wrong'
-    end 
+    end
   end
 
   def verify_email
@@ -50,7 +50,7 @@ class RegistrationsController < ApplicationController
     if user.active == true
       redirect_to page_path('confirmation')  if user.save
     end
-    unless user.nil?  
+    unless user.nil?
       user.active = true
       redirect_to page_path('confirmation')  if user.save
     end

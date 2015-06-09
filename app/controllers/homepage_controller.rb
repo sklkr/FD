@@ -10,7 +10,7 @@ class HomepageController < ApplicationController
   def centers_list
   	centers = {'Bengaluru' => CENTERS,
   	'chennai' => ["Pink Fitness -RAPuram","O2 Health Studio -Hadddow Road","Fitness One -Saligramam","Pink Fitness -Nanganallur","Contours India -Velachery","FitnessOne -Ambattur","FitnessOne -AnnaNagar","Pink Fitness -TNagar","136.1 Yoga -Sholinganallur","Pink Fitness -Pallikaranai","Pink Fitness -Velachery","Fitness One -Velachery","O2 health Studio -Ashok Nagar","Pink Fitness -Nolambur","Pink Fitness -Besant Nagar","Pink Fitness -Thiruvanmiyur","O2 health Studio -Nungambakkam","136.1 - Kilpauk","Pink Fitness -Nungambakkam","FitnessOne -Alwarpet","Pink Fitness -Valasaravalkkam","O2 Health studio- Besant Nagar","O2 Health Studio -velachery","O2 Health Studio -  Mogappair","Pink Fitness- Neelankarai","Pink Fitness - Selaiyar","136.1 Yoga - Alwarpet","FitnessOne - Kilpauk","Pink Fitness - Anna Nagar"], 'hyderabad' => ['Pink Fitness', 'Fitness One']}
-  	@centers = centers[params['city']] 
+  	@centers = centers[params['city']]
     params[:q] = {}
     params[:q][:center_place_name_cont_any] = params['city']
     @locations = Centerinfo.ransack(params[:q]).result.pluck(:latitude, :longitude)

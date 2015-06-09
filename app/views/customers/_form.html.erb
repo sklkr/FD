@@ -1,5 +1,6 @@
 <%= simple_form_for @customer, :html => {:class => 'cd-form form-horizontal', 'data-parsley-validate' => true} do |f| %>
-  <%= f.input :email, :label => 'E-mail', label_html: { class: 'image-replace cd-email'}, input_html: { class: 'full-width has-padding has-border', :placeholder => 'E-mail (eg: abc@xxx.com)'  }, wrapper_html: { class: 'fieldset' } %>
+  <%= hidden_field_tag :token, params[:id] %>
+  <%= f.input :email, :label => 'E-mail', label_html: { class: 'image-replace cd-email'}, input_html: { class: 'full-width has-padding has-border', :placeholder => 'E-mail (eg: abc@xxx.com)', disabled: true  }, wrapper_html: { class: 'fieldset' } %>
   <%= f.simple_fields_for :user do |p| %>
     <div class="input string optional customer_user_full_name fieldset"><label class="string optional image-replace cd-username" for="customer_user_attributes_full_name">Full name</label><input class="string optional full-width has-padding has-border" data-parsley-pattern="\w+\s+[a-zA-Z-]+" data-parsley-required="true" id="customer_user_attributes_full_name" name="customer[user_attributes][full_name]" placeholder="Full Name (eg: John Snow)" type="text" value=""></div>
     <%= p.input :phone, label_html: { class: 'image-replace cd-username'}, input_html: { class: 'full-width has-padding has-border', "data-parsley-type" => 'integer', 'data-parsley-pattern' => '^([0]|\+91)?\d{10}', 'data-parsley-required' => 'true', :placeholder => 'Mobile number (eg: 9123456789)'  }, wrapper_html: { class: 'fieldset' } %>
@@ -13,9 +14,9 @@
       <%= f.button :submit, "SIGN UP", class: 'full-width has-padding', wrapper_html: { class: 'fieldset' } %>
     </div>
     <!-- <div class="col-xs-12 col-sm-6">
-      <a class="btn btn-block btn-social btn-facebook has-padding" href="/auth/facebook"><i class="fa fa-facebook"></i> Sign in with Facebook</a>    
+      <a class="btn btn-block btn-social btn-facebook has-padding" href="/auth/facebook"><i class="fa fa-facebook"></i> Sign in with Facebook</a>
     </div> -->
   </div>
   <hr>
-  
+
 <% end %>
