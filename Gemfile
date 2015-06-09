@@ -116,3 +116,7 @@ gem "simple_calendar", "~> 1.1.0"
 
 gem 'monologue'
 
+# search  branch 
+gem 'active_model_serializers'
+gem 'ffaker'
+gem 'react-rails'

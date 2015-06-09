@@ -12,6 +12,9 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require react
+//= require react_ujs
+//= require components
 //= require plugins/bootstrap
 //= require plugins/modernizr
 //= require_tree ./backend
@@ -29,11 +32,4 @@
 //= require cart
 //= require plugins/modernizr-special
 //= require plugins/owl.carousel
-
-$("#monthly").on('change', function(){
-	 $("#studio-linker").trigger("click");
-});
-
-$("#yearly").on('change', function(){
-	 $("#class-linker").trigger("click");
-});
+//= require search

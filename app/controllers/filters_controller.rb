@@ -12,6 +12,14 @@ before_filter { @c = Center.ransack(params[:q]) }
     end
   end
 
+  def react_search
+    binding.pry
+  end
+
+  def react_class_search
+    binding.pry
+  end
+
   def classes
     merger
     params[:q] = {:recursivedates_ondate_eq => Date.today.strftime('%Y-%m-%d')} if params['q'].nil?
@@ -22,11 +30,21 @@ before_filter { @c = Center.ransack(params[:q]) }
       format.js
     end
   end
-    
+
   def merger
     params['q']['centers_place_name_cont_any'].sub!("Bangalore", "Bengaluru") unless (params[:q].blank? || params[:q][:centers_place_name_cont_any].blank?)
-    params[:q].merge!(:centers_place_name_cont_any => params[:q][:centers_place_name_cont_any].split(',').first) unless (params[:q].blank? || params[:q][:centers_place_name_cont_any].blank?) 
+    params[:q].merge!(:centers_place_name_cont_any => params[:q][:centers_place_name_cont_any].split(',').first) unless (params[:q].blank? || params[:q][:centers_place_name_cont_any].blank?)
     params['q']['place_name_cont_any'].sub!("Bangalore", "Bengaluru") unless (params[:q].blank? || params[:q][:place_name_cont_any].blank?)
-    params[:q].merge!(:place_name_cont_any => params[:q][:place_name_cont_any].split(',').first) unless (params[:q].blank? || params[:q][:place_name_cont_any].blank?) 
-  end  
+    params[:q].merge!(:place_name_cont_any => params[:q][:place_name_cont_any].split(',').first) unless (params[:q].blank? || params[:q][:place_name_cont_any].blank?)
+  end
+
+  def center_types
+    @types = Center::CENTERTYPES
+    render json: @types
+  end
+
+  def experiences
+    @experiences = Experience.order(:name)
+    render json: @experiences
+  end
 end
