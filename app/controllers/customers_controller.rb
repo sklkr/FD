@@ -27,6 +27,7 @@ layout 'homepage'
   def update
     @user = User.find_by_remember_token(params[:token])
     @customer = @user.customer
+    @user.active = true
     if @customer.update_attributes(update_params)
       env['warden'].set_user(@customer.user)
       redirect_to search_path, :notice => "Registration completed."
