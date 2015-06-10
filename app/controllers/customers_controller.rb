@@ -13,7 +13,7 @@ layout 'homepage'
   def create
   	@customer = Customer.new(permit_params)
   	if @customer.save
-      
+      AdminMailer.customer_registration(@customer).delay.deliver
       respond_to do |format|
           format.js
       end
@@ -28,7 +28,7 @@ layout 'homepage'
     @user = User.find_by_remember_token(params[:token])
     @customer = @user.customer
     if @customer.update_attributes(update_params)
-      warden.set_user(@user)
+      env['warden'].set_user(@user)
       redirect_to search_path, :notice => "Registration completed."
     else
       render :text => "something went wrong"
