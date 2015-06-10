@@ -48,5 +48,21 @@ class RegistrationMailer < MandrillMailer::TemplateMailer
       inline_css: true,
     )
   end
+
+  def send_manual(customer)
+    mandrill_mail(
+      template: 'REGISTRATION_PROCESS',
+      subject: "Welcome FitnessPapa Passport Community",
+      to: customer.email,
+        # to: invitation.email,
+        # to: { email: invitation.email, name: 'Honored Guest' },
+      vars: {
+        'SUBJECT' => 'Welcome FitnessPapa Passport Community',
+         'LINK' => customer.remember_token
+      },
+      important: true,
+      inline_css: true,
+    )
+  end
 end
 

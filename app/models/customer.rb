@@ -1,7 +1,7 @@
 class Customer < ActiveRecord::Base
   extend FriendlyId
   acts_as_commontator
-  delegate :first_name, :last_name, :phone, :password, :password=, :crypted_password, :location, :image_id, :active, :full_name, :password_reset_token, :send_password_reset, to: :user
+  delegate :first_name, :last_name, :phone, :password, :password=, :remember_token, :crypted_password, :location, :image_id, :active, :full_name, :password_reset_token, :send_password_reset, to: :user
   
   belongs_to :user, dependent: :destroy
   friendly_id :email
