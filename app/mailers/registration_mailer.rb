@@ -1,5 +1,6 @@
 class RegistrationMailer < MandrillMailer::TemplateMailer
   default from: 'info@fitnesspapa.com'
+  default from_name: 'FitnessPapa'
 
   def admin_notify(cb)
     user    = cb.customer

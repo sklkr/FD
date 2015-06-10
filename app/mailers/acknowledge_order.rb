@@ -1,5 +1,6 @@
 class AcknowledgeOrder < MandrillMailer::TemplateMailer
   default from: "noreply@fitnesspapa.com"
+  default from_name: 'FitnessPapa'
 
   def customer(passport, customer)
     mandrill_mail(

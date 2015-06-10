@@ -1,5 +1,6 @@
 class AcknowledgeMailer < MandrillMailer::TemplateMailer
   default from: "noreply@fitnesspapa.com"
+  default from_name: 'FitnessPapa'
 
   def partner_reg(partner)
   	center = partner.centers.first
