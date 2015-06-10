@@ -11,9 +11,8 @@ class AdminMailer < MandrillMailer::TemplateMailer
         # to: { email: invitation.email, name: 'Honored Guest' },
       vars: {
         'SUBJECT' => 'Customer Reservation',
-        'NAME' => customer.full_name,
-        'MOBILE' => customer.phone,
         'EMAIL' => customer.email,
+        'LOCATION' => customer.location,
       },
       important: true,
       inline_css: true,

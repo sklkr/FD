@@ -28,7 +28,7 @@ layout 'homepage'
     @user = User.find_by_remember_token(params[:token])
     @customer = @user.customer
     if @customer.update_attributes(update_params)
-      env['warden'].set_user(@user)
+      env['warden'].set_user(@customer.user)
       redirect_to search_path, :notice => "Registration completed."
     else
       render :text => "something went wrong"
@@ -37,7 +37,7 @@ layout 'homepage'
 
   private
   	def permit_params
-  		params.require(:customer).permit(:email, :user_attributes => [:full_name, :phone, :password])
+  		params.require(:customer).permit(:email, :user_attributes => [:location])
   	end
 
     def update_params
