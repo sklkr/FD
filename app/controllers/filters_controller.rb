@@ -13,7 +13,9 @@ before_filter { @c = Center.ransack(params[:q]) }
   end
 
   def react_search
-    binding.pry
+    @c = Center.ransack(params[:q])
+    @centers = @c.result(distinct: true).includes(:centerinfo, :cphotos)
+    render json: @centers
   end
 
   def react_class_search

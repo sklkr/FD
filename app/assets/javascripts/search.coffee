@@ -67,6 +67,7 @@ CdSwitcher = React.createClass
 			DOM.span
 				className: 'cd-switch'
 
+
 # Filter form for Studio
 StudioFilterForm = React.createClass
 	displayName: 'studio-filter-form'
@@ -80,10 +81,7 @@ StudioFilterForm = React.createClass
 	getDefaultProps: ->
 		experiences: {}
 
-	getStudios: (event) ->
-		window.sidd = this
-		window.sid = event
-		@setState(place_name_cont_any: event.target.value)
+	getStudios: ->
 		$.ajax
 			url: 'api/search',
 			type: 'POST',
@@ -91,6 +89,11 @@ StudioFilterForm = React.createClass
 			contentType: 'application/json',
 			processData: false,
 			data: JSON.stringify({q: @state})
+
+	fieldChanged: (fieldName, event) ->
+		stateUpdate = {}
+		stateUpdate[fieldName] = event.target.value
+		@setState(stateUpdate)
 
 	render: ->
 		DOM.form
@@ -112,7 +115,7 @@ StudioFilterForm = React.createClass
 							placeholder: 'Type Locality or Landmark'
 							className: 'ui-autocomplete-input form-control form-square'
 							value: @state.place_name_cont_any
-							onChange: @getStudios
+							onChange: @fieldChanged.bind(null, 'place_name_cont_any')
 
 				DOM.div
 					className: 'col-md-3 col-xs-12 m-bottom20'
@@ -123,7 +126,7 @@ StudioFilterForm = React.createClass
 						{}
 						DOM.select
 							className: 'magicsuggest'
-							onChange: @getStudios
+							onChange: @fieldChanged.bind(null, 'center_type_in')
 							name: 'center_type_in'
 							DOM.option
 								value: 'Gym'
@@ -166,6 +169,7 @@ StudioFilterForm = React.createClass
 						DOM.select
 							className: 'magicsuggest'
 							name: 'experiences_id_in'
+							onChange: @fieldChanged.bind(null, 'experiences_id_in')
 							DOM.option
 								value: '3'
 								'Air Conditioning'
@@ -200,10 +204,30 @@ StudioFilterForm = React.createClass
 								value: '1'
 								'Wifi'
 
+				DOM.div
+					className: 'col-md-3 col-xs-12'
+					DOM.label
+						htmlFor: '&nbsp;'
+					DOM.div
+						{}
+						DOM.input
+							className: 'btn btn-default'
+							value: 'SEARCH'
+							onClick: @getStudios
+
+
+
+# Studio index div
+StudioIndexBox = React.createClass
+	displayName: 'studio-box'
+	render: ->
+		DOM.div null,
+			for i in [1..3]
+			
 
 studioFilterForm = React.createFactory(StudioFilterForm)
-
 cdSwitcher = React.createFactory(CdSwitcher)
+studioIndexBox = React.createFactory(StudioIndexBox)
 
 React.render(
 	cdSwitcher(),
@@ -213,4 +237,9 @@ React.render(
 React.render(
 	studioFilterForm(),
 	document.getElementById('center-search-container')
+)
+
+React.render(
+	studioIndexBox(),
+	document.getElementById('centers-section')
 )
