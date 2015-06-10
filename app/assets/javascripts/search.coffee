@@ -218,16 +218,62 @@ StudioFilterForm = React.createClass
 
 
 # Studio index div
-StudioIndexBox = React.createClass
-	displayName: 'studio-box'
+StudioIndexBoxes = React.createClass
+	displayName: 'studio-boxes'
+	
+	getInitialState: ->
+		{
+			studios: [
+				{id: 1, name: 'newrelic', src: 'https://fitnesspapa.com/assets/bg-1.png'},
+				{id: 2, name: 'newrelicv2', src: 'https://fitnesspapa.com/assets/bg-1.png'}
+			]
+		}
+
 	render: ->
 		DOM.div null,
-			for i in [1..3]
-			
+			for person in @state.studios
+				studioIndexBox
+					studio: person
+		
+
+StudioIndexBox = React.createClass
+	displayName: 'studio-box'			
+	
+	render: ->
+		DOM.div
+			className: 'list-item clearfix'
+			DOM.div
+				className: 'col-xs-12 col-sm-4 img-box'
+				DOM.a
+					href: @props.person.src
+					DOM.img
+						alt: ''
+						className: 'group list-group-image img-responsive'
+						src: @props.person.src
+			# DOM.div
+			# 	className: 'col-xs-12 col-sm-8 cnt-box'
+			# 	DOM.a
+			# 		href: ''
+			# 		DOM.h4
+			# 			className: 'group inner list-group-item-heading'
+			# 			@props.person.name
+			# 		DOM.p null,
+			# 			DOM.small
+			# 				className: 'm-right20'
+			# 				DOM.i
+			# 					className: 'fa fa-map-marker'
+			# 					"&nbsp;"
+			# 				DOM.span null,
+			# 					@props.person.name
+			# 		DOM.p
+			# 			className: 'group inner list-group-item-text'
+			# 			@props.person.name
+					
 
 studioFilterForm = React.createFactory(StudioFilterForm)
 cdSwitcher = React.createFactory(CdSwitcher)
 studioIndexBox = React.createFactory(StudioIndexBox)
+studioIndexBoxes = React.createFactory(StudioIndexBoxes)
 
 React.render(
 	cdSwitcher(),
@@ -240,6 +286,6 @@ React.render(
 )
 
 React.render(
-	studioIndexBox(),
+	studioIndexBoxes(),
 	document.getElementById('centers-section')
 )

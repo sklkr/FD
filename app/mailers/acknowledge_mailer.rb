@@ -4,6 +4,7 @@ class AcknowledgeMailer < MandrillMailer::TemplateMailer
   def partner_reg(partner)
   	center = partner.centers.first
     mandrill_mail(
+
       template: 'partner_registration',
       subject: "Registration Notification",
       to: 'partners@fitnesspapa.com',

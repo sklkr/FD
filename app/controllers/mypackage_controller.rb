@@ -29,7 +29,6 @@ class MypackageController < ApplicationController
     
     unless @passport.save && (current_user.passport.try(:order_item_id) != @order.order_items.first.id)
       redirect_to root_url, :notice => 'something went wrong'
-      
     end
     #sms 
     
