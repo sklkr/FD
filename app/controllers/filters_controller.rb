@@ -1,15 +1,8 @@
 class FiltersController < ApplicationController
-before_filter { @c = Center.ransack(params[:q]) }
+# before_filter { @c = Center.ransack(params[:q]) }
 
   def search
-    # partial merging
-    merger
-    @c = Center.ransack(params[:q])
-    @centers = @c.result(distinct: true).includes(:centerinfo, :cphotos)
-    respond_to do |format|
-      format.html
-      format.js
-    end
+    
   end
 
   def react_search
@@ -19,7 +12,10 @@ before_filter { @c = Center.ransack(params[:q]) }
   end
 
   def react_class_search
-    binding.pry
+    @c = Fpclass.ransack(params[:q])
+    @fpclasses = @c.result(distinct: true)
+    @dates = (Date.today..Date.today+13).to_a
+    render json: [@fpclasses, @dates]
   end
 
   def classes
@@ -45,7 +41,7 @@ before_filter { @c = Center.ransack(params[:q]) }
     render json: @types
   end
 
-  def experiences
+  def dates
     @experiences = Experience.order(:name)
     render json: @experiences
   end

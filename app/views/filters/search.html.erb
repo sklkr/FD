@@ -15,54 +15,8 @@
 <%= link_to 'CLASSES', classes_search_path, id: 'class-linker', style: 'display:none', remote: true %> -->
 
 <div class="row" style="background-color:#f1f5fc">
-    <div class="container">
-      <div class="panel hasMtop">
-        <div class="panel-heading">
-          <div class="visible-xs pull-right"><a href="#" onclick="togglefilter()"><i class='fa fa-sliders fa-2x'></i></a></div>
-          <div class="cd-pricing-switcher" id="cd-switcher">
-            <!-- <p class="fieldset">
-              <input type="radio" name="duration" value="monthly" id="monthly" checked>
-              <label for="monthly">STUDIO</label>
-              <input type="radio" name="duration" value="yearly" id="yearly">
-              <label for="yearly">CLASSES</label>
-              <span class="cd-switch"></span>
-            </p> -->
-          </div><!-- .cd-pricing-switcher -->
-        </div>
-        <div class="panel-body">
-          <div class="clearfix">
-            <fieldset class='search-container hidden-xs' id='center-search-container'>
-            </fieldset>
-
-            <fieldset class='search-container hidden-xs' id='classes-search-container' style='display:none'>
-              <div id="classes-search">
-
-              </div>
-              <div style="margin-top:20px" id="classes-main-search">
-
-              </div>
-            </fieldset>
-          </div>
-          <div class="clearfix" id="centers-section">
-            <%= render @centers %>
-          </div>
-        </div>
-        <div class="clearfix" id="classes-section" style="display:none">
-          <table class="table table-hover table-striped">
-              <thead>
-                <tr style="color:white;background-color:rgb(107, 105, 105);">
-                  <th>Center</th>
-                  <th>Class</th>
-                  <th>Time</th>
-                  <th>Area</th>
-                  <th></th>
-                </tr>
-              </thead>
-              <tbody id="classes-content">
-              </tbody>
-            </table>
-        </div>
-      </div>
+    <div id='search-container' class="container" style="min-height:450px">
+      
     </div>
 </div>
 

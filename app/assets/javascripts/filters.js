@@ -14,7 +14,6 @@
 //= require jquery_ujs
 //= require react
 //= require react_ujs
-//= require components
 //= require plugins/bootstrap
 //= require plugins/modernizr
 //= require_tree ./backend
@@ -33,3 +32,4 @@
 //= require plugins/modernizr-special
 //= require plugins/owl.carousel
 //= require search
+//= require components

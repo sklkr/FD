@@ -1,9 +1,11 @@
 class Center < ActiveRecord::Base
 extend FriendlyId
 acts_as_commontable
-
+	
+  # Dependency at search page react
   CENTERTYPES = ["Gym", "Yoga", "Dance", "Swim", "Aerobics", "Zumba", "Pillatees", "Martial Art", "Boxing", "Strength training"]
   
+
   TRAINERTYPES = ["Aerobics", "Choreographer", "Martial Arts", "Dietician", "Physical Trainer", "Phsiotherapist", "Yoga", "Zumba", ]
 
   default_scope { where(status: 'active') }

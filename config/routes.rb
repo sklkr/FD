@@ -152,7 +152,7 @@ resources :partners, only: [:index, :new, :create]
   post 'api/search' => 'filters#react_search'
   post 'api/search/classes' => 'filters#react_class_search'
   get 'api/center_types' => 'filters#center_types'
-  get 'api/experiences' => 'filters#experiences'
+  get 'api/dates' => 'filters#dates'
 
   get 'homepage/index'
   get 'centers/list' => 'homepage#centers_list'

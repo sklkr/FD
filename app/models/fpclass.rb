@@ -2,7 +2,7 @@ class Fpclass < ActiveRecord::Base
 extend FriendlyId
 
   LEVELS = ["Beginner", "Advanced", "All"]
-
+  
   after_create :build_ice_cube_params
   default_scope { where('expiry>=?', Time.now) }
   scope :expired, -> { unscoped.where('expiry<?', Time.now) }
@@ -13,6 +13,8 @@ extend FriendlyId
   has_many :recursivedates, dependent: :destroy
   has_many :clasbkings
 
+  validates_presence_of :centers
+  
   def total_clasbkings
   	clasbkings.count
   end

@@ -120,3 +120,4 @@ gem 'monologue'
 gem 'active_model_serializers'
 gem 'ffaker'
 gem 'react-rails'
+
