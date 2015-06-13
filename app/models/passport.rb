@@ -1,7 +1,7 @@
 class Passport < ActiveRecord::Base
   TYPE = {
     'passport_alpha' => {'quantity' => '1', 'unit_price' => '1500', :tickets => '20', :order_type => 'Package', :end_date => Date.today + 30.days},
-    'passport_beta' => {'quantity' => '1', 'unit_price' => '249', :tickets => '10', :order_type => 'Package', :end_date => Date.today + 15.days}
+    'passport_beta' => {'quantity' => '1', 'unit_price' => '199', :tickets => '3', :order_type => 'Package', :end_date => Date.today + 15.days}
   }
 
   ACTIVE = 'passport_beta'
