@@ -1,4 +1,4 @@
-class CenterSerializer < ActiveModel::Serializer
+ class CenterSerializer < ActiveModel::Serializer
   attributes :id, :details_path, :image_path, :capname, :place_name, :detailed_desc
 
   def details_path
