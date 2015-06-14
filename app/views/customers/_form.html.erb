@@ -1,4 +1,4 @@
-<%= simple_form_for @customer, :html => {:class => 'cd-form form-horizontal', 'data-parsley-validate' => true} do |f| %>
+<%= simple_form_for @customer, url: customer_path(@customer.id), :html => {:class => 'cd-form form-horizontal', 'data-parsley-validate' => true} do |f| %>
   <%= hidden_field_tag :token, params[:id] %>
   <%= f.input :email, :label => 'E-mail', label_html: { class: 'image-replace cd-email'}, input_html: { class: 'full-width has-padding has-border', :placeholder => 'E-mail (eg: abc@xxx.com)', disabled: true  }, wrapper_html: { class: 'fieldset' } %>
   <%= f.simple_fields_for :user do |p| %>

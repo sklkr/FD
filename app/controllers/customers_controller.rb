@@ -6,14 +6,15 @@ layout 'homepage'
   end
 
   def edit
-  	@user = User.find_by_remember_token(params[:id])
+    @user = User.find_by_remember_token(params[:id])
     @customer = @user.customer
   end
 
   def create
   	@customer = Customer.new(permit_params)
   	if @customer.save
-      AdminMailer.customer_registration(@customer).delay.deliver
+      # AdminMailer.customer_registration(@customer).delay.deliver
+      RegistrationMailer.send_manual(@customer).deliver
       respond_to do |format|
           format.js
       end
@@ -25,11 +26,9 @@ layout 'homepage'
 
 
   def update
-    @user = User.find_by_remember_token(params[:token])
-    @user.active = true
-    @user.save
+    @user = User.find_by_remember_token(params[:token]) 
     @customer = @user.customer
-    if @customer.update_attributes(update_params)
+    if @customer.update_attributes(update_params) && @customer.user.update!(:active => true, :location => @user.location)
       env['warden'].set_user(@customer.user)
       redirect_to search_path, :notice => "Registration completed."
     else
