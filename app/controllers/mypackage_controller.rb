@@ -29,15 +29,12 @@ class MypackageController < ApplicationController
     
     unless @passport.save && (current_user.passport.try(:order_item_id) != @order.order_items.first.id)
       redirect_to root_url, :notice => 'something went wrong'
-      
     end
     #sms 
     
     SmsService.new(@customer.phone, "Hi, you\'ve bought a FitnessPapa Passport worth Rs.#{@order.total_amount} on #{@passport.start_date}. Your order ID is #{@passport.order_id}.   Thank You!").delay.send_sms
     AcknowledgeOrder.customer(@passport, current_user).delay.deliver
-    
     AcknowledgeOrder.admin(@passport, current_user).delay.deliver
-    
   end
 
   def failure

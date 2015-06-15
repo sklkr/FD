@@ -4,7 +4,7 @@ module Partners
     # Should be restricted and has current_partner
 
     def index
-		    
+    
     end
 
     def show

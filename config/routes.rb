@@ -8,9 +8,20 @@ Rails.application.routes.draw do
 
   get 'errors/internal_server_error'
 
- constraints :subdomain => 'blog' do
-  mount Monologue::Engine, at: '/'
- end
+  constraints :subdomain => 'blog' do
+    mount Monologue::Engine, at: '/'
+  end
+ 
+  constraints :subdomain => "admin" do
+    scope :module => 'fpadmin' do
+      resources :partners do
+        post 'activate', on: :member
+      end
+      resources :customers
+      resources :reservations
+      resources :orders
+    end
+  end
 
 
   constraints :subdomain => "partners" do

@@ -9,6 +9,8 @@ class Clasbking < ActiveRecord::Base
 	belongs_to :passport
 	belongs_to :center
 
+  scope :recent, -> { order(:created_at) }
+  
   def sms_notify
     tell_customer
     tell_partner

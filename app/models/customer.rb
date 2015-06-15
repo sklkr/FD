@@ -16,6 +16,8 @@ class Customer < ActiveRecord::Base
   validates :email, :presence => true, :uniqueness => true
   validates_format_of :email, :with => /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z]+)*\.[a-z]+\z/i, :message => "Email not valid"
 
+  scope :recent, -> { order(:created_at) }
+  
   def customer_id
   	"FP" + sprintf('%04d', self.id)
   end
