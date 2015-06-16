@@ -4,11 +4,10 @@ class BaseController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
   helper_method :warden, :current_user
-  before_filter :authenticate!
 
 
   def current_user
-   warden.user(:partner).partner if warden.user(:partner)
+   warden.user(:superadmin)
   end
 
   def warden
@@ -22,8 +21,8 @@ class BaseController < ActionController::Base
     # end
   end
 
-  def authenticated
-    # redirect_to partners_classes_path if warden.authenticated?(:partner)
+  def authenticated?
+    redirect_to new_session_path if current_user.blank?
   end
 end
 end

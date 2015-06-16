@@ -1,9 +1,10 @@
 module Fpadmin
 class CustomersController < BaseController 
 layout 'fpadmin'
+before_filter :authenticated?
 
   def index
-    @customers = Customer.recent.includes(:user).page params[:page]
+    @customers = Customer.recent.includes(:user, :passport).page params[:page]
   end
 
   def show

@@ -10,6 +10,12 @@
                     <div class="pull-left m-left-sm">
                         <strong class="font-14 block"><%= @customer.full_name %></strong>
                         <small class="text-muted"><%= @customer.email %></small>
+                        <small class="text-muted"><%= @customer.location %></small>
+                        <div class="seperator"></div>
+                    </div>
+                    <div class="pull-right m-left-sm">
+                        <strong class="font-14 block"> <%= @customer.emergency_name %></strong>
+                        <small class="text-muted"> <%= @customer.emergency_phone %></small>
                         <div class="seperator"></div>
                     </div>
                 </div>
@@ -28,8 +34,6 @@
                 <table class="table table-striped table-responsive" id="responsiveTable">
                     <thead>
                         <tr>
-                            <th>Customer</th>
-                            <th>Email</th>
                             <th>Start Date</th>
                             <th>End Date</th>
                             <th>Tickets Left</th>
@@ -39,8 +43,6 @@
                     <tbody>
                         <% unless @order.blank? %>
                             <tr>
-                                <td><%= @order.full_name %></td>
-                                <td><%= @order.email %></td>
                                 <td><%= local_time(@order.start_date, "%B %e, %Y") %></td>
                                 <td><%= local_time(@order.end_date, "%B %e, %Y") unless @order.end_date.nil? %></td>
                                 <td><%= @order.remaining_tickets  %></td>

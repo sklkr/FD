@@ -49,7 +49,7 @@
 						</li>
 						<li><a tabindex="-1" href="<%= change_password_partners_settings_path %>" class="theme-setting"><i class="fa fa-cog fa-lg"></i> Change password</a></li>
 						<li class="divider"></li>
-						<li><%= link_to 'Logout', partners_logout_path, :method => :delete, :data => {:confirm => 'Do you want to logout?'} %></li>
+						<li><%= link_to 'Logout', session_path(0), :method => 'delete', :data => {:confirm => 'Do you want to logout?'} %></li>
 					</ul>
 				</li>
 			</ul>
@@ -66,15 +66,6 @@
 						<i class="fa fa-power-off"></i>
 					</a>
 				</div><!-- /size-toggle -->	
-				<div class="user-block clearfix">
-					<%= image_tag "//d1djl7kr085bc1.cloudfront.net/store/#{}"%>
-					<div class="detail">
-						<strong><%=  %></strong>
-						<ul class="list-unstyled">
-							<li><a href="#">Profile</a></li>
-						</ul>
-					</div>
-				</div>
 				<div class="main-menu">
 					<ul>
 						<li>

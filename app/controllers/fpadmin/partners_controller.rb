@@ -1,13 +1,15 @@
 module Fpadmin
 class PartnersController < BaseController 
 layout 'fpadmin'
+before_filter :authenticated?
 
   def index
     @partners = Partner.recent.includes(:user).page params[:page]
   end
 
   def show
-
+    @partner = Partner.find(params[:id])
+    @centers = @partner.centers
   end
 
   def destroy

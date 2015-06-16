@@ -24,7 +24,8 @@
                     <th>Location</th>
                     <th>Phone</th>
                     <th>Email</th>
-                    <th>Active</th>
+                    <th>Passport</th>
+                    <th>Status</th>
                     <th></th>
                 </tr>
             </thead>
@@ -35,6 +36,7 @@
                         <td><%= "#{c.location.split(',').first} #{c.location.split(',').second}" unless c.location.blank? %></td>
                         <td><%= c.phone %></td>
                         <td><a href="mailto:<%= c.email %>"><%= c.email %></a></td>
+                        <td><span class="<%= c.passport.blank? ? "label label-danger" : "label label-success" %>"><%= c.passport.blank? ? "Inactive" : "Active" %></span></td>
                         <td><span class="<%= c.active ? "label label-success" : "label label-danger" %>"><%= c.active %></span></td>
                         <td>
                         <%= link_to customer_path(:id => c.id), :method => 'delete', :data => {:confirm => "Are you sure ?"} do %>

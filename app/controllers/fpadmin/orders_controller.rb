@@ -1,6 +1,7 @@
 module Fpadmin
 class OrdersController < BaseController 
 layout 'fpadmin'
+before_filter :authenticated?
 
   def index
     @orders = Passport.recent.includes(:customer).page params[:page]

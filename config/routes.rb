@@ -20,6 +20,10 @@ Rails.application.routes.draw do
       resources :customers
       resources :reservations
       resources :orders
+
+      resources :sessions
+
+      get '/' => 'sessions#new'
     end
   end
 

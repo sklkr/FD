@@ -34,7 +34,7 @@ class Clasbking < ActiveRecord::Base
   end
 
 	def phone_number
-		fpclass.partner.user.phone || "0000000000"
+		fpclass.centers.first.mobile || "0000000000"
 	end
 
   def expired

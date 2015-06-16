@@ -27,23 +27,25 @@
                 </tr>
             </thead>
             <tbody>
-                <% @fpclasses.each do |c| %>
-                    <tr>
-                        <td><a href=""><%= c.name.capitalize %> <%= c.centers.first.name.capitalize %></a></td>
-                        <td><%= local_time(c.date, '%B %d, %Y') unless c.date.blank? %></td>
-                        <td><%= c.start_time.strftime('%H : %M') unless c.start_time.nil? %></td>
-                        <td><%= c.duration %></td>
-                        <td><span class='label label-info'><%= c.seats %></span></td>
-                        <td>
-                            <span class="pull-right">
-                            <a href="<%= edit_partners_class_path(c.friendly_id) %>"><i class="fa fa-edit fa-lg text-info"></i></a>&nbsp;
-                            <%= link_to partners_class_path(c.friendly_id), method: :delete, data: {confirm: 'Are you sure you want to delete this class?'} do %>
-                              <i class='fa fa-trash-o fa-lg text-info'></i>&nbsp;
-                            <% end %>
-                        </span>
-                        </td>
-                    </tr>
-                <%end%>
+                <% unless @fpclasses.blank? %>
+                    <% @fpclasses.each do |c| %>
+                        <tr>
+                            <td><a href=""><%= c.name.capitalize %> <%= c.centers.first.name.capitalize %></a></td>
+                            <td><%= local_time(c.date, '%B %d, %Y') unless c.date.blank? %></td>
+                            <td><%= c.start_time.strftime('%H : %M') unless c.start_time.nil? %></td>
+                            <td><%= c.duration %></td>
+                            <td><span class='label label-info'><%= c.seats %></span></td>
+                            <td>
+                                <span class="pull-right">
+                                <a href="<%= edit_partners_class_path(c.friendly_id) %>"><i class="fa fa-edit fa-lg text-info"></i></a>&nbsp;
+                                <%= link_to partners_class_path(c.friendly_id), method: :delete, data: {confirm: 'Are you sure you want to delete this class?'} do %>
+                                  <i class='fa fa-trash-o fa-lg text-info'></i>&nbsp;
+                                <% end %>
+                            </span>
+                            </td>
+                        </tr>
+                    <%end%>
+                <% end %>
             </tbody>
         </table>
         <div class="panel-footer clearfix">

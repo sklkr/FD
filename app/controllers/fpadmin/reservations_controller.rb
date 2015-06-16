@@ -1,6 +1,7 @@
 module Fpadmin
 class ReservationsController < BaseController 
 layout 'fpadmin'
+before_filter :authenticated?
 
   def index
     @reservations = Clasbking.recent.includes(:customer, :fpclass, :center).page params[:page]

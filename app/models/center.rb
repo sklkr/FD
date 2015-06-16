@@ -10,6 +10,7 @@ acts_as_commontable
   scope :pending, -> { unscoped.where('status!=?', 'active')}
   before_save { self.place_name && self.place_id = GPlaces.new(self.place_name).get_id }   # To get place id from place name
   
+  	delegate :mobile, to: :accountinfo
 	attachment :image
 	
 	# Associations
@@ -38,12 +39,31 @@ acts_as_commontable
 	# Validations
 	validates :name, :presence => true
 
-	friendly_id :name, use: :slugged
+	friendly_id :slug_candidates, use: :slugged
 	ratyrate_rateable "speed", "engine", "price"
     
     # Checker for slugs and geneartion of slugs for older columns
     # Methodname.each(&:save)
 	def should_generate_new_friendly_id?
 	  new_record? || slug.blank?
+	end
+
+	def slug_candidates
+		[
+	     :name,
+	     [:name, :place_name],
+	     [:name, :place_name, :center_type]
+		]
+	end
+
+	def places_array
+		self.place_name.split(',')
+	end
+	def street
+		places_array.first
+	end
+
+	def city_name
+		places_array.last
 	end
 end
