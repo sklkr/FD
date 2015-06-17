@@ -27,9 +27,6 @@
 */
 
 
-$nprogress-color: rgb(237, 116, 19);
 
-@import 'nprogress';
-@import 'nprogress-bootstrap';
 @import "font-awesome-sprockets";
 @import "font-awesome";
