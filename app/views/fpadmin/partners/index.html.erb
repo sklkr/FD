@@ -1,0 +1,58 @@
+<div class="main-header clearfix">
+    <div class="page-title">
+        <h3 class="no-margin">Partners</h3>
+        <span></span>
+    </div><!-- /page-title -->
+    
+    <ul class="page-stats">
+    </ul><!-- /page-stats -->
+</div>
+
+
+<div class="padding-md">
+    <div class="panel panel-default table-responsive">
+        <div class="panel-heading">
+            <span>Partners</span>
+            <span class="pull-right">
+                <%= paginate @partners %>
+            </span>
+        </div>
+        <table class="table table-striped table-responsive" id="responsiveTable">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Phone</th>
+                    <th>Email</th>
+                    <th>Active</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <% @partners.each do |p| %>
+                    <tr>
+                        <td><%= link_to p.full_name, partner_path(p.id) %></td>
+                        <td><%= p.phone %></td>
+                        <td><a href="mailto:<%= p.email %>"><%= p.email %></a></td>
+                        <td><span class="<%= p.active ? "label label-success" : "label label-danger" %>"><%= p.active %></span></td>
+                        <td>
+                        <%= link_to partner_path(:id => p.id), :method => 'delete', :data => {:confirm => "Are you sure ?"}, :class => 'btn btn-sm' do %>
+                            <i class='fa fa-trash-o'>&nbsp;Remove</i>
+                        <% end %>
+                        <% unless p.active %>
+                            <%= link_to activate_partner_path(:id => p.id), :method => 'post', :data => {:confirm => "Are you sure you want to activate this partner ?"}, :class => 'btn btn-sm'  do%>
+                                <i class='fa fa-plane'>&nbsp;Activate</i>
+                            <% end %>
+                            &nbsp;&nbsp;&nbsp;&nbsp;
+                        <% end %>
+                        </td>
+                    </tr>
+                <%end%>
+            </tbody>
+        </table>
+        <div class="panel-footer clearfix">
+            <span class="pull-right">
+                <%= paginate @partners %>
+            </span>
+        </div>
+    </div>
+</div>

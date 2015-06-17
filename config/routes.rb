@@ -8,9 +8,24 @@ Rails.application.routes.draw do
 
   get 'errors/internal_server_error'
 
- constraints :subdomain => 'blog' do
-  mount Monologue::Engine, at: '/'
- end
+  constraints :subdomain => 'blog' do
+    mount Monologue::Engine, at: '/'
+  end
+ 
+  constraints :subdomain => "admin" do
+    scope :module => 'fpadmin' do
+      resources :partners do
+        post 'activate', on: :member
+      end
+      resources :customers
+      resources :reservations
+      resources :orders
+
+      resources :sessions
+
+      get '/' => 'sessions#new'
+    end
+  end
 
 
   constraints :subdomain => "partners" do
@@ -58,9 +73,8 @@ Rails.application.routes.draw do
 
         get 'settings/change_password' => 'partners/settings#change_password', :as => 'change_password_partners_settings', :subdomain => 'partners'
 
-# Frontend Resources
-resources :customers, only: [:new, :create]
-resources :partners, only: [:index, :new, :create]
+		resources :customers, only: [:edit, :create, :update]
+		resources :partners, only: [:index, :new, :create]
 
 
   # mount Lockup::Engine, at: '/lockup'

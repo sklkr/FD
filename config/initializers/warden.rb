@@ -51,14 +51,14 @@ end
 class SuperadminStrategy < ::Warden::Strategies::Base
   def valid?
     return false if request.get?
-    user_data = params.fetch("user")
-    !(user_data["email"].blank? || user_data["password"].blank?)
+    user_data = params.fetch("superadmin")
+    !(user_data["email"].blank? || user_data['user']["password"].blank?)
   end
 
   def authenticate!
-    superadmin = Superadmin.find_by_email(params["user"].fetch("email"))
-    if superadmin.try(:user).nil? || superadmin.user.password != params["user"].fetch("password")
-      fail!("could not logged in")
+    superadmin = Superadmin.find_by_email(params["superadmin"].fetch("email"))
+    if superadmin.try(:user).nil? || superadmin.user.password != params["superadmin"]["user"].fetch("password")
+      throw(:warden, :action => :partner)
     else
       success! superadmin
     end

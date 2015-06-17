@@ -1,8 +1,10 @@
 class Passport < ActiveRecord::Base
   TYPE = {
     'passport_alpha' => {'quantity' => '1', 'unit_price' => '1500', :tickets => '20', :order_type => 'Package', :end_date => Date.today + 30.days},
-    'passport_beta' => {'quantity' => '1', 'unit_price' => '249', :tickets => '10', :order_type => 'Package', :end_date => Date.today + 15.days}
+    'passport_beta' => {'quantity' => '1', 'unit_price' => '199', :tickets => '3', :order_type => 'Package', :end_date => Date.today + 15.days}
   }
+
+  delegate :full_name, :email, to: :customer, :allow_nil => true
 
   ACTIVE = 'passport_beta'
 
@@ -10,8 +12,10 @@ class Passport < ActiveRecord::Base
   belongs_to :customer
   has_many :clasbkings
   
+  scope :recent, -> { order(:created_at) }
+
   def total_clasbkings
-  	Clasbking.unscoped.where("passport_id=?",id).count
+  	Clasbking.unscoped.where("passport_id=?",id).count || 0
   end
 
   def total_active_clasbkings
@@ -19,7 +23,11 @@ class Passport < ActiveRecord::Base
   end
 
   def remaining_tickets
-  	tickets - total_clasbkings 
+  	total_tickets - total_clasbkings 
+  end
+
+  def total_tickets
+    tickets.nil? ? 0 : tickets
   end
 
   def order_id

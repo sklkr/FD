@@ -28,4 +28,8 @@ class UnauthorizedController < ActionController::Metal
     flash[:alert] = "Please check your credentials"
     redirect_to partners_path
   end
+
+  def unauthenticated
+    
+  end
 end

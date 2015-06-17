@@ -1,5 +1,6 @@
 class RegistrationMailer < MandrillMailer::TemplateMailer
   default from: 'info@fitnesspapa.com'
+  default from_name: 'FitnessPapa'
 
   def admin_notify(cb)
     user    = cb.customer
@@ -18,7 +19,7 @@ class RegistrationMailer < MandrillMailer::TemplateMailer
         'MOBILE' => user.phone,
         'CLASSNAME' => fpclass.name,
         'CENTERNAME' => center.name,
-        'DATE' => cb.expired_at
+        'DATE' => "#{cb.expired_at} #{cb.fpclass.start_time.strftime("%H:%M") unless cb.fpclass.blank?}"
       },
       important: true,
       inline_css: true,
@@ -43,6 +44,22 @@ class RegistrationMailer < MandrillMailer::TemplateMailer
         'CLASSNAME' => fpclass.name,
         'CENTERNAME' => center.name,
         'DATE' => cb.expired_at
+      },
+      important: true,
+      inline_css: true,
+    )
+  end
+
+  def send_manual(customer)
+    mandrill_mail(
+      template: 'REGISTRATION_PROCESS',
+      subject: "Welcome to FitnessPapa Community",
+      to: customer.email,
+        # to: invitation.email,
+        # to: { email: invitation.email, name: 'Honored Guest' },
+      vars: {
+        'SUBJECT' => 'Welcome FitnessPapa Passport Community',
+         'LINK' => customer.remember_token
       },
       important: true,
       inline_css: true,

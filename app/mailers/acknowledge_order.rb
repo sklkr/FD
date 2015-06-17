@@ -1,5 +1,6 @@
 class AcknowledgeOrder < MandrillMailer::TemplateMailer
   default from: "noreply@fitnesspapa.com"
+  default from_name: 'FitnessPapa'
 
   def customer(passport, customer)
     mandrill_mail(
@@ -9,9 +10,9 @@ class AcknowledgeOrder < MandrillMailer::TemplateMailer
         # to: invitation.email,
         # to: { email: invitation.email, name: 'Honored Guest' },
       vars: {
-        'NAME' => customer.full_name,
-        'DATE' => passport.start_date,
-        'ORDER_ID' => passport.order_id,
+        'NAME'       => customer.full_name,
+        'DATE'       => passport.start_date,
+        'ORDER_ID'   => passport.order_id,
         'EXPIRED_ON' => passport.end_date,
       },
       important: true,

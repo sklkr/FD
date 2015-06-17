@@ -2,7 +2,8 @@ class Partner < ActiveRecord::Base
   # An array of partner type
   PARTNERTYPES = ['center','professional']
 
-  delegate :first_name, :last_name, :name, :phone, :password, :password=, :crypted_password, :image_id, :active, :full_name, :password_reset_token, :send_password_reset, to: :user
+  delegate :first_name, :last_name, :full_name, :name, :phone, :password, :password=, :crypted_password, :location, :image_id, :active, :full_name, :password_reset_token, :send_password_reset, to: :user
+  
   
   belongs_to :user, :dependent => :destroy
   has_many :centers, :dependent => :destroy
@@ -11,6 +12,8 @@ class Partner < ActiveRecord::Base
   has_many :instructors
   has_many :fpclasses, :dependent => :destroy
   has_one :info, :dependent => :destroy
+  
+  scope :recent, -> { order(:created_at) }
   
   after_save :notify_admin
   # Set partner type to center if we dont have partner type

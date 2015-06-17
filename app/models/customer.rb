@@ -1,7 +1,7 @@
 class Customer < ActiveRecord::Base
   extend FriendlyId
   acts_as_commontator
-  delegate :first_name, :last_name, :phone, :password, :password=, :crypted_password, :image_id, :active, :full_name, :password_reset_token, :send_password_reset, to: :user
+  delegate :first_name, :emergency_name, :emergency_phone, :last_name, :phone, :password, :password=, :remember_token, :crypted_password, :location, :image_id, :active, :full_name, :password_reset_token, :send_password_reset, to: :user
   
   belongs_to :user, dependent: :destroy
   friendly_id :email
@@ -16,6 +16,8 @@ class Customer < ActiveRecord::Base
   validates :email, :presence => true, :uniqueness => true
   validates_format_of :email, :with => /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z]+)*\.[a-z]+\z/i, :message => "Email not valid"
 
+  scope :recent, -> { order(:created_at) }
+  
   def customer_id
   	"FP" + sprintf('%04d', self.id)
   end

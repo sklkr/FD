@@ -1,0 +1,27 @@
+<div class="container">
+	<div class="row hasMtop">
+		<div class="col-xs-12 col-sm-6 col-sm-offset-3">
+			<div>
+				<h2 class="osLight text-center" style="padding:2em">SIGN IN</h2>
+				<div class="box">
+					<%= render :partial => 'layouts/notices' %>
+					<%= simple_form_for @admin, :url => sessions_path, :html => {:class => 'cd-form', 'data-parsley-validate' => true} do |f| %>
+					  <%= f.input :email, :label => 'E-mail', label_html: { class: 'image-replace cd-email'}, input_html: { class: 'full-width has-padding has-border', :placeholder => 'E-mail (eg: abc@xxx.com)'  }, wrapper_html: { class: 'fieldset' } %>
+					  <%= f.simple_fields_for :user do |p| %>
+					    <%= p.input :password, label_html: { class: 'image-replace cd-password'}, input_html: { class: 'full-width has-padding has-border', 'data-parsley-required' => 'true', :placeholder => 'Password'  }, wrapper_html: { class: 'fieldset' } %>
+					  <% end %>
+					  <div class="row">
+					    <div class="col-xs-12">
+					      <%= f.button :submit, "SIGN-IN", class: 'full-width has-padding', wrapper_html: { class: 'fieldset' } %>
+					    </div>
+					    <!-- <div class="col-xs-12" style="margin-top:20px">
+					      <a class="btn btn-block btn-social btn-facebook has-padding" href='/auth/facebook<%= "?callback_url=#{params[:url]}" unless params[:url].nil? %>'><i class="fa fa-facebook"></i> SIGN-IN WITH FACEBOOK</a>    
+					    </div> -->
+					  </div>
+					  <hr>
+					<% end %>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

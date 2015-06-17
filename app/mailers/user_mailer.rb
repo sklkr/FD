@@ -1,5 +1,6 @@
 class UserMailer < MandrillMailer::TemplateMailer
   default from: "noreply@fitnesspapa.com"
+  default from_name: 'FitnessPapa'
 
   def password_reset(user)
     mandrill_mail(

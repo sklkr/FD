@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title><%= @title.nil? ? "Fitnesspapa" : @title %> </title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="FitnessPapa">
+	
+	<%= stylesheet_link_tag 'partners', media: 'all' %>
+	<%= csrf_meta_tags %>
+	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAs4tO9vd5JNhXOX8h492hEwfstspyTQAw&libraries=places"></script>
+  </head>
+  <body class="overflow-hidden">
+	
+	<%= render :partial => 'layouts/tagmanager' %>
+
+	<div id="wrapper" class="preload">
+		<div id="top-nav" class="skin-3 fixed">
+			<div class="brand">
+				<span>FP -</span>
+				<span class="text-toggle">Admin</span>
+			</div><!-- /brand -->
+			<button type="button" class="navbar-toggle pull-left" id="sidebarToggle">
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			</button>
+			<button type="button" class="navbar-toggle pull-left hide-menu" id="menuToggle">
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			</button>
+			<ul class="nav-notification clearfix">
+				<li class="profile dropdown">
+					<a class="dropdown-toggle" data-toggle="dropdown" href="#">
+						<strong><%=  %></strong>
+						<span><i class="fa fa-chevron-down"></i></span>
+					</a>
+					<ul class="dropdown-menu">
+						<li>
+							<a class="clearfix" href="#">
+								<%= image_tag "//d1djl7kr085bc1.cloudfront.net/store/#{}"%>
+								<div class="detail">
+									<strong><%=  %></strong>
+									<p class="grey"><%=  %></p> 
+								</div>
+							</a>
+						</li>
+						<li><a tabindex="-1" href="<%= change_password_partners_settings_path %>" class="theme-setting"><i class="fa fa-cog fa-lg"></i> Change password</a></li>
+						<li class="divider"></li>
+						<li><%= link_to 'Logout', session_path(0), :method => 'delete', :data => {:confirm => 'Do you want to logout?'} %></li>
+					</ul>
+				</li>
+			</ul>
+		</div>
+		<aside class="fixed skin-5">
+			<div class="sidebar-inner scrollable-sidebar">
+				<div class="size-toggle">
+					<a class="btn btn-sm" id="sizeToggle">
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</a>
+					<a class="btn btn-sm pull-right logoutConfirm_open"  href="#logoutConfirm">
+						<i class="fa fa-power-off"></i>
+					</a>
+				</div><!-- /size-toggle -->	
+				<div class="main-menu">
+					<ul>
+						<li>
+							<a href="<%= customers_path %>">
+								<span class="menu-icon">
+									<i class="fa fa-file-text fa-lg"></i> 
+								</span>
+								<span class="text">
+									Customers
+								</span>
+								<span class="menu-hover"></span>
+							</a>
+						</li>
+						<li>
+							<a href="<%= partners_path %>">
+								<span class="menu-icon">
+									<i class="fa fa-ticket fa-lg"></i> 
+								</span>
+								<span class="text">
+									Partners
+								</span>
+								<span class="menu-hover"></span>
+							</a>
+						</li>
+						<li>
+							<a href="<%= reservations_path %>">
+								<span class="menu-icon">
+									<i class="fa fa-desktop fa-lg"></i> 
+								</span>
+								<span class="text">
+									Reservations
+								</span>
+								<span class="menu-hover"></span>
+							</a>
+						</li>
+						<li>
+							<a href="<%= orders_path %>">
+								<span class="menu-icon">
+									<i class="fa fa-desktop fa-lg"></i> 
+								</span>
+								<span class="text">
+									Orders
+								</span>
+								<span class="menu-hover"></span>
+							</a>
+						</li>
+					</ul>
+				</div><!-- /main-menu -->
+			</div><!-- /sidebar-inner -->
+		</aside>
+
+		<div id="main-container">
+			<%= yield %>
+		</div><!-- /main-container -->
+		<!-- Footer
+		================================================== -->
+		<footer>
+			<div class="row">
+				<div class="col-sm-6">
+					<span class="footer-brand">
+						<strong>F</strong><strong class="text-danger">P</strong> Admin
+					</span>
+					<p class="no-margin">
+						&copy; 2015 <strong>Fitness Papa</strong>. ALL Rights Reserved. 
+					</p>
+				</div><!-- /.col -->
+			</div><!-- /.row-->
+		</footer>
+		
+		
+		
+	</div><!-- /wrapper -->
+
+	<%= javascript_include_tag 'partners', 'data-turbolinks-track' => true %>
+	<script>
+	(function(){
+		
+			  window.search_input = document.getElementById('inc-map');
+		      window.city_name = new google.maps.places.Autocomplete(window.search_input);
+
+		      	$(".chzn-select").chosen();
+		      	
+		      	// Datepicker
+		      	// $('.datepicker').datepicker();
+
+		      	// Timepicker
+		      	// $('.timepicker').timepicker();
+		      			
+		      	// Slider		
+		      	$('#sl1').slider();
+		      	$('#sl2').slider();
+		      	$('#sl3').slider();
+		      	$('#sl4').slider();
+		      	$('#sl5').slider();
+		      			
+		      	// Tags input
+		      	$('.tag-demo1').tagsInput({
+		      		'height':'auto',
+		      		'width':'90%'
+		      	});
+
+
+		      	// Wysihtml5
+		      	// var editor = new wysihtml5.Editor('editor', {
+		      	//     toolbar: 'toolbar',
+		      	  //   parserRules:  wysihtml5ParserRules
+		      	 //  });
+
+		      	// Toggle border of control group
+		      	$('#toggleLine').click(function()	{			
+		      		if($(this).is(':checked'))	{
+		      			$('#formToggleLine').addClass('form-border');
+		      		}
+		      		else	{
+		      			$('#formToggleLine').removeClass('form-border');
+		      		}
+		      	});
+
+		      	// Draggable Multiselect
+		      	$('#btnSelect').click(function()	{
+		      		$('#selectedBox1 option:selected').appendTo('#selectedBox2');  
+		      		return false;
+		      	});
+
+		      	$('#btnRemove').click(function()	{
+		      		$('#selectedBox2 option:selected').appendTo('#selectedBox1'); 
+		      		return false;
+		      	});
+
+		      	$('#btnSelectAll').click(function()	{
+		      			
+		      		$('#selectedBox1 option').each(function() {               
+		                 $(this).appendTo('#selectedBox2');                   
+		              });
+
+		      		return false;
+		      	});
+
+		      	$('#btnRemoveAll').click(function()	{
+		      			
+		      		$('#selectedBox2 option').each(function() {                  
+		      			$(this).appendTo('#selectedBox1');            
+		              });
+
+		      		return false;
+		      	});
+	})();
+
+	</script>
+  </body>
+</html>

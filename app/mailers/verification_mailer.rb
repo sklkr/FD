@@ -1,6 +1,6 @@
 class VerificationMailer < ActionMailer::Base
   default from: "noreply@fitnesspapa.com"
-
+  
   def welcome_email(user, role)
 
       @verify_url = url_for( :controller => 'registrations', :action => 'verify_email', :token => user.remember_token )

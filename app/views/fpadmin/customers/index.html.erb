@@ -1,0 +1,57 @@
+<div class="main-header clearfix">
+    <div class="page-title">
+        <h3 class="no-margin">Customers</h3>
+        <span></span>
+    </div><!-- /page-title -->
+    
+    <ul class="page-stats">
+    </ul><!-- /page-stats -->
+</div>
+
+
+<div class="padding-md">
+    <div class="panel panel-default table-responsive">
+        <div class="panel-heading">
+            <span>Customers</span>
+            <span class="pull-right">
+                <%= paginate @customers %>
+            </span>
+        </div>
+        <table class="table table-striped table-responsive" id="responsiveTable">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Location</th>
+                    <th>Phone</th>
+                    <th>Email</th>
+                    <th>Passport</th>
+                    <th>Status</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <% @customers.each do |c| %>
+                    <tr>
+                        <td><%= link_to c.full_name, customer_path(:id => c.id) %></td>
+                        <td><%= "#{c.location.split(',').first} #{c.location.split(',').second}" unless c.location.blank? %></td>
+                        <td><%= c.phone %></td>
+                        <td><a href="mailto:<%= c.email %>"><%= c.email %></a></td>
+                        <td><span class="<%= c.passport.blank? ? "label label-danger" : "label label-success" %>"><%= c.passport.blank? ? "Inactive" : "Active" %></span></td>
+                        <td><span class="<%= c.active ? "label label-success" : "label label-danger" %>"><%= c.active %></span></td>
+                        <td>
+                        <%= link_to customer_path(:id => c.id), :method => 'delete', :data => {:confirm => "Are you sure ?"} do %>
+                            <i class='fa fa-trash-o'> &nbsp; </i>
+                        <% end %>
+                        </td>
+                        <td></td>
+                    </tr>
+                <%end%>
+            </tbody>
+        </table>
+        <div class="panel-footer clearfix">
+            <span class="pull-right">
+                <%= paginate @customers %>
+            </span>
+        </div>
+    </div>
+</div>

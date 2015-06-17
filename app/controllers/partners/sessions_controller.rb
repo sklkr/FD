@@ -10,8 +10,11 @@ module Partners
     end
 
     def create
-      warden.authenticate!(:partner, scope: :partner)
-      redirect_to partners_classes_path, notice: "Welcome to FitnessPapa" 
+      if warden.authenticate!(:partner, scope: :partner)
+        redirect_to partners_classes_path, notice: "Welcome to FitnessPapa" 
+      else
+        render :text => 'something went wrong'
+      end
     end
 
     #def admin

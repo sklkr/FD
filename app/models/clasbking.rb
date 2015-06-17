@@ -9,6 +9,8 @@ class Clasbking < ActiveRecord::Base
 	belongs_to :passport
 	belongs_to :center
 
+  scope :recent, -> { order(:created_at) }
+  
   def sms_notify
     tell_customer
     tell_partner
@@ -32,7 +34,7 @@ class Clasbking < ActiveRecord::Base
   end
 
 	def phone_number
-		fpclass.partner.user.phone || "0000000000"
+		fpclass.centers.first.mobile || "0000000000"
 	end
 
   def expired
