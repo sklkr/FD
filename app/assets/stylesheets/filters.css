@@ -21,6 +21,7 @@
  *= require plugins/magicsuggest
  *= require formstone/dist/css/checkbox
  *= require formstone/dist/css/dropdown
+ *= require sweetalert
  *= require style
  *= require signup
 */

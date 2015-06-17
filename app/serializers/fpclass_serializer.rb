@@ -1,5 +1,5 @@
 class FpclassSerializer < ActiveModel::Serializer
-  attributes :id, :capname, :start_time, :duration, :remaining_seats, :place_name, :center_name, :center_slug, :center_path
+  attributes :id, :capname, :start_time, :class_path, :duration, :remaining_seats, :place_name, :center_name, :center_slug, :center_path
   
   def capname
  	object.name.capitalize
@@ -23,5 +23,9 @@ class FpclassSerializer < ActiveModel::Serializer
 
   def center_name
     centers.name.capitalize
+  end
+
+  def class_path
+    "/reserves/#{object.slug}"
   end
 end

@@ -2,7 +2,7 @@ class FiltersController < ApplicationController
 # before_filter { @c = Center.ransack(params[:q]) }
 
   def search
-    
+        
   end
 
   def react_search
@@ -13,7 +13,8 @@ class FiltersController < ApplicationController
   end
 
   def react_class_search
-    params[:q] = {:centers_place_name_cont_any => params[:place_name_cont_any], :centers_center_type_in => JSON.parse(params[:center_type_in])} unless params[:place_name_cont_any].blank?
+    params[:q] = {:recursivedates_ondate_eq => params[:recursivedates_ondate_eq], :centers_place_name_cont_any => params[:place_name_cont_any], :centers_center_type_in => JSON.parse(params[:center_type_in])} unless params[:place_name_cont_any].blank?
+    params[:q] = {:recursivedates_ondate_eq => Date.today.strftime("%d-%m-%Y")} if params[:q].blank?
     @c = Fpclass.ransack(params[:q])
     @fpclasses = @c.result(distinct: true)
     @dates = (Date.today..Date.today+13).to_a

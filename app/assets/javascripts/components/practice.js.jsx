@@ -6,6 +6,7 @@ var SearchContainer = React.createClass({
 			isFpclass: true,
 			isFpstudio: false,
 			isCalendar: true,
+			recursivedates_ondate_eq: LocalTime.strftime(new Date(), '%Y-%m-%d'),
 			dates: [],
 			searchfields: {place_name_cont_any: '', center_type_in: ''},
 			activities: ["Gym", "Yoga", "Dance", "Swim", "Aerobics", "Zumba", "Pillatees", "Martial Art", "Boxing", "Strength training"]
@@ -16,7 +17,7 @@ var SearchContainer = React.createClass({
 	},
 
 	reloadClasses: function(){
-		return $.post('api/search/classes.json', { place_name_cont_any: this.state.place_name_cont_any.getPlace().name, center_type_in: JSON.stringify(this.state.center_type_in.getValue()) });
+		return $.post('api/search/classes.json', { place_name_cont_any: this.state.place_name_cont_any.getPlace().name, center_type_in: JSON.stringify(this.state.center_type_in.getValue()), recursivedates_ondate_eq: this.state.recursivedates_ondate_eq });
 	},
 	loadStudios: function(){
 		return $.post('api/search.json');
@@ -42,12 +43,17 @@ var SearchContainer = React.createClass({
 			isFpstudio: false,
 			isCalendar: true
 		});
-		this.reloadClasses().then(function(data){
-			this.setState({
-				fpclasses: data.filters[0],
-				dates: data.filters[1]
-			});
-		}.bind(this));
+		if(this.state.place_name_cont_any.getPlace() == undefined){
+			sweetAlert('Location/City', 'Please choose your location before going to search');
+			document.getElementById('cities').select();
+		}else{
+			this.reloadClasses().then(function(data){
+				this.setState({
+					fpclasses: data.filters[0],
+					dates: data.filters[1]
+				});
+			}.bind(this));	
+		}
 	},
 
 	studiosUpdater: function(){
@@ -60,7 +66,7 @@ var SearchContainer = React.createClass({
 			this.setState({
 				fpstudios: data.filters
 			});
-		}.bind(this));	
+		}.bind(this));
 	},
 
 	renderCalendar: function(){
@@ -85,6 +91,7 @@ var SearchContainer = React.createClass({
 	},
 
 	componentDidMount: function(){
+		document.getElementById('cities').select();
 	},
 	
 	startSearching: function(){
@@ -116,6 +123,12 @@ var SearchContainer = React.createClass({
 			})
 		}.bind(this));
 	},
+
+	handleCal: function(cal){
+		this.setState({recursivedates_ondate_eq: cal}, function(){
+			this.classesUpdater();
+		}.bind(this));
+	},
 	
 	render: function(){
 		var fpclasses = this.state.fpclasses.map(function(fpclass){
@@ -127,8 +140,8 @@ var SearchContainer = React.createClass({
 		});
 
 		var rendercalendar = this.state.dates.map(function(date){
-			return <Calendar key={date} date={date} />;
-		});
+			return <Calendar key={date} date={date} onCalendar={this.handleCal} current_date={this.state.recursivedates_ondate_eq} />;
+		}.bind(this));
 		
 		var classStyle = {
 			display: this.state.isFpclass ? 'block' : 'none'
@@ -243,13 +256,13 @@ var ClassRow = React.createClass({
 	render: function(){
 		return(
 			<tr>
-				<td><h5><a href="">{this.props.fpclass.capname}</a></h5>
+				<td><h5><a href={this.props.fpclass.class_path} data-method='get' data-remote='true'>{this.props.fpclass.capname}</a></h5>
 				</td>
-				<td><h5><a href="{this.props.fpclass.center_path}">{this.props.fpclass.center_name}</a></h5></td>
+				<td><h5><a href={this.props.fpclass.center_path}>{this.props.fpclass.center_name}</a></h5></td>
 				<td>{this.props.fpclass.start_time} | {this.props.fpclass.duration} Minutes</td>
 				<td>{this.props.fpclass.place_name}</td>
 				<td className="text-center">
-					<a className="btn btn-primary reserve-btn" href="/details/new-relic">Reserve</a>
+					<a className="btn btn-primary reserve-btn" href={this.props.fpclass.class_path} data-method='get' data-remote='true'>Reserve</a>
 					<br />
 					<span className="fp-count">{this.props.fpclass.remaining_seats} Seats left</span>
 				</td>
@@ -279,12 +292,18 @@ var Calendar = React.createClass({
 	dateFormat: function(){
 		return LocalTime.strftime(new Date(this.props.date), "%b %d");
 	},
+	dateFormatfull: function(){
+		return LocalTime.strftime(new Date(this.props.date), "%Y-%m-%d");
+	},
+	handleCalendar: function(e){
+		this.props.onCalendar(e.target.dataset.cdate);
+	},
 	render: function(){
-		var dateClasses = (this.props.date == Date.today)? "label label-success" : "label" ;
+		var dateClasses = (this.props.date == this.props.current_date)? "label label-success" : "label" ;
 
 		return(
 	      <div className="item">
-		    <a className={dateClasses}>{this.dateFormat()}</a>
+		    <a ref='calcordo' className={dateClasses} onClick={this.handleCalendar} data-cdate={this.dateFormatfull()}>{this.dateFormat()}</a>
 		  </div>
 	 	);
 	}

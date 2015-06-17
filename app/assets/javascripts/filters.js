@@ -31,5 +31,6 @@
 //= require cart
 //= require plugins/modernizr-special
 //= require plugins/owl.carousel
+//= require sweetalert.min
 //= require search
 //= require components
