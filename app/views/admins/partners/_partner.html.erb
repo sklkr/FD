@@ -1,9 +1,0 @@
-<tr>
-    <td><%= check_box_tag "t1[#{partner.id}]" %></td>
-    <td><%= partner.user.full_name%></td>
-    <td><%= partner.email %></td>
-    <td style="text-align:center"><span class="label label-default"><%= partner.user.active %></span></td>
-    <td><%= partner.user.phone %></td>
-    <td><%= partner.user.location %></td>
-    <td><%= link_to 'Assign Password', admins_path(partner.id), remote: true, method: :post %></td>
-</tr>
