@@ -28,4 +28,8 @@ class FpclassSerializer < ActiveModel::Serializer
   def class_path
     "/reserves/#{object.slug}"
   end
+
+  def start_time
+    object.start_time.strftime("%H:%M")
+  end
 end
