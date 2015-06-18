@@ -17,7 +17,7 @@
         </div>
       </div>
       <div class="modal-footer text-center">
-        <%= link_to 'RESERVE CLASS', reserves_path(:id => @fpclass.friendly_id, :date => params[:date]), :class => 'btn btn-primary reserve-btn', method: :post, remote: :true, :style => 'display:block' %>
+        <%= link_to 'RESERVE CLASS', reserves_path(:id => @fpclass.friendly_id, :date => params[:date]), :class => 'btn btn-primary reserve-btn', method: :post, remote: :true, :style => 'display:block', data: { disable_with: "<i class='fa fa-spinner fa-spin'></i> Loading..." }%>
       </div>
     </div>
   </div>

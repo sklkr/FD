@@ -1,9 +1,8 @@
 class ReservesController < ApplicationController
 before_action :authenticated?
 before_action :is_passport
-before_action :is_available_tickets
-before_action :is_available_seats
-	
+before_action :is_available_tickets, except: :destroy
+before_action :is_available_seats, except: :destroy
 	def show
 		@fpclass = Fpclass.friendly.find(params[:id])
 		@center = @fpclass.centers.first
@@ -22,10 +21,10 @@ before_action :is_available_seats
 					format.js
 				end
 			else
-				render :js => "alert('something went wrong');"
+				render :js => 'swal("Oops...", "Something went wrong!", "error");'
 			end
 		else
-			render :js => "alert('You can have maximum 8 active reservations at a time. Check if your membership got expired or you have used maximum allowed classes at this center or total classes got exhausted');"
+      render :js => "swal('Oops...', 'You can have maximum 8 active reservations at a time. Check if your membership got expired or you have used maximum allowed classes at this center or total classes got exhausted', 'error');"
 		end
 	end
 
@@ -45,7 +44,7 @@ before_action :is_available_seats
 		end
 
 		def is_available_tickets
-			render :js => "alert('Passport tickets are full. You can buy new passport to get more tickets')" if (passport.remaining_tickets <= 0)
+      render :js => "swal('Oops...', 'Passport tickets gone empty. You can buy new passport to get more tickets','error')" if (passport.remaining_tickets <= 0)
 		end
 
 		def is_available_seats

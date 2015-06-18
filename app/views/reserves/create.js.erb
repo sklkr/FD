@@ -1,3 +1,5 @@
 $('#reserve').modal('hide');
 $("#fpclass_<%= @fpclass.id %>").find(".reserve-btn").addClass("disabled").html("Reserved");
 $("#fpclass_<%= @fpclass.id %> .fp-count").html("<%= pluralize(@fpclass.remaining_seats, 'seats') %>");
+
+swal("Reserved Successfully", "Thanks for showing interest. Also you can track your classes on My Class in your profile", "success")

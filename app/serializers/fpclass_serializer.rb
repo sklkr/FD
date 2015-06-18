@@ -6,7 +6,7 @@ class FpclassSerializer < ActiveModel::Serializer
   end
 
   def place_name
-  	centers.place_name
+    centers.place_name.split(',').first
   end
 
   def center_slug
@@ -31,5 +31,8 @@ class FpclassSerializer < ActiveModel::Serializer
 
   def start_time
     object.start_time.strftime("%H:%M")
+  end
+  def duration
+    object.duration.to_i
   end
 end

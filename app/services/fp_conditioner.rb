@@ -3,7 +3,7 @@ class FpConditioner
 	 @fpclass = fpclass
 	 @passport = passport
 	 @clasbkings = @passport.clasbkings
-    end
+  end
 
 	def active_full
 	    @clasbkings.count >= 8

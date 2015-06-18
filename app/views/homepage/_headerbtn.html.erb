@@ -1,58 +1,9 @@
 <ul class="nav navbar-nav navbar-right">
-	   <!-- <li class="drop-element keep-open">
-               <a class="drop-target"><i class='fa fa-cart-plus fa-lg'>&nbsp;</i> (<span class='cart_value'>0</span> items)</a>
-               <div class="simpleCart_parent cart-target">
-                   <div>
-                       <div class="border-bottom-light padding-sides-20">YOUR BASKET ITEMS</div>
-                       <ul class="clearfix list-unstyled">
-                         <div class="simpleCart_items"></div>
-                         <li id="basket-element-pass-14753" class="container-fluid">
-                                                     <div class="row">
-                                                         <div class="col-xs-3">
-
-                                                         </div>
-                                                         <div class="col-xs-7">
-                                                            <span>FitFix 5 @ </span><span class="font10 light-gray blue-gray">Central YMCA Club</span>
-                                                         </div>
-                                                         <div class="col-xs-2">
-                                                           <a href="#" class="delete-from-basket" data-id="14753" data-type="pass"><span class="icon-trash font16 gray blue-gray"></span></a>
-                                                         </div>
-                                                    </div>
-                                                     <div class="row">
-                                                        <div class="col-xs-offset-8 col-xs-3 bold text-right">£42.50</div>
-                                                     </div>
-                                               </li>
-                           <li class="container-fluid">
-                             <div class="row">
-                               <div class="col-xs-8 bold">Sub-total</div>
-                               <div class="col-xs-3 bold text-right simpleCart_total"></div>
-                             </div>
-                             <div class="m-top8 row">
-                          <div class="col-xs-8 bold"><span class="normal-discount bg-pink">Discount</span></div>
-                          <div class="col-xs-3 bold m-top5 text-right">- <span></span></div>
-                             </div>
-                           </li>
-                           <li class="container-fluid">
-                             <div class="row">
-                                 <div class="col-xs-8 bold pink text-right font12">PAYABLE AMOUNT</div>
-                                 <div class="col-xs-3 font14 bold text-right simpleCart_grandTotal"></div>
-                             </div>
-                           </li>
-                           <li class="text-right last">
-                             <a href="/checkout" class="btn btn-primary btn-sm pull-right">Check out</a>
-                           </li>
-                       </ul>
-                   </div>
-                 ==========================================================
-
-                 =================================================================
-               </div>
-             </li> -->
-	 <% unless signed_in?  %>
+	<% unless signed_in?  %>
 		<li class="main-nav"><a class="cd-signin" href="#0">Sign In</a></li>
 	<%end%>
 	 <% if signed_in? %>
-    <li class="profile dropdown">
+    <li class="profile dropdown hidden-xs">
         <a class="dropdown-toggle" data-toggle="dropdown" href="#">
           <strong><%= current_user.first_name %></strong>
           <span><i class="fa fa-chevron-down"></i></span>
@@ -77,11 +28,15 @@
           <li><a tabindex="-1" href="<%= customer_change_password_path %>" class="main-link"><i class="fa fa-cog fa-lg"></i> Change Password</a></li>
         </ul>
       </li>
-	 	<li><%= link_to "Logout", session_path("1"), method: :delete, data: {confirm: "Log out of FitnessPapa?"} %></li>
+            <!-- <li><a tabindex="-1" href="<%= customers_mypass_index_path %>" class="main-link"><i class="fa fa-ticket"></i> My Pass</a></li> -->
+      <li class="visible-xs"><a tabindex="-1" href="<%= customers_classes_path %>" class="main-link"><i class="flaticon-identity6"></i> My Class</a></li>
+      <li  class="visible-xs"><a tabindex="-1" href="<%= customers_classes_path(:history => true) %>" class="main-link"><i class="flaticon-identity6"></i> My History</a></li>
+      <li  class="visible-xs"><a tabindex="-1" href="<%= customers_class_path('passport') %>" class="main-link"><i class="flaticon-identity6"></i> My Orders</a></li>
+      <li class="divider visible-xs"></li>
+      <li  class="visible-xs"><a tabindex="-1" href="<%= edit_customers_profile_path('v1') %>" class="main-link"><i class="fa fa-cog fa-lg"></i> My Profile</a></li>
+      <li  class="visible-xs"><a tabindex="-1" href="<%= customer_change_password_path %>" class="main-link"><i class="fa fa-cog fa-lg"></i> Change Password</a></li>
+    <li><%= link_to "Logout", session_path("1"), method: :delete, data: {confirm: "Log out of FitnessPapa?"} %></li>
 
   <%end%>
 </ul>
 
-<div class="cd-user-modal"> <!-- this is the entire modal form, including the background -->
-	<%= render :partial => 'layouts/customer_auth' %>
-</div>

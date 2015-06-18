@@ -130,10 +130,14 @@ var SearchContainer = React.createClass({
 		}.bind(this));
 	},
 	
+	toggleFilter: function(){
+	 $("#center-search-container").toggleClass("hidden-xs");
+	},
+
 	render: function(){
 		var fpclasses = this.state.fpclasses.map(function(fpclass){
-			return <ClassRow key={fpclass.id} fpclass={fpclass} />;
-		});
+			return <ClassRow key={fpclass.id} fpclass={fpclass} date={this.state.recursivedates_ondate_eq} />;
+		}.bind(this));
 
 		var fpstudios = this.state.fpstudios.map(function(fpstudio){
 			return <StudioRow key={fpstudio.id} fpstudio={fpstudio} />;
@@ -159,7 +163,7 @@ var SearchContainer = React.createClass({
 		return(
 			<div className="panel hasMtop">
 		        <div className="panel-heading">
-		          <div className="visible-xs pull-right"><a href="#" onclick="togglefilter()"><i className="fa fa-sliders fa-2x"></i></a></div>
+		          <div className="visible-xs pull-right"><a href="#" onClick={this.toggleFilter}><i className="fa fa-sliders fa-2x"></i></a></div>
 		          <div className="cd-pricing-switcher" id="cd-switcher">
 		          	<Toggler onStudios={this.studiosFetch} onClasses={this.classesFetch} />
 		          </div>
@@ -177,7 +181,7 @@ var SearchContainer = React.createClass({
 		          </div>
 		        </div>
 		        <div className="clearfix" id="classes-section" style={classStyle}>
-		            <table className="table table-hover table-striped" id="classes-content">
+		            <table className="table table-hover table-striped table-responsive" id="classes-content">
 		            	<tbody id="listers">
 		            		{ fpclasses }
 		            	</tbody>
@@ -262,11 +266,9 @@ var ClassRow = React.createClass({
 				<td>{this.props.fpclass.start_time} | {this.props.fpclass.duration} Minutes</td>
 				<td>{this.props.fpclass.place_name}</td>
 				<td className="text-center">
-					<a className="btn btn-primary reserve-btn" href={this.props.fpclass.class_path} data-method='get' data-remote='true'>Reserve</a>
-					<br />
-					<span className="fp-count">{this.props.fpclass.remaining_seats} Seats left</span>
+					<a className="btn btn-primary reserve-btn" href={this.props.fpclass.class_path + "?date=" + this.props.date } data-method='get' data-remote='true'>Reserve</a>
 				</td>
-			</tr>			
+			</tr>
 		);
 	}
 })
