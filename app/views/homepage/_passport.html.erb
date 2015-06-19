@@ -31,8 +31,18 @@
         </div>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <%= link_to "Book Now", mypackage_path, :class => 'btn btn-default'  %>
+        <div class='row'>
+          <div class='col-xs-8'>
+            <form action="#" method="post" class='form-inline'>
+             <input type="text" name="" id="" value="" placeholder='Coupon Code?' class='form-control' />
+             <input type="submit" class='btn btn-success'/>
+            </form>
+          </div>
+          <div class='col-xs-4'>
+           <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+           <%= link_to "Book Now", mypackage_path, :class => 'btn btn-default'  %>
+          </div>
+        </div>
       </div>
     </div>
   </div>

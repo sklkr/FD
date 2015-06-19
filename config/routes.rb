@@ -22,6 +22,7 @@ Rails.application.routes.draw do
       resources :orders
 
       resources :sessions
+      resources :coupons
 
       get '/' => 'sessions#new'
     end

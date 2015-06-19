@@ -33,6 +33,12 @@ GIT
       actionpack (~> 4.0)
       activemodel (~> 4.0)
 
+PATH
+  remote: /home/sid/sites/programming/payumoney
+  specs:
+    payumoney (0.1.0)
+      rails (>= 3.0)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -413,6 +419,7 @@ DEPENDENCIES
   non-stupid-digest-assets
   nprogress-rails
   omniauth-facebook
+  payumoney!
   pg
   pjax_rails
   pry

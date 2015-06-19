@@ -12,12 +12,10 @@ attr_reader :key, :txnid, :amount, :productinfo, :firstname, :email, :phone, :su
     @phone = current_user.phone || "000"
     @surl = success_url
     @furl = failure_url
-      
     @service_provider = 'payu_paisa'
     @hash = generate_hash
   end
 
-  
   private
     def generate_hash
       fields = "#{@key}|#{@txnid}|#{@amount}|#{@productinfo}|#{@firstname}|#{@email}|#{@udf1}||||||||||#{Figaro.env.payu_secret}"

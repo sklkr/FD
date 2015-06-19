@@ -2,7 +2,6 @@ class FiltersController < ApplicationController
 # before_filter { @c = Center.ransack(params[:q]) }
 
   def search
-        
   end
 
   def react_search
