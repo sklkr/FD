@@ -1,12 +1,9 @@
 class Order < ActiveRecord::Base
-   
-   
    include NumberGenerator # Used as global to generate random number with perfix overwrite with generate nubmer method below
    # include AASM # For state maintaining
    extend FriendlyId
    friendly_id :number
 
-  
    def generate_number(options = {})
      options[:prefix] ||= 'O'
      super(options)
@@ -23,14 +20,12 @@ class Order < ActiveRecord::Base
    belongs_to :customer
 
    belongs_to :coupon
-        
 
    # validates :email_address, presence: true, format: { with: CustomValidators::Emails.email_validator }
 
    accepts_nested_attributes_for :order_items
 
 
-   
    def status
      return 'not processed' if invoices.empty?
      invoices.last.state
@@ -58,8 +53,14 @@ class Order < ActiveRecord::Base
    end
 
    def total_amount
+     total_items_amount.to_i - discount
+   end
+
+   def total_items_amount
     order_items.inject(0) { |t,i| t + i.unit_price }
    end
 
-   
+   def discount
+     coupon.blank? ? 0 : coupon.amount.to_i
+   end
 end

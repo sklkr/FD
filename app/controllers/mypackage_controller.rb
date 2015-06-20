@@ -7,13 +7,11 @@ class MypackageController < ApplicationController
 
   def index
     @order = current_order || Order.new(:email_address => current_user.email, customer: current_user)
-    @order.order_items.new(Passport::TYPE[Passport::ACTIVE].except(:tickets, :end_date))
-    if @order.save
-      @payu = PayuService.new(@order, current_user, mypackage_success_url, mypackage_failure_url)
-    else
-      # Checklist :: ------------ Change root url to somewhere nice
-      redirect_to root_url, :notice => "Something went wrong"
-  	end
+    if session[:order_id].nil?
+      @order.order_items.new(Passport::TYPE[Passport::ACTIVE].except(:tickets, :end_date))
+      @order.save
+    end
+    @payu = PayuService.new(@order, current_user, mypackage_success_url, mypackage_failure_url)
   end
 
   def success

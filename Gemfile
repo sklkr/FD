@@ -67,7 +67,9 @@ gem "uuidtools"
 group :development do
   gem 'pry'
   gem "pry-rails"
-  gem 'pry-byebug'
+  gem 'pry-remote'
+  gem 'pry-stack_explorer'
+  gem 'pry-debugger'
 end
 
 
