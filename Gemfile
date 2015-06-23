@@ -121,5 +121,5 @@ gem 'monologue'
 gem 'active_model_serializers'
 gem 'ffaker'
 gem 'react-rails'
-gem 'payumoney', :path => '/home/sid/sites/programming/payumoney'
+# gem 'payumoney', :path => '/home/sid/sites/programming/payumoney'
 

@@ -1,6 +1,5 @@
 class FiltersController < ApplicationController
 # before_filter { @c = Center.ransack(params[:q]) }
-  binding.pry
   def search
   end
 
