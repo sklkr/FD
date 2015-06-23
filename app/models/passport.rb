@@ -11,8 +11,8 @@ class Passport < ActiveRecord::Base
   belongs_to :order_item
   belongs_to :customer
   has_many :clasbkings
-  
   scope :recent, -> { order(:created_at) }
+  default_scope { where("end_date>=?", Date.today) }
 
   def total_clasbkings
   	Clasbking.unscoped.where("passport_id=?",id).count || 0
@@ -23,7 +23,7 @@ class Passport < ActiveRecord::Base
   end
 
   def remaining_tickets
-  	total_tickets - total_clasbkings 
+  	total_tickets - total_clasbkings
   end
 
   def total_tickets
@@ -32,5 +32,5 @@ class Passport < ActiveRecord::Base
 
   def order_id
   	"P00#{(self.id + 426).to_s.rjust(3,'0')}"
-  end  
+  end
 end

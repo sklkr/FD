@@ -23,7 +23,7 @@
         			<li style="font-size:18px"><i class='flaticon-cancel19'></i>&nbsp;Cancel Any Time</li>
         			<li style="font-size:18px"><i class='flaticon-smiling36'></i>&nbsp;Guaranteed Satisfaction</li>
         			<!-- <li style="font-size:18px"><i class='flaticon-stop36'></i>&nbsp;Can keep your passport on hold</li> -->
-				    </ul>		
+				    </ul>
         	</div>
           <!-- <div class="col-xs-8 col-xs-offset-4">
             <p class="label label-info">Start Booking on 10th June at 11:00 AM</p>
@@ -31,8 +31,14 @@
         </div>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <%= link_to "Book Now", mypackage_path, :class => 'btn btn-default'  %>
+        <div class='row'>
+          <div class='col-xs-8' id='coupon-container'>
+          </div>
+          <div class='col-xs-4'>
+           <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+           <%= link_to "Book Now", mypackage_path, :class => 'btn btn-default'  %>
+          </div>
+        </div>
       </div>
     </div>
   </div>

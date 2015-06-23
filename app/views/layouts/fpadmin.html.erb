@@ -6,13 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="FitnessPapa">
-	
 	<%= stylesheet_link_tag 'partners', media: 'all' %>
 	<%= csrf_meta_tags %>
 	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAs4tO9vd5JNhXOX8h492hEwfstspyTQAw&libraries=places"></script>
   </head>
   <body class="overflow-hidden">
-	
 	<%= render :partial => 'layouts/tagmanager' %>
 
 	<div id="wrapper" class="preload">
@@ -43,7 +41,7 @@
 								<%= image_tag "//d1djl7kr085bc1.cloudfront.net/store/#{}"%>
 								<div class="detail">
 									<strong><%=  %></strong>
-									<p class="grey"><%=  %></p> 
+									<p class="grey"><%=  %></p>
 								</div>
 							</a>
 						</li>
@@ -108,6 +106,17 @@
 								</span>
 								<span class="text">
 									Orders
+								</span>
+								<span class="menu-hover"></span>
+							</a>
+						</li>
+						<li>
+							<a href="<%= coupons_path %>">
+								<span class="menu-icon">
+									<i class="fa fa-desktop fa-lg"></i> 
+								</span>
+								<span class="text">
+									Coupons
 								</span>
 								<span class="menu-hover"></span>
 							</a>

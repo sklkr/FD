@@ -67,7 +67,8 @@ gem "uuidtools"
 group :development do
   gem 'pry'
   gem "pry-rails"
-  gem 'pry-byebug'
+  gem 'pry-remote'
+  gem 'pry-stack_explorer'
 end
 
 
@@ -120,4 +121,5 @@ gem 'monologue'
 gem 'active_model_serializers'
 gem 'ffaker'
 gem 'react-rails'
+gem 'payumoney', :path => '/home/sid/sites/programming/payumoney'
 

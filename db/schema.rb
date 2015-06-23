@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150528122234) do
+ActiveRecord::Schema.define(version: 20150620055913) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -290,12 +290,10 @@ ActiveRecord::Schema.define(version: 20150528122234) do
   add_index "commontator_threads", ["commontable_id", "commontable_type"], name: "index_commontator_threads_on_c_id_and_c_type", unique: true, using: :btree
 
   create_table "coupons", force: true do |t|
-    t.string   "type",                                                  null: false
     t.string   "code",                                                  null: false
     t.decimal  "amount",        precision: 8, scale: 2, default: 0.0
     t.decimal  "minimul_value", precision: 8, scale: 2
     t.integer  "percent",                               default: 0
-    t.text     "description",                                           null: false
     t.boolean  "combine",                               default: false
     t.datetime "starts_at"
     t.datetime "expires_at"
@@ -541,8 +539,10 @@ ActiveRecord::Schema.define(version: 20150528122234) do
     t.string   "discount"
     t.string   "net_amount_debit"
     t.integer  "customer_id"
+    t.integer  "coupon_id"
   end
 
+  add_index "orders", ["coupon_id"], name: "index_orders_on_coupon_id", using: :btree
   add_index "orders", ["customer_id"], name: "index_orders_on_customer_id", using: :btree
 
   create_table "overall_averages", force: true do |t|
