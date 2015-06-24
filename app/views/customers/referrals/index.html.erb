@@ -1,0 +1,89 @@
+<div class="well">
+<h3>Referral</h3>
+<% 
+    referrals_count = current_user.referrals.count
+
+    stops = Customer::REFERRAL_STEPS
+
+    found = nil
+
+    stops.reverse_each { |stop|
+        if stop["count"] <= referrals_count and !found
+            stop["selected"] = true
+            found = stop
+        else
+            stop["selected"] = false
+        end
+    }   
+ %>
+<% 
+    words = ''
+    if referrals_count == 1
+        words = 'friend has'
+    elsif 
+        words = 'friends have'
+    end
+
+%>
+<style>
+    .social-links{
+        width: 120px;
+        height: 37px;
+        margin: 25px auto 0;
+        text-align: center;
+    }
+    .social-links a, .social-links div{
+     display: inline-block;
+    }
+    .social-links .fb{
+        background: url(/assets/refer/fb.png);
+        background-size: 27px 27px;
+        width: 27px;
+        height: 27px;
+    }
+    .social-links .twit{
+        background: url(/assets/refer/twit.png);
+        background-size: 27px 27px;
+        width: 27px;
+        height: 27px;
+    }
+    .social-links .sep{
+        height: 28px;
+        width: 1px;
+        background: #BAB9BA;
+        margin: 0 20px;
+    }
+</style>
+
+<div class="row">
+    <div class="col-xs-6">
+        <div class="panel panel-default fadeInDown animation-delay2">
+            <div class="panel-heading">
+               Share Your Link
+            </div>
+            <div class="panel-body">
+                <p>Copy your personal referral link and share it with your friends and followers.</p>
+                <h4>Referral Link</h4>
+                <div class="copy-link brandon"><input type="text" value="<%= root_url %>?ref=<%= current_user.referral_code %>" class='form-control'></div>
+                <% twitter_message = "#Your passport to best Fitness classes, Studios, Gym in bangalore, near you anywhere anytime in all Indian cities. @fitnesspapa" %>
+                <div class="social-links">
+                    <a href="http://www.facebook.com/sharer/sharer.php?u=<%= CGI::escape(root_url) %>?ref=<%= CGI::escape(current_user.referral_code) %>&title=Fitnesspapa" class="fb" target="_blank"></a>
+                    <div class="sep"></div>
+                    <a href="http://twitter.com/share?url=<%= CGI::escape(root_url) %>?ref=<%= CGI::escape(current_user.referral_code) %>&text=<%= CGI::escape(twitter_message) %>" class="twit" target="_blank"></a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-6 col-md-3">
+        <div class="panel-stat3 bg-danger">
+            <h2 class="m-top-none" id="userCount"><%= referrals_count %></h2>
+            <% if referrals_count == 0 %>
+                <p class="place brandon"><span>No</span> friends have joined...Yet!</p>
+            <% else %>
+                <p class="place brandon"><span><%= referrals_count %></span> <%= words %> joined</p>
+            <% end %>
+        </div>
+    </div>
+</div>
+
+</div>

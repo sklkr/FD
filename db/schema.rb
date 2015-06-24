@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150620055913) do
+ActiveRecord::Schema.define(version: 20150624092541) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -317,6 +317,8 @@ ActiveRecord::Schema.define(version: 20150620055913) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "user_id"
+    t.string   "referral_code"
+    t.integer  "referral_id"
   end
 
   create_table "delayed_jobs", force: true do |t|
@@ -457,6 +459,13 @@ ActiveRecord::Schema.define(version: 20150620055913) do
   end
 
   add_index "invoices", ["order_id"], name: "index_invoices_on_order_id", using: :btree
+
+  create_table "meetings", force: true do |t|
+    t.string   "name"
+    t.datetime "starts_at"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "monologue_posts", force: true do |t|
     t.boolean  "published"

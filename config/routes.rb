@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+
   mount Commontator::Engine => '/commontator'
 
   get 'errors/file_not_found'
@@ -74,8 +75,8 @@ Rails.application.routes.draw do
 
         get 'settings/change_password' => 'partners/settings#change_password', :as => 'change_password_partners_settings', :subdomain => 'partners'
 
-		resources :customers, only: [:edit, :create, :update]
-		resources :partners, only: [:index, :new, :create]
+    resources :customers, only: [:edit, :create, :update]
+    resources :partners, only: [:index, :new, :create]
 
 
   # mount Lockup::Engine, at: '/lockup'
@@ -121,7 +122,7 @@ Rails.application.routes.draw do
   namespace :customers do
     resources :details, :bookings, :mypass, :classes
     resources :profiles, only: [:edit, :update]
-
+    resources :referrals
   end
   resources :reserves
 
