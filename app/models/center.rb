@@ -53,7 +53,9 @@ acts_as_commontable
 	def slug_candidates
 		[
 	     :name,
+	     [:name, :slug_area]
 	     [:name, :place_name],
+	     [:name, :slug_area, :center_type],
 	     [:name, :place_name, :center_type]
 		]
 	end
