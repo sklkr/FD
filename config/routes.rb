@@ -9,9 +9,7 @@ Rails.application.routes.draw do
 
   get 'errors/internal_server_error'
 
-  constraints :subdomain => 'blog' do
-    mount Monologue::Engine, at: '/'
-  end
+  mount Monologue::Engine, at: '/blog'
  
   constraints :subdomain => "admin" do
     scope :module => 'fpadmin' do

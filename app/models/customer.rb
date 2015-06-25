@@ -67,6 +67,13 @@ class Customer < ActiveRecord::Base
     end
   end
 
+  def set_referrer(code)
+    self.referrer = referrer_user(code) unless code.blank?  
+  end
+
+  def referrer_user(code)
+    Customer.find_by_referral_code(code)
+  end
 
   private
     def create_referral_code

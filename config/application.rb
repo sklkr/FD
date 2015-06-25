@@ -38,6 +38,8 @@ module Fitnesspapa
     # for 404, 500 pages
     config.exceptions_app = self.routes
 
+    # referral
+    config.ended = false
   end
 end
 

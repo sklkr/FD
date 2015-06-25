@@ -1,10 +1,10 @@
 Monologue.config do |config|
   config.site_name = "FitnessPapa"
   config.site_subtitle = ""
-  config.site_url = "http://fitnesspapa.com"
+  config.site_url = "https://fitnesspapa.com"
 
-  config.meta_description = "Exercise anywhere, anytime, with thousands of gyms, pools, fitness classes &amp; spas. Choose from Unlimited membership or Fitness one time services."
-  config.meta_keyword = "best fitness studios, best gyms, best group workout, membership, fitness, best yoga, best group class, best zumba, best dance, best aerobics, best boxing"
+  config.meta_description = "Health and Fitness Tips, Bangalore city life in fitness",
+  config.meta_keyword = "fitnesspapa, yoga classes, yoga - sport, swimming classes, zumba classes, gym bangalore"
 
   config.admin_force_ssl = false
   config.posts_per_page = 10

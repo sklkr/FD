@@ -10,5 +10,6 @@ layout 'homepage'
   	# @accountinfo = @center.accountinfo
   	@commontable = @center
   	commontator_thread_show(@commontable)
+    @title = @center.name
   end
 end

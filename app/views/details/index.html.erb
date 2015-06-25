@@ -1,7 +1,16 @@
+<%
+meta title: "FitnessPapa #{@center.name}",
+     description: "#{@details.brief_desc}",
+     keywords: ['fitnesspapa bangalore', 'fitness pass bangalore', 'fitness class bangalore', 'swimming pool bangalore', 'zumba bangalore', 'gym bangalore', 'yoga bangalore']
+%>
+
+
+<!-- Seo Stuff -->
+
 <div id="details-content" style="background-color: rgb(252, 252, 252)">
 
 <div id="background" style="background-image: url('//d1djl7kr085bc1.cloudfront.net/store/<%= @cphotos.first.image_id %>');z-index:0" >
-<%= image_tag "//d1djl7kr085bc1.cloudfront.net/store/#{@cphotos.try(:first).try(:image_id)}", :class => 'visible-xs img-responsive' %>
+<%= image_tag "//d1djl7kr085bc1.cloudfront.net/store/#{@cphotos.try(:first).try(:image_id)}", :class => 'visible-xs img-responsive', :alt => "#{@center.name} photos" %>
 </div>
 
 <div class="space20"></div>
@@ -27,7 +36,7 @@
                             <!--  @cphotos.each do |photo|  -->
 
                             <div class="item active">
-                              <%= image_tag "//d1djl7kr085bc1.cloudfront.net/store/#{@cphotos.try(:first).try(:image_id)}", :class => 'img-responsive', :style => 'width:540px;height:250px' %>
+                              <%= image_tag "//d1djl7kr085bc1.cloudfront.net/store/#{@cphotos.try(:first).try(:image_id)}", :class => 'img-responsive', :style => 'width:540px;height:250px', :alt => "#{@center.name} photos" %>
                             </div>
                             <!-- number += 1  -->
                           </div>

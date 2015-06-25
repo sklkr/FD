@@ -26,7 +26,7 @@ var CouponContainer = React.createClass({
 		return(
       <div>
         <div className={formState}>
-          <input type="text"  placeholder="Coupon Code?" ref="couponcode" className="form-control" />
+          <input type="text"  placeholder="Coupon Code?" ref="couponcode" className="form-control" style={{ marginRight: '12px'}} />
           <input type="submit" className="btn btn-success" onClick={this.sendCoupon}/>
         </div>
         <span className={spanState}> Discount amount {this.state.amount} /- applied </span>
