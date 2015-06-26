@@ -1,6 +1,6 @@
 # Change this to your host. See the readme at https://github.com/lassebunk/dynamic_sitemaps
 # for examples of multiple hosts and folders.
-host "fitnesspapa.com"
+host "https://fitnesspapa.com"
 
 sitemap :site do
   url root_url, last_mod: Time.now, change_freq: "daily", priority: 1.0
@@ -17,7 +17,7 @@ end
 # For products with special sitemap name and priority, and link to comments:
 #
   sitemap_for Center.all, name: :centers do |center|
-    url details_page_path(center)
+    url details_page_url(center)
   end
 
 # If you want to generate multiple sitemaps in different folders (for example if you have
