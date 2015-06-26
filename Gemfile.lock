@@ -129,6 +129,7 @@ GEM
       delayed_job (>= 3.0, < 4.1)
     domain_name (0.5.24)
       unf (>= 0.0.5, < 1.0.0)
+    dynamic_sitemaps (2.0.0)
     erubis (2.7.0)
     excon (0.45.3)
     execjs (2.5.2)
@@ -393,6 +394,7 @@ DEPENDENCIES
   daemons
   delayed_job
   delayed_job_active_record
+  dynamic_sitemaps
   execjs
   ffaker
   figaro

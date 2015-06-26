@@ -70,6 +70,7 @@ group :development do
   gem 'pry-remote'
   gem 'pry-stack_explorer'
 end
+gem "dynamic_sitemaps"
 
 
 gem 'warden'
