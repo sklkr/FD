@@ -1,6 +1,7 @@
 class Center < ActiveRecord::Base
 extend FriendlyId
 acts_as_commontable
+delegate :email, to: :accountinfo
 	
   # Dependency at search page react
   CENTERTYPES = ["Gym", "Yoga", "Dance", "Swim", "Aerobics", "Zumba", "Pillatees", "Martial Art", "Boxing", "Strength training"]

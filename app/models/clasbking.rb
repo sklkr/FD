@@ -1,8 +1,7 @@
 class Clasbking < ActiveRecord::Base
   default_scope  { where('expired_at >= ?', Time.now) }
-  after_create :sms_notify
-  after_create :tell_admin
-  before_destroy :tell_admin_cancelled
+  after_create :notify
+  before_destroy :notify_cancel
 
 	belongs_to :customer
 	belongs_to :fpclass
@@ -11,26 +10,44 @@ class Clasbking < ActiveRecord::Base
 
   scope :recent, -> { order(:created_at) }
   
-  def sms_notify
+  def notify
     tell_customer
     tell_partner
+    tell_admin
+  end
+
+  def notify_cancel
+    tell_customer_cancel
+    tell_partner_cancel
+    tell_admin_cancel
   end
 
   def tell_partner
+    RegistrationMailer.partner_notify(self).delay.deliver
     SmsService.new(phone_number, "#{self.customer.user.full_name} has registered #{self.fpclass.name} on #{self.expired_at} at #{self.fpclass.start_time.strftime('%H:%M')}. @FitnessPapa").delay.send_sms
 	end
 
+  def tell_partner_cancel
+    RegistrationMailer.partner_cancel(self).delay.deliver
+    # SmsService.new(phone_number, "#{self.customer.user.full_name} has registered #{self.fpclass.name} on #{self.expired_at} at #{self.fpclass.start_time.strftime('%H:%M')}. @FitnessPapa").delay.send_sms
+  end
+
   def tell_customer
+    RegistrationMailer.customer_notify(self).delay.deliver
     SmsService.new(customer.user.phone, "Registration for #{self.fpclass.name} at #{self.center.name} on #{self.expired_at} at #{self.fpclass.start_time.strftime('%H:%M')} is confirmed successfully.").delay.send_sms
   end
 
+  def tell_customer_cancel
+    RegistrationMailer.customer_cancel(self).delay.deliver
+    # SmsService.new(customer.user.phone, "Registration for #{self.fpclass.name} at #{self.center.name} on #{self.expired_at} at #{self.fpclass.start_time.strftime('%H:%M')} is confirmed successfully.").delay.send_sms
+  end
 
   def tell_admin
     RegistrationMailer.admin_notify(self).delay.deliver
   end
 
-  def tell_admin_cancelled
-    RegistrationMailer.admin_notify_cancellation(self).delay.deliver
+  def tell_admin_cancel
+    RegistrationMailer.admin_cancel(self).delay.deliver
   end
 
 	def phone_number

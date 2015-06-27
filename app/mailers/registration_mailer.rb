@@ -2,21 +2,45 @@ class RegistrationMailer < MandrillMailer::TemplateMailer
   default from: 'info@fitnesspapa.com'
   default from_name: 'FitnessPapa'
 
-  def admin_notify(cb)
+  def customer_notify(cb)
     user    = cb.customer
     fpclass = cb.fpclass
     center  = cb.center
 
     mandrill_mail(
-      template: 'reservation',
-      subject: "Registration Notification",
-      to: 'support@fitnesspapa.com',
+      template: 'reservation_acknowledgement_customer',
+      subject: "Reservation Acknowledgement",
+      to: user.email,
+        # to: invitation.email,
+        # to: { email: invitation.email, name: 'Honored Guest' },
+      vars: {
+        'SUBJECT' => 'Reservation Acknowledgement',
+        'CLASSNAME' => fpclass.name,
+        'CENTERNAME' => center.name,
+        'LOCATION' => center.place_name,
+        'DATE' => "#{cb.expired_at} #{cb.fpclass.start_time.strftime("%H:%M") unless cb.fpclass.blank?}"
+      },
+      important: true,
+      inline_css: true,
+    )
+  end
+
+  def partner_notify(cb)
+    user    = cb.customer
+    fpclass = cb.fpclass
+    center  = cb.center
+
+    mandrill_mail(
+      template: 'reservation_acknowledgement_partner',
+      subject: "Reservation Acknowledgement",
+      to: center.email,
         # to: invitation.email,
         # to: { email: invitation.email, name: 'Honored Guest' },
       vars: {
         'SUBJECT' => 'Customer Reservation',
         'CUSTOMER' => user.full_name,
         'MOBILE' => user.phone,
+        'LOCATION' => center.place_name,
         'CLASSNAME' => fpclass.name,
         'CENTERNAME' => center.name,
         'DATE' => "#{cb.expired_at} #{cb.fpclass.start_time.strftime("%H:%M") unless cb.fpclass.blank?}"
@@ -26,14 +50,88 @@ class RegistrationMailer < MandrillMailer::TemplateMailer
     )
   end
 
-  def admin_notify_cancellation(cb)
+  def customer_cancel(cb)
     user    = cb.customer
     fpclass = cb.fpclass
     center  = cb.center
 
     mandrill_mail(
-      template: 'cancel_reservation_admin',
-      subject: "Registration Cancellation",
+      template: 'reservation_cancellation_customer',
+      subject: "Reservation Cancellation",
+      to: user.email,
+        # to: invitation.email,
+        # to: { email: invitation.email, name: 'Honored Guest' },
+      vars: {
+        'SUBJECT' => 'Reservation Cancellation',
+        'CLASSNAME' => fpclass.name,
+        'CENTERNAME' => center.name,
+        'LOCATION' => center.place_name,
+        'DATE' => "#{cb.expired_at} #{cb.fpclass.start_time.strftime("%H:%M") unless cb.fpclass.blank?}"
+      },
+      important: true,
+      inline_css: true,
+    )
+  end
+
+  def partner_cancel(cb)
+    user    = cb.customer
+    fpclass = cb.fpclass
+    center  = cb.center
+
+    mandrill_mail(
+      template: 'reservation_cancellation_partner',
+      subject: "Reservation Cancellation",
+      to: center.email,
+        # to: invitation.email,
+        # to: { email: invitation.email, name: 'Honored Guest' },
+      vars: {
+        'SUBJECT' => 'Reservation Cancellation',
+        'CUSTOMER' => user.full_name,
+        'MOBILE' => user.phone,
+        'CLASSNAME' => fpclass.name,
+        'CENTERNAME' => center.name,
+        'LOCATION' => center.place_name,
+        'DATE' => "#{cb.expired_at} #{cb.fpclass.start_time.strftime("%H:%M") unless cb.fpclass.blank?}"
+      },
+      important: true,
+      inline_css: true,
+    )
+  end
+  
+
+  def admin_notify(cb)
+    user    = cb.customer
+    fpclass = cb.fpclass
+    center  = cb.center
+
+    mandrill_mail(
+      template: 'reservation_acknowledgement_admin',
+      subject: "Reservation Notification",
+      to: 'support@fitnesspapa.com',
+        # to: invitation.email,
+        # to: { email: invitation.email, name: 'Honored Guest' },
+      vars: {
+        'SUBJECT' => 'Customer Reservation',
+        'CUSTOMER' => user.full_name,
+        'MOBILE' => user.phone,
+        'CLASSNAME' => fpclass.name,
+        'LOCATION' => center.place_name,
+        'CENTERNAME' => center.name,
+        'DATE' => "#{cb.expired_at} #{cb.fpclass.start_time.strftime("%H:%M") unless cb.fpclass.blank?}"
+      },
+      important: true,
+      inline_css: true,
+    )
+  end
+
+  def admin_cancel(cb)
+    user    = cb.customer
+    fpclass = cb.fpclass
+    center  = cb.center
+
+    mandrill_mail(
+      template: 'reservation_cancellation_admin',
+      subject: "Revervation Cancellation",
       to: 'support@fitnesspapa.com',
         # to: invitation.email,
         # to: { email: invitation.email, name: 'Honored Guest' },
@@ -42,6 +140,7 @@ class RegistrationMailer < MandrillMailer::TemplateMailer
         'CUSTOMER' => user.full_name,
         'MOBILE' => user.phone,
         'CLASSNAME' => fpclass.name,
+        'LOCATION' => center.place_name,
         'CENTERNAME' => center.name,
         'DATE' => cb.expired_at
       },
