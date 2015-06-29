@@ -26,10 +26,10 @@
 										<ul class="list-group task-list no-margin collapse in">
                       <% @coupons.each do |c| %>
 											<li class="list-group-item ">
-                       <span><%= c.code.upcase  %></span>
 												<span class="pull-right">
 													<a href="#" class="task-del"><i class="fa fa-trash-o fa-lg text-danger"></i></a>
 												</span>
+												<span class='label label-success'><%= c.code.upcase  %></span> with amount <span class='label'><%= c.amount %>/-</span> expires on <span class='label'> <%= c.expires_at.strftime('%d-%b-%y') %></span> 
 											</li>
                     <% end %>
 										</ul><!-- /list-group -->

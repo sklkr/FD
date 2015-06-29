@@ -1,0 +1,30 @@
+<%= render :partial => 'layouts/header' %>
+
+<div class="container" style="margin-bottom: 300px">
+	<div class="row" style="margin-top:30px"> 
+		<div class="col-xs-6 col-sm-4" >
+			<div class="well" style="background:white">
+				<div>
+				<%= image_tag 'indiabizparty.jpg', :alt => 'indiabizparty', :style => 'width:100%' %>
+				</div>
+				<div>
+					<p>News Article</p>
+					<a href="http://indianbizparty.com/startup-stories/fitnesspapa-revolutionizing-fitness-industry-with-immense-flexibility-variety" target="_blank" rel="nofollow">
+						<h4>FitnessPapa revolutionizing Fitness Industry with immense flexibility & variety</h4>
+						<p>FitnessPapa is the hottest new way to workout & solve plaguing problems related Fitness Industry in India.</p>
+					</a>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+<div>
+<%= render :partial => 'layouts/footer' %>
+</div>	
+
+<%= content_for :linescript do %>
+	
+<% end %>
