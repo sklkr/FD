@@ -3,7 +3,7 @@
 host "https://fitnesspapa.com"
 
 sitemap :site do
-  url root_url, last_mod: Time.now, change_freq: "weekly", priority: 1.0
+  url 'https://fitnesspapa.com', last_mod: Time.now, change_freq: "weekly", priority: 1.0
 end
 
 # You can have multiple sitemaps like the above – just make sure their names are different.
@@ -17,7 +17,7 @@ end
 # For products with special sitemap name and priority, and link to comments:
 #
   sitemap_for Center.all, name: :centers do |center|
-    url details_page_url(center), last_mod: Time.now, change_freq: "weekly", priority: 1.0
+   url details_page_url(center), last_mod: Time.now, change_freq: "weekly", priority: 1.0
   end
 
 # If you want to generate multiple sitemaps in different folders (for example if you have
@@ -36,3 +36,4 @@ end
 
 # Ping search engines after sitemap generation:
 #
+ping_with "https://#{host}/sitemap.xml"
