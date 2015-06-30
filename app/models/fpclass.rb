@@ -4,7 +4,7 @@ extend FriendlyId
   LEVELS = ["Beginner", "Advanced", "All"]
   
   after_create :build_ice_cube_params
-  default_scope { where('expiry>=?', Time.now) }
+  default_scope { where('expiredver>=?', Time.now) }
   scope :expired, -> { unscoped.where('expiry<?', Time.now) }
 
   belongs_to :instructor
@@ -12,6 +12,8 @@ extend FriendlyId
   belongs_to :partner
   has_many :recursivedates, dependent: :destroy
   has_many :clasbkings
+
+  before_save :get_expiredver
 
   validates_presence_of :centers
   
@@ -42,6 +44,10 @@ extend FriendlyId
   # Ransack attributes whitelisting
   def self.ransackable_attributes(auth_object = nil)
     super + ['search_date'] 
+  end
+  
+  def get_expiredver
+    self.expiredver = Time.zone.parse("#{self.date} #{self.start_time.strftime('%H:%M')}")
   end
 
  private
