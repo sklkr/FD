@@ -11,13 +11,13 @@ layout 'homepage'
     unless params[:url].nil?
       redirect_to params[:url]
     else
-      redirect_to search_path
+      redirect_to search_path, :notice => "Signed in successfully"
     end
   end
 
   def destroy
     warden.logout
-    redirect_to root_url
+    redirect_to root_url, :notice => "Signed out successfully"
   end
 
   # Oauth authentications
