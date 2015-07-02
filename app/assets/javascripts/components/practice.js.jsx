@@ -181,11 +181,13 @@ var SearchContainer = React.createClass({
 		          </div>
 		        </div>
 		        <div className="clearfix" id="classes-section" style={classStyle}>
-		            <table className="table table-hover table-striped table-responsive" id="classes-content">
-		            	<tbody id="listers">
-		            		{ fpclasses }
-		            	</tbody>
-		            </table>
+		            <div className="table-responsive">
+		            	<table className="table table-hover table-striped" id="classes-content">
+			            	<tbody id="listers">
+			            		{ fpclasses }
+			            	</tbody>
+			            </table>
+			        </div>
 		        </div>
 		        <div className="clearfix" id="centers-section" style={studioStyle}>
 		        	{ fpstudios }
@@ -260,16 +262,32 @@ var ClassRow = React.createClass({
 	render: function(){
 		return(
 			<tr>
-				<td><h5><a href={this.props.fpclass.class_path} data-method='get' data-remote='true'>{this.props.fpclass.capname}</a></h5>
-				</td>
+				<td><h5>
+					<a href={this.props.fpclass.class_path} data-method='get' data-remote='true'>{this.props.fpclass.capname}</a>
+				</h5></td>
 				<td><h5><a href={this.props.fpclass.center_path}>{this.props.fpclass.center_name}</a></h5></td>
-				<td>{this.props.fpclass.start_time} | {this.props.fpclass.duration} Minutes</td>
-				<td>{this.props.fpclass.place_name}</td>
+				<td> <div className="marginer">
+				  {this.props.fpclass.timings.map(function(date, i){
+				     return <LabelRow date={date} key={i} />;
+				   })} | {this.props.fpclass.duration} Minutes</div> </td>
+				<td> <div className="marginer">{this.props.fpclass.place_name}</div> </td>
 				<td className="text-center">
 					<a className="btn btn-primary reserve-btn" href={this.props.fpclass.class_path + "?date=" + this.props.date } data-method='get' data-remote='true'>Reserve</a>
 				</td>
 			</tr>
 		);
+	}
+})
+
+var LabelRow = React.createClass({
+	render: function(){
+		var labelStyle = {
+			marginRight: '4px'
+		};
+		return(
+			<span className='label label-default' style={labelStyle}>{this.props.date}</span>
+		)
+		
 	}
 })
 

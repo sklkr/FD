@@ -2,6 +2,10 @@ class Center < ActiveRecord::Base
 extend FriendlyId
 acts_as_commontable
 delegate :email, to: :accountinfo
+
+# Geocoding
+geocoded_by :place_name
+after_validation :geocode # To fetch and place lat and longitudes
 	
   # Dependency at search page react
   CENTERTYPES = ["Gym", "Yoga", "Dance", "Swim", "Aerobics", "Zumba", "Pillatees", "Martial Art", "Boxing", "Strength training"]

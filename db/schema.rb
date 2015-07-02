@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150630103817) do
+ActiveRecord::Schema.define(version: 20150702103851) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -179,6 +179,8 @@ ActiveRecord::Schema.define(version: 20150630103817) do
     t.string   "center_type"
     t.string   "image_id"
     t.string   "slug_area"
+    t.float    "latitude"
+    t.float    "longitude"
   end
 
   add_index "centers", ["partner_id"], name: "index_centers_on_partner_id", using: :btree
@@ -381,10 +383,14 @@ ActiveRecord::Schema.define(version: 20150630103817) do
     t.date     "expiry"
     t.time     "start_time"
     t.datetime "expiredver"
+    t.text     "rcdates",       default: [],    array: true
+    t.text     "timings",       default: [],    array: true
   end
 
   add_index "fpclasses", ["instructor_id"], name: "index_fpclasses_on_instructor_id", using: :btree
+  add_index "fpclasses", ["rcdates"], name: "index_fpclasses_on_rcdates", using: :gin
   add_index "fpclasses", ["slug"], name: "index_fpclasses_on_slug", unique: true, using: :btree
+  add_index "fpclasses", ["timings"], name: "index_fpclasses_on_timings", using: :gin
 
   create_table "hours", force: true do |t|
     t.string   "sun_from"

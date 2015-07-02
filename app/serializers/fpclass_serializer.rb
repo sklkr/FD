@@ -1,5 +1,5 @@
 class FpclassSerializer < ActiveModel::Serializer
-  attributes :id, :capname, :start_time, :class_path, :duration, :remaining_seats, :place_name, :center_name, :center_slug, :center_path
+  attributes :id, :capname, :class_path, :timings,  :duration, :remaining_seats, :place_name, :center_name, :center_slug, :center_path
   
   def capname
  	object.name.capitalize
@@ -29,9 +29,6 @@ class FpclassSerializer < ActiveModel::Serializer
     "/reserves/#{object.slug}"
   end
 
-  def start_time
-    object.start_time.strftime("%H:%M")
-  end
   def duration
     object.duration.to_i
   end

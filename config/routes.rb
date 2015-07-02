@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
 
 
+  get 'passport/index'
+
   mount Commontator::Engine => '/commontator'
 
   get 'errors/file_not_found'

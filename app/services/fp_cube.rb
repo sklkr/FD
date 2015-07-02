@@ -13,6 +13,6 @@ class FpCube
 
 	#
 	def between_dates
-		@schedule.occurrences(@fpclass.expiry)
+		@schedule.occurrences(@fpclass.expiry).collect {|date| date.to_date.to_s }
 	end
 end

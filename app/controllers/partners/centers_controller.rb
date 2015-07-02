@@ -27,8 +27,9 @@ layout 'partners'
    @center = ::Center.new(permit_params)
    @center.partner_id = current_user.id
    if @center.save
-    redirect_to partners_centers_path
+    redirect_to partners_centers_path, :notice => "Center Created Successfully"
    else
+    flash[:alert] = "Something's not right. Please check again"
     render :new
    end
   end
@@ -36,8 +37,9 @@ layout 'partners'
   def update
     @center = ::Center.friendly.find(params[:id])
     if @center.update(permit_params)
-     redirect_to partners_centers_path
+     redirect_to partners_centers_path, :notice => "Center Updated Successfully"
     else
+      flash[:alert] = "Something's not right. Please check again"
      render :edit
     end
   end

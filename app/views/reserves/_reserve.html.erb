@@ -12,7 +12,14 @@
             <p>Level :: <%= @fpclass.level %></p>
             <p>Instructor :: <%= @fpclass.instructor.try(:name).try(:capitalize) %></p>
             <p><%= @fpclass.description %></p>
-            <p><i class='fa fa-clock-o'></i>&nbsp;&nbsp;<%= local_time("#{params['date']} #{@fpclass.start_time.strftime('%H:%M')}", '%B %d, %a %H:%M') %> ( <%= @fpclass.duration %> Minutes)</p>
+            <p><i class='fa fa-clock-o'></i>&nbsp;&nbsp;<%= local_time("#{params['date']}", '%B %d, %a') %> ( <%= @fpclass.duration %> Minutes)</p>
+          </div>
+          <div class="col-xs-12">
+            <select name="" id="" class="select optional form-control input-sm chzn-select">
+              <% @fpclass.timings.each do |time|%>
+                <option value=""><%= time %></option>
+              <% end %>
+            </select>
           </div>
         </div>
       </div>

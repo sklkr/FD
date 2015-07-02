@@ -143,6 +143,7 @@ GEM
       sass (~> 3.2)
     friendly_id (5.1.0)
       activerecord (>= 4.0.0)
+    geocoder (1.2.9)
     google_places (0.32.0)
       httparty (~> 0.13.1)
     haml (4.0.6)
@@ -400,6 +401,7 @@ DEPENDENCIES
   figaro
   font-awesome-sass
   friendly_id
+  geocoder
   gibbon!
   google_places
   high_voltage (~> 2.2.1)

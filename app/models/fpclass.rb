@@ -2,10 +2,12 @@ class Fpclass < ActiveRecord::Base
 extend FriendlyId
 
   LEVELS = ["Beginner", "Advanced", "All"]
-  
-  after_create :build_ice_cube_params
-  default_scope { where('expiredver>=?', Time.now) }
+  TS = ["06:00", "06:30", "07:00", "07:30", "08:00", "08:30", "09:00", "09:30", "10:00", "10:30", "11:00", "11:30", "12:00", "12:30", "13:00", "13:30", "14:00", "14:30", "15:00", "15:30", "16:00", "16:30", "17:00", "17:30", "18:00", "18:30", "19:00", "19:30", "20:00", "20:30", "21:00", "21:30", "22:00"]
+  # before_create :build_ice_cube_params
+  default_scope { where('expiry >=?', Time.zone.now).order('start_time') }
   scope :expired, -> { unscoped.where('expiry<?', Time.now) }
+  scope :any_classes, -> (date){ where('rcdates && ARRAY[?]', date) }
+  # scope :all_tags, -> (tags){where('tags @> ARRAY[?]', tags)}
 
   belongs_to :instructor
   has_and_belongs_to_many :centers
@@ -13,9 +15,14 @@ extend FriendlyId
   has_many :recursivedates, dependent: :destroy
   has_many :clasbkings
 
-  before_save :get_expiredver
-
   validates_presence_of :centers
+  validates_presence_of :name
+  validates_presence_of :timings
+  validates_presence_of :duration
+  validates_presence_of :expiry
+  validates_presence_of :date
+  validates_presence_of :seats
+  validates_presence_of :description
   
   def total_clasbkings
   	clasbkings.count
@@ -30,7 +37,7 @@ extend FriendlyId
     if self.recurring
       FpCube.new(self).between_dates
     else
-      [date]
+      [date.to_s]
     end
   end 
 
@@ -46,15 +53,12 @@ extend FriendlyId
     super + ['search_date'] 
   end
   
-  def get_expiredver
-    self.expiredver = Time.zone.parse("#{self.date} #{self.start_time.strftime('%H:%M')}")
-  end
 
  private
  	
- 	def build_ice_cube_params
- 		 search_dates.each do |date|
-      recursivedates << Recursivedate.create(:ondate => date)
-     end
- 	end
+ 	# def build_ice_cube_params
+ 	# 	 search_dates.collect do |date|
+  #     date
+  #    end
+ 	# end
 end

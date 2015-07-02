@@ -22,8 +22,9 @@ layout 'partners'
    @instructor = Instructor.new(permit_params)
    @instructor.partner = current_user
    if @instructor.save
-    redirect_to partners_instructors_path(anchor: "instructor_#{@instructor.id}")
+    redirect_to partners_instructors_path(anchor: "instructor_#{@instructor.id}"), :notice => "Instructor added successfully"
    else
+    flash[:alert] = "Something's not right. Please check again"
     render 'new'
    end
   end

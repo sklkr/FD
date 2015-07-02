@@ -8,7 +8,7 @@
 					<%= f.input :date, as: :date, html5: true, :label => "Start Date", input_html: { class: 'form-control input-sm' }, wrapper_html: { class: 'form-group' } %>
 					<div class="row">
 						<div class="col-xs-6">
-							<%= f.input :start_time, as: 'time', html5: true, ampm: true, input_html: { class: 'form-control input-sm' }, wrapper_html: { class: 'form-group' } %>		
+							<%= f.input :timings, collection: Fpclass::TS, :label => "Start Time", input_html: { class: 'form-control input-sm chzn-select', multiple: true }, wrapper_html: { class: 'form-group'} %>
 						</div>
 						<div class="col-xs-6">
 							<%= f.input :duration, input_html: { class: 'form-control input-sm', :placeholder => 'Eg:: ( 30 Minutes )'}, wrapper_html: { class: 'form-group' } %>

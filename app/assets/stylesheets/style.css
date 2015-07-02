@@ -2669,3 +2669,12 @@ xkeyframes
 div.input input.has-border{
   font-size:14px !important;
 }
+
+
+.error{
+  color: red;
+}
+
+.marginer{
+  margin: 10px 0px;
+}

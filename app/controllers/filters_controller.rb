@@ -1,5 +1,6 @@
 class FiltersController < ApplicationController
 # before_filter { @c = Center.ransack(params[:q]) }
+
   def search
   end
 
@@ -11,10 +12,10 @@ class FiltersController < ApplicationController
   end
 
   def react_class_search
-    params[:q] = {:recursivedates_ondate_eq => params[:recursivedates_ondate_eq], :centers_place_name_cont_any => params[:place_name_cont_any], :centers_center_type_in => JSON.parse(params[:center_type_in])} unless params[:place_name_cont_any].blank?
-    params[:q] = {:recursivedates_ondate_eq => Date.today.strftime("%d-%m-%Y")} if params[:q].blank?
+    rcdate = params[:recursivedates_ondate_eq] || Date.today.to_s
+    params[:q] = {:centers_place_name_cont_any => params[:place_name_cont_any], :centers_center_type_in => JSON.parse(params[:center_type_in])} unless params[:place_name_cont_any].blank?
     @c = Fpclass.ransack(params[:q])
-    @fpclasses = @c.result(distinct: true)
+    @fpclasses = @c.result(distinct: true).any_classes(rcdate).order('start_time')
     @dates = (Date.today..Date.today+13).to_a
     render json: [@fpclasses, @dates]
   end
@@ -31,6 +32,7 @@ class FiltersController < ApplicationController
     # end
   end
 
+ # Below ones are not required i guess ----------------------------------------------------------
   def merger
     params['q']['centers_place_name_cont_any'].sub!("Bangalore", "Bengaluru") unless (params[:q].blank? || params[:q][:centers_place_name_cont_any].blank?)
     params[:q].merge!(:centers_place_name_cont_any => params[:q][:centers_place_name_cont_any].split(',').first) unless (params[:q].blank? || params[:q][:centers_place_name_cont_any].blank?)
@@ -47,4 +49,6 @@ class FiltersController < ApplicationController
     @experiences = Experience.order(:name)
     render json: @experiences
   end
+
+  # ------------------------------------------------------------------------------------------------
 end
