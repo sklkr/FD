@@ -3,7 +3,7 @@ class Clasbking < ActiveRecord::Base
   after_create :notify
   before_destroy :notify_cancel
 
-	belongs_to :customer
+	belongs_to :customer, counter_cache: true
 	belongs_to :fpclass
 	belongs_to :passport
 	belongs_to :center

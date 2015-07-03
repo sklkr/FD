@@ -136,7 +136,7 @@ var SearchContainer = React.createClass({
 
 	render: function(){
 		var fpclasses = this.state.fpclasses.map(function(fpclass){
-			return <ClassRow key={fpclass.id} fpclass={fpclass} date={this.state.recursivedates_ondate_eq} />;
+			return <HandleRow fpclassbase={fpclass} datebase={this.state.recursivedates_ondate_eq} />;
 		}.bind(this));
 
 		var fpstudios = this.state.fpstudios.map(function(fpstudio){
@@ -183,9 +183,7 @@ var SearchContainer = React.createClass({
 		        <div className="clearfix" id="classes-section" style={classStyle}>
 		            <div className="table-responsive">
 		            	<table className="table table-hover table-striped" id="classes-content">
-			            	<tbody id="listers">
-			            		{ fpclasses }
-			            	</tbody>
+			            	{ fpclasses }
 			            </table>
 			        </div>
 		        </div>
@@ -257,37 +255,47 @@ var Search = React.createClass({
 	}
 })
 
-
-var ClassRow = React.createClass({
+var HandleRow = React.createClass({
 	render: function(){
+		var fpclassrow = this.props.fpclassbase.timings.map(function(time){
+			return <ClassRow date={this.props.datebase} fpclass={this.props.fpclassbase} start_time={time} />;
+		}.bind(this));
+
 		return(
-			<tr>
-				<td><h5>
-					<a href={this.props.fpclass.class_path} data-method='get' data-remote='true'>{this.props.fpclass.capname}</a>
-				</h5></td>
-				<td><h5><a href={this.props.fpclass.center_path}>{this.props.fpclass.center_name}</a></h5></td>
-				<td> <div className="marginer">
-				  {this.props.fpclass.timings.map(function(date, i){
-				     return <LabelRow date={date} key={i} />;
-				   })} | {this.props.fpclass.duration} Minutes</div> </td>
-				<td> <div className="marginer">{this.props.fpclass.place_name}</div> </td>
-				<td className="text-center">
-					<a className="btn btn-primary reserve-btn" href={this.props.fpclass.class_path + "?date=" + this.props.date } data-method='get' data-remote='true'>Reserve</a>
-				</td>
-			</tr>
+			<tbody id="listers">
+			 {fpclassrow}
+			</tbody>
 		);
 	}
 })
 
-var LabelRow = React.createClass({
+var ClassRow = React.createClass({
+	reserveConfirm: function(){
+		return $.get(this.props.fpclass.class_path, { date: this.props.date, time: this.props.start_time });
+	},
+
+	confirmReserve: function(){
+		this.reserveConfirm().then(function(data){
+			/* to get confirmation box at reserve button*/
+		});	
+	},
+
 	render: function(){
-		var labelStyle = {
-			marginRight: '4px'
-		};
-		return(
-			<span className='label label-default' style={labelStyle}>{this.props.date}</span>
-		)
+		var timerange = moment(this.props.start_time, 'HH:mm').format('h:mm') + "  -  " + moment(this.props.start_time, 'HH:mm').add(this.props.fpclass.duration, 'm').format('h:mm a');
 		
+		return(
+			<tr>
+				<td><h5>
+					<a onClick={this.confirmReserve} className='blue'>{this.props.fpclass.capname}</a>
+				</h5></td>
+				<td><h5><a href={this.props.fpclass.center_path} className='blue'>{this.props.fpclass.center_name}</a></h5></td>
+				<td> <div className="marginer">{ timerange }</div> </td>
+				<td> <div className="marginer">{this.props.fpclass.place_name}</div> </td>
+				<td className="text-center">
+					<a className="btn btn-primary reserve-btn" onClick={this.confirmReserve} >Reserve</a>
+				</td>
+			</tr>
+		);
 	}
 })
 

@@ -26,6 +26,7 @@
 //= require plugins/drop
 //= require plugins/magicsuggest
 //= require plugins/parsley
+//= require plugins/moment
 //= require local_time
 //= require signup
 //= require cart

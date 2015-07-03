@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150702103851) do
+ActiveRecord::Schema.define(version: 20150703120257) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -232,8 +232,8 @@ ActiveRecord::Schema.define(version: 20150702103851) do
     t.string   "status"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.date     "expired_at"
     t.integer  "center_id"
+    t.datetime "expired_at"
   end
 
   add_index "clasbkings", ["center_id"], name: "index_clasbkings_on_center_id", using: :btree
@@ -322,6 +322,7 @@ ActiveRecord::Schema.define(version: 20150702103851) do
     t.integer  "user_id"
     t.string   "referral_code"
     t.integer  "referral_id"
+    t.integer  "clasbkings_count"
   end
 
   create_table "delayed_jobs", force: true do |t|
