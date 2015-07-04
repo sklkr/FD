@@ -5,7 +5,6 @@ gem 'commontator', '~> 4.10.0'
 gem 'daemons'
 
 gem 'execjs'
-gem 'yui-compressor' #CSS compression
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.1.8'

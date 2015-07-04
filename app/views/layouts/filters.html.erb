@@ -37,13 +37,16 @@
     <% unless current_user.try(:passport) %>
       $('#package').modal();
     <% end %>
-    $(document).ready(function(){
-      var searchContainer = React.render(
+   
+    setTimeout(runner(), 3000);
+
+   function runner(){
+       var searchContainer = React.render(
         React.createElement(SearchContainer, null),
         document.getElementById('search-container')
       )
-      ;
-    })
+   }
+   
  </script>
 </body>
 </html>
