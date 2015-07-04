@@ -18,6 +18,7 @@
 //= require plugins/modernizr-special
 //= require_tree ./backend
 //= require chosen/chosen.jquery.min
+//= require recurring_select
 //= require refile
 //= require local_time
 //= require plugins/google.places

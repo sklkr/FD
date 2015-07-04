@@ -18,11 +18,12 @@
 						<div class="col-xs-6">
 							<div class="form-group" style="margin-top:16px">
 								<label class="label-checkbox">
-									<input name="fpclass[recurring]" type="checkbox" value="1">
-									<span class="custom-checkbox"></span>
-									Weekly Recurring <span class='label label-info'><%= @fpclass.recurring %></span>
+									<!-- <input name="fpclass[recurring]" type="checkbox" value="1"> -->
+									<%= f.select_recurring :recurring, nil, :allow_blank => true %>
+									<!-- <span class="custom-checkbox"></span>
+									Weekly Recurring <span class='label label-info'><%= @fpclass.recurring %></span> -->
 								</label>
-								<span class="hint-block">Weekly recurring shows your class weekly</span>
+								<!-- <span class="hint-block">Weekly recurring shows your class weekly</span> -->
 							</div>
 						</div>
 						<div class="col-xs-6">

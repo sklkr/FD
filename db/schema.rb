@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150703120257) do
+ActiveRecord::Schema.define(version: 20150704171924) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -374,7 +374,6 @@ ActiveRecord::Schema.define(version: 20150703120257) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "partner_id"
-    t.boolean  "recurring",     default: false
     t.integer  "interval"
     t.string   "rule_type"
     t.integer  "week_start"
@@ -384,8 +383,9 @@ ActiveRecord::Schema.define(version: 20150703120257) do
     t.date     "expiry"
     t.time     "start_time"
     t.datetime "expiredver"
-    t.text     "rcdates",       default: [],    array: true
-    t.text     "timings",       default: [],    array: true
+    t.text     "rcdates",       default: [], array: true
+    t.text     "timings",       default: [], array: true
+    t.json     "recurring"
   end
 
   add_index "fpclasses", ["instructor_id"], name: "index_fpclasses_on_instructor_id", using: :btree

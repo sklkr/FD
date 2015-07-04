@@ -5,6 +5,8 @@ gem 'commontator', '~> 4.10.0'
 gem 'daemons'
 
 gem 'execjs'
+gem 'yui-compressor' #CSS compression
+
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.1.8'
 # Use sqlite3 as the database for Active Record
@@ -123,6 +125,7 @@ gem 'active_model_serializers'
 gem 'ffaker'
 gem 'react-rails'
 # gem 'payumoney', :path => '/home/sid/sites/programming/payumoney'
+gem 'recurring_select'
 
 
 gem 'geocoder'
