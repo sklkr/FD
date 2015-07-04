@@ -126,3 +126,7 @@ gem 'react-rails'
 
 
 gem 'geocoder'
+
+
+gem 'redis'
+gem 'redis-rails'
