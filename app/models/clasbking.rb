@@ -24,22 +24,22 @@ class Clasbking < ActiveRecord::Base
 
   def tell_partner
     RegistrationMailer.partner_notify(self).delay.deliver
-    SmsService.new(phone_number, "#{self.customer.user.full_name} has registered #{self.fpclass.name} on #{self.expired_at} at #{self.fpclass.start_time.strftime('%H:%M')}. @FitnessPapa").delay.send_sms
+    SmsService.new(phone_number, "#{self.customer.user.full_name} has registered #{self.fpclass.name} on #{self.expired_at} at #{self.expired_humanize}. @FitnessPapa").delay.send_sms
 	end
 
   def tell_partner_cancel
     RegistrationMailer.partner_cancel(self).delay.deliver
-    # SmsService.new(phone_number, "#{self.customer.user.full_name} has registered #{self.fpclass.name} on #{self.expired_at} at #{self.fpclass.start_time.strftime('%H:%M')}. @FitnessPapa").delay.send_sms
+    # SmsService.new(phone_number, "#{self.customer.user.full_name} has registered #{self.fpclass.name} on #{self.expired_at} at #{self.expired_humanize}. @FitnessPapa").delay.send_sms
   end
 
   def tell_customer
     RegistrationMailer.customer_notify(self).delay.deliver
-    SmsService.new(customer.user.phone, "Registration for #{self.fpclass.name} at #{self.center.name} on #{self.expired_at} at #{self.fpclass.start_time.strftime('%H:%M')} is confirmed successfully.").delay.send_sms
+    SmsService.new(customer.user.phone, "Registration for #{self.fpclass.name} at #{self.center.name} on #{self.expired_at} at #{self.expired_humanize} is confirmed successfully.").delay.send_sms
   end
 
   def tell_customer_cancel
     RegistrationMailer.customer_cancel(self).delay.deliver
-    # SmsService.new(customer.user.phone, "Registration for #{self.fpclass.name} at #{self.center.name} on #{self.expired_at} at #{self.fpclass.start_time.strftime('%H:%M')} is confirmed successfully.").delay.send_sms
+    # SmsService.new(customer.user.phone, "Registration for #{self.fpclass.name} at #{self.center.name} on #{self.expired_at} at #{self.expired_humanize} is confirmed successfully.").delay.send_sms
   end
 
   def tell_admin
@@ -56,5 +56,9 @@ class Clasbking < ActiveRecord::Base
 
   def expired
     where('expired_at < ?', Time.now)
+  end
+
+  def expired_humanize
+    self.expired_at && self.expired_at.strftime('%B %d %H:%M')
   end
 end

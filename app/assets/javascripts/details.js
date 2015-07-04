@@ -12,26 +12,23 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require jquery/jquery.ui
+//= require react
+//= require react_ujs
 //= require plugins/bootstrap
 //= require plugins/modernizr
-//= require plugins/modernizr-special
 //= require_tree ./backend
-//= require plugins/owl.carousel
 //= require plugins/google.places
 //= require plugins/dependsOn
 //= require formstone/dist/js/core
 //= require formstone/dist/js/touch
-//= require formstone/dist/js/checkbox
 //= require formstone/dist/js/dropdown
-//= require plugins/simpleCart
-//= require plugins/drop
-//= require plugins/magicsuggest
-//= require sweetalert.min
 //= require plugins/parsley
-//= require plugins/velocity
+//= require plugins/simpleCart
+//= require plugins/moment
 //= require local_time
 //= require signup
 //= require cart
-
-$('form').parsley();
+//= require plugins/modernizr-special
+//= require plugins/owl.carousel
+//= require sweetalert.min
+//= require components/details

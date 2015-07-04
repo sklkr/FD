@@ -8,6 +8,7 @@ meta title: "FitnessPapa #{@center.name}",
 <!-- Seo Stuff -->
 
 <div id="details-content" style="background-color: rgb(252, 252, 252)">
+<div id="center-slug" data-url="<%= params[:center] %>"></div>
 
 <div id="background" style="background-image: url('//d1djl7kr085bc1.cloudfront.net/store/<%= @cphotos.first.image_id %>');z-index:0" >
 <%= image_tag "//d1djl7kr085bc1.cloudfront.net/store/#{@cphotos.try(:first).try(:image_id)}", :class => 'visible-xs img-responsive', :alt => "#{@center.name} photos" %>
@@ -51,13 +52,17 @@ meta title: "FitnessPapa #{@center.name}",
 
               <!-- Nav tabs -->
               <ul class="nav nav-tabs" role="tablist">
-                <li role="presentation" class="active"><a href="#description" aria-controls="description" role="tab" data-toggle="tab">DESCRIPTION</a></li>
+                <li role="presentation" class="active"><a href="#fpclasses" aria-controls="fpclasses" role="tab" data-toggle="tab">CLASSES</a></li>
+                <li role="presentation"><a href="#description" aria-controls="description" role="tab" data-toggle="tab">DESCRIPTION</a></li>
                 <li role="presentation"><a href="#amenities" aria-controls="amenities" role="tab" data-toggle="tab">AMENITIES</a></li>
               </ul>
 
               <!-- Tab panes -->
               <div class="tab-content tab-box">
-                <div role="tabpanel" class="tab-pane active" id="description">
+                <div role="tabpanel" class="tab-pane active" id="fpclasses">
+                    
+                </div>
+                <div role="tabpanel" class="tab-pane" id="description">
                     <%= raw @details.detailed_desc %>
                 </div>
                 <div role="tabpanel" class="tab-pane" id="amenities">
@@ -178,6 +183,10 @@ meta title: "FitnessPapa #{@center.name}",
 </div> <!-- container -->
 </div> <!-- Details content -->
 
+
+<%= render 'homepage/passport' %>
+<!-- Reserve modal is parent for model opens after reserve click -->
+<div id="reserve-modal"></div>
 
 <%= content_for :linescript do %>
     

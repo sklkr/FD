@@ -31,11 +31,13 @@ before_action :is_available_seats, except: :destroy
 
 	def destroy
 		booking = Clasbking.find(params[:id])
-		if booking.customer == current_user && (booking.expired_at - Date.today).to_i > 1
-			SmsService.new(booking.phone_number, "Dear Partner, #{booking.customer.user.full_name} has cancelled #{booking.fpclass.name} on #{booking.expired_at} at #{booking.fpclass.start_time.strftime('%H:%M')}. @FitnessPapa").delay.send_sms
-			redirect_to customers_classes_path if booking.destroy
+		if booking.customer == current_user && (booking.expired_at - 2.hours) > Time.zone.now
+			SmsService.new(booking.phone_number, "Dear Partner, #{booking.customer.user.full_name} has cancelled #{booking.fpclass.name} on #{booking.expired_at} at #{booking.expired_humanize}. @FitnessPapa").delay.send_sms
+			if booking.destroy
+				redirect_to customers_classes_path, :notice => "Reservation cancelled successfully"
+			end
 		else
-			redirect_to customers_classes_path, :notice => "You cannot cancel before one day of class scheduled date."
+			redirect_to customers_classes_path, :notice => "Reserved class cannot be cancelled before 2 hours of class scheduled time"
 		end
 	end
 
@@ -45,7 +47,7 @@ before_action :is_available_seats, except: :destroy
 		end
 
 		def is_available_tickets
-      		render :js => "swal('Oops...', 'Passport tickets gone empty. You can buy new passport to get more tickets','error')" if (passport.remaining_tickets <= 0)
+	  		render :js => "swal('Oops...', 'Passport tickets gone empty. You can buy new passport to get more tickets','error')" if (passport.remaining_tickets <= 0)
 		end
 
 		def is_available_seats

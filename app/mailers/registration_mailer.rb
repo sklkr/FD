@@ -3,7 +3,7 @@ class RegistrationMailer < MandrillMailer::TemplateMailer
   default from_name: 'FitnessPapa'
 
   def customer_notify(cb)
-    user    = cb.customer
+    user    = cb.customer # cb = clasbking
     fpclass = cb.fpclass
     center  = cb.center
 
@@ -18,7 +18,7 @@ class RegistrationMailer < MandrillMailer::TemplateMailer
         'CLASSNAME' => fpclass.name,
         'CENTERNAME' => center.name,
         'LOCATION' => center.place_name,
-        'DATE' => "#{cb.expired_at} #{cb.fpclass.start_time.strftime("%H:%M") unless cb.fpclass.blank?}"
+        'DATE' => "#{cb.expired_at} #{cb.expired_humanize}"
       },
       important: true,
       inline_css: true,
@@ -43,7 +43,7 @@ class RegistrationMailer < MandrillMailer::TemplateMailer
         'LOCATION' => center.place_name,
         'CLASSNAME' => fpclass.name,
         'CENTERNAME' => center.name,
-        'DATE' => "#{cb.expired_at} #{cb.fpclass.start_time.strftime("%H:%M") unless cb.fpclass.blank?}"
+        'DATE' => "#{cb.expired_at} #{cb.expired_humanize}"
       },
       important: true,
       inline_css: true,
@@ -66,7 +66,7 @@ class RegistrationMailer < MandrillMailer::TemplateMailer
         'CLASSNAME' => fpclass.name,
         'CENTERNAME' => center.name,
         'LOCATION' => center.place_name,
-        'DATE' => "#{cb.expired_at} #{cb.fpclass.start_time.strftime("%H:%M") unless cb.fpclass.blank?}"
+        'DATE' => "#{cb.expired_at} #{cb.expired_humanize}"
       },
       important: true,
       inline_css: true,
@@ -91,7 +91,7 @@ class RegistrationMailer < MandrillMailer::TemplateMailer
         'CLASSNAME' => fpclass.name,
         'CENTERNAME' => center.name,
         'LOCATION' => center.place_name,
-        'DATE' => "#{cb.expired_at} #{cb.fpclass.start_time.strftime("%H:%M") unless cb.fpclass.blank?}"
+        'DATE' => "#{cb.expired_at} #{cb.expired_humanize}"
       },
       important: true,
       inline_css: true,
@@ -117,7 +117,7 @@ class RegistrationMailer < MandrillMailer::TemplateMailer
         'CLASSNAME' => fpclass.name,
         'LOCATION' => center.place_name,
         'CENTERNAME' => center.name,
-        'DATE' => "#{cb.expired_at} #{cb.fpclass.start_time.strftime("%H:%M") unless cb.fpclass.blank?}"
+        'DATE' => "#{cb.expired_at} #{cb.expired_humanize}"
       },
       important: true,
       inline_css: true,

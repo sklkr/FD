@@ -2678,3 +2678,7 @@ div.input input.has-border{
 .marginer{
   margin: 10px 0px;
 }
+
+#listers{
+  border-top: 0px;
+}

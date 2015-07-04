@@ -13,7 +13,9 @@ class FiltersController < ApplicationController
 
   def react_class_search
     rcdate = params[:recursivedates_ondate_eq] || Date.today.to_s
-    params[:q] = {:centers_place_name_cont_any => params[:place_name_cont_any], :centers_center_type_in => JSON.parse(params[:center_type_in])} unless params[:place_name_cont_any].blank?
+    params[:q] = {}
+    params[:q].merge!({:centers_place_name_cont_any => params[:place_name_cont_any], :centers_center_type_in => JSON.parse(params[:center_type_in])}) unless params[:place_name_cont_any].blank?
+    params[:q].merge!({:centers_slug_eq => params[:centers_slug_eq]}) unless params[:centers_slug_eq].blank?
     @c = Fpclass.ransack(params[:q])
     @fpclasses = @c.result(distinct: true).any_classes(rcdate).order('start_time')
     @dates = (Date.today..Date.today+13).to_a
@@ -51,4 +53,6 @@ class FiltersController < ApplicationController
   end
 
   # ------------------------------------------------------------------------------------------------
+
+
 end

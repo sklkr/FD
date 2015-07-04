@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <%= metamagic %>
+  <%= render :partial => 'layouts/head' %>
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAs4tO9vd5JNhXOX8h492hEwfstspyTQAw&libraries=places"></script>
+  <%= render :partial => 'shared/zopim' %>
+
+</head>
+<body>
+ <%= render :partial => 'layouts/tagmanager' %>
+ <%= render :partial => 'layouts/header' %>
+ <%= render :partial => 'layouts/notices' %>
+ <%= yield  %>
+ <%= render :partial => 'layouts/footer' %>
+ <%= render :partial => 'layouts/analytics' %>
+ <%= javascript_include_tag 'details.js' %>
+ <script src="//unslider.com/unslider.min.js"></script>
+ <script>
+   $(document).on('page:change', function() {
+    if (window._gaq != null) {
+     return _gaq.push(['_trackPageview']);
+    } else if (window.pageTracker != null) {
+     return pageTracker._trackPageview();
+    };
+   });
+  </script>
+
+  <%= yield :linescript %>
+
+   <script type="application/ld+json">
+
+    </script>
+</body>
+</html>

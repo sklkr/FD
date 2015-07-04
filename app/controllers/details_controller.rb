@@ -1,6 +1,4 @@
 class DetailsController < ApplicationController
-layout 'homepage'
-  
   def index
   	@center = Center.friendly.find(params[:center])
   	# @services = @center.services
