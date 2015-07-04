@@ -24,7 +24,6 @@ Rails.application.configure do
 
   # Compress JavaScripts and CSS.
   config.assets.js_compressor = :uglifier
-  config.assets.compress = true
   config.assets.css_compressor = :yui
 
   # Do not fallback to assets pipeline if a precompiled asset is missed.
