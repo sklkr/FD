@@ -35,3 +35,4 @@
 //= require sweetalert.min
 //= require search
 //= require components/filters
+//= require components/coupon

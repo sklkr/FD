@@ -379,8 +379,6 @@ GEM
       rack (>= 1.0)
     wicked (1.1.1)
       rails (>= 3.0.7)
-    zeroclipboard-rails (0.1.0)
-      railties (>= 3.1)
 
 PLATFORMS
   ruby
@@ -455,4 +453,3 @@ DEPENDENCIES
   uuidtools
   warden
   wicked
-  zeroclipboard-rails

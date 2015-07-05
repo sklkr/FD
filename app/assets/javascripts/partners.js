@@ -22,7 +22,6 @@
 //= require refile
 //= require local_time
 //= require plugins/google.places
-//= require zeroclipboard
 
 
 /*require wysihtml/dist/wysihtml5x-toolbar.min*/
