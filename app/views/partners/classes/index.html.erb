@@ -32,7 +32,7 @@
                         <tr>
                             <td><a href=""><%= c.name.capitalize %> <%= c.centers.first.name.capitalize %></a></td>
                             <td><%= local_time(c.date, '%B %d, %Y') unless c.date.blank? %></td>
-                            <td><%= c.timings.first %></td>
+                            <td><%= c.start_time.strftime('%H : %M') unless c.start_time.nil?  %></td>
                             <td><%= c.duration %></td>
                             <td><span class='label label-info'><%= c.seats %></span></td>
                             <td>
