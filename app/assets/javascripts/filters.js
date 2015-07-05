@@ -34,4 +34,4 @@
 //= require plugins/owl.carousel
 //= require sweetalert.min
 //= require search
-//= require components
+//= require components/filters

@@ -176,7 +176,6 @@ var Calendar = React.createClass({
 		return LocalTime.strftime(new Date(this.props.date), "%Y-%m-%d");
 	},
 	handleCalendar: function(e){
-		debugger;
 		this.props.onCalendar(e.target.dataset.cdate);
 	},
 	render: function(){

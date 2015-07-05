@@ -136,7 +136,7 @@ var SearchContainer = React.createClass({
 
 	render: function(){
 		var fpclasses = this.state.fpclasses.map(function(fpclass){
-			return <HandleRow fpclassbase={fpclass} datebase={this.state.recursivedates_ondate_eq} />;
+			return <HandleRow key={fpclass.id} fpclassbase={fpclass} datebase={this.state.recursivedates_ondate_eq} />;
 		}.bind(this));
 
 		var fpstudios = this.state.fpstudios.map(function(fpstudio){
@@ -206,7 +206,7 @@ var Toggler = React.createClass({
 		$('.cd-switch').css({transform: 'translateX(95%)'});
 		this.props.onClasses()
 	},
-
+	
 	render: function(){
 		return(
 			<p className="fieldset">
@@ -224,7 +224,7 @@ var Search = React.createClass({
 	handleSearch: function(){
 		this.props.onSearch();	
 	},
-
+	
 	render: function(){
 		return(
 			<fieldset className="search-container hidden-xs" id="center-search-container">
@@ -258,9 +258,9 @@ var Search = React.createClass({
 var HandleRow = React.createClass({
 	render: function(){
 		var fpclassrow = this.props.fpclassbase.timings.map(function(time){
-			return <ClassRow date={this.props.datebase} fpclass={this.props.fpclassbase} start_time={time} />;
+			return <ClassRow key={this.props.fpclassbase.id + "-" + time} date={this.props.datebase} fpclass={this.props.fpclassbase} start_time={time} />;
 		}.bind(this));
-
+		
 		return(
 			<tbody id="listers">
 			 {fpclassrow}
@@ -273,7 +273,7 @@ var ClassRow = React.createClass({
 	reserveConfirm: function(){
 		return $.get(this.props.fpclass.class_path, { date: this.props.date, time: this.props.start_time });
 	},
-
+	
 	confirmReserve: function(){
 		this.reserveConfirm().then(function(data){
 			/* to get confirmation box at reserve button*/
@@ -300,6 +300,7 @@ var ClassRow = React.createClass({
 })
 
 var StudioRow = React.createClass({
+	
 	render: function(){
 		return(
 			<div className="list-item clearfix">
