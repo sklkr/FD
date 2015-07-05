@@ -126,5 +126,8 @@ gem 'react-rails'
 # gem 'payumoney', :path => '/home/sid/sites/programming/payumoney'
 gem 'recurring_select'
 
+gem 'zeroclipboard-rails' # copy clipboard for admin
+
+
 
 gem 'geocoder'
