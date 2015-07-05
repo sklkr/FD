@@ -127,3 +127,7 @@ gem 'react-rails'
 gem 'recurring_select'
 
 gem 'geocoder'
+
+
+gem 'redis'
+gem 'redis-rails'

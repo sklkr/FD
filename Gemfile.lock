@@ -303,6 +303,23 @@ GEM
       jquery-rails (>= 3.0)
       rails (>= 3.2)
       sass-rails (>= 3.1)
+    redis (3.2.1)
+    redis-actionpack (4.0.0)
+      actionpack (~> 4)
+      redis-rack (~> 1.5.0)
+      redis-store (~> 1.1.0)
+    redis-activesupport (4.0.0)
+      activesupport (~> 4)
+      redis-store (~> 1.1.0)
+    redis-rack (1.5.0)
+      rack (~> 1.5)
+      redis-store (~> 1.1.0)
+    redis-rails (4.0.0)
+      redis-actionpack (~> 4)
+      redis-activesupport (~> 4)
+      redis-store (~> 1.1.0)
+    redis-store (1.1.5)
+      redis (>= 2.2)
     ref (1.0.5)
     refile (0.5.5)
       mime-types
@@ -440,6 +457,8 @@ DEPENDENCIES
   ratyrate
   react-rails
   recurring_select
+  redis
+  redis-rails
   refile
   sass-rails (~> 4.0.3)
   sdoc (~> 0.4.0)
