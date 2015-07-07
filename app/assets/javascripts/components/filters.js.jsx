@@ -135,8 +135,8 @@ var SearchContainer = React.createClass({
 	},
 
 	render: function(){
-		var fpclasses = this.state.fpclasses.map(function(fpclass){
-			return <HandleRow key={fpclass.id} fpclassbase={fpclass} datebase={this.state.recursivedates_ondate_eq} />;
+		var fpclasses = this.state.fpclasses.map(function(data){
+			return <ClassRow key={data.key} date={data.date} fpclass={data.fpclass} start_time={data.time} status={data.status} />;
 		}.bind(this));
 
 		var fpstudios = this.state.fpstudios.map(function(fpstudio){
@@ -183,7 +183,9 @@ var SearchContainer = React.createClass({
 		        <div className="clearfix" id="classes-section" style={classStyle}>
 		            <div className="table-responsive">
 		            	<table className="table table-hover table-striped" id="classes-content">
-			            	{ fpclasses }
+			            	<tbody>
+			            		{ fpclasses }
+			            	</tbody>
 			            </table>
 			        </div>
 		        </div>
@@ -255,20 +257,6 @@ var Search = React.createClass({
 	}
 })
 
-var HandleRow = React.createClass({
-	render: function(){
-		var fpclassrow = this.props.fpclassbase.timings.map(function(time){
-			return <ClassRow key={this.props.fpclassbase.id + "-" + time} date={this.props.datebase} fpclass={this.props.fpclassbase} start_time={time} />;
-		}.bind(this));
-		
-		return(
-			<tbody id="listers">
-			 {fpclassrow}
-			</tbody>
-		);
-	}
-})
-
 var ClassRow = React.createClass({
 	reserveConfirm: function(){
 		return $.get(this.props.fpclass.class_path, { date: this.props.date, time: this.props.start_time });
@@ -282,17 +270,21 @@ var ClassRow = React.createClass({
 
 	render: function(){
 		var timerange = moment(this.props.start_time, 'HH:mm').format('h:mm') + "  -  " + moment(this.props.start_time, 'HH:mm').add(this.props.fpclass.duration, 'm').format('h:mm a');
-		
+		var seatsfull = this.props.status == this.props.fpclass.seats;
+		var disabler = seatsfull ? 'disabled' : '';
+		var reserveText = seatsfull ? 'Fulfilled' : 'Reserve'; 
+
+		debugger;
 		return(
 			<tr>
 				<td><h5>
-					<a onClick={this.confirmReserve} className='blue'>{this.props.fpclass.capname}</a>
+					<a onClick={this.confirmReserve} className={'blue ' + disabler}>{this.props.fpclass.capname}</a>
 				</h5></td>
 				<td><h5><a href={this.props.fpclass.center_path} className='blue'>{this.props.fpclass.center_name}</a></h5></td>
 				<td> <div className="marginer">{ timerange }</div> </td>
 				<td> <div className="marginer">{this.props.fpclass.place_name}</div> </td>
 				<td className="text-center">
-					<a className="btn btn-primary reserve-btn" onClick={this.confirmReserve} >Reserve</a>
+					<a className={"btn btn-primary reserve-btn " + disabler} onClick={this.confirmReserve}>{reserveText}</a>
 				</td>
 			</tr>
 		);

@@ -62,7 +62,7 @@
   line-height: 1.2;
 }
 .cd-pricing-header h2 {
-  font-size: 2rem;
+  font-size: rem;
   margin-bottom: 0.15em;
 }
 .cd-pricing-header .cd-price {
@@ -85,7 +85,7 @@
 }
 @media only screen and (min-width: 768px) {
   .cd-pricing-header h2 {
-    font-size: 2.6rem;
+    font-size: rem;
   }
 }
 
@@ -155,15 +155,15 @@
 			<ul class="cd-pricing">
 				<li>
 					<header class="cd-pricing-header">
-						<h2>Basic</h2>
+						<h2>Basic Pass</h2>
 
 						<div class="cd-price">
-							<span>Pass</span>
+							<span></span>
 						</div>
 					</header> <!-- .cd-pricing-header -->
 
 					<div class="cd-pricing-features">
-						<ul>
+						<ul class="list-unstyled">
               <li>199/-</li>
               <li>3 Classes</li>
               <li>7 Days Validity</li>
@@ -177,10 +177,10 @@
 		
 				<li>
 					<header class="cd-pricing-header">
-						<h2>Health</h2>
+						<h2>Health Conscious</h2>
 
 						<div class="cd-price">
-							<span>Conscious</span>
+							<span></span>
 						</div>
 					</header> <!-- .cd-pricing-header -->
 
@@ -193,16 +193,16 @@
 					</div> <!-- .cd-pricing-features -->
 
 					<footer class="cd-pricing-footer">
-						<a href="#0">Buy Now</a>
+						<%= link_to "Buy Now", mypackage_path %>
 					</footer> <!-- .cd-pricing-footer -->
 				</li>
 
 				<li>
 					<header class="cd-pricing-header">
-						<h2>Fitness</h2>
+						<h2>Fitness Freak</h2>
 
 						<div class="cd-price">
-							<span>Freak</span>
+							<span></span>
 						</div>
 					</header> <!-- .cd-pricing-header -->
 
@@ -211,11 +211,11 @@
 							<li class="available">1999/-</li>
 							<li class="available">30 Classes</li>
 							<li class="available">30 Days Validity</li>
-						</ul>
+						<ul>
 					</div> <!-- .cd-pricing-features -->
 
 					<footer class="cd-pricing-footer">
-						<a href="#0">Buy Now</a>
+						<a href="#0">Buy Now<a>
 					</footer> <!-- .cd-pricing-footer -->
 				</li>
 			</ul>

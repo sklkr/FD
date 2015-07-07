@@ -1,7 +1,9 @@
 class Clasbking < ActiveRecord::Base
   default_scope  { where('expired_at >= ?', Time.now) }
   after_create :notify
+  after_create :book_seat
   before_destroy :notify_cancel
+  before_destroy :cancel_seat
 
 	belongs_to :customer, counter_cache: true
 	belongs_to :fpclass
@@ -60,5 +62,12 @@ class Clasbking < ActiveRecord::Base
 
   def expired_humanize
     self.expired_at && self.expired_at.strftime('%B %d %H:%M')
+  end
+
+  def book_seat
+    BookSeat.new(self.expired_at, self.fpclass).confirm
+  end
+  def cancel_seat
+    BookSeat.new(self.expired_at, self.fpclass).cancel
   end
 end
