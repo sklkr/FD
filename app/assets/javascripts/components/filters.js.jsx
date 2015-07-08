@@ -11,7 +11,7 @@ var SearchContainer = React.createClass({
 			searchfields: {place_name_cont_any: '', center_type_in: ''},
 			activities: ["Gym", "Yoga", "Dance", "Swim", "Aerobics", "Zumba", "Pillatees", "Martial Art", "Boxing", "Strength training"],
 			loaded: false,
-			filterLoaded: false
+			filtershow: false
 		}
 	},
 	loadClasses: function(){
@@ -92,6 +92,9 @@ var SearchContainer = React.createClass({
 		this.setState({
 			center_type_in: $('.magicsuggest').magicSuggest([]),
 			place_name_cont_any: new google.maps.places.Autocomplete(window.search_input),
+		});
+		this.setState({
+			filtershow: true
 		})
 	},
 
@@ -141,6 +144,10 @@ var SearchContainer = React.createClass({
 	 $("#center-search-container").toggleClass("hidden-xs");
 	},
 
+	loadMore: function(){
+		debugger;
+	},
+
 	render: function(){
 		var fpclasses = this.state.fpclasses.map(function(data){
 			return <ClassRow key={data.key} date={data.date} fpclass={data.fpclass} start_time={data.time} status={data.status} />;
@@ -167,6 +174,7 @@ var SearchContainer = React.createClass({
 			marginBottom: '20px'
 		};
 
+
 		return(
 			<div className="panel hasMtop">
 		        <div className="panel-heading">
@@ -177,7 +185,7 @@ var SearchContainer = React.createClass({
 		        </div>
 		        <div className="panel-body">
 		          <div className="clearfix">
-		          	<Search activities={this.state.activities} onSearch={this.startSearching} />
+		          	<Search activities={this.state.activities} onSearch={this.startSearching} show={this.state.filtershow} />
 		          </div>
 		          <div className="clearfix" style={calendarStyle}>
 		          	<div className="week1">
@@ -204,6 +212,9 @@ var SearchContainer = React.createClass({
 			            		{ fpclasses }
 			            	</tbody>
 			            </table>
+			            <div class='circle'>
+			            	<a onClick={this.loadMore}>Load more</a>
+			            </div>
 			        </div>
 			        </Loader>
 		        </div>
@@ -246,8 +257,12 @@ var Search = React.createClass({
 	},
 	
 	render: function(){
+		var show = {
+			display: this.props.show ? 'block' : 'none'
+		};
+
 		return(
-			<fieldset className="search-container hidden-xs" id="center-search-container">
+			<fieldset className="search-container hidden-xs" id="center-search-container" style={show}>
 	            <div className="row">
 	                <div className="col-md-4 col-xs-12 m-bottom20">
 	                    <label htmlFor="location">LOCATION</label>

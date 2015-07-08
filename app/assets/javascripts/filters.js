@@ -36,6 +36,5 @@
 //= require sweetalert.min
 //= require search
 //= require components/react_loader
-//= require components/scroll_pagination
 //= require components/filters
 //= require components/coupon
