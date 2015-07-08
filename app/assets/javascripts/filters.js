@@ -32,7 +32,10 @@
 //= require cart
 //= require plugins/modernizr-special
 //= require plugins/owl.carousel
+//= require plugins/spin
 //= require sweetalert.min
 //= require search
+//= require components/react_loader
+//= require components/scroll_pagination
 //= require components/filters
 //= require components/coupon

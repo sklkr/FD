@@ -17,13 +17,13 @@ class FiltersController < ApplicationController
     @c = Fpclass.ransack(params[:q])
     @fpclasses = @c.result.any_classes(rcdate).order('start_time')
     @fpclasses = ClassesParser.new(@fpclasses, Date.parse(rcdate).strftime('%y%m%d')).generate
+    @clasbkings = passport ? passport.clasbkings : []
     dates_fetcher
-    render json: [@fpclasses, @dates]
+    render json: [@fpclasses, @dates, @clasbkings]
   end
 
   private
     def params_modifier
-      
       params[:q] = {}
       params[:q].merge!({:centers_place_name_cont_any => params[:place_name_cont_any], :centers_center_type_in => JSON.parse(params[:center_type_in])}) unless params[:place_name_cont_any].blank?
       params[:q].merge!({:centers_slug_eq => params[:centers_slug_eq]}) unless params[:centers_slug_eq].blank?

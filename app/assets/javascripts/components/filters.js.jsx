@@ -9,7 +9,9 @@ var SearchContainer = React.createClass({
 			recursivedates_ondate_eq: LocalTime.strftime(new Date(), '%Y-%m-%d'),
 			dates: [],
 			searchfields: {place_name_cont_any: '', center_type_in: ''},
-			activities: ["Gym", "Yoga", "Dance", "Swim", "Aerobics", "Zumba", "Pillatees", "Martial Art", "Boxing", "Strength training"]
+			activities: ["Gym", "Yoga", "Dance", "Swim", "Aerobics", "Zumba", "Pillatees", "Martial Art", "Boxing", "Strength training"],
+			loaded: false,
+			filterLoaded: false
 		}
 	},
 	loadClasses: function(){
@@ -30,7 +32,8 @@ var SearchContainer = React.createClass({
 		this.loadClasses().then(function(data){
 			this.setState({
 				fpclasses: data.filters[0],
-				dates: data.filters[1]
+				dates: data.filters[1],
+				loaded: true
 			});
 			this.renderCalendar();
 			this.renderFilter();
@@ -41,7 +44,8 @@ var SearchContainer = React.createClass({
 		this.setState({
 			isFpclass: true,
 			isFpstudio: false,
-			isCalendar: true
+			isCalendar: true,
+			loaded: false
 		});
 		if(this.state.place_name_cont_any.getPlace() == undefined){
 			sweetAlert('Location/City', 'Please choose your location before going to search');
@@ -50,7 +54,8 @@ var SearchContainer = React.createClass({
 			this.reloadClasses().then(function(data){
 				this.setState({
 					fpclasses: data.filters[0],
-					dates: data.filters[1]
+					dates: data.filters[1],
+					loaded: true
 				});
 			}.bind(this));	
 		}
@@ -86,7 +91,7 @@ var SearchContainer = React.createClass({
 		window.search_input = document.getElementById('cities');
 		this.setState({
 			center_type_in: $('.magicsuggest').magicSuggest([]),
-			place_name_cont_any: new google.maps.places.Autocomplete(window.search_input)
+			place_name_cont_any: new google.maps.places.Autocomplete(window.search_input),
 		})
 	},
 
@@ -102,12 +107,14 @@ var SearchContainer = React.createClass({
 		this.setState({
 			isFpclass: true,
 			isFpstudio: false,
-			isCalendar: true
+			isCalendar: true,
+			loaded: false
 		});
 		this.loadClasses().then(function(data){
 			this.setState({
 				fpclasses: data.filters[0],
-				dates: data.filters[1]
+				dates: data.filters[1],
+				loaded: true
 			})
 		}.bind(this));
 	},
@@ -181,13 +188,24 @@ var SearchContainer = React.createClass({
 		          </div>
 		        </div>
 		        <div className="clearfix" id="classes-section" style={classStyle}>
+		            <Loader loaded={this.state.loaded} color="#CCC" opacity="0">
 		            <div className="table-responsive">
 		            	<table className="table table-hover table-striped" id="classes-content">
+			            	<thead>
+			            		<tr>
+			            			<th>Class</th>
+			            			<th>Center</th>
+			            			<th>Timing</th>
+			            			<th>Location</th>	
+			            			<th></th>
+			            		</tr>
+			            	</thead>
 			            	<tbody>
 			            		{ fpclasses }
 			            	</tbody>
 			            </table>
 			        </div>
+			        </Loader>
 		        </div>
 		        <div className="clearfix" id="centers-section" style={studioStyle}>
 		        	{ fpstudios }
