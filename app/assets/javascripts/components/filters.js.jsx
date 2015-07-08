@@ -274,7 +274,6 @@ var ClassRow = React.createClass({
 		var disabler = seatsfull ? 'disabled' : '';
 		var reserveText = seatsfull ? 'Fulfilled' : 'Reserve'; 
 
-		debugger;
 		return(
 			<tr>
 				<td><h5>

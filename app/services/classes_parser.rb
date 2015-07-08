@@ -9,7 +9,7 @@ class ClassesParser
 		return [] if @classes_in.blank?  # Distinct gives error due to json for fpclass or somewhere
 		
 		@classes_in.each do |fpclass|
-			@classes_out = shows(fpclass)
+			@classes_out.concat shows(fpclass)
 		end
 
 		@classes_out.sort! {|x, y| x.time.remove(':').to_i <=> y.time.remove(':').to_i }
