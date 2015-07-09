@@ -16,7 +16,7 @@ class FiltersController < ApplicationController
     params_modifier
     @c = Fpclass.ransack(params[:q])
     @fpclasses = @c.result.any_classes(rcdate).order('start_time')
-    @fpclasses = ClassesParser.new(@fpclasses, Date.parse(rcdate).strftime('%y%m%d')).generate
+    @fpclasses = ClassesParser.new(@fpclasses, Date.parse(rcdate).strftime('%y%m%d'), params[:page].to_i).generate
     @clasbkings = passport ? passport.clasbkings : []
     dates_fetcher
     render json: [@fpclasses, @dates, @clasbkings]

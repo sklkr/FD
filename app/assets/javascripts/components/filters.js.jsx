@@ -11,7 +11,10 @@ var SearchContainer = React.createClass({
 			searchfields: {place_name_cont_any: '', center_type_in: ''},
 			activities: ["Gym", "Yoga", "Dance", "Swim", "Aerobics", "Zumba", "Pillatees", "Martial Art", "Boxing", "Strength training"],
 			loaded: false,
-			filtershow: false
+			filtershow: false,
+			pageNumber: 1,
+			loadMoreText: 'LOAD MORE',
+			loadMore: true
 		}
 	},
 	loadClasses: function(){
@@ -21,6 +24,11 @@ var SearchContainer = React.createClass({
 	reloadClasses: function(){
 		return $.post('api/search/classes.json', { place_name_cont_any: this.state.place_name_cont_any.getPlace().name, center_type_in: JSON.stringify(this.state.center_type_in.getValue()), recursivedates_ondate_eq: this.state.recursivedates_ondate_eq });
 	},
+
+	updateClasses: function(){
+		return $.post('api/search/classes.json', { page: this.state.pageNumber, place_name_cont_any: this.state.place_name_cont_any.getPlace().name, center_type_in: JSON.stringify(this.state.center_type_in.getValue()), recursivedates_ondate_eq: this.state.recursivedates_ondate_eq });
+	},
+
 	loadStudios: function(){
 		return $.post('api/search.json');
 	},
@@ -45,7 +53,9 @@ var SearchContainer = React.createClass({
 			isFpclass: true,
 			isFpstudio: false,
 			isCalendar: true,
-			loaded: false
+			loaded: false,
+			loadMore: true,
+			pageNumber: 1
 		});
 		if(this.state.place_name_cont_any.getPlace() == undefined){
 			sweetAlert('Location/City', 'Please choose your location before going to search');
@@ -57,6 +67,11 @@ var SearchContainer = React.createClass({
 					dates: data.filters[1],
 					loaded: true
 				});
+				if(data.filters[0].length == 0){
+					this.setState({
+						loadMore: false
+					});
+				}
 			}.bind(this));	
 		}
 	},
@@ -111,14 +126,21 @@ var SearchContainer = React.createClass({
 			isFpclass: true,
 			isFpstudio: false,
 			isCalendar: true,
-			loaded: false
+			loaded: false,
+			loadMore: true,
+			pageNumber: 1
 		});
 		this.loadClasses().then(function(data){
 			this.setState({
 				fpclasses: data.filters[0],
 				dates: data.filters[1],
 				loaded: true
-			})
+			});
+			if(data.filters[0].length == 0){
+				this.setState({
+					loadMore: false
+				});
+			}
 		}.bind(this));
 	},
 	studiosFetch: function(){
@@ -145,7 +167,29 @@ var SearchContainer = React.createClass({
 	},
 
 	loadMore: function(){
-		debugger;
+		this.setState({
+			loadMoreText: "LOADING ..."
+		});
+		if(this.state.place_name_cont_any.getPlace() == undefined){
+			sweetAlert('Location/City', 'Please choose your location before going to search');
+			document.getElementById('cities').select();
+		} else {
+			this.updateClasses().then(function(data){
+				mergeData = this.state.fpclasses.concat(data.filters[0]);
+
+				if(data.filters[0].length == 0){
+					this.setState({
+						loadMore: false
+					})
+				}else{
+					this.setState({
+						fpclasses: mergeData,
+						loadMoreText: "LOAD MORE",
+						pageNumber: this.state.pageNumber + 1
+					});
+				}
+			}.bind(this));	
+		}
 	},
 
 	render: function(){
@@ -173,6 +217,10 @@ var SearchContainer = React.createClass({
 			display: this.state.isCalendar ? 'block' : 'none',
 			marginBottom: '20px'
 		};
+
+		var loadMoreStyle = {
+			display: this.state.loadMore ? 'block' : 'none',
+		}
 
 
 		return(
@@ -212,8 +260,8 @@ var SearchContainer = React.createClass({
 			            		{ fpclasses }
 			            	</tbody>
 			            </table>
-			            <div class='circle'>
-			            	<a onClick={this.loadMore}>Load more</a>
+			            <div className='circle' onClick={this.loadMore} style={loadMoreStyle}>
+			            	<a> {this.state.loadMoreText}</a>
 			            </div>
 			        </div>
 			        </Loader>
@@ -272,7 +320,7 @@ var Search = React.createClass({
 	                </div>
 	                <div className="col-md-4 col-xs-12 m-bottom20">
 	                  <label htmlFor="facilities">ACTIVITIES</label>
-	                  <select name="center_type_in" className="magicsuggest">
+	                  <select name="center_type_in" className="magicsuggest" placeholder="Choose..">
 	                  	{this.props.activities.map(function(act) {
 	                  	    return <option value={act}>{act}</option>;
 	                  	})}
@@ -281,7 +329,7 @@ var Search = React.createClass({
 	                <div className="col-md-4 col-xs-12">
 	                  <label htmlFor="">&nbsp;</label>
 	                  <div>
-	                    <input className="btn btn-default" name="commit" type="submit" value="  Search  "  onClick={this.handleSearch} />
+	                    <input className="btn btn-primary" name="commit" type="submit" value="  Search  "  onClick={this.handleSearch} />
 	                  </div>
 	                </div>
 	            </div>

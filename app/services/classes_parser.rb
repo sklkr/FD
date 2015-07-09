@@ -18,8 +18,10 @@ class ClassesParser
 		
 		# sorting needs to be done
 		@search_classes.sort { |x,y| x.time <=> y.time }
-		@search_classes.in_groups_of(20, false)[@page].each do |search_clas|
-			@classes_out << ClasParser.new(search_clas, @date)
+		unless @search_classes.in_groups_of(70, false)[@page].blank? 
+			@search_classes.in_groups_of(70, false)[@page].each do |search_clas|
+				@classes_out << ClasParser.new(search_clas, @date)
+			end
 		end
 
 		@classes_out

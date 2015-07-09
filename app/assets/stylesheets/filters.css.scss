@@ -45,3 +45,32 @@
   -webkit-box-shadow: none;
   box-shadow: none;
 }
+
+.circle{
+  width: 100px;
+  height: 100px;
+  -webkit-border-radius: 25px;
+  -moz-border-radius: 25px;
+  border-radius: 50px;
+  border: 2px solid darkcyan;
+  cursor: pointer;
+  padding-top: 38px;
+  padding-left: 8px;
+  margin-top:80px;
+  margin-bottom: 150px;
+  
+  a{
+  	color: darkcyan;
+  	font-size: 14px;
+  }
+  &:before{
+  	padding-top:0%;
+  }
+
+  &:hover{
+  	border: 2px solid rgb(2, 115, 115);
+  	a{
+  		color: rgb(2, 115, 115);
+  	}
+  }
+}
