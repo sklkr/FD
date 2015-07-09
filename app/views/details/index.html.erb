@@ -1,9 +1,14 @@
 <%
-meta title: "FitnessPapa #{@center.name}",
+meta title: "#{@center.name} | FitnessPapa",
      description: "#{@details.brief_desc}",
-     keywords: ['fitnesspapa bangalore', 'fitness pass bangalore', 'fitness class bangalore', 'swimming pool bangalore', 'zumba bangalore', 'gym bangalore', 'yoga bangalore']
+     keywords: [@center.name, 'fitness pass bangalore', 'fitness class bangalore', 'swimming pool bangalore', 'zumba bangalore', 'gym bangalore', 'yoga bangalore']
 %>
 
+<%= content_for :linescript do %>
+    <script type="application/ld+json">
+
+    </script>
+<% end %>
 
 <!-- Seo Stuff -->
 
@@ -11,7 +16,19 @@ meta title: "FitnessPapa #{@center.name}",
 <div id="center-slug" data-url="<%= params[:center] %>"></div>
 
 <div id="background" style="background-image: url('//d1djl7kr085bc1.cloudfront.net/store/<%= @cphotos.first.image_id %>');z-index:0" >
-<%= image_tag "//d1djl7kr085bc1.cloudfront.net/store/#{@cphotos.try(:first).try(:image_id)}", :class => 'visible-xs img-responsive', :alt => "#{@center.name} photos" %>
+<div itemscope="" itemtype="http://schema.org/ExerciseGym" itemref="gym-main-image">
+    <meta itemprop="name" content="<%= @center.name %>">
+    <meta itemprop="description" content="<%= @details.detailed_desc %>">
+    <meta itemprop="url" content="<%= request.original_url %>">
+    <div itemprop="geo" itemscope="" itemtype="http://schema.org/GeoCoordinates">
+        <meta itemprop="latitude" content="<%= @details.latitude %>">
+        <meta itemprop="longitude" content="<%= @details.longitude %>">
+    </div>
+</div>
+<%= image_tag "//d1djl7kr085bc1.cloudfront.net/store/#{@cphotos.try(:first).try(:image_id)}", :class => 'visible-xs img-responsive', :alt => "#{@center.name}", :itemprop =>'contentUrl'%>
+    <meta itemprop="name" content="<%= @center.name.capitalize %>">
+    <meta itemprop="contentLocation" content="<%= @center.place_name %>">
+    <meta itemprop="author" content="FitnessPapa.com">
 </div>
 
 <div class="space20"></div>
@@ -20,7 +37,7 @@ meta title: "FitnessPapa #{@center.name}",
         <div class="col-md-7 col-xs-12">
                 <div class="panel panel-default info-panel">
                 <div class="padding35">
-                    <div class="panel-heading" style="background:white"><h2 class="osLight no-padding"><%= @center.name.upcase %></h2></div>
+                    <div class="panel-heading" style="background:white"><h2 class="osLight no-padding" itemprop="title" title="<%= @center.name.capitalize %>"  ><%= @center.name.upcase %></h2></div>
                     <div class="panel-body blue-gray">
                         <p><%= @details.address %> </p>
                         <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
