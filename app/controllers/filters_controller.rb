@@ -27,6 +27,7 @@ class FiltersController < ApplicationController
       params[:q] = {}
       params[:q].merge!({:centers_place_name_cont_any => params[:place_name_cont_any], :centers_center_type_in => JSON.parse(params[:center_type_in])}) unless params[:place_name_cont_any].blank?
       params[:q].merge!({:centers_slug_eq => params[:centers_slug_eq]}) unless params[:centers_slug_eq].blank?
+      params[:q].reverse_merge! :centers_place_name_cont_any => request.safe_location.city
     end
 
     def dates_fetcher
