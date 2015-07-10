@@ -17,6 +17,9 @@ class User < ActiveRecord::Base
   accepts_nested_attributes_for :customer
   attachment :image
 
+  geocoded_by :location
+  after_validation :geocode  # auto-fetch address
+  
   def full_name
     "#{self.try(:first_name)}  #{self.try(:last_name)}".blank? ? "Anonymous" : "#{self.try(:first_name)}  #{self.try(:last_name)}"
   end

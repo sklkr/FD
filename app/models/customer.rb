@@ -2,7 +2,7 @@ class Customer < ActiveRecord::Base
   extend FriendlyId
   acts_as_commontator
   delegate :first_name, :emergency_name, :emergency_phone, :last_name, :phone, :password, :password=, :remember_token, :crypted_password, :location, :image_id, :active, :full_name, :password_reset_token, :send_password_reset, to: :user
-  
+
   belongs_to :user, dependent: :destroy
   friendly_id :email
   has_many :bookings, dependent: :destroy
@@ -74,6 +74,16 @@ class Customer < ActiveRecord::Base
 
   def referrer_user(code)
     Customer.find_by_referral_code(code)
+  end
+
+  def city_name
+    self.city.blank? ? fetch_city : self.city 
+  end
+
+  def fetch_city
+    self.city = Geocoder.search(self.user.to_coordinates).first.city
+    self.save
+    self.city
   end
 
   private

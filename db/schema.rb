@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150704171924) do
+ActiveRecord::Schema.define(version: 20150710065231) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -323,6 +323,7 @@ ActiveRecord::Schema.define(version: 20150704171924) do
     t.string   "referral_code"
     t.integer  "referral_id"
     t.integer  "clasbkings_count"
+    t.string   "city"
   end
 
   create_table "delayed_jobs", force: true do |t|
@@ -760,6 +761,8 @@ ActiveRecord::Schema.define(version: 20150704171924) do
     t.integer  "area_id"
     t.string   "location"
     t.date     "dob"
+    t.float    "latitude"
+    t.float    "longitude"
   end
 
   add_index "users", ["member_id"], name: "index_users_on_member_id", using: :btree

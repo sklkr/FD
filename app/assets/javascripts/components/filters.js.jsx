@@ -14,7 +14,8 @@ var SearchContainer = React.createClass({
 			filtershow: false,
 			pageNumber: 1,
 			loadMoreText: 'LOAD MORE',
-			loadMore: true
+			loadMore: true,
+			defaultLocation: ''
 		}
 	},
 	loadClasses: function(){
@@ -22,18 +23,22 @@ var SearchContainer = React.createClass({
 	},
 
 	reloadClasses: function(){
-		return $.post('api/search/classes.json', { place_name_cont_any: this.state.place_name_cont_any.getPlace().name, center_type_in: JSON.stringify(this.state.center_type_in.getValue()), recursivedates_ondate_eq: this.state.recursivedates_ondate_eq });
+		var place_name = (this.state.place_name_cont_any.getPlace() == undefined) ? this.state.defaultLocation : this.state.place_name_cont_any.getPlace().name;
+		return $.post('api/search/classes.json', { place_name_cont_any: place_name, center_type_in: JSON.stringify(this.state.center_type_in.getValue()), recursivedates_ondate_eq: this.state.recursivedates_ondate_eq });
 	},
 
 	updateClasses: function(){
-		return $.post('api/search/classes.json', { page: this.state.pageNumber, place_name_cont_any: this.state.place_name_cont_any.getPlace().name, center_type_in: JSON.stringify(this.state.center_type_in.getValue()), recursivedates_ondate_eq: this.state.recursivedates_ondate_eq });
+		var place_name = (this.state.place_name_cont_any.getPlace() == undefined) ? this.state.defaultLocation : this.state.place_name_cont_any.getPlace().name;
+		return $.post('api/search/classes.json', { page: this.state.pageNumber, place_name_cont_any: place_name, center_type_in: JSON.stringify(this.state.center_type_in.getValue()), recursivedates_ondate_eq: this.state.recursivedates_ondate_eq });
 	},
 
 	loadStudios: function(){
-		return $.post('api/search.json');
+		var place_name = (this.state.place_name_cont_any.getPlace() == undefined) ? this.state.defaultLocation : this.state.place_name_cont_any.getPlace().name;
+		return $.post('api/search.json', {place_name_cont_any: place_name});
 	},
 	reloadStudios: function(){
-		return $.post('api/search.json', { place_name_cont_any: this.state.place_name_cont_any.getPlace().name, center_type_in: JSON.stringify(this.state.center_type_in.getValue()) });
+		var place_name = (this.state.place_name_cont_any.getPlace() == undefined) ? this.state.defaultLocation : this.state.place_name_cont_any.getPlace().name;
+		return $.post('api/search.json', { place_name_cont_any: place_name, center_type_in: JSON.stringify(this.state.center_type_in.getValue()) });
 	},
 
 	componentWillMount: function(){
@@ -41,7 +46,8 @@ var SearchContainer = React.createClass({
 			this.setState({
 				fpclasses: data.filters[0],
 				dates: data.filters[1],
-				loaded: true
+				loaded: true,
+				defaultLocation: data.filters[3]
 			});
 			this.renderCalendar();
 			this.renderFilter();
@@ -57,10 +63,10 @@ var SearchContainer = React.createClass({
 			loadMore: true,
 			pageNumber: 1
 		});
-		if(this.state.place_name_cont_any.getPlace() == undefined){
-			sweetAlert('Location/City', 'Please choose your location before going to search');
-			document.getElementById('cities').select();
-		}else{
+		// if(this.state.place_name_cont_any.getPlace() == undefined){
+		// 	sweetAlert('Location/City', 'Please choose your location before going to search');
+		// 	document.getElementById('cities').select();
+		// }else{
 			this.reloadClasses().then(function(data){
 				this.setState({
 					fpclasses: data.filters[0],
@@ -73,7 +79,7 @@ var SearchContainer = React.createClass({
 					});
 				}
 			}.bind(this));	
-		}
+		// }
 	},
 
 	studiosUpdater: function(){
@@ -170,10 +176,10 @@ var SearchContainer = React.createClass({
 		this.setState({
 			loadMoreText: "LOADING ..."
 		});
-		if(this.state.place_name_cont_any.getPlace() == undefined){
-			sweetAlert('Location/City', 'Please choose your location before going to search');
-			document.getElementById('cities').select();
-		} else {
+		// if(this.state.place_name_cont_any.getPlace() == undefined){
+		// 	sweetAlert('Location/City', 'Please choose your location before going to search');
+		// 	document.getElementById('cities').select();
+		// } else {
 			this.updateClasses().then(function(data){
 				mergeData = this.state.fpclasses.concat(data.filters[0]);
 
@@ -189,7 +195,7 @@ var SearchContainer = React.createClass({
 					});
 				}
 			}.bind(this));	
-		}
+		// }
 	},
 
 	render: function(){
@@ -233,7 +239,7 @@ var SearchContainer = React.createClass({
 		        </div>
 		        <div className="panel-body">
 		          <div className="clearfix">
-		          	<Search activities={this.state.activities} onSearch={this.startSearching} show={this.state.filtershow} />
+		          	<Search activities={this.state.activities} onSearch={this.startSearching} show={this.state.filtershow} defaultloc={this.state.defaultLocation} />
 		          </div>
 		          <div className="clearfix" style={calendarStyle}>
 		          	<div className="week1">
@@ -315,7 +321,7 @@ var Search = React.createClass({
 	                <div className="col-md-4 col-xs-12 m-bottom20">
 	                    <label htmlFor="location">LOCATION</label>
 	                    <div>
-	                      <input id="cities" type="text" name="q[place_name_cont_any]" ref='place_name_cont_any' placeholder="Type Locality or Landmark" className="ui-autocomplete-input form-control form-square" />
+	                      <input id="cities" type="text" name="q[place_name_cont_any]" ref='place_name_cont_any' placeholder={this.props.defaultloc} className="ui-autocomplete-input form-control form-square" />
 	                    </div>
 	                </div>
 	                <div className="col-md-4 col-xs-12 m-bottom20">
