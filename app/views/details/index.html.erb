@@ -4,11 +4,6 @@ meta title: "#{@center.name} | FitnessPapa",
      keywords: [@center.name, 'fitness pass bangalore', 'fitness class bangalore', 'swimming pool bangalore', 'zumba bangalore', 'gym bangalore', 'yoga bangalore']
 %>
 
-<%= content_for :linescript do %>
-    <script type="application/ld+json">
-
-    </script>
-<% end %>
 
 <!-- Seo Stuff -->
 
@@ -25,7 +20,7 @@ meta title: "#{@center.name} | FitnessPapa",
         <meta itemprop="longitude" content="<%= @details.longitude %>">
     </div>
 </div>
-<%= image_tag "//d1djl7kr085bc1.cloudfront.net/store/#{@cphotos.try(:first).try(:image_id)}", :class => 'visible-xs img-responsive', :alt => "#{@center.name}", :itemprop =>'contentUrl'%>
+<%= image_tag "//d1djl7kr085bc1.cloudfront.net/store/#{@cphotos.try(:first).try(:image_id)}", :class => 'visible-xs img-responsive', :alt => "#{@center.name}", :itemprop =>'contentUrl', :id => 'gym-main-image'%>
     <meta itemprop="name" content="<%= @center.name.capitalize %>">
     <meta itemprop="contentLocation" content="<%= @center.place_name %>">
     <meta itemprop="author" content="FitnessPapa.com">
