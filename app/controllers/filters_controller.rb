@@ -1,6 +1,6 @@
 class FiltersController < ApplicationController
 # before_filter { @c = Center.ransack(params[:q]) }
-
+before_filter { redirect_to root_url unless current_user }
   def search
   end
 
