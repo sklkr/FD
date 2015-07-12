@@ -29,6 +29,8 @@
 //= require signup
 //= require cart
 //= require plugins/modernizr-special
+//= require plugins/spin
 //= require plugins/owl.carousel
 //= require sweetalert.min
+//= require components/react_loader
 //= require components/details
