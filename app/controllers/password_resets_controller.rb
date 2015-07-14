@@ -1,3 +1,5 @@
+## Change Password
+
 class PasswordResetsController < ApplicationController
 layout 'homepage'
 before_action :authenticated?, only: [:change_password, :update_password]

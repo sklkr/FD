@@ -1,3 +1,5 @@
+# Customers >> My Profile
+
 module Customers
 class ProfilesController < ApplicationController 
 before_filter :authenticated?

@@ -1,3 +1,5 @@
+##  Partner Dashboard >> Centers >> Individual Center Photos (Gallery)
+
 module Partners
 class GalleriesController < BaseController
   before_filter :is_more, :only => [:create]

@@ -1,3 +1,5 @@
+## Partners >> Classes
+
 module Partners
 class ClassesController < BaseController 
 layout 'partners'

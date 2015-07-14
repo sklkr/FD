@@ -35,9 +35,6 @@
                         <td><a href="mailto:<%= p.email %>"><%= p.email %></a></td>
                         <td><span class="<%= p.active ? "label label-success" : "label label-danger" %>"><%= p.active %></span></td>
                         <td>
-                        <%= link_to partner_path(:id => p.id), :method => 'delete', :data => {:confirm => "Are you sure ?"}, :class => 'btn btn-sm' do %>
-                            <i class='fa fa-trash-o'>&nbsp;Remove</i>
-                        <% end %>
                         <% unless p.active %>
                             <%= link_to activate_partner_path(:id => p.id), :method => 'post', :data => {:confirm => "Are you sure you want to activate this partner ?"}, :class => 'btn btn-sm'  do%>
                                 <i class='fa fa-plane'>&nbsp;Activate</i>

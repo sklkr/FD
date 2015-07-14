@@ -38,7 +38,7 @@ meta title: "FitnessPapa | One Pass Any Studio Any Class",
                 <%= f.simple_fields_for :user do |p| %>
                   <%= p.input :location, :label => false, input_html: { class: 'form-control', id: 'cities', :placeholder => 'Location', :style => 'width:100%' }, wrapper_html: { class: 'form-group', :style => 'width:25%' } %>
                 <% end %>
-                <%= f.button :submit, "Request An Invite", class: 'btn btn-primary', data: {disable_with: 'Submitting data...'} %>
+                <%= f.button :submit, "Sign Up", class: 'btn btn-primary', data: {disable_with: 'Submitting data...'} %>
               <% end %>
           </div>
   		 </div>
@@ -273,9 +273,9 @@ You Can Try Zumba, Dance, Yoga, Pilates, Cycling, Gym, Strength Training And Man
 			<%= link_to centers_list_path(:city => 'Bengaluru', :map => 'true'), :class => 'pull-right', :remote => true do %>
 				<i class='fa fa-map-marker fa-2x pull-left fa-border' style='padding:4px 10px'></i>
 			<% end %>
-			<%= link_to centers_list_path(:city => 'Bengaluru'), :class => 'pull-right', :remote => true do %>
+			 <!-- link_to centers_list_path(:city => 'Bengaluru'), :class => 'pull-right', :remote => true do
 				<i class='fa fa-bars fa-2x pull-left fa-border' style='margin-right:0px;border-right:0px'></i>
-			<% end %>
+			 end  -->
 		</div>
 		<div class="col-xs-12">
 			<ul class="list-inline text-center">

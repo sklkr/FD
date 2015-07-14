@@ -1,3 +1,5 @@
+## Admin Sessions Management Controller
+
 module Fpadmin
 class SessionsController < BaseController
    # skip_before_filter :authenticate!  

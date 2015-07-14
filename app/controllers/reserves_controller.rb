@@ -1,3 +1,5 @@
+## Search page, reserve a class
+
 class ReservesController < ApplicationController
 before_action :authenticated?
 before_action :is_passport

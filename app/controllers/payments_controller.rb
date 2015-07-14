@@ -1,3 +1,5 @@
+# Payment gateway migration controller
+
 class PaymentsController < ApplicationController
   protect_from_forgery :except => [:success, :failure]
 

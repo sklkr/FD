@@ -1,3 +1,5 @@
+# Admin Dashboard >> Customers
+
 module Fpadmin
 class CustomersController < BaseController 
 layout 'fpadmin'

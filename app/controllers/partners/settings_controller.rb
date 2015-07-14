@@ -1,3 +1,5 @@
+## Partner Dashboard >> Settings
+
 module Partners
 class SettingsController < BaseController 
 layout 'partners'

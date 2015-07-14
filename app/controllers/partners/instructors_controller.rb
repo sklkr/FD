@@ -1,3 +1,5 @@
+## Partner Dashboard >> Instructors
+
 module Partners
 class InstructorsController < BaseController 
 layout 'partners'

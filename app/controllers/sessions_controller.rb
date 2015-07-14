@@ -1,3 +1,5 @@
+## Customer signin, facebook authentication
+
 class SessionsController < ApplicationController
 skip_before_filter :authenticate!
 layout 'homepage'

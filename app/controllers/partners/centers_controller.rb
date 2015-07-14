@@ -1,3 +1,5 @@
+# Parner >> Centers
+
 module Partners
 class CentersController < BaseController 
 layout 'partners'

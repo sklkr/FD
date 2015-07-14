@@ -1,6 +1,10 @@
+# Customers >> My class
+
 module Customers
 class ClassesController < ApplicationController 
 layout 'customerdashboard'
+ 
+  # Customers >> My Class, History
   def index
   	@passport = passport
   	@total = passport.try(:remaining_tickets) || 0 
@@ -9,6 +13,7 @@ layout 'customerdashboard'
   	@history = Clasbking.unscoped.where('customer_id=?', current_user.id).where('expired_at < ?', Time.now)
   end
 
+  # Customers >> My Orders
   def show
   	@passport = passport
   end

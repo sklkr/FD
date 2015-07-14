@@ -1,12 +1,14 @@
 class ClassesParser
 
 	## [TODO] :: 1) REJECT TODAY TIMINGS, PER_PAGE(2 TO 20)
-	def initialize(fpclasses, date, page=0)
+	def initialize(fpclasses, date, page=0, start_time='01:00', end_time='24:00' )
 		@classes_in = fpclasses.blank? ? [] : fpclasses.to_a.uniq
 		@classes_out = []
 		@date = date
 		@search_classes = []
 		@page = page.to_i
+		@start_time = start_time
+		@end_time = end_time
 	end
 
 	def generate
@@ -29,7 +31,7 @@ class ClassesParser
 
 	def get_search_classes(fpclass)
 		# reject{|time| Time.parse("#{@date} #{time}") < Time.now + 2.hours }
-		fpclass.timings.collect do |time|
+		fpclass.timings.reject{|c| !c.between?( @start_time, @end_time) }.collect do |time|
 			SearchClas.new(time, fpclass)
 		end
 	end

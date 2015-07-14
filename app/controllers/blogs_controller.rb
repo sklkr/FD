@@ -1,3 +1,5 @@
+# Old
+
 class BlogsController < ApplicationController
   def index
     

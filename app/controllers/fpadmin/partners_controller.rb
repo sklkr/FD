@@ -1,3 +1,5 @@
+## Admin Dashboard >> Partners
+
 module Fpadmin
 class PartnersController < BaseController 
 layout 'fpadmin'

@@ -1,3 +1,5 @@
+# Old Controller
+
 module Customers
 class MypassController < ApplicationController 
 layout 'customerdashboard'

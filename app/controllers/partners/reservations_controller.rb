@@ -1,3 +1,5 @@
+## Partners Dashboard >> Reservations
+
 module Partners
 class ReservationsController < BaseController 
 layout 'partners'

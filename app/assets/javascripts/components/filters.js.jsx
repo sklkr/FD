@@ -15,7 +15,8 @@ var SearchContainer = React.createClass({
 			pageNumber: 1,
 			loadMoreText: 'LOAD MORE',
 			loadMore: true,
-			defaultLocation: ''
+			defaultLocation: '',
+			time_filter: ''
 		}
 	},
 	loadClasses: function(){
@@ -24,12 +25,12 @@ var SearchContainer = React.createClass({
 
 	reloadClasses: function(){
 		var place_name = (this.state.place_name_cont_any.getPlace() == undefined) ? this.state.defaultLocation : this.state.place_name_cont_any.getPlace().name;
-		return $.post('api/search/classes.json', { place_name_cont_any: place_name, center_type_in: JSON.stringify(this.state.center_type_in.getValue()), recursivedates_ondate_eq: this.state.recursivedates_ondate_eq });
+		return $.post('api/search/classes.json', { time_filter: this.state.time_filter.val() ,place_name_cont_any: place_name, center_type_in: JSON.stringify(this.state.center_type_in.getValue()), recursivedates_ondate_eq: this.state.recursivedates_ondate_eq });
 	},
 
 	updateClasses: function(){
 		var place_name = (this.state.place_name_cont_any.getPlace() == undefined) ? this.state.defaultLocation : this.state.place_name_cont_any.getPlace().name;
-		return $.post('api/search/classes.json', { page: this.state.pageNumber, place_name_cont_any: place_name, center_type_in: JSON.stringify(this.state.center_type_in.getValue()), recursivedates_ondate_eq: this.state.recursivedates_ondate_eq });
+		return $.post('api/search/classes.json', { time_filter: this.state.time_filter.val(), page: this.state.pageNumber, place_name_cont_any: place_name, center_type_in: JSON.stringify(this.state.center_type_in.getValue()), recursivedates_ondate_eq: this.state.recursivedates_ondate_eq });
 	},
 
 	loadStudios: function(){
@@ -67,18 +68,18 @@ var SearchContainer = React.createClass({
 		// 	sweetAlert('Location/City', 'Please choose your location before going to search');
 		// 	document.getElementById('cities').select();
 		// }else{
-			this.reloadClasses().then(function(data){
+		this.reloadClasses().then(function(data){
+			this.setState({
+				fpclasses: data.filters[0],
+				dates: data.filters[1],
+				loaded: true
+			});
+			if(data.filters[0].length == 0){
 				this.setState({
-					fpclasses: data.filters[0],
-					dates: data.filters[1],
-					loaded: true
+					loadMore: false
 				});
-				if(data.filters[0].length == 0){
-					this.setState({
-						loadMore: false
-					});
-				}
-			}.bind(this));	
+			}
+		}.bind(this));
 		// }
 	},
 
@@ -113,10 +114,17 @@ var SearchContainer = React.createClass({
 		this.setState({
 			center_type_in: $('.magicsuggest').magicSuggest([]),
 			place_name_cont_any: new google.maps.places.Autocomplete(window.search_input),
+			time_filter: $("#time_filter").ionRangeSlider({type: "double", keyboard: true, grid: true, onChange: function(a,b){
+				this.startSearching();
+			}.bind(this), values: ["06:00","07:00","08:00","09:00","10:00","11:00","12:00","13:00","14:00","15:00","16:00","17:00","18:00","19:00","20:00","21:00","22:15"]}),
 		});
 		this.setState({
 			filtershow: true
-		})
+		});
+
+		$(this.state.center_type_in).on('selectionchange', function(e, m) {
+			this.startSearching();
+		}.bind(this));
 	},
 
 	componentDidMount: function(){
@@ -307,7 +315,10 @@ var Toggler = React.createClass({
 
 var Search = React.createClass({
 	handleSearch: function(){
-		this.props.onSearch();	
+		clearTimeout(window.wto);
+	    window.wto = setTimeout(function() {
+			this.props.onSearch();	
+	    }.bind(this), 1000);
 	},
 	
 	render: function(){
@@ -318,25 +329,22 @@ var Search = React.createClass({
 		return(
 			<fieldset className="search-container hidden-xs" id="center-search-container" style={show}>
 	            <div className="row">
+	                <div className="col-md-4 col-xs-12">
+	                    <input type="text" id="time_filter" name="time_filter" onChange={this.handleSearch} />
+	                </div>
 	                <div className="col-md-4 col-xs-12 m-bottom20">
 	                    <label htmlFor="location">LOCATION</label>
 	                    <div>
-	                      <input id="cities" type="text" name="q[place_name_cont_any]" ref='place_name_cont_any' placeholder={this.props.defaultloc} className="ui-autocomplete-input form-control form-square" />
+	                      <input id="cities" type="text" name="q[place_name_cont_any]" ref='place_name_cont_any' placeholder={this.props.defaultloc} className="ui-autocomplete-input form-control form-square" onChange={this.handleSearch} />
 	                    </div>
 	                </div>
 	                <div className="col-md-4 col-xs-12 m-bottom20">
 	                  <label htmlFor="facilities">ACTIVITIES</label>
-	                  <select name="center_type_in" className="magicsuggest" placeholder="Choose..">
+	                  <select name="center_type_in" className="magicsuggest" placeholder="Choose.." onChange={this.handleSearch}>
 	                  	{this.props.activities.map(function(act) {
 	                  	    return <option value={act}>{act}</option>;
 	                  	})}
 	                  </select>
-	                </div>
-	                <div className="col-md-4 col-xs-12">
-	                  <label htmlFor="">&nbsp;</label>
-	                  <div>
-	                    <input className="btn btn-primary" name="commit" type="submit" value="  Search  "  onClick={this.handleSearch} />
-	                  </div>
 	                </div>
 	            </div>
 			</fieldset>

@@ -38,11 +38,7 @@
                         <td><a href="mailto:<%= c.email %>"><%= c.email %></a></td>
                         <td><span class="<%= c.passport.blank? ? "label label-danger" : "label label-success" %>"><%= c.passport.blank? ? "Inactive" : "Active" %></span></td>
                         <td><span class="<%= c.active ? "label label-success" : "label label-danger" %>"><%= c.active %></span></td>
-                        <td>
-                        <%= link_to customer_path(:id => c.id), :method => 'delete', :data => {:confirm => "Are you sure ?"} do %>
-                            <i class='fa fa-trash-o'> &nbsp; </i>
-                        <% end %>
-                        </td>
+                        
                         <td></td>
                     </tr>
                 <%end%>

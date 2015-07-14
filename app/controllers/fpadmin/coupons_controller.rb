@@ -1,3 +1,5 @@
+# Admin Dashboard >> Coupons
+
 module Fpadmin
 class CouponsController < BaseController
 layout 'fpadmin'

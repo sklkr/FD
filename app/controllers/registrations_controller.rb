@@ -1,3 +1,5 @@
+## Signup customer, partner
+
 class RegistrationsController < ApplicationController
  skip_before_filter :authenticate!
  layout 'homepage'

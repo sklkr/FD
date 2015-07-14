@@ -1,3 +1,5 @@
+## Myadmin >> Reservations
+
 module Fpadmin
 class ReservationsController < BaseController 
 layout 'fpadmin'

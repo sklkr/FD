@@ -1,3 +1,5 @@
+# Frontend Details Controller
+
 class DetailsController < ApplicationController
   def index
   	@center = Center.friendly.find(params[:center])

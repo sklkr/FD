@@ -1,3 +1,5 @@
+# Old Controller
+
 module Customers
 class DetailsController < ApplicationController 
 before_filter :authenticated?
