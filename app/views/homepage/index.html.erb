@@ -269,18 +269,10 @@ You Can Try Zumba, Dance, Yoga, Pilates, Cycling, Gym, Strength Training And Man
 			<h2 style="" class="text-center">OUR STUDIO PARTNERS</h2>
 			<p style="margin-bottom:47px" class="text-center font-15">FitnessPapa Partners With the Best Fitness Studios, Gyms and Give You Access to all of them in One Place <br> We are adding Large Number of Studios & Varieties of Classes Every Week </p>
 		</div>
-		<div class="col-xs-12 clearfix">
-			<%= link_to centers_list_path(:city => 'Bengaluru', :map => 'true'), :class => 'pull-right', :remote => true do %>
-				<i class='fa fa-map-marker fa-2x pull-left fa-border' style='padding:4px 10px'></i>
-			<% end %>
-			 <!-- link_to centers_list_path(:city => 'Bengaluru'), :class => 'pull-right', :remote => true do
-				<i class='fa fa-bars fa-2x pull-left fa-border' style='margin-right:0px;border-right:0px'></i>
-			 end  -->
-		</div>
 		<div class="col-xs-12">
 			<ul class="list-inline text-center">
 				<li class="active">
-					<%= link_to 'Bangalore', centers_list_path(:city => 'Bengaluru'), :method => 'get', :remote => true, :style => 'color:white' %>
+					<%= link_to 'Bangalore', centers_list_path(:city => 'bangalore'), :method => 'get', :remote => true, :style => 'color:white' %>
 				</li>
 				<!-- <li><a href="#0" style="color:white">Mumbai</a></li> -->
 				<li><a href="#0" style="color:white">
@@ -296,17 +288,9 @@ You Can Try Zumba, Dance, Yoga, Pilates, Cycling, Gym, Strength Training And Man
 				<!-- <li><a href="#0" style="color:white">Kolkata</a></li> -->
 			</ul>
 			<hr>
-			<div class="row text-center" id="centers-list">
-				<%= render partial: 'center', collection: @centers %>
-			</div>
+			
 			<div class="row">
-				<section id="cd-google-map" class='hidden'>
-				    <!-- #google-container will contain the map  -->
-				    <div id="google-container"></div>
-				    <!-- #cd-zoom-in and #zoom-out will be used to create our custom buttons for zooming-in/out -->
-				    <div id="cd-zoom-inner"></div>
-				    <div id="cd-zoom-outer"></div>
-				    <address>Bangalore</address>
+				<section id="map" style='height:480px'>
 				</section>
 			</div>
 		</div>
@@ -353,254 +337,23 @@ You Can Try Zumba, Dance, Yoga, Pilates, Cycling, Gym, Strength Training And Man
 </div>
 
 <%= render :partial => 'homepage/alerter' %>
-<script>
-$(document).ready(function() {
-/*$("#banner").owlCarousel({
-  autoPlay: 3000, //Set AutoPlay to 3 seconds
-  navigation: false,
-  animateOut: 'fadeOut',
-  pagination: false,
-  items : 1,
-  itemsDesktop : [1199,3],
-  itemsDesktopSmall : [979,3]
- });
-*/
-});
-</script>
-
 <%= render 'homepage/passport' %>
 
 <%= content_for :linescript do %>
 	<script>
-		var map_zoom = 10;
-		var locations = [["13.02901", "80.258586"],["12.972283", "77.627147"],["12.934342", "77.616625"],["13.067227", "80.250548"],["12.999821", "77.599399"],["12.923868", "77.576281"],["13.026323", "77.593263"],["12.916641", "77.651552"],["12.977224", "80.222532"],["18.556535", "73.794684"],["22.295714", "73.160326"],["16.505235", "80.662147"],["32.25864", "75.66688"],["17.440147", "78.450885"],["12.97609", "80.258657"],["12.991778", "80.193873"],["12.990251", "80.218848"],["13.080879", "80.164706"],["13.067227", "80.250548"],["13.11388", "80.227391"],["13.090476", "80.21682"],["13.042682", "80.240964"],["13.08588", "80.187994"],["12.999295", "80.265824"],["13.060466", "80.249781"],[" 12.9798579", "80.218332"],["12.95143", "80.255183"],["12.939175", "80.235648"],["13.034527", "80.215442"],["12.922471", "77.58952"],["12.954363", "77.615738"],["13.060466", "80.249781"],["12.964658", "77.674936"],["13.052592", "80.204019"],["13.078484", "80.234265"],["12.965425", "77.637984"],["17.454232", "78.364014"],["13.04369", "80.25935"],["12.978328", "80.22629"],["12.904974", "80.209882"],["13.10091", "80.164346"],["12.932523", "77.631957"],["13.092986", "80.197619"],["13.006151", "77.579824"],["12.978041", "77.636547"],["12.964611", "77.702045"],["12.965409", "77.641671"],["12.969034", "77.63845"],["12.965409", "77.641671"],["12.9770906", "77.6371603"],["12.995875", "77.61569"],["12.936492", "77.614964"],["12.938729", "77.61569"],["12.98781", "77.533063"],["13.034745", "80.216366"],["12.912307", "77.651646"],["12.934093", "77.581328"],["13.04178", "80.178957"],["12.941223", "80.210476"],["17.48996", "78.400948"],["12.923029", "80.151048"]];
-
-
-		  //google map custom marker icon - .png fallback for IE11
-		  // var is_internetExplorer11= navigator.userAgent.toLowerCase().indexOf('trident') > -1;
-		  // var marker_url = ( is_internetExplorer11 ) ? '/assets/cd-icon-location.png' : '/assets/cd-icon-location.svg';
-
-		  //define the basic color of your map, plus a value for saturation and brightness
-		  var main_color = '#2d313f',
-		      saturation_value= -20,
-		      brightness_value= 5;
-
-		  //we define here the style of the map
-		  var style= [
-		      {
-		          //set saturation for the labels on the map
-		          elementType: "labels",
-		          stylers: [
-		              {saturation: saturation_value}
-		          ]
-		      },
-		      {   //poi stands for point of interest - don't show these lables on the map
-		          featureType: "poi",
-		          elementType: "labels",
-		          stylers: [
-		              {visibility: "off"}
-		          ]
-		      },
-		      {
-		          //don't show highways lables on the map
-		          featureType: 'road.highway',
-		          elementType: 'labels',
-		          stylers: [
-		              {visibility: "off"}
-		          ]
-		      },
-		      {
-		          //don't show local road lables on the map
-		          featureType: "road.local",
-		          elementType: "labels.icon",
-		          stylers: [
-		              {visibility: "off"}
-		          ]
-		      },
-		      {
-		          //don't show arterial road lables on the map
-		          featureType: "road.arterial",
-		          elementType: "labels.icon",
-		          stylers: [
-		              {visibility: "off"}
-		          ]
-		      },
-		      {
-		          //don't show road lables on the map
-		          featureType: "road",
-		          elementType: "geometry.stroke",
-		          stylers: [
-		              {visibility: "off"}
-		          ]
-		      },
-		      //style different elements on the map
-		      {
-		          featureType: "transit",
-		          elementType: "geometry.fill",
-		          stylers: [
-		              { hue: main_color },
-		              { visibility: "on" },
-		              { lightness: brightness_value },
-		              { saturation: saturation_value }
-		          ]
-		      },
-		      {
-		          featureType: "poi",
-		          elementType: "geometry.fill",
-		          stylers: [
-		              { hue: main_color },
-		              { visibility: "on" },
-		              { lightness: brightness_value },
-		              { saturation: saturation_value }
-		          ]
-		      },
-		      {
-		          featureType: "poi.government",
-		          elementType: "geometry.fill",
-		          stylers: [
-		              { hue: main_color },
-		              { visibility: "on" },
-		              { lightness: brightness_value },
-		              { saturation: saturation_value }
-		          ]
-		      },
-		      {
-		          featureType: "poi.sport_complex",
-		          elementType: "geometry.fill",
-		          stylers: [
-		              { hue: main_color },
-		              { visibility: "on" },
-		              { lightness: brightness_value },
-		              { saturation: saturation_value }
-		          ]
-		      },
-		      {
-		          featureType: "poi.attraction",
-		          elementType: "geometry.fill",
-		          stylers: [
-		              { hue: main_color },
-		              { visibility: "on" },
-		              { lightness: brightness_value },
-		              { saturation: saturation_value }
-		          ]
-		      },
-		      {
-		          featureType: "poi.business",
-		          elementType: "geometry.fill",
-		          stylers: [
-		              { hue: main_color },
-		              { visibility: "on" },
-		              { lightness: brightness_value },
-		              { saturation: saturation_value }
-		          ]
-		      },
-		      {
-		          featureType: "transit",
-		          elementType: "geometry.fill",
-		          stylers: [
-		              { hue: main_color },
-		              { visibility: "on" },
-		              { lightness: brightness_value },
-		              { saturation: saturation_value }
-		          ]
-		      },
-		      {
-		          featureType: "transit.station",
-		          elementType: "geometry.fill",
-		          stylers: [
-		              { hue: main_color },
-		              { visibility: "on" },
-		              { lightness: brightness_value },
-		              { saturation: saturation_value }
-		          ]
-		      },
-		      {
-		          featureType: "landscape",
-		          stylers: [
-		              { hue: main_color },
-		              { visibility: "on" },
-		              { lightness: brightness_value },
-		              { saturation: saturation_value }
-		          ]
-
-		      },
-		      {
-		          featureType: "road",
-		          elementType: "geometry.fill",
-		          stylers: [
-		              { hue: main_color },
-		              { visibility: "on" },
-		              { lightness: brightness_value },
-		              { saturation: saturation_value }
-		          ]
-		      },
-		      {
-		          featureType: "road.highway",
-		          elementType: "geometry.fill",
-		          stylers: [
-		              { hue: main_color },
-		              { visibility: "on" },
-		              { lightness: brightness_value },
-		              { saturation: saturation_value }
-		          ]
-		      },
-		      {
-		          featureType: "water",
-		          elementType: "geometry",
-		          stylers: [
-		              { hue: main_color },
-		              { visibility: "on" },
-		              { lightness: brightness_value },
-		              { saturation: saturation_value }
-		          ]
-		      }
-		  ];
-
-		  //set google map options
-		  var map_options = {
-		      center: new google.maps.LatLng(locations[16][0], locations[16][1]),
-		      zoom: map_zoom,
-		      panControl: false,
-		      zoomControl: false,
-		      mapTypeControl: false,
-		      streetViewControl: false,
-		      mapTypeId: google.maps.MapTypeId.ROADMAP,
-		      scrollwheel: false,
-		      styles: style,
-		  };
-		  //inizialize the map
-		  var map = new google.maps.Map(document.getElementById('google-container'), map_options);
-		  //add a custom marker to the map
-		  for (var x = 0; x < locations.length; x++) {
-			var marker = new google.maps.Marker({
-			    position: new google.maps.LatLng(locations[x][0], locations[x][1]),
-			    map: map,
-			    visible: true
-			});
-		  }
-
-		  //add custom buttons for the zoom-in/zoom-out on the map
-		  function CustomZoomControl(controlDiv, map) {
-		      //grap the zoom elements from the DOM and insert them in the map
-		      var controlUIzoomIn= document.getElementById('cd-zoom-inner'),
-		          controlUIzoomOut= document.getElementById('cd-zoom-outer');
-		      controlDiv.appendChild(controlUIzoomIn);
-		      controlDiv.appendChild(controlUIzoomOut);
-
-		      // Setup the click event listeners and zoom-in or out according to the clicked element
-		      google.maps.event.addDomListener(controlUIzoomIn, 'click', function() {
-		          map.setZoom(map.getZoom()+1)
-		      });
-		      google.maps.event.addDomListener(controlUIzoomOut, 'click', function() {
-		          map.setZoom(map.getZoom()-1)
-		      });
-		  };
-
-		  var zoomControlDiv = document.createElement('div');
-		  var zoomControl = new CustomZoomControl(zoomControlDiv, map);
-
-		  //insert the zoom div on the top left of the map
-		  map.controls[google.maps.ControlPosition.LEFT_TOP].push(zoomControlDiv);
+		var map = L.map('map').setView([12.971599, 77.594563], 13);
+		L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
+		    attribution: 'Map data',
+		    maxZoom: 18,
+		    id: 'sidtri.mnfb5cof',
+		    accessToken: 'pk.eyJ1Ijoic2lkdHJpIiwiYSI6IjAyNTEyZmNjZGUwZjYzYWFhOGQ3YjJhNDI4NWVkY2NkIn0.SS5hL6eoI91X_u0TNEQ6tw'
+		}).addTo(map);
+		<% cache("centers_#{@centers.last.id}" ) do %>
+		<% @centers.each do |center| %>
+			var marker = L.marker([<%= center.centerinfo.latitude %>, <%= center.centerinfo.longitude %>]).addTo(map);
+			marker.bindPopup("<span style='color:black'><%= center.name.capitalize %></span>");
+		<% end %>
+		<% end %>
 	</script>
 <% end %>
 

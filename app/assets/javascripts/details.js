@@ -25,6 +25,7 @@
 //= require plugins/parsley
 //= require plugins/simpleCart
 //= require plugins/moment
+//= require plugins/leaflet
 //= require local_time
 //= require signup
 //= require cart

@@ -27,6 +27,7 @@
 //= require plugins/simpleCart
 //= require plugins/drop
 //= require plugins/magicsuggest
+//= require plugins/leaflet
 //= require sweetalert.min
 //= require plugins/parsley
 //= require plugins/velocity
