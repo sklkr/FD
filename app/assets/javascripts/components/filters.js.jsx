@@ -116,8 +116,14 @@ var SearchContainer = React.createClass({
 			place_name_cont_any: new google.maps.places.Autocomplete(window.search_input),
 			time_filter: $("#time_filter").ionRangeSlider({type: "double", keyboard: true, grid: true, onChange: function(a,b){
 				this.startSearching();
-			}.bind(this), values: ["06:00","07:00","08:00","09:00","10:00","11:00","12:00","13:00","14:00","15:00","16:00","17:00","18:00","19:00","20:00","21:00","22:15"]}),
-		});
+			}.bind(this), 
+			values: ["06:00","07:00","08:00","09:00","10:00","11:00","12:00","13:00","14:00","15:00","16:00","17:00","18:00","19:00","20:00","21:00","22:15"]}),
+			}, function(){
+				google.maps.event.addListener(this.state.place_name_cont_any, 'place_changed', function(){
+					this.startSearching();
+				}.bind(this));
+		}.bind(this));
+		
 		this.setState({
 			filtershow: true
 		});
@@ -247,7 +253,7 @@ var SearchContainer = React.createClass({
 		        </div>
 		        <div className="panel-body">
 		          <div className="clearfix">
-		          	<Search activities={this.state.activities} onSearch={this.startSearching} show={this.state.filtershow} defaultloc={this.state.defaultLocation} />
+		          	<Search activities={this.state.activities} onSearch={this.startSearching} show={this.state.filtershow} defaultloc={this.state.defaultLocation} isfpclass={this.state.isFpclass} />
 		          </div>
 		          <div className="clearfix" style={calendarStyle}>
 		          	<div className="week1">
@@ -315,6 +321,7 @@ var Toggler = React.createClass({
 
 var Search = React.createClass({
 	handleSearch: function(){
+		// no need of this function
 		clearTimeout(window.wto);
 	    window.wto = setTimeout(function() {
 			this.props.onSearch();	
@@ -326,16 +333,20 @@ var Search = React.createClass({
 			display: this.props.show ? 'block' : 'none'
 		};
 
+		var timeStyle = {
+			display: this.props.isfpclass ? 'block' : 'none'
+		};
+
 		return(
 			<fieldset className="search-container hidden-xs" id="center-search-container" style={show}>
 	            <div className="row">
-	                <div className="col-md-4 col-xs-12">
+	                <div className="col-md-4 col-xs-12 m-bottom20" style={timeStyle} >
 	                    <input type="text" id="time_filter" name="time_filter" onChange={this.handleSearch} />
 	                </div>
 	                <div className="col-md-4 col-xs-12 m-bottom20">
 	                    <label htmlFor="location">LOCATION</label>
 	                    <div>
-	                      <input id="cities" type="text" name="q[place_name_cont_any]" ref='place_name_cont_any' placeholder={this.props.defaultloc} className="ui-autocomplete-input form-control form-square" onChange={this.handleSearch} />
+	                      <input id="cities" type="text" name="q[place_name_cont_any]" ref='place_name_cont_any' placeholder={this.props.defaultloc} className="ui-autocomplete-input form-control form-square" />
 	                    </div>
 	                </div>
 	                <div className="col-md-4 col-xs-12 m-bottom20">

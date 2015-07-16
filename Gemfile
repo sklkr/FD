@@ -93,6 +93,7 @@ gem 'delayed_job_active_record'
 
 group :development do
   gem 'brakeman', :require => false
+  gem 'rack-mini-profiler'
 end
 
 gem "aws-sdk", '< 1.9.0'
@@ -131,3 +132,5 @@ gem 'geocoder'
 
 gem 'redis'
 gem 'redis-rails'
+
+gem 'newrelic_rpm'
