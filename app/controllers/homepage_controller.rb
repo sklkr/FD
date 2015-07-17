@@ -10,7 +10,7 @@ class HomepageController < ApplicationController
   end
 
   def centers_list
-  	@map_centers = {:chennai => [13.082680, 80.270718], :bangalore => [12.971599, 77.594563]}
+  	@map_centers = {:chennai => [13.042680, 80.230718], :bangalore => [12.971599, 77.594563]}
     @latitude = @map_centers[params[:city].to_sym][0]
     @longitude = @map_centers[params[:city].to_sym][1]
     respond_to do |format|
