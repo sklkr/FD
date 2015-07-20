@@ -48,7 +48,7 @@ class Passport < ActiveRecord::Base
           ["Date",           created_at.strftime('%d-%m-%Y %H:%M')],
           ["Account Billed", "#{full_name} (#{email})"],
           ["Product",        "FitnessPapa"],
-          ["Amount",         "Rs. 300.00"],
+          ["Amount",         "Rs. #{order_item.unit_price}"],
           ["Charged to",     "#{order_item.order.pg_type} (#{order_item.order.cardnum})"]
         ]
       )
