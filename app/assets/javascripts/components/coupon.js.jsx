@@ -22,10 +22,11 @@ var CouponContainer = React.createClass({
 
 		var formState = this.state.active ? "form-inline hidden" : "form-inline" ;
 		var spanState = this.state.active ? "label label-success" : "hidden" ;
+    var hider = { display: 'none' };
 
 		return(
       <div>
-        <div className={formState}>
+        <div className={formState} style={hider}>
           <input type="text"  placeholder="Coupon Code?" ref="couponcode" className="form-control" style={{ marginRight: '12px'}} />
           <input type="submit" className="btn btn-success" onClick={this.sendCoupon}/>
         </div>

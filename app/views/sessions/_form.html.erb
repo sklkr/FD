@@ -1,3 +1,9 @@
+<div class="cd-form" style="margin-top:20px">
+  <a class="btn btn-block btn-social btn-facebook full-width has-padding" href='/auth/facebook'>
+    <i class="fa fa-facebook"></i> Sign in with Facebook
+  </a>
+</div>  
+<hr>
 <%= simple_form_for @customer, :url => sessions_path, :html => {:class => 'cd-form', 'data-parsley-validate' => true} do |f| %>
   <%= f.input :email, :label => 'E-mail', label_html: { class: 'image-replace cd-email'}, input_html: { class: 'full-width has-padding has-border', :placeholder => 'E-mail (eg: abc@xxx.com)'  }, wrapper_html: { class: 'fieldset' } %>
   <%= f.simple_fields_for :user do |p| %>

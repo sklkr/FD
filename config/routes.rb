@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
 
 
+  get 'invoice' => 'invoices#show', as: 'invoice'
+
   get 'passport/index'
 
   mount Commontator::Engine => '/commontator'
@@ -21,11 +23,11 @@ Rails.application.routes.draw do
       resources :customers
       resources :reservations
       resources :orders
-
       resources :sessions
       resources :coupons
 
       get '/' => 'sessions#new'
+      get '/iv_generator/:id' => 'invoice#show', as: :iv_generator
     end
   end
 

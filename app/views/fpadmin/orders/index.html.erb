@@ -36,7 +36,12 @@
                         <td><%= local_time(o.start_date, "%B %e, %Y") %></td>
                         <td><%= local_time(o.end_date, "%B %e, %Y") unless o.end_date.nil? %></td>
                         <td><%= o.remaining_tickets  %></td>
-                        <td></td>
+                        <td>
+                            <%= link_to iv_generator_path(:id => o.id, format: :pdf), class: 'btn btn-small', :style => 'border: 0px;padding: 0px;' do %>
+                                <i class="fa fa-file-text-o">&nbsp;</i>
+                            <% end %>
+                            
+                        </td>
                     </tr>
                 <%end%>
             </tbody>

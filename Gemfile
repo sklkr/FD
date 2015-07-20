@@ -134,3 +134,4 @@ gem 'redis'
 gem 'redis-rails'
 
 gem 'newrelic_rpm'
+gem 'receipts'

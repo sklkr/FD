@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150710065231) do
+ActiveRecord::Schema.define(version: 20150720114525) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -324,6 +324,7 @@ ActiveRecord::Schema.define(version: 20150710065231) do
     t.integer  "referral_id"
     t.integer  "clasbkings_count"
     t.string   "city"
+    t.boolean  "fb_active",        default: false
   end
 
   create_table "delayed_jobs", force: true do |t|
@@ -559,6 +560,7 @@ ActiveRecord::Schema.define(version: 20150710065231) do
     t.string   "net_amount_debit"
     t.integer  "customer_id"
     t.integer  "coupon_id"
+    t.string   "pg_type"
   end
 
   add_index "orders", ["coupon_id"], name: "index_orders_on_coupon_id", using: :btree
