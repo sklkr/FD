@@ -8,9 +8,11 @@ class Passport < ActiveRecord::Base
 
   ACTIVE = 'passport_beta'
 
+  # associations
   belongs_to :order_item
   belongs_to :customer
   has_many :clasbkings
+  
   scope :recent, -> { order(:created_at) }
   default_scope { where("end_date>=?", Date.today) }
 

@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
 
-
   get 'invoice' => 'invoices#show', as: 'invoice'
 
   get 'passport/index'

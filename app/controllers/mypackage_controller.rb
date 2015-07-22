@@ -1,3 +1,7 @@
+########## Role ###################
+# Payment Gateway redirection
+# Success and failure callbacks from payment gateway
+
 class MypackageController < ApplicationController
   protect_from_forgery :except => [:success, :failure]
   before_action :authenticated?
@@ -15,6 +19,7 @@ class MypackageController < ApplicationController
   end
 
   def success
+    binding.pry
     @order = current_order || Order.find_by_number(params[:txnid])
     @order.update_attributes(params.permit(:status, :bank_ref_num, :bankcode, :name_on_card, :cardnum, :amount_split, :discount, :net_amount_debit))
     @order.pg_type = params['PG_TYPE']

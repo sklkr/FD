@@ -214,7 +214,7 @@ var SearchContainer = React.createClass({
 
 	render: function(){
 		var fpclasses = this.state.fpclasses.map(function(data){
-			return <ClassRow key={data.key} date={data.date} fpclass={data.fpclass} start_time={data.time} status={data.status} />;
+			return <ClassRow key={data.key} date={data.date} fpclass={data} start_time={data.time} status={data.status} />;
 		}.bind(this));
 
 		var fpstudios = this.state.fpstudios.map(function(fpstudio){
