@@ -5,48 +5,52 @@ class ClasFetcher
 	
 	# Format :: date =  YYYY-MM-DD
 	def initialize(date, fpids=[], opts={})
-		@redis   = Redis.new
-		@date    = date.remove('-')
-		@fpids = fpids
-		@fpkeys = @fpids.blank? ? [] : fpids_union # o/p :: list of keys ['fpclass:1', 'fpclass:2' ...]
-		
+		@redis    = Redis.new
+		@key_base = date.remove('-')
+		@ids = fpids
 		opts.reverse_merge!(
-			start_time: 630,
+			start_time: 530,
 			end_time: 2400
 		)
+
 		@options = opts
-		@fptimekeys = inclass_time
-		@ids = total_intersects # List of keys includes fpclass, date
+		@fpkeys = fpids_union
 	end
 
 	def fetch
 		@redis.pipelined {
-			@ids.collect do |id|
-				@redis.hgetall id
-			end	
+			@redis.multi do |multi|
+				@fpkeys.reject{|key| !in_time(key) }.each do |id|
+					multi.hgetall id
+				end
+			end
 		}
-		
-	end
-
-	def total_intersects
-		@redis.sinter @date, @fpkeys, @fptimekeys
 	end
 
 	def fpids_union
-		key = rand(200..9999999).to_s + (65 + rand(26)).chr
-		values = @redis.sunion *parse_fpids
-		values.each {|val| @redis.sadd key, val }
-		key
+		parse_fpids.blank? ? [] : @redis.sunion(*parse_fpids)
 	end
 
-	def inclass_time
-		key = rand(200..9999999).to_s + (65 + rand(26)).chr
-		values = @redis.zrangebyscore('time', @options[:start_time], @options[:end_time])
-		@redis.pipelined {
-			values.each {|val| @redis.sadd key, val}
-		}
-		key
+	def parse_fpids
+		@ids.collect do |id|
+			"#{@key_base}:#{id}"
+		end
 	end
+
+
+	private
+		def in_time(key)
+			key = key.split(':')[2].to_i
+			(@options[:start_time] <= key) && (key <= @options[:end_time])
+		end
+	# def inclass_time
+	# 	key = rand(200..9999999).to_s + (65 + rand(26)).chr
+	# 	values = @redis.zrangebyscore('time', @options[:start_time], @options[:end_time])
+	# 	@redis.pipelined {
+	# 		values.each {|val| @redis.sadd key, val}
+	# 	}
+	# 	key
+	# end
 
 	# Get fpclasses redis ids
 	# def inclass_ids
@@ -61,9 +65,4 @@ class ClasFetcher
 
 	# ip :: [1,2,3,4,5]
 	# op :: ['fpclass:1', 'fpclass:2', ....]
-	def parse_fpids
-		@fpids.collect do |fpid|
-			"fpclass:#{fpid}"
-		end
-	end
 end
