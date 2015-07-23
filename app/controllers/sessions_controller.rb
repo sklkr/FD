@@ -30,7 +30,7 @@ layout 'homepage'
       warden.set_user(customer.user)
       redirect_to search_path    
     else
-      render :text => "Sorry to say that you are not registered with FitnessPapa. For more queries, reach us at support@fitnesspapa.com"
+      render :text => "Your account is not activated with FitnessPapa. Please Sign Up & Complete Registration Process"
     end
   end
 

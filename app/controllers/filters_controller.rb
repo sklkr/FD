@@ -18,7 +18,7 @@ before_filter { redirect_to root_url unless current_user }
     @c = Fpclass.ransack(params[:q])
     start_time, end_time = fetch_timings.collect {|time| time.remove(':').to_i }
     @fpclasses = ClasFetcher.new(date, @c.result.pluck(:id), {start_time: start_time, end_time: end_time}).fetch
-    render json: [@fpclasses, dates_fetcher, passport ? passport.clasbkings : [], params[:q][:centers_place_name_cont_any]]
+    render json: [@fpclasses.sort! {|x, y| x['time'] <=> y['time'] }, dates_fetcher, passport ? passport.clasbkings : [], params[:q][:centers_place_name_cont_any]]
   end
 
   private

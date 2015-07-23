@@ -14,7 +14,7 @@ var SearchContainer = React.createClass({
 			filtershow: false,
 			pageNumber: 1,
 			loadMoreText: 'LOAD MORE',
-			loadMore: true,
+			loadMore: false,
 			defaultLocation: '',
 			time_filter: ''
 		}
@@ -61,8 +61,8 @@ var SearchContainer = React.createClass({
 			isFpstudio: false,
 			isCalendar: true,
 			loaded: false,
-			loadMore: true,
 			pageNumber: 1
+			//loadMore: true,
 		});
 		// if(this.state.place_name_cont_any.getPlace() == undefined){
 		// 	sweetAlert('Location/City', 'Please choose your location before going to search');
@@ -76,7 +76,7 @@ var SearchContainer = React.createClass({
 			});
 			if(data.filters[0].length == 0){
 				this.setState({
-					loadMore: false
+					// loadMore: false
 				});
 			}
 		}.bind(this));
@@ -147,8 +147,8 @@ var SearchContainer = React.createClass({
 			isFpstudio: false,
 			isCalendar: true,
 			loaded: false,
-			loadMore: true,
 			pageNumber: 1
+			// loadMore: true,
 		});
 		this.loadClasses().then(function(data){
 			this.setState({
@@ -158,7 +158,7 @@ var SearchContainer = React.createClass({
 			});
 			if(data.filters[0].length == 0){
 				this.setState({
-					loadMore: false
+					// loadMore: false
 				});
 			}
 		}.bind(this));
@@ -214,7 +214,7 @@ var SearchContainer = React.createClass({
 
 	render: function(){
 		var fpclasses = this.state.fpclasses.map(function(data){
-			return <ClassRow key={data.key} date={data.date} fpclass={data} start_time={data.time} status={data.status} />;
+			return <ClassRow key={data.id} date={data.date} fpclass={data} start_time={data.time} status={data.status} />;
 		}.bind(this));
 
 		var fpstudios = this.state.fpstudios.map(function(fpstudio){

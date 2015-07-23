@@ -20,9 +20,12 @@ class ClasFetcher
 	end
 
 	def fetch
-		@ids.collect do |id|
-			@redis.hgetall id
-		end
+		@redis.pipelined {
+			@ids.collect do |id|
+				@redis.hgetall id
+			end	
+		}
+		
 	end
 
 	def total_intersects
@@ -39,7 +42,9 @@ class ClasFetcher
 	def inclass_time
 		key = rand(200..9999999).to_s + (65 + rand(26)).chr
 		values = @redis.zrangebyscore('time', @options[:start_time], @options[:end_time])
-		values.each {|val| @redis.sadd key, val}
+		@redis.pipelined {
+			values.each {|val| @redis.sadd key, val}
+		}
 		key
 	end
 
