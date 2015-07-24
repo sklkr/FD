@@ -17,5 +17,9 @@ layout 'customerdashboard'
   def show
   	@passport = passport
   end
+
+  def color 
+    false
+  end
 end
 end

@@ -12,4 +12,5 @@ class DetailsController < ApplicationController
   	commontator_thread_show(@commontable)
     @title = @center.name
   end
+
 end

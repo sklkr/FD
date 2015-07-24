@@ -4,7 +4,7 @@
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 	<link rel="shortcut icon" href="/assets/favicon.ico" />
-	<title><%= content_for?(:title) ? yield(:title) : "Fitness papa :: Dashboard" %></title>
+	<title><%= content_for?(:title) ? yield(:title) : "Fitness papa" %></title>
  
     <!-- Referral -->
 	<link rel="icon" href="<%= asset_path('favicon.ico') %>" type="image/x-icon">
@@ -16,8 +16,8 @@
     <meta property="og:url" content="<%= root_url %>"/>
 	
 	<%= stylesheet_link_tag "application" %>
-	<%= javascript_include_tag "application" %>
 	<%= csrf_meta_tags %>
+
 	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAs4tO9vd5JNhXOX8h492hEwfstspyTQAw&libraries=places"></script>
 	<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
 	<!--[if lt IE 9]>
@@ -28,26 +28,27 @@
 <body>
  <%= render :partial => 'layouts/header' unless @header == false %>
  <%= render :partial => 'layouts/notices' %>
- <!-- <div class="container">
- 	<div class="embed-nav">
- 		<ul class="menu">
- 			<%= nav_link_customer 'Account Details', customers_details_path %>
- 			<%= nav_link_customer 'My Bookings', customers_bookings_path %>
- 			<%= nav_link_customer 'My Pass', customers_mypass_index_path %>
- 			<li><a href="<%=%>">Email Preferences</a></li>
- 			<li><a href="<%=%>">Referral</a></li>
- 		</ul>
- 	</div>
- </div> -->
 
- <div class="container">
-     <div class="row">
- 		<div class="col-md-12">
- 			<%= yield %>
-		</div>
- 	</div>
+ <div class="row" style="background-color:#f1f5fc">
+    <div id='search-container' class="container" style="min-height:450px">
+ 		<div class="panel hasMtop">
+ 			<div class="panel-heading">
+ 				<ul class="list-inline profile_nav">
+ 					<li><a href="<%= customers_classes_path %>"><i class='fa fa-calendar-o'>&nbsp;</i>Schedule</a></li>|
+ 					<li><a href="<%= customers_class_path('passport') %>"><i class='fa fa-money'>&nbsp;</i>Payments</a></li> |
+ 					<li><a href="<%= edit_customers_profile_path('v1') %>"> <i class='fa fa-cogs'>&nbsp;</i>Settings</a></li>
+ 				</ul>
+ 			</div>
+ 			<div class="panel-body">
+ 				<%= yield %>
+ 			</div>
+ 		</div>
+    </div>
  </div>
+
  <%= render :partial => 'layouts/footer' %>
+ 
+ <%= javascript_include_tag "application" %>
  <%= yield :linescript %>
 </body>
 </html>

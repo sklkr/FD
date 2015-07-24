@@ -1,0 +1,5 @@
+<li><a href="<%= customers_classes_path %>"><i class='fa fa-user'></i>&nbsp; Profile</a></li>
+<li><%= link_to session_path("1"), method: :delete do %>
+		<i class='fa fa-sign-out'></i>&nbsp; Logout</a>
+	<% end %>
+</li>

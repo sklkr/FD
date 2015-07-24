@@ -7,6 +7,7 @@ layout 'customerdashboard'
 before_filter { @c = current_user.user }
 
   def edit
+    @user = current_user
   end
 
   def update
@@ -17,6 +18,10 @@ before_filter { @c = current_user.user }
       flash[:notice] = "Something went wrong"
       render 'edit'
     end
+  end
+
+  def color 
+    false
   end
   
   private

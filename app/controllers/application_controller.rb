@@ -4,7 +4,7 @@ class ApplicationController < ActionController::Base
   # Prevent CSRF attacks by raising an exception.
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
-  helper_method :warden, :signed_in?, :current_user, :is_partner?, :is_customer?, :center, :current_order
+  helper_method :warden, :signed_in?, :current_user, :is_partner?, :is_customer?, :center, :current_order, :which_user, :color
   before_filter { @customer ||= Customer.new; @customer.build_user }
   # Referral checker
   before_filter :ref_to_cookie
@@ -20,12 +20,20 @@ class ApplicationController < ActionController::Base
      !current_user.nil?
    end
 
+   def color
+    true
+   end
+
    def passport
     current_user.passport
    end
 
    def current_user
     warden.user.customer if warden.user
+   end
+
+   def which_user
+    current_user || Guest.new
    end
 
    def warden

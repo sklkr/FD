@@ -1,33 +1,51 @@
-<div class="row">
-	<div class="col-xs-12">
-		<h3>Passport</h3>
-	</div>
-</div>
+<h4>Payments</h4>
 
-<div class="row" style="margin-bottom:300px">
-	<div class="col-xs-12 col-sm-9">
-		<% unless @passport.blank? %>
-			<div class="panel panel-info">
-				<div class="panel-heading">Passports</div>
-				<table class="table table-bordered table-condensed table-hover table-striped">
-					<thead>
-						<tr>
-							<th>Name</th>
-							<th>Booked at</th>
-							<th>Expired on</th>
-							<th>Passes</th>
-						</tr>
-					</thead>
-					<tbody>
-						<tr>
-							<td>FitnessPapa Passport</td>
-							<td><%= local_time(@passport.start_date, "%B %d") %></td>
-							<td><%= local_time(@passport.end_date, "%B %d") %></td>
-							<td><%= @passport.tickets %></td>
-						</tr>
-					</tbody>
-				</table>
-			</div>
-		<% end %>
+<% if @passport.blank? %>
+	<p class="text-center text-muted">You have no passport. Buy passport to reserve classes.</p>
+	    <hr>
+<% end %>
+
+<div class="row">
+	<% if @passport.blank? %>
+		<div class="col-sm-6 col-sm-offset-3">
+			<div class="row">
+			    <div class="col-xs-6">
+			      <div class="new_passport">
+			        <h3>Passport</h3>
+					<span class='money'><span class='symbol'><i class='fa fa-inr'></i> </span>999/-</span>
+					<br>
+			        <p class="text-center"><a class="btn btn-default" href="/mypackage">Pay Now</a></p>
+			      </div>
+				</div>
+				<div class="col-xs-6">
+			        <h4>Features</h4>
+			        <hr>
+			        <div><i class="fa fa-check text-success"></i> <strong>Unlimited Classes</strong></div>
+			        <div><i class="fa fa-check text-success"></i> <strong>Top rated Studios & Trainers</strong></div>
+			        <div><i class="fa fa-check text-success"></i> No upfront or Hidden Fees</div>
+			        <div><i class="fa fa-check text-success"></i> Guaranteed Satifaction</div>
+			      </div>
+			  </div>
+		</div>
+	<% end %>
+	<% unless @passport.blank? %>
+	<div class="col-sm-6 col-sm-offset-3">
+		<table class="table">
+	        <thead>
+	          <tr><th>Date</th>
+	          <th>Amount</th>
+	          <th>Expired on</th>
+	          <th class="text-center">Receipt</th>
+	        </tr></thead>
+	        <tbody>
+		            <tr>
+		              <td><%= local_time(@passport.start_date, "%B %d") %></td>
+		              <td><%= @passport.order_item.unit_price %></td>
+		              <td><%= @passport.end_date %></td>
+		              <td class="text-center"><a href="/invoice.pdf"><i class="fa fa-file-pdf-o" style='color:rgb(171, 136, 17)'></i></a></td>
+		            </tr>
+	        </tbody>
+	    </table>
 	</div>
+	<% end %>
 </div>

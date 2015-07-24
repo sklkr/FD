@@ -46,4 +46,8 @@ before_filter { redirect_to root_url unless current_user }
     def fetch_timings
       
     end
+
+    def color 
+      false
+    end
 end

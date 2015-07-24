@@ -2682,3 +2682,106 @@ div.input input.has-border{
 #listers{
   border-top: 0px;
 }
+
+
+
+/*#### Navbar own style ###*/
+
+nav.header_nav{
+  min-height:70px;
+  background: black;
+}
+
+.remove_color{
+  background: #f1f5fc !important;
+}
+
+.nav_pad{
+  padding:10px 0px;
+}
+.header_nav_logo{
+   height: 50px;
+  line-height: 50px;
+  white-space: nowrap;
+}
+
+.navbar_font{
+  font-size: 15px;
+  background: black;
+}
+.remove_color .navbar_font{
+  background: #f1f5fc;
+}
+
+
+.navbar_style li{
+  float: left;
+}
+.navbar_font a{
+  color: white;
+}
+
+.remove_color .navbar_font a{
+  color: rgb(94, 102, 99);
+}
+
+.navbar_font a:focus, .navbar_font a:hover{
+  text-decoration: none;
+  background-color: black !important;
+  color: white;
+  /* border-color: black; */
+  /* text-shadow: 2px 2px #FFFFFF; */
+  -webkit-stroke-width: 5.3px;
+  -webkit-stroke-color: #FFFFFF;
+  -webkit-fill-color: #FFFFFF;
+  text-shadow: 1px 0px 20px white;
+  -webkit-transition: width 0.3s;
+  transition: width 0.3s;
+  -moz-transition: width 0.3s;
+  -o-transition: width 0.3s;
+}
+
+
+
+.remove_color .navbar_font a:focus, .remove_color .navbar_font a:hover{
+  background-color: #f1f5fc !important;
+  color: rgb(230, 126, 34);
+}
+
+
+.profile_nav{
+  width:400px;
+  margin:10px auto !important;
+}
+.profile_nav li {
+  margin-right: 10px;
+  margin-left: 10px;
+}
+.profile_nav a{
+ font-size: 15px;
+}
+.profile_nav i{
+  font-size: 25px;
+}
+
+.new_passport{
+  border-radius: 10px;
+  color: white;
+  padding: 30px 0px;
+  text-align: center;
+  text-shadow: 0 3px 1px rgba(0,0,0,0.1);
+  background: rgb(31, 36, 42);
+}
+
+.money{
+  font-size: 5em;
+  font-weight: bold;
+}
+
+.remove_color .header_nav_logo img{
+  background: black;
+  padding-left: 6px;
+  padding-top: 3px;
+  padding-right: 4px;
+  padding-bottom: 1px;
+}
