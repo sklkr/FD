@@ -3,7 +3,7 @@
 		<h4>Account Settings</h4>
 		<br>
 		<br>
-		<%=simple_form_for @c, url: customers_profile_path('v1'), :html => {:class => ''} do |f| %>
+		<%=simple_form_for @c, url: customers_profile_path('v1'), :html => {:class => 'row'} do |f| %>
 			<div class="col-xs-6">
 				<%= f.input :full_name, input_html: { class: 'form-control input-sm' }, wrapper_html: { class: 'form-group' } %>
 			</div>
@@ -31,13 +31,14 @@
             </div>
 		<%end%>
 	</div>
+	<hr>
 	<div class="col-sm-6">
 		<h4>Change Your Password</h4>
 		<%= render :partial => 'password_resets/change_pass' %>	
 	</div>
+	<hr>
 	<div class="col-sm-12">
-		<hr>
-		<h4>Refer & Earn</h4>
+		<h4 style="margin-bottom:16px">Refer & Earn</h4>
 		<%= render :template => 'customers/referrals/index' %>
 	</div>
 </div>

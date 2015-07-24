@@ -2764,6 +2764,26 @@ nav.header_nav{
   font-size: 25px;
 }
 
+@media only screen and (max-device-width: 620px) {
+  .profile_nav i{
+    font-size: 18px;
+  }
+
+  .profile_nav a{
+    font-size: 12px;
+  }
+
+  .header_nav_logo{
+    margin-left: 12px;
+  }
+  .new_passport span.money{
+    font-size:2em;
+  }
+  .pay_now{
+    margin-top:12px;
+  }
+}
+
 .new_passport{
   border-radius: 10px;
   color: white;

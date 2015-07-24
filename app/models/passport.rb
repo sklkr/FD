@@ -1,7 +1,7 @@
 class Passport < ActiveRecord::Base
   TYPE = {
     'passport_alpha' => {'quantity' => '1', 'unit_price' => '1500', :tickets => '20', :order_type => 'Package', :end_date => Date.today + 30.days},
-    'passport_beta' => {'quantity' => '1', 'unit_price' => '999', :tickets => '10', :order_type => 'Package', :end_date => Date.today + 30.days}
+    'passport_beta' => {'quantity' => '1', 'unit_price' => '999', :tickets => '20', :order_type => 'Package', :end_date => Date.today + 30.days}
   }
 
   delegate :full_name, :email, to: :customer, :allow_nil => true

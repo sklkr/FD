@@ -45,11 +45,11 @@ before_action :is_available_seats, except: :destroy
 
 	private
 		def is_passport
-			render :js => "$('#package').modal('show')" if passport.blank?
+			render :js => "window.location.replace('https://fitnesspapa.com/customers/classes/passport')" if passport.blank?
 		end
 
 		def is_available_tickets
-	  		render :js => "swal('Oops...', 'Passport tickets gone empty. You can buy new passport to get more tickets','error')" if (passport.remaining_tickets <= 0)
+	  		render :js => "swal('Oops...', 'Passport got expired. Please buy new passport to get access to classes','error')" if (passport.remaining_tickets <= 0)
 		end
 
 		def is_available_seats
