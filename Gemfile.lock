@@ -127,6 +127,10 @@ GEM
     delayed_job_active_record (4.0.3)
       activerecord (>= 3.0, < 5.0)
       delayed_job (>= 3.0, < 4.1)
+    delayed_job_web (1.2.10)
+      activerecord (> 3.0.0)
+      delayed_job (> 2.0.3)
+      sinatra (>= 1.4.4)
     domain_name (0.5.24)
       unf (>= 0.0.5, < 1.0.0)
     dynamic_sitemaps (2.0.0)
@@ -430,6 +434,7 @@ DEPENDENCIES
   daemons
   delayed_job
   delayed_job_active_record
+  delayed_job_web
   dynamic_sitemaps
   execjs
   ffaker

@@ -9,7 +9,7 @@ class CouponsController < ApplicationController
      @order.save
    end
    session[:order_id] = @order.id
-   unless @coupon.blank?
+   unless @coupon.blank? && !@order.coupon.blank?
      @order.coupon = @coupon
      @order.save
      render json: {:coupon => params[:id], :active => true, :amount => @coupon.amount.to_i}

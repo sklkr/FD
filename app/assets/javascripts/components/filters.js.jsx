@@ -344,7 +344,7 @@ var Search = React.createClass({
 	                    <input type="text" id="time_filter" name="time_filter" onChange={this.handleSearch} />
 	                </div>
 	                <div className="col-md-4 col-xs-12 m-bottom20">
-	                    <label htmlFor="location">LOCATION</label>
+	                    <label htmlFor="location">CITY / LOCATION</label>
 	                    <div>
 	                      <input id="cities" type="text" name="q[place_name_cont_any]" ref='place_name_cont_any' placeholder={this.props.defaultloc} className="ui-autocomplete-input form-control form-square" />
 	                    </div>

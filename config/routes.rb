@@ -2,6 +2,8 @@ Rails.application.routes.draw do
 
   get 'invoice' => 'invoices#show', as: 'invoice'
 
+  match "/delayed_job" => DelayedJobWeb, :anchor => false, via: [:get, :post]
+
   get 'passport/index'
 
   mount Commontator::Engine => '/commontator'

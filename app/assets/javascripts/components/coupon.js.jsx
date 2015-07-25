@@ -6,7 +6,7 @@ var CouponContainer = React.createClass({
     }
   },
   couponUrl: function(){
-  return $.post('coupons.js', {id: this.refs.couponcode.getDOMNode().value});
+    return $.post('/coupons.js', {id: this.refs.couponcode.getDOMNode().value});
   },
   sendCoupon: function(){
    this.couponUrl().then(function(data){
@@ -22,13 +22,15 @@ var CouponContainer = React.createClass({
 
 		var formState = this.state.active ? "form-inline hidden" : "form-inline" ;
 		var spanState = this.state.active ? "label label-success" : "hidden" ;
-    var hider = { display: 'none' };
+    var hider = { display: 'block' };
 
 		return(
       <div>
         <div className={formState} style={hider}>
-          <input type="text"  placeholder="Coupon Code?" ref="couponcode" className="form-control" style={{ marginRight: '12px'}} />
-          <input type="submit" className="btn btn-success" onClick={this.sendCoupon}/>
+          <div class="form-group" style={{marginBottom: '8px'}}>
+            <input type="text"  placeholder="Coupon Code?" ref="couponcode" className="form-control" style={{ marginRight: '12px'}} />
+            <input type="submit" value='Apply' className="btn btn-success" onClick={this.sendCoupon} style={{marginTop: '12px'}}/>
+          </div>
         </div>
         <span className={spanState}> Discount amount {this.state.amount} /- applied </span>
       </div>

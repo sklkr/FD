@@ -38,4 +38,9 @@ require 'digest/sha1'
   	def check_auth
       redirect_to sessions_checker_path(:url => params[:token]) unless warden.authenticated? 
     end
+
+    def searcher
+      # temporary
+      redirect_to root_url
+    end
 end

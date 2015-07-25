@@ -13,7 +13,7 @@ var SearchContainer = React.createClass({
 			filtershow: false,
 			pageNumber: 1,
 			loadMoreText: 'LOAD MORE',
-			loadMore: true,
+			loadMore: false,
 			defaultLocation: '',
 			time_filter: ''
 		}
@@ -58,8 +58,8 @@ var SearchContainer = React.createClass({
 			isFpstudio: false,
 			isCalendar: true,
 			loaded: false,
-			loadMore: true,
 			pageNumber: 1
+			//loadMore: true,
 		});
 		// if(this.state.place_name_cont_any.getPlace() == undefined){
 		// 	sweetAlert('Location/City', 'Please choose your location before going to search');
@@ -73,7 +73,7 @@ var SearchContainer = React.createClass({
 			});
 			if(data.filters[0].length == 0){
 				this.setState({
-					loadMore: false
+					// loadMore: false
 				});
 			}
 		}.bind(this));
@@ -116,8 +116,8 @@ var SearchContainer = React.createClass({
 			isFpstudio: false,
 			isCalendar: true,
 			loaded: false,
-			loadMore: true,
 			pageNumber: 1
+			// loadMore: true,
 		});
 		this.loadClasses().then(function(data){
 			this.setState({
@@ -127,7 +127,7 @@ var SearchContainer = React.createClass({
 			});
 			if(data.filters[0].length == 0){
 				this.setState({
-					loadMore: false
+					// loadMore: false
 				});
 			}
 		}.bind(this));
@@ -183,7 +183,7 @@ var SearchContainer = React.createClass({
 
 	render: function(){
 		var fpclasses = this.state.fpclasses.map(function(data){
-			return <ClassRow key={data.key} date={data.date} fpclass={data.fpclass} start_time={data.time} status={data.status} />;
+			return <ClassRow key={data.id} date={data.date} fpclass={data} start_time={data.time} status={data.status} />;
 		}.bind(this));
 
 		var fpstudios = this.state.fpstudios.map(function(fpstudio){
@@ -253,6 +253,7 @@ var SearchContainer = React.createClass({
 
 var Search = React.createClass({
 	handleSearch: function(){
+		// no need of this function
 		clearTimeout(window.wto);
 	    window.wto = setTimeout(function() {
 			this.props.onSearch();	
@@ -264,16 +265,20 @@ var Search = React.createClass({
 			display: this.props.show ? 'block' : 'none'
 		};
 
+		var timeStyle = {
+			display: this.props.isfpclass ? 'block' : 'none'
+		};
+
 		return(
 			<fieldset className="search-container hidden-xs" id="center-search-container" style={show}>
 	            <div className="row">
-	                <div className="col-md-4 col-xs-12">
+	                <div className="col-md-4 col-xs-12 m-bottom20" style={timeStyle} >
 	                    <input type="text" id="time_filter" name="time_filter" onChange={this.handleSearch} />
 	                </div>
 	                <div className="col-md-4 col-xs-12 m-bottom20">
 	                    <label htmlFor="location">LOCATION</label>
 	                    <div>
-	                      <input id="cities" type="text" name="q[place_name_cont_any]" ref='place_name_cont_any' placeholder={this.props.defaultloc} className="ui-autocomplete-input form-control form-square" onChange={this.handleSearch} />
+	                      <input id="cities" type="text" name="q[place_name_cont_any]" ref='place_name_cont_any' placeholder={this.props.defaultloc} className="ui-autocomplete-input form-control form-square" />
 	                    </div>
 	                </div>
 	                <div className="col-md-4 col-xs-12 m-bottom20">

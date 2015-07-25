@@ -2782,6 +2782,9 @@ nav.header_nav{
   .pay_now{
     margin-top:12px;
   }
+  .m-bottom20{
+    margin-bottom:20px;
+  }  
 }
 
 .new_passport{
@@ -2805,3 +2808,11 @@ nav.header_nav{
   padding-right: 4px;
   padding-bottom: 1px;
 }
+
+.m-bottom20{
+    margin-bottom:20px;
+}
+
+.footer li a:hover{
+  color: white;
+}  

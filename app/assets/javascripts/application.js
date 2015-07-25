@@ -12,6 +12,8 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require react
+//= require react_ujs
 //= require jquery/jquery.ui
 //= require plugins/bootstrap
 //= require plugins/modernizr
@@ -34,5 +36,6 @@
 //= require local_time
 //= require signup
 //= require cart
+//= require components/coupon
 
 $('form').parsley();

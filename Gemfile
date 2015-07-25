@@ -135,3 +135,4 @@ gem 'redis-rails'
 
 gem 'newrelic_rpm'
 gem 'receipts'
+gem "delayed_job_web"
