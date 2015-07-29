@@ -1,3 +1,6 @@
+// React.initializeTouchEvents(true);
+
+
 var SearchContainer = React.createClass({
 	getInitialState: function(){
 		return {

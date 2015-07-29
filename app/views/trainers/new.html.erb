@@ -1,0 +1,33 @@
+<%= render :partial => 'layouts/header'%>
+<div style="background:url('http://www.cpsc.gov/Global/Images/Recall/2015/15058/Pro-Performance-sports-resistance-trainers.jpg') no-repeat; background-color:white; padding-bottom:200px">
+	
+<div class="container">
+	<div class="row">
+	<div class="col-xs-8"></div>			
+	<div class="col-xs-4" style="margin-top:45px">
+		<%= simple_form_for @trainer, remote: true do |t| %>
+			<legend>Trainer Request</legend>
+			<%= t.input :name, input_html: { class: 'form-control input-sm' }, wrapper_html: { class: 'form-group col-xs-6', :style => 'margin-left:0px; padding-left:0px' } %>
+			<%= t.input :phone, input_html: { class: 'form-control input-sm' }, wrapper_html: { class: 'form-group col-xs-6', style: 'margin-right:0px;padding-right:0px' } %>
+			<%= t.input :email, input_html: { class: 'form-control input-sm' }, wrapper_html: { class: 'form-group' } %>
+			<%= t.input :location, input_html: { class: 'form-control input-sm' }, wrapper_html: { class: 'form-group' } %>
+			<%= t.input :date, as: :date, html5: true, :label => "Start Date", input_html: { class: 'form-control input-sm' }, wrapper_html: { class: 'form-group col-xs-6', :style => 'margin-left:0px; padding-left:0px' } %>
+			<%= t.input :service, collection: ["Yoga","Therapy Yoga","Personal trainer","Nutritionist","Kick Boxing","Sports/Athletics","Group Yoga","Group Yoga Therapy","Group Fitness Trainer","Group Sports Training","Group Kickboxing","Group Zumba","Group Aerobics","Group: Corporate/Society (10+ members)"], input_html: { class: 'form-control input-sm chzn-select' }, wrapper_html: { class: 'form-group col-xs-6', style: 'margin-right:0px;padding-right:0px' } %>
+			<%= t.input :address, input_html: { class: 'form-control input-sm' }, wrapper_html: { class: 'form-group' } %>
+			<%= t.input :comment, input_html: { class: 'form-control input-sm' }, wrapper_html: { class: 'form-group' } %>
+			<%= t.submit 'Submit', :class => 'btn btn-success pull-right' %>
+		<% end %>
+	</div>
+</div>
+</div>
+</div>
+
+<div>
+<%= render :partial => 'layouts/footer' %>
+</div>
+
+<script>
+  window.search_input = document.getElementById('inc-map');
+  window.city_name = new google.maps.places.Autocomplete(window.search_input);
+  $(".chzn-select").chosen();
+</script>

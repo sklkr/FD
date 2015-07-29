@@ -37,7 +37,7 @@
                             <td><%= r.customer.try(:phone) %></td>
                             <td><%= r.fpclass.name %></td>
                             <td><a href="mailto:<%= r.customer.try(:email) %>"><%= r.center.name %></a></td>
-                            <td><%= "#{r.expired_at} #{r.fpclass.start_time.strftime("%H:%M") unless r.fpclass.blank?}" %></td>
+                            <td><%= "#{localtime(r.expired_at, '%B %d, %Y')} #{r.fpclass.start_time.strftime("%H:%M") unless r.fpclass.blank?}" %></td>
                             <td></td>
                         </tr>
                     <%end%>
@@ -75,9 +75,9 @@
                         <tr>
                             <td><%= r.customer.try(:full_name) %></td>
                             <td><%= r.customer.try(:phone) %></td>
-                            <td><%= r.fpclass.name %></td>
+                            <td><%= r.fpclass.try(:name) %></td>
                             <td><a href="mailto:<%= r.customer.try(:email) %>"><%= r.center.name %></a></td>
-                            <td><%= "#{r.expired_at} #{r.fpclass.start_time.strftime("%H:%M") unless r.fpclass.blank?}" %></td>
+                            <td><%= "#{local_time(r.expired_at, '%B %d, %Y')} #{local_time(r.fpclass.start_time, "%H:%M") unless r.fpclass.blank?}" %></td>
                             <td></td>
                         </tr>
                     <%end%>

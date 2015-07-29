@@ -34,8 +34,8 @@
                         <td><%= service.service_desc %></td>
                         <td><%= service.schedule %></td>
                         <td><span class="label label-success"></span></td>
-                        <td><%= service.end_date %></td>
-                        <td><%= local_time(service.created_at) %></td>
+                        <td><%= local_time(service.end_date, '%B %d, %Y') %></td>
+                        <td><%= local_time(service.created_at, '%B %d, %Y') %></td>
                     </tr>
                 <%end%>
             </tbody>

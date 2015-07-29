@@ -26,6 +26,8 @@ Rails.application.routes.draw do
       resources :orders
       resources :sessions
       resources :coupons
+      resources :centers
+      resources :trainers
 
       get '/' => 'sessions#new'
       get '/iv_generator/:id' => 'invoice#show', as: :iv_generator
@@ -76,7 +78,7 @@ Rails.application.routes.draw do
     end
   end
 
-        get 'settings/change_password' => 'partners/settings#change_password', :as => 'change_password_partners_settings', :subdomain => 'partners'
+    get 'settings/change_password' => 'partners/settings#change_password', :as => 'change_password_partners_settings', :subdomain => 'partners'
 
     resources :customers, only: [:edit, :create, :update]
     resources :partners, only: [:index, :new, :create]
@@ -176,6 +178,8 @@ Rails.application.routes.draw do
   get 'homepage/index'
   get 'centers/list' => 'homepage#centers_list'
 
+  resource 'trainers'
+  get '/request-trainer' => 'trainers#new'
 
 
   namespace :api, defaults: { format: :json }, constraints: { subdomain: 'api' }, path: '/'  do

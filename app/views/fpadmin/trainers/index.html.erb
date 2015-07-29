@@ -1,0 +1,51 @@
+<div class="main-header clearfix">
+    <div class="page-title">
+        <h3 class="no-margin">Training Requests</h3>
+        <span></span>
+    </div><!-- /page-title -->
+    
+    <ul class="page-stats">
+    </ul><!-- /page-stats -->
+</div>
+
+
+<div class="padding-md">
+    <div class="panel panel-default table-responsive">
+        <div class="panel-heading">
+            <span>Training Requests</span>
+            <span class="pull-right">
+            </span>
+        </div>
+        <table class="table table-striped table-responsive" id="responsiveTable">
+            <thead>
+                <tr>
+                    <th>Ticket ID</th>
+                    <th>Name</th>
+                    <th>Location</th>
+                    <th>Phone</th>
+                    <th>Email</th>
+                    <th>Service</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <% @trainers.each do |t| %>
+                    <tr>
+                        <td><span class="label label-success"><%= t.number %></span></td>
+                        <td><%= t.name %></td>
+                        <td><%= t.location %></td>
+                        <td><%= t.phone %></td>
+                        <td><a href="mailto:<%= t.email %>"><%= t.email %></a></td>
+                        <td><%= t.service %></td>
+                        <td></td>
+                    </tr>
+                <%end%>
+            </tbody>
+        </table>
+        <div class="panel-footer clearfix">
+            <span class="pull-right">
+                
+            </span>
+        </div>
+    </div>
+</div>

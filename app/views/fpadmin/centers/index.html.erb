@@ -1,0 +1,70 @@
+<div class="main-header clearfix">
+    <div class="page-title">
+        <h3 class="no-margin">Centers</h3>
+        <span></span>
+    </div><!-- /page-title -->
+    
+    <ul class="page-stats">
+    </ul><!-- /page-stats -->
+</div>
+
+
+<div class="padding-md">
+    <div class="panel panel-default table-responsive">
+        <div class="panel-heading">
+            <span>Centers</span>
+            <span class="pull-right">
+                <%= paginate @centers %>
+            </span>
+        </div>
+        <div class="panel-content">
+            <%= search_form_for @q, :class => 'form-inline' do |f| %>
+              <%= f.condition_fields do |c| %>
+                <div class="col-sm-2">
+                  <%= c.attribute_fields do |a| %>
+                    <%= a.attribute_select nil, class: "form-control input-sm" %>
+                  <% end %>
+                </div>
+                <div class="col-sm-3">
+                  <%= c.predicate_select Hash.new, class: "form-control input-sm" %>
+                </div>
+                <div class="col-sm-2">
+                  <%= c.value_fields do |v| %>
+                    <%= v.text_field :value, class: "form-control input-sm" %>
+                  <% end %>
+                </div>
+              <% end %>
+              <div class="col-sm-2">
+                <%= f.submit "Search", class: "btn btn-primary" %>
+              </div>
+            <% end %>
+        </div>
+        <table class="table table-striped table-responsive" id="responsiveTable">
+            <thead>
+                <tr>
+                    <th><%= sort_link(@q, :name) %></th>
+                    <th><%= sort_link(@q, :place_name) %></th>
+                    <th>Price</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% @centers.each do |c| %>
+                    <%= content_tag_for(:tr, c) do %>
+                        <td><%= link_to c.name, partner_path(c.id) %></td>
+                        <td><a href="mailto:<%= c.email %>"><%= c.place_name %></a></td>
+                        <td>
+                            <%= simple_form_for c, url: center_path(c.id), html: { class: 'form-inline' }, remote: true do |fm| %>
+                              <%= fm.input :pricetag, label: false, input_html: {:class => 'form-control input-sm'}, wrapper_html: { class: 'form-group'} %>
+                              <%= fm.button :submit, 'Update', :class => 'btn btn-default btn-sm' %>
+                            <% end %>
+                        </td>
+                    <% end %>
+                <%end%>
+            </tbody>
+        </table>
+        <div class="panel-footer clearfix">
+            <span class="pull-right">
+            </span>
+        </div>
+    </div>
+</div>

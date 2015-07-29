@@ -17,7 +17,7 @@
             <label for="">Center Photo</label>
         </div>
         <div class="panel-body">
-            <% unless @photos.count >= 3  %>
+            <% unless @photos.count >= 1  %>
             <%= simple_form_for @photo, url: partners_center_galleries_path do |f| %>
               <div class="form-group clearfix">
                 <div class="col-xs-12 col-sm-6 col-md-4">
