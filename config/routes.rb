@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
 
   get 'invoice' => 'invoices#show', as: 'invoice'
+  get 'invoice/:order_id' => 'invoices#service', as: 'service_invoice'
 
   match "/delayed_job" => DelayedJobWeb, :anchor => false, via: [:get, :post]
 
@@ -179,7 +180,13 @@ Rails.application.routes.draw do
   get 'centers/list' => 'homepage#centers_list'
 
   resource 'trainers'
+  resources 'book_service'
+  post 'book_service/success'
+  post 'book_service/failure'
+  
   get '/request-trainer' => 'trainers#new'
+  get '/services' => 'services#index'
+  post '/api/services' => 'services#search'
 
 
   namespace :api, defaults: { format: :json }, constraints: { subdomain: 'api' }, path: '/'  do

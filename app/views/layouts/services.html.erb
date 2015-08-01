@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <%= metamagic %>
+  <title><%= @title.nil? ? "Fitnesspapa" : @title %> </title>
+
+  <link rel="shortcut icon" href="/assets/favicon.ico" />
+  <link rel="dns-prefetch" href="http://www.google-analytics.com">
+  <link rel="dns-prefetch" href="http://d1djl7kr085bc1.cloudfront.net">
+
+  <%= stylesheet_link_tag 'filters', media: 'all'%>
+  <style>
+    #services-container{
+      background: white;
+      margin: 30px auto;
+    }
+    .list-item{
+      padding: 10px 13px;
+      border-bottom: 1px solid #e3e3e3;
+      border-right: 0px;  
+      border-left: 0px;
+      margin-bottom:0px !important;
+      border-top:0px;
+    }
+    .list-item:hover{
+      background: #fcfcfc;
+    }
+    .currency{
+      font-weight: bold;
+      font-size: 15px;
+      font-family: 'Arial';
+      color: rgb(66, 79, 99);
+    }
+    .steps{
+      text-align: center;
+    }
+    .steps li{
+      margin: 0px 15px;
+      font-size: 20px;
+      text-align: left;
+    }
+
+    .steps li.active{
+      color: rgb(66, 79, 99);
+    }
+
+    .steps li.active .info{
+      text-decoration: underline;
+    }
+
+    .steps .info{
+      display: block;
+      font-size: 13px;
+    }
+
+    .m-bottom20{
+      margin-bottom: 20px;
+    }
+    #heading{
+      margin-bottom: 30px;
+    }
+    .center{
+      text-transform: capitalize;
+      color: rgb(66, 79, 99);
+    }
+    .linker{
+      font-size: 14px;
+      color: #B8B8B8;
+    }
+  </style>
+  <%= csrf_meta_tags %>
+  <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+  <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+  <![endif]-->
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAs4tO9vd5JNhXOX8h492hEwfstspyTQAw&libraries=places"></script>
+  <%= render :partial => 'shared/mixpanel' %>
+</head>
+<body>
+
+ <%= render :partial => 'layouts/tagmanager' %>
+ <%= render :partial => 'layouts/header' %>
+ <%= render :partial => 'layouts/notices' %>
+   <%= yield %>
+ <%= render :partial => 'layouts/footer' %>
+ 
+ <%= javascript_include_tag 'services'%>
+ <%= yield :linescript %>
+ <%= render :partial => 'shared/zopim' %>
+</body>
+</html>

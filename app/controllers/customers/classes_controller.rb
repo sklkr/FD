@@ -16,6 +16,7 @@ layout 'customerdashboard'
   # Customers >> My Orders
   def show
   	@passport = passport
+    @service_orders = current_user.orders.includes(:service_orders).reject{|o| o.service_orders.blank? }
   end
 
   def color 

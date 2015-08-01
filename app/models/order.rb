@@ -18,6 +18,10 @@ class Order < ActiveRecord::Base
    has_many :paid_invoices,  -> { where(state: 'paid') }, class_name: 'Invoice'
    has_many :canceled_invoices, ->  { where(state: 'canceled') }, class_name: 'Invoice'
    belongs_to :customer
+   has_many :service_orders, -> { services }, class_name: "OrderItem"
+
+
+   scope :success, -> { where('status=?','success')}
 
    belongs_to :coupon
 
@@ -27,6 +31,7 @@ class Order < ActiveRecord::Base
 
 
    def status
+     return 'success' if super == 'success'
      return 'not processed' if invoices.empty?
      invoices.last.state
    end

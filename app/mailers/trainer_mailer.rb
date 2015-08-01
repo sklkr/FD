@@ -29,7 +29,7 @@ class TrainerMailer < MandrillMailer::TemplateMailer
   def inform_customer(trainer)
     mandrill_mail(
 
-      template: 'trainer_request',
+      template: 'trainer_request_customer',
       subject: "Trainer Request Acknowledgement from FitnessPapa",
       to: trainer.email,
         # to: invitation.email,

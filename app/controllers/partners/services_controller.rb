@@ -38,7 +38,7 @@ before_filter { @center = ::Center.friendly.find(params[:center_id]) }
 
   private
     def permit_params
-      params.require(:service).permit(:name, :original_price, :selling_price, :service_desc, :schedule, :gender_id, :end_date)
+      params.require(:service).permit(:name, :duration, :original_price, :selling_price, :service_desc, :schedule, :gender_id, :end_date)
     end
 end
 end

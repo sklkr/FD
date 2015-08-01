@@ -17,7 +17,7 @@
                 <%= paginate @centers %>
             </span>
         </div>
-        <div class="panel-content">
+        <div class="panel-content clearfix" style="padding: 14px 0px">
             <%= search_form_for @q, :class => 'form-inline' do |f| %>
               <%= f.condition_fields do |c| %>
                 <div class="col-sm-2">

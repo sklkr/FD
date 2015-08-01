@@ -25,7 +25,8 @@
         <%= f.input :selling_price, input_html: { class: 'form-control input-sm' }, wrapper_html: { class: 'form-group' } %>
         <%= f.input :service_desc, input_html: { class: 'form-control input-sm' }    %>
         <%= f.input :schedule, input_html: { class: 'form-control input-sm' }, wrapper_html: { class: 'form-group' } %>
-        <%= f.input :gender_id, :collection => Centertype.all, :label_method => :name, :value_method => :id, input_html: { class: 'form-control input-sm chzn-select' }, wrapper_html: { class: 'form-group' } %>
+        <%= f.input :duration, input_html: { class: 'form-control input-sm', :placeholder => 'In minutes' }, wrapper_html: { class: 'form-group' } %>
+        <%= f.input :gender_id, :collection => Service::GENDER, input_html: { class: 'form-control input-sm chzn-select' }, wrapper_html: { class: 'form-group' } %>
         <%= f.input :end_date, as: :date, html5: true, input_html: { class: 'form-control input-sm' }, wrapper_html: { class: 'form-group' } %>
                             </div>
                         </div>

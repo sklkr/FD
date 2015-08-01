@@ -9,7 +9,7 @@
 	Category.find_or_create_by(:name => name)
 end
 
-['All', 'Both Male & Female', 'Male', 'Female', 'Kids'].each do |c|
+['All', 'Unisex', 'Male', 'Female', 'Kids'].each do |c|
 	Centertype.find_or_create_by(:name => c)
 end
 

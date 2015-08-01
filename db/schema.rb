@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150729124843) do
+ActiveRecord::Schema.define(version: 20150731054842) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -697,6 +697,7 @@ ActiveRecord::Schema.define(version: 20150729124843) do
     t.integer  "validity"
     t.integer  "expired_on"
     t.string   "slug"
+    t.integer  "duration"
   end
 
   add_index "services", ["category_id"], name: "index_services_on_category_id", using: :btree
