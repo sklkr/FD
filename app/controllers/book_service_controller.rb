@@ -1,7 +1,7 @@
 class BookServiceController < ApplicationController
 	layout 'services'
 	include Wicked::Wizard
-	steps :info, :payment
+	steps :info, :login, :facebook, :payment
 	protect_from_forgery :except => [:success, :failure]
 	before_action :check_hash, :only => [:success]
 
@@ -16,14 +16,24 @@ class BookServiceController < ApplicationController
 			if @order.save
 				session[:service_id] = @order.id
 			end
-			@user = which_user
+			if current_user.blank?
+				session[:book_service] = '1'
+				render_wizard
+			else
+				@order.customer = current_user
+				@order.save
+				wizard_path(:payment)
+			end
+		when :facebook
+			session[:book_service] = nil
+			order = current_service_order
+			order.customer = current_user
+			order.save
+			prepare_payment
+			render_wizard
 		when :payment
-			@service = current_service_order.order_items.last.service
-			@order = current_service_order
-			@payu = PayuService.new(@order, @order.customer, book_service_success_url, book_service_failure_url)
+			prepare_payment
 		end
-
-		render_wizard
 	end
 
 	def success
@@ -32,11 +42,14 @@ class BookServiceController < ApplicationController
 	    @order.pg_type = params['PG_TYPE']
 	    @order.save
 	  
-	    #sms
-	    SmsService.new(@customer.phone, "You have bought one day pass at #{} having order id #{}. Thank You!").delay.send_sms
-	    # AcknowledgeOrder.customer(@passport, current_user).delay.deliver
-	    # AcknowledgeOrder.admin(@passport, current_user).delay.deliver
-	  
+	    #Acknowledgements
+	    @customer = @order.customer
+	    @center = @order.service_order_item.service.center
+		SmsService.new(@customer.phone, "You have bought one day pass at #{@center.name} having order id #{@order.number}. Thank You!").send_sms
+	    SmsService.new(@center.mobile, "#{@customer.full_name} has bought one time pass at #{@center.name} having order id #{@order.number} on #{@order.updated_at.strftime("%d %M/%Y")}. Thanks!").delay.send_sms
+	    ServiceMailer.inform_admin(@order, @customer, @center).delay.deliver
+	    ServiceMailer.inform_customer(@order, @customer, @center).delay.deliver
+	    
 	    redirect_to service_invoice_path(order_id: @order.number, format: :pdf)
 	end
 
@@ -46,11 +59,13 @@ class BookServiceController < ApplicationController
 
 	def update
 		case step
-		when :info
-			# Build guest user
-			@customer = customer
-			current_service_order.update(:email_address => @customer.email, customer: @customer)
-			render_wizard current_service_order
+		when :login
+			authenticate!
+			order = current_service_order
+			order.customer = current_user
+			order.save
+			prepare_payment
+			render_wizard
 		end
 	end
 
@@ -70,5 +85,11 @@ class BookServiceController < ApplicationController
 	    def hash_checker
 	      fields = "#{Figaro.env.payu_secret}|#{params[:status]}|||||||||||#{params[:email]}|#{params[:firstname]}|#{params[:productinfo]}|#{params[:amount]}|#{params[:txnid]}|#{Figaro.env.payu_key}"
 	      params[:hash] == Digest::SHA2.new(512).hexdigest(fields)
+	    end
+
+	    def prepare_payment
+	    	@service = current_service_order.order_items.last.service
+			@order = current_service_order
+			@payu = PayuService.new(@order, @order.customer, book_service_success_url, book_service_failure_url)
 	    end
 end

@@ -20,5 +20,6 @@
 //= require nprogress
 //= require nprogress-turbolinks
 //= require plugins/modernizr
+//= require sweetalert.min
 //= require plugins/popup
 

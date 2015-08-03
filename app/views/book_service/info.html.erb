@@ -3,31 +3,31 @@
         <div class="row">
         	<div class="col-sm-8 col-sm-offset-2">
         		<div class="row">
-        			<div class="col-xs-12">
-        				<ul class="list-inline steps">
-        					<li class="active">STEP 1 <span class='info'>Basic Information</span></li> >
-        					<li>STEP 2 <span class='info'>Confirmation</span></li> >
-        					<li>STEP 3 <span class='info'>Invoice Generation</span></li>
-        				</ul>
-        			</div>
-        		</div>
-        		<div class="row">
         			<div class="col-sm-8 col-sm-offset-2">
-	        			<%= simple_form_for @user, url: wizard_path,  :html => {:class => 'cd-form form-horizontal'} do |f| %>
-						  <%= f.input :email, :label => 'E-mail', label_html: { class: 'image-replace cd-email'}, input_html: { class: 'full-width has-padding has-border', :placeholder => 'E-mail (eg: abc@xxx.com)'  }, wrapper_html: { class: 'fieldset' } %>
-						  <%= f.simple_fields_for :user do |p| %>
-						    <%= p.input :full_name, label_html: { class: 'image-replace cd-username'}, input_html: { class: 'full-width has-padding has-border', 'data-parsley-pattern' => '\w+\s+[a-zA-Z-]+', 'data-parsley-required' => 'true', :placeholder => 'Full Name (eg: John Snow)' }, wrapper_html: { class: 'fieldset' } %>
-						    <%= p.input :phone, label_html: { class: 'image-replace cd-username'}, input_html: { class: 'full-width has-padding has-border', "data-parsley-type" => 'integer', 'data-parsley-pattern' => '^([0]|\+91)?\d{10}', 'data-parsley-required' => 'true', :placeholder => 'Mobile number (eg: 9123456789)'  }, wrapper_html: { class: 'fieldset' } %>
-						  <% end %>
-						  	
-						 
-						  <div class="row">
-						    <div class="col-xs-12">
-						      <%= f.button :submit, "Next", class: 'full-width has-padding', wrapper_html: { class: 'fieldset' } %>
-						    </div>
-						  </div>
-						  <hr>
-						<% end %>
+                        <div class="cd-form" style="margin-top:20px">
+                          <a class="btn btn-block btn-social btn-facebook full-width has-padding" href="/auth/facebook">
+                            <i class="fa fa-facebook"></i> Sign in with Facebook
+                          </a>
+                        </div>  
+                        <hr>
+                        <%= simple_form_for @customer, :url => next_wizard_path, :html => {:class => 'cd-form', 'data-parsley-validate' => true, method: :put} do |f| %>
+                          <%= f.input :email, :label => 'E-mail', label_html: { class: 'image-replace cd-email'}, input_html: { class: 'full-width has-padding has-border', :placeholder => 'E-mail (eg: abc@xxx.com)'  }, wrapper_html: { class: 'fieldset' } %>
+                          <%= f.simple_fields_for :user do |p| %>
+                            <%= p.input :password, label_html: { class: 'image-replace cd-password'}, input_html: { class: 'full-width has-padding has-border', 'data-parsley-required' => 'true', :placeholder => 'Password'  }, wrapper_html: { class: 'fieldset' } %>
+                          <% end %>
+                          <div class="row">
+                            <div class="col-xs-12">
+                              <%= f.button :submit, "LOGIN", class: 'full-width has-padding', wrapper_html: { class: 'fieldset' } %>
+                            </div>
+                            <!-- <div class="col-xs-12" style="margin-top:20px">
+                              <a class="btn btn-block btn-social btn-facebook has-padding" href='/auth/facebook<%= "?callback_url=#{params[:url]}" unless params[:url].nil? %>'><i class="fa fa-facebook"></i> SIGN-IN WITH FACEBOOK</a>    
+                            </div> -->
+                            
+                          </div>
+                          <hr>
+                        <% end %>
+
+
         			</div>
         		</div>
         	</div>

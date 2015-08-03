@@ -51,7 +51,7 @@
 	</div>
 	<% end %>
 
-	<% unless @service_orders.blank? %>
+	<% unless @orders.blank? %>
 		<div class="col-sm-6 col-sm-offset-3">
 			<h4>Booked Services</h4>
 			<table class="table">
@@ -62,13 +62,13 @@
 		          <th class="text-center">Receipt</th>
 		        </tr></thead>
 		        <tbody>
-		        	<% @service_orders.each do |so| %>
-		        		<% service = so.order_items.last.service %>
+		        	<% @orders.each do |order| %>
+		        		<% service = order.service_order_item.service %>
 			            <tr>
 			              <td><%= "#{service.center.name} - #{service.name} " %></td>
-			              <td><%= so.order_items.last.unit_price %></td>
-			              <td><%= so.updated_at.strftime('%d %m %Y') %></td>
-			              <td class="text-center"><a href="<%= service_invoice_path(order_id: so.number, format: :pdf) %>"><i class="fa fa-file-pdf-o" style='color:rgb(171, 136, 17)'></i></a></td>
+			              <td><%= order.service_order_item.unit_price %></td>
+			              <td><%= order.updated_at.strftime('%d %m %Y') %></td>
+			              <td class="text-center"><a href="<%= service_invoice_path(order_id: order.number, format: :pdf) %>"><i class="fa fa-file-pdf-o" style='color:rgb(171, 136, 17)'></i></a></td>
 			            </tr>
 			        <% end %>
 		        </tbody>

@@ -36,7 +36,7 @@ before_filter { redirect_to root_url unless current_user }
     end
 
     def dates_fetcher
-      @dates = (Date.today..Date.today+13).to_a
+      @dates = (Date.today..Date.today+6).to_a
     end
 
     def date

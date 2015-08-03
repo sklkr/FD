@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-
   get 'invoice' => 'invoices#show', as: 'invoice'
   get 'invoice/:order_id' => 'invoices#service', as: 'service_invoice'
 
@@ -32,6 +31,9 @@ Rails.application.routes.draw do
 
       get '/' => 'sessions#new'
       get '/iv_generator/:id' => 'invoice#show', as: :iv_generator
+
+      #services
+      get '/services/cc/:customer_id' => 'services#customer_confirmation', as: :customer_confirmation
     end
   end
 
@@ -211,5 +213,4 @@ Rails.application.routes.draw do
     match '/422', to: 'errors#unprocessable', via: :all
     match '/500', to: 'errors#internal_server_error', via: :all
   end
-
 end

@@ -8,6 +8,7 @@ class Customer < ActiveRecord::Base
   has_many :bookings, dependent: :destroy
   has_one :identity, dependent: :destroy
   has_many :orders
+  has_many :success_orders, -> { success }, class_name: 'Order'
   has_one :passport
   # counter cache for clasbkings
   has_many :clasbkings

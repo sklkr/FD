@@ -37,7 +37,11 @@
                         <td><%= c.phone %></td>
                         <td><a href="mailto:<%= c.email %>"><%= c.email %></a></td>
                         <td><span class="<%= c.passport.blank? ? "label label-danger" : "label label-success" %>"><%= c.passport.blank? ? "Inactive" : "Active" %></span></td>
-                        <td><span class="<%= c.active ? "label label-success" : "label label-danger" %>"><%= c.active %></span></td>
+                        <td><span class="<%= c.active ? "label label-success" : "label label-danger" %>"><%= c.active %></span>
+                        <% unless c.active %>
+                            <span><%= link_to "Resend", customer_confirmation_path(:customer_id => c.id), :class => 'label label-info', :remote => true, data: { disable_with: "<i class='fa fa-spinner fa-spin'></i> Sending..."} %></span>
+                        <% end %>
+                        </td>
                         
                         <td></td>
                     </tr>

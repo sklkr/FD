@@ -13,6 +13,11 @@ class Invoice < ActiveRecord::Base
   validates :amount,        :presence => true
   validates :invoice_type,  :presence => true
 
+  scope :canceled, -> { where(state: 'canceled') }
+  scope :authorized, -> { where(state: 'authorized') }
+  scope :completed, -> { where(state: ['authorized', 'paid']) }
+  scope :paid, -> { where(state: 'paid') }
+
   PURCHASE  = 'Purchase'
   INVOICE_TYPES = [PURCHASE]
 

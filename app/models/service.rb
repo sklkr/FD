@@ -77,7 +77,7 @@ extend FriendlyId
 	     logo: Rails.root.join("app/assets/images/fp_logo.jpg")
 	   },
 	   line_items: [
-	     ["Date",           order.updated_at.strftime('%d-%m-%Y %H:%M')],
+	     ["Date",           order.updated_at.strftime('%d-%m-%Y')],
 	     ["Account Billed", "#{customer.full_name} (#{customer.email})"],
 	     ["Product",        "#{self.center.name.capitalize} - #{self.name}"],
 	     ["Amount",         "Rs. #{order.order_items.last.unit_price}"],

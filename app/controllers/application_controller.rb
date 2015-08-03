@@ -83,6 +83,7 @@ class ApplicationController < ActionController::Base
     Order.find(session[:order_id]) unless session[:order_id].nil?
    end
 
+   # Return order that is in pending state using session : service_id
    def current_service_order
     Order.find(session[:service_id]) unless (session[:service_id].nil? || (Order.find(session[:service_id]).status == 'success'))
    end

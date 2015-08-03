@@ -21,6 +21,7 @@
 //= require recurring_select
 //= require refile
 //= require local_time
+//= require sweetalert.min
 //= require plugins/google.places
 
 

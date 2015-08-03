@@ -13,12 +13,12 @@ class Order < ActiveRecord::Base
 
    has_many :order_items, :dependent => :destroy
    has_many :invoices
-   has_many :completed_invoices,   -> { where(state: ['authorized', 'paid']) },  class_name: 'Invoice'
-   has_many :authorized_invoices,  -> { where(state: 'authorized') }, class_name: 'Invoice'
-   has_many :paid_invoices,  -> { where(state: 'paid') }, class_name: 'Invoice'
-   has_many :canceled_invoices, ->  { where(state: 'canceled') }, class_name: 'Invoice'
+   has_many :completed_invoices,   -> { completed },  class_name: 'Invoice'
+   has_many :authorized_invoices,  -> { authorized }, class_name: 'Invoice'
+   has_many :paid_invoices,  -> { paid }, class_name: 'Invoice'
+   has_many :canceled_invoices, ->  { canceled }, class_name: 'Invoice'
    belongs_to :customer
-   has_many :service_orders, -> { services }, class_name: "OrderItem"
+   has_one :service_order_item, -> { services }, class_name: "OrderItem"
 
 
    scope :success, -> { where('status=?','success')}

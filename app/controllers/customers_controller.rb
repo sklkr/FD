@@ -11,10 +11,10 @@ layout 'homepage'
   end
 
   def create
-    @customer = Customer.new(permit_params)
+    @customer = Customer.find_by_email(params[:customer][:email]) || Customer.new(permit_params)
     @customer.set_referrer(cookies['h_ref']) unless cookies['h_ref'].blank?
     cookies['h_ref'] = nil
-  	if @customer.save
+  	if !@customer.active && @customer.save
       # AdminMailer.customer_registration(@customer).delay.deliver
       RegistrationMailer.send_manual(@customer).deliver
       respond_to do |format|
