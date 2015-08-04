@@ -6,7 +6,8 @@ layout 'fpadmin'
 before_filter :authenticated?
 
   def index
-	@orders = Passport.unscoped.recent.includes(:customer).page params[:page]
+	@orders = Passport.unscoped.recent.includes(:customer).page params[:page] if params[:services].blank?
+	@service_orders = OrderItem.services.includes(:order, :service) unless  params[:services].blank?
   end
 
   def show

@@ -11,47 +11,95 @@
 
 <div class="padding-md">
     <div class="panel panel-default table-responsive">
-        <div class="panel-heading">
-            <span>Orders</span>
-            <span class="pull-right">
-             <%= paginate @orders %>
-            </span>
-        </div>
-        <table class="table table-striped table-responsive" id="responsiveTable">
-            <thead>
-                <tr>
-                    <th>Orders</th>
-                    <th>Customer</th>
-                    <th>Email</th>
-                    <th>Start Date</th>
-                    <th>End Date</th>
-                    <th>Tickets Left</th>
-                    <th></th>
-                </tr>
-            </thead>
-            <tbody>
-                <% @orders.each do |o| %>
+        <% unless @orders.blank? %>
+            <div class="panel-heading">
+                <span>Orders</span>
+                <span class="pull-right">
+                 <%= paginate @orders %>
+                </span>
+            </div>
+            <table class="table table-striped table-responsive" id="responsiveTable">
+                <thead>
                     <tr>
-                        <td><%= o.order_id %></td>
-                        <td><%= o.full_name %></td>
-                        <td><%= o.email %></td>
-                        <td><%= local_time(o.start_date, "%B %e, %Y") %></td>
-                        <td><%= local_time(o.end_date, "%B %e, %Y") unless o.end_date.nil? %></td>
-                        <td><%= o.remaining_tickets  %></td>
-                        <td>
-                            <%= link_to iv_generator_path(:id => o.id, format: :pdf), class: 'btn btn-small', :style => 'border: 0px;padding: 0px;' do %>
-                                <i class="fa fa-file-text-o">&nbsp;</i>
-                            <% end %>
-                            
-                        </td>
+                        <th>Orders</th>
+                        <th>Customer</th>
+                        <th>Email</th>
+                        <th>Start Date</th>
+                        <th>End Date</th>
+                        <th>Tickets Left</th>
+                        <th></th>
                     </tr>
-                <%end%>
-            </tbody>
-        </table>
-        <div class="panel-footer clearfix">
-            <span class="pull-right">
-                <%= paginate @orders %>
-            </span>
-        </div>
+                </thead>
+                <tbody>
+                    <% @orders.each do |o| %>
+                        <tr>
+                            <td><%= o.order_id %></td>
+                            <td><%= o.full_name %></td>
+                            <td><%= o.email %></td>
+                            <td><%= local_time(o.start_date, "%B %e, %Y") %></td>
+                            <td><%= local_time(o.end_date, "%B %e, %Y") unless o.end_date.nil? %></td>
+                            <td><%= o.remaining_tickets  %></td>
+                            <td>
+                                <%= link_to iv_generator_path(:id => o.id, format: :pdf), class: 'btn btn-small', :style => 'border: 0px;padding: 0px;' do %>
+                                    <i class="fa fa-file-text-o">&nbsp;</i>
+                                <% end %>
+                                
+                            </td>
+                        </tr>
+                    <%end%>
+                </tbody>
+            </table>
+            <div class="panel-footer clearfix">
+                <span class="pull-right">
+                    <%= paginate @orders %>
+                </span>
+            </div>
+        <% end %>
+
+
+
+        <% unless @service_orders.blank? %>
+            <div class="panel-heading">
+                <span>Service Orders</span>
+                
+            </div>
+            <table class="table table-striped table-responsive" id="responsiveTable">
+                <thead>
+                    <tr>
+                        <th>Order Id</th>
+                        <th>Center Name</th>
+                        <th>Booked at</th>
+                        <th>Customer Email</th>
+                        <th>Customer Mobile</th>
+                        <th>Status</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% @service_orders.each do |o| %>
+                        <tr>
+                            <td><%= o.order.number %></td>
+                            <td><%= o.service.center.name %></td>
+                            <td><%= local_time(o.updated_at, "%B %e, %Y") %></td>
+                            <td><a href="mailto:<%= o.order.customer.try(:email)  %>"><%= o.order.customer.try(:email)  %></a></td>
+                            <td><%= o.order.customer.try(:phone) %></td>                            
+                            <td><span class="<%= (o.order.status == 'success') ? "label label-success" : "label label-danger" %>"><%= o.order.status %></span>
+                            </td>
+                            <td>
+                                <% if o.order.status == 'success' %>
+                                <%= link_to service_iv_generator_path(:id => o.order.number, format: :pdf), class: 'btn btn-small', :style => 'border: 0px;padding: 0px;' do %>
+                                    <i class="fa fa-file-text-o">&nbsp;</i>
+                                <% end %>
+                                <% end %>
+                                
+                            </td>
+                        </tr>
+                    <%end%>
+                </tbody>
+            </table>
+            <div class="panel-footer clearfix">
+                
+            </div>
+        <% end %>
     </div>
 </div>

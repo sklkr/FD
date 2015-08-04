@@ -31,6 +31,7 @@ Rails.application.routes.draw do
 
       get '/' => 'sessions#new'
       get '/iv_generator/:id' => 'invoice#show', as: :iv_generator
+      get '/service_iv_generator/:id' => 'invoice#service', as: :service_iv_generator
 
       #services
       get '/services/cc/:customer_id' => 'services#customer_confirmation', as: :customer_confirmation

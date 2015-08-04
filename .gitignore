@@ -30,5 +30,6 @@ doc/
 .secret
 .DS_Store
 /public
+/db/schema.rb
 # Ignore application configuration
 /config/application.yml
