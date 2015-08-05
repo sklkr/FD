@@ -28,6 +28,7 @@ Rails.application.routes.draw do
       resources :coupons
       resources :centers
       resources :trainers
+      resources :deals
 
       get '/' => 'sessions#new'
       get '/iv_generator/:id' => 'invoice#show', as: :iv_generator
@@ -93,6 +94,8 @@ Rails.application.routes.draw do
   get 'mypackage' => 'mypackage#index'
   post 'mypackage/success'
   post 'mypackage/failure'
+
+
 
   get 'checkout' => 'checkout#step1', :as => 'checkout'
   post 'checkout' => 'checkout#create'
@@ -191,6 +194,7 @@ Rails.application.routes.draw do
   get '/services' => 'services#index'
   post '/api/services' => 'services#search'
 
+  get '/deals' => 'deals#index'
 
   namespace :api, defaults: { format: :json }, constraints: { subdomain: 'api' }, path: '/'  do
       scope module: :v1 do

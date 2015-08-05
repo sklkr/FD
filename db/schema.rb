@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150731054842) do
+ActiveRecord::Schema.define(version: 20150804104028) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -327,6 +327,32 @@ ActiveRecord::Schema.define(version: 20150731054842) do
     t.string   "city"
     t.boolean  "fb_active",        default: false
   end
+
+  create_table "deals", force: true do |t|
+    t.string   "brand"
+    t.string   "bemail"
+    t.string   "bmobile"
+    t.string   "name"
+    t.text     "address"
+    t.decimal  "original_price", precision: 8, scale: 2
+    t.decimal  "selling_price",  precision: 8, scale: 2
+    t.text     "timings",                                default: [],    array: true
+    t.text     "about"
+    t.integer  "quantity",                               default: 0
+    t.string   "city"
+    t.string   "sublocation",                            default: [],    array: true
+    t.string   "category",                               default: [],    array: true
+    t.string   "subcategory",                            default: [],    array: true
+    t.boolean  "active",                                 default: false
+    t.string   "image_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "deals", ["category"], name: "index_deals_on_category", using: :gin
+  add_index "deals", ["subcategory"], name: "index_deals_on_subcategory", using: :gin
+  add_index "deals", ["sublocation"], name: "index_deals_on_sublocation", using: :gin
+  add_index "deals", ["timings"], name: "index_deals_on_timings", using: :gin
 
   create_table "delayed_jobs", force: true do |t|
     t.integer  "priority",   default: 0, null: false

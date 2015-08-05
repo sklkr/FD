@@ -1,0 +1,45 @@
+<div class="row">
+	<%= simple_form_for @deal, html: { multipart: true} do |f| %>
+		
+		<div class="col-xs-12">
+			<div class="panel panel-default">
+				<div class="panel-heading">Center Information</div>
+				<div class="panel-body">
+					<div class="row">
+						<%= f.input :brand, input_html: {class: 'form-control input-sm'}, wrapper_html: {class: 'form-group col-xs-4'} %>
+						<%= f.input :bemail, label: 'Brand Email', input_html: {class: 'form-control input-sm'}, wrapper_html: {class: 'form-group col-xs-4'} %>
+						<%= f.input :bmobile, label: 'Brand Mobile', input_html: {class: 'form-control input-sm'}, wrapper_html: {class: 'form-group col-xs-4'} %>
+					</div>
+					<%= f.input :name, input_html: {class: 'form-control input-sm'}, wrapper_html: {class: 'form-group'} %>
+					<%= f.input :address, input_html: {class: 'form-control input-sm'}, wrapper_html: {class: 'form-group'} %>
+					<div class="row">
+						<%= f.input :original_price, input_html: {class: 'form-control input-sm'}, wrapper_html: {class: 'form-group col-xs-6'} %>
+						<%= f.input :selling_price, input_html: {class: 'form-control input-sm'}, wrapper_html: {class: 'form-group col-xs-6'} %>	
+					</div>
+					
+					<%= f.input :timings, label: 'Studio Timing/ Delivery Timing', input_html: {class: 'form-control input-s' }, wrapper_html: {class: 'form-group'} %>
+					<%= f.input :about, input_html: {class: 'form-control input-sm'}, wrapper_html: {class: 'form-group'} %>
+					<div class="row">
+						<%= f.input :quantity, input_html: {class: 'form-control input-sm'}, wrapper_html: {class: 'form-group col-xs-2'} %>
+						<%= f.input :city, input_html: { id: 'inc-map', class: 'form-control input-sm'}, wrapper_html: {class: 'form-group col-xs-5'} %>
+						<%= f.input :sublocation, input_html: {class: 'form-control input-sm'}, wrapper_html: {class: 'form-group col-xs-5'} %>
+					</div>
+					<%= f.input :category, collection: Deal::CATEGORY, input_html: { multiple: true, class: 'form-control input-sm chzn-select'}, wrapper_html: {class: 'form-group'} %>
+					<%= f.input :subcategory, collection: Deal::SUBCATEGORY, input_html: { multiple: true, class: 'form-control input-sm chzn-select'}, wrapper_html: {class: 'form-group'} %>
+					<div class="row">
+						<div class="col-xs-2"><label for=""> Deal Image</label></div>
+						<%= f.attachment_field :image, label: 'Deal Photo', input_html: {class: 'form-control input-sm upload-demo'}, wrapper_html: {class: 'form-group col-xs-10'} %>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		<div class="col-xs-12">
+			<div class="panel panel-default">
+				<div class="panel-body">
+					<%= f.submit 'Submit', :class => 'btn btn-success pull-right' %>
+				</div>
+			</div>
+		</div>
+	<%end%>
+</div>

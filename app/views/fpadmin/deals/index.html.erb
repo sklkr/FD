@@ -1,0 +1,52 @@
+<div class="main-header clearfix">
+    <div class="page-title">
+        <h3 class="no-margin">Deals</h3>
+        <span></span>
+    </div><!-- /page-title -->
+    
+    <ul class="page-stats">
+        <%= link_to "NEW DEAL", new_deal_path, :class => 'btn btn-primary' %>
+    </ul><!-- /page-stats -->
+</div>
+
+
+<div class="padding-md">
+    <div class="panel panel-default table-responsive">
+        <div class="panel-heading">
+            <span>Deals</span>
+        </div>
+        <table class="table table-striped table-responsive" id="responsiveTable">
+            <thead>
+                <tr>
+                    <th>Brand</th>
+                    <th>Name</th>
+                    <th>Price</th>
+                    <th>Timings</th>
+                    <th>Quantity</th>
+                    <th>City</th>
+                    <th>Category</th>
+                    <th>Sub Category</th>
+                </tr>
+            </thead>
+            <tbody>
+               <% unless @deals.blank? %>
+                <% @deals.each do |deal| %>
+                    <tr>
+                        <td><%= deal.brand %></td>
+                        <td><%= deal.name %></td>
+                        <td><%= deal.selling_price %></td>
+                        <td><%= deal.timings.reject{|a| a.blank?}.join(', ') %></td>
+                        <td><%= deal.quantity %></td>
+                        <td><%= deal.city %></td>
+                        <td><%= deal.category.reject{|a| a.blank?}.join(', ') %></td>
+                        <td><%= deal.subcategory.reject{|a| a.blank?}.join(', ') %></td>
+                    </tr>
+                <% end %>
+               <% end %>
+            </tbody>
+        </table>
+        <div class="panel-footer clearfix">
+            
+        </div>
+    </div>
+</div>
