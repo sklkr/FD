@@ -18,7 +18,7 @@
 //= require plugins/modernizr
 //= require_tree ./backend
 //= require plugins/google.places
-//= require plugins/selectize
+//= require plugins/magicsuggest
 //= require plugins/moment
 //= require local_time
 //= require signup

@@ -19,7 +19,7 @@
 				<div class="col-xs-6" style="margin-bottom:20px">
 			        <h4>Features</h4>
 			        <hr>
-			        <div><i class="fa fa-check text-success"></i>Unlimited Classes</div>
+			        <div><i class="fa fa-check text-success"></i>10 Classes</div>
 			        <div><i class="fa fa-check text-success"></i>Top Rated Studios & Trainers</div>
 			        <div><i class="fa fa-check text-success"></i>No Upfront or Hidden Fees</div>
 			        <div><i class="fa fa-check text-success"></i>Cancel Any Time</div>
@@ -69,6 +69,31 @@
 			              <td><%= order.service_order_item.unit_price %></td>
 			              <td><%= order.updated_at.strftime('%d %m %Y') %></td>
 			              <td class="text-center"><a href="<%= service_invoice_path(order_id: order.number, format: :pdf) %>"><i class="fa fa-file-pdf-o" style='color:rgb(171, 136, 17)'></i></a></td>
+			            </tr>
+			        <% end %>
+		        </tbody>
+		    </table>
+		</div>
+	<% end %>
+
+	<% unless @deal_orders.blank? %>
+		<div class="col-sm-6 col-sm-offset-3">
+			<h4>Booked Deals</h4>
+			<table class="table">
+		        <thead>
+		          <tr><th>Deal</th>
+		          <th>Amount</th>
+		          <th>Date</th>
+		          <th class="text-center">Receipt</th>
+		        </tr></thead>
+		        <tbody>
+		        	<% @deal_orders.each do |order| %>
+		        		<% deal = order.deal_order_item.deal %>
+			            <tr>
+			              <td><%= deal.name.capitalize %></td>
+			              <td><%= order.total_amount %></td>
+			              <td><%= order.updated_at.strftime('%d %m %Y') %></td>
+			              <td class="text-center"><a href="<%= deal_invoice_path(order_id: order.number, format: :pdf) %>"><i class="fa fa-file-pdf-o" style='color:rgb(171, 136, 17)'></i></a></td>
 			            </tr>
 			        <% end %>
 		        </tbody>

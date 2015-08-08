@@ -1,5 +1,5 @@
-class BookServiceController < ApplicationController
-	layout 'services'
+class BookDealController < ApplicationController
+	layout 'deals'
 	include Wicked::Wizard
 	steps :info, :login, :facebook, :payment
 	protect_from_forgery :except => [:success, :failure]
@@ -9,15 +9,15 @@ class BookServiceController < ApplicationController
 	def show
 		case step
 		when :info
-			service = Service.friendly.find(params[:service])
-			@order =  current_service_order || Order.new 
+			deal = Deal.friendly.find(params[:deal])
+			@order =  current_deal_order || Order.new 
 			@order.order_items.each(&:delete) unless @order.order_items.empty?
-			@order.order_items.build(:quantity => 1, :unit_price => service.selling_price, :service_id => service.id, :order_type => 'Service')
+			@order.order_items.build(:quantity => 1, :unit_price => deal.selling_price, :deal_id => deal.id, :order_type => 'Deal')
 			if @order.save
-				session[:service_id] = @order.id
+				session[:deal_id] = @order.id
 			end
 			if current_user.blank?
-				session[:book_service] = '1'
+				session[:book_deal] = '1'
 				render_wizard
 			else
 				@order.customer = current_user
@@ -25,8 +25,8 @@ class BookServiceController < ApplicationController
 				prepare_payment
 			end
 		when :facebook
-			session[:book_service] = nil
-			order = current_service_order
+			session[:book_deal] = nil
+			order = current_deal_order
 			order.customer = current_user
 			order.save
 			prepare_payment
@@ -37,20 +37,20 @@ class BookServiceController < ApplicationController
 	end
 
 	def success
-		@order = current_service_order
+		@order = current_deal_order
 	    @order.update_attributes(params.permit(:status, :bank_ref_num, :bankcode, :name_on_card, :cardnum, :amount_split, :discount, :net_amount_debit))
 	    @order.pg_type = params['PG_TYPE']
 	    @order.save
 	  
 	    #Acknowledgements
 	    @customer = @order.customer
-	    @center = @order.service_order_item.service.center
-		SmsService.new(@customer.phone, "You have bought one day pass at #{@center.name} having order id #{@order.number}. Thank You!").send_sms
-	    SmsService.new(@center.mobile, "#{@customer.full_name} has bought one time pass at #{@center.name} having order id #{@order.number} on #{@order.updated_at.strftime("%d %M/%Y")}. Thanks!").delay.send_sms
-	    ServiceMailer.inform_admin(@order, @customer, @center).delay.deliver
-	    ServiceMailer.inform_customer(@order, @customer, @center).delay.deliver
+	    @deal = @order.deal_order_item.deal
+	    SmsService.new(@customer.phone, "You have bought #{@deal.name} having order id #{@order.number}. Thank You!").send_sms
+	    SmsService.new(@deal.bmobile, "#{@customer.full_name} has bought  at #{@deal.name} having order id #{@order.number} on #{@order.updated_at.strftime("%d %M/%Y")}. Thanks!").delay.send_sms
+	    DealMailer.inform_customer(@order, @customer, @deal).delay.deliver
+	    DealMailer.inform_admin(@order, @customer, @deal).delay.deliver
 	    
-	    redirect_to service_invoice_path(order_id: @order.number, format: :pdf)
+	    redirect_to deal_invoice_path(order_id: @order.number, format: :pdf)
 	end
 
 	def failure
@@ -61,7 +61,7 @@ class BookServiceController < ApplicationController
 		case step
 		when :login
 			authenticate!
-			order = current_service_order
+			order = current_deal_order
 			order.customer = current_user
 			order.save
 			prepare_payment
@@ -88,8 +88,8 @@ class BookServiceController < ApplicationController
 	    end
 
 	    def prepare_payment
-	    	@service = current_service_order.order_items.last.service
-			@order = current_service_order
-			@payu = PayuService.new(@order, @order.customer, book_service_success_url, book_service_failure_url)
+			@order = current_deal_order
+	    	@deal = @order.deal_order_item
+			@payu = PayuService.new(@order, @order.customer, book_deal_success_url, book_deal_failure_url)
 	    end
 end

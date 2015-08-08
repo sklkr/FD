@@ -26,7 +26,7 @@ layout 'homepage'
   def facebook
     params[:url] = session[:book_service].blank? ? search_path : "/book_service/facebook"
     customer = Customer.find_by_email(auth_hash.info.email)
-    render :text => 'User doesnot exist. Before using facebook login you must be a user at FitnessPapa' and return if customer.blank?
+    render :text => 'User doesnot exist at FitnessPapa. Please Sign Up & Complete Registration Process before using facebook login' and return if customer.blank?
     if customer && customer.active
       warden.set_user(customer.user)
       redirect_to params[:url]

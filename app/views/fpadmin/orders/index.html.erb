@@ -101,5 +101,51 @@
                 
             </div>
         <% end %>
+
+
+
+        <% unless @deal_orders.blank? %>
+            <div class="panel-heading">
+                <span>Deal Orders</span>
+                
+            </div>
+            <table class="table table-striped table-responsive" id="responsiveTable">
+                <thead>
+                    <tr>
+                        <th>Order Id</th>
+                        <th>Name</th>
+                        <th>Booked at</th>
+                        <th>Customer Email</th>
+                        <th>Customer Mobile</th>
+                        <th>Status</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% @deal_orders.each do |o| %>
+                        <tr>
+                            <td><%= o.order.number %></td>
+                            <td><%= o.deal.name %></td>
+                            <td><%= local_time(o.updated_at, "%B %e, %Y") %></td>
+                            <td><a href="mailto:<%= o.order.customer.try(:email)  %>"><%= o.order.customer.try(:email)  %></a></td>
+                            <td><%= o.order.customer.try(:phone) %></td>                            
+                            <td><span class="<%= (o.order.status == 'success') ? "label label-success" : "label label-danger" %>"><%= o.order.status %></span>
+                            </td>
+                            <td>
+                                <% if o.order.status == 'success' %>
+                                <%= link_to deal_iv_generator_path(:id => o.order.number, format: :pdf), class: 'btn btn-small', :style => 'border: 0px;padding: 0px;' do %>
+                                    <i class="fa fa-file-text-o">&nbsp;</i>
+                                <% end %>
+                                <% end %>
+                                
+                            </td>
+                        </tr>
+                    <%end%>
+                </tbody>
+            </table>
+            <div class="panel-footer clearfix">
+                
+            </div>
+        <% end %>
     </div>
 </div>

@@ -4,18 +4,73 @@
 <div class="row" style="background-color:#f1f5fc">
     <div id='services-container' class="container" style="min-height:450px;padding-top:45px">
 		<div>
-			<select class="demo-default selectized" placeholder="City" tabindex="-1" style="display: none;">
-				<option value="3" selected="selected">Bangalore</option>
-				<option value="3">dsjfkl</option>
-				<option value="3">11133</option>
-				<option value="3">*^*&*&^</option>
-			</select>
-			<select class="demo-default selectized" placeholder="City" tabindex="-1" style="display: none;">
-				<option value="3" selected="selected">Gym</option>
-				<option value="3">dsjfkl</option>
-				<option value="3">11133</option>
-				<option value="3">*^*&*&^</option>
-			</select>
+			<fieldset class="search-container" id="center-search-container" style={show}>
+			<%= form_tag '/deals' do %>
+	            <div class="row">
+	                <div class="col-md-4 col-xs-12 m-bottom20">
+	                    <label htmlFor="location">CITY / LOCATION</label>
+	                    <div>
+	                      <input id="cities" type="text" name="place_name_cont_any" placeholder='location' class="ui-autocomplete-input form-control form-square" />
+	                    </div>
+	                </div>
+	                <div class="col-md-4 col-xs-12 m-bottom20">
+	                  <label htmlFor="facilities">ACTIVITIES</label>
+	                  <select name="center_type_in" class="magicsuggest" placeholder="Choose..">
+	                  	<option value="Zumba">Zumba</option>
+	                  	<option value="Pilates">Pilates</option>
+	                  	<option value="Gym ">Gym </option>
+	                  	<option value="Martial Arts & Kick Boxing">Martial Arts & Kick Boxing</option>
+	                  	<option value="Healthy Food & Beverages">Healthy Food & Beverages</option>
+	                  	<option value="Kids Fitness">Kids Fitness</option>
+	                  	<option value="Celebrity Trainers">Celebrity Trainers</option>
+	                  	<option value="Fitness Studio">Fitness Studio</option>
+	                  	<option value="Yoga">Yoga</option>
+	                  	<option value="Cross Functional Training">Cross Functional Training</option>
+	                  	<option value="Dance">Dance</option>
+	                  	<option value="Workout Sessions">Workout Sessions</option>
+	                  	<option value="Bootcamp">Bootcamp</option>
+	                  </select>
+	                </div>
+	                <div class="col-md-4 col-xs-12 m-bottom20">
+	                	<label for="" style="visibility:hidden">submit</label>
+	                	<div>
+	                		<button class="btn btn-info">Submit</button>
+	                	</div>
+	                </div>
+	            </div>
+	        <% end %>
+			</fieldset>
 		</div>        
+		<div class="row">
+			<% @deals.each do |deal| %>
+			<div class="col-sm-3 m-bottom20">
+				<article class="left">
+					<img src="//d1djl7kr085bc1.cloudfront.net/store/<%= deal.image_id %>" class="img-responsive" alt="5" style='height:150px;width:100%'>
+					<div class="text">
+						<h3><a href=""><%= deal.name.capitalize %></a></h3>
+						<h5><%= deal.brand %></h5>
+						<div class="details">
+							<span style='text-decoration:line-through'> <i class='fa fa-rupee'></i> <%= deal.original_price %></span>&nbsp;&nbsp;
+							<span class="price"><i class='fa fa-rupee'></i><%= deal.selling_price %></span><br>
+							<!-- <span class='label label-info'><%= deal.category %></span> -->
+							<div style="margin-top:12px">
+								<a href="/book_deal/info?deal=<%= deal.slug %>" class="btn btn-primary pull-right">Buy Now</a>
+							<a href="" class="btn btn-default btn-small pull-right"  style='margin-right:8px'>Details</a>
+							</div>
+						</div>
+					</div>
+				</article>
+			</div>
+			<% end %>
+		</div>
     </div>
 </div>
+
+
+
+<%= content_for :linescript do %>
+	<script>
+		new google.maps.places.Autocomplete(document.getElementById('cities'));
+		$('.magicsuggest').magicSuggest([])
+	</script>
+<% end %>

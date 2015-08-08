@@ -38,7 +38,7 @@
                         <td><%= deal.timings.reject{|a| a.blank?}.join(', ') %></td>
                         <td><%= deal.quantity %></td>
                         <td><%= deal.city %></td>
-                        <td><%= deal.category.reject{|a| a.blank?}.join(', ') %></td>
+                        <td><%= deal.category %></td>
                         <td><%= deal.subcategory.reject{|a| a.blank?}.join(', ') %></td>
                     </tr>
                 <% end %>

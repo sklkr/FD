@@ -29,5 +29,18 @@ before_filter :authenticated?
        }
      end
   end
+
+  def deal
+    @order = Order.find_by_number(params[:id])
+    @deal = @order.deal_order_item.deal
+    respond_to do |format|
+       format.pdf {
+         send_data @deal.receipt(@order).render,
+           filename: "#{@order.updated_at.strftime("%Y-%m-%d")}-fitnesspapa-receipt.pdf",
+           type: "application/pdf",
+           disposition: :inline
+       }
+     end
+  end
 end
 end

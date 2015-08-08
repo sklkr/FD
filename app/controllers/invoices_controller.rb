@@ -1,7 +1,7 @@
 class InvoicesController < ApplicationController
   before_filter :is_user, only: :show
   before_action :passport, only: :show
-  before_action :verify_user, only: :service
+  before_action :verify_user, only: [:service, :deal]
 
    def show
      respond_to do |format|
@@ -19,7 +19,19 @@ class InvoicesController < ApplicationController
     respond_to do |format|
        format.pdf {
          send_data @service.receipt(@order).render,
-           filename: "#{@service.created_at.strftime("%Y-%m-%d")}-fitnesspapa-receipt.pdf",
+           filename: "#{@order.created_at.strftime("%Y-%m-%d")}-fitnesspapa-receipt.pdf",
+           type: "application/pdf",
+           disposition: :inline
+       }
+     end
+   end
+
+   def deal
+    @deal = @order.deal_order_item.deal
+    respond_to do |format|
+       format.pdf {
+         send_data @deal.receipt(@order).render,
+           filename: "#{@order.created_at.strftime("%Y-%m-%d")}-fitnesspapa-receipt.pdf",
            type: "application/pdf",
            disposition: :inline
        }

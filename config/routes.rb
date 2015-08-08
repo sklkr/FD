@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   get 'invoice' => 'invoices#show', as: 'invoice'
   get 'invoice/:order_id' => 'invoices#service', as: 'service_invoice'
+  get 'invoice/deal/:order_id' => 'invoices#deal', as: 'deal_invoice'
 
   match "/delayed_job" => DelayedJobWeb, :anchor => false, via: [:get, :post]
 
@@ -33,6 +34,7 @@ Rails.application.routes.draw do
       get '/' => 'sessions#new'
       get '/iv_generator/:id' => 'invoice#show', as: :iv_generator
       get '/service_iv_generator/:id' => 'invoice#service', as: :service_iv_generator
+      get '/deal_iv_generator/:id' => 'invoice#deal', as: :deal_iv_generator
 
       #services
       get '/services/cc/:customer_id' => 'services#customer_confirmation', as: :customer_confirmation
@@ -194,7 +196,10 @@ Rails.application.routes.draw do
   get '/services' => 'services#index'
   post '/api/services' => 'services#search'
 
-  get '/deals' => 'deals#index'
+  resources :deals
+  resources :book_deal
+  post 'book_deal/success'
+  post 'book_deal/failure'
 
   namespace :api, defaults: { format: :json }, constraints: { subdomain: 'api' }, path: '/'  do
       scope module: :v1 do

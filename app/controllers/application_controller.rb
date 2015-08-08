@@ -4,7 +4,7 @@ class ApplicationController < ActionController::Base
   # Prevent CSRF attacks by raising an exception.
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
-  helper_method :warden, :signed_in?, :current_user, :is_partner?, :is_customer?, :center, :current_order, :current_service_order, :which_user, :color
+  helper_method :warden, :signed_in?, :current_user, :is_partner?, :is_customer?, :center, :current_order, :current_service_order, :current_deal_order, :which_user, :color
   before_filter { @customer ||= Customer.new; @customer.build_user }
   # Referral checker
   before_filter :ref_to_cookie
@@ -86,6 +86,10 @@ class ApplicationController < ActionController::Base
    # Return order that is in pending state using session : service_id
    def current_service_order
     Order.find(session[:service_id]) unless (session[:service_id].nil? || (Order.find(session[:service_id]).status == 'success'))
+   end
+
+   def current_deal_order
+    Order.find(session[:deal_id]) unless (session[:deal_id].nil? || (Order.find(session[:deal_id]).status == 'success'))
    end
 
    private

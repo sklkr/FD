@@ -15,6 +15,7 @@ before_filter :authenticated?
 
   def create
     @deal = Deal.new(permit_params)
+    @deal.category = params[:deal][:category].last
     if @deal.save
       flash[:notice] = "Deal Created successfully"
       redirect_to action: :index
@@ -25,7 +26,7 @@ before_filter :authenticated?
 
   private
     def permit_params
-      params.require(:deal).permit(:brand, :bemail, :bmobile, :name, :address, :original_price, :selling_price, :about, :quantity, :city, :sublocation, :image, :category => [], :subcategory => [], :timings => [])
+      params.require(:deal).permit(:brand, :bemail, :bmobile, :name, :address, :original_price, :selling_price, :about, :quantity, :city, :sublocation, :image, :subcategory => [], :timings => [])
     end
 end
 end

@@ -18,6 +18,7 @@ layout 'customerdashboard'
   	@passport = passport
     # reject will remove orders that does not contain service order items 
     @orders = current_user.success_orders.includes(:service_order_item).reject{|o| o.service_order_item.blank? }
+    @deal_orders = current_user.success_orders.includes(:deal_order_item).reject{|o| o.deal_order_item.blank? }
   end
 
   def color 

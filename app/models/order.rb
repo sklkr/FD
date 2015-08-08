@@ -19,6 +19,7 @@ class Order < ActiveRecord::Base
    has_many :canceled_invoices, ->  { canceled }, class_name: 'Invoice'
    belongs_to :customer
    has_one :service_order_item, -> { services }, class_name: "OrderItem"
+   has_one :deal_order_item, -> { deals }, class_name: "OrderItem"
 
 
    scope :success, -> { where('status=?','success')}
