@@ -6,7 +6,7 @@ layout 'fpadmin'
 before_filter :authenticated?
 
   def index
-    @partners = Partner.recent.includes(:user).page params[:page]
+    @partners = Partner.recent.includes(:user, :centers).page params[:page]
   end
 
   def show

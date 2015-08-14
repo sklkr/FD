@@ -23,6 +23,7 @@
                     <th>Name</th>
                     <th>Phone</th>
                     <th>Email</th>
+                    <th>Center</th>
                     <th>Active</th>
                     <th></th>
                 </tr>
@@ -33,6 +34,7 @@
                         <td><%= link_to p.full_name, partner_path(p.id) %></td>
                         <td><%= p.phone %></td>
                         <td><a href="mailto:<%= p.email %>"><%= p.email %></a></td>
+                        <td><%= p.centers.try(:first).try(:name) %></td>
                         <td><span class="<%= p.active ? "label label-success" : "label label-danger" %>"><%= p.active %></span></td>
                         <td>
                         <% unless p.active %>

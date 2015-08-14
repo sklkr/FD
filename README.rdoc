@@ -1,28 +1,38 @@
-== README
+Welcome to the Fitness wiki!
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+MODELS ::
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Based on https://github.com/activerecord-hackery/ransack/issues/433 we've implemented HABTM association in ransack at FiltersController
 
 
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+Customized link :: http://getbootstrap.com/customize/?id=d53e9b4853565d53472d
+
+flaticon
+
+username :: sourabh@fitnesspapa.com password :+1: password
+
+
+
+....
+
+Change refile img host to Refile.host = "//d2yvb3j5b4tgn0.cloudfront.net"
+
+Delayed jobs needs to be run RAILS_ENV=production bin/delayed_job -n 2 start
+
+mandrill for production Set url for producton environment config.mandrill_mailer.default_url_options = { :host => "fitnesspapa.com" }
+
+Set time zone to +5:30 in linux deployment server
+
+# date
+Mon Sep 17 22:59:24 UTC 2010
+# cd /etc
+# rm localtime
+# ls /usr/share/zoneinfo/Asia/Kolkata
+# cd /etc
+# ln -s /usr/share/zoneinfo/Asia/Kolkata localtime
+# date
+Mon Sep 17 23:10:14 IST +05:30
+Install and Configure Redis
+
+
+https://railsbox.io/boxes/4dea01d492cc
